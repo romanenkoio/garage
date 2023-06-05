@@ -925,6 +925,8 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 5.6.0;
+    };
+    };
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -941,6 +943,7 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+   };
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */;
