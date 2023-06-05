@@ -176,11 +176,11 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
-				B978F3A22A2E9D870076D326 /* Common1 */,
-				B978F38D2A2E9D870076D326 /* Extensions1 */,
-				B978F39D2A2E9D870076D326 /* MVVM1 */,
-				B978F39F2A2E9D870076D326 /* Resources1 */,
-				B978F38A2A2E9D870076D326 /* TabBarController1 */,
+				B978F3A22A2E9D870076D326 /* Common */,
+				B978F38D2A2E9D870076D326 /* Extensions */,
+				B978F39D2A2E9D870076D326 /* MVVM */,
+				B978F39F2A2E9D870076D326 /* Resources */,
+				B978F38A2A2E9D870076D326 /* TabBarController */,
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
@@ -402,16 +402,16 @@
 			path = BasicChoiseView;
 			sourceTree = "<group>";
 		};
-		B978F38A2A2E9D870076D326 /* TabBarController1 */ = {
+		B978F38A2A2E9D870076D326 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
 				B978F38B2A2E9D870076D326 /* TabBarController+ViewModel.swift */,
 				B978F38C2A2E9D870076D326 /* TabBarController.swift */,
 			);
-			path = TabBarController1;
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		B978F38D2A2E9D870076D326 /* Extensions1 */ = {
+		B978F38D2A2E9D870076D326 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B978F38E2A2E9D870076D326 /* UIView.swift */,
@@ -428,7 +428,7 @@
 				B978F39B2A2E9D870076D326 /* Optional.swift */,
 				B978F39C2A2E9D870076D326 /* UIEdgeInsets.swift */,
 			);
-			path = Extensions1;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B978F38F2A2E9D870076D326 /* Combine */ = {
@@ -440,24 +440,24 @@
 			path = Combine;
 			sourceTree = "<group>";
 		};
-		B978F39D2A2E9D870076D326 /* MVVM1 */ = {
+		B978F39D2A2E9D870076D326 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
 				B978F39E2A2E9D870076D326 /* BasicViewModel.swift */,
 			);
-			path = MVVM1;
+			path = MVVM;
 			sourceTree = "<group>";
 		};
-		B978F39F2A2E9D870076D326 /* Resources1 */ = {
+		B978F39F2A2E9D870076D326 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				B978F3A02A2E9D870076D326 /* Assets.xcassets */,
 				B978F3A12A2E9D870076D326 /* Color.xcassets */,
 			);
-			path = Resources1;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		B978F3A22A2E9D870076D326 /* Common1 */ = {
+		B978F3A22A2E9D870076D326 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				B978F3A32A2E9D870076D326 /* Validator */,
@@ -466,7 +466,7 @@
 				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
 				B978F3AA2A2E9D870076D326 /* Protocols */,
 			);
-			path = Common1;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B978F3A32A2E9D870076D326 /* Validator */ = {
