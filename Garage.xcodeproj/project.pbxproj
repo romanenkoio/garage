@@ -124,7 +124,7 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
-				B978F2D72A2E8F4C0076D326 /* UIKitcwdcw */,
+				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
 				7F6F6A282A2E8521003F7DF2 /* ViewController.swift */,
@@ -136,7 +136,7 @@
 			path = Garage;
 			sourceTree = "<group>";
 		};
-		B978F2D72A2E8F4C0076D326 /* UIKitcwdcw */ = {
+		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
@@ -158,7 +158,7 @@
 				B978F3082A2E8F4C0076D326 /* TappableLabel */,
 				B978F30B2A2E8F4C0076D326 /* BasicTextField */,
 			);
-			path = UIKitcwdcw;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
