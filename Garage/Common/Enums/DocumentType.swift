@@ -8,7 +8,12 @@
 import Foundation
 
 enum DocumentType: CaseIterable {
-    
+    case license
+    case medical
+    case insurance
+    case carPasport
+    case unlisted(String?)
+
     static var allCases: [DocumentType] = [
         .license,
         .medical,
@@ -16,13 +21,7 @@ enum DocumentType: CaseIterable {
         .carPasport,
         .unlisted(nil)
     ]
-    
-    case license
-    case medical
-    case insurance
-    case carPasport
-    case unlisted(String?)
-    
+
     var title: String {
         switch self {
         case .license:                  return "Права"
