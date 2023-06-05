@@ -14,14 +14,14 @@ extension PaymentView {
         
         @Published var isLast = false
         
-        init(
-            payment: PaymentModel,
-            client: ClientModel,
-            isLast: Bool
-        ) {
-            self.dateLabelVM.text = "27 мая, "
-            self.nameLabelVM.text = client.name + " " + client.surname
-            self.isLast = isLast
-        }
+//        init(
+//            payment: PaymentModel,
+//            client: ClientModel,
+//            isLast: Bool
+//        ) {
+//            self.dateLabelVM.text = "27 мая, "
+//            self.nameLabelVM.text = client.name + " " + client.surname
+//            self.isLast = isLast
+//        }
     }
 }

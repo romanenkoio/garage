@@ -47,6 +47,32 @@
 		B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30A2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift */; };
 		B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30C2A2E8F4C0076D326 /* BasicTextField.swift */; };
 		B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30D2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift */; };
+		B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F38B2A2E9D870076D326 /* TabBarController+ViewModel.swift */; };
+		B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F38C2A2E9D870076D326 /* TabBarController.swift */; };
+		B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F38E2A2E9D870076D326 /* UIView.swift */; };
+		B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3902A2E9D870076D326 /* Publisher.swift */; };
+		B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3912A2E9D870076D326 /* Compine+Published.swift */; };
+		B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3922A2E9D870076D326 /* UIStackView.swift */; };
+		B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3932A2E9D870076D326 /* UIColor.swift */; };
+		B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3942A2E9D870076D326 /* UIControl+Extension.swift */; };
+		B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3952A2E9D870076D326 /* NSObject.swift */; };
+		B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3962A2E9D870076D326 /* AttributedString+Extension.swift */; };
+		B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3972A2E9D870076D326 /* DateFormatter+Extension.swift */; };
+		B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3982A2E9D870076D326 /* UITableView.swift */; };
+		B978F3B82A2E9D870076D326 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3992A2E9D870076D326 /* String.swift */; };
+		B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F39A2A2E9D870076D326 /* UIFont.swift */; };
+		B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F39B2A2E9D870076D326 /* Optional.swift */; };
+		B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F39C2A2E9D870076D326 /* UIEdgeInsets.swift */; };
+		B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F39E2A2E9D870076D326 /* BasicViewModel.swift */; };
+		B978F3BD2A2E9D870076D326 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B978F3A02A2E9D870076D326 /* Assets.xcassets */; };
+		B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B978F3A12A2E9D870076D326 /* Color.xcassets */; };
+		B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A42A2E9D870076D326 /* Validatable.swift */; };
+		B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A52A2E9D870076D326 /* ValidationRule.swift */; };
+		B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A72A2E9D870076D326 /* FormValidator.swift */; };
+		B978F3C22A2E9D870076D326 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A82A2E9D870076D326 /* Enums.swift */; };
+		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
+		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
+		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +118,31 @@
 		B978F30A2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TappableLabel+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F30C2A2E8F4C0076D326 /* BasicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		B978F30D2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicTextField+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F38B2A2E9D870076D326 /* TabBarController+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabBarController+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F38C2A2E9D870076D326 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B978F38E2A2E9D870076D326 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		B978F3902A2E9D870076D326 /* Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		B978F3912A2E9D870076D326 /* Compine+Published.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Compine+Published.swift"; sourceTree = "<group>"; };
+		B978F3922A2E9D870076D326 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		B978F3932A2E9D870076D326 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		B978F3942A2E9D870076D326 /* UIControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		B978F3952A2E9D870076D326 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		B978F3962A2E9D870076D326 /* AttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
+		B978F3972A2E9D870076D326 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		B978F3982A2E9D870076D326 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		B978F3992A2E9D870076D326 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		B978F39A2A2E9D870076D326 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		B978F39B2A2E9D870076D326 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		B978F39C2A2E9D870076D326 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		B978F39E2A2E9D870076D326 /* BasicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewModel.swift; sourceTree = "<group>"; };
+		B978F3A02A2E9D870076D326 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B978F3A12A2E9D870076D326 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		B978F3A42A2E9D870076D326 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		B978F3A52A2E9D870076D326 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		B978F3A82A2E9D870076D326 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +176,11 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
+				B978F3A22A2E9D870076D326 /* Common1 */,
+				B978F38D2A2E9D870076D326 /* Extensions1 */,
+				B978F39D2A2E9D870076D326 /* MVVM1 */,
+				B978F39F2A2E9D870076D326 /* Resources1 */,
+				B978F38A2A2E9D870076D326 /* TabBarController1 */,
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
@@ -139,6 +196,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B978F3892A2E9CE00076D326 /* BasicChoiseView */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */,
 				B978F2E22A2E8F4C0076D326 /* BasicCell */,
@@ -337,6 +395,105 @@
 			path = BasicTextField;
 			sourceTree = "<group>";
 		};
+		B978F3892A2E9CE00076D326 /* BasicChoiseView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BasicChoiseView;
+			sourceTree = "<group>";
+		};
+		B978F38A2A2E9D870076D326 /* TabBarController1 */ = {
+			isa = PBXGroup;
+			children = (
+				B978F38B2A2E9D870076D326 /* TabBarController+ViewModel.swift */,
+				B978F38C2A2E9D870076D326 /* TabBarController.swift */,
+			);
+			path = TabBarController1;
+			sourceTree = "<group>";
+		};
+		B978F38D2A2E9D870076D326 /* Extensions1 */ = {
+			isa = PBXGroup;
+			children = (
+				B978F38E2A2E9D870076D326 /* UIView.swift */,
+				B978F38F2A2E9D870076D326 /* Combine */,
+				B978F3922A2E9D870076D326 /* UIStackView.swift */,
+				B978F3932A2E9D870076D326 /* UIColor.swift */,
+				B978F3942A2E9D870076D326 /* UIControl+Extension.swift */,
+				B978F3952A2E9D870076D326 /* NSObject.swift */,
+				B978F3962A2E9D870076D326 /* AttributedString+Extension.swift */,
+				B978F3972A2E9D870076D326 /* DateFormatter+Extension.swift */,
+				B978F3982A2E9D870076D326 /* UITableView.swift */,
+				B978F3992A2E9D870076D326 /* String.swift */,
+				B978F39A2A2E9D870076D326 /* UIFont.swift */,
+				B978F39B2A2E9D870076D326 /* Optional.swift */,
+				B978F39C2A2E9D870076D326 /* UIEdgeInsets.swift */,
+			);
+			path = Extensions1;
+			sourceTree = "<group>";
+		};
+		B978F38F2A2E9D870076D326 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3902A2E9D870076D326 /* Publisher.swift */,
+				B978F3912A2E9D870076D326 /* Compine+Published.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		B978F39D2A2E9D870076D326 /* MVVM1 */ = {
+			isa = PBXGroup;
+			children = (
+				B978F39E2A2E9D870076D326 /* BasicViewModel.swift */,
+			);
+			path = MVVM1;
+			sourceTree = "<group>";
+		};
+		B978F39F2A2E9D870076D326 /* Resources1 */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3A02A2E9D870076D326 /* Assets.xcassets */,
+				B978F3A12A2E9D870076D326 /* Color.xcassets */,
+			);
+			path = Resources1;
+			sourceTree = "<group>";
+		};
+		B978F3A22A2E9D870076D326 /* Common1 */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3A32A2E9D870076D326 /* Validator */,
+				B978F3A62A2E9D870076D326 /* FormValidator */,
+				B978F3A82A2E9D870076D326 /* Enums.swift */,
+				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
+				B978F3AA2A2E9D870076D326 /* Protocols */,
+			);
+			path = Common1;
+			sourceTree = "<group>";
+		};
+		B978F3A32A2E9D870076D326 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3A42A2E9D870076D326 /* Validatable.swift */,
+				B978F3A52A2E9D870076D326 /* ValidationRule.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		B978F3A62A2E9D870076D326 /* FormValidator */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3A72A2E9D870076D326 /* FormValidator.swift */,
+			);
+			path = FormValidator;
+			sourceTree = "<group>";
+		};
+		B978F3AA2A2E9D870076D326 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3AB2A2E9D870076D326 /* Routable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,6 +510,9 @@
 			dependencies = (
 			);
 			name = Garage;
+			packageProductDependencies = (
+				B978F3C62A2E9DE80076D326 /* SnapKit */,
+			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
 			productType = "com.apple.product-type.application";
@@ -381,6 +541,9 @@
 				Base,
 			);
 			mainGroup = 7F6F6A182A2E8521003F7DF2;
+			packageReferences = (
+				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -397,6 +560,8 @@
 			files = (
 				7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */,
 				7F6F6A2E2A2E8522003F7DF2 /* Assets.xcassets in Resources */,
+				B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */,
+				B978F3BD2A2E9D870076D326 /* Assets.xcassets in Resources */,
 				7F6F6A2C2A2E8521003F7DF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,43 +573,66 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
+				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
+				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
 				B978F3112A2E8F4C0076D326 /* PaymentView+ViewModel.swift in Sources */,
+				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */,
+				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
+				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				B978F3102A2E8F4C0076D326 /* PaymentView.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
+				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
+				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
+				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
+				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
+				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
+				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
+				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
+				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */,
+				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
+				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
+				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
+				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
+				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
+				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
+				B978F3C22A2E9D870076D326 /* Enums.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
 				B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
+				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
+				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +850,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B978F3C62A2E9DE80076D326 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7F6F6A192A2E8521003F7DF2 /* Project object */;
 }

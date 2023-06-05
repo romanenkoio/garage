@@ -14,10 +14,7 @@ extension BasicDatePicker {
         @Published var placeholder: String?
         @Published var minimumDate: Date?
         @Published var maximumDate: Date?
-        wceewc
-        cwecwec
-        
-        cwecwecwec
+
         init(
             date: Date? = nil,
             placeholder: String
