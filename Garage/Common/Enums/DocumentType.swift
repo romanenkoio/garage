@@ -41,5 +41,4 @@ enum DocumentType: CaseIterable {
         default:                        self = .unlisted(text)
         }
     }
-  
 }

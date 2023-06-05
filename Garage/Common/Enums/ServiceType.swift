@@ -45,4 +45,19 @@ enum ServiceType: CaseIterable {
         case .unlisted(let name):   return name ?? ""
         }
     }
+    
+    init(from text: String) {
+        switch text {
+        case "Масло двигателя":         self = .oil
+        case "Масло коробки передач":   self = .gearOil
+        case "Воздушный фильтр":        self = .engineFilter
+        case "Тормозные колодки":       self = .brakePads
+        case "Тормозные диски":         self = .brakeDisk
+        case "Ремень/цепь":             self = .belt
+        case "Салонный фильтр":         self = .airFilter
+        case "Свечи":                   self = .spark
+        case "Аккумулятор":             self = .battery
+        default:                        self = .unlisted(text)
+        }
+    }
 }

@@ -15,9 +15,15 @@ final class Service: Object {
     @Persisted var specialisation: Int
     @Persisted var latitude: Double?
     @Persisted var longitude: Double?
+    @Persisted var rawType: String
 }
 
 extension Service {
+    var type: ServiceType {
+        get { return ServiceType(from: rawType) }
+        set { rawType = newValue.title }
+    }
+    
     var coordinate: CLLocationCoordinate2D? {
         get {
             guard let latitude,
