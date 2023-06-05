@@ -13,6 +13,40 @@
 		7F6F6A2C2A2E8521003F7DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2A2A2E8521003F7DF2 /* Main.storyboard */; };
 		7F6F6A2E2A2E8522003F7DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2D2A2E8522003F7DF2 /* Assets.xcassets */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
+		B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */; };
+		B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DB2A2E8F4C0076D326 /* ClientView.swift */; };
+		B978F3102A2E8F4C0076D326 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */; };
+		B978F3112A2E8F4C0076D326 /* PaymentView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */; };
+		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
+		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
+		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
+		B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E52A2E8F4C0076D326 /* BasicButton+ViewModel.swift */; };
+		B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E62A2E8F4C0076D326 /* BasicButton.swift */; };
+		B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E82A2E8F4C0076D326 /* BasicLabel.swift */; };
+		B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E92A2E8F4C0076D326 /* BasicLabel+ViewModel.swift */; };
+		B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2EC2A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift */; };
+		B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2ED2A2E8F4C0076D326 /* BasicSwitch.swift */; };
+		B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2EF2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift */; };
+		B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F02A2E8F4C0076D326 /* ErrorView.swift */; };
+		B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */; };
+		B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F42A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift */; };
+		B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F52A2E8F4C0076D326 /* BasicSearchField.swift */; };
+		B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F72A2E8F4C0076D326 /* BasicView.swift */; };
+		B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2F82A2E8F4C0076D326 /* BasicStackView.swift */; };
+		B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2FA2A2E8F4C0076D326 /* BasicInputView.swift */; };
+		B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2FB2A2E8F4C0076D326 /* BasicInputView+ViewModel.swift */; };
+		B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2FD2A2E8F4C0076D326 /* BasicList+ViewModel.swift */; };
+		B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2FE2A2E8F4C0076D326 /* BasicList.swift */; };
+		B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3002A2E8F4C0076D326 /* InfoView.swift */; };
+		B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3012A2E8F4C0076D326 /* InfoView+ViewModel.swift */; };
+		B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3032A2E8F4C0076D326 /* BasicSegmentView.swift */; };
+		B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3042A2E8F4C0076D326 /* BasicSegment+ViewModel.swift */; };
+		B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3062A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift */; };
+		B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3072A2E8F4C0076D326 /* RangeDatePicker.swift */; };
+		B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3092A2E8F4C0076D326 /* TappableLabel.swift */; };
+		B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30A2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift */; };
+		B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30C2A2E8F4C0076D326 /* BasicTextField.swift */; };
+		B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F30D2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +58,40 @@
 		7F6F6A2D2A2E8522003F7DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClientView+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2DB2A2E8F4C0076D326 /* ClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
+		B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaymentView+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
+		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
+		B978F2E52A2E8F4C0076D326 /* BasicButton+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicButton+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2E62A2E8F4C0076D326 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		B978F2E82A2E8F4C0076D326 /* BasicLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLabel.swift; sourceTree = "<group>"; };
+		B978F2E92A2E8F4C0076D326 /* BasicLabel+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicLabel+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2EC2A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicSwitch+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2ED2A2E8F4C0076D326 /* BasicSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSwitch.swift; sourceTree = "<group>"; };
+		B978F2EF2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ErrorView+VeiwModel.swift"; sourceTree = "<group>"; };
+		B978F2F02A2E8F4C0076D326 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		B978F2F42A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicSearchField+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2F52A2E8F4C0076D326 /* BasicSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSearchField.swift; sourceTree = "<group>"; };
+		B978F2F72A2E8F4C0076D326 /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
+		B978F2F82A2E8F4C0076D326 /* BasicStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicStackView.swift; sourceTree = "<group>"; };
+		B978F2FA2A2E8F4C0076D326 /* BasicInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInputView.swift; sourceTree = "<group>"; };
+		B978F2FB2A2E8F4C0076D326 /* BasicInputView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicInputView+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2FD2A2E8F4C0076D326 /* BasicList+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicList+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F2FE2A2E8F4C0076D326 /* BasicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicList.swift; sourceTree = "<group>"; };
+		B978F3002A2E8F4C0076D326 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B978F3012A2E8F4C0076D326 /* InfoView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InfoView+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F3032A2E8F4C0076D326 /* BasicSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSegmentView.swift; sourceTree = "<group>"; };
+		B978F3042A2E8F4C0076D326 /* BasicSegment+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicSegment+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F3062A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F3072A2E8F4C0076D326 /* RangeDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeDatePicker.swift; sourceTree = "<group>"; };
+		B978F3092A2E8F4C0076D326 /* TappableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableLabel.swift; sourceTree = "<group>"; };
+		B978F30A2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TappableLabel+ViewModel.swift"; sourceTree = "<group>"; };
+		B978F30C2A2E8F4C0076D326 /* BasicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		B978F30D2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicTextField+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +124,7 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
+				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
 				7F6F6A282A2E8521003F7DF2 /* ViewController.swift */,
@@ -65,6 +134,207 @@
 				7F6F6A322A2E8522003F7DF2 /* Info.plist */,
 			);
 			path = Garage;
+			sourceTree = "<group>";
+		};
+		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2D82A2E8F4C0076D326 /* CellViews */,
+				B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */,
+				B978F2E22A2E8F4C0076D326 /* BasicCell */,
+				B978F2E42A2E8F4C0076D326 /* BasicButton */,
+				B978F2E72A2E8F4C0076D326 /* BasicLabel */,
+				B978F2EA2A2E8F4C0076D326 /* BasicSelectList */,
+				B978F2EB2A2E8F4C0076D326 /* BasicSwitch */,
+				B978F2EE2A2E8F4C0076D326 /* ErrorView */,
+				B978F2F12A2E8F4C0076D326 /* Controller */,
+				B978F2F32A2E8F4C0076D326 /* BasicSearchField */,
+				B978F2F62A2E8F4C0076D326 /* View */,
+				B978F2F92A2E8F4C0076D326 /* BasicInputView */,
+				B978F2FC2A2E8F4C0076D326 /* BasiclList */,
+				B978F2FF2A2E8F4C0076D326 /* InfoView */,
+				B978F3022A2E8F4C0076D326 /* BasicSegmentView */,
+				B978F3052A2E8F4C0076D326 /* RangeDatePicker */,
+				B978F3082A2E8F4C0076D326 /* TappableLabel */,
+				B978F30B2A2E8F4C0076D326 /* BasicTextField */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2D92A2E8F4C0076D326 /* ClientView */,
+				B978F2DC2A2E8F4C0076D326 /* PaymentView */,
+			);
+			path = CellViews;
+			sourceTree = "<group>";
+		};
+		B978F2D92A2E8F4C0076D326 /* ClientView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */,
+				B978F2DB2A2E8F4C0076D326 /* ClientView.swift */,
+			);
+			path = ClientView;
+			sourceTree = "<group>";
+		};
+		B978F2DC2A2E8F4C0076D326 /* PaymentView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */,
+				B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */,
+			);
+			path = PaymentView;
+			sourceTree = "<group>";
+		};
+		B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */,
+				B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */,
+			);
+			path = BasicDatePicker;
+			sourceTree = "<group>";
+		};
+		B978F2E22A2E8F4C0076D326 /* BasicCell */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2E32A2E8F4C0076D326 /* BasicCell.swift */,
+			);
+			path = BasicCell;
+			sourceTree = "<group>";
+		};
+		B978F2E42A2E8F4C0076D326 /* BasicButton */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2E52A2E8F4C0076D326 /* BasicButton+ViewModel.swift */,
+				B978F2E62A2E8F4C0076D326 /* BasicButton.swift */,
+			);
+			path = BasicButton;
+			sourceTree = "<group>";
+		};
+		B978F2E72A2E8F4C0076D326 /* BasicLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2E82A2E8F4C0076D326 /* BasicLabel.swift */,
+				B978F2E92A2E8F4C0076D326 /* BasicLabel+ViewModel.swift */,
+			);
+			path = BasicLabel;
+			sourceTree = "<group>";
+		};
+		B978F2EA2A2E8F4C0076D326 /* BasicSelectList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BasicSelectList;
+			sourceTree = "<group>";
+		};
+		B978F2EB2A2E8F4C0076D326 /* BasicSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2EC2A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift */,
+				B978F2ED2A2E8F4C0076D326 /* BasicSwitch.swift */,
+			);
+			path = BasicSwitch;
+			sourceTree = "<group>";
+		};
+		B978F2EE2A2E8F4C0076D326 /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2EF2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift */,
+				B978F2F02A2E8F4C0076D326 /* ErrorView.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		B978F2F12A2E8F4C0076D326 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B978F2F32A2E8F4C0076D326 /* BasicSearchField */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2F42A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift */,
+				B978F2F52A2E8F4C0076D326 /* BasicSearchField.swift */,
+			);
+			path = BasicSearchField;
+			sourceTree = "<group>";
+		};
+		B978F2F62A2E8F4C0076D326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2F72A2E8F4C0076D326 /* BasicView.swift */,
+				B978F2F82A2E8F4C0076D326 /* BasicStackView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B978F2F92A2E8F4C0076D326 /* BasicInputView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2FA2A2E8F4C0076D326 /* BasicInputView.swift */,
+				B978F2FB2A2E8F4C0076D326 /* BasicInputView+ViewModel.swift */,
+			);
+			path = BasicInputView;
+			sourceTree = "<group>";
+		};
+		B978F2FC2A2E8F4C0076D326 /* BasiclList */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2FD2A2E8F4C0076D326 /* BasicList+ViewModel.swift */,
+				B978F2FE2A2E8F4C0076D326 /* BasicList.swift */,
+			);
+			path = BasiclList;
+			sourceTree = "<group>";
+		};
+		B978F2FF2A2E8F4C0076D326 /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3002A2E8F4C0076D326 /* InfoView.swift */,
+				B978F3012A2E8F4C0076D326 /* InfoView+ViewModel.swift */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
+		B978F3022A2E8F4C0076D326 /* BasicSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3032A2E8F4C0076D326 /* BasicSegmentView.swift */,
+				B978F3042A2E8F4C0076D326 /* BasicSegment+ViewModel.swift */,
+			);
+			path = BasicSegmentView;
+			sourceTree = "<group>";
+		};
+		B978F3052A2E8F4C0076D326 /* RangeDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3062A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift */,
+				B978F3072A2E8F4C0076D326 /* RangeDatePicker.swift */,
+			);
+			path = RangeDatePicker;
+			sourceTree = "<group>";
+		};
+		B978F3082A2E8F4C0076D326 /* TappableLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B978F3092A2E8F4C0076D326 /* TappableLabel.swift */,
+				B978F30A2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift */,
+			);
+			path = TappableLabel;
+			sourceTree = "<group>";
+		};
+		B978F30B2A2E8F4C0076D326 /* BasicTextField */ = {
+			isa = PBXGroup;
+			children = (
+				B978F30C2A2E8F4C0076D326 /* BasicTextField.swift */,
+				B978F30D2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift */,
+			);
+			path = BasicTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +408,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
+				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
+				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
+				B978F3112A2E8F4C0076D326 /* PaymentView+ViewModel.swift in Sources */,
+				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */,
+				B978F3102A2E8F4C0076D326 /* PaymentView.swift in Sources */,
+				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
+				B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */,
+				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
+				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
+				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
+				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
+				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
+				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
+				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
+				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
+				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
+				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
+				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
+				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
+				B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */,
+				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
+				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
+				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
+				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
+				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
+				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
+				B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */,
+				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
+				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
+				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
+				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
+				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
+				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
