@@ -34,6 +34,7 @@ class GarageViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        
     }
 
     override func configure() {
@@ -47,6 +48,10 @@ class GarageViewController: BasicViewController {
         vm.$cells
             .sink { [weak self] _ in self?.layout.checkEmptyTable() }
             .store(in: &cancellables)
+        
+        vm.addCarButton.action = .touchUpInside { [weak self] in
+            self?.coordinator.navigateTo(GarageNavigationRoute.createCar)
+        }
     }
     
 }

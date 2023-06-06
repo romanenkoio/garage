@@ -9,9 +9,17 @@ import Foundation
 
 extension BasicInputView {
     final class ViewModel: BasicViewModel {
-        var errorVM = ErrorView.ViewModel()
-        let inputVM = BasicTextField.ViewModel()
+        var errorVM: ErrorView.ViewModel
+        let inputVM: BasicTextField.ViewModel
                 
+        init(
+            errorVM: ErrorView.ViewModel,
+            inputVM: BasicTextField.ViewModel
+        ) {
+            self.errorVM = errorVM
+            self.inputVM = inputVM
+        }
+        
         var placeholder: String {
             get { inputVM.placeholder.wrapped }
             set { inputVM.placeholder = newValue}

@@ -22,12 +22,11 @@ class GarageControllerCoordinator: BasicCoordinator {
         if let route = route as? GarageNavigationRoute {
             switch route {
             case .createCar:
-                print("push create")
+                let new = CreateCarViewController(vm: .init())
+                vc.push(new)
             }
-        } else if let route = route as? CommonNavigationRoute {
+        } else {
             super.navigateTo(route)
         }
     }
-    
-    
 }

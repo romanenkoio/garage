@@ -18,7 +18,7 @@ extension TabBarController {
             var viewController: UIViewController {
                 switch self {
                 case .studios:
-                    return GarageViewController(vm: .init())
+                    return GarageViewController(vm: .init()).withNavigation()
                 case .favorite:
                     return BasicViewController()
                 case .booking:
@@ -39,10 +39,6 @@ extension TabBarController {
                     case .profile:
                         return UIImage(systemName: "person.circle")!
                 }
-            }
-            
-            private func wrappedInNavigationController(with: UIViewController) -> UINavigationController {
-                UINavigationController(rootViewController: with)
             }
         }
     }

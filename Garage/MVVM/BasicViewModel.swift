@@ -9,4 +9,5 @@ import Combine
 
 class BasicViewModel {
     var cancellables: Set<AnyCancellable> = []
+    let validator = FormValidator()
 }

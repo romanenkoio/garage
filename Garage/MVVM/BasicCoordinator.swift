@@ -9,7 +9,7 @@ import UIKit
 
 class BasicCoordinator: Routable {
     
-    private unowned let vc: BasicViewController
+    unowned let vc: BasicViewController
 
     init(vc: BasicViewController) {
         self.vc = vc
@@ -20,9 +20,9 @@ class BasicCoordinator: Routable {
         
         switch route {
         case .close:
-            self.vc.navigationController?.popViewController(animated: true)
+            self.vc.pop()
         case .closeToRoot:
-            vc.navigationController?.popToRootViewController(animated: true)
+            vc.popToRoot()
         }
     }
 }

@@ -19,6 +19,11 @@
 		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
 		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
 		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
+		7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E089F2A2F4556008C2B9A /* CreateCarControllerCoordinator.swift */; };
+		7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A12A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift */; };
+		7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A32A2F4556008C2B9A /* CreateCar+ViewModel.swift */; };
+		7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A42A2F4556008C2B9A /* CreateCarViewController.swift */; };
+		7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A92A2F5061008C2B9A /* UIViewController.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -101,6 +106,11 @@
 		7F0E08932A2F3731008C2B9A /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
 		7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08982A2F419E008C2B9A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		7F0E089F2A2F4556008C2B9A /* CreateCarControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCarControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E08A12A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCarControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E08A32A2F4556008C2B9A /* CreateCar+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateCar+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08A42A2F4556008C2B9A /* CreateCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCarViewController.swift; sourceTree = "<group>"; };
+		7F0E08A92A2F5061008C2B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -189,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
+				7F0E089C2A2F4556008C2B9A /* CreateCar */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -242,6 +253,49 @@
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7F0E089C2A2F4556008C2B9A /* CreateCar */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E089D2A2F4556008C2B9A /* Manager */,
+				7F0E08A22A2F4556008C2B9A /* ViewController */,
+			);
+			path = CreateCar;
+			sourceTree = "<group>";
+		};
+		7F0E089D2A2F4556008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E089E2A2F4556008C2B9A /* Coordinator */,
+				7F0E08A02A2F4556008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E089E2A2F4556008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E089F2A2F4556008C2B9A /* CreateCarControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E08A02A2F4556008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08A12A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E08A22A2F4556008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08A32A2F4556008C2B9A /* CreateCar+ViewModel.swift */,
+				7F0E08A42A2F4556008C2B9A /* CreateCarViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
@@ -506,8 +560,8 @@
 		B978F38D2A2E9D870076D326 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B978F38E2A2E9D870076D326 /* UIView.swift */,
 				B978F38F2A2E9D870076D326 /* Combine */,
+				B978F38E2A2E9D870076D326 /* UIView.swift */,
 				B978F3922A2E9D870076D326 /* UIStackView.swift */,
 				B978F3932A2E9D870076D326 /* UIColor.swift */,
 				B978F3942A2E9D870076D326 /* UIControl+Extension.swift */,
@@ -519,6 +573,7 @@
 				B978F39A2A2E9D870076D326 /* UIFont.swift */,
 				B978F39B2A2E9D870076D326 /* Optional.swift */,
 				B978F39C2A2E9D870076D326 /* UIEdgeInsets.swift */,
+				7F0E08A92A2F5061008C2B9A /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -690,6 +745,7 @@
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
+				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
@@ -702,14 +758,18 @@
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
+				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
+				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
+				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
 				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
+				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,

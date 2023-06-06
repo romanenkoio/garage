@@ -15,6 +15,7 @@ enum ValidationRule {
     case onlyDigit
     case onlyLetter
     case password
+    case noneEmpty
     
     var pattern: String {
         switch self {
@@ -25,6 +26,7 @@ enum ValidationRule {
         case .onlyDigit:                    return "[0-9]*"
         case .onlyLetter:                   return "[a-Z]*"
         case .password:                     return "[0-9a-zA-Z.@!&*^%$#@_]{6,20}"
+        case .noneEmpty:                    return "^(?!\\s*$).+"
             
         }
     }

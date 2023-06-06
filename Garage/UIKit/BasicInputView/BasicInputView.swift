@@ -40,27 +40,29 @@ class BasicInputView: BasicView {
     private func layoutElements() {
         addSubview(errorView)
         addSubview(textField)
+        errorView.isHidden = true
     }
     
     private func makeConstraints() {
-        let textFieldInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        let textFieldInsets = UIEdgeInsets(left: 16, right: 16)
         textField.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview().inset(textFieldInsets)
         }
         
-        let errorViewInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        let errorViewInsets = UIEdgeInsets(left: 16, right: 16)
         errorView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(5)
             make.leading.bottom.trailing.equalToSuperview().inset(errorViewInsets)
         }
     }
     
-    func setViewModel(_ vm: ViewModel) {
+    func setViewModel(_ vm: ViewModel?) {
+        guard let vm else { return }
         self.vm = vm
         self.errorView.setViewModel(vm: vm.errorVM)
         self.textField.setViewModel(vm: vm.inputVM)
         
-        self.vm?.inputVM.isValidSubject.sink(receiveValue: { [weak self] value in
+        self.vm?.inputVM.isValidSubject.dropFirst().sink(receiveValue: { [weak self] value in
             self?.errorView.isHidden = value
             self?.errorView.shake()
         })

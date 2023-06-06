@@ -18,6 +18,7 @@ extension BasicTextField {
         @Published var placeholder: String?
         @Published var isEnabled: Bool
         @Published var isSecure: Bool
+        @Published var action: Completion?
         
         init(
             text: String = .empty,

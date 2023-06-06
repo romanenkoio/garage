@@ -43,7 +43,7 @@ class BasicViewController: UIViewController {
         layoutElements()
         makeConstraints()
         coordinator = BasicCoordinator(vc: self)
-
+        hideNavBar(true)
     }
     
     func binding() {}
@@ -59,6 +59,10 @@ class BasicViewController: UIViewController {
         }
     }
     
+    func hideNavBar(_ value: Bool) {
+        navigationController?.setNavigationBarHidden(value, animated: true)
+    }
+
     func disableScrollView() {
         scroll.removeFromSuperview()
         view.addSubview(contentView)
