@@ -15,6 +15,8 @@ class BasicViewController: UIViewController {
 
     private var coordinator: Coordinator!
 
+    private(set) var isWillAppeared: Bool = false
+
     private lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.delaysContentTouches = false
@@ -46,6 +48,17 @@ class BasicViewController: UIViewController {
         hideNavBar(true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if !self.isWillAppeared {
+            self.isWillAppeared = true
+            self.singleWillAppear()
+        }
+    }
+
+    func singleWillAppear() { }
+
     func binding() {}
     
     func makeConstraints() {
