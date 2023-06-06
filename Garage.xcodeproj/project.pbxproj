@@ -29,6 +29,12 @@
 		7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BB2A2F9276008C2B9A /* Model.swift */; };
 		7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */; };
 		7F0E08C02A2F97E4008C2B9A /* brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08BF2A2F97E4008C2B9A /* brands.json */; };
+		7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08C62A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift */; };
+		7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08C82A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift */; };
+		7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08CA2A2FA0A1008C2B9A /* Services+ViewModel.swift */; };
+		7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08CB2A2FA0A1008C2B9A /* ServicesViewController.swift */; };
+		7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D12A2FA20B008C2B9A /* AlignedStackView.swift */; };
+		7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D22A2FA20B008C2B9A /* ScrollableStackView.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -118,6 +124,12 @@
 		7F0E08BB2A2F9276008C2B9A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		7F0E08BF2A2F97E4008C2B9A /* brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brands.json; sourceTree = "<group>"; };
+		7F0E08C62A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E08C82A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E08CA2A2FA0A1008C2B9A /* Services+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Services+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08CB2A2FA0A1008C2B9A /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		7F0E08D12A2FA20B008C2B9A /* AlignedStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignedStackView.swift; sourceTree = "<group>"; };
+		7F0E08D22A2FA20B008C2B9A /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -206,6 +218,7 @@
 			children = (
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
 				7F0E089C2A2F4556008C2B9A /* CreateCar */,
+				7F0E08C32A2FA0A1008C2B9A /* Services */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -321,6 +334,58 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		7F0E08C32A2FA0A1008C2B9A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08C42A2FA0A1008C2B9A /* Manager */,
+				7F0E08C92A2FA0A1008C2B9A /* ViewController */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7F0E08C42A2FA0A1008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08C52A2FA0A1008C2B9A /* Coordinator */,
+				7F0E08C72A2FA0A1008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E08C52A2FA0A1008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08C62A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E08C72A2FA0A1008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08C82A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E08C92A2FA0A1008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08CA2A2FA0A1008C2B9A /* Services+ViewModel.swift */,
+				7F0E08CB2A2FA0A1008C2B9A /* ServicesViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7F0E08D02A2FA1FE008C2B9A /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08D12A2FA20B008C2B9A /* AlignedStackView.swift */,
+				7F0E08D22A2FA20B008C2B9A /* ScrollableStackView.swift */,
+			);
+			path = Stack;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +457,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E08D02A2FA1FE008C2B9A /* Stack */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */,
 				B978F2E22A2E8F4C0076D326 /* BasicCell */,
@@ -773,6 +839,7 @@
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
+				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
@@ -801,14 +868,19 @@
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
+				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
+				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
+				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
+				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
+				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,

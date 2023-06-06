@@ -10,10 +10,10 @@ import UIKit
 extension TabBarController {
     class ViewModel {
         enum TabItem: String, CaseIterable {
-            case studios = "Ближайшие"
-            case favorite = "Клиенты"
-            case booking = "Расписание"
-            case profile = "Профиль"
+            case studios = "Гараж"
+            case favorite = "Напоминания"
+            case booking = "Сервисы"
+            case profile = "Настройки"
             
             var viewController: UIViewController {
                 switch self {
