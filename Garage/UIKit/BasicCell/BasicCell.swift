@@ -20,9 +20,9 @@ final class BasicCell<T: UIView>: UITableViewCell {
     }
     
     private func layoutMainView() {
-        selectionStyle = .none
+//        selectionStyle = .none
         self.backgroundColor = .clear
-        addSubview(mainView)
+        contentView.addSubview(mainView)
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

@@ -14,10 +14,11 @@ final class GarageControllerLayoutManager {
     private unowned let vc: GarageViewController
         
     lazy var table: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .plain)
         table.register(CarCell.self)
         table.dataSource = vc
         table.delegate = vc
+        table.separatorStyle = .none
         return table
     }()
     
@@ -45,7 +46,7 @@ final class GarageControllerLayoutManager {
         animationView.isHidden = !vc.vm.cells.isEmpty
         table.isHidden = vc.vm.cells.isEmpty
         vc.vm.cells.isEmpty ? animationView.play() : animationView.pause()
-        vc.contentView.isHidden = vc.vm.cells.isEmpty
+//        vc.contentView.isHidden = vc.vm.cells.isEmpty
         table.reloadData()
     }
 }
@@ -61,9 +62,10 @@ fileprivate extension GarageControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(table)
+        vc.view.addSubview(table)
         vc.view.addSubview(animationView)
         vc.view.addSubview(addCarButton)
+        vc.contentView.isHidden = true
     }
     
     private func makeConstraint() {
@@ -83,5 +85,4 @@ fileprivate extension GarageControllerLayoutManager {
             make.top.equalTo(animationView.snp.bottom)
         }
     }
-    
 }

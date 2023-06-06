@@ -13,12 +13,16 @@ class CarView: BasicView {
         stack.spacing = 10
         stack.axis = .horizontal
         stack.edgeInsets = .init(horizontal: 16)
+        stack.paddingInsets = .init(vertical: 5, horizontal: 10)
+        stack.cornerRadius = 20
+        stack.backgroundColor = .primaryGray
+        stack.alignment = .center
         return stack
     }()
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -52,8 +56,9 @@ class CarView: BasicView {
     }()
     
     override func initView() {
-       makeLayout()
+        makeLayout()
         makeConstraints()
+        self.isUserInteractionEnabled = true
     }
     
     private func makeLayout() {
@@ -64,7 +69,7 @@ class CarView: BasicView {
     
     private func makeConstraints() {
         self.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.height.equalTo(70)
         }
         
         mainStack.snp.makeConstraints { make in
@@ -76,7 +81,7 @@ class CarView: BasicView {
         }
         
         notificationView.snp.makeConstraints { make in
-            make.height.width.equalTo(20)
+            make.height.width.equalTo(30)
         }
     }
     
