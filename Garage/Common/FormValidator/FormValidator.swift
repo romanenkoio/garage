@@ -23,7 +23,6 @@ class FormValidator {
         
         validatedData.forEach { input in
             input.isValidSubject
-                .dropFirst()
                 .sink { [weak self] _ in self?.validateAll() }
                 .store(in: &cancellables)
         }

@@ -14,6 +14,6 @@ final class Car: Object {
     @Persisted var generation: String?
     @Persisted var year: Int?
     @Persisted var win: String?
-    @Persisted var mileage: Double
+    @Persisted var mileage: Int
 }
 

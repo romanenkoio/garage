@@ -57,9 +57,8 @@ extension CreateCarViewController {
                 inputVM: .init(placeholder: "Пробег")
             )
             
-            brandFieldVM.rules = [.noneEmpty]
-            modelFieldVM.rules = [.noneEmpty]
-            mileageFieldVM.rules = [.noneEmpty]
+            super.init()
+            initValidator()
         }
         
         private func initValidator() {
@@ -68,6 +67,10 @@ extension CreateCarViewController {
                 modelFieldVM.inputVM,
                 mileageFieldVM.inputVM
             ])
+            
+            brandFieldVM.rules = [.noneEmpty]
+            modelFieldVM.rules = [.noneEmpty]
+            mileageFieldVM.rules = [.noneEmpty]
             
             validator.formIsValid
                 .sink { [weak self] value in
@@ -106,10 +109,6 @@ extension CreateCarViewController {
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Пробег")
             )
-            
-            brandFieldVM.rules = [.noneEmpty]
-            modelFieldVM.rules = [.noneEmpty]
-            mileageFieldVM.rules = [.noneEmpty]
         }
     }
 }
