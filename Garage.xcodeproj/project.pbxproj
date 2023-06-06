@@ -46,6 +46,10 @@
 		7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08ED2A2FC766008C2B9A /* SelectionViewController.swift */; };
 		7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08F32A2FC7D4008C2B9A /* UniversalSelectionView.swift */; };
 		7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08F52A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift */; };
+		7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08FD2A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift */; };
+		7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08FF2A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift */; };
+		7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09012A2FF2EB008C2B9A /* CreateServiseViewController.swift */; };
+		7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -151,6 +155,10 @@
 		7F0E08ED2A2FC766008C2B9A /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		7F0E08F32A2FC7D4008C2B9A /* UniversalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalSelectionView.swift; sourceTree = "<group>"; };
 		7F0E08F52A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniversalSelectionView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08FD2A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateServiseControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E08FF2A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateServiseControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E09012A2FF2EB008C2B9A /* CreateServiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateServiseViewController.swift; sourceTree = "<group>"; };
+		7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateServise+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -242,6 +250,7 @@
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
 				7F0E089C2A2F4556008C2B9A /* CreateCar */,
 				7F0E08C32A2FA0A1008C2B9A /* Services */,
+				7F0E08FA2A2FF2EB008C2B9A /* CreateServise */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -487,6 +496,49 @@
 				7F0E08F52A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift */,
 			);
 			path = UniversalSelectionView;
+			sourceTree = "<group>";
+		};
+		7F0E08FA2A2FF2EB008C2B9A /* CreateServise */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08FB2A2FF2EB008C2B9A /* Manager */,
+				7F0E09002A2FF2EB008C2B9A /* ViewController */,
+			);
+			path = CreateServise;
+			sourceTree = "<group>";
+		};
+		7F0E08FB2A2FF2EB008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08FC2A2FF2EB008C2B9A /* Coordinator */,
+				7F0E08FE2A2FF2EB008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E08FC2A2FF2EB008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08FD2A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E08FE2A2FF2EB008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08FF2A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E09002A2FF2EB008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09012A2FF2EB008C2B9A /* CreateServiseViewController.swift */,
+				7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
@@ -943,6 +995,7 @@
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
+				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
@@ -983,6 +1036,7 @@
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
+				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
@@ -991,6 +1045,7 @@
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
+				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
@@ -1001,6 +1056,7 @@
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
 				B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */,
+				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,

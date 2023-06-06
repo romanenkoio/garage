@@ -7,23 +7,37 @@
 
 import RealmSwift
 import CoreLocation
+import UIKit
 
 final class Service: Object {
-    @Persisted var id: Int
-    @Persisted var phone: Int
-    @Persisted var adress: Int
-    @Persisted var specialisation: Int
+    @Persisted var id: String
+    @Persisted var phone: String
+    @Persisted var adress: String
+    @Persisted var name: String
+    @Persisted var specialisation: String
     @Persisted var latitude: Double?
     @Persisted var longitude: Double?
-    @Persisted var rawType: String
+    
+    convenience init(
+        phone: String,
+        adress: String,
+        name: String,
+        specialisation: String,
+        latitude: Double? = nil,
+        longitude: Double? = nil
+    ) {
+        self.init()
+        self.id = UUID().uuidString
+        self.phone = phone
+        self.adress = adress
+        self.name = name
+        self.specialisation = specialisation
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 extension Service {
-    var type: ServiceType {
-        get { return ServiceType(from: rawType) }
-        set { rawType = newValue.title }
-    }
-    
     var coordinate: CLLocationCoordinate2D? {
         get {
             guard let latitude,
