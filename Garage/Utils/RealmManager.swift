@@ -7,26 +7,26 @@
 
 import RealmSwift
 
-    class RealmManager<T> where T: Object {
-        private let realm = try? Realm()
-        
-        func write(object: T) {
-            guard let realm else { return }
-            try? realm.write {
-                realm.add(object)
-            }
+class RealmManager<T> where T: Object {
+    private let realm = try? Realm()
+    
+    func write(object: T) {
+        guard let realm else { return }
+        try? realm.write {
+            realm.add(object)
         }
-        
-        func read() -> [T] {
-            guard let realm else { return [] }
-            return Array(realm.objects(T.self))
-        }
-        
-        func delete(object: T) {
-            guard let realm else { return }
-            try? realm.write {
-                realm.delete(object)
-            }
-        }
-        
     }
+    
+    func read() -> [T] {
+        guard let realm else { return [] }
+        return Array(realm.objects(T.self))
+    }
+    
+    func delete(object: T) {
+        guard let realm else { return }
+        try? realm.write {
+            realm.delete(object)
+        }
+    }
+    
+}
