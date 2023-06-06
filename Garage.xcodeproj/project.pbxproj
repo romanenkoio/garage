@@ -16,6 +16,9 @@
 		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
 		7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E088D2A2F320A008C2B9A /* Lottie */; };
 		7F0E08922A2F3364008C2B9A /* garage.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08912A2F3364008C2B9A /* garage.json */; };
+		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
+		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
+		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -29,10 +32,6 @@
 		7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A282A2E8521003F7DF2 /* ViewController.swift */; };
 		7F6F6A2C2A2E8521003F7DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2A2A2E8521003F7DF2 /* Main.storyboard */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
-		B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */; };
-		B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DB2A2E8F4C0076D326 /* ClientView.swift */; };
-		B978F3102A2E8F4C0076D326 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */; };
-		B978F3112A2E8F4C0076D326 /* PaymentView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -99,6 +98,9 @@
 		7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCoordinator.swift; sourceTree = "<group>"; };
 		7F0E08892A2F300C008C2B9A /* Animations.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Animations.xcassets; sourceTree = "<group>"; };
 		7F0E08912A2F3364008C2B9A /* garage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = garage.json; path = UIKit/garage.json; sourceTree = "<group>"; };
+		7F0E08932A2F3731008C2B9A /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
+		7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08982A2F419E008C2B9A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -112,10 +114,6 @@
 		7F6F6A2B2A2E8521003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClientView+ViewModel.swift"; sourceTree = "<group>"; };
-		B978F2DB2A2E8F4C0076D326 /* ClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
-		B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
-		B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaymentView+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -238,6 +236,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F0E08972A2F4193008C2B9A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +291,7 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E08972A2F4193008C2B9A /* Utils */,
 				7F0E08742A2F1DCE008C2B9A /* Feature */,
 				B978F3A22A2E9D870076D326 /* Common */,
 				B978F38D2A2E9D870076D326 /* Extensions */,
@@ -332,28 +339,10 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
-				B978F2D92A2E8F4C0076D326 /* ClientView */,
-				B978F2DC2A2E8F4C0076D326 /* PaymentView */,
+				7F0E08932A2F3731008C2B9A /* CarView.swift */,
+				7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */,
 			);
 			path = CellViews;
-			sourceTree = "<group>";
-		};
-		B978F2D92A2E8F4C0076D326 /* ClientView */ = {
-			isa = PBXGroup;
-			children = (
-				B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */,
-				B978F2DB2A2E8F4C0076D326 /* ClientView.swift */,
-			);
-			path = ClientView;
-			sourceTree = "<group>";
-		};
-		B978F2DC2A2E8F4C0076D326 /* PaymentView */ = {
-			isa = PBXGroup;
-			children = (
-				B978F2DD2A2E8F4C0076D326 /* PaymentView.swift */,
-				B978F2DE2A2E8F4C0076D326 /* PaymentView+ViewModel.swift */,
-			);
-			path = PaymentView;
 			sourceTree = "<group>";
 		};
 		B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */ = {
@@ -566,10 +555,10 @@
 		B978F3A22A2E9D870076D326 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
 				7F5955F92A2E8D3B0062A85F /* Enums */,
 				B978F3A32A2E9D870076D326 /* Validator */,
 				B978F3A62A2E9D870076D326 /* FormValidator */,
-				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
 				B978F3AA2A2E9D870076D326 /* Protocols */,
 			);
 			path = Common;
@@ -692,7 +681,6 @@
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
-				B978F3112A2E8F4C0076D326 /* PaymentView+ViewModel.swift in Sources */,
 				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
@@ -700,15 +688,14 @@
 				7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
-				B978F3102A2E8F4C0076D326 /* PaymentView.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
-				B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
+				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
@@ -727,7 +714,6 @@
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
-				B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
@@ -735,6 +721,7 @@
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
+				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
@@ -752,6 +739,7 @@
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
+				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,

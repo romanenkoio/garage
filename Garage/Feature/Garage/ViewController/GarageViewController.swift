@@ -33,6 +33,7 @@ class GarageViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
     }
 
     override func configure() {
@@ -42,6 +43,10 @@ class GarageViewController: BasicViewController {
 
     override func binding() {
         layout.addCarButton.setViewModel(vm.addCarButton)
+        
+        vm.$cells
+            .sink { [weak self] _ in self?.layout.checkEmptyTable() }
+            .store(in: &cancellables)
     }
     
 }
@@ -59,4 +64,22 @@ extension GarageViewController {
         layout = Layout(vc: self)
     }
     
+}
+
+extension GarageViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let carCell = tableView.dequeueReusableCell(CarCell.self) else { return .init() }
+        carCell.mainView.setViewModel(.init(brand: "Toyota", model: "RAV4", image: .init(systemName: "gear")))
+        return carCell
+    }
+}
+
+extension GarageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

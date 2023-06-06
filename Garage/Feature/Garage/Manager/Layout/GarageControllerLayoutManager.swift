@@ -12,11 +12,12 @@ import Lottie
 
 final class GarageControllerLayoutManager {
     private unowned let vc: GarageViewController
-    
-    typealias CarCell = BasicCell<UIView>
-    
+        
     lazy var table: UITableView = {
         let table = UITableView()
+        table.register(CarCell.self)
+        table.dataSource = vc
+        table.delegate = vc
         return table
     }()
     
@@ -39,6 +40,14 @@ final class GarageControllerLayoutManager {
         animationView.play()
     }
     
+    func checkEmptyTable() {
+        addCarButton.isHidden = !vc.vm.cells.isEmpty
+        animationView.isHidden = !vc.vm.cells.isEmpty
+        table.isHidden = vc.vm.cells.isEmpty
+        vc.vm.cells.isEmpty ? animationView.play() : animationView.pause()
+        vc.contentView.isHidden = vc.vm.cells.isEmpty
+        table.reloadData()
+    }
 }
 
 // MARK: -

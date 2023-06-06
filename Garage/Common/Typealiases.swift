@@ -7,5 +7,5 @@
 
 import Foundation
 
-typealias ClientCell = BasicCell<ClienView>
+typealias CarCell = BasicCell<CarView>
 typealias Completion = (() -> ())
