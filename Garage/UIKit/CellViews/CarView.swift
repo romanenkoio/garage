@@ -44,6 +44,13 @@ class CarView: BasicView {
         return label
     }()
     
+    private lazy var notificationView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "flag.circle.fill")
+        view.tintColor = .additionalRed
+        return view
+    }()
+    
     override func initView() {
        makeLayout()
         makeConstraints()
@@ -51,7 +58,7 @@ class CarView: BasicView {
     
     private func makeLayout() {
         self.addSubview(mainStack)
-        mainStack.addArrangedSubviews([imageView, textStack])
+        mainStack.addArrangedSubviews([imageView, textStack, notificationView])
         textStack.addArrangedSubviews([brandLabel, modelLabel])
     }
     
@@ -66,6 +73,10 @@ class CarView: BasicView {
         
         imageView.snp.makeConstraints { make in
             make.height.width.equalTo(60)
+        }
+        
+        notificationView.snp.makeConstraints { make in
+            make.height.width.equalTo(20)
         }
     }
     

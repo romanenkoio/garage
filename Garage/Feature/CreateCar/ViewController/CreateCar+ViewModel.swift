@@ -20,6 +20,8 @@ extension CreateCarViewController {
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
         
+        var succesCreateCompletion: Completion?
+        
         let saveButtonVM = BasicButton.ViewModel(
             title: "Сохранить",
             isEnabled: false,
@@ -59,6 +61,20 @@ extension CreateCarViewController {
             
             super.init()
             initValidator()
+            
+            saveButtonVM.action = .touchUpInside { [weak self] in
+                guard let self else { return }
+                let car = Car(
+                    brand: self.brandFieldVM.text,
+                    model: self.modelFieldVM.text,
+                    generation: self.generationFieldVM.text,
+                    year: self.yearFieldVM.text.toInt(),
+                    win: self.winFieldVM.text,
+                    mileage: self.mileageFieldVM.text.toInt() ?? .zero
+                )
+                RealmManager<Car>().write(object: car)
+                self.succesCreateCompletion?()
+            }
         }
         
         private func initValidator() {
@@ -110,5 +126,6 @@ extension CreateCarViewController {
                 inputVM: .init(placeholder: "Пробег")
             )
         }
+        
     }
 }

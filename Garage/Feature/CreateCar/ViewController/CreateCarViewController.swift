@@ -18,7 +18,7 @@ class CreateCarViewController: BasicViewController {
     private(set) var vm: ViewModel
     
     // - Manager
-    private var coordinator: Coordinator!
+    private(set) var coordinator: Coordinator!
     private var layout: Layout!
     
     init(vm: ViewModel) {
@@ -48,6 +48,10 @@ class CreateCarViewController: BasicViewController {
         layout.mileageField.setViewModel(vm.mileageFieldVM)
         layout.generationField.setViewModel(vm.generationFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        
+        vm.succesCreateCompletion = { [weak self] in
+            self?.coordinator.navigateTo(CommonNavigationRoute.close)
+        }
     }
 }
 

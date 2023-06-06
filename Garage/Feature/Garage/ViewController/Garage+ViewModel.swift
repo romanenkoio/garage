@@ -20,13 +20,17 @@ extension GarageViewController {
         
         override init() {
             super.init()
+            readCars()
+        }
+        
+        func readCars() {
             cells = RealmManager<Car>().read().map({
-                    .init(
-                        brand: $0.brand,
-                        model: $0.model,
-                        image: UIImage(systemName: "car")
-                    )
-                })
+                .init(
+                    brand: $0.brand,
+                    model: $0.model,
+                    image: UIImage(systemName: "car")
+                )
+            })
         }
     }
 }
