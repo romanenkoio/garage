@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ServicesViewController: BasicViewController {
 
@@ -59,4 +60,12 @@ extension ServicesViewController {
         layout = ServicesControllerLayoutManager(vc: self)
     }
     
+}
+
+struct ServicesViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            ServicesViewController(vm: .init())
+        }
+    }
 }

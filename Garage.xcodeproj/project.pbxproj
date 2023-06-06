@@ -37,6 +37,8 @@
 		7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D22A2FA20B008C2B9A /* ScrollableStackView.swift */; };
 		7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D72A2FA2E5008C2B9A /* SuggestionView.swift */; };
 		7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D92A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift */; };
+		7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */; };
+		7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -134,6 +136,8 @@
 		7F0E08D22A2FA20B008C2B9A /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		7F0E08D72A2FA2E5008C2B9A /* SuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionView.swift; sourceTree = "<group>"; };
 		7F0E08D92A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuggestionView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
+		7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreview.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 		7F0E08972A2F4193008C2B9A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E08DB2A2FA808008C2B9A /* Preview */,
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
 			);
 			path = Utils;
@@ -406,6 +411,15 @@
 				7F0E08D92A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift */,
 			);
 			path = SuggestionView;
+			sourceTree = "<group>";
+		};
+		7F0E08DB2A2FA808008C2B9A /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */,
+				7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
@@ -845,6 +859,7 @@
 			files = (
 				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
+				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
@@ -906,6 +921,7 @@
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
+				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
