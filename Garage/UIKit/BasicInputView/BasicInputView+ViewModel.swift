@@ -11,9 +11,7 @@ extension BasicInputView {
     final class ViewModel: BasicViewModel {
         var errorVM = ErrorView.ViewModel()
         let inputVM = BasicTextField.ViewModel()
-        
-        @Published var validationMode: ValidationMode = .none
-        
+                
         var placeholder: String {
             get { inputVM.placeholder.wrapped }
             set { inputVM.placeholder = newValue}

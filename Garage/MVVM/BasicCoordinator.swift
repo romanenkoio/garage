@@ -1,0 +1,28 @@
+//
+//  BasicCoordinator.swift
+//  Garage
+//
+//  Created by Illia Romanenko on 6.06.23.
+//
+
+import UIKit
+
+class BasicCoordinator: Routable {
+    
+    private unowned let vc: BasicViewController
+
+    init(vc: BasicViewController) {
+        self.vc = vc
+    }
+    
+    func navigateTo(_ route: Routable) {
+        guard let route = route as? CommonNavigationRoute else { return }
+        
+        switch route {
+        case .close:
+            self.vc.navigationController?.popViewController(animated: true)
+        case .closeToRoot:
+            vc.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+}

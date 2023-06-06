@@ -60,11 +60,6 @@ class BasicInputView: BasicView {
         self.errorView.setViewModel(vm: vm.errorVM)
         self.textField.setViewModel(vm: vm.inputVM)
         
-        self.vm?.$validationMode.sink(receiveValue: { [weak self] mode in
-            self?.errorView.isHidden = mode == .none
-        })
-        .store(in: &cancellables)
-        
         self.vm?.inputVM.isValidSubject.sink(receiveValue: { [weak self] value in
             self?.errorView.isHidden = value
             self?.errorView.shake()

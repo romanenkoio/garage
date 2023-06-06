@@ -17,14 +17,14 @@ extension TabBarController {
             
             var viewController: UIViewController {
                 switch self {
-                    case .studios:
-                        return BasicViewController()
-                    case .favorite:
-                        return BasicViewController()
-                    case .booking:
-                        return BasicViewController()
-                    case .profile:
-                        return BasicViewController()
+                case .studios:
+                    return GarageViewController(vm: .init())
+                case .favorite:
+                    return BasicViewController()
+                case .booking:
+                    return BasicViewController()
+                case .profile:
+                    return BasicViewController()
                 }
             }
             

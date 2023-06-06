@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */; };
+		7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */; };
+		7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */; };
+		7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087E2A2F1DEE008C2B9A /* GarageViewController.swift */; };
+		7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */; };
+		7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */; };
+		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
+		7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E088D2A2F320A008C2B9A /* Lottie */; };
+		7F0E08922A2F3364008C2B9A /* garage.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08912A2F3364008C2B9A /* garage.json */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -19,7 +28,6 @@
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A282A2E8521003F7DF2 /* ViewController.swift */; };
 		7F6F6A2C2A2E8521003F7DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2A2A2E8521003F7DF2 /* Main.storyboard */; };
-		7F6F6A2E2A2E8522003F7DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2D2A2E8522003F7DF2 /* Assets.xcassets */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
 		B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */; };
 		B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2DB2A2E8F4C0076D326 /* ClientView.swift */; };
@@ -77,13 +85,20 @@
 		B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A42A2E9D870076D326 /* Validatable.swift */; };
 		B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A52A2E9D870076D326 /* ValidationRule.swift */; };
 		B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A72A2E9D870076D326 /* FormValidator.swift */; };
-		B978F3C22A2E9D870076D326 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A82A2E9D870076D326 /* Enums.swift */; };
 		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
 		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRoute.swift; sourceTree = "<group>"; };
+		7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E087E2A2F1DEE008C2B9A /* GarageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageViewController.swift; sourceTree = "<group>"; };
+		7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Garage+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCoordinator.swift; sourceTree = "<group>"; };
+		7F0E08892A2F300C008C2B9A /* Animations.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Animations.xcassets; sourceTree = "<group>"; };
+		7F0E08912A2F3364008C2B9A /* garage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = garage.json; path = UIKit/garage.json; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -95,7 +110,6 @@
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A282A2E8521003F7DF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F6F6A2B2A2E8521003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7F6F6A2D2A2E8522003F7DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B978F2DA2A2E8F4C0076D326 /* ClientView+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClientView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -154,7 +168,6 @@
 		B978F3A42A2E9D870076D326 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		B978F3A52A2E9D870076D326 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
-		B978F3A82A2E9D870076D326 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,17 +177,67 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
-
+				7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08772A2F1DEE008C2B9A /* Garage */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		7F0E08772A2F1DEE008C2B9A /* Garage */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08782A2F1DEE008C2B9A /* Manager */,
+				7F0E087D2A2F1DEE008C2B9A /* ViewController */,
+			);
+			path = Garage;
+			sourceTree = "<group>";
+		};
+		7F0E08782A2F1DEE008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08792A2F1DEE008C2B9A /* Coordinator */,
+				7F0E087B2A2F1DEE008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E08792A2F1DEE008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E087B2A2F1DEE008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E087D2A2F1DEE008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E087E2A2F1DEE008C2B9A /* GarageViewController.swift */,
+				7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,14 +255,6 @@
 				7F5955FE2A2E93BA0062A85F /* Record.swift */,
 			);
 			path = Realm;
-			sourceTree = "<group>";
-		};
-		7F5955F82A2E8D320062A85F /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				7F5955F92A2E8D3B0062A85F /* Enums */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		7F5955F92A2E8D3B0062A85F /* Enums */ = {
@@ -230,21 +285,19 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E08742A2F1DCE008C2B9A /* Feature */,
 				B978F3A22A2E9D870076D326 /* Common */,
 				B978F38D2A2E9D870076D326 /* Extensions */,
 				B978F39D2A2E9D870076D326 /* MVVM */,
 				B978F39F2A2E9D870076D326 /* Resources */,
 				B978F38A2A2E9D870076D326 /* TabBarController */,
+				7F0E08912A2F3364008C2B9A /* garage.json */,
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
-
-				7F5955F82A2E8D320062A85F /* Common */,
 				7F5955ED2A2E8ABB0062A85F /* Models */,
-
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
 				7F6F6A282A2E8521003F7DF2 /* ViewController.swift */,
 				7F6F6A2A2A2E8521003F7DF2 /* Main.storyboard */,
-				7F6F6A2D2A2E8522003F7DF2 /* Assets.xcassets */,
 				7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */,
 				7F6F6A322A2E8522003F7DF2 /* Info.plist */,
 			);
@@ -254,7 +307,6 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				B978F3892A2E9CE00076D326 /* BasicChoiseView */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				B978F2DF2A2E8F4C0076D326 /* BasicDatePicker */,
 				B978F2E22A2E8F4C0076D326 /* BasicCell */,
@@ -453,13 +505,6 @@
 			path = BasicTextField;
 			sourceTree = "<group>";
 		};
-		B978F3892A2E9CE00076D326 /* BasicChoiseView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BasicChoiseView;
-			sourceTree = "<group>";
-		};
 		B978F38A2A2E9D870076D326 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +547,8 @@
 			isa = PBXGroup;
 			children = (
 				B978F39E2A2E9D870076D326 /* BasicViewModel.swift */,
+				7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */,
+				7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -509,6 +556,7 @@
 		B978F39F2A2E9D870076D326 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E08892A2F300C008C2B9A /* Animations.xcassets */,
 				B978F3A02A2E9D870076D326 /* Assets.xcassets */,
 				B978F3A12A2E9D870076D326 /* Color.xcassets */,
 			);
@@ -518,9 +566,9 @@
 		B978F3A22A2E9D870076D326 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7F5955F92A2E8D3B0062A85F /* Enums */,
 				B978F3A32A2E9D870076D326 /* Validator */,
 				B978F3A62A2E9D870076D326 /* FormValidator */,
-				B978F3A82A2E9D870076D326 /* Enums.swift */,
 				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
 				B978F3AA2A2E9D870076D326 /* Protocols */,
 			);
@@ -572,6 +620,7 @@
 				B978F3C62A2E9DE80076D326 /* SnapKit */,
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
+				7F0E088D2A2F320A008C2B9A /* Lottie */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -604,6 +653,7 @@
 			packageReferences = (
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -619,8 +669,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0E08922A2F3364008C2B9A /* garage.json in Resources */,
+				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */,
-				7F6F6A2E2A2E8522003F7DF2 /* Assets.xcassets in Resources */,
 				B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */,
 				B978F3BD2A2E9D870076D326 /* Assets.xcassets in Resources */,
 				7F6F6A2C2A2E8521003F7DF2 /* Main.storyboard in Resources */,
@@ -636,6 +687,7 @@
 			files = (
 				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
+				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
@@ -645,7 +697,6 @@
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
-
 				7F6F6A292A2E8521003F7DF2 /* ViewController.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
@@ -654,6 +705,7 @@
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				B978F30F2A2E8F4C0076D326 /* ClientView.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
+				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
@@ -663,7 +715,9 @@
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
+				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
+				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
@@ -674,6 +728,7 @@
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				B978F30E2A2E8F4C0076D326 /* ClientView+ViewModel.swift in Sources */,
+				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
@@ -685,7 +740,6 @@
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
-				B978F3C22A2E9D870076D326 /* Enums.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
 				B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
@@ -694,6 +748,7 @@
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
+				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
@@ -918,32 +973,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-
-		B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
-    };
-    };
+				minimumVersion = 4.2.0;
+			};
+		};
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				branch = master;
 				kind = branch;
-
+			};
+		};
+		B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B978F3C62A2E9DE80076D326 /* SnapKit */ = {
+		7F0E088D2A2F320A008C2B9A /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-   };
+			package = 7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */;
@@ -953,6 +1014,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		B978F3C62A2E9DE80076D326 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

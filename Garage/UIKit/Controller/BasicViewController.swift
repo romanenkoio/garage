@@ -11,6 +11,10 @@ import Combine
 class BasicViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = []
     
+    typealias Coordinator = BasicCoordinator
+
+    private var coordinator: Coordinator!
+
     private lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.delaysContentTouches = false
@@ -38,6 +42,8 @@ class BasicViewController: UIViewController {
         setupGestures()
         layoutElements()
         makeConstraints()
+        coordinator = BasicCoordinator(vc: self)
+
     }
     
     func binding() {}
