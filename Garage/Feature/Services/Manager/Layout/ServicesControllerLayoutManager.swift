@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 final class ServicesControllerLayoutManager {
     
@@ -21,9 +22,12 @@ final class ServicesControllerLayoutManager {
         return stack
     }()
     
-    lazy var table: UITableView = {
-        let table = UITableView()
-        table.separatorStyle = .none
+    lazy var table: BasicTableView = {
+        let table = BasicTableView()
+        table.setupTable(
+            dataSource: vc,
+            delegate: vc
+        )
         return table
     }()
     
@@ -47,6 +51,7 @@ fileprivate extension ServicesControllerLayoutManager {
     
     private func makeLayout() {
         vc.contentView.addSubview(categoriesStack)
+        vc.contentView.addSubview(table)
         
         for i in 0...7 {
             let view = SuggestionView()
@@ -62,9 +67,22 @@ fileprivate extension ServicesControllerLayoutManager {
     
     private func makeConstraint() {
         categoriesStack.snp.makeConstraints { make in
-            make.leading.trailing.bottom.top.equalToSuperview()
+            make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(40)
+        }
+        
+        table.snp.makeConstraints { make in
+            make.top.equalTo(categoriesStack.snp.bottom).offset(20)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     
+}
+
+struct ServicesViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            ServicesViewController(vm: .init())
+        }
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 extension BasicTableView {
     final class ViewModel: BasicViewModel {
   
-        var labelVM = BasicLabel.ViewModel()
+        private(set) var labelVM = BasicLabel.ViewModel()
 
         @Published
         private(set) var cells = [UIView]()

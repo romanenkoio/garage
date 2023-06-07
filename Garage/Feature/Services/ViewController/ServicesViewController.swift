@@ -34,6 +34,7 @@ class ServicesViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
     }
 
     override func configure() {
@@ -42,7 +43,7 @@ class ServicesViewController: BasicViewController {
     }
 
     override func binding() {
-        
+        layout.table.setViewModel(vm.tableVM)
     }
     
 }
@@ -62,10 +63,17 @@ extension ServicesViewController {
     
 }
 
-struct ServicesViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            ServicesViewController(vm: .init())
-        }
+extension ServicesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tableVM.cells.count
+        
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        .init()
+    }
+}
+
+extension ServicesViewController: UITableViewDelegate {
+    
 }

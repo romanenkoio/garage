@@ -13,13 +13,15 @@ class BasicTableView: BasicView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsHorizontalScrollIndicator = false
         table.showsVerticalScrollIndicator = true
+        table.separatorStyle = .none
         return table
     }()
     
     private lazy var emptyStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.alignment = .center
+        stack.spacing = 30
         return stack
     }()
     
@@ -52,7 +54,8 @@ class BasicTableView: BasicView {
         }
         
         emptyStack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.center.equalToSuperview()
+            make.width.height.equalTo(UIScreen.main.bounds.width - 100)
         }
     }
     
@@ -61,8 +64,8 @@ class BasicTableView: BasicView {
         
         vm.$cells.sink { [weak self] cells in
             guard let self else { return }
-            self.emptyStack.isHidden = cells.isEmpty
-            self.table.isHidden = !cells.isEmpty
+            self.emptyStack.isHidden = !cells.isEmpty
+            self.table.isHidden = cells.isEmpty
         }
         .store(in: &cancellables)
         
