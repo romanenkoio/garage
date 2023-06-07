@@ -50,6 +50,8 @@
 		7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08FF2A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift */; };
 		7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09012A2FF2EB008C2B9A /* CreateServiseViewController.swift */; };
 		7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */; };
+		7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09082A3096E4008C2B9A /* BasicTableView.swift */; };
+		7F0E090B2A3096F0008C2B9A /* BasicTableView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090A2A3096F0008C2B9A /* BasicTableView+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -159,6 +161,8 @@
 		7F0E08FF2A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateServiseControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F0E09012A2FF2EB008C2B9A /* CreateServiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateServiseViewController.swift; sourceTree = "<group>"; };
 		7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateServise+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E09082A3096E4008C2B9A /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
+		7F0E090A2A3096F0008C2B9A /* BasicTableView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTableView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -541,6 +545,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F0E09072A3096C9008C2B9A /* BasicTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09082A3096E4008C2B9A /* BasicTableView.swift */,
+				7F0E090A2A3096F0008C2B9A /* BasicTableView+ViewModel.swift */,
+			);
+			path = BasicTableView;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +625,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E09072A3096C9008C2B9A /* BasicTableView */,
 				7F0E08F22A2FC7B6008C2B9A /* UniversalSelectionView */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F0E08D02A2FA1FE008C2B9A /* Stack */,
@@ -1056,6 +1070,7 @@
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
 				B978F32F2A2E8F4C0076D326 /* BasicTextField+ViewModel.swift in Sources */,
+				7F0E090B2A3096F0008C2B9A /* BasicTableView+ViewModel.swift in Sources */,
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
@@ -1071,6 +1086,7 @@
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
+				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
