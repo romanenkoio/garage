@@ -95,6 +95,7 @@ class BasicViewController: UIViewController {
     
     private func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.delegate = self
         self.view.addGestureRecognizer(tap)
     }
 
@@ -102,4 +103,11 @@ class BasicViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+}
+
+extension BasicViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        gestureRecognizer.cancelsTouchesInView = false
+        return true
+    }
 }
