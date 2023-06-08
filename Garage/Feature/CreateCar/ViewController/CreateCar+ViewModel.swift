@@ -28,9 +28,6 @@ extension CreateCarViewController {
             style: .primary
         )
         
-        var brands: [Brand] = []
-        var models: [Model] = []
-        
         override init() {
             brandFieldVM = .init(
                 errorVM: errorVM,
@@ -108,9 +105,7 @@ extension CreateCarViewController {
                             let result = try await NetworkManager
                                 .sh
                                 .request(GarageApi.brands, model: Wrapper<Brand>.self).result
-                            self.brands = result
-                            let vms = self.brands.map({ UniversalSelectionView.ViewModel($0) })
-                            self.suggestionCompletion?(vms)
+                            self.suggestionCompletion?(result)
                         } catch let error {
                             print(error)
                         }
@@ -127,9 +122,7 @@ extension CreateCarViewController {
                             let result = try await NetworkManager
                                 .sh
                                 .request(GarageApi.models(brand: self.brandFieldVM.text), model: Wrapper<Model>.self).result
-                            self.models = result
-                            let vms = self.models.map({ UniversalSelectionView.ViewModel($0) })
-                            self.suggestionCompletion?(vms)
+                            self.suggestionCompletion?(result)
                         } catch let error {
                             print(error)
                         }

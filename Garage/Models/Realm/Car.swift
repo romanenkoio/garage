@@ -16,6 +16,7 @@ final class Car: Object {
     @Persisted var year: Int?
     @Persisted var win: String?
     @Persisted var mileage: Int
+    @Persisted var imageData: Data?
     
     convenience init(
         brand: String,

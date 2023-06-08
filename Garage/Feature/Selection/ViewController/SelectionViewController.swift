@@ -73,8 +73,10 @@ extension SelectionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let selectionCell = tableView.dequeueReusableCell(SelectCell.self, for: indexPath) else { return .init() }
-        selectionCell.mainView.setViewModel(vm.cells[indexPath.row])
+        guard let selectionCell = tableView.dequeueReusableCell(SelectCell.self, for: indexPath),
+              let item = vm.cells[safe: indexPath.row]
+        else { return .init() }
+        selectionCell.mainView.setViewModel(UniversalSelectionView.ViewModel(item))
         return selectionCell
     }
     

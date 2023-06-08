@@ -13,4 +13,4 @@ typealias ServiceCell =  BasicCell<ServiceView>
 
 typealias Completion = (() -> ())
 typealias EqutableCompletion = ((any Equatable) -> ())
-typealias SelectArrayCompletion = (_ items: [UniversalSelectionView.ViewModel]) -> ()
+typealias SelectArrayCompletion = (_ items: [Selectable]) -> ()
