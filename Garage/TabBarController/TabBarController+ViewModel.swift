@@ -20,11 +20,11 @@ extension TabBarController {
                 case .studios:
                     return GarageViewController(vm: .init()).withNavigation()
                 case .favorite:
-                    return CreateServiseViewController(vm: .init())
+                    return BasicViewController()
                 case .booking:
                     return ServicesViewController(vm: .init()).withNavigation()
                 case .profile:
-                    return ServicesViewController(vm: .init()).withNavigation()
+                    return BasicViewController()
                 }
             }
             

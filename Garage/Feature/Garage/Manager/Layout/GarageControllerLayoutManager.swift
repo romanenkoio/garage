@@ -39,6 +39,14 @@ final class GarageControllerLayoutManager {
         self.vc = vc
         configure()
         animationView.play()
+        
+        let addButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside {
+                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            },
+            image: UIImage(systemName: "plus")
+        )
+        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
     func checkEmptyTable() {
@@ -46,8 +54,8 @@ final class GarageControllerLayoutManager {
         animationView.isHidden = !vc.vm.cells.isEmpty
         table.isHidden = vc.vm.cells.isEmpty
         vc.vm.cells.isEmpty ? animationView.play() : animationView.pause()
-        vc.contentView.isHidden = vc.vm.cells.isEmpty
         table.reloadData()
+        vc.hideNavBar(vc.vm.cells.isEmpty )
     }
 }
 

@@ -23,6 +23,7 @@ final class BasicCell<T: UIView>: UITableViewCell {
 //        selectionStyle = .none
         self.backgroundColor = .clear
         contentView.addSubview(mainView)
+        selectionStyle = .none
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

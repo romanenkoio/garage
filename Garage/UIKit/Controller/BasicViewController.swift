@@ -45,7 +45,6 @@ class BasicViewController: UIViewController {
         layoutElements()
         makeConstraints()
         coordinator = BasicCoordinator(vc: self)
-        hideNavBar(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +83,24 @@ class BasicViewController: UIViewController {
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func makeLeftNavBarButtons(buttons: [NavBarButton.ViewModel]) {
+        let views = buttons.map({
+            let view = NavBarButton()
+            view.setViewModel($0)
+            return UIBarButtonItem(customView: view)
+        })
+        self.navigationItem.leftBarButtonItems = views
+    }
+    
+    func makeRightNavBarButton(buttons: [NavBarButton.ViewModel]) {
+        let views = buttons.map({
+            let view = NavBarButton()
+            view.setViewModel($0)
+            return UIBarButtonItem(customView: view)
+        })
+        self.navigationItem.rightBarButtonItems = views
     }
     
     func layoutElements() {

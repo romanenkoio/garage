@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ServiceView: BasicView {
     private var stack: BasicStackView = {
@@ -14,6 +15,7 @@ class ServiceView: BasicView {
         stack.spacing = 15
         stack.cornerRadius = 12
         stack.backgroundColor = .textGray
+        stack.paddingInsets = .init(all: 10)
         return stack
     }()
     
@@ -54,7 +56,7 @@ class ServiceView: BasicView {
     
     private func makeConstraint() {
         stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets.init(all: 10))
         }
     }
     

@@ -60,6 +60,9 @@
 		7F0E091D2A31EBDE008C2B9A /* ActionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E091C2A31EBDE008C2B9A /* ActionImage.swift */; };
 		7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E091E2A31EBE8008C2B9A /* ActionImage+ViewModel.swift */; };
 		7F0E09222A324A90008C2B9A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09212A324A90008C2B9A /* Collection.swift */; };
+		7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09242A3254AF008C2B9A /* NavBarButton.swift */; };
+		7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09262A3254B8008C2B9A /* NavBarButton+ViewModel.swift */; };
+		7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092A2A3255F1008C2B9A /* Action.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -179,6 +182,9 @@
 		7F0E091C2A31EBDE008C2B9A /* ActionImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionImage.swift; sourceTree = "<group>"; };
 		7F0E091E2A31EBE8008C2B9A /* ActionImage+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionImage+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E09212A324A90008C2B9A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		7F0E09242A3254AF008C2B9A /* NavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
+		7F0E09262A3254B8008C2B9A /* NavBarButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavBarButton+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E092A2A3255F1008C2B9A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -323,6 +329,7 @@
 			children = (
 				7F0E08DB2A2FA808008C2B9A /* Preview */,
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
+				7F0E092A2A3255F1008C2B9A /* Action.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -591,6 +598,15 @@
 			path = ActionImage;
 			sourceTree = "<group>";
 		};
+		7F0E09232A325498008C2B9A /* NavBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09242A3254AF008C2B9A /* NavBarButton.swift */,
+				7F0E09262A3254B8008C2B9A /* NavBarButton+ViewModel.swift */,
+			);
+			path = NavBarButton;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +678,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E09232A325498008C2B9A /* NavBarButton */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
 				7F0E09072A3096C9008C2B9A /* BasicTableView */,
@@ -1056,6 +1073,7 @@
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
+				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
@@ -1102,6 +1120,7 @@
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
 				7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */,
+				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
@@ -1124,6 +1143,7 @@
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
+				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,

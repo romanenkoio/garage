@@ -19,7 +19,7 @@ class BasicButton: UIButton {
     
     private var actionCancellable: AnyCancellable? {
             didSet { oldValue?.cancel() }
-        }
+    }
     
     override var isHighlighted: Bool {
         didSet {

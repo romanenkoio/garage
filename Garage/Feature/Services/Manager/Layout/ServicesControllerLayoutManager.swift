@@ -37,6 +37,14 @@ final class ServicesControllerLayoutManager {
     init(vc: ServicesViewController) {
         self.vc = vc
         configure()
+        
+        let addButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside {
+                vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
+            },
+            image: UIImage(systemName: "plus")
+        )
+        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
 }
