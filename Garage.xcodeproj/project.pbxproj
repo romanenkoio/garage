@@ -52,6 +52,8 @@
 		7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */; };
 		7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09082A3096E4008C2B9A /* BasicTableView.swift */; };
 		7F0E090B2A3096F0008C2B9A /* BasicTableView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090A2A3096F0008C2B9A /* BasicTableView+ViewModel.swift */; };
+		7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090D2A30A3FF008C2B9A /* ServiceView.swift */; };
+		7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090F2A30A407008C2B9A /* ServiceView+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -163,6 +165,8 @@
 		7F0E09022A2FF2EB008C2B9A /* CreateServise+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateServise+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E09082A3096E4008C2B9A /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		7F0E090A2A3096F0008C2B9A /* BasicTableView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTableView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E090D2A30A3FF008C2B9A /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
+		7F0E090F2A30A407008C2B9A /* ServiceView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -554,6 +558,15 @@
 			path = BasicTableView;
 			sourceTree = "<group>";
 		};
+		7F0E090C2A30A3F2008C2B9A /* ServiceView */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E090D2A30A3FF008C2B9A /* ServiceView.swift */,
+				7F0E090F2A30A407008C2B9A /* ServiceView+ViewModel.swift */,
+			);
+			path = ServiceView;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +666,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E090C2A30A3F2008C2B9A /* ServiceView */,
 				7F0E08D62A2FA2D3008C2B9A /* SuggestionView */,
 				7F0E08D52A2FA2C2008C2B9A /* CarView */,
 			);
@@ -1040,6 +1054,7 @@
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
 				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
+				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
@@ -1053,6 +1068,7 @@
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
+				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
