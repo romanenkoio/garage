@@ -12,7 +12,7 @@ class SuggestionView: BasicView {
     
     lazy var label: TappableLabel = {
         let label = TappableLabel(aligment: .center)
-        label.textInsets = .init(horizontal: 10)
+        label.textInsets = .init(vertical: 10, horizontal: 10)
         return label
     }()
     
@@ -23,13 +23,14 @@ class SuggestionView: BasicView {
     
     private func makeLayout() {
         self.addSubview(label)
-        self.backgroundColor = .textGray
+        self.backgroundColor = .secondaryGray
         self.cornerRadius = 12
     }
     
     private func makeConstraints() {
         label.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
     }
     

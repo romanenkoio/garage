@@ -118,6 +118,11 @@
 		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
 		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
+		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
+		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
+		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
+		B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */; };
+		B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -228,6 +233,11 @@
 		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
+		B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSelectList.swift; sourceTree = "<group>"; };
+		B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicSelectList+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,6 +612,7 @@
 		7F6F6A232A2E8521003F7DF2 /* Garage */ = {
 			isa = PBXGroup;
 			children = (
+				B9FB29012A314C2300A4CF1D /* TestController */,
 				7F0E08AB2A2F8EB1008C2B9A /* Network */,
 				7F0E08972A2F4193008C2B9A /* Utils */,
 				7F0E08742A2F1DCE008C2B9A /* Feature */,
@@ -697,6 +708,8 @@
 		B978F2EA2A2E8F4C0076D326 /* BasicSelectList */ = {
 			isa = PBXGroup;
 			children = (
+				B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */,
+				B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */,
 			);
 			path = BasicSelectList;
 			sourceTree = "<group>";
@@ -904,6 +917,16 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B9FB29012A314C2300A4CF1D /* TestController */ = {
+			isa = PBXGroup;
+			children = (
+				B9FB29022A314C2E00A4CF1D /* TestController.swift */,
+				B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */,
+				B9FB28FF2A3145D400A4CF1D /* TestModel.swift */,
+			);
+			path = TestController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -999,6 +1022,7 @@
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
+				B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */,
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
@@ -1007,6 +1031,7 @@
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
+				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
@@ -1020,8 +1045,10 @@
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
+				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
+				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
@@ -1063,6 +1090,7 @@
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
+				B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */,
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
