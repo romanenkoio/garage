@@ -67,6 +67,10 @@
 		7F0E092F2A32818F008C2B9A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092E2A32818F008C2B9A /* Array.swift */; };
 		7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E09312A3282D0008C2B9A /* Kingfisher */; };
 		7F0E09342A3282E0008C2B9A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09332A3282E0008C2B9A /* UIImageView.swift */; };
+		7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */; };
+		7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */; };
+		7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093F2A32892C008C2B9A /* CreateDocument+ViewModel.swift */; };
+		7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09402A32892C008C2B9A /* CreateDocumentViewController.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -192,6 +196,10 @@
 		7F0E092C2A327BB4008C2B9A /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		7F0E092E2A32818F008C2B9A /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		7F0E09332A3282E0008C2B9A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDocumentControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDocumentControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E093F2A32892C008C2B9A /* CreateDocument+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateDocument+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E09402A32892C008C2B9A /* CreateDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDocumentViewController.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -280,6 +288,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E09382A32892C008C2B9A /* CreateDocument */,
 				7F0E08E52A2FC766008C2B9A /* Selection */,
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
 				7F0E089C2A2F4556008C2B9A /* CreateCar */,
@@ -613,6 +622,49 @@
 				7F0E09262A3254B8008C2B9A /* NavBarButton+ViewModel.swift */,
 			);
 			path = NavBarButton;
+			sourceTree = "<group>";
+		};
+		7F0E09382A32892C008C2B9A /* CreateDocument */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09392A32892C008C2B9A /* Manager */,
+				7F0E093E2A32892C008C2B9A /* ViewController */,
+			);
+			path = CreateDocument;
+			sourceTree = "<group>";
+		};
+		7F0E09392A32892C008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E093A2A32892C008C2B9A /* Coordinator */,
+				7F0E093C2A32892C008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E093A2A32892C008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E093C2A32892C008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E093E2A32892C008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E093F2A32892C008C2B9A /* CreateDocument+ViewModel.swift */,
+				7F0E09402A32892C008C2B9A /* CreateDocumentViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
@@ -1074,6 +1126,7 @@
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
 				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
+				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
@@ -1102,6 +1155,7 @@
 				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
+				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
@@ -1128,6 +1182,7 @@
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
+				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
@@ -1175,6 +1230,7 @@
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
+				7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */,
 				7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

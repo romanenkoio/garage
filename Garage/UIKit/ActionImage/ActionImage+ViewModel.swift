@@ -18,7 +18,7 @@ extension ActionImage {
         
         init(
             action: @escaping Completion,
-            image: UIImage?,
+            image: UIImage? = UIImage(systemName: "list.dash"),
             isEnable: Bool = true
         ) {
             self.action = action

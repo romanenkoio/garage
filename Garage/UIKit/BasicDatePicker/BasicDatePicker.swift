@@ -95,8 +95,7 @@ class BasicDatePicker: BasicTextField {
     func setViewModel(_ vm: BasicDatePicker.ViewModel) {
         self.viewModel = vm
         
-        vm.$date
-            .sink { [weak self] value in
+        vm.$date.sink { [weak self] value in
                 guard let self else { return }
                 self.text = value?.formatData(formatType: .ddMMyy) ?? .empty
             }

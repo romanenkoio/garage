@@ -89,10 +89,5 @@ class CarView: BasicView {
         self.cancellables.removeAll()
         brandLabel.setViewModel(vm.brandLabelVM)
         modelLabel.setViewModel(vm.modelLabelVM)
-        
-        vm.$image.sink { [weak self] image in
-            self?.imageView.image = image
-        }
-        .store(in: &cancellables)
     }
 }
