@@ -24,7 +24,6 @@
 		7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A32A2F4556008C2B9A /* CreateCar+ViewModel.swift */; };
 		7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A42A2F4556008C2B9A /* CreateCarViewController.swift */; };
 		7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08A92A2F5061008C2B9A /* UIViewController.swift */; };
-		7F0E08B72A2F8EDE008C2B9A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E08B62A2F8EDE008C2B9A /* Alamofire */; };
 		7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08B92A2F90C5008C2B9A /* Brand.swift */; };
 		7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BB2A2F9276008C2B9A /* Model.swift */; };
 		7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */; };
@@ -55,6 +54,9 @@
 		7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090D2A30A3FF008C2B9A /* ServiceView.swift */; };
 		7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E090F2A30A407008C2B9A /* ServiceView+ViewModel.swift */; };
 		7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09112A31BFD2008C2B9A /* BrandImage.swift */; };
+		7F0E09162A31D773008C2B9A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E09152A31D773008C2B9A /* Moya */; };
+		7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09172A31D7A0008C2B9A /* GarageAPI .swift */; };
+		7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09192A31DA0E008C2B9A /* NetworkProvider.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -169,6 +171,8 @@
 		7F0E090D2A30A3FF008C2B9A /* ServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceView.swift; sourceTree = "<group>"; };
 		7F0E090F2A30A407008C2B9A /* ServiceView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E09112A31BFD2008C2B9A /* BrandImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandImage.swift; sourceTree = "<group>"; };
+		7F0E09172A31D7A0008C2B9A /* GarageAPI .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GarageAPI .swift"; sourceTree = "<group>"; };
+		7F0E09192A31DA0E008C2B9A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -241,9 +245,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0E08B72A2F8EDE008C2B9A /* Alamofire in Frameworks */,
 				7F0E08E22A2FC465008C2B9A /* SwiftTooltipKit in Frameworks */,
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
+				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 				7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */,
@@ -363,6 +367,8 @@
 		7F0E08AB2A2F8EB1008C2B9A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E09172A31D7A0008C2B9A /* GarageAPI .swift */,
+				7F0E09192A31DA0E008C2B9A /* NetworkProvider.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -942,8 +948,8 @@
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
 				7F0E088D2A2F320A008C2B9A /* Lottie */,
-				7F0E08B62A2F8EDE008C2B9A /* Alamofire */,
 				7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */,
+				7F0E09152A31D773008C2B9A /* Moya */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -977,8 +983,8 @@
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				7F0E08B52A2F8EDE008C2B9A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */,
+				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -1063,6 +1069,7 @@
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
+				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
@@ -1110,6 +1117,7 @@
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
+				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
 				7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */,
 			);
@@ -1327,20 +1335,20 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		7F0E08B52A2F8EDE008C2B9A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.7.0;
-			};
-		};
 		7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hendesi/SwiftTooltipKit.git";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 0.1.2;
+			};
+		};
+		7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = exactVersion;
+				version = 15.0.0;
 			};
 		};
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -1367,15 +1375,15 @@
 			package = 7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		7F0E08B62A2F8EDE008C2B9A /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E08B52A2F8EDE008C2B9A /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */;
 			productName = SwiftTooltipKit;
+		};
+		7F0E09152A31D773008C2B9A /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
