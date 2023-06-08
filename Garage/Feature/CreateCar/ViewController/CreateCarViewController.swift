@@ -53,6 +53,22 @@ class CreateCarViewController: BasicViewController {
         vm.succesCreateCompletion = { [weak self] in
             self?.coordinator.navigateTo(CommonNavigationRoute.close)
         }
+        
+        vm.suggestionCompletion = { [weak self] items in
+            let vm = SelectionViewController.ViewModel(cells: items)
+
+            vm.selectionSuccess = { [weak self] selectedItem in
+                if let selected = selectedItem as? Brand {
+                    self?.vm.brandFieldVM.text = selected.name
+                    self?.vm.modelFieldVM.actionImageVM?.isEnabled = true
+                } else if let seleted = selectedItem as? Model {
+                    self?.vm.modelFieldVM.text = seleted.modelName
+                }
+                self?.dismiss(animated: true)
+            }
+           
+            self?.coordinator.navigateTo(CreateCarNavigationRoute.selectSuggestion(vm))
+        }
     }
 }
 

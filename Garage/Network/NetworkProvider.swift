@@ -15,7 +15,7 @@ protocol NetworkManagerProtocol {
 }
 
 final class NetworkManager: ObservableObject, NetworkManagerProtocol {
-    static let shared: NetworkManagerProtocol = NetworkManager()
+    static let sh: NetworkManagerProtocol = NetworkManager()
 
     private init() {}
 

@@ -15,6 +15,9 @@ final class SelectionControllerLayoutManager {
     
     lazy var table: UITableView = {
         let table = UITableView()
+        table.dataSource = vc
+        table.delegate = vc
+        table.register(SelectCell.self)
         return table
     }()
     

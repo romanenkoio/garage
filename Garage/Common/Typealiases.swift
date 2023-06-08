@@ -8,4 +8,8 @@
 import Foundation
 
 typealias CarCell = BasicCell<CarView>
+typealias SelectCell =  BasicCell<UniversalSelectionView>
+
 typealias Completion = (() -> ())
+typealias EqutableCompletion = ((any Equatable) -> ())
+typealias SelectArrayCompletion = (_ items: [UniversalSelectionView.ViewModel]) -> ()

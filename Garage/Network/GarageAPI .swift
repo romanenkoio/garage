@@ -25,13 +25,11 @@ extension GarageApi: TargetType {
             return "/vehicles/decodevin/\(win)"
             
         case .brands:
-            return "/getallmakes"
+            return "/vehicles/getallmakes"
             
         case .models(let brand):
-            return "getmodelsformake/\(brand)"
-            
-        default:
-            return ""
+            return "/vehicles/getmodelsformake/\(brand)"
+
         }
         
     }
@@ -41,7 +39,9 @@ extension GarageApi: TargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        guard let params else { return .requestPlain}
+        
+        return .requestParameters(parameters: params, encoding: encoding)
     }
     
     var headers: [String : String]? {

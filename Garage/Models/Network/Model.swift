@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Model: Decodable {
-    let makeID: String
+struct Model: Decodable, Equatable {
+    let makeID: Int
     let makeName: String
-    let modelID: String
+    let modelID: Int
     let modelName: String
     
     enum CodingKeys: String, CodingKey {

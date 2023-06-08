@@ -22,5 +22,17 @@ extension UniversalSelectionView {
             self.item = item
             self.title = title
         }
+        
+        init(_ model: Model) {
+            self.labelVM = .init(text: model.modelName)
+            self.item = model
+            self.title = model.modelName
+        }
+        
+        init(_ brand: Brand) {
+            self.labelVM = .init(text: brand.name)
+            self.item = brand
+            self.title = brand.name
+        }
     }
 }

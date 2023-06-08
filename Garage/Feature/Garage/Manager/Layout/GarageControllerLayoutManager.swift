@@ -46,7 +46,7 @@ final class GarageControllerLayoutManager {
         animationView.isHidden = !vc.vm.cells.isEmpty
         table.isHidden = vc.vm.cells.isEmpty
         vc.vm.cells.isEmpty ? animationView.play() : animationView.pause()
-//        vc.contentView.isHidden = vc.vm.cells.isEmpty
+        vc.contentView.isHidden = vc.vm.cells.isEmpty
         table.reloadData()
     }
 }

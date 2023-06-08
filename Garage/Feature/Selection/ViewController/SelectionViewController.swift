@@ -65,3 +65,23 @@ extension SelectionViewController {
     }
     
 }
+
+extension SelectionViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let selectionCell = tableView.dequeueReusableCell(SelectCell.self, for: indexPath) else { return .init() }
+        selectionCell.mainView.setViewModel(vm.cells[indexPath.row])
+        return selectionCell
+    }
+    
+    
+}
+
+extension SelectionViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        vm.selectCell(at: indexPath)
+    }
+}

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Brand: Decodable {
-    let id: String
+struct Brand: Decodable, Equatable {
+    let id: Int
     let name: String
     
     enum CodingKeys: String, CodingKey {

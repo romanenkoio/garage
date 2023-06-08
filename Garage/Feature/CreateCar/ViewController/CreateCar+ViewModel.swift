@@ -10,7 +10,6 @@ import UIKit
 
 extension CreateCarViewController {
     final class ViewModel: BasicViewModel {
-        
         private let errorVM = ErrorView.ViewModel(error: "Обязательное поле")
         
         var brandFieldVM: BasicInputView.ViewModel
@@ -21,12 +20,16 @@ extension CreateCarViewController {
         var mileageFieldVM: BasicInputView.ViewModel
         
         var succesCreateCompletion: Completion?
+        var suggestionCompletion: SelectArrayCompletion?
         
         let saveButtonVM = BasicButton.ViewModel(
             title: "Сохранить",
             isEnabled: false,
             style: .primary
         )
+        
+        var brands: [Brand] = []
+        var models: [Model] = []
         
         override init() {
             brandFieldVM = .init(
@@ -61,6 +64,7 @@ extension CreateCarViewController {
             
             super.init()
             initValidator()
+            initSuggestionAction()
             
             saveButtonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
@@ -95,6 +99,48 @@ extension CreateCarViewController {
                 .store(in: &cancellables)
         }
         
+        private func initSuggestionAction() {
+            brandFieldVM.actionImageVM = .init(
+                action: { [weak self] in
+                    guard let self else { return }
+                    Task { @MainActor in
+                        do {
+                            let result = try await NetworkManager
+                                .sh
+                                .request(GarageApi.brands, model: Wrapper<Brand>.self).result
+                            self.brands = result
+                            let vms = self.brands.map({ UniversalSelectionView.ViewModel($0) })
+                            self.suggestionCompletion?(vms)
+                        } catch let error {
+                            print(error)
+                        }
+                    }
+                }, image: UIImage(systemName: "gear"),
+                isEnable: true
+            )
+            
+            modelFieldVM.actionImageVM = .init(
+                action: { [weak self] in
+                    guard let self else { return }
+                    Task { @MainActor in
+                        do {
+                            let result = try await NetworkManager
+                                .sh
+                                .request(GarageApi.models(brand: self.brandFieldVM.text), model: Wrapper<Model>.self).result
+                            self.models = result
+                            let vms = self.models.map({ UniversalSelectionView.ViewModel($0) })
+                            self.suggestionCompletion?(vms)
+                        } catch let error {
+                            print(error)
+                        }
+                    }
+                   
+                }, image: UIImage(systemName: "gear"),
+                isEnable: false
+            )
+        }
+        
+        
         private func initFields() {
             brandFieldVM = .init(
                 errorVM: errorVM,
@@ -126,6 +172,7 @@ extension CreateCarViewController {
                 inputVM: .init(placeholder: "Пробег")
             )
         }
-        
     }
+    
+  
 }
