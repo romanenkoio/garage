@@ -33,6 +33,7 @@ class SelectionViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideNavBar(false)
     }
 
     override func configure() {
@@ -42,6 +43,7 @@ class SelectionViewController: BasicViewController {
 
     override func binding() {
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        layout.searchField.setViewModel(vm.searchVM)
         
         vm.$cells.sink { [weak self] _ in
             self?.layout.table.reloadData()

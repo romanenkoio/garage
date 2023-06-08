@@ -28,6 +28,7 @@ final class ServicesControllerLayoutManager {
             dataSource: vc,
             delegate: vc
         )
+        table.register(ServiceCell.self)
         return table
     }()
     

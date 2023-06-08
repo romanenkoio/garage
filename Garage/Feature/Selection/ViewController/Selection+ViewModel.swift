@@ -20,6 +20,7 @@ extension SelectionViewController {
             isEnabled: false,
             style: .primary
         )
+        let searchVM = BasicSearchField.ViewModel( placeholder: "Начните искать тут...")
         
         var selectionSuccess: ((any Equatable) -> Void)?
         

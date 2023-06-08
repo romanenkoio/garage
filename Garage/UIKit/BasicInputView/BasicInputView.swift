@@ -20,7 +20,11 @@ class BasicInputView: BasicView {
         return textField
     }()
 
-    lazy var actionImage = ActionImage()
+    lazy var actionImage: ActionImage = {
+        let view = ActionImage()
+        view.tintColor = .primaryPink
+        return view
+    }()
     
     private(set) weak var vm: ViewModel?
 
@@ -59,7 +63,7 @@ class BasicInputView: BasicView {
         }
         
         actionImage.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalTo(textField)
+            make.top.trailing.bottom.equalTo(textField).inset(UIEdgeInsets(all: 5))
             make.width.equalTo(actionImage.snp.height)
         }
     }

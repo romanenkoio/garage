@@ -115,7 +115,7 @@ extension CreateCarViewController {
                             print(error)
                         }
                     }
-                }, image: UIImage(systemName: "gear"),
+                }, image: UIImage(systemName: "list.dash"),
                 isEnable: true
             )
             
@@ -135,7 +135,7 @@ extension CreateCarViewController {
                         }
                     }
                    
-                }, image: UIImage(systemName: "gear"),
+                }, image: UIImage(systemName: "list.dash"),
                 isEnable: false
             )
         }

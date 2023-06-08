@@ -9,6 +9,7 @@ import Foundation
 
 typealias CarCell = BasicCell<CarView>
 typealias SelectCell =  BasicCell<UniversalSelectionView>
+typealias ServiceCell =  BasicCell<ServiceView>
 
 typealias Completion = (() -> ())
 typealias EqutableCompletion = ((any Equatable) -> ())

@@ -61,6 +61,7 @@ class CreateCarViewController: BasicViewController {
                 if let selected = selectedItem as? Brand {
                     self?.vm.brandFieldVM.text = selected.name
                     self?.vm.modelFieldVM.actionImageVM?.isEnabled = true
+                    self?.vm.modelFieldVM.text = .empty
                 } else if let seleted = selectedItem as? Model {
                     self?.vm.modelFieldVM.text = seleted.modelName
                 }

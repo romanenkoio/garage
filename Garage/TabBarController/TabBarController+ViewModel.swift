@@ -22,7 +22,7 @@ extension TabBarController {
                 case .favorite:
                     return BasicViewController()
                 case .booking:
-                    return CreateServiseViewController(vm: .init()).withNavigation()
+                    return ServicesViewController(vm: .init()).withNavigation()
                 case .profile:
                     return ServicesViewController(vm: .init()).withNavigation()
                 }

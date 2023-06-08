@@ -10,7 +10,7 @@ import UIKit
 
 extension ServicesViewController {
     final class ViewModel: BasicViewModel {
-        let tableVM = BasicTableView.ViewModel()
+        let tableVM = BasicTableView.GenericViewModel<ServiceView.ViewModel>()
         
         override init() {
             super.init()
@@ -19,6 +19,12 @@ extension ServicesViewController {
                 labelVM: .init(text: "Нет данных"),
                 image: UIImage(systemName: "car")
             )
+        }
+        
+        func readServices() {
+            let services = RealmManager<Service>().read()
+            let cells = services.map({ ServiceView.ViewModel(service: $0) })
+            tableVM.setCells(cells)
         }
     }
 }

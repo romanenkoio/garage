@@ -12,6 +12,8 @@ class ServiceView: BasicView {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 15
+        stack.cornerRadius = 12
+        stack.backgroundColor = .textGray
         return stack
     }()
     
@@ -41,14 +43,25 @@ class ServiceView: BasicView {
     }
     
     private func makeLayout() {
-        
+        self.addSubview(stack)
+        stack.addArrangedSubviews([
+            nameLabel,
+            phoneLabel,
+            adressLabel,
+            specializationLabel
+        ])
     }
     
     private func makeConstraint() {
-        
+        stack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     func setViewModel(_ vm: ViewModel) {
-        
+        nameLabel.setViewModel(vm.nameLabelVM)
+        phoneLabel.setViewModel(vm.phoneLabelVM)
+        adressLabel.setViewModel(vm.adressLabelVM)
+        specializationLabel.setViewModel(vm.specializationLabelVM)
     }
 }

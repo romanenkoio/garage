@@ -13,6 +13,11 @@ final class SelectionControllerLayoutManager {
     
     private unowned let vc: SelectionViewController
     
+    lazy var searchField: BasicSearchField = {
+        let field = BasicSearchField()
+        return field
+    }()
+    
     lazy var table: UITableView = {
         let table = UITableView()
         table.dataSource = vc
@@ -43,18 +48,24 @@ fileprivate extension SelectionControllerLayoutManager {
     }
     
     private func makeLayout() {
+        vc.contentView.addSubview(searchField)
         vc.contentView.addSubview(table)
         vc.contentView.addSubview(saveButton)
     }
     
     private func makeConstraint() {
+        searchField.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
+        }
+        
         table.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(searchField.snp.bottom)
         }
         
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(table.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
     }
     

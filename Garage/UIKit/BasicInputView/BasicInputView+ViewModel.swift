@@ -30,7 +30,10 @@ extension BasicInputView {
 
         var text: String {
             get { inputVM.text }
-            set { inputVM.text = newValue}
+            set {
+                inputVM.text = newValue
+                inputVM.validate()
+            }
         }
         
         var rules: [ValidationRule] {
