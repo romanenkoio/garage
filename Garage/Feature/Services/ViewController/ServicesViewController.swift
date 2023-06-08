@@ -49,8 +49,19 @@ class ServicesViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
+        
+        vm.$suggestions.sink { [weak self] items in
+            self?.layout.categoriesStack.clearArrangedSubviews()
+            self?.layout.categoriesStack.isHidden = items.isEmpty
+            let views = items.map({
+                let view = SuggestionView()
+                view.setViewModel($0)
+                return view
+            })
+            self?.layout.categoriesStack.addArrangedSubviews(views)
+        }
+        .store(in: &cancellables)
     }
-    
 }
 
 // MARK: -
