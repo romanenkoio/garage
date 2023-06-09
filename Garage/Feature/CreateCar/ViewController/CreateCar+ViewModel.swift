@@ -11,6 +11,7 @@ import UIKit
 extension CreateCarViewController {
     final class ViewModel: BasicControllerModel {
         private let errorVM = ErrorView.ViewModel(error: "Обязательное поле")
+        private let vinErrorVM = ErrorView.ViewModel(error: "Проверьте VIN")
         
         var brandFieldVM: BasicInputView.ViewModel
         var modelFieldVM: BasicInputView.ViewModel
@@ -45,7 +46,7 @@ extension CreateCarViewController {
             )
             
             winFieldVM = .init(
-                errorVM: .init(),
+                errorVM: vinErrorVM,
                 inputVM: .init(placeholder: "WIN")
             )
             
@@ -88,12 +89,19 @@ extension CreateCarViewController {
             brandFieldVM.rules = [.noneEmpty]
             modelFieldVM.rules = [.noneEmpty]
             mileageFieldVM.rules = [.noneEmpty]
+            winFieldVM.rules = [.vin]
             
             validator.formIsValid
                 .sink { [weak self] value in
                     self?.saveButtonVM.isEnabled = value
                 }
                 .store(in: &cancellables)
+            
+            winFieldVM.inputVM.isValidSubject.sink { [weak self] value in
+                self?.winFieldVM.actionImageVM?.isEnabled = value
+                self?.decodeVIN()
+            }
+            .store(in: &cancellables)
         }
         
         private func initSuggestionAction() {
@@ -104,7 +112,10 @@ extension CreateCarViewController {
                         do {
                             let result = try await NetworkManager
                                 .sh
-                                .request(GarageApi.brands, model: Wrapper<Brand>.self).result
+                                .request(
+                                    GarageApi.brands,
+                                    model: Wrapper<Brand>.self
+                                ).result
                             self.suggestionCompletion?(result)
                         } catch let error {
                             print(error)
@@ -121,7 +132,10 @@ extension CreateCarViewController {
                         do {
                             let result = try await NetworkManager
                                 .sh
-                                .request(GarageApi.models(brand: self.brandFieldVM.text), model: Wrapper<Model>.self).result
+                                .request(
+                                    GarageApi.models(brand: self.brandFieldVM.text),
+                                    model: Wrapper<Model>.self
+                                ).result
                             self.suggestionCompletion?(result)
                         } catch let error {
                             print(error)
@@ -129,6 +143,15 @@ extension CreateCarViewController {
                     }
                    
                 }, image: UIImage(systemName: "list.dash"),
+                isEnable: false
+            )
+            
+            winFieldVM.actionImageVM = .init(
+                action: { [weak self] in
+                    guard let self else { return }
+                    self.decodeVIN()
+                   
+                }, image: UIImage(systemName: "magnifyingglass"),
                 isEnable: false
             )
         }
@@ -164,6 +187,39 @@ extension CreateCarViewController {
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Пробег")
             )
+        }
+        
+        func decodeVIN() {
+            Task { @MainActor in
+                do {
+                    let result = try await NetworkManager
+                        .sh
+                        .request(
+                            GarageApi.decodeWIN(win: self.winFieldVM.text),
+                            model: Wrapper<VINDeocdedValue>.self
+                        ).result
+                    parseDecodedWin(values: result)
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
+        
+        func parseDecodedWin(values: [VINDeocdedValue]) {
+            let clearValues = values.filter({ !$0.value.wrapped.isEmpty && $0.value.wrapped != "Not Applicable"})
+            VINDecodedType.allCases.forEach { type in
+                guard let data = clearValues.filter({ $0.type == type.rawValue }).first else { return }
+                switch type {
+                case .model:
+                    modelFieldVM.text = data.value.wrapped
+                case .make:
+                    brandFieldVM.text = data.value.wrapped
+                case .year:
+                    yearFieldVM.text = data.value.wrapped
+                }
+            }
+            
+            
         }
     }
     

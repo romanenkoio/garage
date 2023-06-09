@@ -47,6 +47,7 @@ class GarageViewController: BasicViewController {
     }
 
     override func binding() {
+        super.binding()
         layout.addCarButton.setViewModel(vm.addCarButton)
         
         vm.$cells

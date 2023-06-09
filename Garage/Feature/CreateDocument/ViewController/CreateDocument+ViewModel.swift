@@ -27,6 +27,7 @@ extension CreateDocumentViewController {
 
         override init() {
             super.init()
+            title = "Добавление документа"
             
             typeFieldVM.actionImageVM = .init(
                 action: { [ weak self] in

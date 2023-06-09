@@ -20,6 +20,7 @@ extension GarageViewController {
         
         override init() {
             super.init()
+            title = "Мой гараж"
             readCars()
         }
         
@@ -28,7 +29,7 @@ extension GarageViewController {
                 .init(
                     brand: $0.brand,
                     model: $0.model,
-                    logoURL: "https://46.175.171.150/cars-logos/api/images/\($0.brand)_resized.png"
+                    logoURL: "https://46.175.171.150/cars-logos/api/images/\($0.brand.lowercased())_resized.png"
                 )
             })
         }

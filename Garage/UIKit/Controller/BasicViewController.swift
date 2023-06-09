@@ -29,6 +29,20 @@ class BasicViewController: UIViewController {
         return view
     }()
     
+    lazy var loaderView: BasicView = {
+        let view = BasicView()
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.cornerRadius = 0
+        return view
+    }()
+    
+    lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.style = .medium
+        spinner.tintColor = .primaryPink
+        return spinner
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,6 +89,14 @@ class BasicViewController: UIViewController {
         self.scroll.snp.makeConstraints { (make) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        loaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        spinner.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     func hideNavBar(_ value: Bool) {
@@ -112,6 +134,10 @@ class BasicViewController: UIViewController {
     func layoutElements() {
         view.addSubview(scroll)
         scroll.addSubview(contentView)
+        view.addSubview(loaderView)
+        loaderView.addSubview(spinner)
+        loaderView.isHidden = true
+        view.bringSubviewToFront(loaderView)
     }
     
     func configure() {}
@@ -124,6 +150,16 @@ class BasicViewController: UIViewController {
 
     @objc private func hideKeyboard() {
         self.view.endEditing(true)
+    }
+    
+    func startLoader() {
+        spinner.startAnimating()
+        loaderView.isHidden = false
+    }
+    
+    func stopLoader() {
+        spinner.stopAnimating()
+        loaderView.isHidden = true
     }
     
 }
