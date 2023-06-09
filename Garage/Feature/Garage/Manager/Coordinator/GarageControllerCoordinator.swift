@@ -10,6 +10,7 @@ import UIKit
 
 enum GarageNavigationRoute: Routable {
     case createCar
+    case openCar(Car)
 }
 
 class GarageControllerCoordinator: BasicCoordinator {
@@ -23,6 +24,9 @@ class GarageControllerCoordinator: BasicCoordinator {
             switch route {
             case .createCar:
                 let new = CreateCarViewController(vm: .init())
+                vc.push(new)
+            case .openCar:
+                let new = BasicViewController()
                 vc.push(new)
             }
         } else {

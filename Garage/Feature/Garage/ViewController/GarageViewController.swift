@@ -82,8 +82,14 @@ extension GarageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let carCell = tableView.dequeueReusableCell(CarCell.self) else { return .init() }
-        carCell.mainView.setViewModel(vm.cells[indexPath.row])
+        guard let carCell = tableView.dequeueReusableCell(CarCell.self),
+              let vm = vm.cells[safe: indexPath.row]
+        else { return .init() }
+        carCell.mainView.setViewModel(.init(
+            brand: vm.brand,
+            model: vm.model,
+            logoURL: "https://46.175.171.150/cars-logos/api/images/\(vm.brand.lowercased())_resized.png"
+        ))
         carCell.selectionStyle = .none
         return carCell
     }
@@ -91,6 +97,6 @@ extension GarageViewController: UITableViewDataSource {
 
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        vm.selectCar(at: indexPath)
+        guard let selectedCar = vm.cells[safe: indexPath.row] else { return }
     }
 }

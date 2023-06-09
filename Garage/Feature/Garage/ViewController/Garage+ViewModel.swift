@@ -16,7 +16,7 @@ extension GarageViewController {
         )
         
         @Published
-        private(set) var cells: [CarView.ViewModel] = []
+        private(set) var cells: [Car] = []
         
         override init() {
             super.init()
@@ -25,18 +25,7 @@ extension GarageViewController {
         }
         
         func readCars() {
-            cells = RealmManager<Car>().read().map({
-                .init(
-                    brand: $0.brand,
-                    model: $0.model,
-                    logoURL: "https://46.175.171.150/cars-logos/api/images/\($0.brand.lowercased())_resized.png"
-                )
-            })
-        }
-        
-        
-        func selectCar(at index: IndexPath) {
-            guard let cell = cells[safe: index.row] else { return }
+            cells = RealmManager<Car>().read()
         }
     }
 }
