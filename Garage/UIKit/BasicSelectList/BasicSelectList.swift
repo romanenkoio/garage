@@ -162,8 +162,8 @@ class BasicSelectList<T: Equatable>: BasicInputView {
             self.scrollStack.arrangedSubviews.forEach({$0.alpha = self.isOpen ? 1 : 0})
         } completion: {[weak self] isFinish in
             guard let self else { return }
-            if !isOpen, isFinish, !errorView.isHidden {
-                errorView.shake()
+            if !self.isOpen, isFinish, !self.errorView.isHidden {
+                self.errorView.shake()
             }
         }
     }
