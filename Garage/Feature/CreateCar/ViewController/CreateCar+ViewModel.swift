@@ -192,6 +192,7 @@ extension CreateCarViewController {
         func decodeVIN() {
             Task { @MainActor in
                 do {
+                    guard !self.winFieldVM.text.isEmpty else { return }
                     let result = try await NetworkManager
                         .sh
                         .request(

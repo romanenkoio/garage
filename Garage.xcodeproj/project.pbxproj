@@ -27,7 +27,6 @@
 		7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08B92A2F90C5008C2B9A /* Brand.swift */; };
 		7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BB2A2F9276008C2B9A /* Model.swift */; };
 		7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */; };
-		7F0E08C02A2F97E4008C2B9A /* brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08BF2A2F97E4008C2B9A /* brands.json */; };
 		7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08C62A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift */; };
 		7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08C82A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift */; };
 		7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08CA2A2FA0A1008C2B9A /* Services+ViewModel.swift */; };
@@ -177,7 +176,6 @@
 		7F0E08B92A2F90C5008C2B9A /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		7F0E08BB2A2F9276008C2B9A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
-		7F0E08BF2A2F97E4008C2B9A /* brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brands.json; sourceTree = "<group>"; };
 		7F0E08C62A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F0E08C82A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F0E08CA2A2FA0A1008C2B9A /* Services+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Services+ViewModel.swift"; sourceTree = "<group>"; };
@@ -817,7 +815,6 @@
 				B978F38A2A2E9D870076D326 /* TabBarController */,
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F5955ED2A2E8ABB0062A85F /* Models */,
-				7F0E08BF2A2F97E4008C2B9A /* brands.json */,
 				7F0E08912A2F3364008C2B9A /* garage.json */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
@@ -1250,7 +1247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F0E08922A2F3364008C2B9A /* garage.json in Resources */,
-				7F0E08C02A2F97E4008C2B9A /* brands.json in Resources */,
 				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */,
 				B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */,
