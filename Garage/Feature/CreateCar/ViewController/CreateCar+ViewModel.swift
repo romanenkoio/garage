@@ -94,38 +94,5 @@ extension CreateCarViewController {
                 }
                 .store(in: &cancellables)
         }
-        
-        private func initFields() {
-            brandFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
-            )
-            
-            modelFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
-            )
-            
-            generationFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Поколение")
-            )
-            
-            winFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "WIN")
-            )
-            
-            yearFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Год выпуска")
-            )
-            
-            mileageFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Пробег")
-            )
-        }
-        
     }
 }

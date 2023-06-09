@@ -11,15 +11,13 @@ extension BasicSelectList {
     final class GenericViewModel<T: Equatable>: BasicViewModel {
         typealias Item = T
         
-        @Published var title: String
-        @Published private(set) var items: [Item]
+        @Published var items: [Item]
         @Published private(set) var selectedItem: Item?
         private(set) var titles = [String]()
         var errorVM: ErrorView.ViewModel
         let inputVM: BasicTextField.ViewModel
                 
         init(
-            title: String,
             _ list: [Item],
             selected: Item? = nil,
             titles: ([Item]) -> [String],
@@ -28,7 +26,6 @@ extension BasicSelectList {
         ) {
             self.errorVM = errorVM
             self.inputVM = inputVM
-            self.title = title
             self.items = list
             self.titles = titles(list)
             self.selectedItem = selected
@@ -70,7 +67,7 @@ extension BasicSelectList {
             self.selectedItem = item
             self.items.enumerated().forEach { index, value in
                 if item == value {
-                    self.title = titles[index]
+                    self.inputVM.text = titles[index]
                 }
             }
         }

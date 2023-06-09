@@ -62,7 +62,7 @@ class BasicSelectList<T: Equatable>: BasicInputView {
     
     private func makeConstraints() {
         stack.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(8)
+            make.top.equalTo(textField.snp.bottom).offset(5)
             make.leading.trailing.equalToSuperview()
         }
         
@@ -72,7 +72,7 @@ class BasicSelectList<T: Equatable>: BasicInputView {
         
         let errorViewInsets = UIEdgeInsets(left: 16, right: 16)
         errorView.snp.remakeConstraints { make in
-            make.top.equalTo(stack.snp.bottom).offset(5)
+            make.top.equalTo(stack.snp.bottom).offset(2)
             make.leading.bottom.trailing.equalToSuperview().inset(errorViewInsets)
         }
     }
@@ -91,7 +91,7 @@ class BasicSelectList<T: Equatable>: BasicInputView {
         .store(in: &cancellables)
         
         vm.$selectedItem.sink { [weak self] item in
-            self?.makeSelection(item)
+            self?.didSelectItem(item)
         }
         .store(in: &cancellables)
         
@@ -105,32 +105,25 @@ class BasicSelectList<T: Equatable>: BasicInputView {
     }
     
     
-    private func makeSelection(_ item: Item?) {
+    private func didSelectItem(_ item: Item?) {
         guard let item else {
             self.textField.attributedText = vm?.placeholder.attributedString(
                 font: .custom(size: 17, weight: .medium),
                 textColor: .textLightGray)
             return
         }
-        
+
         guard self.itemViews.count == self.viewModel?.items.count else { return }
-        self.itemViews.enumerated().forEach { index, view in
+        self.itemViews.enumerated().forEach { index, label in
             if self.viewModel?.items[index] == item {
-                view.layer.borderColor = UIColor.primaryPink.cgColor
                 self.textField.attributedText = viewModel?.titles[index].attributedString(
                     font: .custom(size: 17, weight: .medium),
                     textColor: .textBlack
                 )
-                self.textField.attributedPlaceholder = viewModel?.titles[index].attributedString(
-                    font: .custom(size: 17, weight: .medium),
-                    textColor: .textBlack
-                )
-                
-            } else {
-                view.layer.borderColor = UIColor.clear.cgColor
             }
         }
         self.isOpen = false
+        _ = textField.resignFirstResponder()
     }
     
     private func makeItems() {
@@ -147,15 +140,12 @@ class BasicSelectList<T: Equatable>: BasicInputView {
                 action: {
                     print("Категория \(index)")
                     self?.viewModel?.setSelected(item)
-                    _ = self?.textField.resignFirstResponder()
                 }
             )))
             self?.scrollStack.addArrangedSubview(view)
             self?.itemViews.append(view)
         }
     }
-    
-    
     
     @objc private func beginEdit() {
         isOpen = true

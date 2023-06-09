@@ -9,7 +9,7 @@ import UIKit
 
 class TestController: BasicViewController {
     lazy var basicInputView = BasicSelectList<TestModel>()
-    
+    lazy var button = BasicButton()
     let vm: ViewModel
     
     init(vm: ViewModel) {
@@ -31,13 +31,20 @@ class TestController: BasicViewController {
             make.top.equalToSuperview().inset(16)
             make.leading.trailing.equalToSuperview()
         }
+        
+        button.snp.makeConstraints { make in
+            make.top.equalTo(basicInputView.snp.bottom).offset(6)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
     }
     
     override func layoutElements() {
         contentView.addSubview(basicInputView)
+        contentView.addSubview(button)
     }
     
     override func binding() {
         basicInputView.setViewModel(vm.inputVM)
+        button.setViewModel(vm.buttonVM)
     }
 }
