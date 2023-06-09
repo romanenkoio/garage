@@ -9,7 +9,7 @@
 import UIKit
 
 extension CreateServiseViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         let nameInputVM: BasicInputView.ViewModel
         let phoneInputVM: BasicInputView.ViewModel
         let specialisationInputVM: BasicInputView.ViewModel

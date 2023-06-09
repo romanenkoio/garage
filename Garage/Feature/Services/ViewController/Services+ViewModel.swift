@@ -9,7 +9,7 @@
 import UIKit
 
 extension ServicesViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         typealias Suggestion = SuggestionView.ViewModel
         
         let tableVM = BasicTableView.GenericViewModel<ServiceView.ViewModel>()

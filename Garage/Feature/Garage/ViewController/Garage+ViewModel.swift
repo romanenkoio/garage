@@ -9,7 +9,7 @@
 import UIKit
 
 extension GarageViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         let addCarButton = BasicButton.ViewModel(
             title: "Добавить машину",
             style: .primary

@@ -9,7 +9,7 @@
 import UIKit
 
 extension CreateDocumentViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         let saveButtonVM = BasicButton.ViewModel(
             title: "Сохранить",
             isEnabled: false,

@@ -9,7 +9,7 @@
 import UIKit
 
 extension CreateCarViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         private let errorVM = ErrorView.ViewModel(error: "Обязательное поле")
         
         var brandFieldVM: BasicInputView.ViewModel

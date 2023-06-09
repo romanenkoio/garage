@@ -14,6 +14,7 @@ class BasicViewController: UIViewController {
     typealias Coordinator = BasicCoordinator
 
     private var coordinator: Coordinator!
+    private(set) var viewModel = BasicControllerModel()
 
     private(set) var isWillAppeared: Bool = false
 
@@ -58,7 +59,12 @@ class BasicViewController: UIViewController {
 
     func singleWillAppear() { }
 
-    func binding() {}
+    func binding() {
+        viewModel.$title.sink { [weak self] title in
+            self?.title = title
+        }
+        .store(in: &cancellables)
+    }
     
     func makeConstraints() {
         contentView.snp.makeConstraints { (make) in

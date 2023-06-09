@@ -9,7 +9,7 @@
 import UIKit
 
 extension SelectionViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         @Published
         private(set) var cells: [Selectable]
         private var snapshot: [Selectable]
