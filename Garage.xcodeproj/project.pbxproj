@@ -74,6 +74,12 @@
 		7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */; };
 		7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09472A3331E8008C2B9A /* VINDeocdedValue.swift */; };
 		7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09492A333B84008C2B9A /* UIApplication.swift */; };
+		7F0E094D2A3346D8008C2B9A /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E094C2A3346D8008C2B9A /* DocumentView.swift */; };
+		7F0E094F2A3346DE008C2B9A /* DocumentView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E094E2A3346DE008C2B9A /* DocumentView+ViewModel.swift */; };
+		7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09552A3348C8008C2B9A /* DocumentsControllerCoordinator.swift */; };
+		7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */; };
+		7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */; };
+		7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -206,6 +212,12 @@
 		7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E09472A3331E8008C2B9A /* VINDeocdedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDeocdedValue.swift; sourceTree = "<group>"; };
 		7F0E09492A333B84008C2B9A /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		7F0E094C2A3346D8008C2B9A /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		7F0E094E2A3346DE008C2B9A /* DocumentView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0E09552A3348C8008C2B9A /* DocumentsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Documents+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -294,6 +306,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E09522A3348C8008C2B9A /* Documents */,
 				7F0E09382A32892C008C2B9A /* CreateDocument */,
 				7F0E08E52A2FC766008C2B9A /* Selection */,
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
@@ -674,6 +687,58 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F0E094B2A3346BB008C2B9A /* DocumentView */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E094C2A3346D8008C2B9A /* DocumentView.swift */,
+				7F0E094E2A3346DE008C2B9A /* DocumentView+ViewModel.swift */,
+			);
+			path = DocumentView;
+			sourceTree = "<group>";
+		};
+		7F0E09522A3348C8008C2B9A /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09532A3348C8008C2B9A /* Manager */,
+				7F0E09582A3348C8008C2B9A /* ViewController */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		7F0E09532A3348C8008C2B9A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09542A3348C8008C2B9A /* Coordinator */,
+				7F0E09562A3348C8008C2B9A /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F0E09542A3348C8008C2B9A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09552A3348C8008C2B9A /* DocumentsControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F0E09562A3348C8008C2B9A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F0E09582A3348C8008C2B9A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */,
+				7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +840,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F0E094B2A3346BB008C2B9A /* DocumentView */,
 				7F0E090C2A30A3F2008C2B9A /* ServiceView */,
 				7F0E08D62A2FA2D3008C2B9A /* SuggestionView */,
 				7F0E08D52A2FA2C2008C2B9A /* CarView */,
@@ -1164,9 +1230,12 @@
 				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
+				7F0E094F2A3346DE008C2B9A /* DocumentView+ViewModel.swift in Sources */,
+				7F0E094D2A3346D8008C2B9A /* DocumentView.swift in Sources */,
 				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
+				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
@@ -1176,6 +1245,7 @@
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
+				7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */,
 				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
@@ -1206,6 +1276,7 @@
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
+				7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
@@ -1229,6 +1300,7 @@
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
+				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,

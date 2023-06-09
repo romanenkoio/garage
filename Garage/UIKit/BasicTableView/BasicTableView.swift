@@ -86,4 +86,8 @@ class BasicTableView: BasicView {
     func register<T: UITableViewCell>(_ type: T.Type) {
         table.register(type)
     }
+    
+    func reload() {
+        table.reloadData()
+    }
 }
