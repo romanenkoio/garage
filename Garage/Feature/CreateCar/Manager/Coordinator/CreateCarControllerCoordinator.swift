@@ -9,8 +9,7 @@
 import UIKit
 
 enum CreateCarNavigationRoute: Routable {
-    case selectBrand
-    case selectModel
+    case selectSuggestion(SelectionViewController.ViewModel)
 }
 
 class CreateCarControllerCoordinator: BasicCoordinator {
@@ -22,11 +21,9 @@ class CreateCarControllerCoordinator: BasicCoordinator {
     override func navigateTo(_ route: Routable) {
         if let route = route as? CreateCarNavigationRoute {
             switch route {
-            case .selectBrand:
-                print("selectBrand")
-                
-            case .selectModel:
-                print("selectBrand")
+            case .selectSuggestion(let vm):
+                let selectionVC = SelectionViewController(vm: vm)
+                vc.present(selectionVC)
             }
         } else {
             super.navigateTo(route)

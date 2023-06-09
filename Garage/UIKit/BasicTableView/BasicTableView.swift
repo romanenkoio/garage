@@ -62,10 +62,10 @@ class BasicTableView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         emptyLabel.setViewModel(vm.labelVM)
         
-        vm.$cells.sink { [weak self] cells in
+        vm.$isEmpty.sink { [weak self] value in
             guard let self else { return }
-            self.emptyStack.isHidden = !cells.isEmpty
-            self.table.isHidden = cells.isEmpty
+            self.emptyStack.isHidden = !value
+            self.table.isHidden = value
         }
         .store(in: &cancellables)
         
@@ -85,5 +85,9 @@ class BasicTableView: BasicView {
     
     func register<T: UITableViewCell>(_ type: T.Type) {
         table.register(type)
+    }
+    
+    func reload() {
+        table.reloadData()
     }
 }

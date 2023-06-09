@@ -20,7 +20,6 @@ final class BasicCell<T: UIView>: UITableViewCell {
     }
     
     private func layoutMainView() {
-//        selectionStyle = .none
         self.backgroundColor = .clear
         contentView.addSubview(mainView)
         mainView.snp.makeConstraints { make in

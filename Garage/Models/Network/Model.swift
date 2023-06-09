@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct Model: Decodable {
-    let makeID: String
+struct Model: Decodable, Equatable, Selectable {
+    let makeID: Int
     let makeName: String
-    let modelID: String
+    let modelID: Int
     let modelName: String
+    
+    var title: String {
+        get { return modelName }
+    }
     
     enum CodingKeys: String, CodingKey {
         case makeID = "Make_ID"

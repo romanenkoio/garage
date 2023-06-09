@@ -18,6 +18,7 @@ final class ServicesControllerLayoutManager {
         let stack = ScrollableStackView()
         stack.axis = .horizontal
         stack.spacing = 10
+        stack.distribution = .fillEqually
         stack.paddingInsets = .horizintal
         return stack
     }()
@@ -28,6 +29,7 @@ final class ServicesControllerLayoutManager {
             dataSource: vc,
             delegate: vc
         )
+        table.register(ServiceCell.self)
         return table
     }()
     
@@ -35,6 +37,14 @@ final class ServicesControllerLayoutManager {
     init(vc: ServicesViewController) {
         self.vc = vc
         configure()
+        
+        let addButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside {
+                vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
+            },
+            image: UIImage(systemName: "plus")
+        )
+        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
 }
@@ -52,17 +62,6 @@ fileprivate extension ServicesControllerLayoutManager {
     private func makeLayout() {
         vc.contentView.addSubview(categoriesStack)
         vc.contentView.addSubview(table)
-        
-        for i in 0...7 {
-            let view = SuggestionView()
-            view.setViewModel(.init(labelVM: .init(
-                text: "Категория \(i)",
-                action: {
-                    print("Категория \(i)")
-                }
-            )))
-            categoriesStack.addArrangedSubview(view)
-        }
     }
     
     private func makeConstraint() {
@@ -77,12 +76,4 @@ fileprivate extension ServicesControllerLayoutManager {
         }
     }
     
-}
-
-struct ServicesViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            ServicesViewController(vm: .init())
-        }
-    }
 }

@@ -28,18 +28,5 @@ extension BasicButton {
         }
     }
 
-    struct Action {
-        typealias Completion = () -> Void
-
-        let event: UIControl.Event
-        let completion: Completion
-
-        static func touchUpInside(completion: @escaping Completion) -> Action {
-            .init(event: .touchUpInside, completion: completion)
-        }
-
-        func callAsFunction() {
-            completion()
-        }
-    }
+ 
 }

@@ -20,6 +20,12 @@ class BasicInputView: BasicView {
         return textField
     }()
 
+    lazy var actionImage: ActionImage = {
+        let view = ActionImage()
+        view.tintColor = .primaryPink
+        return view
+    }()
+    
     private(set) weak var vm: ViewModel?
 
     override init() {
@@ -40,6 +46,7 @@ class BasicInputView: BasicView {
     private func layoutElements() {
         addSubview(errorView)
         addSubview(textField)
+        addSubview(actionImage)
         errorView.isHidden = true
     }
     
@@ -54,6 +61,11 @@ class BasicInputView: BasicView {
             make.top.equalTo(textField.snp.bottom).offset(5)
             make.leading.bottom.trailing.equalToSuperview().inset(errorViewInsets)
         }
+        
+        actionImage.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalTo(textField).inset(UIEdgeInsets(all: 5))
+            make.width.equalTo(actionImage.snp.height)
+        }
     }
     
     func setViewModel(_ vm: ViewModel?) {
@@ -61,6 +73,12 @@ class BasicInputView: BasicView {
         self.vm = vm
         self.errorView.setViewModel(vm: vm.errorVM)
         self.textField.setViewModel(vm: vm.inputVM)
+        if let actionVM = vm.actionImageVM {
+            self.actionImage.setViewModel(actionVM)
+            self.actionImage.isHidden = false
+        } else {
+            self.actionImage.isHidden = true
+        }
         
         self.vm?.inputVM.isValidSubject.dropFirst().sink(receiveValue: { [weak self] value in
             self?.errorView.isHidden = value

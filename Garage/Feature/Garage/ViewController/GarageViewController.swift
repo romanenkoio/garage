@@ -18,7 +18,7 @@ class GarageViewController: BasicViewController {
     private(set) var vm: ViewModel
     
     // - Manager
-    private var coordinator: Coordinator!
+    var coordinator: Coordinator!
     private var layout: Layout!
     
     init(vm: ViewModel) {
@@ -47,6 +47,7 @@ class GarageViewController: BasicViewController {
     }
 
     override func binding() {
+        super.binding()
         layout.addCarButton.setViewModel(vm.addCarButton)
         
         vm.$cells

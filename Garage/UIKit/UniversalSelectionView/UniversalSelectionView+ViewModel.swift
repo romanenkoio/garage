@@ -10,17 +10,20 @@ import Foundation
 extension UniversalSelectionView {
     final class ViewModel: BasicViewModel {
         let labelVM: BasicLabel.ViewModel
-        let item: any Equatable
-        let title: String
+        let item: Selectable
         
         init(
             labelVM: BasicLabel.ViewModel,
-            item: any Equatable,
+            item: Selectable,
             title: String
         ) {
             self.labelVM = labelVM
             self.item = item
-            self.title = title
+        }
+        
+        init(_ item: Selectable) {
+            self.labelVM = .init(text: item.title)
+            self.item = item
         }
     }
 }

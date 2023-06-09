@@ -11,13 +11,16 @@ extension BasicInputView {
     final class ViewModel: BasicViewModel {
         var errorVM: ErrorView.ViewModel
         let inputVM: BasicTextField.ViewModel
-                
+        var actionImageVM: ActionImage.ViewModel?
+        
         init(
             errorVM: ErrorView.ViewModel,
-            inputVM: BasicTextField.ViewModel
+            inputVM: BasicTextField.ViewModel,
+            actionImageVM: ActionImage.ViewModel? = nil
         ) {
             self.errorVM = errorVM
             self.inputVM = inputVM
+            self.actionImageVM = actionImageVM
         }
         
         var placeholder: String {
@@ -27,7 +30,10 @@ extension BasicInputView {
 
         var text: String {
             get { inputVM.text }
-            set { inputVM.text = newValue}
+            set {
+                inputVM.text = newValue
+                inputVM.validate()
+            }
         }
         
         var rules: [ValidationRule] {

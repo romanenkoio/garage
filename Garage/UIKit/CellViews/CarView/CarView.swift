@@ -14,6 +14,7 @@ class CarView: BasicView {
         stack.axis = .horizontal
         stack.edgeInsets = .init(horizontal: 16)
         stack.paddingInsets = .init(vertical: 5, horizontal: 10)
+        stack.edgeInsets = .init(vertical: 5)
         stack.cornerRadius = 20
         stack.backgroundColor = .primaryGray
         stack.alignment = .center
@@ -69,7 +70,7 @@ class CarView: BasicView {
     
     private func makeConstraints() {
         self.snp.makeConstraints { make in
-            make.height.equalTo(70)
+            make.height.equalTo(80)
         }
         
         mainStack.snp.makeConstraints { make in
@@ -89,10 +90,5 @@ class CarView: BasicView {
         self.cancellables.removeAll()
         brandLabel.setViewModel(vm.brandLabelVM)
         modelLabel.setViewModel(vm.modelLabelVM)
-        
-        vm.$image.sink { [weak self] image in
-            self?.imageView.image = image
-        }
-        .store(in: &cancellables)
     }
 }

@@ -11,7 +11,7 @@ extension TabBarController {
     class ViewModel {
         enum TabItem: String, CaseIterable {
             case studios = "Гараж"
-            case favorite = "Напоминания"
+            case favorite = "Документы"
             case booking = "Сервисы"
             case profile = "Настройки"
             
@@ -20,11 +20,11 @@ extension TabBarController {
                 case .studios:
                     return GarageViewController(vm: .init()).withNavigation()
                 case .favorite:
-                    return BasicViewController()
+                    return DocumentsViewController(vm: .init()).withNavigation()
                 case .booking:
-                    return CreateServiseViewController(vm: .init()).withNavigation()
-                case .profile:
                     return ServicesViewController(vm: .init()).withNavigation()
+                case .profile:
+                    return BasicViewController()
                 }
             }
             

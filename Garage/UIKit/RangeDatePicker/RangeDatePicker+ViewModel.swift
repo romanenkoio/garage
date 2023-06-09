@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 extension RangeDatePicker {
-    class ViewModel: BasicViewModel {
+    class ViewModel: BasicViewModel, Validatable {
+        var rules: [ValidationRule] = .empty
+        var isValid: Bool = false
+        var isValidSubject: PassthroughSubject<Bool, Never> = .init()
+        
         
         let startDateVM = BasicDatePicker.ViewModel(
             placeholder: "с \(Date().formatData(formatType: .ddMMyy))"
@@ -17,8 +22,16 @@ extension RangeDatePicker {
             placeholder: "по \(Date().append(.month).formatData(formatType: .ddMMyy))"
         )
         
-        @Published private(set) var startDate: Date?
-        @Published private(set) var endDate: Date?
+        @Published private(set) var startDate: Date? {
+            didSet {
+                print("start set")
+            }
+        }
+        @Published private(set) var endDate: Date? {
+            didSet {
+                print("end set")
+            }
+        }
         
         var minStartDate: Date? {
             get { startDateVM.minimumDate }
@@ -59,20 +72,36 @@ extension RangeDatePicker {
             self.startDateVM.$date.sink { [weak self] date in
                 guard let self, let date else { return }
                 self.startDateVM.text = "c \(date.formatData(formatType: .ddMMyy))"
-                
                 if let finishDate = self.finishDateVM.date, date >= finishDate {
                     self.finishDateVM.setDate(nil)
                 }
+                self.startDate = date
+                self.validate()
             }
             .store(in: &cancellables)
             
             self.finishDateVM.$date.sink { [weak self] date in
                 guard let self, let date else { return }
+                self.endDate = date
                 self.finishDateVM.text = "по \(date.formatData(formatType: .ddMMyy))"
+                self.validate()
             }
             .store(in: &cancellables)
         }
         
-        
+        @discardableResult
+        func validate() -> Bool {
+            guard let startDate,
+                  let endDate,
+                  startDate < endDate
+            else {
+                isValid = false
+                isValidSubject.send(false)
+                return false }
+            
+            isValid = true
+            isValidSubject.send(true)
+            return true
+        }
     }
 }

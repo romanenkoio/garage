@@ -17,6 +17,7 @@ final class Service: Object {
     @Persisted var specialisation: String
     @Persisted var latitude: Double?
     @Persisted var longitude: Double?
+    @Persisted var comment: String?
     
     convenience init(
         phone: String,
@@ -24,7 +25,8 @@ final class Service: Object {
         name: String,
         specialisation: String,
         latitude: Double? = nil,
-        longitude: Double? = nil
+        longitude: Double? = nil,
+        comment: String? = nil
     ) {
         self.init()
         self.id = UUID().uuidString
@@ -34,6 +36,7 @@ final class Service: Object {
         self.specialisation = specialisation
         self.latitude = latitude
         self.longitude = longitude
+        self.comment = comment
     }
 }
 

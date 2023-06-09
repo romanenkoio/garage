@@ -19,7 +19,7 @@ class ServicesViewController: BasicViewController {
     private(set) var vm: ViewModel
     
     // - Manager
-    private var coordinator: Coordinator!
+    var coordinator: Coordinator!
     private var layout: Layout!
     
     init(vm: ViewModel) {
@@ -36,6 +36,11 @@ class ServicesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.readServices()
+    }
 
     override func configure() {
         configureCoordinator()
@@ -44,8 +49,19 @@ class ServicesViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
+        
+        vm.$suggestions.sink { [weak self] items in
+            self?.layout.categoriesStack.clearArrangedSubviews()
+            self?.layout.categoriesStack.isHidden = items.isEmpty
+            let views = items.map({
+                let view = SuggestionView()
+                view.setViewModel($0)
+                return view
+            })
+            self?.layout.categoriesStack.addArrangedSubviews(views)
+        }
+        .store(in: &cancellables)
     }
-    
 }
 
 // MARK: -
@@ -66,11 +82,12 @@ extension ServicesViewController {
 extension ServicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vm.tableVM.cells.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        .init()
+        guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
+        serviceCell.mainView.setViewModel(vm.tableVM.cells[indexPath.row])
+        return serviceCell
     }
 }
 

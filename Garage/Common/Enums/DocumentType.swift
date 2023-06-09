@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum DocumentType: CaseIterable {
+enum DocumentType: CaseIterable, Selectable {
     case license
     case medical
     case insurance
     case carPasport
+    case techChek
     case unlisted(String?)
 
     static var allCases: [DocumentType] = [
@@ -19,7 +20,7 @@ enum DocumentType: CaseIterable {
         .medical,
         .insurance,
         .carPasport,
-        .unlisted(nil)
+        .techChek
     ]
 
     var title: String {
@@ -28,6 +29,7 @@ enum DocumentType: CaseIterable {
         case .medical:                  return "Медицинская справка"
         case .insurance:                return "Страховка"
         case .carPasport:               return "Технический паспорт"
+        case .techChek:                 return "Технический осмотр"
         case .unlisted(let string):     return string ?? ""
         }
     }
@@ -38,6 +40,7 @@ enum DocumentType: CaseIterable {
         case "Медицинская справка":     self = .medical
         case "Страховка":               self = .insurance
         case "Технический паспорт":     self = .carPasport
+        case "Технический осмотр":      self = .techChek
         default:                        self = .unlisted(text)
         }
     }
