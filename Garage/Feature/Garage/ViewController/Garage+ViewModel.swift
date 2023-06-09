@@ -33,5 +33,10 @@ extension GarageViewController {
                 )
             })
         }
+        
+        
+        func selectCar(at index: IndexPath) {
+            
+        }
     }
 }

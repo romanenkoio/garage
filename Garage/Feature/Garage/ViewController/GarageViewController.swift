@@ -84,12 +84,13 @@ extension GarageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let carCell = tableView.dequeueReusableCell(CarCell.self) else { return .init() }
         carCell.mainView.setViewModel(vm.cells[indexPath.row])
+        carCell.selectionStyle = .none
         return carCell
     }
 }
 
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
+        vm.selectCar(at: indexPath)
     }
 }
