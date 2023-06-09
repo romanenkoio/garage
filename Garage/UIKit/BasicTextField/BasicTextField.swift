@@ -101,9 +101,9 @@ class BasicTextField: UITextField {
                 self?.backgroundColor = .secondaryGray
                 self?.layer.borderWidth = 0
             }
+            self.vm?.validate()
         }
 
-        self.vm?.validate()
         return didResignFirstResponder
     }
     

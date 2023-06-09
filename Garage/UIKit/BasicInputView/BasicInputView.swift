@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 
 class BasicInputView: BasicView {
-    private lazy var errorView: ErrorView = {
+    lazy var errorView: ErrorView = {
         let view = ErrorView()
         return view
     }()
