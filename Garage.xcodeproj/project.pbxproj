@@ -91,6 +91,10 @@
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
+		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
+		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
+		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
+		7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F542A33E417007A5C75 /* CreateRepair+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -234,6 +238,10 @@
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
+		7FFC1F542A33E417007A5C75 /* CreateRepair+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRepair+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -316,6 +324,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7FFC1F4C2A33E417007A5C75 /* CreateRepair */,
 				7F0E09522A3348C8008C2B9A /* Documents */,
 				7F0E09382A32892C008C2B9A /* CreateDocument */,
 				7F0E08E52A2FC766008C2B9A /* Selection */,
@@ -818,6 +827,49 @@
 			path = Garage;
 			sourceTree = "<group>";
 		};
+		7FFC1F4C2A33E417007A5C75 /* CreateRepair */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F4D2A33E417007A5C75 /* Manager */,
+				7FFC1F522A33E417007A5C75 /* ViewController */,
+			);
+			path = CreateRepair;
+			sourceTree = "<group>";
+		};
+		7FFC1F4D2A33E417007A5C75 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F4E2A33E417007A5C75 /* Coordinator */,
+				7FFC1F502A33E417007A5C75 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FFC1F4E2A33E417007A5C75 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FFC1F502A33E417007A5C75 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FFC1F522A33E417007A5C75 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */,
+				7FFC1F542A33E417007A5C75 /* CreateRepair+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1234,6 +1286,7 @@
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
+				7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
@@ -1278,6 +1331,7 @@
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
+				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
@@ -1318,6 +1372,7 @@
 				7F0E090B2A3096F0008C2B9A /* BasicTableView+ViewModel.swift in Sources */,
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
+				7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
@@ -1342,6 +1397,7 @@
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
+				7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */,
 				7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */,
 				7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */,
 			);
