@@ -36,7 +36,7 @@ extension GarageViewController {
         
         
         func selectCar(at index: IndexPath) {
-            
+            guard let cell = cells[safe: index.row] else { return }
         }
     }
 }
