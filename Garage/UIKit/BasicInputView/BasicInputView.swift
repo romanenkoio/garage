@@ -71,7 +71,9 @@ class BasicInputView: BasicView {
     func setViewModel(_ vm: ViewModel?) {
         guard let vm else { return }
         self.vm = vm
-        self.errorView.setViewModel(vm: vm.errorVM)
+        if let errorVM = vm.errorVM {
+            self.errorView.setViewModel(vm: errorVM)
+        }
         self.textField.setViewModel(vm: vm.inputVM)
         if let actionVM = vm.actionImageVM {
             self.actionImage.setViewModel(actionVM)

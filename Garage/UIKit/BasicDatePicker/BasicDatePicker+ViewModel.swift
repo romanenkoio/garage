@@ -17,7 +17,7 @@ extension BasicDatePicker {
 
         init(
             date: Date? = nil,
-            placeholder: String
+            placeholder: String = Date().formatData(formatType: .ddMMyy)
         ) {
             self.date = date
             self.placeholder = placeholder

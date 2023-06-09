@@ -9,12 +9,12 @@ import Foundation
 
 extension BasicInputView {
     final class ViewModel: BasicViewModel {
-        var errorVM: ErrorView.ViewModel
+        var errorVM: ErrorView.ViewModel?
         let inputVM: BasicTextField.ViewModel
         var actionImageVM: ActionImage.ViewModel?
         
         init(
-            errorVM: ErrorView.ViewModel,
+            errorVM: ErrorView.ViewModel? = nil,
             inputVM: BasicTextField.ViewModel,
             actionImageVM: ActionImage.ViewModel? = nil
         ) {

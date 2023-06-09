@@ -13,6 +13,20 @@ final class CreateRepairControllerLayoutManager {
     
     private unowned let vc: CreateRepairViewController
     
+    lazy var fieldStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        return stack
+    }()
+
+    lazy var carField = BasicInputView()
+    lazy var serviseField = BasicInputView()
+    lazy var costField = BasicInputView()
+    lazy var mileageField = BasicInputView()
+    lazy var datePicker = BasicDatePicker()
+    lazy var saveButton = BasicButton()
+    
     // - Init
     init(vc: CreateRepairViewController) {
         self.vc = vc
@@ -32,11 +46,22 @@ fileprivate extension CreateRepairControllerLayoutManager {
     }
     
     private func makeLayout() {
-        
+        vc.contentView.addSubview(fieldStack)
+        fieldStack.addArrangedSubviews([
+            carField,
+            serviseField,
+            costField,
+            mileageField,
+            datePicker,
+            saveButton
+        ])
+
     }
     
     private func makeConstraint() {
-        
+        fieldStack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
