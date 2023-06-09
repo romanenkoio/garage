@@ -151,6 +151,9 @@
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
 		B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */; };
 		B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */; };
+		B9FB290D2A33784300A4CF1D /* BasicIMageScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */; };
+		B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */; };
+		B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -293,6 +296,8 @@
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSelectList.swift; sourceTree = "<group>"; };
 		B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicSelectList+ViewModel.swift"; sourceTree = "<group>"; };
+		B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageScrollableView.swift; sourceTree = "<group>"; };
+		B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicIMageScrollableView+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +310,7 @@
 				7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
+				B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 				7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */,
 			);
@@ -821,6 +827,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9FB290B2A33782900A4CF1D /* BasicImageScrollableView */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
@@ -1122,6 +1129,15 @@
 			path = TestController;
 			sourceTree = "<group>";
 		};
+		B9FB290B2A33782900A4CF1D /* BasicImageScrollableView */ = {
+			isa = PBXGroup;
+			children = (
+				B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */,
+				B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */,
+			);
+			path = BasicImageScrollableView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1146,6 +1162,7 @@
 				7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */,
 				7F0E09152A31D773008C2B9A /* Moya */,
 				7F0E09312A3282D0008C2B9A /* Kingfisher */,
+				B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -1182,6 +1199,7 @@
 				7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
 				7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -1327,6 +1345,7 @@
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
+				B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
@@ -1341,6 +1360,7 @@
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
+				B9FB290D2A33784300A4CF1D /* BasicIMageScrollableView.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
 				7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */,
 				7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */,
@@ -1482,12 +1502,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1508,12 +1529,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1599,6 +1621,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tilltue/TLPhotoPicker.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1636,6 +1666,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */;
+			productName = TLPhotoPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

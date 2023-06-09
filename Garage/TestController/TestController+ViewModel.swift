@@ -19,6 +19,8 @@ extension TestController {
         )
         
         let buttonVM = BasicButton.ViewModel()
+        let pickerVM = BasicImageScrollableView.ViewModel()
+        
         
         override init() {
             super.init()
