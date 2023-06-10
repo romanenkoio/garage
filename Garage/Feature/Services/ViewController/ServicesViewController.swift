@@ -51,14 +51,7 @@ class ServicesViewController: BasicViewController {
         layout.table.setViewModel(vm.tableVM)
         
         vm.$suggestions.sink { [weak self] items in
-            self?.layout.categoriesStack.clearArrangedSubviews()
-            self?.layout.categoriesStack.isHidden = items.isEmpty
-            let views = items.map({
-                let view = SuggestionView()
-                view.setViewModel($0)
-                return view
-            })
-            self?.layout.categoriesStack.addArrangedSubviews(views)
+            self?.layout.hideCategoriesStack(items)
         }
         .store(in: &cancellables)
     }
