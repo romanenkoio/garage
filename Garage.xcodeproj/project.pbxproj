@@ -99,6 +99,9 @@
 		7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F642A352B4A007A5C75 /* CarInfo+ViewModel.swift */; };
 		7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F652A352B4A007A5C75 /* CarInfoViewController.swift */; };
 		7FFC1F6B2A35371A007A5C75 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F6A2A35371A007A5C75 /* RecordType.swift */; };
+		7FFC1F6E2A353D1B007A5C75 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F6D2A353D1B007A5C75 /* RecordView.swift */; };
+		7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F6F2A353D22007A5C75 /* RecordView+ViewModel.swift */; };
+		7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F712A353E31007A5C75 /* Photo.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -250,6 +253,9 @@
 		7FFC1F642A352B4A007A5C75 /* CarInfo+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CarInfo+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F652A352B4A007A5C75 /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoViewController.swift; sourceTree = "<group>"; };
 		7FFC1F6A2A35371A007A5C75 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		7FFC1F6D2A353D1B007A5C75 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		7FFC1F6F2A353D22007A5C75 /* RecordView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordView+ViewModel.swift"; sourceTree = "<group>"; };
+		7FFC1F712A353E31007A5C75 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -783,6 +789,7 @@
 				7F5955F62A2E8C200062A85F /* Document.swift */,
 				7F5955FC2A2E92560062A85F /* Service.swift */,
 				7F5955FE2A2E93BA0062A85F /* Record.swift */,
+				7FFC1F712A353E31007A5C75 /* Photo.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -922,6 +929,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FFC1F6C2A353D0A007A5C75 /* RecordView */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC1F6D2A353D1B007A5C75 /* RecordView.swift */,
+				7FFC1F6F2A353D22007A5C75 /* RecordView+ViewModel.swift */,
+			);
+			path = RecordView;
+			sourceTree = "<group>";
+		};
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -955,6 +971,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7FFC1F6C2A353D0A007A5C75 /* RecordView */,
 				7F0E094B2A3346BB008C2B9A /* DocumentView */,
 				7F0E090C2A30A3F2008C2B9A /* ServiceView */,
 				7F0E08D62A2FA2D3008C2B9A /* SuggestionView */,
@@ -1334,6 +1351,7 @@
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
+				7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
@@ -1392,12 +1410,14 @@
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
+				7FFC1F6E2A353D1B007A5C75 /* RecordView.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
+				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
