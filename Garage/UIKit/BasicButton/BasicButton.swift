@@ -12,6 +12,8 @@ import SnapKit
 enum ButtonStyle {
     case primary
     case secondary
+    case addImage
+    case removeImage
 }
 
 class BasicButton: UIButton {
@@ -56,6 +58,14 @@ class BasicButton: UIButton {
             case .secondary:
                 backgroundColor = .primaryGray
                 setTitleColor(.primaryPink, for: .normal)
+            case .addImage:
+                backgroundColor = .clear
+                tintColor = .gray
+                setImage(UIImage(systemName: "plus.circle"), for: .normal)
+            case .removeImage:
+                backgroundColor = .clear
+                tintColor = .red
+                setImage(UIImage(systemName: "xmark.circle"), for: .normal)
             case .none:
                 backgroundColor = .additionalRed
         }
@@ -69,12 +79,20 @@ class BasicButton: UIButton {
                 backgroundColor = value ? .primaryGray : .secondaryGray
             case .none:
                 backgroundColor = .additionalRed
+            case .addImage:
+                backgroundColor = .clear
+            case .removeImage:
+                backgroundColor = .clear
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
+        vm.$isHidden
+            .sink { [weak self] value in self?.isHidden = value }
+            .store(in: &cancellables)
+            
         vm.$style
             .sink { [weak self] value in self?.style = value }
             .store(in: &cancellables)

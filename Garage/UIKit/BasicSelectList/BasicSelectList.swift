@@ -114,7 +114,7 @@ class BasicSelectList<T: Equatable>: BasicInputView {
         }
 
         guard self.itemViews.count == self.viewModel?.items.count else { return }
-        self.itemViews.enumerated().forEach { index, label in
+        self.itemViews.enumerated().forEach { index, _ in
             if self.viewModel?.items[index] == item {
                 self.textField.attributedText = viewModel?.titles[index].attributedString(
                     font: .custom(size: 17, weight: .medium),

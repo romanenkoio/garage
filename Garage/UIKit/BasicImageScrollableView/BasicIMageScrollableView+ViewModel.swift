@@ -6,16 +6,26 @@
 //
 
 import Foundation
+import UIKit
 
-extension BasicImageScrollableView {
+extension BasicImageListView {
     class ViewModel: BasicViewModel {
-        let buttonVM = BasicButton.ViewModel()
+        
+        @Published var contentType = BasicImageListViewType.addPhoto
+        @Published var items: [UIImage] = []
+        @Published var selectedIndex: Int?
         
         override init() {
-            buttonVM.style = .primary
-            buttonVM.title = "Test"
             super.init()
-            
         }
+        
+        func didAddedImage(_ image: UIImage) {
+            self.items.append(image)
+            self.items.enumerated().forEach { index, value in
+                
+            }
+        }
+
     }
 }
+

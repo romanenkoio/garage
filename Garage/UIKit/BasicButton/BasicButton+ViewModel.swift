@@ -14,10 +14,12 @@ extension BasicButton {
         @Published var isEnabled: Bool
         @Published var action: Action?
         @Published var style: ButtonStyle
+        @Published var isHidden: Bool
 
         init(
             title: String? = nil,
             isEnabled: Bool = true,
+            isHidden: Bool = false,
             style: ButtonStyle = .primary,
             action: Action? = nil
         ) {
@@ -25,8 +27,7 @@ extension BasicButton {
             self.isEnabled = isEnabled
             self.action = action
             self.style = style
+            self.isHidden = isHidden
         }
     }
-
- 
 }

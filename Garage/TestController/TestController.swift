@@ -10,7 +10,7 @@ import UIKit
 class TestController: BasicViewController {
     lazy var basicInputView = BasicSelectList<TestModel>()
     lazy var button = BasicButton()
-    lazy var picker = BasicImageScrollableView()
+    lazy var picker = BasicImageListView()
     
     let vm: ViewModel
     
