@@ -98,6 +98,7 @@
 		7FFC1F672A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F622A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift */; };
 		7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F642A352B4A007A5C75 /* CarInfo+ViewModel.swift */; };
 		7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F652A352B4A007A5C75 /* CarInfoViewController.swift */; };
+		7FFC1F6B2A35371A007A5C75 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F6A2A35371A007A5C75 /* RecordType.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -248,6 +249,7 @@
 		7FFC1F622A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F642A352B4A007A5C75 /* CarInfo+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CarInfo+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F652A352B4A007A5C75 /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoViewController.swift; sourceTree = "<group>"; };
+		7FFC1F6A2A35371A007A5C75 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 			children = (
 				7F5955FA2A2E8D420062A85F /* DocumentType.swift */,
 				7F5956002A2E95F10062A85F /* ServiceType.swift */,
+				7FFC1F6A2A35371A007A5C75 /* RecordType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1409,6 +1412,7 @@
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
+				7FFC1F6B2A35371A007A5C75 /* RecordType.swift in Sources */,
 				7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
 				B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */,

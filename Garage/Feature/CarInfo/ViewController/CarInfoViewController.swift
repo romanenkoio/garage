@@ -45,6 +45,7 @@ class CarInfoViewController: BasicViewController {
         layout.yearLabel.setViewModel(vm.yearLabelVM)
         layout.mileageLabel.setViewModel(vm.milageLabelVM)
         layout.vinLabel.setViewModel(vm.vinLabelVM)
+        layout.segment.setViewModel(vm.segmentVM)
         
         vm.$logo.sink { [weak self] logo in
             self?.layout.logoImage.image = logo

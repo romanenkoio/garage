@@ -17,6 +17,7 @@ extension CarInfoViewController {
         let yearLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = BasicLabel.ViewModel()
         let milageLabelVM = BasicLabel.ViewModel()
+        let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         
         @Published var logo: UIImage?
         
@@ -31,6 +32,12 @@ extension CarInfoViewController {
             if let data = car.imageData {
                 self.logo = UIImage(data: data)
             }
+            
+            segmentVM = .init(
+                RecordType.allCases,
+                selected: .future,
+                titles: { items in items.map({ $0.title}) }
+            )
         }
     }
 }

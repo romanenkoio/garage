@@ -34,6 +34,7 @@ final class CarInfoControllerLayoutManager {
     lazy var yearLabel = BasicLabel()
     lazy var vinLabel = BasicLabel()
     lazy var mileageLabel = BasicLabel()
+    lazy var segment = BasicSegmentView<RecordType>()
     
     // - Init
     init(vc: CarInfoViewController) {
@@ -62,6 +63,7 @@ fileprivate extension CarInfoControllerLayoutManager {
             vinLabel,
             mileageLabel
         ])
+        vc.contentView.addSubview(segment)
     }
     
     private func makeConstraint() {
@@ -71,6 +73,11 @@ fileprivate extension CarInfoControllerLayoutManager {
         
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
+        }
+        
+        segment.snp.makeConstraints { make in
+            make.top.equalTo(topStack.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     
