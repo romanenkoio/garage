@@ -11,16 +11,18 @@ extension CarView {
     class ViewModel: BasicViewModel {
         let brandLabelVM = BasicLabel.ViewModel()
         let modelLabelVM = BasicLabel.ViewModel()
-        let logoURL: String
-        
+        var image: UIImage? = UIImage(systemName: "car")
+
         init(
-            brand: String,
-            model: String? = nil,
-            logoURL: String
+            car: Car
         ) {
-            self.brandLabelVM.text = brand
-            self.modelLabelVM.text = model
-            self.logoURL = logoURL
+            self.brandLabelVM.text = car.brand
+            self.modelLabelVM.text = car.model
+            if let data = car.imageData,
+               let image = UIImage(data: data)
+            {
+                self.image = image
+            }
         }
     }
 }

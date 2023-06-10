@@ -19,12 +19,12 @@ extension GarageApi: TargetType {
     var baseURL: URL {
         switch self {
         case .getLogo:
-            return URL(string: "https://46.175.171.150/cars-logos/api")!
+            return URL(string: "https://pictures.shoop-vooop.cloudns.nz/")!
         default:
             return URL(string: "https://vpic.nhtsa.dot.gov/api")!
         }
     }
-    
+
     var path: String {
         switch self {
         case .decodeWIN(let win):
@@ -37,7 +37,7 @@ extension GarageApi: TargetType {
             return "/vehicles/getmodelsformake/\(brand)"
 
         case .getLogo(let brand):
-            return "/images/\(brand.lowercased())_resized.png"
+            return "cars-logos/api/images/\(brand)_resized.png"
         }
         
     }
@@ -59,6 +59,8 @@ extension GarageApi: TargetType {
     var params: [String : Any]? {
         var params = [String : Any]()
         switch self {
+        case .getLogo:
+            return nil
         default:
             params["format"] = "json"
         }

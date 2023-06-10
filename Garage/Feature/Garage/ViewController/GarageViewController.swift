@@ -85,11 +85,7 @@ extension GarageViewController: UITableViewDataSource {
         guard let carCell = tableView.dequeueReusableCell(CarCell.self),
               let vm = vm.cells[safe: indexPath.row]
         else { return .init() }
-        carCell.mainView.setViewModel(.init(
-            brand: vm.brand,
-            model: vm.model,
-            logoURL: "https://46.175.171.150/cars-logos/api/images/\(vm.brand.lowercased())_resized.png"
-        ))
+        carCell.mainView.setViewModel(.init(car: vm))
         carCell.selectionStyle = .none
         return carCell
     }

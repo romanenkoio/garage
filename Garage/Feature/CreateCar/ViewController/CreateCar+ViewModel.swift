@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 extension CreateCarViewController {
     final class ViewModel: BasicControllerModel {
@@ -28,6 +29,7 @@ extension CreateCarViewController {
             isEnabled: false,
             style: .primary
         )
+        var logoImage: UIImage?
         
         override init() {
             brandFieldVM = .init(
@@ -72,7 +74,8 @@ extension CreateCarViewController {
                     generation: self.generationFieldVM.text,
                     year: self.yearFieldVM.text.toInt(),
                     win: self.winFieldVM.text,
-                    mileage: self.mileageFieldVM.text.toInt() ?? .zero
+                    mileage: self.mileageFieldVM.text.toInt() ?? .zero,
+                    logo: self.logoImage?.pngData()
                 )
                 RealmManager<Car>().write(object: car)
                 self.succesCreateCompletion?()
@@ -206,6 +209,21 @@ extension CreateCarViewController {
             }
         }
         
+        func getLogoBy(_ brand: String) async throws {
+            Task { @MainActor in
+                do {
+                    guard let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else { return }
+                    let request = URLRequest(url: url)
+                    let (data, _) = try await URLSession.shared.data(for: request)
+                    if let image = UIImage(data: data) {
+                        self.logoImage = image
+                    }
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
+        
         func parseDecodedWin(values: [VINDeocdedValue]) {
             let clearValues = values.filter({ !$0.value.wrapped.isEmpty && $0.value.wrapped != "Not Applicable"})
             VINDecodedType.allCases.forEach { type in
@@ -216,25 +234,12 @@ extension CreateCarViewController {
                 case .make:
                     brandFieldVM.text = data.value.wrapped
                     Task { @MainActor in
-                        do {
-                            let result = try await NetworkManager
-                                .sh
-                                .request(
-                                    GarageApi.getLogo(brand: data.value.wrapped),
-                                    model: Data.self
-                                )
-                        } catch let error {
-                            print(error)
-                        }
+                        try? await getLogoBy(data.value.wrapped)
                     }
                 case .year:
                     yearFieldVM.text = data.value.wrapped
                 }
             }
-            
-            
         }
     }
-    
-  
 }

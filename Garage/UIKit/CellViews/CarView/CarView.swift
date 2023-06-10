@@ -90,5 +90,6 @@ class CarView: BasicView {
         self.cancellables.removeAll()
         brandLabel.setViewModel(vm.brandLabelVM)
         modelLabel.setViewModel(vm.modelLabelVM)
+        self.imageView.image = vm.image
     }
 }
