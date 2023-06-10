@@ -17,6 +17,11 @@ enum BasicImageListViewType {
 }
 
 class BasicImageListView: BasicView {
+    enum ImageType {
+        case delete
+        case append
+    }
+    
     private var imagePicker: PHPickerViewController {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -36,7 +41,7 @@ class BasicImageListView: BasicView {
     
     private var alertController: UIAlertController  {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let choisePhotoAction = UIAlertAction(title: "Выбрать фото", style: .default) {[weak self] _ in
+        let choisePhotoAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
             self?.presentPicker()
         }
     
@@ -63,7 +68,6 @@ class BasicImageListView: BasicView {
         super.init()
         layoutElements()
         makeConstraints()
-        makeItems()
     }
     
     private func layoutElements() {
@@ -82,63 +86,77 @@ class BasicImageListView: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
-        vm.$items.sink { images in
-            images.enumerated().forEach {[weak self] index, image in
-                self?.items[index].setViewModel(
-                    .init(buttonVM:
-                            .init(action:
-                                    .touchUpInside {
-                                        self?.removeImages(at: index, vm: vm)
-                                        vm.items.remove(at: index)
-                                    }),
-                          image: image,
-                          buttonStyle: .removeImage
-                    )
+        
+        vm.$items.sink {[weak self] images in
+            self?.stack.clearArrangedSubviews()
+            self?.items.removeAll()
+            
+            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
+                self?.makeItems(
+                    atFirst: cycleIndex,
+                    for: .append
                 )
+                
+                images.enumerated().forEach { imageIndex, image in
+                    
+                    if imageIndex == cycleIndex {
+                        self?.makeItems(
+                            atFirst: imageIndex,
+                            atSecond: cycleIndex,
+                            for: .delete,
+                            with: image
+                        )
+                    }
+                }
             }
         }
         .store(in: &cancellables)
-        
-        
     }
     
-    func makeItems(with images: [UIImage]? = nil) {
-        stack.clearArrangedSubviews()
-        self.items.removeAll()
-        guard images == nil else { return }
-            stride(from: 0, to: 5, by: 1).forEach { index in
+    func makeItems(
+        atFirst index: Int,
+        atSecond secondIndex: Int? = nil,
+        for type: ImageType,
+        with image: UIImage? = nil
+    ) {
+        switch type {
+            case .append:
                 let imageView = BasicImageViewWithButton()
                 imageView.setViewModel(
-                    .init(buttonVM:
-                            .init(action:
-                                    .touchUpInside {
-                                            self.viewModel?.selectedIndex = index
-                                            self.presentAlert()
-                                    }),
-                          image: UIImage(),
-                          buttonStyle: .addImage
+                    .init(
+                        image: UIImage(),
+                        buttonStyle: .addImage,
+                        buttonVM: .init(
+                            action: .touchUpInside {[weak self] in
+                                self?.viewModel?.selectedIndex = index
+                                self?.presentAlert()
+                            })
                     )
                 )
+
+                items.append(imageView)
+                stack.addArrangedSubview(imageView)
                 
-                self.items.append(imageView)
+            case .delete:
+                guard let image,
+                      let secondIndex else { return }
+                
+                self.stack.arrangedSubviews[index].removeFromSuperview()
+                self.items.remove(at: index)
+                
+                let imageView = BasicImageViewWithButton()
+                imageView.setViewModel(
+                    .init(
+                        image: image,
+                        buttonStyle: .removeImage,
+                        buttonVM: .init(
+                            action: .touchUpInside {[weak self] in
+                                self?.viewModel?.items.remove(at: secondIndex)
+                            })))
+                items.append(imageView)
                 stack.addArrangedSubview(imageView)
         }
-    }
-    
-    private func removeImages(at index: Int, vm: ViewModel) {
-        
-        self.items[index].setViewModel(
-            .init(buttonVM:
-                    .init(action:
-                            .touchUpInside {
-                                self.presentAlert()
-                                vm.selectedIndex = index
-                            }
-                    ),
-                  image: UIImage(),
-                  buttonStyle: .addImage
-            )
-        )
+            
     }
     
     required init?(coder: NSCoder) {

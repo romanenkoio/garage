@@ -13,7 +13,7 @@ extension BasicImageViewWithButton {
         @Published var image: UIImage
         @Published var buttonStyle: ButtonStyle
         
-        init(buttonVM: BasicButton.ViewModel, image: UIImage, buttonStyle: ButtonStyle) {
+        init(image: UIImage, buttonStyle: ButtonStyle, buttonVM: BasicButton.ViewModel) {
             self.buttonVM = buttonVM
             self.image = image
             self.buttonStyle = buttonStyle

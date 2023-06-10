@@ -24,7 +24,7 @@ class BasicImageViewWithButton: UIImageView {
         layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         cornerRadius = 8
         backgroundColor = .primaryGray
-        contentMode = .scaleToFill
+        contentMode = .scaleAspectFill
         isUserInteractionEnabled = true
         makeLayout()
     }
