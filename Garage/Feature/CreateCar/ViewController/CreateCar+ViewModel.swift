@@ -215,6 +215,18 @@ extension CreateCarViewController {
                     modelFieldVM.text = data.value.wrapped
                 case .make:
                     brandFieldVM.text = data.value.wrapped
+                    Task { @MainActor in
+                        do {
+                            let result = try await NetworkManager
+                                .sh
+                                .request(
+                                    GarageApi.getLogo(brand: data.value.wrapped),
+                                    model: Data.self
+                                )
+                        } catch let error {
+                            print(error)
+                        }
+                    }
                 case .year:
                     yearFieldVM.text = data.value.wrapped
                 }

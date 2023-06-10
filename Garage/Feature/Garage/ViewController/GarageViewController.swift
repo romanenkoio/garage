@@ -98,5 +98,6 @@ extension GarageViewController: UITableViewDataSource {
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCar = vm.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
     }
 }

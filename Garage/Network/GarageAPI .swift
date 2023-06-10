@@ -12,11 +12,17 @@ enum GarageApi {
     case brands
     case models(brand: String)
     case decodeWIN(win: String)
+    case getLogo(brand: String)
 }
 
 extension GarageApi: TargetType {
     var baseURL: URL {
-        return URL(string: "https://vpic.nhtsa.dot.gov/api")!
+        switch self {
+        case .getLogo:
+            return URL(string: "https://46.175.171.150/cars-logos/api")!
+        default:
+            return URL(string: "https://vpic.nhtsa.dot.gov/api")!
+        }
     }
     
     var path: String {
@@ -30,6 +36,8 @@ extension GarageApi: TargetType {
         case .models(let brand):
             return "/vehicles/getmodelsformake/\(brand)"
 
+        case .getLogo(let brand):
+            return "/images/\(brand.lowercased())_resized.png"
         }
         
     }
