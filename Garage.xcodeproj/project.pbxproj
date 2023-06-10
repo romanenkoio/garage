@@ -146,6 +146,8 @@
 		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
 		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
+		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
+		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
@@ -291,6 +293,8 @@
 		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
+		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -827,6 +831,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
 				B9FB290B2A33782900A4CF1D /* BasicImageScrollableView */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
@@ -1119,6 +1124,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */,
+				B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */,
+			);
+			path = BasicIMageViewWithButton;
+			sourceTree = "<group>";
+		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1277,7 @@
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
+				B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
@@ -1354,6 +1369,7 @@
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
+				B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
