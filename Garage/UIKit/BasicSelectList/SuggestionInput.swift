@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 import UIKit
 
-class BasicSelectList<T: Equatable>: BasicInputView {
+class SuggestionInput<T: Equatable>: BasicInputView {
     typealias Item = T
     lazy var stack: BasicStackView = {
         let stack = BasicStackView()

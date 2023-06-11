@@ -160,7 +160,7 @@
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
-		B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */; };
+		B9FB29072A31F48100A4CF1D /* SuggestionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29062A31F48100A4CF1D /* SuggestionInput.swift */; };
 		B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -313,7 +313,7 @@
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
-		B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSelectList.swift; sourceTree = "<group>"; };
+		B9FB29062A31F48100A4CF1D /* SuggestionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionInput.swift; sourceTree = "<group>"; };
 		B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicSelectList+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1026,7 +1026,7 @@
 		B978F2EA2A2E8F4C0076D326 /* BasicSelectList */ = {
 			isa = PBXGroup;
 			children = (
-				B9FB29062A31F48100A4CF1D /* BasicSelectList.swift */,
+				B9FB29062A31F48100A4CF1D /* SuggestionInput.swift */,
 				B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */,
 			);
 			path = BasicSelectList;
@@ -1442,7 +1442,7 @@
 				7FFC1F6B2A35371A007A5C75 /* RecordType.swift in Sources */,
 				7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
-				B9FB29072A31F48100A4CF1D /* BasicSelectList.swift in Sources */,
+				B9FB29072A31F48100A4CF1D /* SuggestionInput.swift in Sources */,
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				7F0E09222A324A90008C2B9A /* Collection.swift in Sources */,

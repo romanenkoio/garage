@@ -20,7 +20,7 @@ final class CreateDocumentControllerLayoutManager {
         return stack
     }()
 
-    lazy var typeField = BasicInputView()
+    lazy var typeField = SuggestionInput<DocumentType>()
     lazy var datePicker = RangeDatePicker()
     lazy var saveButton = BasicButton()
     

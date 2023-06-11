@@ -8,7 +8,7 @@
 import UIKit
 
 class TestController: BasicViewController {
-    lazy var basicInputView = BasicSelectList<TestModel>()
+    lazy var basicInputView = SuggestionInput<TestModel>()
     lazy var button = BasicButton()
     let vm: ViewModel
     

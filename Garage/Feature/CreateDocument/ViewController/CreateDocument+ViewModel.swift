@@ -17,10 +17,11 @@ extension CreateDocumentViewController {
         )
         
         let datePickerVM = RangeDatePicker.ViewModel()
-        let typeFieldVM = BasicInputView.ViewModel(
+        let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
+            DocumentType.allCases,
+            titles: { items in items.map({ $0.title })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Тип документа")
-        )
+            inputVM: .init(placeholder: "Тип документа"))
         
         var suggestionCompletion: SelectArrayCompletion?
         var saveCompletion: Completion?
@@ -28,12 +29,6 @@ extension CreateDocumentViewController {
         override init() {
             super.init()
             title = "Добавление документа"
-            
-            typeFieldVM.actionImageVM = .init(
-                action: { [ weak self] in
-                    self?.suggestionCompletion?(DocumentType.allCases)
-                }, isEnable: true
-            )
             
             saveButtonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }

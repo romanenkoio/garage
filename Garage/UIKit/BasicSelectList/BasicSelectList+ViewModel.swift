@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BasicSelectList {
+extension SuggestionInput {
     final class GenericViewModel<T: Equatable>: BasicViewModel {
         typealias Item = T
         

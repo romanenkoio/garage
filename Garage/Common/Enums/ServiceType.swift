@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ServiceType: CaseIterable {
+enum ServiceType: CaseIterable, Equatable {
     case oil
     case gearOil
     case engineFilter
