@@ -74,8 +74,14 @@ class BasicViewController: UIViewController {
     func singleWillAppear() { }
 
     func binding() {
-        viewModel.$title.sink { [weak self] title in
+        viewModel.$title.receive(on: DispatchQueue.main).sink { [weak self] title in
             self?.title = title
+        }
+        .store(in: &cancellables)
+        
+        viewModel.$isLoadind.sink { [weak self] value in
+            guard let self else { return }
+            value ? self.startLoader() : self.stopLoader()
         }
         .store(in: &cancellables)
     }

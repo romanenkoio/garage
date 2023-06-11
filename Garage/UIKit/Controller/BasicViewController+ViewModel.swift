@@ -10,7 +10,8 @@ import Combine
 
 extension BasicViewController {
     class BasicControllerModel {
-        @Published var title: String?
+        @Published var title: String = .empty
+        @Published var isLoadind: Bool = false
         
         var cancellables: Set<AnyCancellable> = []
         let validator = FormValidator()
