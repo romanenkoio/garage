@@ -31,15 +31,15 @@ class BasicViewController: UIViewController {
     
     lazy var loaderView: BasicView = {
         let view = BasicView()
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .clear
         view.cornerRadius = 0
         return view
     }()
     
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
-        spinner.style = .medium
-        spinner.tintColor = .primaryPink
+        spinner.style = .large
+        spinner.color = .primaryPink
         return spinner
     }()
     
@@ -79,7 +79,7 @@ class BasicViewController: UIViewController {
         }
         .store(in: &cancellables)
         
-        viewModel.$isLoadind.sink { [weak self] value in
+        viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
             value ? self.startLoader() : self.stopLoader()
         }

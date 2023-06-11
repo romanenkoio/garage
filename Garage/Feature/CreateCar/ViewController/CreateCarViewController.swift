@@ -42,6 +42,7 @@ class CreateCarViewController: BasicViewController {
     }
 
     override func binding() {
+        super.binding()
         layout.brandField.setViewModel(vm.brandFieldVM)
         layout.modelField.setViewModel(vm.modelFieldVM)
         layout.winField.setViewModel(vm.winFieldVM)
@@ -49,6 +50,11 @@ class CreateCarViewController: BasicViewController {
         layout.mileageField.setViewModel(vm.mileageFieldVM)
         layout.generationField.setViewModel(vm.generationFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        
+        vm.isLoadind.sink { [weak self] value in
+            value ? self?.startLoader() : self?.stopLoader()
+        }
+        .store(in: &cancellables)
         
         vm.succesCreateCompletion = { [weak self] in
             self?.coordinator.navigateTo(CommonNavigationRoute.close)

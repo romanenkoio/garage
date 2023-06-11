@@ -11,9 +11,13 @@ import Combine
 extension BasicViewController {
     class BasicControllerModel {
         @Published var title: String = .empty
-        @Published var isLoadind: Bool = false
+        @Published var isLoadind: PassthroughSubject<Bool, Never> = .init()
         
         var cancellables: Set<AnyCancellable> = []
         let validator = FormValidator()
+        
+        init() {
+            print("inited super model")
+        }
     }
 }

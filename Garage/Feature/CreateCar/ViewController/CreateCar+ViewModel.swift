@@ -195,6 +195,7 @@ extension CreateCarViewController {
         func decodeVIN() {
             Task { @MainActor in
                 do {
+                    self.isLoadind.send(true)
                     guard !self.winFieldVM.text.isEmpty else { return }
                     let result = try await NetworkManager
                         .sh
@@ -203,8 +204,10 @@ extension CreateCarViewController {
                             model: Wrapper<VINDeocdedValue>.self
                         ).result
                     parseDecodedWin(values: result)
+                    self.isLoadind.send(false)
                 } catch let error {
                     print(error)
+                    self.isLoadind.send(false)
                 }
             }
         }
@@ -236,6 +239,7 @@ extension CreateCarViewController {
                     Task { @MainActor in
                         try? await getLogoBy(data.value.wrapped)
                     }
+                    modelFieldVM.actionImageVM?.isEnabled = true
                 case .year:
                     yearFieldVM.text = data.value.wrapped
                 }
