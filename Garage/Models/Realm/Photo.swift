@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import UIKit
 
-final class Photo: Object {
+final class Photo: Object, Codable {
     @Persisted var id: String
     @Persisted var documentId: String?
     @Persisted var recordId: String?

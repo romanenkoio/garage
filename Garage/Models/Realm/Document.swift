@@ -8,7 +8,7 @@
 import RealmSwift
 import Foundation
 
-final class Document: Object {
+final class Document: Object, Codable {
     @Persisted var id: String
     @Persisted var rawType: String
     @Persisted var startDate: Date?

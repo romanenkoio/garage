@@ -8,7 +8,7 @@
 import RealmSwift
 import UIKit
 
-final class Car: Object {
+final class Car: Object, Codable {
     @Persisted var id: String
     @Persisted var brand: String
     @Persisted var model: String

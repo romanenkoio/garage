@@ -8,7 +8,7 @@
 import RealmSwift
 import Foundation
 
-final class Record: Object {
+final class Record: Object, Codable {
     @Persisted var id: String
     @Persisted var carID: Int
     @Persisted var serviceID: Int?
