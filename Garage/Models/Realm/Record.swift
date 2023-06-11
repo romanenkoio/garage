@@ -15,5 +15,6 @@ final class Record: Object, Codable {
     @Persisted var cost: Double?
     @Persisted var mileage: Double
     @Persisted var date: Date
-    @Persisted var comment: Date?
+    @Persisted var comment: String?
 }
+
