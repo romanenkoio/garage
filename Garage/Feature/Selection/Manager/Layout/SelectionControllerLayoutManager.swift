@@ -18,10 +18,12 @@ final class SelectionControllerLayoutManager {
         return field
     }()
     
-    lazy var table: UITableView = {
-        let table = UITableView()
-        table.dataSource = vc
-        table.delegate = vc
+    lazy var table: BasicTableView = {
+        let table = BasicTableView()
+        table.setupTable(
+            dataSource: vc,
+            delegate: vc
+        )
         table.register(SelectCell.self)
         return table
     }()

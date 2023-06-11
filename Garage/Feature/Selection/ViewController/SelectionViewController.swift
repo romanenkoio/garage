@@ -43,9 +43,12 @@ class SelectionViewController: BasicViewController {
     override func binding() {
         layout.saveButton.setViewModel(vm.saveButtonVM)
         layout.searchField.setViewModel(vm.searchVM)
+        layout.table.setViewModel(vm.tableVM)
         
-        vm.$cells.sink { [weak self] _ in
-            self?.layout.table.reloadData()
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+            self?.layout.table.reload()
         }
         .store(in: &cancellables)
     }
@@ -69,12 +72,12 @@ extension SelectionViewController {
 
 extension SelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.cells.count
+        return vm.tableVM.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let selectionCell = tableView.dequeueReusableCell(SelectCell.self, for: indexPath),
-              let item = vm.cells[safe: indexPath.row]
+              let item = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
         selectionCell.mainView.setViewModel(UniversalSelectionView.ViewModel(item))
         return selectionCell

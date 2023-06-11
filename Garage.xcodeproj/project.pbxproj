@@ -15,7 +15,6 @@
 		7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */; };
 		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
 		7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E088D2A2F320A008C2B9A /* Lottie */; };
-		7F0E08922A2F3364008C2B9A /* garage.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08912A2F3364008C2B9A /* garage.json */; };
 		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
 		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
 		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
@@ -173,7 +172,6 @@
 		7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Garage+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCoordinator.swift; sourceTree = "<group>"; };
 		7F0E08892A2F300C008C2B9A /* Animations.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Animations.xcassets; sourceTree = "<group>"; };
-		7F0E08912A2F3364008C2B9A /* garage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = garage.json; path = UIKit/garage.json; sourceTree = "<group>"; };
 		7F0E08932A2F3731008C2B9A /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
 		7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08982A2F419E008C2B9A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -837,7 +835,6 @@
 				B978F38A2A2E9D870076D326 /* TabBarController */,
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F5955ED2A2E8ABB0062A85F /* Models */,
-				7F0E08912A2F3364008C2B9A /* garage.json */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
 				7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */,
@@ -1329,7 +1326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0E08922A2F3364008C2B9A /* garage.json in Resources */,
 				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */,
 				B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */,

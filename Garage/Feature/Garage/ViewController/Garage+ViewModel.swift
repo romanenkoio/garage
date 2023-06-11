@@ -9,23 +9,22 @@
 import UIKit
 
 extension GarageViewController {
-    final class ViewModel: BasicControllerModel {
-        let addCarButton = BasicButton.ViewModel(
-            title: "Добавить машину",
-            style: .primary
-        )
-        
-        @Published
-        private(set) var cells: [Car] = []
-        
+    final class ViewModel: BasicControllerModel {        
+
+        let tableVM = BasicTableView.GenericViewModel<Car>()
+
         override init() {
             super.init()
             title = "Мой гараж"
             readCars()
+            tableVM.setupEmptyState(
+                labelVM: .init(text: "Нет данных"),
+                image: UIImage(systemName: "car")
+            )
         }
         
         func readCars() {
-            cells = RealmManager<Car>().read()
+            tableVM.setCells(RealmManager<Car>().read())
         }
     }
 }
