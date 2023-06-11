@@ -168,4 +168,3 @@ class BasicSelectList<T: Equatable>: BasicInputView {
         }
     }
 }
-
