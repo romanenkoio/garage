@@ -10,7 +10,7 @@ import UIKit
 extension BasicImageViewWithButton {
     class ViewModel: BasicViewModel {
         var buttonVM: BasicButton.ViewModel
-        @Published var image: UIImage
+        @Published var image: UIImage?
         @Published var buttonStyle: ButtonStyle
         
         init(image: UIImage, buttonStyle: ButtonStyle, buttonVM: BasicButton.ViewModel) {

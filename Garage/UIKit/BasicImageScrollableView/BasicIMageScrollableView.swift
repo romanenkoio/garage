@@ -152,7 +152,10 @@ class BasicImageListView: BasicView {
                         buttonVM: .init(
                             action: .touchUpInside {[weak self] in
                                 self?.viewModel?.items.remove(at: secondIndex)
-                            })))
+                            })
+                    )
+                )
+                
                 items.append(imageView)
                 stack.addArrangedSubview(imageView)
         }

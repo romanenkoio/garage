@@ -148,6 +148,9 @@
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
 		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
 		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
+		B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */; };
+		B9D96E472A37B04900909B33 /* FullSizePhotoControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */; };
+		B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
@@ -295,6 +298,9 @@
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
 		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerControllerCoordinator.swift; sourceTree = "<group>"; };
+		B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerViewController.swift; sourceTree = "<group>"; };
+		B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FullSizePhotoController+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -936,6 +942,7 @@
 		B978F2F12A2E8F4C0076D326 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
 				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
 				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
 			);
@@ -1133,6 +1140,40 @@
 			path = BasicIMageViewWithButton;
 			sourceTree = "<group>";
 		};
+		B9D96E3C2A37B04900909B33 /* FullSizePhotoController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E3D2A37B04900909B33 /* Manager */,
+				B9D96E422A37B04900909B33 /* ViewController */,
+			);
+			path = FullSizePhotoController;
+			sourceTree = "<group>";
+		};
+		B9D96E3D2A37B04900909B33 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E3E2A37B04900909B33 /* Coordinator */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B9D96E3E2A37B04900909B33 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9D96E422A37B04900909B33 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */,
+				B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1259,6 +1300,7 @@
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
+				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
@@ -1358,6 +1400,7 @@
 				7F0E09342A3282E0008C2B9A /* UIImageView.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
+				B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */,
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */,
@@ -1372,6 +1415,7 @@
 				B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
+				B9D96E472A37B04900909B33 /* FullSizePhotoControllerViewController.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
