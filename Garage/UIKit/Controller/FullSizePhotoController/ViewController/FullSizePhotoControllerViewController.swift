@@ -12,7 +12,15 @@ class FullSizePhotoControllerViewController: BasicViewController {
 
     // - UI
     typealias Coordinator = FullSizePhotoControllerControllerCoordinator
-    
+    lazy var collectionView: BasicCollectionView = {
+        let collection = BasicCollectionView()
+        collection.setupCollection(
+            dataSource: self,
+            delegate: self
+        )
+        collection.register(<#T##type: T.Type##T.Type#>)
+        return collection
+    }()
     
     // - Property
     private(set) var vm: ViewModel
@@ -41,6 +49,25 @@ class FullSizePhotoControllerViewController: BasicViewController {
     override func binding() {
         
     }
+    
+}
+
+// MARK: - CollectionViewDataSource
+
+extension FullSizePhotoControllerViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+}
+
+// MARK: - CollectionViewDelegateFlowLayout
+
+extension FullSizePhotoControllerViewController: UICollectionViewDelegateFlowLayout {
     
 }
 

@@ -61,7 +61,7 @@ class BasicImageListView: BasicView {
         return stack
     }()
     
-    private var items: [BasicImageViewWithButton] = []
+    private var items: [BasicImageButton] = []
     private(set) var viewModel: ViewModel?
     
     override init() {
@@ -92,20 +92,12 @@ class BasicImageListView: BasicView {
             self?.items.removeAll()
             
             stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
-                self?.makeItems(
-                    atFirst: cycleIndex,
-                    for: .append
-                )
+                self?.makeItems(at: cycleIndex)
                 
                 images.enumerated().forEach { imageIndex, image in
                     
                     if imageIndex == cycleIndex {
-                        self?.makeItems(
-                            atFirst: imageIndex,
-                            atSecond: cycleIndex,
-                            for: .delete,
-                            with: image
-                        )
+                        self?.makeRemoveItems(at: imageIndex, with: image)
                     }
                 }
             }
@@ -113,53 +105,45 @@ class BasicImageListView: BasicView {
         .store(in: &cancellables)
     }
     
-    func makeItems(
-        atFirst index: Int,
-        atSecond secondIndex: Int? = nil,
-        for type: ImageType,
-        with image: UIImage? = nil
-    ) {
-        switch type {
-            case .append:
-                let imageView = BasicImageViewWithButton()
-                imageView.setViewModel(
-                    .init(
-                        image: UIImage(),
-                        buttonStyle: .addImage,
-                        buttonVM: .init(
-                            action: .touchUpInside {[weak self] in
-                                self?.viewModel?.selectedIndex = index
-                                self?.presentAlert()
-                            })
-                    )
-                )
-
-                items.append(imageView)
-                stack.addArrangedSubview(imageView)
-                
-            case .delete:
-                guard let image,
-                      let secondIndex else { return }
-                
-                self.stack.arrangedSubviews[index].removeFromSuperview()
-                self.items.remove(at: index)
-                
-                let imageView = BasicImageViewWithButton()
-                imageView.setViewModel(
-                    .init(
-                        image: image,
-                        buttonStyle: .removeImage,
-                        buttonVM: .init(
-                            action: .touchUpInside {[weak self] in
-                                self?.viewModel?.items.remove(at: secondIndex)
-                            })
-                    )
-                )
-                
-                items.append(imageView)
-                stack.addArrangedSubview(imageView)
-        }
-            
+    private func makeRemoveItems(at index: Int, with image: UIImage) {
+        self.stack.arrangedSubviews[index].removeFromSuperview()
+        self.items.remove(at: index)
+        
+        let imageView = BasicImageButton()
+        imageView.setViewModel(.init(
+            action: { [weak self] in
+                print("Test image action")
+            },
+            image: image
+            ,
+            buttonVM: .init(
+                style: .removeImage,
+                action: .touchUpInside { [weak self] in
+                    self?.viewModel?.items.remove(at: index)
+                })
+        ))
+        
+        items.append(imageView)
+        stack.addArrangedSubview(imageView)
+    }
+    
+    func makeItems(at index: Int) {
+        let imageView = BasicImageButton()
+        imageView.setViewModel(.init(
+            action: {[weak self] in
+                print("test from view")
+            },
+            image: UIImage(),
+            buttonVM: .init(
+                style: .addImage,
+                action: .touchUpInside {[weak self] in
+                    self?.viewModel?.selectedIndex = index
+                    self?.presentAlert()
+                })
+        ))
+        
+        items.append(imageView)
+        stack.addArrangedSubview(imageView)
     }
     
     required init?(coder: NSCoder) {

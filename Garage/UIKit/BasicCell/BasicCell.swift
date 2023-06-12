@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BasicCell<T: UIView>: UITableViewCell {
+final class BasicTableCell<T: UIView>: UITableViewCell {
     var mainView = T()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,5 +26,4 @@ final class BasicCell<T: UIView>: UITableViewCell {
             make.edges.equalToSuperview()
         }
     }
-    
 }

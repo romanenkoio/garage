@@ -9,24 +9,26 @@ import UIKit
 import Combine
 
 
-class BasicImageViewWithButton: UIImageView {
-    var cancellables: Set<AnyCancellable> = []
-    lazy var actionButton = BasicButton()
+class BasicImageButton: BasicView {
+    private lazy var actionButton = BasicButton()
+    private lazy var actionImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+   
     private(set) var viewModel: ViewModel?
     private(set) var buttonStyle: ButtonStyle?
     
-    init() {
-        super.init(frame: .zero)
-        snp.makeConstraints { make in
-            make.height.width.equalTo(55)
-        }
+    override init() {
+        super.init()
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         cornerRadius = 8
         backgroundColor = .primaryGray
-        contentMode = .scaleAspectFill
-        isUserInteractionEnabled = true
         makeLayout()
+        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -34,10 +36,17 @@ class BasicImageViewWithButton: UIImageView {
     }
     
     private func makeLayout() {
+        addSubview(actionImageView)
         addSubview(actionButton)
     }
     
     private func makeConstraints() {
+        actionImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func makeButtonConstraints() {
         switch buttonStyle {
             case .addImage:
                 actionButton.snp.remakeConstraints { make in
@@ -55,22 +64,33 @@ class BasicImageViewWithButton: UIImageView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.viewModel = vm
         actionButton.setViewModel(vm.buttonVM)
-        
-        vm.$image.sink {[weak self] image in
-            guard let self else { return }
-            self.image = image
-        }
-        .store(in: &cancellables)
         
         vm.$buttonStyle.sink {[weak self] style in
             self?.buttonStyle = style
-            self?.makeConstraints()
+            self?.makeButtonConstraints()
         }
             .store(in: &cancellables)
+        
+        vm.$action.sink { [weak self] _ in
+            guard let self else { return }
+            let tap = UITapGestureRecognizer(
+                target: self,
+                action: #selector(self.tapAction)
+            )
+            self.actionImageView.addGestureRecognizer(tap)
+        }
+        .store(in: &cancellables)
+        
+        vm.$image.sink {[weak self] image in
+            guard let self else { return }
+            self.actionImageView.image = image
+        }
+        .store(in: &cancellables)
     }
     
-    @objc func testAction() {
-        print("testAction")
+    @objc private func tapAction() {
+        self.viewModel?.action()
     }
 }

@@ -55,6 +55,5 @@ class TestController: BasicViewController {
         basicInputView.setViewModel(vm.inputVM)
         button.setViewModel(vm.buttonVM)
         picker.setViewModel(vm.pickerVM)
-        
     }
 }

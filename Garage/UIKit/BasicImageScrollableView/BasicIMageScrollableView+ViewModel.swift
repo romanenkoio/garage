@@ -14,13 +14,18 @@ extension BasicImageListView {
         @Published var contentType = BasicImageListViewType.addPhoto
         @Published var items: [UIImage] = []
         @Published var selectedIndex: Int?
+        @Published var action: Completion
         
         override init() {
+            self.action = {
+                print("test")
+            }
             super.init()
         }
         
         func didAddedImage(_ image: UIImage) {
             self.items.append(image)
+            
             self.items.enumerated().forEach { index, value in
                 
             }
