@@ -11,7 +11,7 @@ typealias CarCell = BasicTableCell<CarView>
 typealias SelectCell =  BasicTableCell<UniversalSelectionView>
 typealias ServiceCell =  BasicTableCell<ServiceView>
 typealias DocumentCell =  BasicTableCell<DocumentView>
-typealias
+typealias PhotoCell = BasicCollectionCell<PhotoView>
 
 typealias Completion = (() -> ())
 typealias EqutableCompletion = ((any Equatable) -> ())

@@ -108,11 +108,13 @@ class BasicImageListView: BasicView {
     private func makeRemoveItems(at index: Int, with image: UIImage) {
         self.stack.arrangedSubviews[index].removeFromSuperview()
         self.items.remove(at: index)
+        guard let vm = viewModel else { return }
         
         let imageView = BasicImageButton()
         imageView.setViewModel(.init(
             action: { [weak self] in
-                print("Test image action")
+                self?.presentPhotoViewVC(vm)
+               
             },
             image: image
             ,
@@ -169,7 +171,19 @@ class BasicImageListView: BasicView {
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController?.present(imagePicker, animated: true)
     }
-
+    
+    private func presentPhotoViewVC(_ vm: ViewModel) {
+        let fullSizePhotoViewVC = FullSizePhotoViewController(
+            vm: FullSizePhotoViewController.ViewModel(
+                images: vm.items
+            )
+        )
+        fullSizePhotoViewVC.modalPresentationStyle = .fullScreen
+        fullSizePhotoViewVC.modalTransitionStyle = .crossDissolve
+        
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        sceneDelegate?.window?.rootViewController?.present(fullSizePhotoViewVC, animated: true)
+    }
 }
 
 extension BasicImageListView: PHPickerViewControllerDelegate {

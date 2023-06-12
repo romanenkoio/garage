@@ -27,3 +27,24 @@ final class BasicTableCell<T: UIView>: UITableViewCell {
         }
     }
 }
+
+final class BasicCollectionCell<T: UIView>: UICollectionViewCell {
+    var mainView = T()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layoutMainView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func layoutMainView() {
+        self.backgroundColor = .clear
+        contentView.addSubview(mainView)
+        mainView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+}

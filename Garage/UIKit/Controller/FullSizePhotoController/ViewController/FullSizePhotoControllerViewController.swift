@@ -8,17 +8,17 @@
 
 import UIKit
 
-class FullSizePhotoControllerViewController: BasicViewController {
+class FullSizePhotoViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = FullSizePhotoControllerControllerCoordinator
+    typealias Coordinator = FullSizePhotoControllerCoordinator
     lazy var collectionView: BasicCollectionView = {
         let collection = BasicCollectionView()
         collection.setupCollection(
             dataSource: self,
             delegate: self
         )
-        collection.register(<#T##type: T.Type##T.Type#>)
+        collection.register(PhotoCell.self)
         return collection
     }()
     
@@ -31,6 +31,7 @@ class FullSizePhotoControllerViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
+        collectionView.backgroundColor = .blue
     }
     
     required init?(coder: NSCoder) {
@@ -40,43 +41,60 @@ class FullSizePhotoControllerViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
     }
 
     override func configure() {
         configureCoordinator()
     }
+    
+    override func layoutElements() {
+        contentView.addSubview(collectionView)
+    }
 
+    override func makeConstraints() {
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     override func binding() {
-        
+        collectionView.setViewModel(vm.collectionVM)
     }
     
 }
 
 // MARK: - CollectionViewDataSource
 
-extension FullSizePhotoControllerViewController: UICollectionViewDataSource {
+extension FullSizePhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return vm.collectionVM.cells.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let photoCell = collectionView.dequeueReusableCell(PhotoCell.self, for: indexPath),
+              let item = vm.collectionVM.cells[safe: indexPath.row]
+        else { return .init()}
+        photoCell.mainView.setViewModel(.init(image: item))
+        return photoCell
     }
     
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
-extension FullSizePhotoControllerViewController: UICollectionViewDelegateFlowLayout {
-    
+extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 200)
+    }
 }
 
 // MARK: -
 // MARK: - Configure
 
-extension FullSizePhotoControllerViewController {
+extension FullSizePhotoViewController {
 
     private func configureCoordinator() {
-        coordinator = FullSizePhotoControllerControllerCoordinator(vc: self)
+        coordinator = FullSizePhotoControllerCoordinator(vc: self)
     }
 }

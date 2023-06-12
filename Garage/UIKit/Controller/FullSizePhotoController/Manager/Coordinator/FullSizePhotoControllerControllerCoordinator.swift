@@ -8,13 +8,13 @@
 
 import UIKit
 
-class FullSizePhotoControllerControllerCoordinator {
+class FullSizePhotoControllerCoordinator {
     
     // - VC
-    private unowned let vc: FullSizePhotoControllerViewController
+    private unowned let vc: FullSizePhotoViewController
     
     // - Init
-    init(vc: FullSizePhotoControllerViewController) {
+    init(vc: FullSizePhotoViewController) {
         self.vc = vc
     }
     
