@@ -175,6 +175,8 @@
 		B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */; };
 		B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */; };
 		B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */; };
+		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
+		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
@@ -349,6 +351,8 @@
 		B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModalPresentationController.swift; sourceTree = "<group>"; };
 		B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicModalPresentationController+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcNavigationView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcBottomView.swift; sourceTree = "<group>"; };
+		B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcBottomView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1366,6 +1370,7 @@
 		B9D96E552A38D5CE00909B33 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E612A38EC2D00909B33 /* BottomView */,
 				B9D96E562A38D5D500909B33 /* NavView */,
 			);
 			path = Layout;
@@ -1396,6 +1401,15 @@
 				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
 			);
 			path = BasicViewController;
+			sourceTree = "<group>";
+		};
+		B9D96E612A38EC2D00909B33 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */,
+				B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */,
+			);
+			path = BottomView;
 			sourceTree = "<group>";
 		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
@@ -1576,6 +1590,7 @@
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
+				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
@@ -1659,6 +1674,7 @@
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
 				B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */,
+				B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
 				B9D96E472A37B04900909B33 /* FullSizePhotoControllerViewController.swift in Sources */,

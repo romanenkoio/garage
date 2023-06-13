@@ -14,6 +14,7 @@ enum ButtonStyle {
     case secondary
     case addImage
     case removeImage
+    case nonStyle
 }
 
 class BasicButton: UIButton {
@@ -35,7 +36,7 @@ class BasicButton: UIButton {
         }
     }
     
-    private var style: ButtonStyle? {
+    private var style = ButtonStyle.nonStyle {
         didSet { setButtonColor() }
     }
         
@@ -67,8 +68,9 @@ class BasicButton: UIButton {
                 backgroundColor = .clear
                 tintColor = .red
                 setImage(UIImage(systemName: "xmark.circle"), for: .normal)
-            case .none:
-                backgroundColor = .additionalRed
+            case .nonStyle:
+                backgroundColor = .clear
+                setTitleColor(.primaryGray, for: .normal)
         }
     }
     
@@ -78,11 +80,7 @@ class BasicButton: UIButton {
             backgroundColor = value ? .primaryGreen : .primaryGreen.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
-            case .none:
-                backgroundColor = .additionalRed
-            case .addImage:
-                backgroundColor = .clear
-            case .removeImage:
+            case .nonStyle, .addImage, .removeImage:
                 backgroundColor = .clear
         }
     }

@@ -35,6 +35,8 @@ class FullSizePhotoViewController: BasicModalPresentationController {
         return collection
     }()
     
+    lazy private var navView = PhotoVcNavigationView()
+    
     // - Property
     private(set) var vm: ViewModel
     
@@ -65,17 +67,40 @@ class FullSizePhotoViewController: BasicModalPresentationController {
     override func layoutElements() {
         contentView.isHidden = true
         view.addSubview(collectionView)
-        view.bringSubviewToFront(collectionView)
+        view.addSubview(navView)
+        view.cornerRadius = 12
     }
 
     override func makeConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        navView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+        }
     }
     
     override func binding() {
         collectionView.setViewModel(vm.collectionVM)
+
+        navView.setViewModel(
+            .init(
+                closeButtonVM: .init(
+                    title: "Закрыть",
+                    action: .touchUpInside { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+                )
+            )
+        )
+    }
+    
+    private func findCenterIndex() {
+        let center = self.view.convert(self.collectionView.collection.center, to: self.collectionView.collection)
+        guard let index = collectionView.collection.indexPathForItem(at: center) else { return }
+
+        navView.setViewModel(.init(photoCountLabelVM: .init(text: "\(index.item+1) из \(vm.images.count)")))
     }
     
 }
@@ -91,7 +116,9 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
         guard let photoCell = collectionView.dequeueReusableCell(PhotoCell.self, for: indexPath),
               let item = vm.collectionVM.cells[safe: indexPath.row]
         else { return .init()}
+        
         photoCell.mainView.setViewModel(.init(image: item))
+        findCenterIndex()
         return photoCell
     }
     
@@ -106,10 +133,14 @@ extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let width = view.frame.width
         let height = view.window?.screen.bounds.height ?? 0
         return CGSize(width: width, height: height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        findCenterIndex()
     }
 }
 

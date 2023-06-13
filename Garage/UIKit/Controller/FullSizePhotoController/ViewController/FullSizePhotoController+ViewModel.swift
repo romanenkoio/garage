@@ -12,8 +12,11 @@ import Combine
 extension FullSizePhotoViewController {
     final class ViewModel: BasicViewModel {
         let collectionVM = BasicCollectionView.GenericViewModel<UIImage>()
+        var navViewVM: PhotoVcNavigationView.ViewModel?
+
         @Published
         var images: [UIImage]
+
         
         init(images: [UIImage]) {
             self.images = images

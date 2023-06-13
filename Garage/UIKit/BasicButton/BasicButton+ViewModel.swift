@@ -20,7 +20,7 @@ extension BasicButton {
             title: String? = nil,
             isEnabled: Bool = true,
             isHidden: Bool = false,
-            style: ButtonStyle = .primary,
+            style: ButtonStyle = .nonStyle,
             action: Action? = nil
         ) {
             self.title = title
