@@ -30,14 +30,14 @@ class BasicTextField: UITextField {
         super .init(frame: .zero)
         layer.cornerRadius = 8
         layer.borderColor = UIColor.clear.cgColor
-        backgroundColor = .secondaryGray
+        backgroundColor = .white
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 35))
         leftViewMode = .always
         font = .custom(size: 17, weight: .medium)
         clipsToBounds = true
         self.addTarget(self, action: #selector(textDidChange(field:)), for: .editingDidEnd)
         self.snp.makeConstraints { make in
-            make.height.equalTo(44)
+            make.height.equalTo(56)
         }
     }
     

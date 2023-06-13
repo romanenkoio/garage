@@ -34,12 +34,16 @@ extension CreateCarViewController {
         override init() {
             brandFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
+                inputVM: .init(placeholder: "Toyota"),
+                descriptionVM: .init(text: "Производитель"),
+                isRequired: true
             )
             
             modelFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Модель")
+                inputVM: .init(placeholder: "RAV4"),
+                descriptionVM: .init(text: "Модель"),
+                isRequired: true
             )
             
             generationFieldVM = .init(
@@ -49,17 +53,21 @@ extension CreateCarViewController {
             
             winFieldVM = .init(
                 errorVM: vinErrorVM,
-                inputVM: .init(placeholder: "WIN")
+                inputVM: .init(placeholder: "JTEHH20V906089188"),
+                descriptionVM: .init(text: "VIN номер")
             )
             
             yearFieldVM = .init(
                 errorVM: .init(),
-                inputVM: .init(placeholder: "Год выпуска")
+                inputVM: .init(placeholder: "2003"),
+                descriptionVM: .init(text: "Год выпуска")
             )
             
             mileageFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Пробег")
+                inputVM: .init(placeholder: "308000"),
+                descriptionVM: .init(text: "Пробег"),
+                isRequired: true
             )
             
             super.init()

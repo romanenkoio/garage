@@ -39,12 +39,13 @@ class BasicButton: UIButton {
         
     init() {
         super .init(frame: .zero)
-        layer.cornerRadius = 12
+        layer.cornerRadius = 27
         tintColor = .lightGray
         titleLabel?.font = .custom(size: 15, weight: .medium)
         translatesAutoresizingMaskIntoConstraints = false
         self.snp.makeConstraints { make in
-            make.height.equalTo(40)
+            make.height.equalTo(64)
+            make.width.equalTo(242)
         }
     }
     

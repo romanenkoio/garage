@@ -16,7 +16,7 @@ final class CreateCarControllerLayoutManager {
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 5
         return stack
     }()
     
