@@ -14,7 +14,6 @@
 		7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */; };
 		7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */; };
 		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
-		7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E088D2A2F320A008C2B9A /* Lottie */; };
 		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
 		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
 		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
@@ -36,7 +35,6 @@
 		7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D92A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift */; };
 		7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */; };
 		7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */; };
-		7F0E08E22A2FC465008C2B9A /* SwiftTooltipKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */; };
 		7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08E82A2FC766008C2B9A /* SelectionControllerCoordinator.swift */; };
 		7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08EA2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift */; };
 		7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08EC2A2FC766008C2B9A /* Selection+ViewModel.swift */; };
@@ -63,7 +61,6 @@
 		7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092A2A3255F1008C2B9A /* Action.swift */; };
 		7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092C2A327BB4008C2B9A /* Selectable.swift */; };
 		7F0E092F2A32818F008C2B9A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092E2A32818F008C2B9A /* Array.swift */; };
-		7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E09312A3282D0008C2B9A /* Kingfisher */; };
 		7F0E09342A3282E0008C2B9A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09332A3282E0008C2B9A /* UIImageView.swift */; };
 		7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */; };
 		7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */; };
@@ -330,13 +327,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0E08E22A2FC465008C2B9A /* SwiftTooltipKit in Frameworks */,
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
-				7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
-				7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,10 +1285,7 @@
 				B978F3C62A2E9DE80076D326 /* SnapKit */,
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
-				7F0E088D2A2F320A008C2B9A /* Lottie */,
-				7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */,
 				7F0E09152A31D773008C2B9A /* Moya */,
-				7F0E09312A3282D0008C2B9A /* Kingfisher */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -1327,10 +1318,7 @@
 			packageReferences = (
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
-				7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
-				7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -1729,36 +1717,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 4.2.0;
-			};
-		};
-		7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hendesi/SwiftTooltipKit.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
 		7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
 				kind = exactVersion;
 				version = 15.0.0;
-			};
-		};
-		7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 7.7.0;
 			};
 		};
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -1780,25 +1744,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7F0E088D2A2F320A008C2B9A /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */;
-			productName = SwiftTooltipKit;
-		};
 		7F0E09152A31D773008C2B9A /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
-		};
-		7F0E09312A3282D0008C2B9A /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

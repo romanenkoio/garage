@@ -9,17 +9,21 @@
 import UIKit
 
 extension GarageViewController {
-    final class ViewModel: BasicControllerModel {        
-
+    final class ViewModel: BasicControllerModel {
+        
         let tableVM = BasicTableView.GenericViewModel<Car>()
+        var addButtonVM: AlignedButton.ViewModel
 
         override init() {
+            addButtonVM = .init(buttonVM: .init(title: "Добавить машину"))
+            
             super.init()
             readCars()
+            
             tableVM.setupEmptyState(
                 labelVM: .init(text: "Ваш гараж пуст"),
                 sublabelVM: .init(text: "Добавьте машину для \nначала работы"),
-                addButtonVM: .init(title: "Добавить машину"),
+                addButtonVM: addButtonVM.buttonVM,
                 image: UIImage(named: "car")
             )
         }
