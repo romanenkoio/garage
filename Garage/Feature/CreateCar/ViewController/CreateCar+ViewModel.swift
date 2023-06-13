@@ -16,7 +16,6 @@ extension CreateCarViewController {
         
         var brandFieldVM: BasicInputView.ViewModel
         var modelFieldVM: BasicInputView.ViewModel
-        var generationFieldVM: BasicInputView.ViewModel
         var winFieldVM: BasicInputView.ViewModel
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
@@ -44,11 +43,6 @@ extension CreateCarViewController {
                 inputVM: .init(placeholder: "RAV4"),
                 descriptionVM: .init(text: "Модель"),
                 isRequired: true
-            )
-            
-            generationFieldVM = .init(
-                errorVM: .init(),
-                inputVM: .init(placeholder: "Поколение")
             )
             
             winFieldVM = .init(
@@ -79,7 +73,6 @@ extension CreateCarViewController {
                 let car = Car(
                     brand: self.brandFieldVM.text,
                     model: self.modelFieldVM.text,
-                    generation: self.generationFieldVM.text,
                     year: self.yearFieldVM.text.toInt(),
                     win: self.winFieldVM.text,
                     mileage: self.mileageFieldVM.text.toInt() ?? .zero,
@@ -177,11 +170,6 @@ extension CreateCarViewController {
             modelFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Производитель")
-            )
-            
-            generationFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Поколение")
             )
             
             winFieldVM = .init(

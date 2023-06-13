@@ -30,11 +30,6 @@ final class CreateCarControllerLayoutManager {
         return field
     }()
     
-    lazy var generationField: BasicInputView = {
-        let field = BasicInputView()
-        return field
-    }()
-    
     lazy var winField: BasicInputView = {
         let field = BasicInputView()
         return field
@@ -75,7 +70,6 @@ fileprivate extension CreateCarControllerLayoutManager {
         fieldStack.addArrangedSubviews([
             brandField,
             modelField,
-            generationField,
             winField,
             yearField,
             mileageField,

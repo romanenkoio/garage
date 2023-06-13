@@ -25,7 +25,7 @@ class BasicDatePicker: BasicTextField {
             guard let self else { return }
             _ = self.resignFirstResponder()
         }
-        cancelAction.setValue(UIColor.primaryPink, forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.primaryGreen, forKey: "titleTextColor")
         alert.addAction(cancelAction)
         return alert
     }()
@@ -35,7 +35,7 @@ class BasicDatePicker: BasicTextField {
         picker.addTarget(self, action: #selector(pickerAction(sender:)), for: .valueChanged)
         picker.preferredDatePickerStyle = .inline
         picker.datePickerMode = .date
-        picker.tintColor = .primaryPink
+        picker.tintColor = .primaryGreen
         picker.locale = Locale(identifier: "ru_BY")
         return picker
     }()

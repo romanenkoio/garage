@@ -36,8 +36,8 @@ extension UIColor {
         return .init(named: "primaryGray")!
     }
     
-    static public var primaryPink: UIColor {
-        return .init(named: "primaryPink")!
+    static public var primaryGreen: UIColor {
+        return .init(named: "primaryGreen")!
     }
     
     static public var secondaryGray: UIColor {

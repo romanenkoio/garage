@@ -48,7 +48,6 @@ class CreateCarViewController: BasicViewController {
         layout.winField.setViewModel(vm.winFieldVM)
         layout.yearField.setViewModel(vm.yearFieldVM)
         layout.mileageField.setViewModel(vm.mileageFieldVM)
-        layout.generationField.setViewModel(vm.generationFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
         
         vm.isLoadind.sink { [weak self] value in

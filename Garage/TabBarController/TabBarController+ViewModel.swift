@@ -10,34 +10,34 @@ import UIKit
 extension TabBarController {
     class ViewModel {
         enum TabItem: String, CaseIterable {
-            case studios = "Гараж"
-            case favorite = "Документы"
-            case booking = "Сервисы"
-            case profile = "Настройки"
+            case garage = "Гараж"
+            case documents = "Документы"
+            case services = "Сервисы"
+            case settings = "Настройки"
             
             var viewController: UIViewController {
                 switch self {
-                case .studios:
+                case .garage:
                     return GarageViewController(vm: .init()).withNavigation()
-                case .favorite:
+                case .documents:
                     return DocumentsViewController(vm: .init()).withNavigation()
-                case .booking:
+                case .services:
                     return ServicesViewController(vm: .init()).withNavigation()
-                case .profile:
+                case .settings:
                     return BasicViewController()
                 }
             }
             
-            var iconImage: UIImage {
+            var iconImage: UIImage? {
                 switch self {
-                    case .studios:
-                        return UIImage(systemName: "mappin.circle")!
-                    case .favorite:
-                        return UIImage(systemName: "heart.circle")!
-                    case .booking:
-                        return UIImage(systemName: "calendar.circle")!
-                    case .profile:
-                        return UIImage(systemName: "person.circle")!
+                    case .garage:
+                        return UIImage(named: "garage")
+                    case .documents:
+                        return UIImage(named: "documents")
+                    case .services:
+                        return UIImage(named: "services")
+                    case .settings:
+                        return UIImage(named: "settings")
                 }
             }
         }

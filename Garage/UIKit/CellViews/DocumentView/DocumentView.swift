@@ -15,7 +15,7 @@ class DocumentView: BasicView {
         stack.spacing = 5
         stack.axis = .vertical
         stack.cornerRadius = 12
-        stack.backgroundColor = .primaryPink.withAlphaComponent(0.5)
+        stack.backgroundColor = .primaryGreen.withAlphaComponent(0.5)
         stack.paddingInsets = .init(vertical: 5, horizontal: 10)
         stack.edgeInsets = .init(vertical: 5, horizontal: 16)
         return stack

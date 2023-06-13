@@ -39,7 +39,7 @@ class BasicViewController: UIViewController {
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
         spinner.style = .large
-        spinner.color = .primaryPink
+        spinner.color = .primaryGreen
         return spinner
     }()
     
@@ -60,6 +60,7 @@ class BasicViewController: UIViewController {
         layoutElements()
         makeConstraints()
         coordinator = BasicCoordinator(vc: self)
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
