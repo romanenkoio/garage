@@ -82,8 +82,6 @@ extension SelectionViewController: UITableViewDataSource {
         selectionCell.mainView.setViewModel(UniversalSelectionView.ViewModel(item))
         return selectionCell
     }
-    
-    
 }
 
 extension SelectionViewController: UITableViewDelegate {

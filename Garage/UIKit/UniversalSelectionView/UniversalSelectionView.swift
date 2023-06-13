@@ -11,7 +11,7 @@ final class UniversalSelectionView: BasicView {
     
     private lazy var titleLabel: BasicLabel = {
         let label = BasicLabel()
-        label.textInsets = .init(vertical: 5, horizontal: 10)
+        label.textInsets = .init(vertical: 15, horizontal: 20)
         return label
     }()
     

@@ -16,12 +16,13 @@ extension SelectionViewController {
 
         private var selected: Selectable?
     
-        let saveButtonVM = BasicButton.ViewModel(
-            title: "Готово",
-            isEnabled: false,
-            style: .primary
-        )
-        let searchVM = BasicSearchField.ViewModel( placeholder: "Начните искать тут...")
+        let saveButtonVM = AlignedButton.ViewModel(
+            buttonVM: .init(
+                title: "Выбрать",
+                isEnabled: false,
+                style: .primary
+            ))
+        let searchVM = BasicSearchField.ViewModel(placeholder: "Поиск")
         
         var selectionSuccess: ((Selectable) -> Void)?
         
@@ -35,7 +36,7 @@ extension SelectionViewController {
                 image: UIImage(systemName: "car")
             )
             
-            saveButtonVM.action = .touchUpInside { [weak self] in
+            saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self,
                       let selected = self.selected
                 else { return }
@@ -60,7 +61,7 @@ extension SelectionViewController {
         
         func selectCell(at index: IndexPath) {
             self.selected = tableVM.cells[index.row]
-            saveButtonVM.isEnabled = true
+            saveButtonVM.buttonVM.isEnabled = true
         }
     }
 }

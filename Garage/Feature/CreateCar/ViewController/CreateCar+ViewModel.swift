@@ -115,6 +115,7 @@ extension CreateCarViewController {
                     guard let self else { return }
                     Task { @MainActor in
                         do {
+                            self.isLoadind.send(true)
                             let result = try await NetworkManager
                                 .sh
                                 .request(
@@ -122,7 +123,9 @@ extension CreateCarViewController {
                                     model: Wrapper<Brand>.self
                                 ).result
                             self.suggestionCompletion?(result)
+                            self.isLoadind.send(false)
                         } catch let error {
+                            self.isLoadind.send(false)
                             print(error)
                         }
                     }
@@ -135,6 +138,7 @@ extension CreateCarViewController {
                     guard let self else { return }
                     Task { @MainActor in
                         do {
+                            self.isLoadind.send(true)
                             let result = try await NetworkManager
                                 .sh
                                 .request(
@@ -142,7 +146,9 @@ extension CreateCarViewController {
                                     model: Wrapper<Model>.self
                                 ).result
                             self.suggestionCompletion?(result)
+                            self.isLoadind.send(false)
                         } catch let error {
+                            self.isLoadind.send(false)
                             print(error)
                         }
                     }

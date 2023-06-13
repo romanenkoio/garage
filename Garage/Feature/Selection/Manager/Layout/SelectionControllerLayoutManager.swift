@@ -28,7 +28,7 @@ final class SelectionControllerLayoutManager {
         return table
     }()
     
-    lazy var saveButton = BasicButton()
+    lazy var saveButton = AlignedButton()
     
     // - Init
     init(vc: SelectionViewController) {
@@ -57,7 +57,7 @@ fileprivate extension SelectionControllerLayoutManager {
     
     private func makeConstraint() {
         searchField.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
+            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.init(top: 20, horizontal: 20))
         }
         
         table.snp.makeConstraints { make in
@@ -66,7 +66,7 @@ fileprivate extension SelectionControllerLayoutManager {
         }
         
         saveButton.snp.makeConstraints { make in
-            make.top.equalTo(table.snp.bottom)
+            make.top.equalTo(table.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
     }
