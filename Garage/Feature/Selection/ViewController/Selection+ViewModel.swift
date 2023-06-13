@@ -52,9 +52,7 @@ extension SelectionViewController {
                         $0.title.lowercased().contains(searchText.lowercased())
                     })
                     self.tableVM.setCells(cells)
-
                 }
-               
             }
             .store(in: &cancellables)
         }
