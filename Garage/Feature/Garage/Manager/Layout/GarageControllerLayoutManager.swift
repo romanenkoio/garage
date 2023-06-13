@@ -20,6 +20,7 @@ final class GarageControllerLayoutManager {
             delegate: vc
         )
         table.register(CarCell.self)
+        table.table.separatorColor = .clear
         return table
     }()
 

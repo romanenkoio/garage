@@ -8,7 +8,7 @@
 import UIKit
 
 class BasicTableView: BasicView {
-    private lazy var table: UITableView = {
+    lazy var table: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsHorizontalScrollIndicator = false
