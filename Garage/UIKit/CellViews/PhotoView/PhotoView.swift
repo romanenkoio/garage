@@ -57,8 +57,10 @@ class PhotoView: BasicView {
     }
     
     @objc func onDoubleTap(sender: UITapGestureRecognizer) {
-        let scale = min(scrollView.zoomScale * 3, scrollView.maximumZoomScale)
-        if scale != scrollView.zoomScale {
+        let scale = min(scrollView.zoomScale * 2.5, scrollView.maximumZoomScale)
+       
+        if scale != scrollView.zoomScale, scrollView.zoomScale != 2.5 {
+            print((scale, scrollView.zoomScale))
             let point = sender.location(in: imageView)
             
             let scrollSize = scrollView.frame.size
@@ -67,10 +69,8 @@ class PhotoView: BasicView {
             let origin = CGPoint(x: point.x - size.width / 2,
                                  y: point.y - size.height / 2)
             scrollView.zoom(to:CGRect(origin: origin, size: size), animated: true)
-            print((scale, scrollView.zoomScale))
         } else {
             scrollView.setZoomScale(1, animated: true)
-            print((scale, scrollView.zoomScale))
         }
     }
 }
