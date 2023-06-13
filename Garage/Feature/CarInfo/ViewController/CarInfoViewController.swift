@@ -33,6 +33,7 @@ class CarInfoViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideNavBar(false)
     }
 
     override func configure() {

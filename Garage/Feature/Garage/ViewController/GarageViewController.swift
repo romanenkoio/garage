@@ -40,11 +40,7 @@ class GarageViewController: BasicViewController {
         super.viewWillAppear(animated)
         vm.readCars()
         hideTabBar(false)
-        hideNavBar(vm.tableVM.cells.isEmpty)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        hideNavBar(true)
     }
 
     override func configure() {
@@ -60,7 +56,6 @@ class GarageViewController: BasicViewController {
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cells in
-                self?.hideNavBar(cells.isEmpty)
                 self?.layout.addButton.isHidden = cells.isEmpty
                 self?.layout.table.reload()
             }

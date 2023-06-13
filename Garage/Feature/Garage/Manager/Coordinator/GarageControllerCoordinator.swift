@@ -25,7 +25,6 @@ class GarageControllerCoordinator: BasicCoordinator {
             case .createCar:
                 let new = CreateCarViewController(vm: .init())
                 vc.push(new)
-                vc.hideNavBar(false)
             case .openCar(let car):
                 let new = CarInfoViewController(vm: .init(car: car))
                 vc.push(new)
