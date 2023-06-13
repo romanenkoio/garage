@@ -40,6 +40,7 @@ class ServicesViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readServices()
+        hideTabBar(false)
     }
 
     override func configure() {

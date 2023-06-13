@@ -39,6 +39,7 @@ class DocumentsViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readDocuments()
+        hideTabBar(false)
     }
     
     override func configure() {
