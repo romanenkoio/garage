@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FullSizePhotoViewController: BasicViewController {
+class FullSizePhotoViewController: BasicModalPresentationController {
 
     // - UI
     typealias Coordinator = FullSizePhotoControllerCoordinator

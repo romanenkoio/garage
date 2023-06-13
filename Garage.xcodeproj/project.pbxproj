@@ -156,6 +156,10 @@
 		B9D96E4F2A37B47200909B33 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E4E2A37B47200909B33 /* UICollectionView.swift */; };
 		B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E512A37CF6800909B33 /* PhotoView.swift */; };
 		B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */; };
+		B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */; };
+		B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */; };
+		B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */; };
+		B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
@@ -311,6 +315,10 @@
 		B9D96E4E2A37B47200909B33 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		B9D96E512A37CF6800909B33 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcNavigationView.swift; sourceTree = "<group>"; };
+		B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModalPresentationController.swift; sourceTree = "<group>"; };
+		B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicModalPresentationController+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcNavigationView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -954,9 +962,9 @@
 		B978F2F12A2E8F4C0076D326 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E5C2A38D8C200909B33 /* BasicViewController */,
+				B9D96E5B2A38D8AB00909B33 /* BasicModalPresentationController */,
 				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
-				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
-				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1156,6 +1164,7 @@
 		B9D96E3C2A37B04900909B33 /* FullSizePhotoController */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E552A38D5CE00909B33 /* Layout */,
 				B9D96E3D2A37B04900909B33 /* Manager */,
 				B9D96E422A37B04900909B33 /* ViewController */,
 			);
@@ -1203,6 +1212,41 @@
 				B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */,
 			);
 			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		B9D96E552A38D5CE00909B33 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E562A38D5D500909B33 /* NavView */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		B9D96E562A38D5D500909B33 /* NavView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */,
+				B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */,
+			);
+			path = NavView;
+			sourceTree = "<group>";
+		};
+		B9D96E5B2A38D8AB00909B33 /* BasicModalPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */,
+				B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */,
+			);
+			path = BasicModalPresentationController;
+			sourceTree = "<group>";
+		};
+		B9D96E5C2A38D8C200909B33 /* BasicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
+				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
+			);
+			path = BasicViewController;
 			sourceTree = "<group>";
 		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
@@ -1357,7 +1401,9 @@
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
 				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,
+				B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
+				B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
@@ -1401,6 +1447,7 @@
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
+				B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
@@ -1422,6 +1469,7 @@
 				7F0E09222A324A90008C2B9A /* Collection.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
+				B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */,
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				7F0E091D2A31EBDE008C2B9A /* ActionImage.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,

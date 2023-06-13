@@ -178,8 +178,8 @@ class BasicImageListView: BasicView {
                 images: vm.items
             )
         )
-        fullSizePhotoViewVC.modalPresentationStyle = .fullScreen
-        fullSizePhotoViewVC.modalTransitionStyle = .crossDissolve
+//        fullSizePhotoViewVC.modalPresentationStyle = .fullScreen
+//        fullSizePhotoViewVC.modalTransitionStyle = .crossDissolve
         
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController?.present(fullSizePhotoViewVC, animated: true)

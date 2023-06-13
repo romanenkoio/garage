@@ -26,3 +26,23 @@ class BasicCoordinator: Routable {
         }
     }
 }
+
+class BasicModalCoordinator: BasicCoordinator {
+    unowned let modalVC: BasicModalPresentationController
+
+    init(modalVC: BasicModalPresentationController) {
+        self.modalVC = modalVC
+        super.init(vc: BasicViewController())
+    }
+    
+    override func navigateTo(_ route: Routable) {
+        guard let route = route as? CommonNavigationRoute else { return }
+        
+        switch route {
+        case .close:
+            self.modalVC.pop()
+        case .closeToRoot:
+            modalVC.popToRoot()
+        }
+    }
+}
