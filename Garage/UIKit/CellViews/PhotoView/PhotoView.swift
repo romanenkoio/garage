@@ -60,7 +60,7 @@ class PhotoView: BasicView {
         let scale = min(scrollView.zoomScale * 2.5, scrollView.maximumZoomScale)
        
         if scale != scrollView.zoomScale, scrollView.zoomScale != 2.5 {
-            print((scale, scrollView.zoomScale))
+           
             let point = sender.location(in: imageView)
             
             let scrollSize = scrollView.frame.size

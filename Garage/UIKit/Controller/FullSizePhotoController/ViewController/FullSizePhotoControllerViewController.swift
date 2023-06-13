@@ -16,7 +16,10 @@ class FullSizePhotoViewController: BasicViewController {
     lazy var collectionView: BasicCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
+        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 0.0
+        layout.sectionInset = UIEdgeInsets(all: 0)
+       
         let collection = BasicCollectionView(layout: layout)
         collection.setupCollection(
             dataSource: self,
@@ -103,22 +106,10 @@ extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let width = view.frame.width
         let height = view.window?.screen.bounds.height ?? 0
         return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(all: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
     }
 }
 
@@ -126,7 +117,6 @@ extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Configure
 
 extension FullSizePhotoViewController {
-
     private func configureCoordinator() {
         coordinator = FullSizePhotoControllerCoordinator(vc: self)
     }
