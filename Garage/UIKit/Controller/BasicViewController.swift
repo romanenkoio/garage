@@ -61,6 +61,7 @@ class BasicViewController: UIViewController {
         makeConstraints()
         coordinator = BasicCoordinator(vc: self)
         self.navigationItem.setHidesBackButton(true, animated: false)
+        hideTabBar(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +104,10 @@ class BasicViewController: UIViewController {
     
     func hideNavBar(_ value: Bool) {
         navigationController?.setNavigationBarHidden(value, animated: true)
+    }
+    
+    func hideTabBar(_ value: Bool) {
+        self.tabBarController?.tabBar.isHidden = value
     }
 
     func disableScrollView() {
