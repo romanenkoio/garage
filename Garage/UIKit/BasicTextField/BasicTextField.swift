@@ -82,7 +82,7 @@ class BasicTextField: UITextField {
         
         if didBecomeFirstResponder, let text = self.text {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.layer.borderColor = UIColor.primaryGreen.cgColor
+                self?.layer.borderColor = UIColor.primaryBlue.cgColor
                 self?.backgroundColor = .secondaryGray
                 self?.layer.borderWidth = 1
             }

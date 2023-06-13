@@ -19,7 +19,7 @@ final class CarInfoControllerLayoutManager {
         view.alignment = .center
         view.cornerRadius = 12
         view.spacing = 10
-        view.backgroundColor = .primaryGreen.withAlphaComponent(0.5)
+        view.backgroundColor = .primaryBlue.withAlphaComponent(0.5)
         return view
     }()
     

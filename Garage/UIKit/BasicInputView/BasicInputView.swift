@@ -22,7 +22,7 @@ class BasicInputView: BasicView {
     
     lazy var actionImage: ActionImage = {
         let view = ActionImage()
-        view.tintColor = .primaryGreen
+        view.tintColor = .primaryBlue
         return view
     }()
     
@@ -47,7 +47,7 @@ class BasicInputView: BasicView {
         let label = BasicLabel()
         label.textAlignment = .left
         label.font = .custom(size: 14, weight: .bold)
-        label.textColor = .primaryGreen
+        label.textColor = .primaryBlue
         return label
     }()
     

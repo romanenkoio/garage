@@ -10,7 +10,9 @@ import UIKit
 extension BasicTableView {
     class ViewModel: BasicViewModel {
         private(set) var labelVM = BasicLabel.ViewModel()
-
+        private(set) var subLabelVM = BasicLabel.ViewModel()
+        private(set) var addButtonVM = BasicButton.ViewModel()
+        
         @Published
         private(set) var image: UIImage?
         @Published
@@ -18,9 +20,13 @@ extension BasicTableView {
 
         func setupEmptyState(
             labelVM: BasicLabel.ViewModel,
+            sublabelVM: BasicLabel.ViewModel,
+            addButtonVM: BasicButton.ViewModel,
             image: UIImage?
         ) {
             self.labelVM = labelVM
+            self.addButtonVM = addButtonVM
+            self.subLabelVM = sublabelVM
             self.image = image
         }
     }

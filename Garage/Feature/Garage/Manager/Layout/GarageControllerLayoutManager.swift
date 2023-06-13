@@ -22,7 +22,7 @@ final class GarageControllerLayoutManager {
         table.register(CarCell.self)
         return table
     }()
-        
+
     // - Init
     init(vc: GarageViewController) {
         self.vc = vc

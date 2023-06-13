@@ -28,7 +28,7 @@ final class BasicCell<T: UIView>: UITableViewCell {
         self.backgroundColor = .clear
         contentView.addSubview(mainView)
         let view = UIView()
-        view.backgroundColor = .primaryGreen.withAlphaComponent(0.11)
+        view.backgroundColor = .primaryBlue.withAlphaComponent(0.11)
         self.selectedBackgroundView = view
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

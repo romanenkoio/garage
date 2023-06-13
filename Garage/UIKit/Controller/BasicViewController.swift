@@ -39,7 +39,7 @@ class BasicViewController: UIViewController {
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
         spinner.style = .large
-        spinner.color = .primaryGreen
+        spinner.color = .primaryBlue
         return spinner
     }()
     
@@ -147,6 +147,7 @@ class BasicViewController: UIViewController {
             image: UIImage(named: "back_ic"))
         closeButton.setViewModel(vm)
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
+        self.hideNavBar(false)
     }
     
     func layoutElements() {
