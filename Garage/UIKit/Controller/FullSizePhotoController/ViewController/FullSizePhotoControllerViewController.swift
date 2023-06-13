@@ -12,12 +12,22 @@ class FullSizePhotoViewController: BasicViewController {
 
     // - UI
     typealias Coordinator = FullSizePhotoControllerCoordinator
+    
     lazy var collectionView: BasicCollectionView = {
-        let collection = BasicCollectionView()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collection = BasicCollectionView(layout: layout)
         collection.setupCollection(
             dataSource: self,
             delegate: self
         )
+        collection.collection.bounces = true
+        collection.collection.alwaysBounceHorizontal = true
+        collection.collection.bouncesZoom = true
+        collection.collection.showsHorizontalScrollIndicator = false
+        collection.collection.showsVerticalScrollIndicator = false
+        collection.collection.isPagingEnabled = true
         collection.register(PhotoCell.self)
         return collection
     }()
@@ -31,7 +41,8 @@ class FullSizePhotoViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .black
+        self.view.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +60,9 @@ class FullSizePhotoViewController: BasicViewController {
     }
     
     override func layoutElements() {
-        contentView.addSubview(collectionView)
+        contentView.isHidden = true
+        view.addSubview(collectionView)
+        view.bringSubviewToFront(collectionView)
     }
 
     override func makeConstraints() {
@@ -84,8 +97,28 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let photoCell = cell as? PhotoCell else { return }
+        photoCell.mainView.scrollView.setZoomScale(1, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 200)
+        
+        let width = view.frame.width
+        let height = view.window?.screen.bounds.height ?? 0
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(all: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
     }
 }
 

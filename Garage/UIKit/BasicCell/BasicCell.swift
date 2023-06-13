@@ -34,6 +34,8 @@ final class BasicCollectionCell<T: UIView>: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutMainView()
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+        self.addGestureRecognizer(pinch)
     }
     
     required init?(coder: NSCoder) {
@@ -46,5 +48,16 @@ final class BasicCollectionCell<T: UIView>: UICollectionViewCell {
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    @objc private func pinch(sender: UIPinchGestureRecognizer) {
+        let scaleResult = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale)
+        guard let scale = scaleResult, scale.a > 1, scale.d > 1 else {
+            sender.view?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            return
+        }
+        sender.view?.transform = scale
+       // sender.view?.layoutIfNeeded()
+        sender.scale = 1
     }
 }
