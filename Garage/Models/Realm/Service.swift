@@ -9,7 +9,7 @@ import RealmSwift
 import CoreLocation
 import UIKit
 
-final class Service: Object {
+final class Service: Object, Codable {
     @Persisted var id: String
     @Persisted var phone: String
     @Persisted var adress: String

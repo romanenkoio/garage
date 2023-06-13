@@ -31,15 +31,15 @@ class BasicViewController: UIViewController {
     
     lazy var loaderView: BasicView = {
         let view = BasicView()
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .clear
         view.cornerRadius = 0
         return view
     }()
     
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
-        spinner.style = .medium
-        spinner.tintColor = .primaryPink
+        spinner.style = .large
+        spinner.color = .primaryGreen
         return spinner
     }()
     
@@ -60,6 +60,8 @@ class BasicViewController: UIViewController {
         layoutElements()
         makeConstraints()
         coordinator = BasicCoordinator(vc: self)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        hideTabBar(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +76,9 @@ class BasicViewController: UIViewController {
     func singleWillAppear() { }
 
     func binding() {
-        viewModel.$title.sink { [weak self] title in
-            self?.title = title
+        viewModel.isLoadind.sink { [weak self] value in
+            guard let self else { return }
+            value ? self.startLoader() : self.stopLoader()
         }
         .store(in: &cancellables)
     }
@@ -101,6 +104,10 @@ class BasicViewController: UIViewController {
     
     func hideNavBar(_ value: Bool) {
         navigationController?.setNavigationBarHidden(value, animated: true)
+    }
+    
+    func hideTabBar(_ value: Bool) {
+        self.tabBarController?.tabBar.isHidden = value
     }
 
     func disableScrollView() {
@@ -129,6 +136,17 @@ class BasicViewController: UIViewController {
             return UIBarButtonItem(customView: view)
         })
         self.navigationItem.rightBarButtonItems = views
+    }
+    
+    func makeCloseButton() {
+        let closeButton = NavBarButton()
+        let vm = NavBarButton.ViewModel(
+            action: .touchUpInside {
+                self.coordinator.navigateTo(CommonNavigationRoute.close)
+            },
+            image: UIImage(named: "back_ic"))
+        closeButton.setViewModel(vm)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
     }
     
     func layoutElements() {

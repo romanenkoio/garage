@@ -16,7 +16,8 @@ final class CreateCarControllerLayoutManager {
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 5
+        stack.edgeInsets = .init(top: 22)
         return stack
     }()
     
@@ -26,11 +27,6 @@ final class CreateCarControllerLayoutManager {
     }()
     
     lazy var modelField: BasicInputView = {
-        let field = BasicInputView()
-        return field
-    }()
-    
-    lazy var generationField: BasicInputView = {
         let field = BasicInputView()
         return field
     }()
@@ -50,7 +46,7 @@ final class CreateCarControllerLayoutManager {
         return field
     }()
     
-    lazy var saveButton = BasicButton()
+    lazy var saveButton = AlignedButton()
 
     // - Init
     init(vc: CreateCarViewController) {
@@ -73,10 +69,9 @@ fileprivate extension CreateCarControllerLayoutManager {
     private func makeLayout() {
         vc.contentView.addSubview(fieldStack)
         fieldStack.addArrangedSubviews([
+            winField,
             brandField,
             modelField,
-            generationField,
-            winField,
             yearField,
             mileageField,
             saveButton

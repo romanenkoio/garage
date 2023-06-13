@@ -9,18 +9,27 @@ import Foundation
 
 extension BasicInputView {
     final class ViewModel: BasicViewModel {
-        var errorVM: ErrorView.ViewModel
+        var errorVM: ErrorView.ViewModel?
         let inputVM: BasicTextField.ViewModel
         var actionImageVM: ActionImage.ViewModel?
+        let requiredLabelVM = BasicLabel.ViewModel(text: "*обязательное поле")
+        let descriptionLabelVM: BasicLabel.ViewModel
+        
+        @Published
+        private(set) var isRequired: Bool
         
         init(
-            errorVM: ErrorView.ViewModel,
+            errorVM: ErrorView.ViewModel? = nil,
             inputVM: BasicTextField.ViewModel,
-            actionImageVM: ActionImage.ViewModel? = nil
+            descriptionVM: BasicLabel.ViewModel = .init(),
+            actionImageVM: ActionImage.ViewModel? = nil,
+            isRequired: Bool = false
         ) {
             self.errorVM = errorVM
             self.inputVM = inputVM
             self.actionImageVM = actionImageVM
+            self.isRequired = isRequired
+            self.descriptionLabelVM = descriptionVM
         }
         
         var placeholder: String {

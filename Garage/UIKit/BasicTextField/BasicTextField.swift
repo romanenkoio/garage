@@ -29,15 +29,16 @@ class BasicTextField: UITextField {
     init() {
         super .init(frame: .zero)
         layer.cornerRadius = 8
-        layer.borderColor = UIColor.clear.cgColor
-        backgroundColor = .secondaryGray
+        layer.borderColor = UIColor.secondaryGray.cgColor
+        backgroundColor = .clear
+        layer.borderWidth = 1
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 35))
         leftViewMode = .always
         font = .custom(size: 17, weight: .medium)
         clipsToBounds = true
         self.addTarget(self, action: #selector(textDidChange(field:)), for: .editingDidEnd)
         self.snp.makeConstraints { make in
-            make.height.equalTo(44)
+            make.height.equalTo(56)
         }
     }
     
@@ -63,7 +64,7 @@ class BasicTextField: UITextField {
         vm.$isEnabled
             .sink { [weak self] value in
                 self?.isEnabled = value
-                self?.backgroundColor = value ? .secondaryGray : .secondaryGray.withAlphaComponent(0.3)
+                self?.backgroundColor = value ? .white : .white.withAlphaComponent(0.3)
             }
             .store(in: &cancellables)
         
@@ -81,9 +82,9 @@ class BasicTextField: UITextField {
         
         if didBecomeFirstResponder, let text = self.text {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.layer.borderColor = UIColor.primaryPink.cgColor
-                self?.backgroundColor = .clear
-                self?.layer.borderWidth = 2
+                self?.layer.borderColor = UIColor.primaryGreen.cgColor
+                self?.backgroundColor = .secondaryGray
+                self?.layer.borderWidth = 1
             }
             self.text?.removeAll()
             insertText(text)
@@ -97,9 +98,9 @@ class BasicTextField: UITextField {
         
         if didResignFirstResponder {
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.layer.borderColor = UIColor.clear.cgColor
-                self?.backgroundColor = .secondaryGray
-                self?.layer.borderWidth = 0
+                self?.layer.borderColor = UIColor.secondaryGray.cgColor
+                self?.backgroundColor = .clear
+                self?.layer.borderWidth = 1
             }
             self.vm?.validate()
         }

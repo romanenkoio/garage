@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DocumentType: CaseIterable, Selectable {
+enum DocumentType: CaseIterable, Selectable, Equatable {
     case license
     case medical
     case insurance

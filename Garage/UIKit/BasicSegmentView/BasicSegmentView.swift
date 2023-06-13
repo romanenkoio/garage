@@ -31,7 +31,7 @@ class BasicSegmentView<T: Equatable>: BasicView {
     
     private lazy var selectionView: BasicView = {
         let view = BasicView()
-        view.backgroundColor = .primaryPink
+        view.backgroundColor = .primaryGreen
         view.cornerRadius = 8
         return view
     }()

@@ -17,9 +17,6 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: ObservableObject, NetworkManagerProtocol {
     static let sh: NetworkManagerProtocol = NetworkManager()
-    private var topController: BasicViewController? {
-        return UIApplication.shared.topController
-    }
     
     private init() {}
 
@@ -66,7 +63,6 @@ final class NetworkManager: ObservableObject, NetworkManagerProtocol {
     }()
 
     func request<Target: TargetType, Model: Decodable>(_ target: Target, model: [Model].Type) async throws -> [Model] {
-        await topController?.startLoader()
         return try await withCheckedThrowingContinuation { continuation in
             provider.request(MultiTarget(target)) { [weak self] result in
                 guard let self else { return }
@@ -89,8 +85,6 @@ final class NetworkManager: ObservableObject, NetworkManagerProtocol {
     }
 
 func request<Target: TargetType, Model: Decodable>(_ target: Target, model: Model.Type) async throws -> Model {
-    await topController?.startLoader()
-
         return try await withCheckedThrowingContinuation { continuation in
             provider.request(MultiTarget(target)) { [weak self] result in
                 guard let self else { return }

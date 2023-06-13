@@ -47,6 +47,16 @@ final class ServicesControllerLayoutManager {
         vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
+    func hideCategoriesStack(_ suggestions: [SuggestionView.ViewModel]) {
+        categoriesStack.clearArrangedSubviews()
+        categoriesStack.isHidden = suggestions.isEmpty
+        let views = suggestions.map({
+            let view = SuggestionView()
+            view.setViewModel($0)
+            return view
+        })
+        categoriesStack.addArrangedSubviews(views)
+    }
 }
 
 // MARK: -
@@ -67,11 +77,10 @@ fileprivate extension ServicesControllerLayoutManager {
     private func makeConstraint() {
         categoriesStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(40)
         }
         
         table.snp.makeConstraints { make in
-            make.top.equalTo(categoriesStack.snp.bottom).offset(20)
+            make.top.equalTo(categoriesStack.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

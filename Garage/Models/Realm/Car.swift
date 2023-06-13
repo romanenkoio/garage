@@ -8,7 +8,7 @@
 import RealmSwift
 import UIKit
 
-final class Car: Object {
+final class Car: Object, Codable {
     @Persisted var id: String
     @Persisted var brand: String
     @Persisted var model: String
@@ -24,7 +24,8 @@ final class Car: Object {
         generation: String? = nil,
         year: Int? = nil,
         win: String? = nil,
-        mileage: Int
+        mileage: Int,
+        logo: Data?
     ) {
         self.init()
         self.id = UUID().uuidString
@@ -34,6 +35,7 @@ final class Car: Object {
         self.year = year
         self.win = win
         self.mileage = mileage
+        self.imageData = logo
     }
 }
 

@@ -41,23 +41,24 @@ class BasicButton: UIButton {
         
     init() {
         super .init(frame: .zero)
-        layer.cornerRadius = 12
+        layer.cornerRadius = 27
         tintColor = .lightGray
         titleLabel?.font = .custom(size: 15, weight: .medium)
         translatesAutoresizingMaskIntoConstraints = false
         self.snp.makeConstraints { make in
-            make.height.equalTo(40)
+            make.height.equalTo(64)
+            make.width.equalTo(242)
         }
     }
     
     private func setButtonColor() {
         switch style {
             case .primary:
-                backgroundColor = .primaryPink
+                backgroundColor = .primaryGreen
                 setTitleColor(.white, for: .normal)
             case .secondary:
                 backgroundColor = .primaryGray
-                setTitleColor(.primaryPink, for: .normal)
+                setTitleColor(.primaryGreen, for: .normal)
             case .addImage:
                 backgroundColor = .clear
                 tintColor = .gray
@@ -74,7 +75,7 @@ class BasicButton: UIButton {
     private func setStyle(for value: Bool) {
         switch style {
             case .primary:
-                backgroundColor = value ? .primaryPink : .secondaryPink
+            backgroundColor = value ? .primaryGreen : .primaryGreen.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
             case .none:

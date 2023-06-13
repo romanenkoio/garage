@@ -13,9 +13,10 @@ final class TabBarController: UITabBarController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        tabBar.tintColor = .primaryPink
+        tabBar.tintColor = .primaryGreen
         tabBar.unselectedItemTintColor = .lightGray
         tabBar.layer.borderWidth = 0.2
+        tabBar.backgroundColor = UIColor(hexString: "#F9F9F9").withAlphaComponent(0.94)
         tabBar.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
     }
     

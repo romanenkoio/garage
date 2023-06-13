@@ -142,7 +142,7 @@ class BasicList<T: Equatable>: BasicView {
         guard self.labels.count == self.vm?.items.count else { return }
         self.labels.enumerated().forEach { index, label in
             if self.vm?.items[index] == item {
-                label.layer.borderColor = UIColor.primaryPink.cgColor
+                label.layer.borderColor = UIColor.primaryGreen.cgColor
                 self.label.attributedText = vm?.titles[index].attributedString(
                     font: .custom(size: 17, weight: .medium),
                     textColor: .textBlack

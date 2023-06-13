@@ -37,7 +37,7 @@ class InfoView: BasicStackView {
     private lazy var rightActiomlabel: UILabel = {
         let label = UILabel()
         label.font = .custom(size: 15, weight: .semibold)
-        label.textColor = .primaryPink
+        label.textColor = .primaryGreen
         return label
     }()
     

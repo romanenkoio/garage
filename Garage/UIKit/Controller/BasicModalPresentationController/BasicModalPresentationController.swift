@@ -39,7 +39,7 @@ class BasicModalPresentationController: UIViewController {
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
         spinner.style = .medium
-        spinner.tintColor = .primaryPink
+        spinner.tintColor = .primaryGray
         return spinner
     }()
     

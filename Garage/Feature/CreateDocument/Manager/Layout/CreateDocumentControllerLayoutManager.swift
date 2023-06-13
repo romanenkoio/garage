@@ -20,7 +20,7 @@ final class CreateDocumentControllerLayoutManager {
         return stack
     }()
 
-    lazy var typeField = BasicInputView()
+    lazy var typeField = SuggestionInput<DocumentType>()
     lazy var datePicker = RangeDatePicker()
     lazy var saveButton = BasicButton()
     
@@ -28,6 +28,14 @@ final class CreateDocumentControllerLayoutManager {
     init(vc: CreateDocumentViewController) {
         self.vc = vc
         configure()
+        
+        let trashButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside {
+//                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            },
+            image: UIImage(systemName: "trash")
+        )
+        vc.makeRightNavBarButton(buttons: [trashButtonVM])
     }
     
 }

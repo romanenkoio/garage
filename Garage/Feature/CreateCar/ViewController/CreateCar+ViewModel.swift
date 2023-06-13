@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 extension CreateCarViewController {
     final class ViewModel: BasicControllerModel {
@@ -15,7 +16,6 @@ extension CreateCarViewController {
         
         var brandFieldVM: BasicInputView.ViewModel
         var modelFieldVM: BasicInputView.ViewModel
-        var generationFieldVM: BasicInputView.ViewModel
         var winFieldVM: BasicInputView.ViewModel
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
@@ -23,56 +23,61 @@ extension CreateCarViewController {
         var succesCreateCompletion: Completion?
         var suggestionCompletion: SelectArrayCompletion?
         
-        let saveButtonVM = BasicButton.ViewModel(
+        let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(
             title: "Сохранить",
             isEnabled: false,
             style: .primary
-        )
+        ))
+        
+        var logoImage: UIImage?
         
         override init() {
             brandFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
+                inputVM: .init(placeholder: "Toyota"),
+                descriptionVM: .init(text: "Производитель"),
+                isRequired: true
             )
             
             modelFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Модель")
-            )
-            
-            generationFieldVM = .init(
-                errorVM: .init(),
-                inputVM: .init(placeholder: "Поколение")
+                inputVM: .init(placeholder: "RAV4"),
+                descriptionVM: .init(text: "Модель"),
+                isRequired: true
             )
             
             winFieldVM = .init(
                 errorVM: vinErrorVM,
-                inputVM: .init(placeholder: "WIN")
+                inputVM: .init(placeholder: "JTEHH20V906089188"),
+                descriptionVM: .init(text: "VIN номер")
             )
             
             yearFieldVM = .init(
                 errorVM: .init(),
-                inputVM: .init(placeholder: "Год выпуска")
+                inputVM: .init(placeholder: "2003"),
+                descriptionVM: .init(text: "Год выпуска")
             )
             
             mileageFieldVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "Пробег")
+                inputVM: .init(placeholder: "308000"),
+                descriptionVM: .init(text: "Пробег"),
+                isRequired: true
             )
             
             super.init()
             initValidator()
             initSuggestionAction()
             
-            saveButtonVM.action = .touchUpInside { [weak self] in
+            saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 let car = Car(
                     brand: self.brandFieldVM.text,
                     model: self.modelFieldVM.text,
-                    generation: self.generationFieldVM.text,
                     year: self.yearFieldVM.text.toInt(),
                     win: self.winFieldVM.text,
-                    mileage: self.mileageFieldVM.text.toInt() ?? .zero
+                    mileage: self.mileageFieldVM.text.toInt() ?? .zero,
+                    logo: self.logoImage?.pngData()
                 )
                 RealmManager<Car>().write(object: car)
                 self.succesCreateCompletion?()
@@ -93,7 +98,7 @@ extension CreateCarViewController {
             
             validator.formIsValid
                 .sink { [weak self] value in
-                    self?.saveButtonVM.isEnabled = value
+                    self?.saveButtonVM.buttonVM.isEnabled = value
                 }
                 .store(in: &cancellables)
             
@@ -168,11 +173,6 @@ extension CreateCarViewController {
                 inputVM: .init(placeholder: "Производитель")
             )
             
-            generationFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Поколение")
-            )
-            
             winFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "WIN")
@@ -192,6 +192,8 @@ extension CreateCarViewController {
         func decodeVIN() {
             Task { @MainActor in
                 do {
+                    self.isLoadind.send(true)
+                    guard !self.winFieldVM.text.isEmpty else { return }
                     let result = try await NetworkManager
                         .sh
                         .request(
@@ -199,6 +201,23 @@ extension CreateCarViewController {
                             model: Wrapper<VINDeocdedValue>.self
                         ).result
                     parseDecodedWin(values: result)
+                    self.isLoadind.send(false)
+                } catch let error {
+                    print(error)
+                    self.isLoadind.send(false)
+                }
+            }
+        }
+        
+        func getLogoBy(_ brand: String) async throws {
+            Task { @MainActor in
+                do {
+                    guard let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else { return }
+                    let request = URLRequest(url: url)
+                    let (data, _) = try await URLSession.shared.data(for: request)
+                    if let image = UIImage(data: data) {
+                        self.logoImage = image
+                    }
                 } catch let error {
                     print(error)
                 }
@@ -214,14 +233,14 @@ extension CreateCarViewController {
                     modelFieldVM.text = data.value.wrapped
                 case .make:
                     brandFieldVM.text = data.value.wrapped
+                    Task { @MainActor in
+                        try? await getLogoBy(data.value.wrapped)
+                    }
+                    modelFieldVM.actionImageVM?.isEnabled = true
                 case .year:
                     yearFieldVM.text = data.value.wrapped
                 }
             }
-            
-            
         }
     }
-    
-  
 }

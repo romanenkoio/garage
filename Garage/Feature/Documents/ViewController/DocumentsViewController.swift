@@ -48,10 +48,12 @@ class DocumentsViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
-        vm.tableVM.$cells.sink { [weak self] _ in
-            self?.layout.table.reload()
-        }
-        .store(in: &cancellables)
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.layout.table.reload()
+            }
+            .store(in: &cancellables)
     }
     
 }

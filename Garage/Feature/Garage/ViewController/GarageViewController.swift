@@ -39,6 +39,11 @@ class GarageViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCars()
+        hideTabBar(false)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 
     override func configure() {
@@ -48,15 +53,14 @@ class GarageViewController: BasicViewController {
 
     override func binding() {
         super.binding()
-        layout.addCarButton.setViewModel(vm.addCarButton)
+        layout.table.setViewModel(vm.tableVM)
         
-        vm.$cells
-            .sink { [weak self] _ in self?.layout.checkEmptyTable() }
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.layout.table.reload()
+            }
             .store(in: &cancellables)
-        
-        vm.addCarButton.action = .touchUpInside { [weak self] in
-            self?.coordinator.navigateTo(GarageNavigationRoute.createCar)
-        }
     }
     
 }
@@ -78,18 +82,22 @@ extension GarageViewController {
 
 extension GarageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.cells.count
+        return vm.tableVM.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let carCell = tableView.dequeueReusableCell(CarCell.self) else { return .init() }
-        carCell.mainView.setViewModel(vm.cells[indexPath.row])
+        guard let carCell = tableView.dequeueReusableCell(CarCell.self),
+              let vm = vm.tableVM.cells[safe: indexPath.row]
+        else { return .init() }
+        carCell.mainView.setViewModel(.init(car: vm))
+        carCell.selectionStyle = .none
         return carCell
     }
 }
 
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
+        guard let selectedCar = vm.tableVM.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
     }
 }

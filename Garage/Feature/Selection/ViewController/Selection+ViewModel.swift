@@ -10,8 +10,8 @@ import UIKit
 
 extension SelectionViewController {
     final class ViewModel: BasicControllerModel {
-        @Published
-        private(set) var cells: [Selectable]
+        let tableVM = BasicTableView.GenericViewModel<Selectable>()
+
         private var snapshot: [Selectable]
 
         private var selected: Selectable?
@@ -26,9 +26,14 @@ extension SelectionViewController {
         var selectionSuccess: ((Selectable) -> Void)?
         
         init(cells: [Selectable]) {
-            self.cells = cells
+            self.tableVM.setCells(cells)
             self.snapshot = cells
             super.init()
+            
+            tableVM.setupEmptyState(
+                labelVM: .init(text: "Нет данных"),
+                image: UIImage(systemName: "car")
+            )
             
             saveButtonVM.action = .touchUpInside { [weak self] in
                 guard let self,
@@ -40,11 +45,13 @@ extension SelectionViewController {
             searchVM.$text.receive(on: DispatchQueue.main).sink { [weak self] searchText in
                 guard let self else { return }
                 if searchText.isEmpty {
-                    self.cells = self.snapshot
+                    self.tableVM.setCells(self.snapshot)
                 } else {
-                    self.cells = cells.filter({
+                    let cells = cells.filter({
                         $0.title.lowercased().contains(searchText.lowercased())
                     })
+                    self.tableVM.setCells(cells)
+
                 }
                
             }
@@ -52,7 +59,7 @@ extension SelectionViewController {
         }
         
         func selectCell(at index: IndexPath) {
-            self.selected = cells[index.row]
+            self.selected = tableVM.cells[index.row]
             saveButtonVM.isEnabled = true
         }
     }
