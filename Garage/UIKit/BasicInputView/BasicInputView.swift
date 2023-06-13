@@ -95,7 +95,7 @@ class BasicInputView: BasicView {
         }
         
         actionImage.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalTo(textField).inset(UIEdgeInsets(all: 5))
+            make.top.trailing.bottom.equalTo(textField).inset(UIEdgeInsets(all: 10))
             make.width.equalTo(actionImage.snp.height)
         }
     }

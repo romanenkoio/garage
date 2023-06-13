@@ -24,6 +24,7 @@ final class AlignedButton: BasicView {
         basicButton.snp.makeConstraints { make in
             make.width.equalTo(242)
             make.centerX.equalToSuperview()
+            make.top.bottom.equalToSuperview()
         }
     }
    
