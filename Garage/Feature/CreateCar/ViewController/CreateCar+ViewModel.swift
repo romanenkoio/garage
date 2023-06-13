@@ -23,11 +23,12 @@ extension CreateCarViewController {
         var succesCreateCompletion: Completion?
         var suggestionCompletion: SelectArrayCompletion?
         
-        let saveButtonVM = BasicButton.ViewModel(
+        let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(
             title: "Сохранить",
             isEnabled: false,
             style: .primary
-        )
+        ))
+        
         var logoImage: UIImage?
         
         override init() {
@@ -68,7 +69,7 @@ extension CreateCarViewController {
             initValidator()
             initSuggestionAction()
             
-            saveButtonVM.action = .touchUpInside { [weak self] in
+            saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 let car = Car(
                     brand: self.brandFieldVM.text,
@@ -97,7 +98,7 @@ extension CreateCarViewController {
             
             validator.formIsValid
                 .sink { [weak self] value in
-                    self?.saveButtonVM.isEnabled = value
+                    self?.saveButtonVM.buttonVM.isEnabled = value
                 }
                 .store(in: &cancellables)
             

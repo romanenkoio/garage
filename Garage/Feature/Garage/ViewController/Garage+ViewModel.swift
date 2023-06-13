@@ -15,7 +15,6 @@ extension GarageViewController {
 
         override init() {
             super.init()
-            title = "Мой гараж"
             readCars()
             tableVM.setupEmptyState(
                 labelVM: .init(text: "Нет данных"),

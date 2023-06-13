@@ -10,7 +10,6 @@ import Combine
 
 extension BasicViewController {
     class BasicControllerModel {
-        @Published var title: String?
         @Published var isLoadind: PassthroughSubject<Bool, Never> = .init()
         
         var cancellables: Set<AnyCancellable> = []

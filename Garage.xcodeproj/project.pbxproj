@@ -80,6 +80,8 @@
 		7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */; };
 		7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465522A38A1770022E4E7 /* SettingMenu.swift */; };
 		7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465542A38B33C0022E4E7 /* FuelType.swift */; };
+		7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */; };
+		7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465592A38BF830022E4E7 /* AlignedButton+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -236,6 +238,8 @@
 		7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Documents+ViewModel.swift"; sourceTree = "<group>"; };
 		7F1465522A38A1770022E4E7 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		7F1465542A38B33C0022E4E7 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
+		7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedButton.swift; sourceTree = "<group>"; };
+		7F1465592A38BF830022E4E7 /* AlignedButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlignedButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -777,6 +781,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F1465562A38BF700022E4E7 /* AlignedButton */ = {
+			isa = PBXGroup;
+			children = (
+				7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */,
+				7F1465592A38BF830022E4E7 /* AlignedButton+ViewModel.swift */,
+			);
+			path = AlignedButton;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -955,6 +968,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F1465562A38BF700022E4E7 /* AlignedButton */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
@@ -1369,6 +1383,7 @@
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
+				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
@@ -1454,6 +1469,7 @@
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				7F0E09222A324A90008C2B9A /* Collection.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
+				7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				7F0E091D2A31EBDE008C2B9A /* ActionImage.swift in Sources */,

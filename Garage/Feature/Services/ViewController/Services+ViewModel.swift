@@ -19,7 +19,6 @@ extension ServicesViewController {
         
         override init() {
             super.init()
-            title = "Мои сервисы"
             tableVM.setupEmptyState(
                 labelVM: .init(text: "Нет данных"),
                 image: UIImage(systemName: "car")

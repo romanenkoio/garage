@@ -25,6 +25,8 @@ class CreateCarViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
+        title = "Добавить машину"
+        makeCloseButton()
     }
     
     required init?(coder: NSCoder) {

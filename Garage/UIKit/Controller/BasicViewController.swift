@@ -75,11 +75,6 @@ class BasicViewController: UIViewController {
     func singleWillAppear() { }
 
     func binding() {
-        viewModel.$title.receive(on: DispatchQueue.main).sink { [weak self] title in
-            self?.title = title
-        }
-        .store(in: &cancellables)
-        
         viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
             value ? self.startLoader() : self.stopLoader()
@@ -136,6 +131,17 @@ class BasicViewController: UIViewController {
             return UIBarButtonItem(customView: view)
         })
         self.navigationItem.rightBarButtonItems = views
+    }
+    
+    func makeCloseButton() {
+        let closeButton = NavBarButton()
+        let vm = NavBarButton.ViewModel(
+            action: .touchUpInside {
+                self.coordinator.navigateTo(CommonNavigationRoute.close)
+            },
+            image: UIImage(named: "back_ic"))
+        closeButton.setViewModel(vm)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
     }
     
     func layoutElements() {

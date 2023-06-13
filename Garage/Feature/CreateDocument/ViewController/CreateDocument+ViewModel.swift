@@ -28,7 +28,6 @@ extension CreateDocumentViewController {
 
         override init() {
             super.init()
-            title = "Добавление документа"
             
             saveButtonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
