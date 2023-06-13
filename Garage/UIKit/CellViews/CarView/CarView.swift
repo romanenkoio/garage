@@ -38,6 +38,12 @@ class CarView: BasicView {
         return stack
     }()
 
+    private lazy var attentionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "attention_ic")
+        return view
+    }()
+    
     private lazy var brandLabel: BasicLabel = {
         let label = BasicLabel()
         label.font = .custom(size: 18, weight: .black)
@@ -67,6 +73,7 @@ class CarView: BasicView {
     
     private func makeLayout() {
         self.addSubview(mainStack)
+        self.addSubview(attentionImage)
         mainStack.addArrangedSubviews([imageView, textStack, notificationView])
         textStack.addArrangedSubviews([brandLabel, modelLabel])
     }
@@ -86,6 +93,13 @@ class CarView: BasicView {
         
         notificationView.snp.makeConstraints { make in
             make.height.width.equalTo(25)
+        }
+        
+        attentionImage.snp.makeConstraints { make in
+            make.height.width.equalTo(22)
+            make.trailing.equalTo(imageView.snp.leading).inset(12)
+            make.bottom.equalTo(imageView.snp.top).inset(12)
+
         }
     }
     

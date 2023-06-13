@@ -69,6 +69,11 @@ extension CreateCarViewController {
             initValidator()
             initSuggestionAction()
             
+            brandFieldVM.inputVM.$text.sink { [weak self] value in
+                self?.getLogoBy(value)
+            }
+            .store(in: &cancellables)
+            
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 let car = Car(
@@ -167,34 +172,6 @@ extension CreateCarViewController {
             )
         }
         
-        
-        private func initFields() {
-            brandFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
-            )
-            
-            modelFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Производитель")
-            )
-            
-            winFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "WIN")
-            )
-            
-            yearFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Год выпуска")
-            )
-            
-            mileageFieldVM = .init(
-                errorVM: errorVM,
-                inputVM: .init(placeholder: "Пробег")
-            )
-        }
-        
         func decodeVIN() {
             Task { @MainActor in
                 do {
@@ -215,16 +192,19 @@ extension CreateCarViewController {
             }
         }
         
-        func getLogoBy(_ brand: String) async throws {
+        func getLogoBy(_ brand: String) {
             Task { @MainActor in
                 do {
+                    self.isLoadind.send(true)
                     guard let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else { return }
                     let request = URLRequest(url: url)
                     let (data, _) = try await URLSession.shared.data(for: request)
                     if let image = UIImage(data: data) {
                         self.logoImage = image
                     }
+                    self.isLoadind.send(false)
                 } catch let error {
+                    self.isLoadind.send(false)
                     print(error)
                 }
             }
@@ -239,9 +219,7 @@ extension CreateCarViewController {
                     modelFieldVM.text = data.value.wrapped
                 case .make:
                     brandFieldVM.text = data.value.wrapped
-                    Task { @MainActor in
-                        try? await getLogoBy(data.value.wrapped)
-                    }
+                    getLogoBy(data.value.wrapped)
                     modelFieldVM.actionImageVM?.isEnabled = true
                 case .year:
                     yearFieldVM.text = data.value.wrapped
