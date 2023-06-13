@@ -30,6 +30,14 @@ final class CreateServiseControllerLayoutManager {
     init(vc: CreateServiseViewController) {
         self.vc = vc
         configure()
+        
+        let trashButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside {
+//                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            },
+            image: UIImage(systemName: "trash")
+        )
+        vc.makeRightNavBarButton(buttons: [trashButtonVM])
     }
     
 }

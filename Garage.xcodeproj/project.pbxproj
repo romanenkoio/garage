@@ -78,6 +78,7 @@
 		7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */; };
 		7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */; };
 		7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */; };
+		7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465522A38A1770022E4E7 /* SettingMenu.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -232,6 +233,7 @@
 		7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Documents+ViewModel.swift"; sourceTree = "<group>"; };
+		7F1465522A38A1770022E4E7 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				7F5955FA2A2E8D420062A85F /* DocumentType.swift */,
 				7F5956002A2E95F10062A85F /* ServiceType.swift */,
 				7FFC1F6A2A35371A007A5C75 /* RecordType.swift */,
+				7F1465522A38A1770022E4E7 /* SettingMenu.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1422,6 +1425,7 @@
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
+				7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
