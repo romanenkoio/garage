@@ -16,7 +16,7 @@ enum ColorScheme: String, CaseIterable {
     case mint
     case lightBlue
     
-    var current: ColorScheme {
+    static var current: ColorScheme {
         return ColorScheme(rawValue: SettingsManager.sh.read(.colorSet))
     }
     
