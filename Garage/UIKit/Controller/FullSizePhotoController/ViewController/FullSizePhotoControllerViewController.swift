@@ -98,7 +98,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                     }
                 )
             )
-        )        
+        )
     }
     
     private func findCenterIndex() {
@@ -128,9 +128,11 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let index = vm.selectedIndex else { return }
-        let startSpecificIndexPath = IndexPath(item: index, section: 0)
-        self.collectionView.collection.scrollToItem(at: startSpecificIndexPath, at: .centeredHorizontally, animated: false)
+        if let index = vm.selectedIndex {
+            let startSpecificIndexPath = IndexPath(item: index, section: 0)
+            self.collectionView.collection.scrollToItem(at: startSpecificIndexPath, at: .centeredHorizontally, animated: false)
+            vm.selectedIndex = nil
+        }
     }
     
 }
