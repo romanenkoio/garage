@@ -39,6 +39,12 @@ extension CreateDocumentViewController {
                     photo: nil
                 )
                 RealmManager<Document>().write(object: document)
+                
+                self.imageList.items.forEach { image in
+                    guard let data = image.jpegData(compressionQuality: 1) else { return }
+                    let photo = Photo(document, image: data)
+                    RealmManager<Photo>().write(object: photo)
+                }
                 self.saveCompletion?()
             }
             

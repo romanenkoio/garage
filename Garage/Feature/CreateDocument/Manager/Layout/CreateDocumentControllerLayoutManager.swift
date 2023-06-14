@@ -31,6 +31,7 @@ final class CreateDocumentControllerLayoutManager {
         self.vc = vc
         configure()
         vc.makeCloseButton()
+        vc.title = "Добавление документа"
     }
     
 }
