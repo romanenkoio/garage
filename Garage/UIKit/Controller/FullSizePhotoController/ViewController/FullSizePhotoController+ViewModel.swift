@@ -16,10 +16,11 @@ extension FullSizePhotoViewController {
 
         @Published
         var images: [UIImage]
-
+        var selectedIndex: Int?
         
-        init(images: [UIImage]) {
+        init(images: [UIImage], selectedIndex: Int? = nil) {
             self.images = images
+            self.selectedIndex = selectedIndex
             super.init()
             makeCells()
         }

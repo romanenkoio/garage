@@ -103,6 +103,12 @@ class BasicImageListView: BasicView {
             }
         }
         .store(in: &cancellables)
+        
+        vm.$selectedIndex.sink { [weak self] index in
+            guard let index else { return }
+            self?.presentPhotoViewVC(vm, on: index)
+        }
+        .store(in: &cancellables)
     }
     
     private func makeRemoveItems(at index: Int, with image: UIImage) {
@@ -113,8 +119,7 @@ class BasicImageListView: BasicView {
         let imageView = BasicImageButton()
         imageView.setViewModel(.init(
             action: { [weak self] in
-                self?.presentPhotoViewVC(vm)
-               
+                self?.viewModel?.selectedIndex = index
             },
             image: image
             ,
@@ -139,7 +144,7 @@ class BasicImageListView: BasicView {
             buttonVM: .init(
                 style: .addImage,
                 action: .touchUpInside {[weak self] in
-                    self?.viewModel?.selectedIndex = index
+                    //self?.viewModel?.selectedIndex = index
                     self?.presentAlert()
                 })
         ))
@@ -172,14 +177,13 @@ class BasicImageListView: BasicView {
         sceneDelegate?.window?.rootViewController?.present(imagePicker, animated: true)
     }
     
-    private func presentPhotoViewVC(_ vm: ViewModel) {
+    private func presentPhotoViewVC(_ vm: ViewModel, on index: Int) {
         let fullSizePhotoViewVC = FullSizePhotoViewController(
             vm: FullSizePhotoViewController.ViewModel(
-                images: vm.items
+                images: vm.items,
+                selectedIndex: index
             )
         )
-//        fullSizePhotoViewVC.modalPresentationStyle = .fullScreen
-//        fullSizePhotoViewVC.modalTransitionStyle = .crossDissolve
         
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController?.present(fullSizePhotoViewVC, animated: true)

@@ -42,7 +42,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
     
     // - Manager
     private var coordinator: Coordinator!
-    
+   
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -70,6 +70,11 @@ class FullSizePhotoViewController: BasicModalPresentationController {
         view.addSubview(navView)
         view.cornerRadius = 12
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
 
     override func makeConstraints() {
         collectionView.snp.makeConstraints { make in
@@ -93,7 +98,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                     }
                 )
             )
-        )
+        )        
     }
     
     private func findCenterIndex() {
@@ -120,6 +125,12 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
         photoCell.mainView.setViewModel(.init(image: item))
         findCenterIndex()
         return photoCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let index = vm.selectedIndex else { return }
+        let startSpecificIndexPath = IndexPath(item: index, section: 0)
+        self.collectionView.collection.scrollToItem(at: startSpecificIndexPath, at: .centeredHorizontally, animated: false)
     }
     
 }
