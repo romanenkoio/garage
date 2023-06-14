@@ -44,6 +44,7 @@ class CreateDocumentViewController: BasicViewController {
         layout.typeField.setViewModel(vm.typeFieldVM)
         layout.datePicker.setViewModel(vm.datePickerVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        layout.imageList.setViewModel(vm.imageList)
         
         vm.suggestionCompletion = { [weak self] items in
             let model = SelectionViewController.ViewModel(cells: items)

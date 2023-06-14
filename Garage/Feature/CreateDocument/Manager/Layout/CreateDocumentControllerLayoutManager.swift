@@ -17,25 +17,20 @@ final class CreateDocumentControllerLayoutManager {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 10
+        stack.edgeInsets = .horizintal
         return stack
     }()
 
     lazy var typeField = SuggestionInput<DocumentType>()
     lazy var datePicker = RangeDatePicker()
+    lazy var imageList = BasicImageListView()
     lazy var saveButton = BasicButton()
     
     // - Init
     init(vc: CreateDocumentViewController) {
         self.vc = vc
         configure()
-        
-        let trashButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-//                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
-            },
-            image: UIImage(systemName: "trash")
-        )
-        vc.makeRightNavBarButton(buttons: [trashButtonVM])
+        vc.makeCloseButton()
     }
     
 }
@@ -55,6 +50,7 @@ fileprivate extension CreateDocumentControllerLayoutManager {
         fieldStack.addArrangedSubviews([
             typeField,
             datePicker,
+            imageList,
             saveButton
         ])
     }

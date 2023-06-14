@@ -16,6 +16,7 @@ extension CreateDocumentViewController {
             style: .primary
         )
         
+        let imageList = BasicImageListView.ViewModel()
         let datePickerVM = RangeDatePicker.ViewModel()
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
