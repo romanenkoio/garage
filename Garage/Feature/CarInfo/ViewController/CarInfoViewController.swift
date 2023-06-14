@@ -34,6 +34,7 @@ class CarInfoViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavBar(false)
+        makeCloseButton(isLeft: true)
     }
 
     override func configure() {

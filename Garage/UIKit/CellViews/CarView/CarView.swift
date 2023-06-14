@@ -79,10 +79,6 @@ class CarView: BasicView {
     }
     
     private func makeConstraints() {
-        self.snp.makeConstraints { make in
-            make.height.equalTo(80)
-        }
-        
         mainStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
