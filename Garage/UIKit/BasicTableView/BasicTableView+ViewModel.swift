@@ -11,7 +11,7 @@ extension BasicTableView {
     class ViewModel: BasicViewModel {
         private(set) var labelVM = BasicLabel.ViewModel()
         private(set) var subLabelVM = BasicLabel.ViewModel()
-        private(set) var addButtonVM = BasicButton.ViewModel()
+        private(set) var addButtonVM = BasicButton.ViewModel(style: .primary)
         
         @Published
         private(set) var image: UIImage?
