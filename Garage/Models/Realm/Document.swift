@@ -7,6 +7,7 @@
 
 import RealmSwift
 import Foundation
+import UIKit
 
 final class Document: Object, Codable {
     @Persisted var id: String
@@ -34,5 +35,13 @@ extension Document {
     var type: DocumentType {
         get { return DocumentType(from: rawType) }
         set { rawType = newValue.title }
+    }
+    
+    var photos: [UIImage] {
+        let photoData = RealmManager<Photo>()
+            .read()
+            .filter({ $0.documentId == self.id })
+        let images = photoData.compactMap({UIImage(data: $0.image)})
+        return images
     }
 }
