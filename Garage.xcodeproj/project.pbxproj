@@ -157,11 +157,30 @@
 		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
 		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
+		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
+		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
+		B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */; };
+		B9D96E472A37B04900909B33 /* FullSizePhotoControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */; };
+		B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */; };
+		B9D96E4B2A37B18000909B33 /* BasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E4A2A37B18000909B33 /* BasicCollectionView.swift */; };
+		B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E4C2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift */; };
+		B9D96E4F2A37B47200909B33 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E4E2A37B47200909B33 /* UICollectionView.swift */; };
+		B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E512A37CF6800909B33 /* PhotoView.swift */; };
+		B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */; };
+		B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */; };
+		B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */; };
+		B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */; };
+		B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */; };
+		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
+		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
 		B9FB29072A31F48100A4CF1D /* SuggestionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29062A31F48100A4CF1D /* SuggestionInput.swift */; };
 		B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */; };
+		B9FB290D2A33784300A4CF1D /* BasicIMageScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */; };
+		B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */; };
+		B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -313,11 +332,29 @@
 		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
+		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerControllerCoordinator.swift; sourceTree = "<group>"; };
+		B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerViewController.swift; sourceTree = "<group>"; };
+		B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FullSizePhotoController+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E4A2A37B18000909B33 /* BasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionView.swift; sourceTree = "<group>"; };
+		B9D96E4C2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicCollectionView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E4E2A37B47200909B33 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		B9D96E512A37CF6800909B33 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcNavigationView.swift; sourceTree = "<group>"; };
+		B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModalPresentationController.swift; sourceTree = "<group>"; };
+		B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicModalPresentationController+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcNavigationView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcBottomView.swift; sourceTree = "<group>"; };
+		B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcBottomView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB29062A31F48100A4CF1D /* SuggestionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionInput.swift; sourceTree = "<group>"; };
 		B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicSelectList+ViewModel.swift"; sourceTree = "<group>"; };
+		B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageScrollableView.swift; sourceTree = "<group>"; };
+		B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicIMageScrollableView+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +365,7 @@
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
+				B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,6 +998,9 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E492A37B17200909B33 /* BasicColllectionView */,
+				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
+				B9FB290B2A33782900A4CF1D /* BasicImageScrollableView */,
 				7F1465562A38BF700022E4E7 /* AlignedButton */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
@@ -991,6 +1032,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				B9D96E502A37CF5100909B33 /* PhotoView */,
 				7FFC1F6C2A353D0A007A5C75 /* RecordView */,
 				7F0E094B2A3346BB008C2B9A /* DocumentView */,
 				7F0E090C2A30A3F2008C2B9A /* ServiceView */,
@@ -1065,8 +1107,9 @@
 		B978F2F12A2E8F4C0076D326 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
-				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
+				B9D96E5C2A38D8C200909B33 /* BasicViewController */,
+				B9D96E5B2A38D8AB00909B33 /* BasicModalPresentationController */,
+				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1181,6 +1224,7 @@
 				7F0E09212A324A90008C2B9A /* Collection.swift */,
 				7F0E092E2A32818F008C2B9A /* Array.swift */,
 				7F0E09492A333B84008C2B9A /* UIApplication.swift */,
+				B9D96E4E2A37B47200909B33 /* UICollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1252,6 +1296,113 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */,
+				B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */,
+			);
+			path = BasicIMageViewWithButton;
+			sourceTree = "<group>";
+		};
+		B9D96E3C2A37B04900909B33 /* FullSizePhotoController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E552A38D5CE00909B33 /* Layout */,
+				B9D96E3D2A37B04900909B33 /* Manager */,
+				B9D96E422A37B04900909B33 /* ViewController */,
+			);
+			path = FullSizePhotoController;
+			sourceTree = "<group>";
+		};
+		B9D96E3D2A37B04900909B33 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E3E2A37B04900909B33 /* Coordinator */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B9D96E3E2A37B04900909B33 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9D96E422A37B04900909B33 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E432A37B04900909B33 /* FullSizePhotoControllerViewController.swift */,
+				B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B9D96E492A37B17200909B33 /* BasicColllectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E4A2A37B18000909B33 /* BasicCollectionView.swift */,
+				B9D96E4C2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift */,
+			);
+			path = BasicColllectionView;
+			sourceTree = "<group>";
+		};
+		B9D96E502A37CF5100909B33 /* PhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E512A37CF6800909B33 /* PhotoView.swift */,
+				B9D96E532A37CF7100909B33 /* PhotoView+ViewModel.swift */,
+			);
+			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		B9D96E552A38D5CE00909B33 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E612A38EC2D00909B33 /* BottomView */,
+				B9D96E562A38D5D500909B33 /* NavView */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		B9D96E562A38D5D500909B33 /* NavView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E572A38D5FD00909B33 /* PhotoVcNavigationView.swift */,
+				B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */,
+			);
+			path = NavView;
+			sourceTree = "<group>";
+		};
+		B9D96E5B2A38D8AB00909B33 /* BasicModalPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E592A38D8A400909B33 /* BasicModalPresentationController.swift */,
+				B9D96E5D2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift */,
+			);
+			path = BasicModalPresentationController;
+			sourceTree = "<group>";
+		};
+		B9D96E5C2A38D8C200909B33 /* BasicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B978F2F22A2E8F4C0076D326 /* BasicViewController.swift */,
+				7F0E09452A32A1C0008C2B9A /* BasicViewController+ViewModel.swift */,
+			);
+			path = BasicViewController;
+			sourceTree = "<group>";
+		};
+		B9D96E612A38EC2D00909B33 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */,
+				B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */,
+			);
+			path = BottomView;
+			sourceTree = "<group>";
+		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,6 +1411,15 @@
 				B9FB28FF2A3145D400A4CF1D /* TestModel.swift */,
 			);
 			path = TestController;
+			sourceTree = "<group>";
+		};
+		B9FB290B2A33782900A4CF1D /* BasicImageScrollableView */ = {
+			isa = PBXGroup;
+			children = (
+				B9FB290C2A33784300A4CF1D /* BasicIMageScrollableView.swift */,
+				B9FB290E2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift */,
+			);
+			path = BasicImageScrollableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1283,6 +1443,7 @@
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
 				7F0E09152A31D773008C2B9A /* Moya */,
+				B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -1316,6 +1477,7 @@
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
+				B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -1354,12 +1516,14 @@
 				B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */,
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
+				B9D96E4B2A37B18000909B33 /* BasicCollectionView.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
 				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
+				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
@@ -1368,6 +1532,7 @@
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
+				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */,
@@ -1382,11 +1547,14 @@
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
+				B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
 				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,
+				B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
+				B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
@@ -1407,6 +1575,8 @@
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
+				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
+				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
@@ -1419,6 +1589,7 @@
 				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
+				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
@@ -1433,6 +1604,7 @@
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
+				B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
@@ -1452,10 +1624,12 @@
 				B9FB29072A31F48100A4CF1D /* SuggestionInput.swift in Sources */,
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
+				B9D96E4F2A37B47200909B33 /* UICollectionView.swift in Sources */,
 				7F0E09222A324A90008C2B9A /* Collection.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
+				B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */,
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				7F0E091D2A31EBDE008C2B9A /* ActionImage.swift in Sources */,
 				B978F32C2A2E8F4C0076D326 /* TappableLabel.swift in Sources */,
@@ -1471,8 +1645,10 @@
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
+				B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */,
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
+				B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
@@ -1481,12 +1657,16 @@
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
+				B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */,
+				B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
+				B9D96E472A37B04900909B33 /* FullSizePhotoControllerViewController.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
+				B9FB290D2A33784300A4CF1D /* BasicIMageScrollableView.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
 				7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */,
 				7FFC1F782A3545CB007A5C75 /* Backup.swift in Sources */,
@@ -1631,20 +1811,24 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.myGarage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.courses.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1664,20 +1848,24 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.myGarage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.courses.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1737,6 +1925,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tilltue/TLPhotoPicker.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1759,6 +1955,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */;
+			productName = TLPhotoPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

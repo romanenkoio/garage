@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import Lottie
 
 final class GarageControllerLayoutManager {
     private unowned let vc: GarageViewController

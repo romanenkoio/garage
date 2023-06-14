@@ -19,10 +19,11 @@ extension TestController {
         )
         
         let buttonVM = BasicButton.ViewModel()
+        let pickerVM = BasicImageListView.ViewModel()
+        
         
         override init() {
             super.init()
-            
             inputVM.placeholder = "Test placeholder"
             inputVM.rules = [.noneEmpty]
             buttonVM.style = .primary
@@ -30,7 +31,6 @@ extension TestController {
             buttonVM.action = .touchUpInside {
                 print(self.inputVM.text)
             }
-            
         }
     }
 }

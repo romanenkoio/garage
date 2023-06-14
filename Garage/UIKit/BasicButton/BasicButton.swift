@@ -12,6 +12,9 @@ import SnapKit
 enum ButtonStyle {
     case primary
     case secondary
+    case addImage
+    case removeImage
+    case nonStyle
 }
 
 class BasicButton: UIButton {
@@ -33,7 +36,7 @@ class BasicButton: UIButton {
         }
     }
     
-    private var style: ButtonStyle? {
+    private var style = ButtonStyle.nonStyle {
         didSet { setButtonColor() }
     }
         
@@ -57,8 +60,17 @@ class BasicButton: UIButton {
             case .secondary:
                 backgroundColor = .primaryGray
                 setTitleColor(.primaryBlue, for: .normal)
-            case .none:
-                backgroundColor = .additionalRed
+            case .addImage:
+                backgroundColor = .clear
+                tintColor = .gray
+                setImage(UIImage(systemName: "plus.circle"), for: .normal)
+            case .removeImage:
+                backgroundColor = .clear
+                tintColor = .red
+                setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+            case .nonStyle:
+                backgroundColor = .clear
+                setTitleColor(.primaryGray, for: .normal)
         }
     }
     
@@ -68,14 +80,18 @@ class BasicButton: UIButton {
             backgroundColor = value ? .primaryBlue : .primaryBlue.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
-            case .none:
-                backgroundColor = .additionalRed
+            case .nonStyle, .addImage, .removeImage:
+                backgroundColor = .clear
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
+        vm.$isHidden
+            .sink { [weak self] value in self?.isHidden = value }
+            .store(in: &cancellables)
+            
         vm.$style
             .sink { [weak self] value in self?.style = value }
             .store(in: &cancellables)

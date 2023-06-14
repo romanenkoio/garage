@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftTooltipKit
 
 class CreateCarViewController: BasicViewController {
 
