@@ -42,7 +42,14 @@ class SettingsViewController: BasicViewController {
     }
 
     override func binding() {
+        self.layout.table.setViewModel(vm.tableVM)
         
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+            self?.layout.table.reload()
+        }
+        .store(in: &cancellables)
     }
     
 }
@@ -59,5 +66,19 @@ extension SettingsViewController {
     private func configureLayoutManager() {
         layout = SettingsControllerLayoutManager(vc: self)
     }
+    
+}
+
+extension SettingsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tableVM.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return .init()
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
     
 }

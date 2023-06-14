@@ -10,9 +10,11 @@ import UIKit
 
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {
+        let tableVM = BasicTableView.GenericViewModel<SettingPoint>()
         
         override init() {
             super.init()
+            tableVM.setCells(SettingPoint.allCases)
         }
     }
 }

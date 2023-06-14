@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SettingPoint {
+enum SettingPoint: String, CaseIterable {
     case distancePoints
     case accountInfo
     case contactUs
