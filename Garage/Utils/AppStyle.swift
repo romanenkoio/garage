@@ -28,7 +28,7 @@ enum ColorScheme: String, CaseIterable {
         case ColorScheme.darkBlue.rawValue:        self = .darkBlue
         case ColorScheme.mint.rawValue:            self = .mint
         case ColorScheme.lightBlue.rawValue:       self = .lightBlue
-        default:                                self = .standartBlue
+        default:                                   self = .standartBlue
         }
     }
     
