@@ -91,6 +91,10 @@
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
+		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
+		7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */; };
+		7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */; };
+		7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
 		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
 		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
@@ -269,6 +273,10 @@
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
 				7FFC1F5D2A352B4A007A5C75 /* CarInfo */,
 				7FFC1F4C2A33E417007A5C75 /* CreateRepair */,
 				7F0E09522A3348C8008C2B9A /* Documents */,
@@ -443,6 +452,7 @@
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
 				7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */,
 				7F0E092A2A3255F1008C2B9A /* Action.swift */,
+				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -586,7 +596,6 @@
 			children = (
 				7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */,
 				7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */,
-				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
 			);
 			path = Preview;
 			sourceTree = "<group>";
@@ -896,6 +905,49 @@
 				7F6F6A322A2E8522003F7DF2 /* Info.plist */,
 			);
 			path = Garage;
+			sourceTree = "<group>";
+		};
+		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA1E2A39FCE900AD9A3F /* Manager */,
+				7FC6DA232A39FCE900AD9A3F /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7FC6DA1E2A39FCE900AD9A3F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA1F2A39FCE900AD9A3F /* Coordinator */,
+				7FC6DA212A39FCE900AD9A3F /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FC6DA1F2A39FCE900AD9A3F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FC6DA212A39FCE900AD9A3F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FC6DA232A39FCE900AD9A3F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */,
+				7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7FFC1F4C2A33E417007A5C75 /* CreateRepair */ = {
@@ -1528,6 +1580,7 @@
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
+				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
@@ -1574,6 +1627,7 @@
 				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
+				7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */,
 				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
@@ -1599,6 +1653,7 @@
 				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
+				7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				7FFC1F6E2A353D1B007A5C75 /* RecordView.swift in Sources */,
@@ -1606,6 +1661,7 @@
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
+				7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */,
 				7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,

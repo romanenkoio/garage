@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum AppStyle: String {
+enum ColorScheme: String, CaseIterable {
     case black
     case standartBlue
     case orange
@@ -16,14 +16,18 @@ enum AppStyle: String {
     case mint
     case lightBlue
     
+    var current: ColorScheme {
+        return ColorScheme(rawValue: SettingsManager.sh.read(.colorSet))
+    }
+    
     init(rawValue: String) {
         switch rawValue {
-        case AppStyle.black.rawValue:           self = .black
-        case AppStyle.standartBlue.rawValue:    self = .standartBlue
-        case AppStyle.orange.rawValue:          self = .orange
-        case AppStyle.darkBlue.rawValue:        self = .darkBlue
-        case AppStyle.mint.rawValue:            self = .mint
-        case AppStyle.lightBlue.rawValue:       self = .lightBlue
+        case ColorScheme.black.rawValue:           self = .black
+        case ColorScheme.standartBlue.rawValue:    self = .standartBlue
+        case ColorScheme.orange.rawValue:          self = .orange
+        case ColorScheme.darkBlue.rawValue:        self = .darkBlue
+        case ColorScheme.mint.rawValue:            self = .mint
+        case ColorScheme.lightBlue.rawValue:       self = .lightBlue
         default:                                self = .standartBlue
         }
     }
