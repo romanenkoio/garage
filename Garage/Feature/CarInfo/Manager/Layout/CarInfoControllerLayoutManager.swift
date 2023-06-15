@@ -31,6 +31,13 @@ final class CarInfoControllerLayoutManager {
         return view
     }()
     
+    lazy var recordsView: BasicView = {
+       let view = BasicView()
+        view.cornerRadius = 20
+        view.backgroundColor = AppColors.background
+        return view
+    }()
+    
     lazy var brandModelLabel = BasicLabel()
     lazy var yearLabel = BasicLabel()
     lazy var vinLabel = BasicLabel()
@@ -41,6 +48,7 @@ final class CarInfoControllerLayoutManager {
     init(vc: CarInfoViewController) {
         self.vc = vc
         configure()
+        vc.disableScrollView()
     }
     
 }
@@ -64,7 +72,8 @@ fileprivate extension CarInfoControllerLayoutManager {
             yearLabel,
             vinLabel
         ])
-        vc.contentView.addSubview(segment)
+        vc.contentView.addSubview(recordsView)
+        recordsView.addSubview(segment)
         
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
@@ -81,9 +90,13 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.leading.trailing.top.equalToSuperview()
         }
         
-        segment.snp.makeConstraints { make in
-            make.top.equalTo(topStack.snp.bottom)
+        recordsView.snp.makeConstraints { make in
+            make.top.equalTo(topStack.snp.bottom).offset(21)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        segment.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
     }
     

@@ -16,6 +16,7 @@ class BasicSegmentView<T: Equatable>: BasicView {
     
     private lazy var mainView: BasicView = {
         let view = BasicView()
+        view.backgroundColor = .clear
         view.cornerRadius = 8
         return view
     }()

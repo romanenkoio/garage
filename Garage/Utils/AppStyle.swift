@@ -71,4 +71,5 @@ struct AppColors {
     static let mint = UIColor(hexString: "5FC8AB")
     static let lightBlue = UIColor(hexString: "2A5AD9")
     static let green = UIColor(hexString: "#C9837")
+    static let background = UIColor(hexString: "F6F6F6")
 }
