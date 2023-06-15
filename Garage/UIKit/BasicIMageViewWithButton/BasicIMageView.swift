@@ -43,6 +43,7 @@ class BasicImageButton: BasicView {
     private func makeConstraints() {
         actionImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.height.width.equalTo(60)
         }
     }
     
@@ -65,7 +66,9 @@ class BasicImageButton: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
-        actionButton.setViewModel(vm.buttonVM)
+        if let buttonVM = vm.buttonVM {
+            actionButton.setViewModel(buttonVM)
+        }
         
         vm.$buttonStyle.sink {[weak self] style in
             self?.buttonStyle = style
@@ -91,6 +94,8 @@ class BasicImageButton: BasicView {
     }
     
     @objc private func tapAction() {
-        self.viewModel?.action()
+        if let action = viewModel?.action {
+            action()
+        }
     }
 }
