@@ -55,6 +55,13 @@ class CreateRecordViewController: BasicViewController {
             self?.layout.servicesList.isHidden = items.isEmpty
         }
         .store(in: &cancellables)
+        
+        vm.saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            self.vm.saveRecord()
+            self.coordinator.navigateTo(CommonNavigationRoute.close)
+            
+        }
     }
     
 }
