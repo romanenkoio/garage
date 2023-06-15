@@ -24,7 +24,7 @@ extension CarInfoViewController {
         init(car: Car) {
             self.car = car
 
-            brandLabelVM.text = "\(car.brand), \(car.model)"
+            brandLabelVM.text = "\(car.brand) \(car.model)"
             yearLabelVM.text = "Год: \(car.year.wrapped)"
             vinLabelVM.text = "VIN: \(car.win.wrapped)"
             milageLabelVM.text = "Пробег: \(car.mileage)"
