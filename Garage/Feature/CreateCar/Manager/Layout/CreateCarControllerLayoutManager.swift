@@ -17,7 +17,7 @@ final class CreateCarControllerLayoutManager {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 5
-        stack.edgeInsets = .init(top: 22)
+        stack.edgeInsets = .init(top: 21, horizontal: 21)
         return stack
     }()
     

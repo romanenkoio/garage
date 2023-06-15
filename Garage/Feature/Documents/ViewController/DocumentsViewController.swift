@@ -34,6 +34,11 @@ class DocumentsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        
+        vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

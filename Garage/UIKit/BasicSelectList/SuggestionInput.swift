@@ -15,6 +15,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
     lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
+        stack.edgeInsets = .horizintal
         stack.distribution = .fill
         return stack
     }()
@@ -23,7 +24,6 @@ class SuggestionInput<T: Equatable>: BasicInputView {
         let stack = ScrollableStackView()
         stack.axis = .horizontal
         stack.spacing = 10
-        stack.paddingInsets = .horizintal
         stack.isHidden = true
         return stack
     }()
@@ -78,6 +78,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
     }
     
     func setViewModel(_ vm: GenericViewModel<Item>) {
+        super.setViewModel(vm)
         self.viewModel = vm
 
         textField.attributedText = vm.placeholder.attributedString(
@@ -95,12 +96,14 @@ class SuggestionInput<T: Equatable>: BasicInputView {
         }
         .store(in: &cancellables)
         
-        vm.inputVM.isValidSubject.dropFirst().sink(receiveValue: { [weak self] value in
+        vm.inputVM.isValidSubject.sink(receiveValue: { [weak self] value in
             self?.errorView.isHidden = value
         })
         .store(in: &cancellables)
         
-        self.errorView.setViewModel(vm: vm.errorVM)
+        if let errorVM = vm.errorVM {
+            self.errorView.setViewModel(vm: errorVM)
+        }
         self.textField.setViewModel(vm: vm.inputVM)
     }
     
@@ -149,6 +152,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
     
     @objc private func beginEdit() {
         isOpen = true
+        errorView.isHidden = true
     }
     
     @objc private func endEdit() {

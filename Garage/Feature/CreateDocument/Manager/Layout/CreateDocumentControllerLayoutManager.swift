@@ -17,7 +17,7 @@ final class CreateDocumentControllerLayoutManager {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 10
-        stack.edgeInsets = .horizintal
+        stack.edgeInsets = .init(top: 21, horizontal: 21)
         return stack
     }()
 

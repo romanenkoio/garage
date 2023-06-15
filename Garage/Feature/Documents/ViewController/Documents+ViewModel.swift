@@ -18,9 +18,9 @@ extension DocumentsViewController {
             readDocuments()
             
             tableVM.setupEmptyState(
-                labelVM: .init(text: "Ваш гараж пуст"),
-                sublabelVM: .init(text: "Добавьте машину для \nначала работы"), addButtonVM: .init(title: "Добавить документ"),
-                image: UIImage(systemName: "car")
+                labelVM: .init(text: "Документов нет"),
+                sublabelVM: .init(text: "Добавьте документ для \nначала работы"), addButtonVM: .init(title: "Новый документ"),
+                image: UIImage(named: "document")
             )
         }
         

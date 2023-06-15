@@ -22,7 +22,9 @@ extension CreateDocumentViewController {
             DocumentType.allCases,
             titles: { items in items.map({ $0.title })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Тип документа"))
+            inputVM: .init(placeholder: "Тип документа"),
+            isRequired: true
+        )
         
         var suggestionCompletion: SelectArrayCompletion?
         var saveCompletion: Completion?

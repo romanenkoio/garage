@@ -30,7 +30,6 @@ class BasicInputView: BasicView {
         let stack = BasicStackView()
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
-        stack.paddingInsets = .horizintal
         stack.edgeInsets = .init(bottom: 4)
         return stack
     }()
@@ -78,20 +77,18 @@ class BasicInputView: BasicView {
     }
     
     private func makeConstraints() {
-        let textFieldInsets = UIEdgeInsets(left: 16, right: 16)
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
         }
         
         textField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(textFieldInsets)
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(topStack.snp.bottom)
         }
         
-        let errorViewInsets = UIEdgeInsets(left: 16, right: 16)
         errorView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(2)
-            make.leading.bottom.trailing.equalToSuperview().inset(errorViewInsets)
+            make.leading.bottom.trailing.equalToSuperview()
         }
         
         actionImage.snp.makeConstraints { make in

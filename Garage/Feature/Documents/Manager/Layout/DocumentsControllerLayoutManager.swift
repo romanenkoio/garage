@@ -27,14 +27,6 @@ final class DocumentsControllerLayoutManager {
     init(vc: DocumentsViewController) {
         self.vc = vc
         configure()
-        
-        let addButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-                vc.coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
-            },
-            image: UIImage(systemName: "plus")
-        )
-        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
 }
