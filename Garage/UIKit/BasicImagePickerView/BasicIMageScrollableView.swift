@@ -12,17 +12,7 @@ import PhotosUI
 import Combine
 import SnapKit
 
-enum BasicImageListViewType {
-    case addPhoto
-    case watchPhoto
-}
-
 class BasicImageListView: BasicView {
-    enum ImageType {
-        case delete
-        case append
-    }
-    
     private var imagePicker: PHPickerViewController {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -131,7 +121,7 @@ class BasicImageListView: BasicView {
         vm.$editingEnabled.sink { value in
             self.items.forEach { imageButton in
                 guard let value else { return }
-                imageButton.viewModel?.buttonVM?.isHidden = value
+                imageButton.viewModel?.buttonVM?.isHidden = !value
             }
         }
         .store(in: &cancellables)

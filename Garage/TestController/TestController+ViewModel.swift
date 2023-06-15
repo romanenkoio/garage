@@ -31,7 +31,11 @@ extension TestController {
             buttonVM.action = .touchUpInside {
                 print(self.inputVM.text)
             }
-            pickerVM = .init(descriptionLabelVM: .init(text: "Описание"), editingEnabled: true)
+            
+            pickerVM.description = "Описание"
+            pickerVM.editButtonEnabled = true
+            pickerVM.editButtonTitle = "Редактировать"
+            pickerVM.doneEditButtonTitle = "Готово"
         }
     }
 }

@@ -12,15 +12,46 @@ extension BasicImageListView {
     class ViewModel: BasicViewModel {
         var descriptionLabelVM: BasicLabel.ViewModel?
         var editButtonVM: BasicButton.ViewModel?
-        @Published var contentType = BasicImageListViewType.addPhoto
+       
         @Published var items: [UIImage] = []
         @Published var selectedIndex: Int?
-        @Published var editingEnabled: Bool?
         
-        init(descriptionLabelVM: BasicLabel.ViewModel? = nil, editingEnabled: Bool? = false) {
+        @Published var editingEnabled: Bool? {
+            didSet {
+                changeEditButtonTitle(with: editingEnabled)
+            }
+        }
+        
+        var description: String? {
+            didSet {
+                descriptionLabelVM?.text = description
+            }
+        }
+        
+        var editButtonEnabled: Bool? {
+            didSet {
+                if let editButtonEnabled {
+                    editButtonVM?.isHidden = !editButtonEnabled
+                }
+            }
+        }
+        
+        var editButtonTitle: String? {
+            didSet {
+                editButtonVM?.title = editButtonTitle
+            }
+        }
+        
+        var doneEditButtonTitle: String?
+        
+        init(
+            descriptionLabelVM: BasicLabel.ViewModel? = .init(),
+            editButtonVM: BasicButton.ViewModel? = .init(),
+            editingEnabled: Bool? = false
+        ) {
             self.editingEnabled = editingEnabled
             self.descriptionLabelVM = descriptionLabelVM
-            
+            self.editButtonVM = editButtonVM
             super.init()
             didTapEditButton()
         }
@@ -32,12 +63,17 @@ extension BasicImageListView {
         
         private func didTapEditButton() {
             editButtonVM = .init(
-                title: "Редактировать",
-                style: .nonStyle,
-                action: .touchUpInside {
-                    self.editingEnabled?.toggle()
+                style: .basicDarkTitle,
+                action: .touchUpInside {[weak self] in
+                    self?.editingEnabled?.toggle()
                 }
             )
+        }
+        
+        private func changeEditButtonTitle(with value: Bool?) {
+            if let value {
+                editButtonVM?.title = value ? doneEditButtonTitle : editButtonTitle
+            }
         }
         
     }

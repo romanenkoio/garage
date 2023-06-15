@@ -93,7 +93,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
             .init(
                 closeButtonVM: .init(
                     title: "Закрыть",
-                    style: .nonStyle,
+                    style: .basicLightTitle,
                     action: .touchUpInside { [weak self] in
                         self?.dismiss(animated: true)
                     }
@@ -105,7 +105,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
             .init(
                 shareButtonVM: .init(
                     title: "Поделиться",
-                    style: .nonStyle,
+                    style: .basicLightTitle,
                     action: .touchUpInside { [self] in
                         share(sender: navView.shareButton)
                     }
