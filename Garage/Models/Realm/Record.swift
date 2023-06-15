@@ -10,7 +10,7 @@ import Foundation
 
 final class Record: Object, Codable {
     @Persisted var id: String
-    @Persisted var carID: Int
+    @Persisted var carID: String
     @Persisted var serviceID: Int?
     @Persisted var cost: Double?
     @Persisted var mileage: Double
