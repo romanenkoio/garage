@@ -16,6 +16,7 @@ extension FullSizePhotoViewController {
 
         @Published
         var images: [UIImage]
+        @Published
         var selectedIndex: Int?
         
         init(images: [UIImage], selectedIndex: Int? = nil) {

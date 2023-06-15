@@ -99,6 +99,32 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                 )
             )
         )
+        
+        navView.setViewModel(.init(shareButtonVM: .init(title: "Поделиться", action: .touchUpInside { [self] in
+            share(sender: navView.shareButton)
+        })))
+    }
+    
+    @objc func share(sender:UIView){
+//        UIGraphicsBeginImageContext(view.frame.size)
+//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        let textToShare = "Check out my app"
+//
+//        if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX") {//Enter link to your app here
+        let objectsToShare = [vm.images[0]] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //Excluded Activities
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            //
+            
+            activityVC.popoverPresentationController?.sourceView = sender
+            self.present(activityVC, animated: true, completion: nil)
+       // }
+        
     }
     
     private func findCenterIndex() {
@@ -107,7 +133,17 @@ class FullSizePhotoViewController: BasicModalPresentationController {
 
         navView.setViewModel(.init(photoCountLabelVM: .init(text: "\(index.item+1) из \(vm.images.count)")))
     }
+    //Придумать что-то с вьюМоделью navView и анимациями
     
+    private func animate(with value: Bool) {
+        UIView.transition(with: navView, duration: 0.3, options: .transitionCrossDissolve) {
+            if value {
+                
+            } else {
+               
+            }
+        }
+    }
 }
 
 // MARK: - CollectionViewDataSource
@@ -122,7 +158,17 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
               let item = vm.collectionVM.cells[safe: indexPath.row]
         else { return .init()}
         
-        photoCell.mainView.setViewModel(.init(image: item))
+        photoCell.mainView.setViewModel(
+            .init(singleTapAction: {[weak self] in
+                self?.navView.isHidden.toggle()
+            },
+                  zoomAction: {[weak self] in
+                      self?.navView.isHidden = true
+                  },
+                  image: item
+                 )
+        )
+        
         findCenterIndex()
         return photoCell
     }

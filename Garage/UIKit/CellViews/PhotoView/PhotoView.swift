@@ -20,15 +20,15 @@ class PhotoView: BasicView {
         scroll.maximumZoomScale = 4
         scroll.minimumZoomScale = 1
         scroll.delegate = self
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(sender:)))
-        tapRecognizer.numberOfTapsRequired = 2
-        scroll.addGestureRecognizer(tapRecognizer)
         return scroll
     }()
     
+    private(set) var viewModel: ViewModel?
+    private var navIsHidden = false
     override func initView() {
         makeLayout()
         makeConstraints()
+        setupGestures()
         backgroundColor = .clear
         self.isUserInteractionEnabled = true
     }
@@ -49,11 +49,29 @@ class PhotoView: BasicView {
         }
     }
     
+    private func setupGestures() {
+        let scrollViewDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(sender: )))
+        scrollViewDoubleTapRecognizer.numberOfTapsRequired = 2
+        scrollViewDoubleTapRecognizer.delegate = self
+        scrollViewDoubleTapRecognizer.cancelsTouchesInView = true
+        scrollViewDoubleTapRecognizer.delaysTouchesBegan = true
+        scrollView.addGestureRecognizer(scrollViewDoubleTapRecognizer)
+        
+        
+        let imageViewSingleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewDidTap))
+        imageViewSingleTapRecognizer.delaysTouchesBegan = true
+        imageViewSingleTapRecognizer.numberOfTapsRequired = 1
+        imageViewSingleTapRecognizer.delegate = self
+        imageView.addGestureRecognizer(imageViewSingleTapRecognizer)
+        
+        imageViewSingleTapRecognizer.require(toFail: scrollViewDoubleTapRecognizer)
+    }
+    
     func setViewModel(_ vm: ViewModel) {
-        vm.$image.sink { [weak self] image in
-            self?.imageView.image = image
-        }
-        .store(in: &cancellables)
+        self.viewModel = vm
+        vm.$image
+            .sink { [weak self] in self?.imageView.image = $0 }
+            .store(in: &cancellables)
     }
     
     @objc func onDoubleTap(sender: UITapGestureRecognizer) {
@@ -71,7 +89,12 @@ class PhotoView: BasicView {
             scrollView.zoom(to:CGRect(origin: origin, size: size), animated: true)
         } else {
             scrollView.setZoomScale(1, animated: true)
+            
         }
+    }
+    
+    @objc private func imageViewDidTap(sender: UITapGestureRecognizer) {
+        viewModel?.singleTapAction()
     }
 }
 
@@ -82,6 +105,7 @@ extension PhotoView: UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         if scrollView.zoomScale > 1 {
+                viewModel?.zoomAction()
             if let image = imageView.image {
                 let ratioW = imageView.frame.width / image.size.width
                 let ratioH = imageView.frame.height / image.size.height
@@ -96,10 +120,13 @@ extension PhotoView: UIScrollViewDelegate {
                 let top = 0.5 * (conditioTop ? newHeight - imageView.frame.height : (scrollView.frame.height - scrollView.contentSize.height))
                 
                 scrollView.contentInset = UIEdgeInsets(top: top, left: left, bottom: top, right: left)
-                
             }
         } else {
             scrollView.contentInset = .zero
         }
     }
+}
+
+extension PhotoView: UIGestureRecognizerDelegate {
+
 }

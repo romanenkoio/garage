@@ -21,6 +21,8 @@ class PhotoVcNavigationView: BasicView {
         return btn
     }()
     
+    lazy var shareButton = BasicButton()
+    
     private(set) var viewModel: ViewModel?
     
     override init() {
@@ -38,6 +40,7 @@ class PhotoVcNavigationView: BasicView {
     private func makeLayout() {
         addSubview(photoCountLabel)
         addSubview(closeButton)
+        addSubview(shareButton)
     }
     
     private func makeConstraints() {
@@ -47,11 +50,16 @@ class PhotoVcNavigationView: BasicView {
         
         photoCountLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().inset(16)
         }
         
         closeButton.snp.remakeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().inset(20)
+            make.centerY.equalTo(photoCountLabel)
+        }
+        
+        shareButton.snp.remakeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
             make.centerY.equalTo(photoCountLabel)
         }
     }
@@ -66,5 +74,14 @@ class PhotoVcNavigationView: BasicView {
             closeButton.setViewModel(closeButtonVM)
         }
         
+        if let shareButtonVM = vm.shareButtonVM {
+            shareButton.setViewModel(shareButtonVM)
+        }
+        
+        vm.$isHidden
+            .sink {[weak self] in
+                if let value = $0 { self?.isHidden = value }
+            }
+            .store(in: &cancellables)
     }
 }

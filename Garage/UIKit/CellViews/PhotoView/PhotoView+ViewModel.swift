@@ -11,8 +11,19 @@ extension PhotoView {
     class ViewModel: BasicViewModel {
         @Published
         var image: UIImage
+        @Published
+        var singleTapAction: Completion
+        @Published
+        var zoomAction: Completion
         
-        init(image: UIImage) {
+        
+        init(
+            singleTapAction: @escaping Completion,
+            zoomAction: @escaping Completion,
+            image: UIImage
+        ) {
+            self.singleTapAction = singleTapAction
+            self.zoomAction = zoomAction
             self.image = image
         }
     }
