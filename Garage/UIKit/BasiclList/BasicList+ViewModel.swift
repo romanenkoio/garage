@@ -30,7 +30,6 @@ extension BasicList {
             self.selectedItem = selected
             self.placeholder = placeholder
             super.init()
-            checkEmpty()
         }
         
         func resetItems(
@@ -39,14 +38,8 @@ extension BasicList {
         ) {
             self.items = list
             self.titles = titles(list)
-            checkEmpty()
         }
-        
-        private func checkEmpty() {
-            guard !items.isEmpty else {
-                fatalError("You set empty list. That's illegal!")
-            }
-        }
+ 
         
         func setSelected(_ item: Item) {
             self.selectedItem = item

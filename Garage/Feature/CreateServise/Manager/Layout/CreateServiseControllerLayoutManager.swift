@@ -17,12 +17,13 @@ final class CreateServiseControllerLayoutManager {
     lazy var phoneInput = BasicInputView()
     lazy var specialisationInput = BasicInputView()
     lazy var adressInput = BasicInputView()
-    lazy var saveButton = BasicButton()
+    lazy var saveButton = AlignedButton()
     
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 10
+        stack.paddingInsets = UIEdgeInsets(horizontal: 21)
         return stack
     }()
 
@@ -30,14 +31,6 @@ final class CreateServiseControllerLayoutManager {
     init(vc: CreateServiseViewController) {
         self.vc = vc
         configure()
-        
-        let trashButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-//                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
-            },
-            image: UIImage(systemName: "trash")
-        )
-        vc.makeRightNavBarButton(buttons: [trashButtonVM])
     }
     
 }
@@ -65,7 +58,7 @@ fileprivate extension CreateServiseControllerLayoutManager {
     
     private func makeConstraint() {
         fieldStack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 22))
         }
     }
     

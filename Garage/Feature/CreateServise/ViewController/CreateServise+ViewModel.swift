@@ -14,22 +14,24 @@ extension CreateServiseViewController {
         let phoneInputVM: BasicInputView.ViewModel
         let specialisationInputVM: BasicInputView.ViewModel
         let adressInputVM: BasicInputView.ViewModel
-        let saveButtonVM: BasicButton.ViewModel
+        let saveButtonVM: AlignedButton.ViewModel
         
         var saveCompletion: Completion?
         
         override init() {
             let errorVM = ErrorView.ViewModel(error: "Обязательое поле")
             
-            nameInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Название"))
-            phoneInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Телефон"))
-            specialisationInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Специализация"))
-            adressInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Адрес"))
+            nameInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "МегаСварщик"), descriptionVM: .init(text: "Название"))
+            phoneInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "+375257776655"), descriptionVM: .init(text: "Номер телефона"))
+            specialisationInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Сварка"), descriptionVM: .init(text: "Специализация"))
+            adressInputVM = .init(errorVM: errorVM, inputVM: .init(placeholder: "Макаёнка 43"), descriptionVM: .init(text: "Адрес"))
             
-            saveButtonVM = .init(title: "Сохранить", isEnabled: false, style: .primary)
+            saveButtonVM = .init(
+                buttonVM: .init(title: "Сохранить", isEnabled: false, style: .primary)
+            )
 
             super.init()
-            saveButtonVM.action = .touchUpInside { [weak self] in
+            saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 let service = Service(
                     phone: self.phoneInputVM.text,
@@ -50,11 +52,11 @@ extension CreateServiseViewController {
             ])
             
             nameInputVM.rules = [.noneEmpty]
-            adressInputVM.rules = [.noneEmpty]
+            phoneInputVM.rules = [.noneEmpty]
             
             validator.formIsValid
                 .sink { [weak self] value in
-                    self?.saveButtonVM.isEnabled = value
+                    self?.saveButtonVM.buttonVM.isEnabled = value
                 }
                 .store(in: &cancellables)
         }
