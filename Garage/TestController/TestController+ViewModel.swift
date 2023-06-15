@@ -19,7 +19,7 @@ extension TestController {
         )
         
         let buttonVM = BasicButton.ViewModel()
-        let pickerVM = BasicImageListView.ViewModel()
+        var pickerVM = BasicImageListView.ViewModel()
         
         
         override init() {
@@ -31,6 +31,7 @@ extension TestController {
             buttonVM.action = .touchUpInside {
                 print(self.inputVM.text)
             }
+            pickerVM = .init(descriptionLabelVM: .init(text: "Описание"), editingEnabled: true)
         }
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import PhotosUI
 import Combine
+import SnapKit
 
 enum BasicImageListViewType {
     case addPhoto
@@ -53,6 +54,10 @@ class BasicImageListView: BasicView {
         return alert
     }
     
+    private lazy var descriptionLabel = BasicLabel()
+    
+    private lazy var editButton = BasicButton()
+    
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .horizontal
@@ -72,21 +77,40 @@ class BasicImageListView: BasicView {
     
     private func layoutElements() {
         addSubview(stack)
+        addSubview(descriptionLabel)
+        addSubview(editButton)
     }
     
     private func makeConstraints() {
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.trailing.equalTo(editButton).inset(10)
         }
         
-        snp.makeConstraints { make in
-            make.height.equalTo(60)
+        editButton.snp.remakeConstraints { make in
+            make.centerY.equalTo(descriptionLabel)
+            make.trailing.equalToSuperview()
+        }
+        
+        stack.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(5)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
         
+        if let descriptionLabelVM = vm.descriptionLabelVM {
+            descriptionLabel.setViewModel(descriptionLabelVM)
+        }
+        
+        if let editButtonVM = vm.editButtonVM {
+            editButton.setViewModel(editButtonVM)
+        }
+
+    
         vm.$items.sink {[weak self] images in
             self?.stack.clearArrangedSubviews()
             self?.items.removeAll()
@@ -100,6 +124,14 @@ class BasicImageListView: BasicView {
                         self?.makeRemoveItems(at: imageIndex, with: image)
                     }
                 }
+            }
+        }
+        .store(in: &cancellables)
+        
+        vm.$editingEnabled.sink { value in
+            self.items.forEach { imageButton in
+                guard let value else { return }
+                imageButton.viewModel?.buttonVM?.isHidden = value
             }
         }
         .store(in: &cancellables)
@@ -144,7 +176,6 @@ class BasicImageListView: BasicView {
             buttonVM: .init(
                 style: .addImage,
                 action: .touchUpInside {[weak self] in
-                    //self?.viewModel?.selectedIndex = index
                     self?.presentAlert()
                 })
         ))
