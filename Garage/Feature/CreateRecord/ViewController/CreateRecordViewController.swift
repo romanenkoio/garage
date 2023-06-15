@@ -48,6 +48,11 @@ class CreateRecordViewController: BasicViewController {
         layout.imageList.setViewModel(vm.imagePickerVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
         layout.servicesList.setViewModel(vm.serivesListVM)
+        
+        vm.$services.sink { [weak self] items in
+            self?.layout.servicesList.isHidden = items.isEmpty
+        }
+        .store(in: &cancellables)
     }
     
 }

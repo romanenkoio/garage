@@ -11,7 +11,9 @@ import UIKit
 extension CreateRecordViewController {
     final class ViewModel: BasicViewModel {
         unowned var car: Car
-        private(set) var records = [Record]()
+        
+        @Published
+        private(set) var services = [Service]()
         
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
         let costInputVM: BasicInputView.ViewModel
@@ -28,7 +30,8 @@ extension CreateRecordViewController {
         init(car: Car) {
             self.car = car
             
-            records = RealmManager<Record>().read().filter({ $0.carID == car.id })
+            services = RealmManager<Service>().read()
+
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             
             costInputVM = .init(
