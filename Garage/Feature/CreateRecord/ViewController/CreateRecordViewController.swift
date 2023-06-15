@@ -60,7 +60,6 @@ class CreateRecordViewController: BasicViewController {
             guard let self else { return }
             self.vm.saveRecord()
             self.coordinator.navigateTo(CommonNavigationRoute.close)
-            
         }
     }
     

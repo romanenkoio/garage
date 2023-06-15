@@ -14,6 +14,7 @@ extension CreateRecordViewController {
         
         @Published
         private(set) var services = [Service]()
+        private var selectedService: Service?
         
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
         let costInputVM: BasicInputView.ViewModel
@@ -61,7 +62,15 @@ extension CreateRecordViewController {
         }
         
         func saveRecord() {
-            
+            let record = Record(
+                carID: car.id,
+                serviceID: serivesListVM.selectedItem?.id,
+                cost: costInputVM.text.toDouble(),
+                mileage: mileageInputVM.text.toDouble(),
+                date: dateInputVM.date ?? Date(),
+                comment: nil
+            )
+            RealmManager<Record>().write(object: record)
         }
     }
 }
