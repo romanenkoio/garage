@@ -8,18 +8,28 @@
 
 import UIKit
 
-class CarInfoControllerCoordinator {
-    
-    // - VC
-    private unowned let vc: CarInfoViewController
-    
+enum CarInfoNavigationRoute: Routable {
+    case createRecord(Car)
+    case edit(Car)
+}
+
+class CarInfoControllerCoordinator: BasicCoordinator {
     // - Init
-    init(vc: CarInfoViewController) {
-        self.vc = vc
+    override init(vc: BasicViewController) {
+        super.init(vc: vc)
     }
     
-    func popViewController(animated: Bool = true) {
-        vc.navigationController?.popViewController(animated: animated)
+    override func navigateTo(_ route: Routable) {
+        if let route = route as? CarInfoNavigationRoute {
+            switch route {
+            case .createRecord(let car):
+                let controller = CreateRecordViewController(vm: .init(car: car))
+                vc.push(controller)
+            case .edit(let car):
+                break
+            }
+        } else {
+            super.navigateTo(route)
+        }
     }
-    
 }

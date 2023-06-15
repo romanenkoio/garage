@@ -19,6 +19,9 @@ extension CarInfoViewController {
         let milageLabelVM = BasicLabel.ViewModel()
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         
+        let tableVM = BasicTableView.GenericViewModel<Record>()
+        let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
+        
         @Published var logo: UIImage?
         
         init(car: Car) {

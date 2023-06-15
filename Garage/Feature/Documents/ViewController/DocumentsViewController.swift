@@ -39,6 +39,7 @@ class DocumentsViewController: BasicViewController {
             guard let self else { return }
             coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
         }
+        makeLogoNavbar()
     }
 
     override func viewWillAppear(_ animated: Bool) {

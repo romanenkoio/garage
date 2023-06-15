@@ -13,6 +13,7 @@ class BasicTableView: BasicView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsHorizontalScrollIndicator = false
         table.showsVerticalScrollIndicator = true
+        table.backgroundColor = .clear
         return table
     }()
     

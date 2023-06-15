@@ -23,7 +23,10 @@ class BasicList<T: Equatable>: BasicView {
     private lazy var headerView: BasicView = {
         let view = BasicView()
         view.cornerRadius = 8
-        view.backgroundColor = .secondaryGray
+        view.backgroundColor = .white
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.secondaryGray.cgColor
+
         return view
     }()
     
@@ -85,7 +88,7 @@ class BasicList<T: Equatable>: BasicView {
     
     private func makeConstraints() {
         headerView.snp.makeConstraints { make in
-            make.height.equalTo(44)
+            make.height.equalTo(56)
             make.top.leading.trailing.equalToSuperview()
         }
         

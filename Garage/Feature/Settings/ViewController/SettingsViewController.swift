@@ -34,6 +34,7 @@ class SettingsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideTabBar(false)
+        makeLogoNavbar()
     }
 
     override func configure() {

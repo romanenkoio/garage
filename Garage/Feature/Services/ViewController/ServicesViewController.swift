@@ -35,6 +35,7 @@ class ServicesViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        makeLogoNavbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +56,10 @@ class ServicesViewController: BasicViewController {
             self?.layout.hideCategoriesStack(items)
         }
         .store(in: &cancellables)
+        
+        vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
+            self?.coordinator.navigateTo(ServiceNavigationRoute.createService)
+        }
     }
 }
 
