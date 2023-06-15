@@ -19,6 +19,8 @@ extension CarInfoViewController {
         let milageLabelVM = BasicLabel.ViewModel()
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         
+        let tableVM = BasicTableView.GenericViewModel<Record>()
+        
         @Published var logo: UIImage?
         
         init(car: Car) {
