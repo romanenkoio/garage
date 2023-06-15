@@ -16,17 +16,25 @@ final class CarInfoControllerLayoutManager {
     lazy var topStack: BasicStackView = {
         let view = BasicStackView()
         view.axis = .vertical
-        view.alignment = .center
+        view.alignment = .leading
         view.cornerRadius = 12
         view.spacing = 10
-        view.backgroundColor = .primaryGreen.withAlphaComponent(0.5)
+        view.paddingInsets = .init(left: 20)
+        view.backgroundColor = .white
         return view
     }()
     
     lazy var logoImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.cornerRadius = 50
+        view.cornerRadius = 39
+        return view
+    }()
+    
+    lazy var recordsView: BasicView = {
+       let view = BasicView()
+        view.cornerRadius = 20
+        view.backgroundColor = AppColors.background
         return view
     }()
     
@@ -40,14 +48,7 @@ final class CarInfoControllerLayoutManager {
     init(vc: CarInfoViewController) {
         self.vc = vc
         configure()
-        
-        let trashButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-//                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
-            },
-            image: UIImage(systemName: "trash")
-        )
-        vc.makeRightNavBarButton(buttons: [trashButtonVM])
+        vc.disableScrollView()
     }
     
 }
@@ -67,25 +68,35 @@ fileprivate extension CarInfoControllerLayoutManager {
         topStack.addArrangedSubviews([
             logoImage,
             brandModelLabel,
+            mileageLabel,
             yearLabel,
-            vinLabel,
-            mileageLabel
+            vinLabel
         ])
-        vc.contentView.addSubview(segment)
+        vc.contentView.addSubview(recordsView)
+        recordsView.addSubview(segment)
+        
+        brandModelLabel.font = .custom(size: 18, weight: .black)
+        yearLabel.font = .custom(size: 14, weight: .bold)
+        vinLabel.font = .custom(size: 14, weight: .bold)
+        mileageLabel.font = .custom(size: 14, weight: .bold)
     }
     
     private func makeConstraint() {
         logoImage.snp.makeConstraints { make in
-            make.height.width.equalTo(100)
+            make.height.width.equalTo(78)
         }
         
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
         }
         
-        segment.snp.makeConstraints { make in
-            make.top.equalTo(topStack.snp.bottom)
+        recordsView.snp.makeConstraints { make in
+            make.top.equalTo(topStack.snp.bottom).offset(21)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        segment.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
     }
     

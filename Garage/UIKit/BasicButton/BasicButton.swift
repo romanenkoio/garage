@@ -55,11 +55,11 @@ class BasicButton: UIButton {
     private func setButtonColor() {
         switch style {
             case .primary:
-                backgroundColor = .primaryGreen
+                backgroundColor = .primaryBlue
                 setTitleColor(.white, for: .normal)
             case .secondary:
                 backgroundColor = .primaryGray
-                setTitleColor(.primaryGreen, for: .normal)
+                setTitleColor(.primaryBlue, for: .normal)
             case .addImage:
                 backgroundColor = .clear
                 tintColor = .gray
@@ -77,7 +77,7 @@ class BasicButton: UIButton {
     private func setStyle(for value: Bool) {
         switch style {
             case .primary:
-            backgroundColor = value ? .primaryGreen : .primaryGreen.withAlphaComponent(0.5)
+            backgroundColor = value ? .primaryBlue : .primaryBlue.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
             case .nonStyle, .addImage, .removeImage:

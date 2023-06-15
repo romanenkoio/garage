@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftTooltipKit
 
 class CreateCarViewController: BasicViewController {
 
@@ -36,6 +35,7 @@ class CreateCarViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideNavBar(false)
     }
 
     override func configure() {

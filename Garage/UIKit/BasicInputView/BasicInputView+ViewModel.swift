@@ -8,7 +8,7 @@
 import Foundation
 
 extension BasicInputView {
-    final class ViewModel: BasicViewModel {
+    class ViewModel: BasicViewModel {
         var errorVM: ErrorView.ViewModel?
         let inputVM: BasicTextField.ViewModel
         var actionImageVM: ActionImage.ViewModel?
@@ -16,7 +16,7 @@ extension BasicInputView {
         let descriptionLabelVM: BasicLabel.ViewModel
         
         @Published
-        private(set) var isRequired: Bool
+        var isRequired: Bool
         
         init(
             errorVM: ErrorView.ViewModel? = nil,

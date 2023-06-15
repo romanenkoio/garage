@@ -24,7 +24,7 @@ extension TabBarController {
                 case .services:
                     return ServicesViewController(vm: .init()).withNavigation()
                 case .settings:
-                    return BasicViewController()
+                    return SettingsViewController(vm: .init()).withNavigation()
                 }
             }
             

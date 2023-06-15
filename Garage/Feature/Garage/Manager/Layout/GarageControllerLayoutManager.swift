@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import Lottie
 
 final class GarageControllerLayoutManager {
     private unowned let vc: GarageViewController
@@ -20,9 +19,12 @@ final class GarageControllerLayoutManager {
             delegate: vc
         )
         table.register(CarCell.self)
+        table.table.separatorColor = .clear
         return table
     }()
-        
+
+    lazy var addButton = AlignedButton()
+    
     // - Init
     init(vc: GarageViewController) {
         self.vc = vc
@@ -51,11 +53,17 @@ fileprivate extension GarageControllerLayoutManager {
     private func makeLayout() {
         vc.disableScrollView()
         vc.contentView.addSubview(table)
+        vc.contentView.addSubview(addButton)
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.top.equalToSuperview()
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
+            make.top.equalTo(table.snp.bottom)
         }
     }
 }

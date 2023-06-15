@@ -15,8 +15,6 @@ extension BasicSegmentView {
         @Published private(set) var items: [Item]
         @Published var selectedItem: Item
         var selectedIndex: Int
-//        костыль, решить вопрос с анимацией
-        var isFisrstLaunch = true
         
         private(set) var titles = [String]()
         

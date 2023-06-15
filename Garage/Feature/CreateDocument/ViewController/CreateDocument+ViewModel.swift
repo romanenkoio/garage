@@ -16,12 +16,15 @@ extension CreateDocumentViewController {
             style: .primary
         )
         
+        let imageList = BasicImageListView.ViewModel()
         let datePickerVM = RangeDatePicker.ViewModel()
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
             titles: { items in items.map({ $0.title })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Тип документа"))
+            inputVM: .init(placeholder: "Тип документа"),
+            isRequired: true
+        )
         
         var suggestionCompletion: SelectArrayCompletion?
         var saveCompletion: Completion?
@@ -38,6 +41,12 @@ extension CreateDocumentViewController {
                     photo: nil
                 )
                 RealmManager<Document>().write(object: document)
+                
+                self.imageList.items.forEach { image in
+                    guard let data = image.jpegData(compressionQuality: 1) else { return }
+                    let photo = Photo(document, image: data)
+                    RealmManager<Photo>().write(object: photo)
+                }
                 self.saveCompletion?()
             }
             

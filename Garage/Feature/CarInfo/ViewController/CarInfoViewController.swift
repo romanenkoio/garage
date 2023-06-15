@@ -33,6 +33,9 @@ class CarInfoViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideNavBar(false)
+        makeCloseButton(isLeft: true)
+        view.backgroundColor = AppColors.background
     }
 
     override func configure() {

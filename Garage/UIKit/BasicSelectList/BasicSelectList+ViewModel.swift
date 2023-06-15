@@ -8,44 +8,34 @@
 import Foundation
 
 extension SuggestionInput {
-    final class GenericViewModel<T: Equatable>: BasicViewModel {
+    final class GenericViewModel<T: Equatable>: BasicInputView.ViewModel {
         typealias Item = T
         
         @Published var items: [Item]
         @Published private(set) var selectedItem: Item?
         private(set) var titles = [String]()
-        var errorVM: ErrorView.ViewModel
-        let inputVM: BasicTextField.ViewModel
                 
         init(
             _ list: [Item],
             selected: Item? = nil,
             titles: ([Item]) -> [String],
             errorVM: ErrorView.ViewModel,
-            inputVM: BasicTextField.ViewModel
+            inputVM: BasicTextField.ViewModel,
+            isRequired: Bool = false
         ) {
-            self.errorVM = errorVM
-            self.inputVM = inputVM
             self.items = list
+            
+            super.init(
+                errorVM: errorVM,
+                inputVM: inputVM,
+                descriptionVM: .init(text: "Документ"),
+                isRequired: isRequired
+            )
+
+            rules = [.noneEmpty]
             self.titles = titles(list)
             self.selectedItem = selected
-            super.init()
             checkEmpty()
-        }
-        
-        var placeholder: String {
-            get { inputVM.placeholder.wrapped }
-            set { inputVM.placeholder = newValue}
-        }
-
-        var text: String {
-            get { inputVM.text }
-            set { inputVM.text = newValue}
-        }
-        
-        var rules: [ValidationRule] {
-            get { return inputVM.rules }
-            set { inputVM.rules = newValue}
         }
         
         func resetItems(

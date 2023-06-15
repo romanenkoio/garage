@@ -14,7 +14,6 @@
 		7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */; };
 		7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */; };
 		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
-		7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E088D2A2F320A008C2B9A /* Lottie */; };
 		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
 		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
 		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
@@ -36,7 +35,6 @@
 		7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08D92A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift */; };
 		7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DC2A2FA81E008C2B9A /* ViewControllerPreview.swift */; };
 		7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08DE2A2FA9FC008C2B9A /* ViewPreview.swift */; };
-		7F0E08E22A2FC465008C2B9A /* SwiftTooltipKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */; };
 		7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08E82A2FC766008C2B9A /* SelectionControllerCoordinator.swift */; };
 		7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08EA2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift */; };
 		7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08EC2A2FC766008C2B9A /* Selection+ViewModel.swift */; };
@@ -63,8 +61,6 @@
 		7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092A2A3255F1008C2B9A /* Action.swift */; };
 		7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092C2A327BB4008C2B9A /* Selectable.swift */; };
 		7F0E092F2A32818F008C2B9A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E092E2A32818F008C2B9A /* Array.swift */; };
-		7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7F0E09312A3282D0008C2B9A /* Kingfisher */; };
-		7F0E09342A3282E0008C2B9A /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09332A3282E0008C2B9A /* UIImageView.swift */; };
 		7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */; };
 		7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */; };
 		7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E093F2A32892C008C2B9A /* CreateDocument+ViewModel.swift */; };
@@ -93,6 +89,12 @@
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
+		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
+		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
+		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
+		7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */; };
+		7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */; };
+		7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
 		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
 		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
@@ -241,7 +243,6 @@
 		7F0E092A2A3255F1008C2B9A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		7F0E092C2A327BB4008C2B9A /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		7F0E092E2A32818F008C2B9A /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		7F0E09332A3282E0008C2B9A /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		7F0E093B2A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDocumentControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F0E093D2A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDocumentControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F0E093F2A32892C008C2B9A /* CreateDocument+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateDocument+ViewModel.swift"; sourceTree = "<group>"; };
@@ -270,6 +271,12 @@
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
@@ -367,14 +374,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F0E08E22A2FC465008C2B9A /* SwiftTooltipKit in Frameworks */,
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
-				7F0E09322A3282D0008C2B9A /* Kingfisher in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
-				7F0E088E2A2F320A008C2B9A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +388,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
 				7FFC1F5D2A352B4A007A5C75 /* CarInfo */,
 				7FFC1F4C2A33E417007A5C75 /* CreateRepair */,
 				7F0E09522A3348C8008C2B9A /* Documents */,
@@ -445,7 +450,9 @@
 			children = (
 				7F0E08DB2A2FA808008C2B9A /* Preview */,
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
+				7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */,
 				7F0E092A2A3255F1008C2B9A /* Action.swift */,
+				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -900,6 +907,49 @@
 			path = Garage;
 			sourceTree = "<group>";
 		};
+		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA1E2A39FCE900AD9A3F /* Manager */,
+				7FC6DA232A39FCE900AD9A3F /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7FC6DA1E2A39FCE900AD9A3F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA1F2A39FCE900AD9A3F /* Coordinator */,
+				7FC6DA212A39FCE900AD9A3F /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FC6DA1F2A39FCE900AD9A3F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FC6DA212A39FCE900AD9A3F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FC6DA232A39FCE900AD9A3F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */,
+				7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7FFC1F4C2A33E417007A5C75 /* CreateRepair */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,7 +1281,6 @@
 				7F0E08A92A2F5061008C2B9A /* UIViewController.swift */,
 				7F0E09212A324A90008C2B9A /* Collection.swift */,
 				7F0E092E2A32818F008C2B9A /* Array.swift */,
-				7F0E09332A3282E0008C2B9A /* UIImageView.swift */,
 				7F0E09492A333B84008C2B9A /* UIApplication.swift */,
 				B9D96E4E2A37B47200909B33 /* UICollectionView.swift */,
 			);
@@ -1451,10 +1500,7 @@
 				B978F3C62A2E9DE80076D326 /* SnapKit */,
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
-				7F0E088D2A2F320A008C2B9A /* Lottie */,
-				7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */,
 				7F0E09152A31D773008C2B9A /* Moya */,
-				7F0E09312A3282D0008C2B9A /* Kingfisher */,
 				B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */,
 			);
 			productName = Garage;
@@ -1488,10 +1534,7 @@
 			packageReferences = (
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
-				7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
-				7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
@@ -1537,6 +1580,7 @@
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
+				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
@@ -1566,6 +1610,7 @@
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
+				7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */,
 				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,
 				B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
@@ -1582,6 +1627,7 @@
 				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
+				7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */,
 				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
@@ -1607,6 +1653,7 @@
 				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
+				7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
 				B978F3C12A2E9D870076D326 /* FormValidator.swift in Sources */,
 				7FFC1F6E2A353D1B007A5C75 /* RecordView.swift in Sources */,
@@ -1614,6 +1661,7 @@
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
+				7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */,
 				7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
@@ -1657,7 +1705,6 @@
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
-				7F0E09342A3282E0008C2B9A /* UIImageView.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
@@ -1666,6 +1713,7 @@
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				B9FB290F2A33785100A4CF1D /* BasicIMageScrollableView+ViewModel.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
+				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */,
@@ -1827,7 +1875,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G264CBHMU9;
+				DEVELOPMENT_TEAM = T8V9JXV542;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1838,13 +1886,13 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.courses.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1864,7 +1912,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G264CBHMU9;
+				DEVELOPMENT_TEAM = T8V9JXV542;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1875,13 +1923,13 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.courses.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1917,36 +1965,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 4.2.0;
-			};
-		};
-		7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hendesi/SwiftTooltipKit.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
 		7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
 				kind = exactVersion;
 				version = 15.0.0;
-			};
-		};
-		7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 7.7.0;
 			};
 		};
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -1976,25 +2000,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7F0E088D2A2F320A008C2B9A /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E088C2A2F320A008C2B9A /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		7F0E08E12A2FC465008C2B9A /* SwiftTooltipKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E08E02A2FC465008C2B9A /* XCRemoteSwiftPackageReference "SwiftTooltipKit" */;
-			productName = SwiftTooltipKit;
-		};
 		7F0E09152A31D773008C2B9A /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
-		};
-		7F0E09312A3282D0008C2B9A /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F0E09302A3282D0008C2B9A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -39,7 +39,7 @@ class BasicViewController: UIViewController {
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
         spinner.style = .large
-        spinner.color = .primaryGreen
+        spinner.color = .primaryBlue
         return spinner
     }()
     
@@ -138,15 +138,20 @@ class BasicViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = views
     }
     
-    func makeCloseButton() {
+    func makeCloseButton(isLeft: Bool = false) {
         let closeButton = NavBarButton()
         let vm = NavBarButton.ViewModel(
             action: .touchUpInside {
                 self.coordinator.navigateTo(CommonNavigationRoute.close)
             },
-            image: UIImage(named: "back_ic"))
+            image: isLeft ? UIImage(named: "back_arrow_ic") : UIImage(named: "back_ic"))
         closeButton.setViewModel(vm)
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
+        if isLeft {
+            self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: closeButton)]
+        } else {
+            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
+        }
+        self.hideNavBar(false)
     }
     
     func layoutElements() {

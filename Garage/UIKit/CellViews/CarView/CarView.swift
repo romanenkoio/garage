@@ -12,10 +12,10 @@ class CarView: BasicView {
         let stack = BasicStackView()
         stack.spacing = 10
         stack.axis = .horizontal
-        stack.edgeInsets = .init(horizontal: 16)
-        stack.paddingInsets = .init(vertical: 5, horizontal: 10)
-        stack.edgeInsets = .init(vertical: 5)
+        stack.edgeInsets = .init(vertical: 8, horizontal: 16)
+        stack.paddingInsets = .init(vertical: 20, horizontal: 17)
         stack.cornerRadius = 20
+        stack.backgroundColor = UIColor(hexString: "EDEDED")
         stack.backgroundColor = .primaryGray
         stack.alignment = .center
         return stack
@@ -23,35 +23,44 @@ class CarView: BasicView {
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .white
+        view.cornerRadius = 10
         view.contentMode = .scaleAspectFit
         return view
     }()
     
     private lazy var textStack: BasicStackView = {
         let stack = BasicStackView()
-        stack.spacing = 5
+        stack.spacing = 4
         stack.axis = .vertical
         stack.paddingInsets = .init(vertical: 5)
+        stack.edgeInsets = .init(left: 13)
         return stack
     }()
 
+    private lazy var attentionImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "attention_ic")
+        return view
+    }()
+    
     private lazy var brandLabel: BasicLabel = {
         let label = BasicLabel()
-        label.font = .custom(size: 25, weight: .medium)
+        label.font = .custom(size: 18, weight: .black)
         label.textColor = .textBlack
         return label
     }()
     
     private lazy var modelLabel: BasicLabel = {
         let label = BasicLabel()
-        label.font = .custom(size: 15, weight: .light)
+        label.font = .custom(size: 18, weight: .bold)
         label.textColor = .textGray
         return label
     }()
     
     private lazy var notificationView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "flag.circle.fill")
+        view.image = UIImage(named: "arrow_ic")
         view.tintColor = .additionalRed
         return view
     }()
@@ -64,15 +73,12 @@ class CarView: BasicView {
     
     private func makeLayout() {
         self.addSubview(mainStack)
+        self.addSubview(attentionImage)
         mainStack.addArrangedSubviews([imageView, textStack, notificationView])
         textStack.addArrangedSubviews([brandLabel, modelLabel])
     }
     
     private func makeConstraints() {
-        self.snp.makeConstraints { make in
-            make.height.equalTo(80)
-        }
-        
         mainStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -82,7 +88,14 @@ class CarView: BasicView {
         }
         
         notificationView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(25)
+        }
+        
+        attentionImage.snp.makeConstraints { make in
+            make.height.width.equalTo(22)
+            make.trailing.equalTo(imageView.snp.leading).inset(12)
+            make.bottom.equalTo(imageView.snp.top).inset(12)
+
         }
     }
     

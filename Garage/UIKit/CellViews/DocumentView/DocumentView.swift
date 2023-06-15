@@ -15,7 +15,7 @@ class DocumentView: BasicView {
         stack.spacing = 5
         stack.axis = .vertical
         stack.cornerRadius = 12
-        stack.backgroundColor = .primaryGreen.withAlphaComponent(0.5)
+        stack.backgroundColor = .primaryBlue.withAlphaComponent(0.5)
         stack.paddingInsets = .init(vertical: 5, horizontal: 10)
         stack.edgeInsets = .init(vertical: 5, horizontal: 16)
         return stack
@@ -23,6 +23,7 @@ class DocumentView: BasicView {
     
     private lazy var typeLabel = BasicLabel()
     private lazy var dateLabel = BasicLabel()
+    private lazy var photoList = BasicImageListView()
     
     override func initView() {
         makeLayout()
@@ -31,7 +32,7 @@ class DocumentView: BasicView {
     
     private func makeLayout() {
         self.addSubview(stack)
-        stack.addArrangedSubviews([typeLabel, dateLabel])
+        stack.addArrangedSubviews([typeLabel, dateLabel, photoList])
     }
     
     private func makeConstraint() {
@@ -43,5 +44,6 @@ class DocumentView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         typeLabel.setViewModel(vm.typeLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
+        photoList.setViewModel(vm.photoListVM)
     }
 }

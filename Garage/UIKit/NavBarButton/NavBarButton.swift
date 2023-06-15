@@ -17,7 +17,7 @@ class NavBarButton: UIButton {
     
     init() {
         super .init(frame: .zero)
-        tintColor = .primaryGreen
+        tintColor = .primaryBlue
         translatesAutoresizingMaskIntoConstraints = false
     }
     

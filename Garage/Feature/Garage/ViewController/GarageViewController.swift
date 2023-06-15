@@ -40,10 +40,7 @@ class GarageViewController: BasicViewController {
         super.viewWillAppear(animated)
         vm.readCars()
         hideTabBar(false)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        hideNavBar(true)
     }
 
     override func configure() {
@@ -54,13 +51,19 @@ class GarageViewController: BasicViewController {
     override func binding() {
         super.binding()
         layout.table.setViewModel(vm.tableVM)
+        layout.addButton.setViewModel(vm.addButtonVM)
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] cells in
+                self?.layout.addButton.isHidden = cells.isEmpty
                 self?.layout.table.reload()
             }
             .store(in: &cancellables)
+        
+        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            self?.coordinator.navigateTo(GarageNavigationRoute.createCar)
+        }
     }
     
 }

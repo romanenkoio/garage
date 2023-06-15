@@ -15,7 +15,7 @@ class BasicSwitch: BasicView {
     
     private lazy var switcher: UISwitch = {
         let switcher = UISwitch()
-        switcher.onTintColor = .primaryGreen
+        switcher.onTintColor = .primaryBlue
         switcher.addTarget(
             self,
             action: #selector(toggle(_:)),
@@ -36,7 +36,7 @@ class BasicSwitch: BasicView {
     
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
-        view.tintColor = .primaryGreen
+        view.tintColor = .primaryBlue
         return view
     }()
     

@@ -8,12 +8,11 @@
 import UIKit
 
 class BasicTableView: BasicView {
-    private lazy var table: UITableView = {
+    lazy var table: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsHorizontalScrollIndicator = false
         table.showsVerticalScrollIndicator = true
-        table.separatorStyle = .none
         return table
     }()
     
@@ -21,21 +20,34 @@ class BasicTableView: BasicView {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.alignment = .center
-        stack.spacing = 30
+        stack.spacing = 8
         return stack
     }()
     
     private lazy var emptyLabel: BasicLabel = {
         let label = BasicLabel()
         label.textAlignment = .center
+        label.font = .custom(size: 22, weight: .bold)
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var emptySubLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.textColor = .textGray
+        label.font = .custom(size: 14, weight: .medium)
+        label.textInsets = .init(bottom: 30)
+        label.textAlignment = .center
         return label
     }()
     
     private lazy var emptyImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    lazy var addButton = BasicButton()
     
     override func initView() {
         makeLayout()
@@ -45,7 +57,12 @@ class BasicTableView: BasicView {
     private func makeLayout() {
         addSubview(table)
         addSubview(emptyStack)
-        emptyStack.addArrangedSubviews([emptyImageView, emptyLabel])
+        emptyStack.addArrangedSubviews([
+            emptyImageView,
+            emptyLabel,
+            emptySubLabel,
+            addButton
+        ])
     }
     
     private func makeConstraint() {
@@ -55,12 +72,18 @@ class BasicTableView: BasicView {
         
         emptyStack.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalTo(UIScreen.main.bounds.width - 100)
+        }
+        
+        emptyImageView.snp.makeConstraints { make in
+            make.height.equalTo(117)
+            make.width.equalTo(276)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         emptyLabel.setViewModel(vm.labelVM)
+        emptySubLabel.setViewModel(vm.subLabelVM)
+        addButton.setViewModel(vm.addButtonVM)
         
         vm.$isEmpty.sink { [weak self] value in
             guard let self else { return }
