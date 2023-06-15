@@ -36,6 +36,7 @@ class CarInfoViewController: BasicViewController {
         hideNavBar(false)
         makeCloseButton(isLeft: true)
         view.backgroundColor = AppColors.background
+        title = "Общая информация"
     }
 
     override func configure() {
@@ -49,6 +50,12 @@ class CarInfoViewController: BasicViewController {
         layout.mileageLabel.setViewModel(vm.milageLabelVM)
         layout.vinLabel.setViewModel(vm.vinLabelVM)
         layout.segment.setViewModel(vm.segmentVM)
+        layout.addRecordButton.setViewModel(vm.addButtonVM)
+        
+        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+        }
         
         vm.$logo.sink { [weak self] logo in
             self?.layout.logoImage.image = logo
@@ -70,5 +77,23 @@ extension CarInfoViewController {
     private func configureLayoutManager() {
         layout = CarInfoControllerLayoutManager(vc: self)
     }
+    
+}
+
+extension CarInfoViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tableVM.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath),
+              let item = vm.tableVM.cells[safe: indexPath.row]
+        else { return .init() }
+        recordCell.mainView.setViewModel(.init(record: item))
+        return recordCell
+    }
+}
+
+extension CarInfoViewController: UITableViewDelegate {
     
 }

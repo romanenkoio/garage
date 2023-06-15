@@ -95,6 +95,10 @@
 		7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */; };
 		7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */; };
 		7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */; };
+		7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA2F2A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift */; };
+		7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */; };
+		7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */; };
+		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
 		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
 		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
@@ -277,6 +281,10 @@
 		7FC6DA222A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7FC6DA2F2A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
+		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +396,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */,
 				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
 				7FFC1F5D2A352B4A007A5C75 /* CarInfo */,
 				7FFC1F4C2A33E417007A5C75 /* CreateRepair */,
@@ -947,6 +956,49 @@
 			children = (
 				7FC6DA242A39FCE900AD9A3F /* Settings+ViewModel.swift */,
 				7FC6DA252A39FCE900AD9A3F /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA2D2A3B41A600AD9A3F /* Manager */,
+				7FC6DA322A3B41A600AD9A3F /* ViewController */,
+			);
+			path = CreateRecord;
+			sourceTree = "<group>";
+		};
+		7FC6DA2D2A3B41A600AD9A3F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA2E2A3B41A600AD9A3F /* Coordinator */,
+				7FC6DA302A3B41A600AD9A3F /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FC6DA2E2A3B41A600AD9A3F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA2F2A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FC6DA302A3B41A600AD9A3F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FC6DA322A3B41A600AD9A3F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */,
+				7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1585,6 +1637,7 @@
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
+				7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
 				7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
@@ -1638,6 +1691,7 @@
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
+				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
@@ -1702,6 +1756,7 @@
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
 				7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
+				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
@@ -1717,6 +1772,7 @@
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */,
+				7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,

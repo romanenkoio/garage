@@ -29,14 +29,6 @@ final class GarageControllerLayoutManager {
     init(vc: GarageViewController) {
         self.vc = vc
         configure()
-        
-        let addButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-                vc.coordinator.navigateTo(GarageNavigationRoute.createCar)
-            },
-            image: UIImage(systemName: "plus")
-        )
-        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
 }
 

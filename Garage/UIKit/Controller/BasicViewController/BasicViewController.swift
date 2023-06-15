@@ -154,6 +154,18 @@ class BasicViewController: UIViewController {
         self.hideNavBar(false)
     }
     
+    func makeLogoNavbar() {
+        let logoImageView = UIImageView(frame: .init(x: 0, y: 0, width: 123, height: 31))
+        logoImageView.image = UIImage(named: "logo")
+        logoImageView.contentMode = .scaleAspectFit
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
+        
+        let proImageView = UIImageView(frame: .init(x: 0, y: 0, width: 61, height: 30))
+        proImageView.image = UIImage(named: "sub")
+        proImageView.contentMode = .scaleAspectFit
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
+    }
+
     func layoutElements() {
         view.addSubview(scroll)
         scroll.addSubview(contentView)

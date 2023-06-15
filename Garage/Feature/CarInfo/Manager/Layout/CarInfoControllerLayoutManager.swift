@@ -43,6 +43,16 @@ final class CarInfoControllerLayoutManager {
     lazy var vinLabel = BasicLabel()
     lazy var mileageLabel = BasicLabel()
     lazy var segment = BasicSegmentView<RecordType>()
+    lazy var addRecordButton = AlignedButton()
+    
+    
+    lazy var table: BasicTableView = {
+        let view = BasicTableView()
+        view.setupTable(dataSource: vc, delegate: vc)
+        view.register(BasicTableCell<RecordView>.self)
+        view.backgroundColor = .clear
+        return view
+    }()
     
     // - Init
     init(vc: CarInfoViewController) {
@@ -74,6 +84,8 @@ fileprivate extension CarInfoControllerLayoutManager {
         ])
         vc.contentView.addSubview(recordsView)
         recordsView.addSubview(segment)
+        recordsView.addSubview(table)
+        vc.contentView.addSubview(addRecordButton)
         
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
@@ -98,6 +110,14 @@ fileprivate extension CarInfoControllerLayoutManager {
         segment.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
+        
+        table.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(segment.snp.bottom)
+        }
+        
+        addRecordButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 21))
+        }
     }
-    
 }
