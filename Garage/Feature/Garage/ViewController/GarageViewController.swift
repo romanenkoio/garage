@@ -40,7 +40,7 @@ class GarageViewController: BasicViewController {
         super.viewWillAppear(animated)
         vm.readCars()
         hideTabBar(false)
-        hideNavBar(true)
+        makeLogoNavbar()
     }
 
     override func configure() {

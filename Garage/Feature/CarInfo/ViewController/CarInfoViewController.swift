@@ -50,6 +50,12 @@ class CarInfoViewController: BasicViewController {
         layout.mileageLabel.setViewModel(vm.milageLabelVM)
         layout.vinLabel.setViewModel(vm.vinLabelVM)
         layout.segment.setViewModel(vm.segmentVM)
+        layout.addRecordButton.setViewModel(vm.addButtonVM)
+        
+        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+        }
         
         vm.$logo.sink { [weak self] logo in
             self?.layout.logoImage.image = logo
