@@ -20,6 +20,16 @@ extension CreateRecordViewController {
         let mileageInputVM: BasicInputView.ViewModel
         let imagePickerVM = BasicImageListView.ViewModel()
         let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись"))
+        
+        let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
+            ServiceType.allCases,
+            titles: { items in
+                return items.map({ $0.title })
+            },
+            errorVM: .init(error: "Не может быть пустым"),
+            inputVM: .init(placeholder: "Замена свечей")
+        )
+        
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
             title: "Выберите сервис",
             RealmManager<Service>().read(),

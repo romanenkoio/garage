@@ -16,11 +16,12 @@ final class CreateRecordControllerLayoutManager {
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = 0
         stack.edgeInsets = UIEdgeInsets(top: 21, horizontal: 21)
         return stack
     }()
     
+    lazy var shortTypeInput = SuggestionInput<ServiceType>()
     lazy var costInput = BasicInputView()
     lazy var mileageImput = BasicInputView()
     lazy var dateInput = BasicDatePicker()
@@ -53,6 +54,7 @@ fileprivate extension CreateRecordControllerLayoutManager {
     private func makeLayout() {
         contentView.addSubview(stack)
         stack.addArrangedSubviews([
+            shortTypeInput,
             costInput,
             mileageImput,
             dateInput,
