@@ -34,6 +34,7 @@ class CreateRecordViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCloseButton(isLeft: true)
+        title = "Создание записи"
     }
 
     override func configure() {

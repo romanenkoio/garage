@@ -27,7 +27,8 @@ extension CreateRecordViewController {
                 return items.map({ $0.title })
             },
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Замена свечей")
+            inputVM: .init(placeholder: "Замена свечей"),
+            isRequired: true
         )
         
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
@@ -42,6 +43,7 @@ extension CreateRecordViewController {
             
             services = RealmManager<Service>().read()
 
+            shortTypeVM.descriptionLabelVM.text = "Краткое описание"
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             
             costInputVM = .init(
