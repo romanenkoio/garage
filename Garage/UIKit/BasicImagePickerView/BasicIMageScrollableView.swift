@@ -105,15 +105,25 @@ class BasicImageListView: BasicView {
             self?.stack.clearArrangedSubviews()
             self?.items.removeAll()
             
-            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
-                self?.makeItems(at: cycleIndex)
-                
+//            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
+//                self?.makeItems(at: cycleIndex)
+//
+//                images.enumerated().forEach { imageIndex, image in
+//
+//                    if imageIndex == cycleIndex {
+//                        self?.makeRemoveItems(at: imageIndex, with: image)
+//                    }
+//                }
+//            }
+            if !images.isEmpty {
                 images.enumerated().forEach { imageIndex, image in
-                    
-                    if imageIndex == cycleIndex {
-                        self?.makeRemoveItems(at: imageIndex, with: image)
+                    self?.makeRemoveItems(at: imageIndex, with: image)
+                    if imageIndex == images.endIndex-1 {
+                        self?.makeItems(at: imageIndex)
                     }
                 }
+            } else {
+                self?.makeItems(at: 0)
             }
         }
         .store(in: &cancellables)
