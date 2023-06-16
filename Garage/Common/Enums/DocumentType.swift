@@ -26,7 +26,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
 
     var title: String {
         switch self {
-        case .license:                  return "Права"
+        case .license:                  return "Водительские права"
         case .medical:                  return "Медицинская справка"
         case .insurance:                return "Страховка"
         case .carPasport:               return "Технический паспорт"
@@ -49,7 +49,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
     
     init(from text: String) {
         switch text {
-        case "Права":                   self = .license
+        case "Водительские права":      self = .license
         case "Медицинская справка":     self = .medical
         case "Страховка":               self = .insurance
         case "Технический паспорт":     self = .carPasport

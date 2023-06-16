@@ -23,7 +23,7 @@ extension CreateDocumentViewController {
             DocumentType.allCases,
             items: { items in items.map({ ($0.title, $0.image) })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Права"),
+            inputVM: .init(placeholder: "Водительские права"),
             isRequired: true
         )
         

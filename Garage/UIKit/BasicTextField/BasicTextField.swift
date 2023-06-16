@@ -28,11 +28,11 @@ class BasicTextField: UITextField {
     
     init() {
         super .init(frame: .zero)
-        layer.cornerRadius = 8
+        layer.cornerRadius = 12
         layer.borderColor = UIColor.secondaryGray.cgColor
         backgroundColor = .clear
         layer.borderWidth = 1
-        leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 35))
+        leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 35))
         leftViewMode = .always
         font = .custom(size: 17, weight: .medium)
         clipsToBounds = true

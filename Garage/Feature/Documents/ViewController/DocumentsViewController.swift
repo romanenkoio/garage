@@ -90,6 +90,7 @@ extension DocumentsViewController: UITableViewDataSource {
               let item = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
         serviceCell.mainView.setViewModel(.init(document: item))
+        serviceCell.selectionStyle = .none
         return serviceCell
     }
 }

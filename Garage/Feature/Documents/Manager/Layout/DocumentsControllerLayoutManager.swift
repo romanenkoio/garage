@@ -20,6 +20,7 @@ final class DocumentsControllerLayoutManager {
             delegate: vc
         )
         table.register(DocumentCell.self)
+        table.table.separatorStyle = .none
         return table
     }()
     

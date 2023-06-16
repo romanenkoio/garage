@@ -21,9 +21,9 @@ extension ServicesViewController {
             super.init()
             tableVM.setupEmptyState(
                 labelVM: .init(text: "Ваш гараж пуст"),
-                sublabelVM: .init(text: "Добавьте машину для \nначала работы"),
+                sublabelVM: .init(text: "Сервисов нет"),
                 addButtonVM: .init(title: "Добавить сервис"),
-                image: UIImage(named: "car")
+                image: UIImage(named: "service")
             )
         }
         

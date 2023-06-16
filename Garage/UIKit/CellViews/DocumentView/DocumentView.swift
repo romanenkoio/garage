@@ -76,7 +76,7 @@ class DocumentView: BasicView {
         }
         
         photoList.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 16))
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
