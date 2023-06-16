@@ -20,9 +20,9 @@ extension CreateDocumentViewController {
         let datePickerVM = RangeDatePicker.ViewModel()
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
-            titles: { items in items.map({ $0.title })},
+            items: { items in items.map({ ($0.title, $0.image) })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Тип документа"),
+            inputVM: .init(placeholder: "Права"),
             isRequired: true
         )
         

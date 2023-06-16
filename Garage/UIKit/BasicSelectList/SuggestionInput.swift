@@ -144,7 +144,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
                     print("Категория \(index)")
                     self?.viewModel?.setSelected(item)
                 }
-            )))
+            ), image: viewModel.icons[safe: index]))
             self?.scrollStack.addArrangedSubview(view)
             self?.itemViews.append(view)
         }

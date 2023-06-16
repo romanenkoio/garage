@@ -24,8 +24,8 @@ extension CreateRecordViewController {
         
         let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
             ServiceType.allCases,
-            titles: { items in
-                return items.map({ $0.title })
+            items: { items in
+                return items.map({ ($0.title, nil) })
             },
             errorVM: .init(error: "Не может быть пустым"),
             inputVM: .init(placeholder: "Замена свечей"),

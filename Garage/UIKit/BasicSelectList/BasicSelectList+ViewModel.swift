@@ -5,7 +5,7 @@
 //  Created by Vlad Kulakovsky  on 8.06.23.
 //
 
-import Foundation
+import UIKit
 
 extension SuggestionInput {
     final class GenericViewModel<T: Equatable>: BasicInputView.ViewModel {
@@ -14,11 +14,12 @@ extension SuggestionInput {
         @Published var items: [Item]
         @Published private(set) var selectedItem: Item?
         private(set) var titles = [String]()
+        private(set) var icons = [UIImage]()
                 
         init(
             _ list: [Item],
             selected: Item? = nil,
-            titles: ([Item]) -> [String],
+            items: ([Item]) -> [(title: String, image: UIImage?)],
             errorVM: ErrorView.ViewModel,
             inputVM: BasicTextField.ViewModel,
             isRequired: Bool = false
@@ -33,7 +34,8 @@ extension SuggestionInput {
             )
 
             rules = [.noneEmpty]
-            self.titles = titles(list)
+            self.titles = items(list).map({ $0.title })
+            self.icons = items(list).compactMap({ $0.image })
             self.selectedItem = selected
             checkEmpty()
         }

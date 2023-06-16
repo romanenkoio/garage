@@ -10,9 +10,22 @@ import SwiftUI
 
 class SuggestionView: BasicView {
     
+    lazy var stack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.paddingInsets = UIEdgeInsets(vertical: 7, horizontal: 12)
+        return stack
+    }()
+    
+    lazy var imageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     lazy var label: TappableLabel = {
         let label = TappableLabel(aligment: .center)
-        label.textInsets = .init(vertical: 10, horizontal: 10)
         return label
     }()
     
@@ -22,19 +35,28 @@ class SuggestionView: BasicView {
     }
     
     private func makeLayout() {
-        self.addSubview(label)
+        self.addSubview(stack)
+        stack.addArrangedSubviews([imageView, label])
         self.backgroundColor = .secondaryGray
         self.cornerRadius = 12
     }
     
     private func makeConstraints() {
-        label.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+        stack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.height.width.equalTo(24)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         label.setViewModel(vm.labelVM)
+        
+        vm.$image.sink { [weak self] image in
+            self?.imageView.image = image
+        }
+        .store(in: &cancellables)
     }
 }

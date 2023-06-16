@@ -11,8 +11,8 @@ extension TestController {
     class ViewModel: BasicViewModel {
         let inputVM = SuggestionInput<TestModel>.GenericViewModel<TestModel>(
             [TestModel.init(name: "101"),TestModel.init(name: "102"),TestModel.init(name: "103"),TestModel.init(name: "104"),TestModel.init(name: "105"),TestModel.init(name: "106"),TestModel.init(name: "107"),TestModel.init(name: "108")],
-            titles: { items in
-                items.map({$0.name})
+            items: { items in
+                items.map({ ($0.name, nil) })
             },
             errorVM: .init(error: "Test error"),
             inputVM: .init(placeholder: "Test placeholder")
