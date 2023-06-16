@@ -62,5 +62,9 @@ class BasicLabel: UILabel {
         vm.$text
             .sink { [weak self] in self?.text = $0 }
             .store(in: &cancellables)
+        
+        vm.$isHidden
+            .sink { [weak self] in self?.isHidden = $0 ?? false }
+            .store(in: &cancellables)
     }
 }

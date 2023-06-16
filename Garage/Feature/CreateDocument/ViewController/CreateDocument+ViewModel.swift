@@ -10,19 +10,20 @@ import UIKit
 
 extension CreateDocumentViewController {
     final class ViewModel: BasicControllerModel {
-        let saveButtonVM = BasicButton.ViewModel(
-            title: "Сохранить",
-            isEnabled: false,
-            style: .primary
-        )
+        let saveButtonVM = AlignedButton.ViewModel(
+            buttonVM: .init(
+                title: "Сохранить",
+                isEnabled: false,
+                style: .primary
+            ))
         
         let imageList = BasicImageListView.ViewModel()
         let datePickerVM = RangeDatePicker.ViewModel()
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
-            titles: { items in items.map({ $0.title })},
+            items: { items in items.map({ ($0.title, $0.image) })},
             errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Тип документа"),
+            inputVM: .init(placeholder: "Права"),
             isRequired: true
         )
         
@@ -32,7 +33,7 @@ extension CreateDocumentViewController {
         override init() {
             super.init()
             
-            saveButtonVM.action = .touchUpInside { [weak self] in
+            saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 let document = Document(
                     rawType: self.typeFieldVM.text,
@@ -49,12 +50,14 @@ extension CreateDocumentViewController {
                 }
                 self.saveCompletion?()
             }
+            imageList.editingEnabled = true
+            imageList.description = "Добавить фото"
             
             validator.setForm([typeFieldVM.inputVM, datePickerVM])
             
             validator.formIsValid
                 .sink { [weak self] value in
-                self?.saveButtonVM.isEnabled = value
+                    self?.saveButtonVM.buttonVM.isEnabled = value
             }
             .store(in: &cancellables)
         }

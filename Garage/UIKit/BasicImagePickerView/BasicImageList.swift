@@ -13,6 +13,14 @@ import Combine
 import SnapKit
 
 class BasicImageListView: BasicView {
+    private lazy var stack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .vertical
+        stack.spacing = 13
+        stack.distribution = .fill
+        return stack
+    }()
+    
     private var imagePicker: PHPickerViewController {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -44,11 +52,7 @@ class BasicImageListView: BasicView {
         return alert
     }
     
-    private lazy var descriptionLabel = BasicLabel()
-    
-    private lazy var editButton = BasicButton()
-    
-    private lazy var stack: BasicStackView = {
+    private lazy var imageStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .horizontal
         stack.spacing = 10
@@ -56,6 +60,12 @@ class BasicImageListView: BasicView {
         return stack
     }()
     
+    private lazy var descriptionLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.font = .custom(size: 20, weight: .bold)
+        return label
+    }()
+
     private var items: [BasicImageButton] = []
     private(set) var viewModel: ViewModel?
     
@@ -63,29 +73,20 @@ class BasicImageListView: BasicView {
         super.init()
         layoutElements()
         makeConstraints()
+        backgroundColor = .clear
+        cornerRadius = 0
     }
     
     private func layoutElements() {
         addSubview(stack)
-        addSubview(descriptionLabel)
-        addSubview(editButton)
+        stack.addArrangedSubviews([descriptionLabel,imageStack])
+//        addSubview(imageStack)
+//        addSubview(descriptionLabel)
     }
     
     private func makeConstraints() {
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.top.equalToSuperview()
-            make.trailing.equalTo(editButton).inset(10)
-        }
-        
-        editButton.snp.remakeConstraints { make in
-            make.centerY.equalTo(descriptionLabel)
-            make.trailing.equalToSuperview()
-        }
-        
         stack.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(5)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
@@ -95,35 +96,20 @@ class BasicImageListView: BasicView {
         if let descriptionLabelVM = vm.descriptionLabelVM {
             descriptionLabel.setViewModel(descriptionLabelVM)
         }
-        
-        if let editButtonVM = vm.editButtonVM {
-            editButton.setViewModel(editButtonVM)
-        }
-
     
         vm.$items.sink {[weak self] images in
-            self?.stack.clearArrangedSubviews()
+            self?.imageStack.clearArrangedSubviews()
             self?.items.removeAll()
             
-//            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
-//                self?.makeItems(at: cycleIndex)
-//
-//                images.enumerated().forEach { imageIndex, image in
-//
-//                    if imageIndex == cycleIndex {
-//                        self?.makeRemoveItems(at: imageIndex, with: image)
-//                    }
-//                }
-//            }
-            if !images.isEmpty {
+            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
+                self?.makeItems(at: cycleIndex)
+
                 images.enumerated().forEach { imageIndex, image in
-                    self?.makeRemoveItems(at: imageIndex, with: image)
-                    if imageIndex == images.endIndex-1 {
-                        self?.makeItems(at: imageIndex)
+
+                    if imageIndex == cycleIndex {
+                        self?.makeRemoveItems(at: imageIndex, with: image)
                     }
                 }
-            } else {
-                self?.makeItems(at: 0)
             }
         }
         .store(in: &cancellables)
@@ -144,7 +130,7 @@ class BasicImageListView: BasicView {
     }
     
     private func makeRemoveItems(at index: Int, with image: UIImage) {
-        self.stack.arrangedSubviews[index].removeFromSuperview()
+        self.imageStack.arrangedSubviews[index].removeFromSuperview()
         self.items.remove(at: index)
         guard let vm = viewModel else { return }
         
@@ -153,6 +139,7 @@ class BasicImageListView: BasicView {
             action: { [weak self] in
                 self?.viewModel?.selectedIndex = index
             },
+            style: .photo,
             image: image
             ,
             buttonVM: .init(
@@ -163,15 +150,17 @@ class BasicImageListView: BasicView {
         ))
         
         items.append(imageView)
-        stack.addArrangedSubview(imageView)
+        imageStack.addArrangedSubview(imageView)
     }
     
     func makeItems(at index: Int) {
         let imageView = BasicImageButton()
+        imageView.alpha = viewModel?.editingEnabled ?? false ? 1 : 0
         imageView.setViewModel(.init(
             action: {[weak self] in
                 print("test from view")
             },
+            style: .empty,
             image: UIImage(),
             buttonVM: .init(
                 style: .addImage,
@@ -181,7 +170,7 @@ class BasicImageListView: BasicView {
         ))
         
         items.append(imageView)
-        stack.addArrangedSubview(imageView)
+        imageStack.addArrangedSubview(imageView)
     }
     
     required init?(coder: NSCoder) {

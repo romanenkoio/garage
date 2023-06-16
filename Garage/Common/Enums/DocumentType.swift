@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum DocumentType: CaseIterable, Selectable, Equatable {
     case license
@@ -31,6 +32,18 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
         case .carPasport:               return "Технический паспорт"
         case .techChek:                 return "Технический осмотр"
         case .unlisted(let string):     return string ?? ""
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .license:                  return UIImage(named: "license")
+        case .medical:                  return UIImage(named: "medLicense")
+        case .insurance:                return UIImage(named: "insuranse")
+        case .carPasport:               return UIImage(named: "insuranse")
+        case .techChek:                 return UIImage(named: "techDoc")
+        case .unlisted:                 return nil
+            
         }
     }
     

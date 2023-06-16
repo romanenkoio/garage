@@ -12,4 +12,5 @@ enum SettingPoint: String, CaseIterable {
     case accountInfo
     case contactUs
     case dataTransfer
+    case mileageReminder
 }

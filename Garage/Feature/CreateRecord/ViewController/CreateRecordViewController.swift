@@ -34,6 +34,7 @@ class CreateRecordViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCloseButton(isLeft: true)
+        title = "Создание записи"
     }
 
     override func configure() {
@@ -48,6 +49,18 @@ class CreateRecordViewController: BasicViewController {
         layout.imageList.setViewModel(vm.imagePickerVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
         layout.servicesList.setViewModel(vm.serivesListVM)
+        layout.shortTypeInput.setViewModel(vm.shortTypeVM)
+        
+        vm.$services.sink { [weak self] items in
+            self?.layout.servicesList.isHidden = items.isEmpty
+        }
+        .store(in: &cancellables)
+        
+        vm.saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            self.vm.saveRecord()
+            self.coordinator.navigateTo(CommonNavigationRoute.close)
+        }
     }
     
 }

@@ -46,7 +46,8 @@ extension ServicesViewController {
                         text: $0,
                         action: { [weak self] in
                             
-                        })
+                        }),
+                    image: nil
                 )})
             self.suggestions = suggestions
         }

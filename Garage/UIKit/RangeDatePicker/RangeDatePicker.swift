@@ -13,7 +13,7 @@ class RangeDatePicker: BasicView {
     private lazy var stack: BasicStackView = {
         let stak = BasicStackView()
         stak.axis = .horizontal
-        stak.spacing = 20
+        stak.spacing = 7
         stak.distribution = .fillEqually
         return stak
     }()

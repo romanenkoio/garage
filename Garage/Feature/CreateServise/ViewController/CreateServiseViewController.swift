@@ -33,6 +33,8 @@ class CreateServiseViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Добавление сервиса"
+        makeCloseButton(isLeft: true)
     }
 
     override func configure() {

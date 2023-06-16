@@ -12,11 +12,26 @@ extension CreateRecordViewController {
     final class ViewModel: BasicViewModel {
         unowned var car: Car
         
+        @Published
+        private(set) var services = [Service]()
+        private var selectedService: Service?
+        
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
-        let imagePickerVM = BasicImageListView.ViewModel()
+        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(text: "Добавить фото"))
         let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись"))
+        
+        let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
+            ServiceType.allCases,
+            items: { items in
+                return items.map({ ($0.title, nil) })
+            },
+            errorVM: .init(error: "Не может быть пустым"),
+            inputVM: .init(placeholder: "Замена свечей"),
+            isRequired: true
+        )
+        
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
             title: "Выберите сервис",
             RealmManager<Service>().read(),
@@ -27,6 +42,9 @@ extension CreateRecordViewController {
         init(car: Car) {
             self.car = car
             
+            services = RealmManager<Service>().read()
+
+            shortTypeVM.descriptionLabelVM.text = "Краткое описание"
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             
             costInputVM = .init(
@@ -41,10 +59,25 @@ extension CreateRecordViewController {
                 descriptionVM: .init(text: "Текущий пробег"),
                 isRequired: true
             )
+            
+            imagePickerVM.description = "Добавить фото"
         }
         
         func saveRecord() {
-            
+            let record = Record(
+                carID: car.id,
+                serviceID: serivesListVM.selectedItem?.id,
+                cost: costInputVM.text.toDouble(),
+                mileage: mileageInputVM.text.toDouble(),
+                date: dateInputVM.date ?? Date(),
+                comment: nil
+            )
+            RealmManager<Record>().write(object: record)
+            self.imagePickerVM.items.forEach { image in
+                guard let data = image.jpegData(compressionQuality: 1) else { return }
+                let photo = Photo(record, image: data)
+                RealmManager<Photo>().write(object: photo)
+            }
         }
     }
 }

@@ -64,11 +64,11 @@ class BasicButton: UIButton {
             case .addImage:
                 backgroundColor = .clear
                 tintColor = .gray
-                setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                setImage(UIImage(named: "plus"), for: .normal)
             case .removeImage:
                 backgroundColor = .clear
                 tintColor = .red
-                setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+                setImage(UIImage(systemName: "xmark"), for: .normal)
             case .basicLightTitle:
                 backgroundColor = .clear
                 setTitleColor(.primaryGray, for: .normal)

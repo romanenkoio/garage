@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gilroy-UltraLightItalic.ttf</string>
+		<string>Gilroy-Medium.ttf</string>
+		<string>Gilroy-LightItalic.ttf</string>
+		<string>Gilroy-ThinItalic.ttf</string>
+		<string>Gilroy-HeavyItalic.ttf</string>
+		<string>Gilroy-BoldItalic.ttf</string>
+		<string>Gilroy-SemiboldItalic.ttf</string>
+		<string>Gilroy-RegularItalic.ttf</string>
+		<string>Gilroy-BlackItalic.ttf</string>
+		<string>Gilroy-Regular.ttf</string>
+		<string>Gilroy-UltraLight.ttf</string>
+		<string>Gilroy-Black.ttf</string>
+		<string>Gilroy-Extrabold.ttf</string>
+		<string>Gilroy-MediumItalic.ttf</string>
+		<string>Gilroy-Light.ttf</string>
+		<string>Gilroy-Thin.ttf</string>
+		<string>Gilroy-ExtraboldItalic.ttf</string>
+		<string>Gilroy-Semibold.ttf</string>
+		<string>Gilroy-Bold.ttf</string>
+		<string>Gilroy-Heavy.ttf</string>
+	</array>
 	<key>Allows Arbitrary Loads</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

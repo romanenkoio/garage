@@ -10,6 +10,11 @@ import Combine
 
 
 class BasicImageButton: BasicView {
+    enum ImageViewStyle {
+        case photo
+        case empty
+    }
+    
     private lazy var actionButton = BasicButton()
     private lazy var actionImageView: UIImageView = {
         let view = UIImageView()
@@ -43,7 +48,7 @@ class BasicImageButton: BasicView {
     private func makeConstraints() {
         actionImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.width.equalTo(60)
+            make.height.equalTo(actionImageView.snp.width).multipliedBy(1)
         }
     }
     
@@ -61,6 +66,17 @@ class BasicImageButton: BasicView {
                 }
             default:
                 break
+        }
+    }
+    
+    private func setStyle(with style: ImageViewStyle) {
+        switch style {
+            case .empty:
+                layer.borderWidth = 0
+                layer.borderColor = UIColor.clear.cgColor
+            case .photo:
+                layer.borderWidth = 1
+                layer.borderColor = UIColor.primaryBlue.cgColor
         }
     }
     
@@ -91,6 +107,10 @@ class BasicImageButton: BasicView {
             self.actionImageView.image = image
         }
         .store(in: &cancellables)
+        
+        vm.$style
+            .sink { [weak self] in self?.setStyle(with: $0)}
+            .store(in: &cancellables)
     }
     
     @objc private func tapAction() {
