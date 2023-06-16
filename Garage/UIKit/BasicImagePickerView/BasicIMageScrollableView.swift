@@ -63,6 +63,8 @@ class BasicImageListView: BasicView {
         super.init()
         layoutElements()
         makeConstraints()
+        backgroundColor = .clear
+        cornerRadius = 0
     }
     
     private func layoutElements() {
@@ -85,7 +87,7 @@ class BasicImageListView: BasicView {
         
         stack.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(5)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
     }
     

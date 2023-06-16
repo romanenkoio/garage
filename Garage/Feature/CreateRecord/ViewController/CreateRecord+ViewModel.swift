@@ -19,7 +19,7 @@ extension CreateRecordViewController {
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
-        let imagePickerVM = BasicImageListView.ViewModel()
+        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(text: "Добавить фото"))
         let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись"))
         
         let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
@@ -59,6 +59,8 @@ extension CreateRecordViewController {
                 descriptionVM: .init(text: "Текущий пробег"),
                 isRequired: true
             )
+            
+            imagePickerVM.description = "Добавить фото"
         }
         
         func saveRecord() {
@@ -71,6 +73,11 @@ extension CreateRecordViewController {
                 comment: nil
             )
             RealmManager<Record>().write(object: record)
+            self.imagePickerVM.items.forEach { image in
+                guard let data = image.jpegData(compressionQuality: 1) else { return }
+                let photo = Photo(record, image: data)
+                RealmManager<Photo>().write(object: photo)
+            }
         }
     }
 }

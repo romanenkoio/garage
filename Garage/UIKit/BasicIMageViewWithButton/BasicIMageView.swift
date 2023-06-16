@@ -43,7 +43,7 @@ class BasicImageButton: BasicView {
     private func makeConstraints() {
         actionImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.width.equalTo(60)
+            make.height.equalTo(actionImageView.snp.width).multipliedBy(1)
         }
     }
     

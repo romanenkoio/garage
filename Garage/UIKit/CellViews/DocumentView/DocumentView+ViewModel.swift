@@ -11,6 +11,7 @@ extension DocumentView {
     final class ViewModel: BasicViewModel {
         let typeLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
+        let detailsLabelVM = BasicLabel.ViewModel()
         let photoListVM = BasicImageListView.ViewModel()
         
         init(document: Document) {
@@ -19,10 +20,11 @@ extension DocumentView {
                let endDate = document.endDate {
                 let startString = startDate.formatData(formatType: .ddMMyy)
                 let endString = endDate.formatData(formatType: .ddMMyy)
-                dateLabelVM.text = "\(startString) - \(endString)"
+                dateLabelVM.text = "С \(startString) по \(endString)"
             }
             
             photoListVM.items = document.photos
+            detailsLabelVM.text = "Детали"
         }
     }
 }
