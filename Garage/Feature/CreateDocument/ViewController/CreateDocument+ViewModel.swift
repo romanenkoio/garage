@@ -49,6 +49,7 @@ extension CreateDocumentViewController {
                 }
                 self.saveCompletion?()
             }
+            imageList.editingEnabled = true
             
             validator.setForm([typeFieldVM.inputVM, datePickerVM])
             
