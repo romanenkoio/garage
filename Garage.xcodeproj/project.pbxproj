@@ -100,6 +100,8 @@
 		7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */; };
 		7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */; };
 		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
+		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
+		7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
 		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
 		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
@@ -307,6 +309,8 @@
 		7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
 		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
+		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
@@ -1045,6 +1049,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FF503C32A3D1F77006DA7EC /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				7FF503C42A3D1FED006DA7EC /* SettingView.swift */,
+				7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
 		7FFC1F4C2A33E417007A5C75 /* CreateRepair */ = {
 			isa = PBXGroup;
 			children = (
@@ -1221,6 +1234,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7FF503C32A3D1F77006DA7EC /* SettingView */,
 				B9D96E502A37CF5100909B33 /* PhotoView */,
 				7FFC1F6C2A353D0A007A5C75 /* RecordView */,
 				7F0E094B2A3346BB008C2B9A /* DocumentView */,
@@ -1784,6 +1798,7 @@
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
+				7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
@@ -1824,6 +1839,7 @@
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
+				7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */,
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				7FFC1F672A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,

@@ -14,11 +14,12 @@ final class SettingsControllerLayoutManager {
     private unowned let vc: SettingsViewController
     
     lazy var table: BasicTableView = {
-        let table = BasicTableView()
+        let table = BasicTableView(style: .insetGrouped)
         table.setupTable(
             dataSource: vc,
             delegate: vc
         )
+        table.register(BasicTableCell<SettingView>.self)
         return table
     }()
     

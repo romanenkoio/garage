@@ -8,8 +8,10 @@
 import UIKit
 
 class BasicTableView: BasicView {
+    private let style: UITableView.Style
+    
     lazy var table: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: style)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsHorizontalScrollIndicator = false
         table.showsVerticalScrollIndicator = true
@@ -49,6 +51,15 @@ class BasicTableView: BasicView {
     }()
     
     lazy var addButton = BasicButton()
+    
+    init(style: UITableView.Style = .plain) {
+        self.style = style
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func initView() {
         makeLayout()

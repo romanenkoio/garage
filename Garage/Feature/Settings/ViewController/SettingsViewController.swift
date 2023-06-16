@@ -35,6 +35,7 @@ class SettingsViewController: BasicViewController {
         super.viewDidLoad()
         hideTabBar(false)
         makeLogoNavbar()
+        hideTabBar(false)
     }
 
     override func configure() {
@@ -71,12 +72,19 @@ extension SettingsViewController {
 }
 
 extension SettingsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return vm.tableVM.cells.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tableVM.cells[section].count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return .init()
+        guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self) else { return .init() }
+        
+        settingCell.mainView.setViewModel(.init())
+        return settingCell
     }
 }
 

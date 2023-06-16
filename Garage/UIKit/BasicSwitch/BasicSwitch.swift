@@ -21,7 +21,7 @@ class BasicSwitch: BasicView {
             action: #selector(toggle(_:)),
             for: .valueChanged
         )
-        switcher.transform = .init(scaleX: 0.7, y: 0.7)
+//        switcher.transform = .init(scaleX: 0.7, y: 0.7)
         switcher.isUserInteractionEnabled = true
         return switcher
     }()

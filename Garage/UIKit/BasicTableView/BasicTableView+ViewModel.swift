@@ -42,4 +42,16 @@ extension BasicTableView {
             self.isEmpty = cells.isEmpty
         }
     }
+    
+    final class SectionViewModel<Cell>: ViewModel {
+        typealias Cell = Cell
+
+        @Published
+        private(set) var cells = [[Cell]]()
+        
+        func setCells(_ cells: [[Cell]]) {
+            self.cells = cells
+            self.isEmpty = cells.isEmpty
+        }
+    }
 }

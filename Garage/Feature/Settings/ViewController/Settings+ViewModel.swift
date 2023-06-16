@@ -10,11 +10,17 @@ import UIKit
 
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {
-        let tableVM = BasicTableView.GenericViewModel<SettingPoint>()
+        let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
+        
+        let settingsPoint: [[SettingPoint]] = [
+            [.accountInfo, .contactUs],
+            [.mileageReminder, .distancePoints],
+            [.dataTransfer]
+        ]
         
         override init() {
             super.init()
-            tableVM.setCells(SettingPoint.allCases)
+            tableVM.setCells(settingsPoint)
         }
     }
 }
