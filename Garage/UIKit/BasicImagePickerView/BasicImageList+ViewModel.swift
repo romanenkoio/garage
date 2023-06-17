@@ -10,7 +10,7 @@ import UIKit
 
 extension BasicImageListView {
     class ViewModel: BasicViewModel {
-        var descriptionLabelVM: BasicLabel.ViewModel?
+        private(set) var descriptionLabelVM: BasicLabel.ViewModel?
        
         @Published var items: [UIImage] = []
         @Published var selectedIndex: Int?
