@@ -96,5 +96,8 @@ extension DocumentsViewController: UITableViewDataSource {
 }
 
 extension DocumentsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let document = vm.tableVM.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(DocumentsNavigationRoute.editDocument(document))
+    }
 }

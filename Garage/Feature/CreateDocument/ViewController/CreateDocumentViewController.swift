@@ -33,11 +33,23 @@ class CreateDocumentViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
     }
 
     override func configure() {
         configureCoordinator()
         configureLayoutManager()
+    }
+
+    private func setupNavBar() {
+        let deleteButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+//                self?.vm.removeCar()
+            },
+            image: UIImage(named: "delete_ic")
+        )
+        makeRightNavBarButton(buttons: [deleteButton])
+        makeCloseButton(isLeft: true)
     }
 
     override func binding() {
