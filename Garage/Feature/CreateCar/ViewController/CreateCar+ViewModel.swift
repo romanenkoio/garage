@@ -132,6 +132,8 @@ extension CreateCarViewController {
                 yearFieldVM.text = object.year.wrappedString
                 winFieldVM.text = object.win.wrapped
                 mileageFieldVM.text = object.mileage.toString()
+                saveButtonVM.buttonVM.title = "Обновить"
+                initChangeChecker()
             }
         }
         
@@ -148,8 +150,17 @@ extension CreateCarViewController {
             winFieldVM.rules = [.vin]
             
             validator.formIsValid
-                .sink { [weak self] value in
-                    self?.saveButtonVM.buttonVM.isEnabled = value
+                .removeDuplicates().sink { [weak self] value in
+                    guard let self else { return }
+                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
+                }
+                .store(in: &cancellables)
+            
+            changeChecker.formHasChange
+                .removeDuplicates().sink { [weak self] value in
+                    guard let self else { return }
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+
                 }
                 .store(in: &cancellables)
             
@@ -158,6 +169,16 @@ extension CreateCarViewController {
                 self?.decodeVIN()
             }
             .store(in: &cancellables)
+        }
+        
+        private func initChangeChecker() {
+            changeChecker.setForm([
+                winFieldVM.inputVM,
+                brandFieldVM.inputVM,
+                modelFieldVM.inputVM,
+                mileageFieldVM.inputVM,
+                yearFieldVM.inputVM
+            ])
         }
         
         private func initSuggestionAction() {

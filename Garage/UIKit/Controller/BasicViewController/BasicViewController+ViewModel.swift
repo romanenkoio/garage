@@ -14,9 +14,6 @@ extension BasicViewController {
         
         var cancellables: Set<AnyCancellable> = []
         let validator = FormValidator()
-        
-        init() {
-            print("inited super model")
-        }
+        let changeChecker = FormChangeChecker()
     }
 }

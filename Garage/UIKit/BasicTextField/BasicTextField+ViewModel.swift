@@ -8,7 +8,10 @@
 import Combine
 
 extension BasicTextField {
-    final class ViewModel: BasicViewModel, Validatable {
+    final class ViewModel: BasicViewModel, Validatable, HasChangable {
+        var hasChange: Bool = false
+        var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+        var checkedValue: String?
         
         var isValid: Bool = false
         var isValidSubject: PassthroughSubject<Bool, Never> = .init()

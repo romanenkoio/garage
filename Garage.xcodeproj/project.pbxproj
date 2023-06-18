@@ -91,6 +91,8 @@
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
 		7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB22A3F180400F1D22D /* EntityStatus.swift */; };
+		7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */; };
+		7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -301,6 +303,8 @@
 		7F6F6A302A2E8522003F7DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6F6A322A2E8522003F7DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F820CB22A3F180400F1D22D /* EntityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStatus.swift; sourceTree = "<group>"; };
+		7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHasChangable.swift; sourceTree = "<group>"; };
+		7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChangeChecker.swift; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -966,6 +970,15 @@
 			path = Garage;
 			sourceTree = "<group>";
 		};
+		7F820CB42A3F227B00F1D22D /* FormChangeChecker */ = {
+			isa = PBXGroup;
+			children = (
+				7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */,
+				7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */,
+			);
+			path = FormChangeChecker;
+			sourceTree = "<group>";
+		};
 		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,27 +1480,20 @@
 		B978F3A22A2E9D870076D326 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B978F3A62A2E9D870076D326 /* FormValidator */,
+				7F820CB42A3F227B00F1D22D /* FormChangeChecker */,
 				B978F3A92A2E9D870076D326 /* Typealiases.swift */,
 				7F5955F92A2E8D3B0062A85F /* Enums */,
-				B978F3A32A2E9D870076D326 /* Validator */,
-				B978F3A62A2E9D870076D326 /* FormValidator */,
 				B978F3AA2A2E9D870076D326 /* Protocols */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		B978F3A32A2E9D870076D326 /* Validator */ = {
+		B978F3A62A2E9D870076D326 /* FormValidator */ = {
 			isa = PBXGroup;
 			children = (
 				B978F3A42A2E9D870076D326 /* Validatable.swift */,
 				B978F3A52A2E9D870076D326 /* ValidationRule.swift */,
-			);
-			path = Validator;
-			sourceTree = "<group>";
-		};
-		B978F3A62A2E9D870076D326 /* FormValidator */ = {
-			isa = PBXGroup;
-			children = (
 				B978F3A72A2E9D870076D326 /* FormValidator.swift */,
 			);
 			path = FormValidator;
@@ -1771,6 +1777,7 @@
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
+				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
@@ -1822,6 +1829,7 @@
 				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
+				7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */,
 				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,

@@ -10,6 +10,7 @@ import Combine
 class FormValidator {
     var cancellables: Set<AnyCancellable> = .init()
     var formIsValid: PassthroughSubject<Bool, Never> = .init()
+    var isValid: Bool = false
     
     var validatedData: [Validatable] = []
     
@@ -31,9 +32,9 @@ class FormValidator {
     }
     
     private func validateAll() {
-        print(#function)
         let result = validatedData.allSatisfy( { $0.isValid } )
         formIsValid.send(result)
+        isValid = result
     }
     
 }

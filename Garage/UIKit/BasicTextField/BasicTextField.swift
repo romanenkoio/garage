@@ -103,6 +103,7 @@ class BasicTextField: UITextField {
                 self?.layer.borderWidth = 1
             }
             self.vm?.validate()
+            self.vm?.checkChanged(vm?.text ?? .empty)
         }
 
         return didResignFirstResponder

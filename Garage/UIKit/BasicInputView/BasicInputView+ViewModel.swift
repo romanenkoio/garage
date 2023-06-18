@@ -42,6 +42,7 @@ extension BasicInputView {
             set {
                 inputVM.text = newValue
                 inputVM.validate()
+                inputVM.checkedValue = text
             }
         }
         
