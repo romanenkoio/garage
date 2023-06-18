@@ -21,6 +21,10 @@ extension CarInfoViewController {
         
         let tableVM = BasicTableView.GenericViewModel<Record>()
         let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
+        let pageVM = BasicPageController.ViewModel(controllers: [
+            ServicesViewController(vm: .init()),
+            ServicesViewController(vm: .init())
+        ])
         
         @Published var logo: UIImage?
         
@@ -29,11 +33,22 @@ extension CarInfoViewController {
             
             segmentVM = .init(
                 RecordType.allCases,
-                selected: .future,
+                selected: .paste,
                 titles: { items in items.map({ $0.title}) }
             )
             super.init()
             initFields()
+            
+            pageVM.$index.removeDuplicates().sink { [weak self] value in
+                guard let selected = RecordType.allCases[safe: value] else { return }
+                self?.segmentVM.setSelected(selected)
+            }
+            .store(in: &cancellables)
+            
+            segmentVM.$selectedIndex.sink { [weak self] value in
+                self?.pageVM.index = value
+            }
+            .store(in: &cancellables)
         }
         
         func readCar() {
