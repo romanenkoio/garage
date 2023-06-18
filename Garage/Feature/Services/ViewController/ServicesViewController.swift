@@ -66,9 +66,12 @@ class ServicesViewController: BasicViewController {
             }
             .store(in: &cancellables)
         
-        vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
+        let action: Action = .touchUpInside { [weak self] in
             self?.coordinator.navigateTo(ServiceNavigationRoute.createService)
         }
+        
+        vm.tableVM.addButtonVM.action = action
+        vm.addButtonVM.buttonVM.action = action
     }
 }
 

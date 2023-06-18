@@ -49,6 +49,7 @@ extension CreateDocumentViewController {
             }
             imageList.editingEnabled = true
             imageList.description = "Добавить фото"
+            datePickerVM.desctiptionVM.text = "Дата действия"
         }
         
         private func initValidator() {
