@@ -93,6 +93,7 @@
 		7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB22A3F180400F1D22D /* EntityStatus.swift */; };
 		7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */; };
 		7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */; };
+		7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBB2A3F87E600F1D22D /* Reminder.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -305,6 +306,7 @@
 		7F820CB22A3F180400F1D22D /* EntityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStatus.swift; sourceTree = "<group>"; };
 		7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHasChangable.swift; sourceTree = "<group>"; };
 		7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChangeChecker.swift; sourceTree = "<group>"; };
+		7F820CBB2A3F87E600F1D22D /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 				7F5955FC2A2E92560062A85F /* Service.swift */,
 				7F5955FE2A2E93BA0062A85F /* Record.swift */,
 				7FFC1F712A353E31007A5C75 /* Photo.swift */,
+				7F820CBB2A3F87E600F1D22D /* Reminder.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -1852,6 +1855,7 @@
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */,
+				7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */,
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				7FFC1F672A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
