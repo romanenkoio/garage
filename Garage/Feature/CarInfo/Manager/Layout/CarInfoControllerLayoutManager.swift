@@ -45,6 +45,7 @@ final class CarInfoControllerLayoutManager {
     lazy var segment = BasicSegmentView<RecordType>()
     lazy var addRecordButton = AlignedButton()
     
+    lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
     lazy var table: BasicTableView = {
         let view = BasicTableView()
@@ -95,7 +96,10 @@ fileprivate extension CarInfoControllerLayoutManager {
         ])
         vc.contentView.addSubview(recordsView)
         recordsView.addSubview(segment)
-        recordsView.addSubview(table)
+        vc.addChild(page)
+        recordsView.addSubview(page.view)
+        page.didMove(toParent: vc)
+
         vc.contentView.addSubview(addRecordButton)
         
         brandModelLabel.font = .custom(size: 18, weight: .black)
@@ -122,7 +126,7 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
         
-        table.snp.makeConstraints { make in
+        page.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(segment.snp.bottom)
         }

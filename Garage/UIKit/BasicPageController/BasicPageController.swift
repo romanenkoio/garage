@@ -30,19 +30,53 @@ class BasicPageController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
+        delegate = self
     }
     
     func binding() {
         cancellables.removeAll()
         
         vm.$controllers.sink { [weak self] controllers in
+            guard let vc = controllers.first else { return }
             self?.setViewControllers(
-                controllers,
+                [vc],
                 direction: .forward,
                 animated: true
             )
         }
         .store(in: &cancellables)
+        
+        vm.$index.sink { [weak self] value in
+            self?.slideToPage(index: value)
+        }
+        .store(in: &cancellables)
+    }
+    
+    private func slideToPage(index: Int) {
+        let count = vm.controllers.count
+        if index < count {
+            if index > vm.index {
+                if let vc = vm.controllers[safe: index] {
+                    self.setViewControllers(
+                        [vc],
+                        direction: .forward,
+                        animated: true,
+                        completion: { (complete) -> Void in
+                            self.vm.index = index
+                        })
+                }
+            } else if index < vm.index {
+                if let vc = vm.controllers[safe: index] {
+                    self.setViewControllers(
+                        [vc],
+                        direction: .reverse,
+                        animated: true,
+                        completion: { (complete) -> Void in
+                            self.vm.index = index
+                        })
+                }
+            }
+        }
     }
 }
 
@@ -73,31 +107,55 @@ extension BasicPageController: UIPageViewControllerDataSource {
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
         guard let viewControllerIndex = vm.controllers.firstIndex(of: viewController) else {
-              return nil
-          }
-          
-          let nextIndex = viewControllerIndex + 1
-          let orderedViewControllersCount = vm.controllers.count
-
-          guard orderedViewControllersCount != nextIndex else {
-              return nil
-          }
-          
-          guard orderedViewControllersCount > nextIndex else {
-              return nil
-          }
-          
-          return vm.controllers[nextIndex]
+            return nil
+        }
+        
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = vm.controllers.count
+        
+        guard orderedViewControllersCount != nextIndex else {
+            return nil
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+                
+        return vm.controllers[safe: nextIndex]
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
               let firstViewControllerIndex = vm.controllers.firstIndex(of: firstViewController)
         else {
-            self.vm.index.send(0)
+            self.vm.index = 0
             return 0
         }
-        self.vm.index.send(firstViewControllerIndex)
+        self.vm.index = firstViewControllerIndex
         return firstViewControllerIndex
+    }
+}
+
+extension BasicPageController: UIPageViewControllerDelegate {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        if completed {
+            vm.setIndexCandidate()
+        }
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        willTransitionTo pendingViewControllers: [UIViewController]
+    ) {
+        guard let controller = pendingViewControllers.first,
+              let index = vm.controllers.firstIndex(of: controller)
+        else { return }
+        
+        vm.indexCandidate = index
     }
 }

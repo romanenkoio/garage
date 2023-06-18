@@ -11,10 +11,16 @@ import Combine
 extension BasicPageController {
     final class ViewModel: BasicViewModel {
         @Published var controllers: [UIViewController]
-        var index: PassthroughSubject<Int, Never> = .init()
-
+        @Published var index = 0
+        var indexCandidate: Int?
+        
         init(controllers: [UIViewController]) {
             self.controllers = controllers
+        }
+        
+        func setIndexCandidate() {
+            guard let indexCandidate else { return }
+            self.index = indexCandidate
         }
     }
 }
