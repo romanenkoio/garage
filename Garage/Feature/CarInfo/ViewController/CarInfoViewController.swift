@@ -87,14 +87,16 @@ extension CarInfoViewController {
 
 extension CarInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells.count
+//        return vm.tableVM.cells.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath),
-              let item = vm.tableVM.cells[safe: indexPath.row]
+        guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath)
+//              let item = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
-        recordCell.mainView.setViewModel(.init(record: item))
+        let vm = RecordView.ViewModel(record: .testRecord)
+        recordCell.mainView.setViewModel(vm)
         return recordCell
     }
 }

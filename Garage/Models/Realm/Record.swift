@@ -36,3 +36,6 @@ final class Record: Object, Codable {
     }
 }
 
+extension Record {
+    static let testRecord = Record(carID: "1", mileage: 300000, date: Date())
+}

@@ -50,6 +50,7 @@ class RecordView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
-        
+        infoLabel.setViewModel(vm.infoLabelVM)
+        dateLabel.setViewModel(vm.dateLabelVM)
     }
 }
