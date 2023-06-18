@@ -120,22 +120,22 @@ extension CarInfoViewController: UITableViewDelegate {
     }
 }
 
+@available(iOS 16.0, *)
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
         
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
         
-        let profileNameLabelScale = min(2.0, max(1.0 - offset / -500.0, 1.0))
+        let profileNameLabelScale = min(3.0, max(0.5 - offset / -350.0, 0.5))
         let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
         let profileViewsAlphaScale = min(max(1.0 - offset / 120.0, 0.0), 1.0)
 
         
         print(profileNameLabelScale)
-        layout.topStack.anchorPoint = CGPoint(x: <#T##Double#>, y: <#T##Double#>)
-        layout.topStack.frame.origin = CGPoint(x: 0, y: profileNameLabelScale)
-       
-        layout.topStack.transform = CGAffineTransform(scaleX: 1, y: profileNameLabelScale)
+
+        
+        layout.topStack.layer.anchorPoint.y = profileNameLabelScale
         
     }
 }

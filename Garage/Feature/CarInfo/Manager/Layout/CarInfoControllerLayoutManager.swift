@@ -98,7 +98,7 @@ fileprivate extension CarInfoControllerLayoutManager {
         vc.contentView.addSubview(addRecordButton)
         
         vc.contentView.backgroundColor = .clear
-        recordsView.alpha = 0
+    
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
