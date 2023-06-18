@@ -58,7 +58,6 @@ final class CarInfoControllerLayoutManager {
     init(vc: CarInfoViewController) {
         self.vc = vc
         configure()
-        vc.disableScrollView()
         makeNavbar()
     }
     
@@ -85,7 +84,7 @@ fileprivate extension CarInfoControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(topStack)
+        vc.view.addSubview(topStack)
         topStack.addArrangedSubviews([
             logoImage,
             brandModelLabel,
@@ -98,6 +97,8 @@ fileprivate extension CarInfoControllerLayoutManager {
         recordsView.addSubview(table)
         vc.contentView.addSubview(addRecordButton)
         
+        vc.contentView.backgroundColor = .clear
+        recordsView.alpha = 0
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
@@ -110,12 +111,12 @@ fileprivate extension CarInfoControllerLayoutManager {
         }
         
         topStack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
         recordsView.snp.makeConstraints { make in
-            make.top.equalTo(topStack.snp.bottom).offset(21)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
         
         segment.snp.makeConstraints { make in
@@ -124,11 +125,15 @@ fileprivate extension CarInfoControllerLayoutManager {
         
         table.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(800)
             make.top.equalTo(segment.snp.bottom)
         }
         
         addRecordButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 21))
+            make.top.equalTo(recordsView.snp.bottom).offset(20)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
 }

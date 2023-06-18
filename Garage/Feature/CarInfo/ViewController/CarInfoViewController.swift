@@ -21,10 +21,15 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     
+    public var minimumVelocityToHide: CGFloat = 1500
+    public var minimumScreenRatioToHide: CGFloat = 0.5
+    public var animationDuration: TimeInterval = 0.2
+    
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,6 +40,7 @@ class CarInfoViewController: BasicViewController {
         super.viewDidLoad()
         hideNavBar(false)
         makeCloseButton(isLeft: true)
+        scroll.delegate = self
         view.backgroundColor = AppColors.background
         title = "Общая информация"
     }
@@ -42,6 +48,15 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        layout.recordsView.snp.remakeConstraints { make in
+            make.top.equalToSuperview().offset(layout.topStack.frame.height + 21)
+            make.leading.trailing.equalToSuperview()
+        }
     }
 
     override func configure() {
@@ -100,5 +115,28 @@ extension CarInfoViewController: UITableViewDataSource {
 }
 
 extension CarInfoViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  
+    }
 }
+
+extension CarInfoViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
+        
+        let profileNameLabelScale = min(2.0, max(1.0 - offset / -500.0, 1.0))
+        let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
+        let profileViewsAlphaScale = min(max(1.0 - offset / 120.0, 0.0), 1.0)
+
+        
+        print(profileNameLabelScale)
+        layout.topStack.anchorPoint = CGPoint(x: <#T##Double#>, y: <#T##Double#>)
+        layout.topStack.frame.origin = CGPoint(x: 0, y: profileNameLabelScale)
+       
+        layout.topStack.transform = CGAffineTransform(scaleX: 1, y: profileNameLabelScale)
+        
+    }
+}
+

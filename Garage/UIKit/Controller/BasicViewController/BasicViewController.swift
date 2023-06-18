@@ -18,7 +18,7 @@ class BasicViewController: UIViewController {
 
     private(set) var isWillAppeared: Bool = false
 
-    private lazy var scroll: UIScrollView = {
+    lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.delaysContentTouches = false
         return scroll
