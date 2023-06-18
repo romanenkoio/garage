@@ -24,6 +24,8 @@ final class DocumentsControllerLayoutManager {
         return table
     }()
     
+    lazy var addButton = AlignedButton()
+
     // - Init
     init(vc: DocumentsViewController) {
         self.vc = vc
@@ -44,12 +46,17 @@ fileprivate extension DocumentsControllerLayoutManager {
     
     private func makeLayout() {
         vc.contentView.addSubview(table)
+        vc.contentView.addSubview(addButton)
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.top.equalToSuperview()
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
+            make.top.equalTo(table.snp.bottom)
         }
     }
-    
 }

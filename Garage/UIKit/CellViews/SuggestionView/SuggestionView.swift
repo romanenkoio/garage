@@ -56,6 +56,7 @@ class SuggestionView: BasicView {
         
         vm.$image.sink { [weak self] image in
             self?.imageView.image = image
+            self?.imageView.isHidden = image == nil
         }
         .store(in: &cancellables)
     }

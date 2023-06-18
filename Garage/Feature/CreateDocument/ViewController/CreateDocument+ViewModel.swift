@@ -123,7 +123,7 @@ extension CreateDocumentViewController {
             
         }
             
-        func removeCar() {
+        func removeDocument() {
             guard case let .edit(service) = mode else {
               return
             }

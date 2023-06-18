@@ -51,16 +51,20 @@ class ServicesViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
+        layout.addButton.setViewModel(vm.addButtonVM)
         
         vm.$suggestions.sink { [weak self] items in
             self?.layout.hideCategoriesStack(items)
         }
         .store(in: &cancellables)
         
-        vm.tableVM.$cells.sink { [weak self] _ in
-            self?.layout.table.reload()
-        }
-        .store(in: &cancellables)
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] cells in
+                self?.layout.table.reload()
+                self?.layout.addButton.isHidden = cells.isEmpty
+            }
+            .store(in: &cancellables)
         
         vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
             self?.coordinator.navigateTo(ServiceNavigationRoute.createService)

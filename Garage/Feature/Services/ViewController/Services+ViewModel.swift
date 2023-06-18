@@ -13,6 +13,9 @@ extension ServicesViewController {
         typealias Suggestion = SuggestionView.ViewModel
         
         let tableVM = BasicTableView.GenericViewModel<Service>()
+        let addButtonVM = AlignedButton.ViewModel(
+            buttonVM: .init(title: "Добавить документ")
+        )
         
         @Published
         var suggestions = [Suggestion]()
@@ -31,10 +34,6 @@ extension ServicesViewController {
             let services = RealmManager<Service>().read()
             makeSuggestions(services)
             tableVM.setCells(services)
-        }
-        
-        func selectCell() {
-            
         }
         
         func makeSuggestions(_ items: [Service]) {

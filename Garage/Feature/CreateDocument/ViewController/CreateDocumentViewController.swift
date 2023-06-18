@@ -44,7 +44,7 @@ class CreateDocumentViewController: BasicViewController {
     private func setupNavBar() {
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-//                self?.vm.removeCar()
+                self?.vm.removeDocument()
             },
             image: UIImage(named: "delete_ic")
         )

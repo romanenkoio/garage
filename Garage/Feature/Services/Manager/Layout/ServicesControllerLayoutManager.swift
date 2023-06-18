@@ -12,7 +12,7 @@ import SwiftUI
 
 final class ServicesControllerLayoutManager {
     
-    private unowned let vc: ServicesViewController
+    unowned let vc: ServicesViewController
     
     lazy var categoriesStack: ScrollableStackView = {
         let stack = ScrollableStackView()
@@ -34,15 +34,19 @@ final class ServicesControllerLayoutManager {
         return table
     }()
     
+    lazy var addButton = AlignedButton()
+    
     // - Init
     init(vc: ServicesViewController) {
         self.vc = vc
         configure()
         
+        let action: Action = .touchUpInside { [weak self] in
+            self?.vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
+        }
+        vc.vm.addButtonVM.buttonVM.action = action
         let addButtonVM = NavBarButton.ViewModel(
-            action: .touchUpInside {
-                vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
-            },
+            action: action,
             image: UIImage(systemName: "plus")
         )
         vc.makeRightNavBarButton(buttons: [addButtonVM])
@@ -73,6 +77,7 @@ fileprivate extension ServicesControllerLayoutManager {
     private func makeLayout() {
         vc.contentView.addSubview(categoriesStack)
         vc.contentView.addSubview(table)
+        vc.contentView.addSubview(addButton)
     }
     
     private func makeConstraint() {
@@ -82,7 +87,12 @@ fileprivate extension ServicesControllerLayoutManager {
         
         table.snp.makeConstraints { make in
             make.top.equalTo(categoriesStack.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
+            make.top.equalTo(table.snp.bottom)
         }
     }
     

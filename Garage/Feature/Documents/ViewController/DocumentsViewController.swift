@@ -35,10 +35,15 @@ class DocumentsViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         
-        vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
+        let action: Action = .touchUpInside { [weak self] in
             guard let self else { return }
             coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
         }
+
+        vm.tableVM.addButtonVM.action = action
+        vm.addButtonVM.buttonVM.action = action
+        
+      
         makeLogoNavbar()
     }
 
@@ -55,10 +60,13 @@ class DocumentsViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
+        layout.addButton.setViewModel(vm.addButtonVM)
+        
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] cells in
                 self?.layout.table.reload()
+                self?.layout.addButton.isHidden = cells.isEmpty
             }
             .store(in: &cancellables)
     }
