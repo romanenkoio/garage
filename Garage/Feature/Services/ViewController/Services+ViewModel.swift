@@ -12,7 +12,7 @@ extension ServicesViewController {
     final class ViewModel: BasicControllerModel {
         typealias Suggestion = SuggestionView.ViewModel
         
-        let tableVM = BasicTableView.GenericViewModel<ServiceView.ViewModel>()
+        let tableVM = BasicTableView.GenericViewModel<Service>()
         
         @Published
         var suggestions = [Suggestion]()
@@ -29,9 +29,12 @@ extension ServicesViewController {
         
         func readServices() {
             let services = RealmManager<Service>().read()
-            let cells = services.map({ ServiceView.ViewModel(service: $0) })
             makeSuggestions(services)
-            tableVM.setCells(cells)
+            tableVM.setCells(services)
+        }
+        
+        func selectCell() {
+            
         }
         
         func makeSuggestions(_ items: [Service]) {
