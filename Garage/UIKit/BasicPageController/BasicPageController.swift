@@ -89,4 +89,15 @@ extension BasicPageController: UIPageViewControllerDataSource {
           
           return vm.controllers[nextIndex]
     }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first,
+              let firstViewControllerIndex = vm.controllers.firstIndex(of: firstViewController)
+        else {
+            self.vm.index.send(0)
+            return 0
+        }
+        self.vm.index.send(firstViewControllerIndex)
+        return firstViewControllerIndex
+    }
 }
