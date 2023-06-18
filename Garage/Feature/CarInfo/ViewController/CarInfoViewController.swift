@@ -25,6 +25,12 @@ class CarInfoViewController: BasicViewController {
     public var minimumScreenRatioToHide: CGFloat = 0.5
     public var animationDuration: TimeInterval = 0.2
     
+    var tableViewHeight: CGFloat {
+       // layout.table.table.layoutIfNeeded()
+
+        return layout.table.table.contentSize.height
+    }
+    
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -48,7 +54,9 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
-        
+        layout.table.table.reloadData()
+        layout.table.table.isScrollEnabled = false
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,6 +65,8 @@ class CarInfoViewController: BasicViewController {
             make.top.equalToSuperview().offset(layout.topStack.frame.height + 21)
             make.leading.trailing.equalToSuperview()
         }
+        
+
     }
 
     override func configure() {
@@ -102,15 +112,30 @@ extension CarInfoViewController {
 
 extension CarInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells.count
+//        return vm.tableVM.cells.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath),
-              let item = vm.tableVM.cells[safe: indexPath.row]
+        guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath)
+//              let item = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
-        recordCell.mainView.setViewModel(.init(record: item))
+        let vm = RecordView.ViewModel(record: .testRecord)
+        recordCell.mainView.setViewModel(vm)
+        
+        layout.table.snp.remakeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(tableView.contentSize.height)
+            make.top.equalTo(layout.segment.snp.bottom)
+        }
+        
+
+        
         return recordCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
@@ -118,9 +143,12 @@ extension CarInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    }
 }
 
-@available(iOS 16.0, *)
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
@@ -131,12 +159,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
         let profileViewsAlphaScale = min(max(1.0 - offset / 120.0, 0.0), 1.0)
 
-        
-        print(profileNameLabelScale)
 
         
         layout.topStack.layer.anchorPoint.y = profileNameLabelScale
-        
     }
 }
 

@@ -83,7 +83,7 @@ class BasicInputView: BasicView {
         
         textField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(topStack.snp.bottom)
+            make.top.equalTo(topStack.snp.bottom).offset(4)
         }
         
         errorView.snp.makeConstraints { make in

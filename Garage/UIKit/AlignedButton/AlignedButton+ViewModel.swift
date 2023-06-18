@@ -13,6 +13,7 @@ extension AlignedButton {
         
         init(buttonVM: BasicButton.ViewModel) {
             self.buttonVM = buttonVM
+            self.buttonVM.style = .primary
         }
     }
 }

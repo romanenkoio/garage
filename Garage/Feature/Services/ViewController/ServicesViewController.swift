@@ -51,15 +51,27 @@ class ServicesViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
+        layout.addButton.setViewModel(vm.addButtonVM)
         
         vm.$suggestions.sink { [weak self] items in
             self?.layout.hideCategoriesStack(items)
         }
         .store(in: &cancellables)
         
-        vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] cells in
+                self?.layout.table.reload()
+                self?.layout.addButton.isHidden = cells.isEmpty
+            }
+            .store(in: &cancellables)
+        
+        let action: Action = .touchUpInside { [weak self] in
             self?.coordinator.navigateTo(ServiceNavigationRoute.createService)
         }
+        
+        vm.tableVM.addButtonVM.action = action
+        vm.addButtonVM.buttonVM.action = action
     }
 }
 
@@ -85,12 +97,17 @@ extension ServicesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
-        serviceCell.mainView.setViewModel(vm.tableVM.cells[indexPath.row])
+        serviceCell.mainView.setViewModel(
+            .init(service: vm.tableVM.cells[indexPath.row])
+        )
         serviceCell.selectionStyle = .none
         return serviceCell
     }
 }
 
 extension ServicesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let service = vm.tableVM.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(ServiceNavigationRoute.editService(service))
+    }
 }

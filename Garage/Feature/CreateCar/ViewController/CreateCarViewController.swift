@@ -25,7 +25,6 @@ class CreateCarViewController: BasicViewController {
         self.vm = vm
         super.init()
         title = "Добавить машину"
-        makeCloseButton()
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +35,7 @@ class CreateCarViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavBar(false)
+        setupNavBar()
     }
 
     override func configure() {
@@ -43,6 +43,17 @@ class CreateCarViewController: BasicViewController {
         configureLayoutManager()
     }
 
+    private func setupNavBar() {
+        let deleteButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                self?.vm.removeCar()
+            },
+            image: UIImage(named: "delete_ic")
+        )
+        makeRightNavBarButton(buttons: [deleteButton])
+        makeCloseButton(isLeft: true)
+    }
+    
     override func binding() {
         super.binding()
         layout.brandField.setViewModel(vm.brandFieldVM)

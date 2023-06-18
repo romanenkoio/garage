@@ -51,6 +51,7 @@ final class CarInfoControllerLayoutManager {
         view.setupTable(dataSource: vc, delegate: vc)
         view.register(BasicTableCell<RecordView>.self)
         view.backgroundColor = .clear
+
         return view
     }()
     

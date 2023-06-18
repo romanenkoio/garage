@@ -10,6 +10,7 @@ import UIKit
 
 enum ServiceNavigationRoute: Routable {
     case createService
+    case editService(Service)
 }
 
 class ServicesControllerCoordinator: BasicCoordinator {
@@ -22,7 +23,10 @@ class ServicesControllerCoordinator: BasicCoordinator {
         if let route = route as? ServiceNavigationRoute {
             switch route {
             case .createService:
-                let new = CreateServiseViewController(vm: .init())
+                let new = CreateServiseViewController(vm: .init(mode: .create))
+                vc.push(new)
+            case .editService(let service):
+                let new = CreateServiseViewController(vm: .init(mode: .edit(object: service)))
                 vc.push(new)
             }
         } else {

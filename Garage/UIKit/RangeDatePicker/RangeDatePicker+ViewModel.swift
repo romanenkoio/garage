@@ -14,7 +14,7 @@ extension RangeDatePicker {
         var isValid: Bool = false
         var isValidSubject: PassthroughSubject<Bool, Never> = .init()
         
-        
+        let desctiptionVM = BasicLabel.ViewModel()
         let startDateVM = BasicDatePicker.ViewModel(
             placeholder: "с \(Date().formatData(formatType: .ddMMyy))"
         )

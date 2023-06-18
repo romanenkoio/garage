@@ -38,7 +38,14 @@ class DocumentView: BasicView {
         return stack
     }()
     
-    private lazy var detailsLabel = BasicLabel()
+    private lazy var detailsLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.textInsets = .init(top: 24, bottom: 24, left: 24)
+        label.font = .custom(size: 14, weight: .semibold)
+        label.textColor = ColorScheme.standartBlue.buttonColor
+        return label
+    }()
+    
     private lazy var detailsImage = UIImageView()
     
     override func initView() {
@@ -62,9 +69,6 @@ class DocumentView: BasicView {
         detailsImage.image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
         typeLabel.textInsets = .init(top: 24, horizontal: 24)
         dateLabel.textInsets = .init(horizontal: 24)
-        detailsLabel.textInsets = .init(top: 24, bottom: 24, left: 24)
-        detailsLabel.font = .custom(size: 14, weight: .semibold)
-        detailsLabel.textColor = ColorScheme.standartBlue.buttonColor
     }
     
     private func makeConstraint() {
