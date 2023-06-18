@@ -113,7 +113,7 @@ class BasicInputView: BasicView {
             self.actionImage.isHidden = true
         }
         
-        self.vm?.inputVM.isValidSubject.dropFirst().sink(receiveValue: { [weak self] value in
+        self.vm?.inputVM.isValidSubject.sink(receiveValue: { [weak self] value in
             self?.errorView.isHidden = value
             self?.errorView.shake()
         })

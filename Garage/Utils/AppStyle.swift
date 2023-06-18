@@ -70,6 +70,7 @@ struct AppColors {
     static let darkBlue = UIColor(hexString: "0C1E92")
     static let mint = UIColor(hexString: "5FC8AB")
     static let lightBlue = UIColor(hexString: "2A5AD9")
-    static let green = UIColor(hexString: "#C9837")
+    static let green = UIColor(hexString: "C9837")
     static let background = UIColor(hexString: "F6F6F6")
+    static let error = UIColor(hexString: "E84949")
 }
