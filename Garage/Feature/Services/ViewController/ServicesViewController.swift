@@ -57,6 +57,11 @@ class ServicesViewController: BasicViewController {
         }
         .store(in: &cancellables)
         
+        vm.tableVM.$cells.sink { [weak self] _ in
+            self?.layout.table.reload()
+        }
+        .store(in: &cancellables)
+        
         vm.tableVM.addButtonVM.action = .touchUpInside { [weak self] in
             self?.coordinator.navigateTo(ServiceNavigationRoute.createService)
         }
@@ -85,12 +90,17 @@ extension ServicesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
-        serviceCell.mainView.setViewModel(vm.tableVM.cells[indexPath.row])
+        serviceCell.mainView.setViewModel(
+            .init(service: vm.tableVM.cells[indexPath.row])
+        )
         serviceCell.selectionStyle = .none
         return serviceCell
     }
 }
 
 extension ServicesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let service = vm.tableVM.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(ServiceNavigationRoute.editService(service))
+    }
 }

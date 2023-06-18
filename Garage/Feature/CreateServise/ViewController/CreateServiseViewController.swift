@@ -35,6 +35,17 @@ class CreateServiseViewController: BasicViewController {
         super.viewDidLoad()
         title = "Добавление сервиса"
         makeCloseButton(isLeft: true)
+        setupNavBar()
+    }
+    
+    private func setupNavBar() {
+        let deleteButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                self?.vm.removeCar()
+            },
+            image: UIImage(named: "delete_ic")
+        )
+        makeRightNavBarButton(buttons: [deleteButton])
     }
 
     override func configure() {

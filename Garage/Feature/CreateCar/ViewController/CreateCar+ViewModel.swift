@@ -120,6 +120,13 @@ extension CreateCarViewController {
             }
         }
         
+        func removeCar() {
+            guard case let .edit(car) = mode else {
+              return
+            }
+            RealmManager().delete(object: car)
+        }
+        
         private func initMode() {
             initValidator()
 
