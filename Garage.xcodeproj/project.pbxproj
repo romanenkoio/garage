@@ -94,6 +94,8 @@
 		7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */; };
 		7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */; };
 		7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBB2A3F87E600F1D22D /* Reminder.swift */; };
+		7F820CBF2A3FAAC000F1D22D /* BasicPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */; };
+		7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -307,6 +309,8 @@
 		7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHasChangable.swift; sourceTree = "<group>"; };
 		7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormChangeChecker.swift; sourceTree = "<group>"; };
 		7F820CBB2A3F87E600F1D22D /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPageController.swift; sourceTree = "<group>"; };
+		7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicPageController+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -983,6 +987,15 @@
 			path = FormChangeChecker;
 			sourceTree = "<group>";
 		};
+		7F820CBD2A3FAAAD00F1D22D /* BasicPageController */ = {
+			isa = PBXGroup;
+			children = (
+				7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */,
+				7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */,
+			);
+			path = BasicPageController;
+			sourceTree = "<group>";
+		};
 		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1232,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
 				B9D96E492A37B17200909B33 /* BasicColllectionView */,
 				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
 				B9FB290B2A33782900A4CF1D /* BasicImagePickerView */,
@@ -1748,6 +1762,7 @@
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
+				7F820CBF2A3FAAC000F1D22D /* BasicPageController.swift in Sources */,
 				B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */,
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
@@ -1821,6 +1836,7 @@
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
+				7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
 				7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */,

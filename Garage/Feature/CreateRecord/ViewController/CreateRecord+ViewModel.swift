@@ -38,9 +38,11 @@ extension CreateRecordViewController {
             placeholder: "Название сервиса") { items in
                 return items.map({ $0.name })
             }
+        let mode: EntityStatus<Record>
         
-        init(car: Car) {
+        init(car: Car, mode: EntityStatus<Record>) {
             self.car = car
+            self.mode = mode
             
             services = RealmManager<Service>().read()
 
