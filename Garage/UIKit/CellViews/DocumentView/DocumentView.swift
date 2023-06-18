@@ -59,11 +59,12 @@ class DocumentView: BasicView {
         
         dateLabel.font = .custom(size: 14, weight: .semibold)
         dateLabel.textColor = UIColor(hexString: "939393")
-        detailsImage.image = UIImage(named: "detail_arrow_ic")
+        detailsImage.image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
         typeLabel.textInsets = .init(top: 24, horizontal: 24)
         dateLabel.textInsets = .init(horizontal: 24)
         detailsLabel.textInsets = .init(top: 24, bottom: 24, left: 24)
-        detailsLabel.font = .custom(size: 16, weight: .semibold)
+        detailsLabel.font = .custom(size: 14, weight: .semibold)
+        detailsLabel.textColor = ColorScheme.standartBlue.buttonColor
     }
     
     private func makeConstraint() {
@@ -81,8 +82,7 @@ class DocumentView: BasicView {
         }
         
         detailsImage.snp.makeConstraints { make in
-            make.height.equalTo(20)
-            make.width.equalTo(32)
+            make.height.width.equalTo(16)
             make.centerY.trailing.equalToSuperview().inset(UIEdgeInsets(right: 24))
             make.leading.greaterThanOrEqualTo(detailsLabel.snp.trailing)
         }

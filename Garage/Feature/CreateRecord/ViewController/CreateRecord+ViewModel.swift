@@ -61,6 +61,7 @@ extension CreateRecordViewController {
             )
             
             imagePickerVM.description = "Добавить фото"
+            imagePickerVM.editingEnabled = true
         }
         
         func saveRecord() {

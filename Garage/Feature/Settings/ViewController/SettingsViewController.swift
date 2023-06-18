@@ -81,9 +81,11 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self) else { return .init() }
-        
-        settingCell.mainView.setViewModel(.init())
+        guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self),
+              let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row]
+        else { return .init() }
+    
+        settingCell.mainView.setViewModel(.init(point: point))
         return settingCell
     }
 }

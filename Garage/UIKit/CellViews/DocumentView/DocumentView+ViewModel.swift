@@ -24,7 +24,7 @@ extension DocumentView {
             }
             
             photoListVM.items = document.photos
-            detailsLabelVM.text = "Детали"
+            detailsLabelVM.text = "Смотреть детали"
         }
     }
 }

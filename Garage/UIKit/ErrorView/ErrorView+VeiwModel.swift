@@ -10,15 +10,12 @@ import UIKit
 
 extension ErrorView {
     final class ViewModel: BasicViewModel {
-        @Published var error: String
-        @Published var image: UIImage?
+        @Published var errorLabelVM = BasicLabel.ViewModel()
+        @Published var image: UIImage? = UIImage(named: "error_ic")
         
-        init(
-            error: String = .empty,
-            image: UIImage? = UIImage(systemName: "info.circle")
-        ) {
-            self.error = error
-            self.image = image
+        init(error: String = .empty) {
+            super.init()
+            errorLabelVM.text = error
         }
     }
 }

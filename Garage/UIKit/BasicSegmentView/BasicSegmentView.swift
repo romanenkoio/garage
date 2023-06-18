@@ -118,6 +118,7 @@ class SegmentButton: BasicStackView {
         self.axis = .vertical
         self.distribution = .fill
         label.textInsets = .init(top: 21, bottom: 11)
+        label.font = .custom(size: 18, weight: .bold)
         label.textAlignment = .center
         lineView.cornerRadius = 0
     }

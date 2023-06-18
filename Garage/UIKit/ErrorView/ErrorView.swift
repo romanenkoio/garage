@@ -8,17 +8,18 @@
 import UIKit
 
 class ErrorView: BasicView {
-    lazy var errorLabel: UILabel = {
-        let label = UILabel()
+    lazy var errorLabel: BasicLabel = {
+        let label = BasicLabel()
         label.textAlignment = .left
-        label.font = .custom(size: 12, weight: .light)
+        label.font = .custom(size: 12, weight: .bold)
+        label.textInsets = .init(top: 2)
         label.textColor = .additionalRed
         return label
     }()
 
     lazy var infoView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "info.circle")
+        imageView.image = UIImage(systemName: "error_ic")
         imageView.tintColor = .additionalRed
         return imageView
     }()
@@ -59,13 +60,9 @@ class ErrorView: BasicView {
     
     func setViewModel(vm: ErrorView.ViewModel) {
         self.vm = vm
+        errorLabel.setViewModel(vm.errorLabelVM)
         vm.$image.sink { [weak self] errorImage in
             self?.infoView.image = errorImage
-        }
-        .store(in: &cancellables)
-        
-        vm.$error.sink { [weak self] value in
-            self?.errorLabel.text = value
         }
         .store(in: &cancellables)
     }

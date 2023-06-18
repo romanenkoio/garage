@@ -119,7 +119,50 @@ class BasicViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
     }
+
+    func layoutElements() {
+        view.addSubview(scroll)
+        scroll.addSubview(contentView)
+        view.addSubview(loaderView)
+        loaderView.addSubview(spinner)
+        loaderView.isHidden = true
+        view.bringSubviewToFront(loaderView)
+    }
     
+    func configure() {}
+    
+    private func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+    }
+
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func startLoader() {
+        spinner.startAnimating()
+        loaderView.isHidden = false
+    }
+    
+    func stopLoader() {
+        spinner.stopAnimating()
+        loaderView.isHidden = true
+    }
+    
+}
+
+extension BasicViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        gestureRecognizer.cancelsTouchesInView = false
+        return true
+    }
+}
+
+// MARK: navbar buttons
+
+extension BasicViewController {
     func makeLeftNavBarButtons(buttons: [NavBarButton.ViewModel]) {
         let views = buttons.map({
             let view = NavBarButton()
@@ -164,44 +207,5 @@ class BasicViewController: UIViewController {
         proImageView.image = UIImage(named: "sub")
         proImageView.contentMode = .scaleAspectFit
         navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
-    }
-
-    func layoutElements() {
-        view.addSubview(scroll)
-        scroll.addSubview(contentView)
-        view.addSubview(loaderView)
-        loaderView.addSubview(spinner)
-        loaderView.isHidden = true
-        view.bringSubviewToFront(loaderView)
-    }
-    
-    func configure() {}
-    
-    private func setupGestures() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tap.delegate = self
-        self.view.addGestureRecognizer(tap)
-    }
-
-    @objc private func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    func startLoader() {
-        spinner.startAnimating()
-        loaderView.isHidden = false
-    }
-    
-    func stopLoader() {
-        spinner.stopAnimating()
-        loaderView.isHidden = true
-    }
-    
-}
-
-extension BasicViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        gestureRecognizer.cancelsTouchesInView = false
-        return true
     }
 }

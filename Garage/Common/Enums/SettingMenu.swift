@@ -8,9 +8,9 @@
 import Foundation
 
 enum SettingPoint: String, CaseIterable {
-    case distancePoints
-    case accountInfo
-    case contactUs
-    case dataTransfer
-    case mileageReminder
+    case distancePoints = "Единицы расстояния"
+    case accountInfo = "Статус аккаунта"
+    case contactUs = "Свяжитесь с нами"
+    case dataTransfer = "Перенос данных"
+    case mileageReminder = "Напоминание о пробеге"
 }
