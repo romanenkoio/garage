@@ -44,12 +44,6 @@ final class ServicesControllerLayoutManager {
         let action: Action = .touchUpInside { [weak self] in
             self?.vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
         }
-        vc.vm.addButtonVM.buttonVM.action = action
-        let addButtonVM = NavBarButton.ViewModel(
-            action: action,
-            image: UIImage(systemName: "plus")
-        )
-        vc.makeRightNavBarButton(buttons: [addButtonVM])
     }
     
     func hideCategoriesStack(_ suggestions: [SuggestionView.ViewModel]) {
