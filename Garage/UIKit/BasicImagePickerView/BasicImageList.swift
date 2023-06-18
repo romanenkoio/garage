@@ -50,7 +50,6 @@ class BasicImageListView: BasicView {
         picker.sourceType = .camera
         picker.cameraCaptureMode = .photo
         picker.delegate = self
-        picker.allowsEditing = true
         return picker
     }
     
