@@ -2059,7 +2059,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -2096,7 +2096,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";

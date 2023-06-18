@@ -9,7 +9,7 @@ import UIKit
 
 extension BasicImageButton {
     class ViewModel: BasicViewModel {
-        var buttonVM: BasicButton.ViewModel?
+        private(set) var buttonVM: BasicButton.ViewModel?
         
         @Published
         var buttonStyle: ButtonStyle?
