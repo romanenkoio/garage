@@ -44,4 +44,9 @@ extension UIView {
 
         self.layer.add(animation, forKey: "position")
     }
+    
+    func presentOnRootViewController(_ vc: UIViewController, animated: Bool) {
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        sceneDelegate?.window?.rootViewController?.present(vc, animated: animated)
+    }
 }

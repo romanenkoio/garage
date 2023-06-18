@@ -94,9 +94,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                 closeButtonVM: .init(
                     title: "Закрыть",
                     style: .basicLightTitle,
-                    action: .touchUpInside { [weak self] in
-                        self?.dismiss(animated: true)
-                    }
+                    action: .touchUpInside { [weak self] in self?.dismiss(animated: true) }
                 )
             )
         )
@@ -106,9 +104,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                 shareButtonVM: .init(
                     title: "Поделиться",
                     style: .basicLightTitle,
-                    action: .touchUpInside { [self] in
-                        share(sender: navView.shareButton)
-                    }
+                    action: .touchUpInside { [self] in share(sender: navView.shareButton) }
                 )
             )
         )
@@ -122,7 +118,12 @@ class FullSizePhotoViewController: BasicModalPresentationController {
         let center = self.view.convert(self.collectionView.collection.center, to: self.collectionView.collection)
         guard let index = collectionView.collection.indexPathForItem(at: center) else { return }
 
-        navView.setViewModel(.init(photoCountLabelVM: .init(text: "\(index.item+1) из \(vm.images.count)")))
+        navView.setViewModel(
+            .init(
+                photoCountLabelVM: .init(
+                    text: "\(index.item+1) из \(vm.images.count)")
+            )
+        )
     }
     
     //Придумать что-то с вьюМоделью navView и анимациями
@@ -140,7 +141,10 @@ class FullSizePhotoViewController: BasicModalPresentationController {
 // MARK: - CollectionViewDataSource
 
 extension FullSizePhotoViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+    -> Int {
         return vm.collectionVM.cells.count
     }
     
@@ -150,21 +154,22 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
         else { return .init()}
         
         photoCell.mainView.setViewModel(
-            .init(singleTapAction: {[weak self] in
-                self?.navView.isHidden.toggle()
-            },
-                  zoomAction: {[weak self] in
-                      self?.navView.isHidden = true
-                  },
-                  image: item
-                 )
+            .init(
+                singleTapAction: {[weak self] in self?.navView.isHidden.toggle() },
+                zoomAction: { [weak self] in  self?.navView.isHidden = true },
+                image: item
+            )
         )
         
         findCenterIndex()
         return photoCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
         if let index = vm.selectedIndex {
             let startSpecificIndexPath = IndexPath(item: index, section: 0)
             self.collectionView.collection.scrollToItem(at: startSpecificIndexPath, at: .centeredHorizontally, animated: false)
@@ -177,12 +182,20 @@ extension FullSizePhotoViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension FullSizePhotoViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didEndDisplaying cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
         guard let photoCell = cell as? PhotoCell else { return }
         photoCell.mainView.scrollView.setZoomScale(1, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         
         let width = view.frame.width
         let height = view.window?.screen.bounds.height ?? 0
