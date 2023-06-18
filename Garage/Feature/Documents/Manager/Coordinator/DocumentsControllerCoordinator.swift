@@ -10,6 +10,7 @@ import UIKit
 
 enum DocumentsNavigationRoute: Routable {
     case createDocument
+    case editDocument(Document)
 }
 
 class DocumentsControllerCoordinator: BasicCoordinator {
@@ -22,7 +23,10 @@ class DocumentsControllerCoordinator: BasicCoordinator {
         if let route = route as? DocumentsNavigationRoute {
             switch route {
             case .createDocument:
-                let new = CreateDocumentViewController(vm: .init())
+                let new = CreateDocumentViewController(vm: .init(mode: .create))
+                vc.push(new)
+            case .editDocument(let document):
+                let new = CreateDocumentViewController(vm: .init(mode: .edit(object: document)))
                 vc.push(new)
             }
         } else {

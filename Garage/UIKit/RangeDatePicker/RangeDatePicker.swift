@@ -18,6 +18,14 @@ class RangeDatePicker: BasicView {
         return stak
     }()
     
+    private lazy var descriptionLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.textColor = ColorScheme.current.textColor
+        label.font = .custom(size: 14, weight: .bold)
+        label.textInsets = .init(bottom: 16)
+        return label
+    }()
+    
     private lazy var startDateInput: BasicDatePicker = {
         let picker = BasicDatePicker()
         return picker
@@ -39,18 +47,25 @@ class RangeDatePicker: BasicView {
     }
     
     private func makeLayout() {
+        addSubview(descriptionLabel)
         addSubview(stack)
         stack.addArrangedSubviews([startDateInput, finishDateInput])
     }
     
     private func makeConstraints() {
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.top.trailing.equalToSuperview()
+        }
+        
         stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(descriptionLabel.snp.bottom)
         }
     }
     
     func setViewModel(_ vm: RangeDatePicker.ViewModel) {
         startDateInput.setViewModel(vm.startDateVM)
         finishDateInput.setViewModel(vm.finishDateVM)
+        descriptionLabel.setViewModel(vm.desctiptionVM)
     }
 }

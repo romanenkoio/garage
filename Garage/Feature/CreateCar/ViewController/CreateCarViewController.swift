@@ -35,7 +35,6 @@ class CreateCarViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavBar(false)
-        makeCloseButton(isLeft: true)
         setupNavBar()
     }
 
@@ -52,6 +51,7 @@ class CreateCarViewController: BasicViewController {
             image: UIImage(named: "delete_ic")
         )
         makeRightNavBarButton(buttons: [deleteButton])
+        makeCloseButton(isLeft: true)
     }
     
     override func binding() {
