@@ -26,6 +26,8 @@ class SuggestionView: BasicView {
     
     lazy var label: TappableLabel = {
         let label = TappableLabel(aligment: .center)
+        label.font = .custom(size: 12, weight: .bold)
+        label.textColor = UIColor(hexString: "#3D3D3D")
         return label
     }()
     
@@ -37,7 +39,7 @@ class SuggestionView: BasicView {
     private func makeLayout() {
         self.addSubview(stack)
         stack.addArrangedSubviews([imageView, label])
-        self.backgroundColor = .secondaryGray
+        self.backgroundColor = UIColor(hexString: "#F5F5F5")
         self.cornerRadius = 12
     }
     

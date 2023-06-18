@@ -20,6 +20,7 @@ final class ServicesControllerLayoutManager {
         stack.spacing = 10
         stack.distribution = .fillEqually
         stack.paddingInsets = .horizintal
+        stack.edgeInsets = .init(top: 26, bottom: 19)
         return stack
     }()
     
@@ -40,10 +41,6 @@ final class ServicesControllerLayoutManager {
     init(vc: ServicesViewController) {
         self.vc = vc
         configure()
-        
-        let action: Action = .touchUpInside { [weak self] in
-            self?.vc.coordinator.navigateTo(ServiceNavigationRoute.createService)
-        }
     }
     
     func hideCategoriesStack(_ suggestions: [SuggestionView.ViewModel]) {
@@ -85,7 +82,7 @@ fileprivate extension ServicesControllerLayoutManager {
         }
         
         addButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
+            make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(table.snp.bottom)
         }
     }
