@@ -21,37 +21,6 @@ class BasicImageListView: BasicView {
         return stack
     }()
     
-    private var imagePicker: PHPickerViewController {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .images
-        configuration.selectionLimit = 5 - (self.viewModel?.items.count ?? 5)
-        configuration.preferredAssetRepresentationMode = .current
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        return picker
-    }
-    
-    private var cameraPicker: UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.cameraCaptureMode = .photo
-        picker.delegate = self
-        return picker
-    }
-    
-    private var alertController: UIAlertController  {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let choisePhotoAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
-            self?.presentPicker()
-        }
-    
-        if let takePhotoAction = action(for: .camera, title: "Сделать фото") { alert.addAction(takePhotoAction)}
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        alert.addAction(choisePhotoAction)
-        alert.addAction(cancelAction)
-        return alert
-    }
-    
     private lazy var imageStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .horizontal
@@ -65,7 +34,45 @@ class BasicImageListView: BasicView {
         label.font = .custom(size: 20, weight: .bold)
         return label
     }()
-
+    
+    private var imagePicker: PHPickerViewController {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 5 - (self.viewModel?.items.count ?? 5)
+        configuration.preferredAssetRepresentationMode = .current
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        return picker
+    }
+    
+    private var cameraPicker: UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.cameraCaptureMode = .photo
+        picker.delegate = self
+        return picker
+    }
+    
+    private var alertController: UIAlertController  {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let choisePhotoAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
+            guard let self else { return }
+            presentOnRootViewController(self.imagePicker, animated: true)
+        }
+        
+        let takePhotAction = UIAlertAction(title: "Сделать фото", style: .default) { [weak self] _ in
+            guard let self else { return }
+            presentOnRootViewController(self.cameraPicker, animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(takePhotAction)
+        alert.addAction(choisePhotoAction)
+        alert.addAction(cancelAction)
+        return alert
+    }
+    
     private var items: [BasicImageButton] = []
     private(set) var viewModel: ViewModel?
     
@@ -80,8 +87,6 @@ class BasicImageListView: BasicView {
     private func layoutElements() {
         addSubview(stack)
         stack.addArrangedSubviews([descriptionLabel,imageStack])
-//        addSubview(imageStack)
-//        addSubview(descriptionLabel)
     }
     
     private func makeConstraints() {
@@ -105,7 +110,6 @@ class BasicImageListView: BasicView {
                 self?.makeItems(at: cycleIndex)
 
                 images.enumerated().forEach { imageIndex, image in
-
                     if imageIndex == cycleIndex {
                         self?.makeRemoveItems(at: imageIndex, with: image)
                     }
@@ -135,19 +139,17 @@ class BasicImageListView: BasicView {
         guard let vm = viewModel else { return }
         
         let imageView = BasicImageButton()
-        imageView.setViewModel(.init(
-            action: { [weak self] in
-                self?.viewModel?.selectedIndex = index
-            },
-            style: .photo,
-            image: image
-            ,
-            buttonVM: .init(
-                style: .removeImage,
-                action: .touchUpInside { [weak self] in
-                    self?.viewModel?.items.remove(at: index)
-                })
-        ))
+        imageView.setViewModel(
+            .init(
+                action: { vm.selectedIndex = index },
+                style: .photo,
+                image: image,
+                buttonVM: .init(
+                    style: .removeImage,
+                    action: .touchUpInside { vm.items.remove(at: index) }
+                )
+            )
+        )
         
         items.append(imageView)
         imageStack.addArrangedSubview(imageView)
@@ -156,18 +158,20 @@ class BasicImageListView: BasicView {
     func makeItems(at index: Int) {
         let imageView = BasicImageButton()
         imageView.alpha = viewModel?.editingEnabled ?? false ? 1 : 0
-        imageView.setViewModel(.init(
-            action: {[weak self] in
-                print("test from view")
-            },
-            style: .empty,
-            image: UIImage(),
-            buttonVM: .init(
-                style: .addImage,
-                action: .touchUpInside {[weak self] in
-                    self?.presentAlert()
-                })
-        ))
+        imageView.setViewModel(
+            .init(
+                style: .empty,
+                image: UIImage(),
+                buttonVM: .init(
+                    style: .addImage,
+                    action: .touchUpInside { [weak self] in
+                        guard let self else { return }
+                        self.presentOnRootViewController(self.alertController, animated: true)
+                        
+                    }
+                )
+            )
+        )
         
         items.append(imageView)
         imageStack.addArrangedSubview(imageView)
@@ -175,26 +179,6 @@ class BasicImageListView: BasicView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
-        guard UIImagePickerController.isSourceTypeAvailable(type) else {
-            return nil
-        }
-        
-        return UIAlertAction(title: title, style: .default) { [weak self] _ in
-            self?.presentPicker()
-        }
-    }
-    
-    @objc private func presentAlert() {
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController?.present(alertController, animated: true)
-    }
-    
-    private func presentPicker() {
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController?.present(imagePicker, animated: true)
     }
     
     private func presentPhotoViewVC(_ vm: ViewModel, on index: Int) {
@@ -205,8 +189,7 @@ class BasicImageListView: BasicView {
             )
         )
         
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController?.present(fullSizePhotoViewVC, animated: true)
+        presentOnRootViewController(fullSizePhotoViewVC, animated: true)
     }
 }
 
@@ -224,8 +207,10 @@ extension BasicImageListView: PHPickerViewControllerDelegate {
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
                     if let image = image as? UIImage {
+                        guard let compressedImageData = image.jpegData(compressionQuality: 0.8) else { return }
+                        guard let compressedImage = UIImage(data: compressedImageData) else { return }
                         DispatchQueue.main.async {
-                            self?.displaySelectedImage(image)
+                            self?.displaySelectedImage(compressedImage)
                         }
                     }
                 }
@@ -236,12 +221,15 @@ extension BasicImageListView: PHPickerViewControllerDelegate {
     func displaySelectedImage(_ image: UIImage) {
         self.viewModel?.didAddedImage(image)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-    }
 }
 
 extension BasicImageListView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let compressedImageData = image.jpegData(compressionQuality: 0.8) else { return }
+        guard let compressedImage = UIImage(data: compressedImageData) else { return }
+        displaySelectedImage(compressedImage)
+    }
 }
