@@ -26,7 +26,13 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 let controller = CreateRecordViewController(vm: .init(car: car))
                 vc.push(controller)
             case .edit(let car):
-                break
+                let vm = CreateCarViewController.ViewModel(mode: .edit(object: car))
+                vm.succesCreateCompletion = { [weak self] in
+                    guard let self else { return }
+                    navigateTo(CommonNavigationRoute.close)
+                }
+                let controller = CreateCarViewController(vm: vm)
+                vc.push(controller)
             }
         } else {
             super.navigateTo(route)

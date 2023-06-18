@@ -86,6 +86,7 @@ extension ServicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
         serviceCell.mainView.setViewModel(vm.tableVM.cells[indexPath.row])
+        serviceCell.selectionStyle = .none
         return serviceCell
     }
 }

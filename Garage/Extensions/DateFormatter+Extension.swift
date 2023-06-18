@@ -40,6 +40,10 @@ extension Int {
         
         return dateString
     }
+    
+    func toString() -> String {
+        return String(self)
+    }
 }
 
 extension Date {

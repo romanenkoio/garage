@@ -59,6 +59,17 @@ final class CarInfoControllerLayoutManager {
         self.vc = vc
         configure()
         vc.disableScrollView()
+        makeNavbar()
+    }
+    
+    private func makeNavbar() {
+        let editButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                guard let self else { return }
+                self.vc.coordinator.navigateTo(CarInfoNavigationRoute.edit(self.vc.vm.car))
+            },
+            image: UIImage(named: "edit_ic"))
+        vc.makeRightNavBarButton(buttons: [editButton])
     }
     
 }

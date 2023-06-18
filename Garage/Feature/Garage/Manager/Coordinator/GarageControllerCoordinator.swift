@@ -23,7 +23,7 @@ class GarageControllerCoordinator: BasicCoordinator {
         if let route = route as? GarageNavigationRoute {
             switch route {
             case .createCar:
-                let new = CreateCarViewController(vm: .init())
+                let new = CreateCarViewController(vm: .init(mode: .create))
                 vc.push(new)
             case .openCar(let car):
                 let new = CarInfoViewController(vm: .init(car: car))

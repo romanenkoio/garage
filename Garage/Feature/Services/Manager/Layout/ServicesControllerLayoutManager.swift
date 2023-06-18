@@ -30,6 +30,7 @@ final class ServicesControllerLayoutManager {
             delegate: vc
         )
         table.register(ServiceCell.self)
+        table.table.separatorStyle = .none
         return table
     }()
     

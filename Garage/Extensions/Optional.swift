@@ -11,4 +11,8 @@ extension Optional where Wrapped == Int {
     var wrapped: Int {
         return self ?? 0
     }
+    
+    var wrappedString: String {
+        return self?.toString() ?? .empty
+    }
 }

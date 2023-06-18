@@ -26,7 +26,23 @@ extension CarInfoViewController {
         
         init(car: Car) {
             self.car = car
-
+            
+            segmentVM = .init(
+                RecordType.allCases,
+                selected: .future,
+                titles: { items in items.map({ $0.title}) }
+            )
+            super.init()
+            initFields()
+        }
+        
+        func readCar() {
+            guard let car = RealmManager<Car>().read().first(where: { $0.id == car.id }) else { return }
+            self.car = car
+            self.initFields()
+        }
+        
+        func initFields() {
             brandLabelVM.text = "\(car.brand) \(car.model)"
             yearLabelVM.text = "Год: \(car.year.wrapped)"
             vinLabelVM.text = "VIN: \(car.win.wrapped)"
@@ -35,12 +51,6 @@ extension CarInfoViewController {
             if let data = car.imageData {
                 self.logo = UIImage(data: data)
             }
-            
-            segmentVM = .init(
-                RecordType.allCases,
-                selected: .future,
-                titles: { items in items.map({ $0.title}) }
-            )
         }
     }
 }

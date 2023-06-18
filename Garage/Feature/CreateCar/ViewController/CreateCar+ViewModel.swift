@@ -30,8 +30,11 @@ extension CreateCarViewController {
         ))
         
         var logoImage: UIImage?
+        var mode: EntityStatus<Car>
         
-        override init() {
+        init(mode: EntityStatus<Car>) {
+            self.mode = mode
+
             brandFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Toyota"),
@@ -66,7 +69,7 @@ extension CreateCarViewController {
             )
             
             super.init()
-            initValidator()
+            initMode()
             initSuggestionAction()
             
             brandFieldVM.inputVM.$text.sink { [weak self] value in
@@ -76,16 +79,59 @@ extension CreateCarViewController {
             
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
-                let car = Car(
-                    brand: self.brandFieldVM.text,
-                    model: self.modelFieldVM.text,
-                    year: self.yearFieldVM.text.toInt(),
-                    win: self.winFieldVM.text,
-                    mileage: self.mileageFieldVM.text.toInt() ?? .zero,
-                    logo: self.logoImage?.pngData()
-                )
-                RealmManager<Car>().write(object: car)
-                self.succesCreateCompletion?()
+                switch mode {
+                case .create:
+                    saveCar()
+                case .edit(let object):
+                    update(object)
+                }
+              
+            }
+        }
+        
+        private func saveCar() {
+            let car = Car(
+                brand: self.brandFieldVM.text,
+                model: self.modelFieldVM.text,
+                year: self.yearFieldVM.text.toInt(),
+                win: self.winFieldVM.text,
+                mileage: self.mileageFieldVM.text.toInt() ?? .zero,
+                logo: self.logoImage?.pngData()
+            )
+            RealmManager<Car>().write(object: car)
+            self.succesCreateCompletion?()
+        }
+        
+        private func update(_ car: Car) {
+            RealmManager<Car>().update { [weak self] realm in
+                do {
+                    try realm.write { [weak self] in
+                        guard let self else { return }
+                        car.brand = brandFieldVM.text
+                        car.model = modelFieldVM.text
+                        car.year = yearFieldVM.text.toInt()
+                        car.win = winFieldVM.text
+                        car.mileage = mileageFieldVM.text.toInt() ?? .zero
+                    }
+                    self?.succesCreateCompletion?()
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
+        
+        private func initMode() {
+            initValidator()
+
+            switch mode {
+            case .create:
+                break
+            case .edit(let object):
+                brandFieldVM.text = object.brand
+                modelFieldVM.text = object.model
+                yearFieldVM.text = object.year.wrappedString
+                winFieldVM.text = object.win.wrapped
+                mileageFieldVM.text = object.mileage.toString()
             }
         }
         

@@ -9,9 +9,7 @@ import RealmSwift
 
 class RealmManager<T> where T: Object {
     private let realm = try? Realm()
-    
-    var realmCompletion: ((Realm?) -> Void)?
-    
+        
     func write(object: T) {
         guard let realm else { return }
         try? realm.write {
@@ -32,6 +30,7 @@ class RealmManager<T> where T: Object {
     }
     
     func update(realmBlock: @escaping (Realm) -> Void) {
-        realmCompletion?(self.realm)
+        guard let realm else { return }
+        realmBlock(realm)
     }
 }

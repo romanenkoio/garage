@@ -18,7 +18,7 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     
     // - Manager
-    private var coordinator: Coordinator!
+    var coordinator: Coordinator!
     private var layout: Layout!
     
     init(vm: ViewModel) {
@@ -37,6 +37,11 @@ class CarInfoViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         view.backgroundColor = AppColors.background
         title = "Общая информация"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.readCar()
     }
 
     override func configure() {
