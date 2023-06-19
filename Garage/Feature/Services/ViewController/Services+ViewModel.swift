@@ -42,18 +42,24 @@ extension ServicesViewController {
             let categories = items.map({ $0.specialisation.lowercased() }).unique
             
             guard categories.count > 2 else { return }
-            let all = Suggestion(labelVM: .init(text: "Все", action: {
-                
+            let all = Suggestion(labelVM: .init(text: "Все", action: { [weak self] in
+                guard let self else { return }
+                let services = RealmManager<Service>().read()
+                self.tableVM.setCells(services)
             }))
             
             let suggestions = categories.map({
-                Suggestion(
-                    labelVM: .init(
-                        text: $0,
-                        action: { [weak self] in
-                            
-                        })
-                )})
+                let spec = $0.lowercased()
+
+                return Suggestion(labelVM: .init(
+                    text: $0,
+                    action: { [weak self] in
+                        guard let self else { return }
+                        let services = RealmManager<Service>()
+                            .read()
+                            .filter({ $0.specialisation.lowercased() == spec })
+                        self.tableVM.setCells(services)
+                    }))})
             self.suggestions.removeAll()
             self.suggestions.append(all)
             self.suggestions += suggestions
