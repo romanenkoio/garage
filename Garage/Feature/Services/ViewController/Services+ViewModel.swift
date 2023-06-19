@@ -41,17 +41,22 @@ extension ServicesViewController {
             
             let categories = items.map({ $0.specialisation.lowercased() }).unique
             
-            guard categories.count != 1 else { return }
+            guard categories.count > 2 else { return }
+            let all = Suggestion(labelVM: .init(text: "Все", action: {
+                
+            }))
+            
             let suggestions = categories.map({
                 Suggestion(
                     labelVM: .init(
                         text: $0,
                         action: { [weak self] in
                             
-                        }),
-                    image: nil
+                        })
                 )})
-            self.suggestions = suggestions
+            self.suggestions.removeAll()
+            self.suggestions.append(all)
+            self.suggestions += suggestions
         }
     }
 }

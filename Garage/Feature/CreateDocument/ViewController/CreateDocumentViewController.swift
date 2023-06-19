@@ -42,6 +42,12 @@ class CreateDocumentViewController: BasicViewController {
     }
 
     private func setupNavBar() {
+        makeCloseButton(isLeft: true)
+        
+        guard case .edit(_) = vm.mode else {
+          return
+        }
+        
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 self?.vm.removeDocument()
@@ -49,7 +55,6 @@ class CreateDocumentViewController: BasicViewController {
             image: UIImage(named: "delete_ic")
         )
         makeRightNavBarButton(buttons: [deleteButton])
-        makeCloseButton(isLeft: true)
     }
 
     override func binding() {

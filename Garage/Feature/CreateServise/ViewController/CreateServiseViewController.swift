@@ -39,6 +39,12 @@ class CreateServiseViewController: BasicViewController {
     }
     
     private func setupNavBar() {
+        makeCloseButton(isLeft: true)
+        
+        guard case .edit(_) = vm.mode else {
+          return
+        }
+        
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 self?.vm.removeCar()

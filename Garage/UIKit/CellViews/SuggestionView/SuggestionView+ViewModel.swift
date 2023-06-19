@@ -15,7 +15,7 @@ extension SuggestionView {
         
         init(
             labelVM: TappableLabel.ViewModel,
-            image: UIImage?
+            image: UIImage? = nil
         ) {
             self.labelVM = labelVM
             self.image = image
