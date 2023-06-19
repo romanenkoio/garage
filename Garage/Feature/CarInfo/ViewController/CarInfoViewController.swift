@@ -61,12 +61,18 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.recordsView.snp.remakeConstraints { make in
-            make.top.equalToSuperview().offset(layout.topStack.frame.height + 21)
-            make.leading.trailing.equalToSuperview()
+        layout.page.view.snp.remakeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(vm.pageVM.controllers[vm.pageVM.index].view.frame.size.height)
+            make.top.equalTo(layout.segment.snp.bottom)
         }
         
-
+        print("top stack", layout.topStack.frame.size.height)
+        
+        layout.recordsView.snp.remakeConstraints { make in
+            make.top.equalToSuperview().offset(layout.topStack.frame.size.height + 21)
+            make.leading.trailing.equalToSuperview()
+        }
     }
 
     override func configure() {
@@ -123,14 +129,6 @@ extension CarInfoViewController: UITableViewDataSource {
         let vm = RecordView.ViewModel(record: .testRecord)
         recordCell.mainView.setViewModel(vm)
         
-        layout.table.snp.remakeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(tableView.contentSize.height)
-            make.top.equalTo(layout.segment.snp.bottom)
-        }
-        
-
-        
         return recordCell
     }
     
@@ -158,10 +156,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let profileNameLabelScale = min(3.0, max(0.5 - offset / -350.0, 0.5))
         let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
         let profileViewsAlphaScale = min(max(1.0 - offset / 120.0, 0.0), 1.0)
-
-
         
         layout.topStack.layer.anchorPoint.y = profileNameLabelScale
+        print(layout.topStack.layer.anchorPoint.y)
     }
 }
 

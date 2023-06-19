@@ -45,6 +45,7 @@ final class CarInfoControllerLayoutManager {
     lazy var segment = BasicSegmentView<RecordType>()
     lazy var addRecordButton = AlignedButton()
     
+    lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
     lazy var table: BasicTableView = {
         let view = BasicTableView()
@@ -95,7 +96,10 @@ fileprivate extension CarInfoControllerLayoutManager {
         ])
         vc.contentView.addSubview(recordsView)
         recordsView.addSubview(segment)
-        recordsView.addSubview(table)
+        vc.addChild(page)
+        recordsView.addSubview(page.view)
+        page.didMove(toParent: vc)
+
         vc.contentView.addSubview(addRecordButton)
         
         vc.contentView.backgroundColor = .clear
@@ -113,6 +117,7 @@ fileprivate extension CarInfoControllerLayoutManager {
         
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
+            make.height.equalTo(177)
         }
         
         recordsView.snp.makeConstraints { make in
@@ -124,9 +129,9 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets.horizintal)
         }
         
-        table.snp.makeConstraints { make in
+        page.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(800)
+            make.height.equalTo(200)
             make.top.equalTo(segment.snp.bottom)
         }
         

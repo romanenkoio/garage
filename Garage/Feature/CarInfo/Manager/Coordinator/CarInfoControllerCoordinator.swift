@@ -23,7 +23,7 @@ class CarInfoControllerCoordinator: BasicCoordinator {
         if let route = route as? CarInfoNavigationRoute {
             switch route {
             case .createRecord(let car):
-                let controller = CreateRecordViewController(vm: .init(car: car))
+                let controller = CreateRecordViewController(vm: .init(car: car, mode: .create))
                 vc.push(controller)
             case .edit(let car):
                 let vm = CreateCarViewController.ViewModel(mode: .edit(object: car))
