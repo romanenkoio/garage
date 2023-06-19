@@ -13,7 +13,7 @@ extension DocumentsViewController {
         
         let tableVM = BasicTableView.GenericViewModel<Document>()
         let addButtonVM = AlignedButton.ViewModel(
-            buttonVM: .init(title: "Добавить сервис")
+            buttonVM: .init(title: "Добавить документ")
         )
         
         override init() {

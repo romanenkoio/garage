@@ -14,7 +14,7 @@ extension ServicesViewController {
         
         let tableVM = BasicTableView.GenericViewModel<Service>()
         let addButtonVM = AlignedButton.ViewModel(
-            buttonVM: .init(title: "Добавить документ")
+            buttonVM: .init(title: "Добавить сервис")
         )
         
         @Published

@@ -17,6 +17,9 @@ final class SettingsManager {
     enum Keys: String, CaseIterable {
         case colorSet
         case useReminder
+        case getArticles
+        case region
+        case mileage
     }
     
     func read(_ key: Keys) -> Bool? {
