@@ -18,8 +18,8 @@ extension DocumentView {
             typeLabelVM.text = document.rawType
             if let startDate = document.startDate,
                let endDate = document.endDate {
-                let startString = startDate.formatData(formatType: .ddMMyy)
-                let endString = endDate.formatData(formatType: .ddMMyy)
+                let startString = startDate.toString(.ddMMyy)
+                let endString = endDate.toString(.ddMMyy)
                 dateLabelVM.text = "С \(startString) по \(endString)"
             }
             

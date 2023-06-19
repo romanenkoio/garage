@@ -16,7 +16,7 @@ extension CreateRecordViewController {
         private(set) var services = [Service]()
         private var selectedService: Service?
         
-        let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
+        let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().toString(.ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
         let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(text: "Добавить фото"))

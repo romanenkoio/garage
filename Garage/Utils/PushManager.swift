@@ -1,0 +1,102 @@
+//
+//  PushManager.swift
+//  Garage
+//
+//  Created by Illia Romanenko on 20.06.23.
+//
+
+import Foundation
+import UserNotifications
+import UIKit
+
+final class PushManager {
+    private let limit = 60
+    private let center = UNUserNotificationCenter.current()
+    private(set) var isEnable = false {
+        didSet {
+            reschedule()
+        }
+    }
+    
+    let sh = PushManager()
+    
+    private init() {}
+    
+    func removePush(_ id: String) {
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+        center.removeDeliveredNotifications(withIdentifiers: [id])
+    }
+    
+    func readAll() {
+        
+    }
+    
+    func removeAll() {
+        
+    }
+    
+    func reschedule() {
+        
+    }
+    
+    func create(_ push: LocalPush) {
+        let content = UNMutableNotificationContent()
+        content.title = push.title
+        if let subtitle = push.subtitle {
+            content.subtitle = subtitle
+        }
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 61, repeats: push.repeats)
+        let request = UNNotificationRequest(identifier: push.id, content: content, trigger: trigger)
+
+        center.add(request)
+    }
+    
+    func recuestPermission() {
+        center.requestAuthorization(options: [.sound,.alert,.badge]) { [weak self] (granted, _) in
+                self?.isEnable = granted
+        }
+    }
+    
+    private func checkPermission() {
+        center.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.recuestPermission()
+            case .authorized, .provisional:
+                self.reschedule()
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension PushManager {
+    struct LocalPush {
+        var id: String
+        var title: String
+        var subtitle: String?
+        var date: Date
+        var repeats: Bool
+        
+        init(
+            id: String = UUID().uuidString,
+            title: String,
+            subtitle: String?,
+            date: Date,
+            repeats: Bool = false
+        ) {
+            self.id = id
+            self.title = title
+            self.subtitle = subtitle
+            self.date = date
+            self.repeats = repeats
+        }
+    }
+    
+
+}
+
+

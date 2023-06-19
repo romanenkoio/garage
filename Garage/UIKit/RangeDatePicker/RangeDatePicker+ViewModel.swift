@@ -16,10 +16,10 @@ extension RangeDatePicker {
         
         let desctiptionVM = BasicLabel.ViewModel()
         let startDateVM = BasicDatePicker.ViewModel(
-            placeholder: "с \(Date().formatData(formatType: .ddMMyy))"
+            placeholder: "с \(Date().toString(.ddMMyy))"
         )
         let finishDateVM = BasicDatePicker.ViewModel(
-            placeholder: "по \(Date().append(.month).formatData(formatType: .ddMMyy))"
+            placeholder: "по \(Date().append(.month).toString(.ddMMyy))"
         )
         
         @Published private(set) var startDate: Date? {
@@ -71,7 +71,7 @@ extension RangeDatePicker {
             
             self.startDateVM.$date.sink { [weak self] date in
                 guard let self, let date else { return }
-                self.startDateVM.text = "c \(date.formatData(formatType: .ddMMyy))"
+                self.startDateVM.text = "c \(date.toString(.ddMMyy))"
                 if let finishDate = self.finishDateVM.date, date >= finishDate {
                     self.finishDateVM.setDate(nil)
                 }
@@ -83,7 +83,7 @@ extension RangeDatePicker {
             self.finishDateVM.$date.sink { [weak self] date in
                 guard let self, let date else { return }
                 self.endDate = date
-                self.finishDateVM.text = "по \(date.formatData(formatType: .ddMMyy))"
+                self.finishDateVM.text = "по \(date.toString(.ddMMyy))"
                 self.validate()
             }
             .store(in: &cancellables)

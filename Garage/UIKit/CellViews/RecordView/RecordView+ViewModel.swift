@@ -16,7 +16,7 @@ extension RecordView {
         init(record: Record) {
             self.record = record
             infoLabelVM.text = record.comment
-            dateLabelVM.text = record.date.formatData(formatType: .ddMMyy)
+            dateLabelVM.text = record.date.toString(.ddMMyy)
         }
     }
 }

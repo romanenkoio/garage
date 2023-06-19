@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F049E472A40FBB400C3EAD0 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E462A40FBB400C3EAD0 /* PushManager.swift */; };
+		7F049E492A41029F00C3EAD0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E482A41029F00C3EAD0 /* Date.swift */; };
 		7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */; };
 		7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */; };
 		7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */; };
@@ -223,6 +225,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F049E462A40FBB400C3EAD0 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
+		7F049E482A41029F00C3EAD0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRoute.swift; sourceTree = "<group>"; };
 		7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerLayoutManager.swift; sourceTree = "<group>"; };
@@ -521,6 +525,7 @@
 				7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */,
 				7F0E092A2A3255F1008C2B9A /* Action.swift */,
 				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
+				7F049E462A40FBB400C3EAD0 /* PushManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1461,6 +1466,7 @@
 				7F0E092E2A32818F008C2B9A /* Array.swift */,
 				7F0E09492A333B84008C2B9A /* UIApplication.swift */,
 				B9D96E4E2A37B47200909B33 /* UICollectionView.swift */,
+				7F049E482A41029F00C3EAD0 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1907,6 +1913,7 @@
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
+				7F049E492A41029F00C3EAD0 /* Date.swift in Sources */,
 				B978F3172A2E8F4C0076D326 /* BasicLabel.swift in Sources */,
 				7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
@@ -1936,6 +1943,7 @@
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				B9FB290D2A33784300A4CF1D /* BasicImageList.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
+				7F049E472A40FBB400C3EAD0 /* PushManager.swift in Sources */,
 				7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */,
 				7FFC1F782A3545CB007A5C75 /* Backup.swift in Sources */,
 				7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */,
