@@ -9,13 +9,14 @@ import UIKit
 
 class RecordView: BasicView {
     
-    private lazy var stack: BasicStackView = {
-        let stack = BasicStackView()
-        stack.axis = .vertical
-        stack.spacing = 4
-        stack.edgeInsets = UIEdgeInsets(all: 20)
-        return stack
-    }()
+//    private lazy var stack: BasicStackView = {
+//        let stack = BasicStackView()
+//        stack.axis = .vertical
+//        stack.spacing = 4
+//        stack.distribution = .fillEqually
+//        stack.edgeInsets = UIEdgeInsets(all: 20)
+//        return stack
+//    }()
     
     private lazy var infoLabel: BasicLabel = {
         let label = BasicLabel()
@@ -39,13 +40,21 @@ class RecordView: BasicView {
     }
     
     private func makeLayout() {
-        addSubview(stack)
-        stack.addArrangedSubviews([infoLabel, dateLabel])
+        addSubview(infoLabel)
+        addSubview(dateLabel)
+//        stack.addArrangedSubviews([infoLabel, dateLabel])
+        
     }
     
     private func makeConstraint() {
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        infoLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(infoLabel.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     

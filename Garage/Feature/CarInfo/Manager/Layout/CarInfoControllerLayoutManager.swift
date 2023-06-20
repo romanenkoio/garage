@@ -12,6 +12,7 @@ import SnapKit
 final class CarInfoControllerLayoutManager {
     
     private unowned let vc: CarInfoViewController
+    private var isFirstLayoutSubviews = true
     
     lazy var topStack: BasicStackView = {
         let view = BasicStackView()
@@ -21,6 +22,7 @@ final class CarInfoControllerLayoutManager {
         view.spacing = 10
         view.paddingInsets = .init(left: 20)
         view.backgroundColor = .white
+        view.clipsToBounds = false
         return view
     }()
     
@@ -73,6 +75,24 @@ final class CarInfoControllerLayoutManager {
         vc.makeRightNavBarButton(buttons: [editButton])
     }
     
+    func remakeConstraintsAfterLayout() {
+            page.view.snp.remakeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+                make.height.greaterThanOrEqualTo(page.vm.controllers[page.vm.index].view.frame.size.height)
+            make.top.equalTo(segment.snp.bottom)
+        }
+    }
+    
+    func layoutOnce() {
+        if isFirstLayoutSubviews {
+            recordsView.snp.remakeConstraints { make in
+                make.top.equalToSuperview().offset(topStack.frame.size.height)
+                make.leading.trailing.bottom.equalToSuperview()
+            }
+            
+            isFirstLayoutSubviews = false
+        }
+    }
 }
 
 // MARK: -
@@ -116,8 +136,7 @@ fileprivate extension CarInfoControllerLayoutManager {
         }
         
         topStack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
-            make.height.equalTo(177)
+            make.leading.trailing.top.equalToSuperview()
         }
         
         recordsView.snp.makeConstraints { make in
@@ -131,7 +150,6 @@ fileprivate extension CarInfoControllerLayoutManager {
         
         page.view.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(200)
             make.top.equalTo(segment.snp.bottom)
         }
         

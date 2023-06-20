@@ -10,11 +10,11 @@ import Combine
 
 extension BasicPageController {
     final class ViewModel: BasicViewModel {
-        @Published var controllers: [UIViewController]
+        @Published var controllers: [BasicViewController]
         @Published var index = 0
         var indexCandidate: Int?
         
-        init(controllers: [UIViewController]) {
+        init(controllers: [BasicViewController]) {
             self.controllers = controllers
         }
         

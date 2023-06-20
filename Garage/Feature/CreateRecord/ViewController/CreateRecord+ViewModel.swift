@@ -12,6 +12,7 @@ extension CreateRecordViewController {
     final class ViewModel: BasicViewModel {
         unowned var car: Car
         
+        
         @Published
         private(set) var services = [Service]()
         private var selectedService: Service?
@@ -40,10 +41,12 @@ extension CreateRecordViewController {
             }
         let mode: EntityStatus<Record>
         
-        init(car: Car, mode: EntityStatus<Record>) {
+        init(
+            car: Car,
+            mode: EntityStatus<Record>
+        ) {
             self.car = car
             self.mode = mode
-            
             services = RealmManager<Service>().read()
 
             shortTypeVM.descriptionLabelVM.text = "Краткое описание"

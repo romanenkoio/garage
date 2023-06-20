@@ -85,7 +85,8 @@ extension BasicPageController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        guard let viewControllerIndex = vm.controllers.firstIndex(of: viewController) else {
+        guard let vc = viewController as? BasicViewController else { return UIViewController()}
+        guard let viewControllerIndex = vm.controllers.firstIndex(of: vc) else {
             return nil
         }
         
@@ -106,7 +107,8 @@ extension BasicPageController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        guard let viewControllerIndex = vm.controllers.firstIndex(of: viewController) else {
+        guard let vc = viewController as? BasicViewController else { return UIViewController()}
+        guard let viewControllerIndex = vm.controllers.firstIndex(of: vc) else {
             return nil
         }
         
@@ -126,7 +128,7 @@ extension BasicPageController: UIPageViewControllerDataSource {
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-              let firstViewControllerIndex = vm.controllers.firstIndex(of: firstViewController)
+              let firstViewControllerIndex = vm.controllers.firstIndex(of: firstViewController as! BasicViewController)
         else {
             self.vm.index = 0
             return 0
@@ -153,7 +155,7 @@ extension BasicPageController: UIPageViewControllerDelegate {
         willTransitionTo pendingViewControllers: [UIViewController]
     ) {
         guard let controller = pendingViewControllers.first,
-              let index = vm.controllers.firstIndex(of: controller)
+              let index = vm.controllers.firstIndex(of: controller as! BasicViewController)
         else { return }
         
         vm.indexCandidate = index

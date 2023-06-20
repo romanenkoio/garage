@@ -21,10 +21,7 @@ extension CarInfoViewController {
         
         let tableVM = BasicTableView.GenericViewModel<Record>()
         let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
-        let pageVM = BasicPageController.ViewModel(controllers: [
-            ServicesViewController(vm: .init()),
-            ServicesViewController(vm: .init())
-        ])
+        let pageVM: BasicPageController.ViewModel
         
         @Published var logo: UIImage?
         
@@ -36,6 +33,15 @@ extension CarInfoViewController {
                 selected: .paste,
                 titles: { items in items.map({ $0.title}) }
             )
+            
+            pageVM = .init(
+                controllers:
+                    [
+                    PastRecordsViewController(vm: .init(car: car)),
+                    ServicesViewController(vm: .init())
+                    ]
+            )
+            
             super.init()
             initFields()
             

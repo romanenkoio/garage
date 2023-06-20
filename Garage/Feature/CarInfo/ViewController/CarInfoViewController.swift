@@ -21,16 +21,6 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     
-    public var minimumVelocityToHide: CGFloat = 1500
-    public var minimumScreenRatioToHide: CGFloat = 0.5
-    public var animationDuration: TimeInterval = 0.2
-    
-    var tableViewHeight: CGFloat {
-       // layout.table.table.layoutIfNeeded()
-
-        return layout.table.table.contentSize.height
-    }
-    
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -45,6 +35,7 @@ class CarInfoViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavBar(false)
+        hideTabBar(false)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
         view.backgroundColor = AppColors.background
@@ -61,25 +52,17 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.page.view.snp.remakeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(vm.pageVM.controllers[vm.pageVM.index].view.frame.size.height)
-            make.top.equalTo(layout.segment.snp.bottom)
-        }
-        
-        print("top stack", layout.topStack.frame.size.height)
-        
-        layout.recordsView.snp.remakeConstraints { make in
-            make.top.equalToSuperview().offset(layout.topStack.frame.size.height + 21)
-            make.leading.trailing.equalToSuperview()
-        }
+        layout.remakeConstraintsAfterLayout()
+        layout.layoutOnce()
     }
-
+    
+    
     override func configure() {
         configureCoordinator()
         configureLayoutManager()
     }
 
+    
     override func binding() {
         layout.brandModelLabel.setViewModel(vm.brandLabelVM)
         layout.yearLabel.setViewModel(vm.yearLabelVM)
@@ -95,6 +78,11 @@ class CarInfoViewController: BasicViewController {
         
         vm.$logo.sink { [weak self] logo in
             self?.layout.logoImage.image = logo
+        }
+        .store(in: &cancellables)
+        
+        vm.pageVM.$index.sink { index in
+            self.layout.remakeConstraintsAfterLayout()
         }
         .store(in: &cancellables)
     }
@@ -124,7 +112,7 @@ extension CarInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let recordCell = tableView.dequeueReusableCell(BasicTableCell<RecordView>.self, for: indexPath)
-//              let item = vm.tableVM.cells[safe: indexPath.row]
+              
         else { return .init() }
         let vm = RecordView.ViewModel(record: .testRecord)
         recordCell.mainView.setViewModel(vm)
@@ -153,12 +141,12 @@ extension CarInfoViewController: UIScrollViewDelegate {
         
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
         
-        let profileNameLabelScale = min(3.0, max(0.5 - offset / -350.0, 0.5))
+        let scrollScale = min(layout.topStack.frame.size.height - 20, max(0.5 - offset / -2.0, 0.5))
+        let stackScale = min(3.0, max(0.5 - offset / -4000.0, 0.5))
         let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
-        let profileViewsAlphaScale = min(max(1.0 - offset / 120.0, 0.0), 1.0)
+        let profileViewsAlphaScale = min(max(0.5 - offset / 120.0, 0.0), 0.5)
         
-        layout.topStack.layer.anchorPoint.y = profileNameLabelScale
-        print(layout.topStack.layer.anchorPoint.y)
+        layout.topStack.layer.anchorPoint.y = stackScale
     }
 }
 
