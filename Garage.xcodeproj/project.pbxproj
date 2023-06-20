@@ -78,6 +78,8 @@
 		7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */; };
 		7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */; };
 		7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */; };
+		7F0F92792A4257F900920CD9 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0F92782A4257F900920CD9 /* DetailsView.swift */; };
+		7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0F927A2A4257FF00920CD9 /* DetailsView+ViewModel.swift */; };
 		7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465522A38A1770022E4E7 /* SettingMenu.swift */; };
 		7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465542A38B33C0022E4E7 /* FuelType.swift */; };
 		7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */; };
@@ -297,6 +299,8 @@
 		7F0E09572A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F0E09592A3348C8008C2B9A /* DocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		7F0E095A2A3348C8008C2B9A /* Documents+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Documents+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0F92782A4257F900920CD9 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		7F0F927A2A4257FF00920CD9 /* DetailsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F1465522A38A1770022E4E7 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		7F1465542A38B33C0022E4E7 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
 		7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedButton.swift; sourceTree = "<group>"; };
@@ -912,6 +916,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F0F92772A4257E300920CD9 /* DetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				7F0F92782A4257F900920CD9 /* DetailsView.swift */,
+				7F0F927A2A4257FF00920CD9 /* DetailsView+ViewModel.swift */,
+			);
+			path = DetailsView;
+			sourceTree = "<group>";
+		};
 		7F1465562A38BF700022E4E7 /* AlignedButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,6 +1262,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F0F92772A4257E300920CD9 /* DetailsView */,
 				7F049E4C2A41061000C3EAD0 /* MultiLineInput */,
 				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
 				B9D96E492A37B17200909B33 /* BasicColllectionView */,
@@ -1820,6 +1834,7 @@
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
+				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
 				B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */,
@@ -1868,6 +1883,7 @@
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
+				7F0F92792A4257F900920CD9 /* DetailsView.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */,
 				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
