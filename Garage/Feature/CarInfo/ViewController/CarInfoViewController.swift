@@ -53,7 +53,8 @@ class CarInfoViewController: BasicViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.remakeConstraintsAfterLayout()
-        layout.layoutOnce()
+        layout.layoutOnce(safeAreaHeight: view.safeAreaLayoutGuide.layoutFrame.origin.y)
+
     }
     
     
@@ -83,6 +84,7 @@ class CarInfoViewController: BasicViewController {
         
         vm.pageVM.$index.sink { index in
             self.layout.remakeConstraintsAfterLayout()
+            self.view.setNeedsLayout()
         }
         .store(in: &cancellables)
     }

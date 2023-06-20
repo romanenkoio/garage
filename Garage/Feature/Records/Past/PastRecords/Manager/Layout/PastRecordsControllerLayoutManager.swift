@@ -53,8 +53,7 @@ fileprivate extension PastRecordsControllerLayoutManager {
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(vc.view.safeAreaLayoutGuide)
+            make.leading.top.trailing.bottom.equalToSuperview()
         }
         
 //        addButton.snp.makeConstraints { make in

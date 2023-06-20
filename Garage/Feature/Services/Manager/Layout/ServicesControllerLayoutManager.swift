@@ -68,25 +68,25 @@ fileprivate extension ServicesControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(categoriesStack)
-        vc.contentView.addSubview(table)
-        vc.contentView.addSubview(addButton)
+//        vc.contentView.addSubview(categoriesStack)
+        vc.view.addSubview(table)
+//        vc.contentView.addSubview(addButton)
+        vc.contentView.isHidden = true
     }
     
     private func makeConstraint() {
-        categoriesStack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-        }
+//        categoriesStack.snp.makeConstraints { make in
+//            make.leading.trailing.top.equalToSuperview()
+//        }
         
         table.snp.makeConstraints { make in
-            make.top.equalTo(categoriesStack.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
-        addButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(table.snp.bottom)
-        }
+//        addButton.snp.makeConstraints { make in
+//            make.leading.trailing.bottom.equalToSuperview()
+//            make.top.equalTo(table.snp.bottom)
+//        }
     }
     
 }

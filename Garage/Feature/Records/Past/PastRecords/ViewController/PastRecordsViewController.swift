@@ -105,7 +105,7 @@ extension PastRecordsViewController: UITableViewDataSource {
         let vm = RecordView.ViewModel(record: Record(carID: "\(indexPath.row)", mileage: 300000, date: .now))
         pastRecordCell.mainView.setViewModel(vm)
         
-        view.frame.size.height = pastRecordCell.frame.height * 20
+        view.frame.size.height = tableView.contentSize.height
         view.setNeedsLayout()
         print("table vc", view.bounds.size.height)
         print(pastRecordCell.bounds.height)

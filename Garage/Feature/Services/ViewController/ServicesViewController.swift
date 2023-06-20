@@ -38,6 +38,11 @@ class ServicesViewController: BasicViewController {
         makeLogoNavbar()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.view.frame.size.height = self.layout.table.table.contentSize.height
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readServices()
@@ -95,14 +100,24 @@ extension ServicesViewController: UITableViewDataSource {
         return vm.tableVM.cells.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 153
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
         serviceCell.mainView.setViewModel(
             .init(service: vm.tableVM.cells[indexPath.row])
         )
         serviceCell.selectionStyle = .none
+        
+        view.frame.size.height = tableView.contentSize.height
+        view.setNeedsLayout()
+        print(serviceCell.bounds.height)
         return serviceCell
     }
+    
+
 }
 
 extension ServicesViewController: UITableViewDelegate {

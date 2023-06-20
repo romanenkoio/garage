@@ -76,21 +76,23 @@ final class CarInfoControllerLayoutManager {
     }
     
     func remakeConstraintsAfterLayout() {
-            page.view.snp.remakeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-                make.height.greaterThanOrEqualTo(page.vm.controllers[page.vm.index].view.frame.size.height)
-            make.top.equalTo(segment.snp.bottom)
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.page.view.snp.remakeConstraints { make in
+                make.leading.trailing.bottom.equalToSuperview()
+                make.height.greaterThanOrEqualTo(self.page.vm.controllers[self.page.vm.index].view.frame.size.height)
+                make.top.equalTo(self.segment.snp.bottom)
+                print("didChangeConstraints",self.page.vm.index,self.page.vm.controllers[self.page.vm.index].view.frame.size.height)
+            }
+            UIView.animate(withDuration: 0.2) {
+                self.vc.view.layoutIfNeeded()
+            }
         }
     }
     
-    func layoutOnce() {
-        if isFirstLayoutSubviews {
-            recordsView.snp.remakeConstraints { make in
-                make.top.equalToSuperview().offset(topStack.frame.size.height)
-                make.leading.trailing.bottom.equalToSuperview()
-            }
-            
-            isFirstLayoutSubviews = false
+    func layoutOnce(safeAreaHeight: Double ) {
+        recordsView.snp.remakeConstraints { make in
+            make.top.equalToSuperview().offset(topStack.frame.size.height - safeAreaHeight)
+            make.leading.trailing.equalToSuperview()
         }
     }
 }
