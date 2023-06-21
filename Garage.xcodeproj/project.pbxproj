@@ -11,6 +11,8 @@
 		7F049E492A41029F00C3EAD0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E482A41029F00C3EAD0 /* Date.swift */; };
 		7F049E4B2A41060800C3EAD0 /* MultiLineInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E4A2A41060800C3EAD0 /* MultiLineInput.swift */; };
 		7F049E4E2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E4D2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift */; };
+		7F0B30682A430A6D0094BC9C /* AddCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B30672A430A6D0094BC9C /* AddCarView.swift */; };
+		7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0B30692A430A730094BC9C /* AddCarView+ViewModel.swift */; };
 		7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */; };
 		7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */; };
 		7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */; };
@@ -233,6 +235,8 @@
 		7F049E482A41029F00C3EAD0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7F049E4A2A41060800C3EAD0 /* MultiLineInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInput.swift; sourceTree = "<group>"; };
 		7F049E4D2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultiLineInput+ViewModel.swift"; sourceTree = "<group>"; };
+		7F0B30672A430A6D0094BC9C /* AddCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarView.swift; sourceTree = "<group>"; };
+		7F0B30692A430A730094BC9C /* AddCarView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddCarView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08722A2F1D4D008C2B9A /* BasicRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRoute.swift; sourceTree = "<group>"; };
 		7F0E087A2A2F1DEE008C2B9A /* GarageControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F0E087C2A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageControllerLayoutManager.swift; sourceTree = "<group>"; };
@@ -470,6 +474,15 @@
 				7F049E4D2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift */,
 			);
 			path = MultiLineInput;
+			sourceTree = "<group>";
+		};
+		7F0B30662A430A620094BC9C /* AddCarView */ = {
+			isa = PBXGroup;
+			children = (
+				7F0B30672A430A6D0094BC9C /* AddCarView.swift */,
+				7F0B30692A430A730094BC9C /* AddCarView+ViewModel.swift */,
+			);
+			path = AddCarView;
 			sourceTree = "<group>";
 		};
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
@@ -1300,6 +1313,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F0B30662A430A620094BC9C /* AddCarView */,
 				7FF503C32A3D1F77006DA7EC /* SettingView */,
 				B9D96E502A37CF5100909B33 /* PhotoView */,
 				7FFC1F6C2A353D0A007A5C75 /* RecordView */,
@@ -1828,6 +1842,7 @@
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
+				7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
@@ -1840,6 +1855,7 @@
 				B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
+				7F0B30682A430A6D0094BC9C /* AddCarView.swift in Sources */,
 				B978F3162A2E8F4C0076D326 /* BasicButton.swift in Sources */,
 				7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */,
 				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,

@@ -8,6 +8,7 @@
 import Foundation
 
 typealias CarCell = BasicTableCell<CarView>
+typealias AddCarCell = BasicTableCell<AddCarView>
 typealias SelectCell =  BasicTableCell<UniversalSelectionView>
 typealias ServiceCell =  BasicTableCell<ServiceView>
 typealias DocumentCell =  BasicTableCell<DocumentView>

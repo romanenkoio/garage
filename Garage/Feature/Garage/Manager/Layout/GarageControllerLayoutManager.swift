@@ -19,11 +19,10 @@ final class GarageControllerLayoutManager {
             delegate: vc
         )
         table.register(CarCell.self)
+        table.register(AddCarCell.self)
         table.table.separatorColor = .clear
         return table
     }()
-
-    lazy var addButton = AlignedButton()
     
     // - Init
     init(vc: GarageViewController) {
@@ -45,17 +44,11 @@ fileprivate extension GarageControllerLayoutManager {
     private func makeLayout() {
         vc.disableScrollView()
         vc.contentView.addSubview(table)
-        vc.contentView.addSubview(addButton)
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-        }
-        
-        addButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
-            make.top.equalTo(table.snp.bottom)
+            make.edges.equalToSuperview()
         }
     }
 }

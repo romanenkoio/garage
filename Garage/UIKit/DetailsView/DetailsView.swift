@@ -28,7 +28,7 @@ class DetailsView: BasicView {
     private func makeLayout() {
         self.addSubview(detailsLabel)
         self.addSubview(detailsImage)
-        self.backgroundColor = UIColor(hexString: "0C0C0C").withAlphaComponent(0.08)
+        self.backgroundColor = UIColor(hexString: "#EDEDED")
     }
     
     private func makeConstraint() {
