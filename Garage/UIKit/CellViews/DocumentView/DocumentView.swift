@@ -31,23 +31,8 @@ class DocumentView: BasicView {
         return view
     }()
     
-    private lazy var detailsView: BasicView = {
-        let stack = BasicView()
-        stack.backgroundColor = UIColor(hexString: "0C0C0C").withAlphaComponent(0.08)
-        stack.cornerRadius = 0
-        return stack
-    }()
-    
-    private lazy var detailsLabel: BasicLabel = {
-        let label = BasicLabel()
-        label.textInsets = .init(top: 24, bottom: 24, left: 24)
-        label.font = .custom(size: 14, weight: .semibold)
-        label.textColor = ColorScheme.standartBlue.buttonColor
-        return label
-    }()
-    
-    private lazy var detailsImage = UIImageView()
-    
+    private lazy var detailsView = DetailsView()
+
     override func initView() {
         makeLayout()
         makeConstraint()
@@ -56,17 +41,19 @@ class DocumentView: BasicView {
     private func makeLayout() {
         self.addSubview(stack)
         photoListContainerView.addSubview(photoList)
-        stack.addArrangedSubviews([typeLabel, dateLabel, photoListContainerView, detailsView])
-      
-        detailsView.addSubview(detailsLabel)
-        detailsView.addSubview(detailsImage)
-        
+        stack.addArrangedSubviews([
+            typeLabel,
+            dateLabel,
+            photoListContainerView,
+            detailsView
+        ])
+
         typeLabel.font = .custom(size: 18, weight: .black)
         typeLabel.textColor = .black
         
         dateLabel.font = .custom(size: 14, weight: .semibold)
         dateLabel.textColor = UIColor(hexString: "939393")
-        detailsImage.image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
+
         typeLabel.textInsets = .init(top: 24, horizontal: 24)
         dateLabel.textInsets = .init(horizontal: 24)
     }
@@ -76,19 +63,9 @@ class DocumentView: BasicView {
             make.edges.equalToSuperview()
         }
         
-        detailsLabel.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
-        }
-        
         photoList.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 16))
             make.leading.trailing.equalToSuperview().inset(24)
-        }
-        
-        detailsImage.snp.makeConstraints { make in
-            make.height.width.equalTo(16)
-            make.centerY.trailing.equalToSuperview().inset(UIEdgeInsets(right: 24))
-            make.leading.greaterThanOrEqualTo(detailsLabel.snp.trailing)
         }
     }
     
@@ -96,6 +73,6 @@ class DocumentView: BasicView {
         typeLabel.setViewModel(vm.typeLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         photoList.setViewModel(vm.photoListVM)
-        detailsLabel.setViewModel(vm.detailsLabelVM)
+        detailsView.setViewModel(vm.detailVM)
     }
 }

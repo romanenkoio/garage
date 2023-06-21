@@ -62,17 +62,24 @@ class CarView: BasicView {
     
     private lazy var plannedLabel: BasicLabel = {
         let label = BasicLabel()
-        label.text = "Запланированно"
         label.font = .custom(size: 12, weight: .semibold)
         label.textInsets = .init(bottom: 24, left: 16)
+        label.textColor = UIColor(hexString: "#939393")
         return label
+    }()
+    
+    private lazy var photoContainer: BasicStackView = {
+        let stack = BasicStackView()
+        stack.edgeInsets = .init(bottom: 25, horizontal: 16)
+        stack.axis = .vertical
+        stack.spacing = 12
+        return stack
     }()
     
     private lazy var logoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.cornerRadius = 16
-        imageView.image = UIImage(named: "car")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -93,8 +100,10 @@ class CarView: BasicView {
         topContainer.addSubview(textStack)
         topContainer.addSubview(attentionView)
         
-        mainStack.addArrangedSubviews([topContainer, logoImage, detailsView])
+        mainStack.addArrangedSubviews([topContainer, photoContainer, detailsView])
         textStack.addArrangedSubviews([brandLabel, plannedLabel])
+        
+        photoContainer.addArrangedSubviews([logoImage])
     }
     
     private func makeConstraints() {
@@ -132,5 +141,12 @@ class CarView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
+        attentionLabel.setViewModel(vm.atteentionLabelVM)
+        plannedLabel.setViewModel(vm.plannedLabelVM)
+        
+        vm.$image.sink { [weak self] image in
+            self?.logoImage.image = image
+        }
+        .store(in: &cancellables)
     }
 }

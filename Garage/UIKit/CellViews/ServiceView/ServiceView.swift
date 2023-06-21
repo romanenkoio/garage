@@ -35,26 +35,7 @@ class ServiceView: BasicView {
         return label
     }()
     
-    private lazy var detailsView: BasicView = {
-        let stack = BasicView()
-        stack.backgroundColor = UIColor(hexString: "0C0C0C").withAlphaComponent(0.08)
-        stack.cornerRadius = 0
-        return stack
-    }()
-    
-    private lazy var detailsLabel: BasicLabel = {
-        let label = BasicLabel()
-        label.textInsets = .init(top: 24, bottom: 24, left: 24)
-        label.font = .custom(size: 14, weight: .semibold)
-        label.textColor = ColorScheme.standartBlue.buttonColor
-        return label
-    }()
-    
-    private lazy var detailsImage: UIImageView = {
-       let view = UIImageView()
-        view.image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
-        return view
-    }()
+    private lazy var detailsView = DetailsView()
 
     override func initView() {
         makeLayout()
@@ -69,29 +50,18 @@ class ServiceView: BasicView {
             detailsView
         ])
         
-        detailsView.addSubview(detailsLabel)
-        detailsView.addSubview(detailsImage)
+       
     }
     
     private func makeConstraint() {
         stack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        detailsImage.snp.makeConstraints { make in
-            make.height.width.equalTo(16)
-            make.centerY.trailing.equalToSuperview().inset(UIEdgeInsets(right: 24))
-            make.leading.greaterThanOrEqualTo(detailsLabel.snp.trailing)
-        }
-        
-        detailsLabel.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
-        }
     }
     
     func setViewModel(_ vm: ViewModel) {
         nameLabel.setViewModel(vm.nameLabelVM)
         adressLabel.setViewModel(vm.adressLabelVM)
-        detailsLabel.setViewModel(vm.detailsLabelVM)
+        detailsView.setViewModel(vm.detailVM)
     }
 }

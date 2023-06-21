@@ -13,6 +13,7 @@ extension DocumentView {
         let dateLabelVM = BasicLabel.ViewModel()
         let detailsLabelVM = BasicLabel.ViewModel()
         let photoListVM = BasicImageListView.ViewModel()
+        let detailVM = DetailsView.ViewModel()
         
         init(document: Document) {
             typeLabelVM.text = document.rawType
