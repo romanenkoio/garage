@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CarInfoViewController: BasicViewController {
 
@@ -21,12 +22,14 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     
+
+    
+    
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
     }
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,20 +50,20 @@ class CarInfoViewController: BasicViewController {
         vm.readCar()
         layout.table.table.reloadData()
         layout.table.table.isScrollEnabled = false
-
+        scroll.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.remakeConstraintsAfterLayout()
-        layout.layoutOnce(safeAreaHeight: view.safeAreaLayoutGuide.layoutFrame.origin.y)
-
+        layout.maxConstraintConstant = layout.topStack.frame.size.height
     }
     
     
     override func configure() {
         configureCoordinator()
         configureLayoutManager()
+        
     }
 
     
@@ -83,11 +86,18 @@ class CarInfoViewController: BasicViewController {
         .store(in: &cancellables)
         
         vm.pageVM.$index.sink { index in
-            self.layout.remakeConstraintsAfterLayout()
-            self.view.setNeedsLayout()
+            
+        }
+        .store(in: &cancellables)
+        
+        vm.$srollViewValue.sink { value in
+            self.scroll.isScrollEnabled = value
+            print(self.scroll.isScrollEnabled)
         }
         .store(in: &cancellables)
     }
+    var layputOnce = true
+    var layputOnceAgain = true
     
 }
 
@@ -103,7 +113,6 @@ extension CarInfoViewController {
     private func configureLayoutManager() {
         layout = CarInfoControllerLayoutManager(vc: self)
     }
-    
 }
 
 extension CarInfoViewController: UITableViewDataSource {
@@ -139,16 +148,66 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
+//        var offset = scrollView.contentOffset.y
+//
+//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
+//
+//        let stackScale = min(1.0, max(0.5 - offset / -10000.0, 0.5))
+//        let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
+//        let profileViewsAlphaScale = min(max(0.5 - offset / 120.0, 0.0), 0.5)
         
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
+        let currentContentOffsetY = scrollView.contentOffset.y
+        let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
+
+        // Верхняя граница начала bounce эффекта
+        let bounceBorderContentOffsetY = -scrollView.contentOffset.y
         
-        let scrollScale = min(layout.topStack.frame.size.height - 20, max(0.5 - offset / -2.0, 0.5))
-        let stackScale = min(3.0, max(0.5 - offset / -4000.0, 0.5))
-        let profileViewsLabelScale = min(max(1.0 - offset / 400.0, 0.0), 1.0)
-        let profileViewsAlphaScale = min(max(0.5 - offset / 120.0, 0.0), 0.5)
+        let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
+        let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
-        layout.topStack.layer.anchorPoint.y = stackScale
+        if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
+           let currentSegmentTopConstraintConstant = layout.animatedSegmentTopConstaint?.layoutConstraints.first?.constant {
+            
+            var newConstraintConstant = currentScrollConstraintConstant
+            var newSegmentConstraintConstant = currentSegmentTopConstraintConstant
+            
+            if contentMovesUp {
+                // Уменьшаем константу констрэйнта
+                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
+                newSegmentConstraintConstant = max(currentSegmentTopConstraintConstant - scrollDiff, layout.segmentMinConstraintConstant)
+                
+                if newConstraintConstant == 0, layputOnceAgain  {
+                    scrollView.isScrollEnabled = false
+                    vm.tableViewValue = true
+                    layout.remakeScrollConstraintsAgain()
+                    layputOnce = true
+                    layputOnceAgain = false
+                }
+            } else if contentMovesDown {
+                // Увеличиваем константу констрэйнта
+                newSegmentConstraintConstant = min(currentSegmentTopConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
+                newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
+                
+                if newConstraintConstant == layout.topStack.frame.size.height, layputOnce  {
+                    layout.remakeScrollConstraints()
+                    layputOnce = false
+                    layputOnceAgain = true
+                }
+            }
+            
+            // Меняем высоту и запрещаем скролл, только в случае изменения константы
+            if newConstraintConstant != currentScrollConstraintConstant {
+                layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+                layout.animatedSegmentTopConstaint?.update(offset: newSegmentConstraintConstant)
+                scrollView.contentOffset.y = layout.previousContentOffsetY
+            }
+            
+            //Процент завершения анимации
+            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+            layout.previousContentOffsetY = scrollView.contentOffset.y
+            
+        }
+
     }
 }
 

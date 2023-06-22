@@ -13,6 +13,13 @@ extension CarInfoViewController {
         
         private(set) var car: Car
         
+        @Published
+        var srollViewValue = true
+        var tableViewValue = false {
+            didSet {
+                pastRecordsVC.layout.table.table.isScrollEnabled = tableViewValue
+            }
+        }
         let brandLabelVM = BasicLabel.ViewModel()
         let yearLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = BasicLabel.ViewModel()
@@ -21,7 +28,9 @@ extension CarInfoViewController {
         
         let tableVM = BasicTableView.GenericViewModel<Record>()
         let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
-        let pageVM: BasicPageController.ViewModel
+        var pageVM: BasicPageController.ViewModel
+        var pastRecordsVC: PastRecordsViewController
+        var serviceVC: ServicesViewController
         
         @Published var logo: UIImage?
         
@@ -34,15 +43,22 @@ extension CarInfoViewController {
                 titles: { items in items.map({ $0.title}) }
             )
             
+            pastRecordsVC = .init(vm: .init(car: car))
+            serviceVC = .init(vm: .init())
+            
             pageVM = .init(
                 controllers:
                     [
-                    PastRecordsViewController(vm: .init(car: car)),
-                    ServicesViewController(vm: .init())
+                    pastRecordsVC,
+                    serviceVC
                     ]
             )
-            
             super.init()
+            
+            pastRecordsVC.action = {
+                self.srollViewValue.toggle()
+            }
+         
             initFields()
             
             pageVM.$index.removeDuplicates().sink { [weak self] value in

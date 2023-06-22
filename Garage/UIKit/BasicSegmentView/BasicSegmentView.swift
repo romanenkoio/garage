@@ -34,9 +34,12 @@ class BasicSegmentView<T: Equatable>: BasicView {
     override init() {
         super.init()
         self.cornerRadius = 0
-        self.backgroundColor = .clear
+        self.backgroundColor = AppColors.background
         makeLayout()
         makeConstraints()
+        self.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
     }
     
     override func layoutSubviews() {

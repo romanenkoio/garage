@@ -19,12 +19,11 @@ class PastRecordsViewController: BasicViewController {
     
     // - Manager
     private var coordinator: Coordinator!
-    private var layout: Layout!
-    var action: ((CGFloat) -> ())?
+    var layout: Layout!
+    var action: (() -> ())?
     
-    init(vm: ViewModel, action: ((CGFloat) -> ())? = nil) {
+    init(vm: ViewModel) {
         self.vm = vm
-        self.action = action
         super.init()
     }
     
@@ -36,14 +35,10 @@ class PastRecordsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
-        //layout.table.reload()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
-        view.frame.size.height = layout.table.table.contentSize.height
-        print("past rec vc", view.bounds.size.height)
     }
 
     override func configure() {
@@ -105,10 +100,6 @@ extension PastRecordsViewController: UITableViewDataSource {
         let vm = RecordView.ViewModel(record: Record(carID: "\(indexPath.row)", mileage: 300000, date: .now))
         pastRecordCell.mainView.setViewModel(vm)
         
-        view.frame.size.height = tableView.contentSize.height
-        view.setNeedsLayout()
-        print("table vc", view.bounds.size.height)
-        print(pastRecordCell.bounds.height)
         return pastRecordCell
     }
     
@@ -120,7 +111,12 @@ extension PastRecordsViewController: UITableViewDataSource {
 extension PastRecordsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        
     }
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 0 {
+            layout.table.table.isScrollEnabled = false
+            action?()
+        }
+    }
 }

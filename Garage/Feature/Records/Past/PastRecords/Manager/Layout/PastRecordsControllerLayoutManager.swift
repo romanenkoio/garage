@@ -21,7 +21,6 @@ final class PastRecordsControllerLayoutManager {
         )
         table.register(RecordCell.self)
         table.table.separatorStyle = .none
-        table.table.isScrollEnabled = false
         return table
     }()
     
