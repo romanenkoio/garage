@@ -12,9 +12,7 @@ extension DocumentsViewController {
     final class ViewModel: BasicViewModel {
         
         let tableVM = BasicTableView.GenericViewModel<Document>()
-        let addButtonVM = AlignedButton.ViewModel(
-            buttonVM: .init(title: "Добавить документ")
-        )
+        let addButtonVM = FloatingButton.ViewModel()
         
         override init() {
             super.init()
@@ -25,6 +23,7 @@ extension DocumentsViewController {
                 sublabelVM: .init(text: "Добавьте документ для \nначала работы"), addButtonVM: .init(title: "Новый документ"),
                 image: UIImage(named: "document")
             )
+            
         }
         
         func readDocuments() {

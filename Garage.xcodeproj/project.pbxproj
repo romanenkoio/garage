@@ -114,6 +114,8 @@
 		7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */; };
 		7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */; };
 		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
+		7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */; };
+		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
 		7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
@@ -337,6 +339,8 @@
 		7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
 		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
+		7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -1125,6 +1129,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FDCACAA2A4431F20071E1AA /* FloatingButton */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */,
+				7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */,
+			);
+			path = FloatingButton;
+			sourceTree = "<group>";
+		};
 		7FF503C32A3D1F77006DA7EC /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1275,6 +1288,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7FDCACAA2A4431F20071E1AA /* FloatingButton */,
 				7F0F92772A4257E300920CD9 /* DetailsView */,
 				7F049E4C2A41061000C3EAD0 /* MultiLineInput */,
 				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
@@ -1868,6 +1882,7 @@
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
 				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
+				7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
 				7F0E094F2A3346DE008C2B9A /* DocumentView+ViewModel.swift in Sources */,
 				7F0E094D2A3346D8008C2B9A /* DocumentView.swift in Sources */,
@@ -1911,6 +1926,7 @@
 				7FFC1F6E2A353D1B007A5C75 /* RecordView.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
+				7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */,

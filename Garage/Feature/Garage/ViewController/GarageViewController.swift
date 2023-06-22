@@ -58,6 +58,10 @@ class GarageViewController: BasicViewController {
                 self?.layout.table.reload()
             }
             .store(in: &cancellables)
+        
+        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            self?.coordinator.navigateTo(GarageNavigationRoute.createCar)
+        }
     }
     
 }

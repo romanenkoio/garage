@@ -24,7 +24,7 @@ final class DocumentsControllerLayoutManager {
         return table
     }()
     
-    lazy var addButton = AlignedButton()
+    lazy var addButton = FloatingButton()
 
     // - Init
     init(vc: DocumentsViewController) {
@@ -51,12 +51,11 @@ fileprivate extension DocumentsControllerLayoutManager {
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         addButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 32))
-            make.top.equalTo(table.snp.bottom)
+            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 24, right: 16))
         }
     }
 }

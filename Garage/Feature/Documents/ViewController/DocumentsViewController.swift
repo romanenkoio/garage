@@ -41,7 +41,14 @@ class DocumentsViewController: BasicViewController {
         }
 
         vm.tableVM.addButtonVM.action = action
-        vm.addButtonVM.buttonVM.action = action
+        vm.addButtonVM.actions = [
+            .init(text: "Test button", action: {
+                action()
+            }),
+            .init(text: "Test button", action: {
+                action()
+            })
+        ]
         
       
         makeLogoNavbar()
@@ -69,6 +76,11 @@ class DocumentsViewController: BasicViewController {
                 self?.layout.addButton.isHidden = cells.isEmpty
             }
             .store(in: &cancellables)
+    }
+    
+    override func hideKeyboard() {
+        super.hideKeyboard()
+        self.vm.addButtonVM.isOpen = false
     }
     
 }
