@@ -65,6 +65,7 @@ class CreateServiseViewController: BasicViewController {
         layout.phoneInput.setViewModel(vm.phoneInputVM)
         layout.specialisationInput.setViewModel(vm.specialisationInputVM)
         layout.adressInput.setViewModel(vm.adressInputVM)
+        layout.commentInput.setViewModel(vm.commenntInputVM)
         
         vm.saveCompletion = { [weak self] in
             self?.coordinator.navigateTo(CommonNavigationRoute.close)

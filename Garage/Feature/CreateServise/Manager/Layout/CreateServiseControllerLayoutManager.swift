@@ -18,6 +18,7 @@ final class CreateServiseControllerLayoutManager {
     lazy var specialisationInput = BasicInputView()
     lazy var adressInput = BasicInputView()
     lazy var saveButton = AlignedButton()
+    lazy var commentInput = MultiLineInput()
     
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
@@ -52,6 +53,7 @@ fileprivate extension CreateServiseControllerLayoutManager {
             phoneInput,
             specialisationInput,
             adressInput,
+            commentInput,
             saveButton
         ])
     }

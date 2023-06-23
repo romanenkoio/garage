@@ -104,6 +104,8 @@
 		7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBB2A3F87E600F1D22D /* Reminder.swift */; };
 		7F820CBF2A3FAAC000F1D22D /* BasicPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */; };
 		7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */; };
+		7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E928E2A45D26600DDC874 /* BasicTextView.swift */; };
+		7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -329,6 +331,8 @@
 		7F820CBB2A3F87E600F1D22D /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPageController.swift; sourceTree = "<group>"; };
 		7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicPageController+ViewModel.swift"; sourceTree = "<group>"; };
+		7F9E928E2A45D26600DDC874 /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
+		7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTextView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -474,6 +478,8 @@
 		7F049E4C2A41061000C3EAD0 /* MultiLineInput */ = {
 			isa = PBXGroup;
 			children = (
+				7F9E928E2A45D26600DDC874 /* BasicTextView.swift */,
+				7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */,
 				7F049E4A2A41060800C3EAD0 /* MultiLineInput.swift */,
 				7F049E4D2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift */,
 			);
@@ -1937,6 +1943,7 @@
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
+				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */,
@@ -1974,6 +1981,7 @@
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
+				7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
 				7F049E492A41029F00C3EAD0 /* Date.swift in Sources */,
