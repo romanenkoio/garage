@@ -52,7 +52,10 @@ class CreateDocumentViewController: BasicViewController {
             action: .touchUpInside { [weak self] in
                 let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить документ??"))
                 vm.confirmButton.action = .touchUpInside { [weak self] in
-                    self?.vm.removeDocument()
+                    self?.vm.removeDocument() { [weak self] in
+                        self?.dismiss(animated: true)
+                        self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                    }
                 }
                 self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },

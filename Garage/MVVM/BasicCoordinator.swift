@@ -21,6 +21,7 @@ class BasicCoordinator: Routable {
         switch route {
         case .close:
             self.vc.pop()
+            self.vc.dismiss(animated: true)
         case .closeToRoot:
             vc.popToRoot()
         case .confirmPopup(vm: let vm):

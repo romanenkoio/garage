@@ -144,11 +144,11 @@ extension CreateServiseViewController {
             ])
         }
         
-        func removeService() {
+        func removeService(completion: Completion?) {
             guard case let .edit(service) = mode else {
               return
             }
-            RealmManager().delete(object: service)
+            RealmManager().delete(object: service, completion: completion)
         }
         
     }

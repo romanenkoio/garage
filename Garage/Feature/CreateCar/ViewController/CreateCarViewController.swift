@@ -54,7 +54,10 @@ class CreateCarViewController: BasicViewController {
             action: .touchUpInside { [weak self] in
                 let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить машину?"))
                 vm.confirmButton.action = .touchUpInside { [weak self] in
-                    self?.vm.removeCar()
+                    self?.vm.removeCar() { [weak self] in
+                        self?.dismiss(animated: true)
+                        self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                    }
                 }
                 self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },
