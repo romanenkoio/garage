@@ -106,6 +106,10 @@
 		7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */; };
 		7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E928E2A45D26600DDC874 /* BasicTextView.swift */; };
 		7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */; };
+		7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */; };
+		7F9E92A32A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E929E2A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift */; };
+		7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */; };
+		7F9E92A52A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -333,6 +337,10 @@
 		7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicPageController+ViewModel.swift"; sourceTree = "<group>"; };
 		7F9E928E2A45D26600DDC874 /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTextView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F9E929E2A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupViewController.swift; sourceTree = "<group>"; };
+		7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfirmPopup+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -498,18 +506,15 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
+				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
 				7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */,
 				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
 				7FFC1F5D2A352B4A007A5C75 /* CarInfo */,
 				7FFC1F4C2A33E417007A5C75 /* CreateRepair */,
-				7F0E09522A3348C8008C2B9A /* Documents */,
-				7F0E09382A32892C008C2B9A /* CreateDocument */,
-				7F0E08E52A2FC766008C2B9A /* Selection */,
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
 				7F0E089C2A2F4556008C2B9A /* CreateCar */,
-				7F0E08C32A2FA0A1008C2B9A /* Services */,
-				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
-				7F0E08FA2A2FF2EB008C2B9A /* CreateServise */,
+				7F9E92982A45FB9700DDC874 /* UtilsControllers */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -1047,6 +1052,77 @@
 				7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */,
 			);
 			path = BasicPageController;
+			sourceTree = "<group>";
+		};
+		7F9E92982A45FB9700DDC874 /* UtilsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08E52A2FC766008C2B9A /* Selection */,
+				7F9E92992A45FBB700DDC874 /* ConfirmPopup */,
+				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
+			);
+			path = UtilsControllers;
+			sourceTree = "<group>";
+		};
+		7F9E92992A45FBB700DDC874 /* ConfirmPopup */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E929A2A45FBB700DDC874 /* Manager */,
+				7F9E929F2A45FBB700DDC874 /* ViewController */,
+			);
+			path = ConfirmPopup;
+			sourceTree = "<group>";
+		};
+		7F9E929A2A45FBB700DDC874 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E929B2A45FBB700DDC874 /* Coordinator */,
+				7F9E929D2A45FBB700DDC874 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F9E929B2A45FBB700DDC874 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F9E929D2A45FBB700DDC874 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E929E2A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F9E929F2A45FBB700DDC874 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */,
+				7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7F9E92A62A45FC0100DDC874 /* ServiceGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E08C32A2FA0A1008C2B9A /* Services */,
+				7F0E08FA2A2FF2EB008C2B9A /* CreateServise */,
+			);
+			path = ServiceGroup;
+			sourceTree = "<group>";
+		};
+		7F9E92A72A45FC2700DDC874 /* DocumentGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7F0E09522A3348C8008C2B9A /* Documents */,
+				7F0E09382A32892C008C2B9A /* CreateDocument */,
+			);
+			path = DocumentGroup;
 			sourceTree = "<group>";
 		};
 		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
@@ -1887,6 +1963,7 @@
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
 				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
+				7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
 				7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
@@ -1900,6 +1977,7 @@
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
+				7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */,
 				7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
@@ -1990,6 +2068,7 @@
 				7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */,
 				B978F32D2A2E8F4C0076D326 /* TappableLabel+ViewModel.swift in Sources */,
 				B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */,
+				7F9E92A52A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift in Sources */,
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				B9FB290F2A33785100A4CF1D /* BasicImageList+ViewModel.swift in Sources */,
@@ -2008,6 +2087,7 @@
 				B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,
+				7F9E92A32A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift in Sources */,
 				B9D96E472A37B04900909B33 /* FullSizePhotoViewController.swift in Sources */,
 				7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */,
 				7F0E08BE2A2F92DA008C2B9A /* Wrapper.swift in Sources */,

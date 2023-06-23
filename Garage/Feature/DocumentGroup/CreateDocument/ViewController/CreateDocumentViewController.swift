@@ -50,7 +50,11 @@ class CreateDocumentViewController: BasicViewController {
         
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                self?.vm.removeDocument()
+                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить документ??"))
+                vm.confirmButton.action = .touchUpInside { [weak self] in
+                    self?.vm.removeDocument()
+                }
+                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },
             image: UIImage(named: "delete_ic")
         )

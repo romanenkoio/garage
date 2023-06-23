@@ -47,7 +47,11 @@ class CreateServiseViewController: BasicViewController {
         
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                self?.vm.removeCar()
+                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить сервис?"))
+                vm.confirmButton.action = .touchUpInside { [weak self] in
+                    self?.vm.removeService()
+                }
+                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },
             image: UIImage(named: "delete_ic")
         )

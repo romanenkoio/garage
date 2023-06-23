@@ -144,7 +144,7 @@ extension CreateServiseViewController {
             ])
         }
         
-        func removeCar() {
+        func removeService() {
             guard case let .edit(service) = mode else {
               return
             }

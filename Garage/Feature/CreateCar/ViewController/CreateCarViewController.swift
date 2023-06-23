@@ -52,7 +52,11 @@ class CreateCarViewController: BasicViewController {
 
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                self?.vm.removeCar()
+                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить машину?"))
+                vm.confirmButton.action = .touchUpInside { [weak self] in
+                    self?.vm.removeCar()
+                }
+                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },
             image: UIImage(named: "delete_ic")
         )

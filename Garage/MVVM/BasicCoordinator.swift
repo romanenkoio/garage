@@ -23,7 +23,16 @@ class BasicCoordinator: Routable {
             self.vc.pop()
         case .closeToRoot:
             vc.popToRoot()
+        case .confirmPopup(vm: let vm):
+            show(vm)
         }
+    }
+    
+    private func show(_ vm: Popup.ViewModel) {
+        let popup = ConfirmPopupViewController(vm: vm)
+        popup.modalPresentationStyle = .overCurrentContext
+        popup.modalTransitionStyle = .crossDissolve
+        vc.present(popup)
     }
 }
 
@@ -43,6 +52,8 @@ class BasicModalCoordinator: BasicCoordinator {
             self.modalVC.pop()
         case .closeToRoot:
             modalVC.popToRoot()
+        case .confirmPopup(vm: let vm):
+           break
         }
     }
 }

@@ -16,6 +16,7 @@ enum ButtonStyle {
     case removeImage
     case basicLightTitle
     case basicDarkTitle
+    case popup(color: UIColor? = nil)
 }
 
 class BasicButton: UIButton {
@@ -41,15 +42,28 @@ class BasicButton: UIButton {
         didSet { setButtonColor() }
     }
         
+    private weak var vm: ViewModel?
+    
     init() {
         super .init(frame: .zero)
         layer.cornerRadius = 27
         tintColor = .lightGray
         titleLabel?.font = .custom(size: 16, weight: .semibold)
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func layout() {
         self.snp.makeConstraints { make in
-            make.height.equalTo(64)
             make.width.equalTo(242)
+            
+            guard let vm else { return }
+            switch vm.style {
+            case .popup:
+                make.height.equalTo(48)
+                self.cornerRadius = 12
+            default:
+                make.height.equalTo(64)
+            }
         }
     }
     
@@ -75,7 +89,12 @@ class BasicButton: UIButton {
             case .basicDarkTitle:
                 backgroundColor = .clear
                 setTitleColor(.textGray, for: .normal)
-                
+            case .popup(color: let color):
+            setTitleColor(.primaryBlue, for: .normal)
+            if let color {
+                backgroundColor = color
+                setTitleColor(.white, for: .normal)
+            }
         }
     }
     
@@ -87,12 +106,16 @@ class BasicButton: UIButton {
                 backgroundColor = value ? .primaryGray : .secondaryGray
             case .basicDarkTitle, .basicLightTitle, .addImage, .removeImage:
                 backgroundColor = .clear
+            case .popup(let color):
+                backgroundColor = color ?? (value ? .primaryGray : .secondaryGray)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
-
+        self.vm = vm
+        layout()
+        
         vm.$isHidden
             .sink { [weak self] value in self?.isHidden = value }
             .store(in: &cancellables)
