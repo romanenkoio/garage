@@ -53,17 +53,19 @@ final class PushManager {
         center.add(request)
     }
     
-    func recuestPermission() {
-        center.requestAuthorization(options: [.sound,.alert,.badge]) { [weak self] (granted, _) in
-                self?.isEnable = granted
+    func recuestPermission() async {
+        Task { @MainActor in
+            guard let granted = try? await center.requestAuthorization(options: [.sound,.alert,.badge]) else { return }
+            self.isEnable = granted
         }
     }
     
-    private func checkPermission() {
-        center.getNotificationSettings { settings in
+    private func checkPermission() async {
+        Task { @MainActor in
+            let settings = await center.notificationSettings()
             switch settings.authorizationStatus {
             case .notDetermined:
-                self.recuestPermission()
+                await self.recuestPermission()
             case .authorized, .provisional:
                 self.reschedule()
             default:
@@ -95,8 +97,6 @@ extension PushManager {
             self.repeats = repeats
         }
     }
-    
-
 }
 
 
