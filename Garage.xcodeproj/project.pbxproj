@@ -204,6 +204,8 @@
 		B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3A92A2E9D870076D326 /* Typealiases.swift */; };
 		B978F3C42A2E9D870076D326 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F3AB2A2E9D870076D326 /* Routable.swift */; };
 		B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B978F3C62A2E9DE80076D326 /* SnapKit */; };
+		B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECD82A45801700E089C7 /* ScrollableTableView.swift */; };
+		B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDA2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift */; };
 		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
 		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
 		B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */; };
@@ -426,6 +428,8 @@
 		B978F3A72A2E9D870076D326 /* FormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		B978F3A92A2E9D870076D326 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		B978F3AB2A2E9D870076D326 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		B97FECD82A45801700E089C7 /* ScrollableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTableView.swift; sourceTree = "<group>"; };
+		B97FECDA2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollableTableview+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
 		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -1360,6 +1364,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B97FECD72A45800500E089C7 /* ScrollableTableView */,
 				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
 				B9D96E492A37B17200909B33 /* BasicColllectionView */,
 				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
@@ -1653,6 +1658,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B97FECD72A45800500E089C7 /* ScrollableTableView */ = {
+			isa = PBXGroup;
+			children = (
+				B97FECD82A45801700E089C7 /* ScrollableTableView.swift */,
+				B97FECDA2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift */,
+			);
+			path = ScrollableTableView;
+			sourceTree = "<group>";
+		};
 		B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1927,6 +1941,7 @@
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
+				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
@@ -1968,6 +1983,7 @@
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
+				B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */,
 				7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,

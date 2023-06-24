@@ -21,6 +21,8 @@ final class PastRecordsControllerLayoutManager {
         )
         table.register(RecordCell.self)
         table.table.separatorStyle = .none
+        table.table.bounces = true
+        table.table.alwaysBounceHorizontal = true
         return table
     }()
     
@@ -46,19 +48,14 @@ fileprivate extension PastRecordsControllerLayoutManager {
     
     private func makeLayout() {
         vc.view.addSubview(table)
+        vc.contentView.removeFromSuperview()
 //        vc.contentView.addSubview(addButton)
-        vc.contentView.isHidden = true
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
+            make.leading.trailing.top.bottom.equalToSuperview()
+            make.height.equalTo(500)
         }
-        
-//        addButton.snp.makeConstraints { make in
-//            make.leading.trailing.bottom.equalToSuperview()
-//            make.top.equalTo(table.snp.bottom).offset(-16)
-//        }
     }
-    
 }

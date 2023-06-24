@@ -15,11 +15,7 @@ extension CarInfoViewController {
         
         @Published
         var srollViewValue = true
-        var tableViewValue = false {
-            didSet {
-                pastRecordsVC.layout.table.table.isScrollEnabled = tableViewValue
-            }
-        }
+        var tableViewValue = false 
         let brandLabelVM = BasicLabel.ViewModel()
         let yearLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = BasicLabel.ViewModel()
@@ -54,10 +50,6 @@ extension CarInfoViewController {
                     ]
             )
             super.init()
-            
-            pastRecordsVC.action = {
-                self.srollViewValue.toggle()
-            }
          
             initFields()
             
@@ -77,6 +69,12 @@ extension CarInfoViewController {
             guard let car = RealmManager<Car>().read().first(where: { $0.id == car.id }) else { return }
             self.car = car
             self.initFields()
+        }
+        
+        func readRecords(for car: Car) {
+            let records = RealmManager<Record>().read().filter({$0.carID == car.id})
+            
+            tableVM.setCells(records)
         }
         
         func initFields() {

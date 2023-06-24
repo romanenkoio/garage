@@ -33,7 +33,6 @@ final class ServicesControllerLayoutManager {
         table.register(ServiceCell.self)
         table.table.separatorStyle = .none
         ////////////
-        table.table.isScrollEnabled = false
         return table
     }()
     

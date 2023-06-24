@@ -13,14 +13,17 @@ class PastRecordsViewController: BasicViewController {
     // - UI
     typealias Coordinator = PastRecordsControllerCoordinator
     typealias Layout = PastRecordsControllerLayoutManager
-    
+    var contentOffset: Double? {
+        didSet {
+            layout.table.table.contentOffset.y = contentOffset!
+        }
+    }
     // - Property
     private(set) var vm: ViewModel
     
     // - Manager
     private var coordinator: Coordinator!
     var layout: Layout!
-    var action: (() -> ())?
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -39,6 +42,7 @@ class PastRecordsViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        contentView.removeFromSuperview()
     }
 
     override func configure() {
@@ -88,7 +92,7 @@ extension PastRecordsViewController {
 extension PastRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 20
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,7 +103,6 @@ extension PastRecordsViewController: UITableViewDataSource {
         guard let pastRecordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
         let vm = RecordView.ViewModel(record: Record(carID: "\(indexPath.row)", mileage: 300000, date: .now))
         pastRecordCell.mainView.setViewModel(vm)
-        
         return pastRecordCell
     }
     
@@ -111,12 +114,5 @@ extension PastRecordsViewController: UITableViewDataSource {
 extension PastRecordsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y <= 0 {
-            layout.table.table.isScrollEnabled = false
-            action?()
-        }
     }
 }

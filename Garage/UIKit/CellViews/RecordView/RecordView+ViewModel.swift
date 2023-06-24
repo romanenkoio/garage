@@ -10,7 +10,7 @@ import Foundation
 extension RecordView {
     final class ViewModel: BasicViewModel {
         private(set) var record: Record
-        let infoLabelVM = BasicLabel.ViewModel()
+        var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         
         init(record: Record) {

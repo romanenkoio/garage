@@ -20,7 +20,7 @@ class ServicesViewController: BasicViewController {
     
     // - Manager
     var coordinator: Coordinator!
-    private var layout: Layout!
+     var layout: Layout!
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -40,7 +40,7 @@ class ServicesViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.view.frame.size.height = self.layout.table.table.contentSize.height
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,9 +111,6 @@ extension ServicesViewController: UITableViewDataSource {
         )
         serviceCell.selectionStyle = .none
         
-        view.frame.size.height = tableView.contentSize.height
-        view.setNeedsLayout()
-        print(serviceCell.bounds.height)
         return serviceCell
     }
     

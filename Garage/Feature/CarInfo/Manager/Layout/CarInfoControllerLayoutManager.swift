@@ -20,6 +20,7 @@ final class CarInfoControllerLayoutManager {
         didSet {
             if isFirstLayoutSubviews {
                 setupScrollView()
+                remakeConstraintsAfterLayout()
                 vc.view.layoutIfNeeded()
                 isFirstLayoutSubviews = false
             }
@@ -28,7 +29,6 @@ final class CarInfoControllerLayoutManager {
     var animatedScrollConstraint: Constraint?
     var animatedSegmentTopConstaint: Constraint?
     var previousContentOffsetY: CGFloat = 0
-    var initialY: Double = 0
     
     lazy var topStack: BasicStackView = {
         let view = BasicStackView()
@@ -81,35 +81,35 @@ final class CarInfoControllerLayoutManager {
         makeNavbar()
     }
     
-    func remakeScrollConstraints() {
-        segment.removeFromSuperview()
-        vc.scroll.addSubview(segment)
-        segment.snp.remakeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalTo(vc.view)
-        }
-        
-        self.vc.contentView.snp.remakeConstraints { make in
-            make.leading.trailing.equalTo(self.vc.view)
-            make.bottom.equalToSuperview()
-            make.top.equalTo(segment.snp.bottom)
-        }
-    }
-    
-    func remakeScrollConstraintsAgain() {
-        segment.removeFromSuperview()
-        vc.scroll.addSubview(segment)
-
-        segment.snp.remakeConstraints { make in
-            animatedSegmentTopConstaint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
-            make.leading.trailing.equalTo(vc.view)
-        }
-        
-        self.vc.contentView.snp.remakeConstraints { make in
-            make.leading.trailing.equalTo(self.vc.view)
-            make.bottom.top.equalToSuperview()
-        }
-    }
+//    func remakeScrollConstraints() {
+//        segment.removeFromSuperview()
+//        vc.scroll.addSubview(segment)
+//        segment.snp.remakeConstraints { make in
+//            make.top.equalToSuperview()
+//            make.leading.trailing.equalTo(vc.view)
+//        }
+//
+//        self.vc.contentView.snp.remakeConstraints { make in
+//            make.leading.trailing.equalTo(self.vc.view)
+//            make.bottom.equalToSuperview()
+//            make.top.equalTo(segment.snp.bottom)
+//        }
+//    }
+//
+//    func remakeScrollConstraintsAgain() {
+//        segment.removeFromSuperview()
+//        vc.scroll.addSubview(segment)
+//
+//        segment.snp.remakeConstraints { make in
+//            animatedSegmentTopConstaint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
+//            make.leading.trailing.equalTo(vc.view)
+//        }
+//
+//        self.vc.contentView.snp.remakeConstraints { make in
+//            make.leading.trailing.equalTo(self.vc.view)
+//            make.bottom.top.equalToSuperview()
+//        }
+//    }
     
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(
@@ -128,6 +128,8 @@ final class CarInfoControllerLayoutManager {
                 make.height.greaterThanOrEqualTo(self.vc.view.frame.size.height)
                 make.top.equalToSuperview().offset(self.segment.frame.size.height)
             }
+            
+            
 
                 self.vc.contentView.snp.remakeConstraints { make in
                     make.leading.trailing.equalTo(self.vc.view)
@@ -154,10 +156,6 @@ final class CarInfoControllerLayoutManager {
             animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
-    }
-    
-    func changeScrollViewConstraintDidScroll(returnBlock: (Double)->(Double), with scrollViewContentOffset: Double) {
-
     }
 }
 
@@ -215,11 +213,6 @@ fileprivate extension CarInfoControllerLayoutManager {
             animatedSegmentTopConstaint = make.top.equalToSuperview().constraint
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
             //make.bottom.equalTo(vc.scroll.snp.top)
-        }
-        
-        page.view.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalToSuperview()
         }
         
 //        addRecordButton.snp.makeConstraints { make in
