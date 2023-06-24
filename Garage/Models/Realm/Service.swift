@@ -26,7 +26,7 @@ final class Service: Object, Codable {
         specialisation: String,
         latitude: Double? = nil,
         longitude: Double? = nil,
-        comment: String? = nil
+        comment: String?
     ) {
         self.init()
         self.id = UUID().uuidString

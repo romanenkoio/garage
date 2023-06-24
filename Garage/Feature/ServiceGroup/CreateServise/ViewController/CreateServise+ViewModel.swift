@@ -78,7 +78,8 @@ extension CreateServiseViewController {
                 phone: self.phoneInputVM.text,
                 adress: self.adressInputVM.text,
                 name: self.nameInputVM.text,
-                specialisation: self.specialisationInputVM.text
+                specialisation: self.specialisationInputVM.text,
+                comment: self.commenntInputVM.inputVM.text
             )
             RealmManager<Service>().write(object: service)
         }

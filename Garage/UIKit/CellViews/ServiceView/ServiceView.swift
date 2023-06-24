@@ -29,13 +29,28 @@ class ServiceView: BasicView {
     
     private lazy var adressLabel: BasicLabel = {
         let label = BasicLabel()
-        label.textInsets = .init(bottom: 25, horizontal: 24)
+        label.textInsets = .init(bottom: 16, horizontal: 24)
         label.font = .custom(size: 14, weight: .semibold)
         label.textColor = UIColor(hexString: "939393")
         return label
     }()
     
+    private lazy var topStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        return stack
+    }()
+    
+    private lazy var textStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .vertical
+        stack.spacing = 4
+        return stack
+    }()
+    
     private lazy var detailsView = DetailsView()
+    private lazy var callButton = CallButton()
 
     override func initView() {
         makeLayout()
@@ -45,12 +60,14 @@ class ServiceView: BasicView {
     private func makeLayout() {
         self.addSubview(stack)
         stack.addArrangedSubviews([
-            nameLabel,
-            adressLabel,
+            topStack,
             detailsView
         ])
         
-       
+        textStack.addArrangedSubviews([nameLabel,
+                                      adressLabel])
+        
+        topStack.addArrangedSubviews([textStack, callButton])
     }
     
     private func makeConstraint() {
@@ -63,5 +80,6 @@ class ServiceView: BasicView {
         nameLabel.setViewModel(vm.nameLabelVM)
         adressLabel.setViewModel(vm.adressLabelVM)
         detailsView.setViewModel(vm.detailVM)
+        callButton.setViewModel(vm.callButtonVM)
     }
 }
