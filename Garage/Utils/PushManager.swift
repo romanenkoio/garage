@@ -27,12 +27,13 @@ final class PushManager {
         center.removeDeliveredNotifications(withIdentifiers: [id])
     }
     
-    func readAll() {
-        
+    func readAll() async -> [UNNotificationRequest] {
+        let notification = await center.pendingNotificationRequests()
+        return notification
     }
     
     func removeAll() {
-        
+        center.removeAllPendingNotificationRequests()
     }
     
     func reschedule() {
@@ -53,7 +54,7 @@ final class PushManager {
         center.add(request)
     }
     
-    func recuestPermission() async {
+    func requestPermission() async {
         Task { @MainActor in
             guard let granted = try? await center.requestAuthorization(options: [.sound,.alert,.badge]) else { return }
             self.isEnable = granted
@@ -65,7 +66,7 @@ final class PushManager {
             let settings = await center.notificationSettings()
             switch settings.authorizationStatus {
             case .notDetermined:
-                await self.recuestPermission()
+                await self.requestPermission()
             case .authorized, .provisional:
                 self.reschedule()
             default:
