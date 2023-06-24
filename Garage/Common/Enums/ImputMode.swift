@@ -10,7 +10,5 @@ import Foundation
 enum InputMode {
     case digit
     case all
-    case word
-    
-//    var allowedCharacters: 
+    case phone
 }

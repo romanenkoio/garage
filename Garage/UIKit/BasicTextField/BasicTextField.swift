@@ -24,6 +24,7 @@ class BasicTextField: UITextField {
         }
     }
     
+    var mode: InputMode?
     private(set) weak var vm: ViewModel?
     
     init() {
@@ -40,10 +41,24 @@ class BasicTextField: UITextField {
         self.snp.makeConstraints { make in
             make.height.equalTo(56)
         }
+        self.delegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setMode(_ mode: InputMode) {
+        self.mode = mode
+        
+        switch mode {
+        case .digit:
+            self.keyboardType = .numberPad
+        case .all:
+            break
+        case .phone:
+            self.keyboardType = .phonePad
+        }
     }
     
     func setViewModel(vm: BasicTextField.ViewModel) {
@@ -141,5 +156,27 @@ class BasicTextField: UITextField {
     
     @objc func textDidChange(field: UITextField) {
         self.vm?.text = field.text.wrapped
+    }
+}
+
+extension BasicTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let mode else { return false }
+        
+        let allowedCharacters: CharacterSet
+        
+        switch mode {
+            
+        case .digit:
+            allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        case .phone:
+            allowedCharacters = CharacterSet(charactersIn: "0123456789+")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        case .all:
+            return false
+        }
     }
 }

@@ -38,11 +38,13 @@ final class CreateCarControllerLayoutManager {
     
     lazy var yearField: BasicInputView = {
         let field = BasicInputView()
+        field.textField.setMode(.digit)
         return field
     }()
     
     lazy var mileageField: BasicInputView = {
         let field = BasicInputView()
+        field.textField.setMode(.digit)
         return field
     }()
     

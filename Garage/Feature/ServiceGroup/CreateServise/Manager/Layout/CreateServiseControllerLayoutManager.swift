@@ -14,12 +14,17 @@ final class CreateServiseControllerLayoutManager {
     private unowned let vc: CreateServiseViewController
     
     lazy var nameInput = BasicInputView()
-    lazy var phoneInput = BasicInputView()
     lazy var specialisationInput = BasicInputView()
     lazy var adressInput = BasicInputView()
     lazy var saveButton = AlignedButton()
     lazy var commentInput = MultiLineInput()
     
+    lazy var phoneInput: BasicInputView = {
+        let field = BasicInputView()
+        field.textField.setMode(.phone)
+        return field
+    }()
+
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
