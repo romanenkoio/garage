@@ -46,6 +46,7 @@ final class CreateCarControllerLayoutManager {
         return field
     }()
     
+    lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
 
     // - Init
@@ -74,6 +75,7 @@ fileprivate extension CreateCarControllerLayoutManager {
             modelField,
             yearField,
             mileageField,
+            imageList,
             saveButton
         ])
     }
