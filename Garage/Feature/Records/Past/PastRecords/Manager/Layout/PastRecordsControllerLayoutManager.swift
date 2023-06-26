@@ -21,9 +21,10 @@ final class PastRecordsControllerLayoutManager {
         )
         table.register(RecordCell.self)
         table.table.separatorStyle = .none
-        table.table.bounces = true
-        table.table.alwaysBounceVertical = true
         table.table.isScrollEnabled = false
+        table.table.contentInset = UIEdgeInsets(top: 20)
+        table.table.contentInsetAdjustmentBehavior = .scrollableAxes
+        table.backgroundColor = AppColors.background
         return table
     }()
     
@@ -50,13 +51,11 @@ fileprivate extension PastRecordsControllerLayoutManager {
     private func makeLayout() {
         vc.view.addSubview(table)
         vc.contentView.removeFromSuperview()
-//        vc.contentView.addSubview(addButton)
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()
-            make.height.equalTo(500)
         }
     }
 }

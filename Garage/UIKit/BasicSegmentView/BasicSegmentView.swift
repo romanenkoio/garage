@@ -17,7 +17,6 @@ class BasicSegmentView<T: Equatable>: BasicView {
     private lazy var mainView: BasicView = {
         let view = BasicView()
         view.backgroundColor = .clear
-        view.cornerRadius = 8
         return view
     }()
     
@@ -38,7 +37,7 @@ class BasicSegmentView<T: Equatable>: BasicView {
         makeLayout()
         makeConstraints()
         self.snp.makeConstraints { make in
-            make.height.equalTo(40)
+            make.height.equalTo(54)
         }
     }
     

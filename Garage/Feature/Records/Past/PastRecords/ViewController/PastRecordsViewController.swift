@@ -13,11 +13,7 @@ class PastRecordsViewController: BasicViewController {
     // - UI
     typealias Coordinator = PastRecordsControllerCoordinator
     typealias Layout = PastRecordsControllerLayoutManager
-    var contentOffset: Double? {
-        didSet {
-            layout.table.table.contentOffset.y = contentOffset!
-        }
-    }
+
     // - Property
     private(set) var vm: ViewModel
     
@@ -84,19 +80,12 @@ extension PastRecordsViewController {
     private func configureLayoutManager() {
         layout = PastRecordsControllerLayoutManager(vc: self)
     }
-    
 }
 
 // MARK: - UITableViewDataSource
-
 extension PastRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 40
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,8 +94,7 @@ extension PastRecordsViewController: UITableViewDataSource {
         pastRecordCell.mainView.setViewModel(vm)
         return pastRecordCell
     }
-    
-    
+
 }
 
 // MARK: - UITableViewDelegate

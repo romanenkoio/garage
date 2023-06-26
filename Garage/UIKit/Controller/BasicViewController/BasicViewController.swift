@@ -20,7 +20,6 @@ class BasicViewController: UIViewController {
 
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.delaysContentTouches = false
         return scroll
     }()
     

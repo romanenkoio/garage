@@ -14,8 +14,6 @@ final class CarInfoControllerLayoutManager {
     private unowned let vc: CarInfoViewController
     private var isFirstLayoutSubviews = true
     var scrollMinConstraintConstant: CGFloat = 0
-    var segmentMinConstraintConstant: CGFloat = 0
-    private var firstLayout = true
     var maxConstraintConstant: CGFloat? {
         didSet {
             if isFirstLayoutSubviews {
@@ -27,7 +25,6 @@ final class CarInfoControllerLayoutManager {
         }
     }
     var animatedScrollConstraint: Constraint?
-    var animatedSegmentTopConstaint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
     lazy var topStack: BasicStackView = {
@@ -65,15 +62,6 @@ final class CarInfoControllerLayoutManager {
     
     lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
-    lazy var table: BasicTableView = {
-        let view = BasicTableView()
-        view.setupTable(dataSource: vc, delegate: vc)
-        view.register(BasicTableCell<RecordView>.self)
-        view.backgroundColor = .clear
-
-        return view
-    }()
-    
     // - Init
     init(vc: CarInfoViewController) {
         self.vc = vc
@@ -92,20 +80,16 @@ final class CarInfoControllerLayoutManager {
     }
     
     func remakeConstraintsAfterLayout() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
-            
-            self.page.view.snp.remakeConstraints { make in
-                make.leading.trailing.equalToSuperview()
-                make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
-                make.top.equalTo(self.segment.snp.bottom).offset(10)
-            }
-            
-            self.vc.contentView.snp.remakeConstraints { make in
-                make.leading.trailing.equalTo(self.vc.view)
-                make.height.equalTo(self.page.view.frame.height + 70)
-                make.bottom.top.equalToSuperview()
-            }
-            
+        self.page.view.snp.remakeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
+            make.top.equalTo(self.segment.snp.bottom)
+        }
+        
+        self.vc.contentView.snp.remakeConstraints { make in
+            make.leading.trailing.equalTo(self.vc.view)
+            make.height.equalTo(self.page.view.frame.height + 70)
+            make.bottom.top.equalToSuperview()
         }
     }
     
@@ -128,6 +112,7 @@ fileprivate extension CarInfoControllerLayoutManager {
     private func configure() {
         makeLayout()
         makeConstraint()
+        vc.contentView.backgroundColor = AppColors.background
     }
     
     private func makeLayout() {
@@ -144,10 +129,6 @@ fileprivate extension CarInfoControllerLayoutManager {
         vc.addChild(page)
         page.didMove(toParent: vc)
 
-        //vc.contentView.addSubview(addRecordButton)
-        
-        vc.contentView.backgroundColor = .clear
-    
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
@@ -167,14 +148,6 @@ fileprivate extension CarInfoControllerLayoutManager {
         segment.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            //make.bottom.equalTo(vc.scroll.snp.top)
         }
-        
-//        addRecordButton.snp.makeConstraints { make in
-//            make.top.equalTo(recordsView.snp.bottom).offset(20)
-//            make.leading.equalToSuperview()
-//            make.trailing.equalToSuperview()
-//            make.bottom.equalToSuperview().offset(-20)
-//        }
     }
 }
