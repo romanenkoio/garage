@@ -15,8 +15,8 @@ class BasicViewController: UIViewController {
 
     private var coordinator: Coordinator!
     private(set) var viewModel = BasicControllerModel()
-
     private(set) var isWillAppeared: Bool = false
+    lazy var tableView = UITableView()
 
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
@@ -206,5 +206,12 @@ extension BasicViewController {
         proImageView.image = UIImage(named: "sub")
         proImageView.contentMode = .scaleAspectFit
         navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
+    }
+}
+
+extension BasicViewController: PageControllable {
+    var tableViewDelegate: UITableView? {
+        get {tableView}
+        set {tableView = newValue!}
     }
 }

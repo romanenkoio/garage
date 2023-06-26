@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class CarInfoViewController: BasicViewController, UITableViewDelegate {
+class CarInfoViewController: BasicViewController {
 
     // - UI
     typealias Coordinator = CarInfoControllerCoordinator
@@ -21,7 +21,7 @@ class CarInfoViewController: BasicViewController, UITableViewDelegate {
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
- 
+    
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -38,7 +38,6 @@ class CarInfoViewController: BasicViewController, UITableViewDelegate {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
-        vm.pastRecordsVC.layout.table.table.delegate = self
         title = "Общая информация"
     }
     
@@ -78,7 +77,8 @@ class CarInfoViewController: BasicViewController, UITableViewDelegate {
         .store(in: &cancellables)
         
         vm.pageVM.$index.sink { index in
-            
+            self.vm.pageVM.controllers[index].tableView.delegate = self
+            self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
         }
         .store(in: &cancellables)
     }
@@ -98,10 +98,14 @@ extension CarInfoViewController {
     }
 }
 
+extension CarInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentContentOffsetY = scrollView.contentOffset.y
-        
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
         // Верхняя граница начала bounce эффекта
@@ -118,15 +122,15 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 
-                if newConstraintConstant <= maxConstraintConstant {
-                    self.layout.animatedScrollConstraint?.update(offset: 0)
+                if newConstraintConstant < maxConstraintConstant , !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
+                    self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
                     UIView.animate(withDuration: 0.3) {
                         self.view.layoutIfNeeded()
                     } completion: { _ in
                         if scrollView == self.scroll {
                             self.scroll.isScrollEnabled = false
-                            self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+                            self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = true
                         }
                     }
                 }
@@ -140,7 +144,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     UIView.animate(withDuration: 0.3) {
                         self.view.layoutIfNeeded()
                         self.scroll.isScrollEnabled = true
-                        self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
+                        self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
                     }
                 }
             }

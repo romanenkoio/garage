@@ -27,6 +27,7 @@ extension CarInfoViewController {
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVC: PastRecordsViewController
         var serviceVC: ServicesViewController
+        var isScrollEnabled: Bool = true
         
         @Published var logo: UIImage?
         

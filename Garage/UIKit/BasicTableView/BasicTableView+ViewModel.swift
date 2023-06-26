@@ -8,6 +8,11 @@
 import UIKit
 
 extension BasicTableView {
+    enum TableViewEmptyViewType {
+        case large
+        case small
+    }
+    
     class ViewModel: BasicViewModel {
         private(set) var labelVM = BasicLabel.ViewModel()
         private(set) var subLabelVM = BasicLabel.ViewModel()
@@ -17,8 +22,11 @@ extension BasicTableView {
         private(set) var image: UIImage?
         @Published
         var isEmpty: Bool = true
+        @Published
+        var emptyViewType: TableViewEmptyViewType? = .large
 
         func setupEmptyState(
+            type: TableViewEmptyViewType? = .large,
             labelVM: BasicLabel.ViewModel,
             sublabelVM: BasicLabel.ViewModel,
             addButtonVM: BasicButton.ViewModel,
@@ -28,6 +36,7 @@ extension BasicTableView {
             self.addButtonVM = addButtonVM
             self.subLabelVM = sublabelVM
             self.image = image
+            self.emptyViewType = type
         }
     }
     

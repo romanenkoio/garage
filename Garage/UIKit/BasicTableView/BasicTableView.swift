@@ -63,7 +63,7 @@ class BasicTableView: BasicView {
     
     override func initView() {
         makeLayout()
-        makeConstraint()
+        
     }
     
     private func makeLayout() {
@@ -77,7 +77,7 @@ class BasicTableView: BasicView {
         ])
     }
     
-    private func makeConstraint() {
+    private func largeMakeConstraint() {
         table.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -89,6 +89,22 @@ class BasicTableView: BasicView {
         emptyImageView.snp.makeConstraints { make in
             make.height.equalTo(117)
             make.width.equalTo(276)
+        }
+    }
+    
+    private func smallMakeConstraints() {
+        table.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        emptyStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(70)
+        }
+        
+        emptyImageView.snp.makeConstraints { make in
+            make.height.equalTo(67)
+            make.width.equalTo(226)
         }
     }
     
@@ -108,6 +124,17 @@ class BasicTableView: BasicView {
             self?.emptyImageView.image = image
         }
         .store(in: &cancellables)
+        
+        vm.$emptyViewType.sink {[weak self] type in
+            if let type {
+                switch type {
+                    case .large:
+                        self?.largeMakeConstraint()
+                    case .small:
+                        self?.smallMakeConstraints()
+                }
+            }
+        }
     }
     
     func setupTable(

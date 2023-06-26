@@ -13,10 +13,8 @@ class PastRecordsViewController: BasicViewController {
     // - UI
     typealias Coordinator = PastRecordsControllerCoordinator
     typealias Layout = PastRecordsControllerLayoutManager
-
     // - Property
     private(set) var vm: ViewModel
-    
     // - Manager
     private var coordinator: Coordinator!
     var layout: Layout!
@@ -34,6 +32,7 @@ class PastRecordsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        tableViewDelegate = layout.table.table
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,13 +84,12 @@ extension PastRecordsViewController {
 // MARK: - UITableViewDataSource
 extension PastRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return vm.tableVM.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pastRecordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
-        let vm = RecordView.ViewModel(record: Record(carID: "\(indexPath.row)", mileage: 300000, date: .now))
-        pastRecordCell.mainView.setViewModel(vm)
+        pastRecordCell.mainView.setViewModel(.init(record: vm.tableVM.cells[indexPath.row]))
         return pastRecordCell
     }
 
@@ -101,6 +99,5 @@ extension PastRecordsViewController: UITableViewDataSource {
 
 extension PastRecordsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
     }
 }
