@@ -52,8 +52,6 @@ class CarInfoViewController: BasicViewController {
         super.viewWillAppear(animated)
         vm.readCar()
         layout.table.table.reloadData()
-        layout.table.table.isScrollEnabled = false
-        scroll.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -155,7 +153,11 @@ extension CarInfoViewController: UITableViewDelegate {
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //        var offset = scrollView.contentOffset.y
+        scrollView.delaysContentTouches = false
         let currentContentOffsetY = scrollView.contentOffset.y
+        if scrollView == vm.pastRecordsVC.layout.table.table {
+            print(scrollView.contentOffset)
+        }
         //        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
         //
         //        let stackScale = min(1.0, max(0.5 - currentContentOffsetY / -10000.0, 0.5))
@@ -171,83 +173,106 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
         if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
-           let currentSegmentTopConstraintConstant = layout.animatedSegmentTopConstaint?.layoutConstraints.first?.constant,
            let maxConstraintConstant = layout.maxConstraintConstant {
             
             var newConstraintConstant = currentScrollConstraintConstant
-            var newSegmentConstraintConstant = currentSegmentTopConstraintConstant
             
             if contentMovesUp {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
-                newSegmentConstraintConstant = max(currentSegmentTopConstraintConstant - scrollDiff, layout.segmentMinConstraintConstant)
                 
-
-               
             } else if contentMovesDown {
-                newSegmentConstraintConstant = min(currentSegmentTopConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
             }
             
-            if scrollView == self.vm.pastRecordsVC.layout.table.table,
-               newSegmentConstraintConstant == layout.segmentMinConstraintConstant,
-               scrollView.contentOffset.y <= 0 {
-                self.scroll.isScrollEnabled = true
-                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-            }
-            
-            if newSegmentConstraintConstant == layout.segmentMinConstraintConstant,
-               scrollView == self.scroll  {
-                self.scroll.isScrollEnabled = false
-                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-            }
             // Меняем высоту и запрещаем скролл, только в случае изменения константы
             
             if newConstraintConstant != currentScrollConstraintConstant, scrollView == self.scroll {
                 self.newConstraint = newConstraintConstant
                 self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
-                self.layout.animatedSegmentTopConstaint?.update(offset: newSegmentConstraintConstant)
                 self.scroll.contentOffset.y = self.layout.previousContentOffsetY
             }
             
-            //Процент завершения анимации
-//            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-//            layout.previousContentOffsetY = scrollView.contentOffset.y
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView == self.scroll {
-            if let maxConstraintConstant = layout.maxConstraintConstant {
-                if newConstraint <= maxConstraintConstant / 2 {
-                    self.layout.animatedScrollConstraint?.update(offset: 0)
-                    self.layout.animatedSegmentTopConstaint?.update(offset: 0)
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-                    } completion: { _ in
-                        if scrollView == self.scroll{
-                            self.scroll.isScrollEnabled = false
-                            self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
-                        }
-                    }
-                    
-                } else if newConstraint >= maxConstraintConstant / 2{
-                    self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
-                    self.layout.animatedSegmentTopConstaint?.update(offset: maxConstraintConstant)
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
+            
+            if newConstraintConstant <= maxConstraintConstant / 2 {
+                
+                self.layout.animatedScrollConstraint?.update(offset: 0)
+                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                UIView.animate(withDuration: 0.2) {
+                    self.view.layoutIfNeeded()
+                } completion: { _ in
+                    if scrollView == self.scroll {
+                        self.scroll.isScrollEnabled = false
+                        self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
                     }
                 }
             }
+            
+            if newConstraintConstant >= maxConstraintConstant / 2 {
+                self.scroll.isScrollEnabled = true
+                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
+                self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                UIView.animate(withDuration: 0.2) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+            
+            //Процент завершения анимации
+            //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+            //            layout.previousContentOffsetY = scrollView.contentOffset.y
         }
-        
-        
-        //                    vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
-        //                    scrollView.isScrollEnabled = false
     }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if scrollView == self.scroll {
+//            if let maxConstraintConstant = layout.maxConstraintConstant {
+//                if newConstraint <= maxConstraintConstant / 2 {
+//                    self.layout.animatedScrollConstraint?.update(offset: 0)
+//                    self.layout.animatedSegmentTopConstaint?.update(offset: 0)
+//                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+//                    UIView.animate(withDuration: 0.3) {
+//                        self.view.layoutIfNeeded()
+//                    } completion: { _ in
+//                        if scrollView == self.scroll{
+//                            self.scroll.isScrollEnabled = false
+//                            self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+//                        }
+//                    }
+//
+//                } else if newConstraint >= maxConstraintConstant / 2{
+//                    self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+//                    self.layout.animatedSegmentTopConstaint?.update(offset: maxConstraintConstant)
+//                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+//                    UIView.animate(withDuration: 0.3) {
+//                        self.view.layoutIfNeeded()
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
+extension UIScrollView {
+    var isBouncing: Bool {
+        return isBouncingTop || isBouncingBottom
+    }
+    var isBouncingTop: Bool {
+        return contentOffset.y < topInsetForBouncing - contentInset.top
+    }
+    var isBouncingBottom: Bool {
+        let threshold: CGFloat
+        if contentSize.height > frame.size.height {
+            threshold = (contentSize.height - frame.size.height + contentInset.bottom + bottomInsetForBouncing)
+        } else {
+            threshold = topInsetForBouncing
+        }
+        return contentOffset.y > threshold
+    }
+    private var topInsetForBouncing: CGFloat {
+        return safeAreaInsets.top != 0.0 ? -safeAreaInsets.top : 0.0
+    }
+    private var bottomInsetForBouncing: CGFloat {
+        return safeAreaInsets.bottom
+    }
+}

@@ -93,33 +93,26 @@ final class CarInfoControllerLayoutManager {
     
     func remakeConstraintsAfterLayout() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
+            
             self.page.view.snp.remakeConstraints { make in
-                make.leading.trailing.bottom.equalToSuperview()
-                make.height.greaterThanOrEqualTo(self.vc.view.frame.size.height)
-                make.top.equalToSuperview().offset(self.segment.frame.size.height)
+                make.leading.trailing.equalToSuperview()
+                make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
+                make.top.equalTo(self.segment.snp.bottom)
             }
             
-
-                self.vc.contentView.snp.remakeConstraints { make in
-                    make.leading.trailing.equalTo(self.vc.view)
-                    make.bottom.top.equalToSuperview()
-                }
             
-            UIView.animate(withDuration: 0.1) {
-                self.vc.view.layoutIfNeeded()
+            self.vc.contentView.snp.remakeConstraints { make in
+                make.leading.trailing.equalTo(self.vc.view)
+                make.height.equalTo(self.page.view.frame.height + 70)
+                make.bottom.top.equalToSuperview()
             }
+            
         }
     }
     
     private func setupScrollView() {
         vc.scroll.snp.removeConstraints()
         vc.view.bringSubviewToFront(vc.scroll)
-        vc.view.bringSubviewToFront(segment)
-        
-        segment.snp.remakeConstraints { make in
-            animatedSegmentTopConstaint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
-            make.leading.trailing.equalToSuperview()
-        }
         
         vc.scroll.snp.makeConstraints { make in
             animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
@@ -147,10 +140,9 @@ fileprivate extension CarInfoControllerLayoutManager {
             yearLabel,
             vinLabel
         ])
-        vc.view.addSubview(segment)
-        vc.contentView.addSubview(recordsView)
+        vc.contentView.addSubview(segment)
+        vc.contentView.addSubview(page.view)
         vc.addChild(page)
-        recordsView.addSubview(page.view)
         page.didMove(toParent: vc)
 
         //vc.contentView.addSubview(addRecordButton)
@@ -173,13 +165,8 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
-        recordsView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-        
         segment.snp.makeConstraints { make in
-            animatedSegmentTopConstaint = make.top.equalToSuperview().constraint
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
             //make.bottom.equalTo(vc.scroll.snp.top)
         }
