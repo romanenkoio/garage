@@ -194,8 +194,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
             }
             
             
-            if newConstraintConstant <= maxConstraintConstant / 2 {
-                
+            if newConstraintConstant < maxConstraintConstant / 2 {
                 self.layout.animatedScrollConstraint?.update(offset: 0)
                 self.scroll.contentOffset.y = self.layout.previousContentOffsetY
                 UIView.animate(withDuration: 0.2) {
@@ -208,7 +207,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 }
             }
             
-            if newConstraintConstant >= maxConstraintConstant / 2 {
+            if newConstraintConstant > maxConstraintConstant / 1.5 {
                 self.scroll.isScrollEnabled = true
                 self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
                 self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
