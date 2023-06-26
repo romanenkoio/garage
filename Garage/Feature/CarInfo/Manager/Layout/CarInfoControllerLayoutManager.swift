@@ -81,36 +81,6 @@ final class CarInfoControllerLayoutManager {
         makeNavbar()
     }
     
-//    func remakeScrollConstraints() {
-//        segment.removeFromSuperview()
-//        vc.scroll.addSubview(segment)
-//        segment.snp.remakeConstraints { make in
-//            make.top.equalToSuperview()
-//            make.leading.trailing.equalTo(vc.view)
-//        }
-//
-//        self.vc.contentView.snp.remakeConstraints { make in
-//            make.leading.trailing.equalTo(self.vc.view)
-//            make.bottom.equalToSuperview()
-//            make.top.equalTo(segment.snp.bottom)
-//        }
-//    }
-//
-//    func remakeScrollConstraintsAgain() {
-//        segment.removeFromSuperview()
-//        vc.scroll.addSubview(segment)
-//
-//        segment.snp.remakeConstraints { make in
-//            animatedSegmentTopConstaint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
-//            make.leading.trailing.equalTo(vc.view)
-//        }
-//
-//        self.vc.contentView.snp.remakeConstraints { make in
-//            make.leading.trailing.equalTo(self.vc.view)
-//            make.bottom.top.equalToSuperview()
-//        }
-//    }
-    
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
@@ -128,7 +98,6 @@ final class CarInfoControllerLayoutManager {
                 make.height.greaterThanOrEqualTo(self.vc.view.frame.size.height)
                 make.top.equalToSuperview().offset(self.segment.frame.size.height)
             }
-            
             
 
                 self.vc.contentView.snp.remakeConstraints { make in

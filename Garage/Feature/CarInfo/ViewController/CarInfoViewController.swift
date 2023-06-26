@@ -21,7 +21,7 @@ class CarInfoViewController: BasicViewController {
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
-    
+    var newConstraint: Double = 0
 
     
     
@@ -170,7 +170,8 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
         if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
-           let currentSegmentTopConstraintConstant = layout.animatedSegmentTopConstaint?.layoutConstraints.first?.constant {
+           let currentSegmentTopConstraintConstant = layout.animatedSegmentTopConstaint?.layoutConstraints.first?.constant,
+           let maxConstraintConstant = layout.maxConstraintConstant {
             
             var newConstraintConstant = currentScrollConstraintConstant
             var newSegmentConstraintConstant = currentSegmentTopConstraintConstant
@@ -179,36 +180,36 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 newSegmentConstraintConstant = max(currentSegmentTopConstraintConstant - scrollDiff, layout.segmentMinConstraintConstant)
-                print(newConstraintConstant)
-                if newConstraintConstant == 0  {
-                    if scrollView.bounds.intersects(view.frame) == true {
-                         //the UIView is within frame, use the UIScrollView's scrolling.
-                        
-                        if vm.serviceVC.layout.table.table.contentOffset.y == 0 {
-                                //tableViews content is at the top of the tableView.
-
-                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = false
-                            
-                            vm.serviceVC.layout.table.table.resignFirstResponder()
-                            print("using scrollView scroll")
-                            print(scrollView.contentSize, vm.serviceVC.layout.table.table.contentSize)
-                            } else {
-
-                                //UIView is in frame, but the tableView still has more content to scroll before resigning its scrolling over to ScrollView.
-                                vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
-                                scrollView.resignFirstResponder()
-                                print("using tableView scroll")
-                            }
-
-                        } else {
-
-                            //UIView is not in frame. Use tableViews scroll.
-                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
-                            scrollView.resignFirstResponder()
-                            
-                            print("using tableView scroll")
-
-                        }
+                
+                if newConstraintConstant <= maxConstraintConstant / 2  {
+//                    if scrollView.bounds.intersects(view.frame) == true {
+//                         //the UIView is within frame, use the UIScrollView's scrolling.
+//
+//                        if vm.serviceVC.layout.table.table.contentOffset.y == 0 {
+//                                //tableViews content is at the top of the tableView.
+//
+//                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = false
+//
+//                            vm.serviceVC.layout.table.table.resignFirstResponder()
+//                            print("using scrollView scroll")
+//                            print(scrollView.contentSize, vm.serviceVC.layout.table.table.contentSize)
+//                            } else {
+//
+//                                //UIView is in frame, but the tableView still has more content to scroll before resigning its scrolling over to ScrollView.
+//                                vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
+//                                scrollView.resignFirstResponder()
+//                                print("using tableView scroll")
+//                            }
+//
+//                        } else {
+//
+//                            //UIView is not in frame. Use tableViews scroll.
+//                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
+//                            scrollView.resignFirstResponder()
+//
+//                            print("using tableView scroll")
+//
+//                        }
                 }
 
             } else if contentMovesDown {
@@ -218,16 +219,38 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
                 
                 // Меняем высоту и запрещаем скролл, только в случае изменения константы
-                if newConstraintConstant != currentScrollConstraintConstant {
-                    layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
-                    layout.animatedSegmentTopConstaint?.update(offset: newSegmentConstraintConstant)
-                    scrollView.contentOffset.y = layout.previousContentOffsetY
-                }
+            if newConstraintConstant != currentScrollConstraintConstant {
+                self.newConstraint = newConstraintConstant
+                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+                self.layout.animatedSegmentTopConstaint?.update(offset: newSegmentConstraintConstant)
+                scrollView.contentOffset.y = self.layout.previousContentOffsetY
+               
+            }
                 
                 //Процент завершения анимации
                 let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
                 layout.previousContentOffsetY = scrollView.contentOffset.y
                 
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if let maxConstraintConstant = layout.maxConstraintConstant {
+            if newConstraint <= maxConstraintConstant / 2 {
+                self.layout.animatedScrollConstraint?.update(offset: 0)
+                self.layout.animatedSegmentTopConstaint?.update(offset: 0)
+                scrollView.contentOffset.y = self.layout.previousContentOffsetY
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
+            } else if newConstraint >= maxConstraintConstant / 2{
+                self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                self.layout.animatedSegmentTopConstaint?.update(offset: maxConstraintConstant)
+                scrollView.contentOffset.y = self.layout.previousContentOffsetY
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
+            }
         }
     }
 }
