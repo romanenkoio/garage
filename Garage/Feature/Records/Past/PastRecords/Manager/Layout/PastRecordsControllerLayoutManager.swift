@@ -22,7 +22,8 @@ final class PastRecordsControllerLayoutManager {
         table.register(RecordCell.self)
         table.table.separatorStyle = .none
         table.table.bounces = true
-
+        table.table.alwaysBounceVertical = true
+        table.table.isScrollEnabled = false
         return table
     }()
     

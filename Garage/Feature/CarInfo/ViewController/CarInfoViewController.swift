@@ -22,7 +22,8 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     var newConstraint: Double = 0
-
+    var screenHeight: CGFloat = 0
+    let scrollViewContentHeight = 1200 as CGFloat
     
     
     init(vm: ViewModel) {
@@ -59,6 +60,7 @@ class CarInfoViewController: BasicViewController {
         super.viewDidLayoutSubviews()
         layout.maxConstraintConstant = layout.topStack.frame.size.height
 //        scroll.contentSize.height = vm.pastRecordsVC.layout.table.table.contentSize.height + layout.segment.frame.height
+        screenHeight = (view.window?.screen.bounds.height)!
         view.layoutIfNeeded()
     }
     
@@ -92,7 +94,6 @@ class CarInfoViewController: BasicViewController {
             if index == 1 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.vm.serviceVC.layout.table.table.delegate = self
-                    self.vm.serviceVC.view.frame = self.layout.page.view.bounds
                 }
             }
         }
@@ -157,9 +158,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let currentContentOffsetY = scrollView.contentOffset.y
         //        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
         //
-//        let stackScale = min(1.0, max(0.5 - currentContentOffsetY / -10000.0, 0.5))
-//        let profileViewsLabelScale = min(max(1.0 - currentContentOffsetY / 400.0, 0.0), 1.0)
-//        let profileViewsAlphaScale = min(max(0.5 - currentContentOffsetY / 120.0, 0.0), 0.5)
+        //        let stackScale = min(1.0, max(0.5 - currentContentOffsetY / -10000.0, 0.5))
+        //        let profileViewsLabelScale = min(max(1.0 - currentContentOffsetY / 400.0, 0.0), 1.0)
+        //        let profileViewsAlphaScale = min(max(0.5 - currentContentOffsetY / 120.0, 0.0), 0.5)
         
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
@@ -181,77 +182,72 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 newSegmentConstraintConstant = max(currentSegmentTopConstraintConstant - scrollDiff, layout.segmentMinConstraintConstant)
                 
-                if newConstraintConstant <= maxConstraintConstant / 2  {
-//                    if scrollView.bounds.intersects(view.frame) == true {
-//                         //the UIView is within frame, use the UIScrollView's scrolling.
-//
-//                        if vm.serviceVC.layout.table.table.contentOffset.y == 0 {
-//                                //tableViews content is at the top of the tableView.
-//
-//                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = false
-//
-//                            vm.serviceVC.layout.table.table.resignFirstResponder()
-//                            print("using scrollView scroll")
-//                            print(scrollView.contentSize, vm.serviceVC.layout.table.table.contentSize)
-//                            } else {
-//
-//                                //UIView is in frame, but the tableView still has more content to scroll before resigning its scrolling over to ScrollView.
-//                                vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
-//                                scrollView.resignFirstResponder()
-//                                print("using tableView scroll")
-//                            }
-//
-//                        } else {
-//
-//                            //UIView is not in frame. Use tableViews scroll.
-//                            vm.serviceVC.layout.table.table.isUserInteractionEnabled = true
-//                            scrollView.resignFirstResponder()
-//
-//                            print("using tableView scroll")
-//
-//                        }
-                }
 
+               
             } else if contentMovesDown {
-                    newSegmentConstraintConstant = min(currentSegmentTopConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
-                    newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
+                newSegmentConstraintConstant = min(currentSegmentTopConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
+                newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
             }
             
-                
-                // Меняем высоту и запрещаем скролл, только в случае изменения константы
-            if newConstraintConstant != currentScrollConstraintConstant {
+            if scrollView == self.vm.pastRecordsVC.layout.table.table,
+               newSegmentConstraintConstant == layout.segmentMinConstraintConstant,
+               scrollView.contentOffset.y <= 0 {
+                self.scroll.isScrollEnabled = true
+                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
+                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+            }
+            
+            if newSegmentConstraintConstant == layout.segmentMinConstraintConstant,
+               scrollView == self.scroll  {
+                self.scroll.isScrollEnabled = false
+                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+            }
+            // Меняем высоту и запрещаем скролл, только в случае изменения константы
+            
+            if newConstraintConstant != currentScrollConstraintConstant, scrollView == self.scroll {
                 self.newConstraint = newConstraintConstant
                 self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
                 self.layout.animatedSegmentTopConstaint?.update(offset: newSegmentConstraintConstant)
-                scrollView.contentOffset.y = self.layout.previousContentOffsetY
-               
+                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
             }
-                
-                //Процент завершения анимации
-                let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-                layout.previousContentOffsetY = scrollView.contentOffset.y
-                
+            
+            //Процент завершения анимации
+//            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+//            layout.previousContentOffsetY = scrollView.contentOffset.y
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if let maxConstraintConstant = layout.maxConstraintConstant {
-            if newConstraint <= maxConstraintConstant / 2 {
-                self.layout.animatedScrollConstraint?.update(offset: 0)
-                self.layout.animatedSegmentTopConstaint?.update(offset: 0)
-                scrollView.contentOffset.y = self.layout.previousContentOffsetY
-                UIView.animate(withDuration: 0.3) {
-                    self.view.layoutIfNeeded()
-                }
-            } else if newConstraint >= maxConstraintConstant / 2{
-                self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
-                self.layout.animatedSegmentTopConstaint?.update(offset: maxConstraintConstant)
-                scrollView.contentOffset.y = self.layout.previousContentOffsetY
-                UIView.animate(withDuration: 0.3) {
-                    self.view.layoutIfNeeded()
+        if scrollView == self.scroll {
+            if let maxConstraintConstant = layout.maxConstraintConstant {
+                if newConstraint <= maxConstraintConstant / 2 {
+                    self.layout.animatedScrollConstraint?.update(offset: 0)
+                    self.layout.animatedSegmentTopConstaint?.update(offset: 0)
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    } completion: { _ in
+                        if scrollView == self.scroll{
+                            self.scroll.isScrollEnabled = false
+                            self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+                        }
+                    }
+                    
+                } else if newConstraint >= maxConstraintConstant / 2{
+                    self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                    self.layout.animatedSegmentTopConstaint?.update(offset: maxConstraintConstant)
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }
+        
+        
+        //                    vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+        //                    scrollView.isScrollEnabled = false
     }
 }
 
