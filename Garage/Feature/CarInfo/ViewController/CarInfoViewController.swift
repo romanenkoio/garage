@@ -57,8 +57,6 @@ class CarInfoViewController: BasicViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.maxConstraintConstant = layout.topStack.frame.size.height
-//        scroll.contentSize.height = vm.pastRecordsVC.layout.table.table.contentSize.height + layout.segment.frame.height
-        screenHeight = (view.window?.screen.bounds.height)!
         view.layoutIfNeeded()
     }
     
@@ -89,18 +87,12 @@ class CarInfoViewController: BasicViewController {
         .store(in: &cancellables)
         
         vm.pageVM.$index.sink { index in
-            if index == 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.vm.serviceVC.layout.table.table.delegate = self
-                }
+
             }
-        }
         .store(in: &cancellables)
         
 
     }
-    var layputOnce = true
-    var layputOnceAgain = true
     
 }
 
@@ -153,11 +145,9 @@ extension CarInfoViewController: UITableViewDelegate {
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //        var offset = scrollView.contentOffset.y
-        scrollView.delaysContentTouches = false
+
         let currentContentOffsetY = scrollView.contentOffset.y
-        if scrollView == vm.pastRecordsVC.layout.table.table {
-            print(scrollView.contentOffset)
-        }
+
         //        let translation = scrollView.panGestureRecognizer.translation(in: scrollView)
         //
         //        let stackScale = min(1.0, max(0.5 - currentContentOffsetY / -10000.0, 0.5))
@@ -181,41 +171,43 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 
+                if newConstraintConstant <= maxConstraintConstant {
+                    self.layout.animatedScrollConstraint?.update(offset: 0)
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    } completion: { _ in
+                        if scrollView == self.scroll {
+                            self.scroll.isScrollEnabled = false
+                            self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+                        }
+                    }
+                }
+                
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, layout.maxConstraintConstant ?? 0)
-            }
-            
-            // Меняем высоту и запрещаем скролл, только в случае изменения константы
-            
-            if newConstraintConstant != currentScrollConstraintConstant, scrollView == self.scroll {
-                self.newConstraint = newConstraintConstant
-                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-            }
-            
-            
-            if newConstraintConstant < maxConstraintConstant / 2 {
-                self.layout.animatedScrollConstraint?.update(offset: 0)
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                UIView.animate(withDuration: 0.2) {
-                    self.view.layoutIfNeeded()
-                } completion: { _ in
-                    if scrollView == self.scroll {
-                        self.scroll.isScrollEnabled = false
-                        self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = true
+                if newConstraintConstant >= layout.scrollMinConstraintConstant {
+                    self.scroll.isScrollEnabled = true
+                    self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
+                    self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                      
                     }
                 }
             }
             
-            if newConstraintConstant > maxConstraintConstant / 1.5 {
-                self.scroll.isScrollEnabled = true
-                self.vm.pastRecordsVC.layout.table.table.isScrollEnabled = false
-                self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                UIView.animate(withDuration: 0.2) {
-                    self.view.layoutIfNeeded()
-                }
-            }
+            // Меняем высоту и запрещаем скролл, только в случае изменения константы
+//            if newConstraintConstant != currentScrollConstraintConstant, scrollView == self.scroll {
+//                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+////                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+//            }
+            
+            
+            
+            
+            
             
             //Процент завершения анимации
             //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
@@ -250,28 +242,4 @@ extension CarInfoViewController: UIScrollViewDelegate {
 //            }
 //        }
 //    }
-}
-
-extension UIScrollView {
-    var isBouncing: Bool {
-        return isBouncingTop || isBouncingBottom
-    }
-    var isBouncingTop: Bool {
-        return contentOffset.y < topInsetForBouncing - contentInset.top
-    }
-    var isBouncingBottom: Bool {
-        let threshold: CGFloat
-        if contentSize.height > frame.size.height {
-            threshold = (contentSize.height - frame.size.height + contentInset.bottom + bottomInsetForBouncing)
-        } else {
-            threshold = topInsetForBouncing
-        }
-        return contentOffset.y > threshold
-    }
-    private var topInsetForBouncing: CGFloat {
-        return safeAreaInsets.top != 0.0 ? -safeAreaInsets.top : 0.0
-    }
-    private var bottomInsetForBouncing: CGFloat {
-        return safeAreaInsets.bottom
-    }
 }

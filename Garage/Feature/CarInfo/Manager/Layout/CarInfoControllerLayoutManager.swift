@@ -97,9 +97,8 @@ final class CarInfoControllerLayoutManager {
             self.page.view.snp.remakeConstraints { make in
                 make.leading.trailing.equalToSuperview()
                 make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
-                make.top.equalTo(self.segment.snp.bottom)
+                make.top.equalTo(self.segment.snp.bottom).offset(10)
             }
-            
             
             self.vc.contentView.snp.remakeConstraints { make in
                 make.leading.trailing.equalTo(self.vc.view)
