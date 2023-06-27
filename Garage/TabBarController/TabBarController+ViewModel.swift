@@ -13,7 +13,7 @@ extension TabBarController {
             case garage = "Гараж"
             case documents = "Документы"
             case services = "Сервисы"
-            case settings = "Настройки"
+            case settings = "Статьи"
             
             var viewController: UIViewController {
                 switch self {
@@ -24,7 +24,7 @@ extension TabBarController {
                 case .services:
                     return ServicesViewController(vm: .init()).withNavigation()
                 case .settings:
-                    return SettingsViewController(vm: .init()).withNavigation()
+                    return ArticlesViewController(vm: .init()).withNavigation()
                 }
             }
             

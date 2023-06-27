@@ -89,6 +89,13 @@
 		7F1465552A38B33C0022E4E7 /* FuelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465542A38B33C0022E4E7 /* FuelType.swift */; };
 		7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */; };
 		7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1465592A38BF830022E4E7 /* AlignedButton+ViewModel.swift */; };
+		7F174EF12A4B2821004E51F9 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EF02A4B2821004E51F9 /* ArticleView.swift */; };
+		7F174EF32A4B2848004E51F9 /* ArticleView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EF22A4B2848004E51F9 /* ArticleView+ViewModel.swift */; };
+		7F174F002A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EFA2A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift */; };
+		7F174F012A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EFC2A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift */; };
+		7F174F022A4B2B86004E51F9 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EFE2A4B2B86004E51F9 /* ArticlesViewController.swift */; };
+		7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EFF2A4B2B86004E51F9 /* Articles+ViewModel.swift */; };
+		7F174F052A4B2F7C004E51F9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174F042A4B2F7C004E51F9 /* Article.swift */; };
 		7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
@@ -123,6 +130,10 @@
 		7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */; };
 		7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */; };
 		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
+		7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */; };
+		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
+		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
+		7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */; };
 		7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */; };
 		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
@@ -323,6 +334,13 @@
 		7F1465542A38B33C0022E4E7 /* FuelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelType.swift; sourceTree = "<group>"; };
 		7F1465572A38BF7E0022E4E7 /* AlignedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedButton.swift; sourceTree = "<group>"; };
 		7F1465592A38BF830022E4E7 /* AlignedButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlignedButton+ViewModel.swift"; sourceTree = "<group>"; };
+		7F174EF02A4B2821004E51F9 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		7F174EF22A4B2848004E51F9 /* ArticleView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F174EFA2A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F174EFC2A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F174EFE2A4B2B86004E51F9 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		7F174EFF2A4B2B86004E51F9 /* Articles+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Articles+ViewModel.swift"; sourceTree = "<group>"; };
+		7F174F042A4B2F7C004E51F9 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -357,6 +375,10 @@
 		7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
 		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
+		7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
+		7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadArticle+ViewModel.swift"; sourceTree = "<group>"; };
 		7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -521,6 +543,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
 				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
 				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
 				7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */,
@@ -650,6 +673,7 @@
 				7F0E09472A3331E8008C2B9A /* VINDeocdedValue.swift */,
 				7F0E08BD2A2F92DA008C2B9A /* Wrapper.swift */,
 				7F0E09112A31BFD2008C2B9A /* BrandImage.swift */,
+				7F174F042A4B2F7C004E51F9 /* Article.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -977,6 +1001,67 @@
 			path = AlignedButton;
 			sourceTree = "<group>";
 		};
+		7F174EEF2A4B2818004E51F9 /* ArticleView */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EF02A4B2821004E51F9 /* ArticleView.swift */,
+				7F174EF22A4B2848004E51F9 /* ArticleView+ViewModel.swift */,
+			);
+			path = ArticleView;
+			sourceTree = "<group>";
+		};
+		7F174EF42A4B2B60004E51F9 /* ArticlesGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EF72A4B2B86004E51F9 /* Articles */,
+				7FD2D6BC2A4B8B4600D4FCFB /* ReadArticle */,
+			);
+			path = ArticlesGroup;
+			sourceTree = "<group>";
+		};
+		7F174EF72A4B2B86004E51F9 /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EF82A4B2B86004E51F9 /* Manager */,
+				7F174EFD2A4B2B86004E51F9 /* ViewController */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		7F174EF82A4B2B86004E51F9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EF92A4B2B86004E51F9 /* Coordinator */,
+				7F174EFB2A4B2B86004E51F9 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F174EF92A4B2B86004E51F9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EFA2A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F174EFB2A4B2B86004E51F9 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EFC2A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F174EFD2A4B2B86004E51F9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F174EFE2A4B2B86004E51F9 /* ArticlesViewController.swift */,
+				7F174EFF2A4B2B86004E51F9 /* Articles+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1227,6 +1312,49 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FD2D6BC2A4B8B4600D4FCFB /* ReadArticle */ = {
+			isa = PBXGroup;
+			children = (
+				7FD2D6BD2A4B8B4600D4FCFB /* Manager */,
+				7FD2D6C22A4B8B4600D4FCFB /* ViewController */,
+			);
+			path = ReadArticle;
+			sourceTree = "<group>";
+		};
+		7FD2D6BD2A4B8B4600D4FCFB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FD2D6BE2A4B8B4600D4FCFB /* Coordinator */,
+				7FD2D6C02A4B8B4600D4FCFB /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FD2D6BE2A4B8B4600D4FCFB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FD2D6C02A4B8B4600D4FCFB /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FD2D6C22A4B8B4600D4FCFB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */,
+				7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7FDCACAA2A4431F20071E1AA /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1386,6 +1514,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F07BD3D2A46EF940075EEFC /* CallButton */,
 				7FDCACAA2A4431F20071E1AA /* FloatingButton */,
 				7F0F92772A4257E300920CD9 /* DetailsView */,
@@ -1396,7 +1525,6 @@
 				B9FB290B2A33782900A4CF1D /* BasicImagePickerView */,
 				7F1465562A38BF700022E4E7 /* AlignedButton */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
-				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
 				7F0E09072A3096C9008C2B9A /* BasicTableView */,
 				7F0E08F22A2FC7B6008C2B9A /* UniversalSelectionView */,
@@ -1426,6 +1554,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F174EEF2A4B2818004E51F9 /* ArticleView */,
 				7F0B30662A430A620094BC9C /* AddCarView */,
 				7FF503C32A3D1F77006DA7EC /* SettingView */,
 				B9D96E502A37CF5100909B33 /* PhotoView */,
@@ -1929,8 +2058,10 @@
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
 				B9D96E4B2A37B18000909B33 /* BasicCollectionView.swift in Sources */,
+				7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
 				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
+				7F174F052A4B2F7C004E51F9 /* Article.swift in Sources */,
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
@@ -1948,13 +2079,16 @@
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
+				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
+				7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */,
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
+				7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */,
 				7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
@@ -2010,6 +2144,7 @@
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,
 				7F0E08A52A2F4556008C2B9A /* CreateCarControllerCoordinator.swift in Sources */,
 				7F0E095E2A3348C8008C2B9A /* Documents+ViewModel.swift in Sources */,
+				7F174F022A4B2B86004E51F9 /* ArticlesViewController.swift in Sources */,
 				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
 				7F07BD452A46FE0A0075EEFC /* ImputMode.swift in Sources */,
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
@@ -2036,6 +2171,7 @@
 				7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */,
 				7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */,
 				7F0E08CF2A2FA0A1008C2B9A /* ServicesViewController.swift in Sources */,
+				7F174F002A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
@@ -2049,6 +2185,7 @@
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
 				7FFC1F672A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
+				7F174EF32A4B2848004E51F9 /* ArticleView+ViewModel.swift in Sources */,
 				7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */,
 				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
@@ -2063,6 +2200,7 @@
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,
 				B9D96E4F2A37B47200909B33 /* UICollectionView.swift in Sources */,
+				7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */,
 				7F0E09222A324A90008C2B9A /* Collection.swift in Sources */,
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */,
@@ -2079,6 +2217,7 @@
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
+				7F174F012A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift in Sources */,
 				7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */,
 				B978F3232A2E8F4C0076D326 /* BasicInputView+ViewModel.swift in Sources */,
 				B978F31E2A2E8F4C0076D326 /* BasicSearchField+ViewModel.swift in Sources */,
@@ -2092,6 +2231,7 @@
 				7F0E09252A3254AF008C2B9A /* NavBarButton.swift in Sources */,
 				7F0E08732A2F1D4D008C2B9A /* BasicRoute.swift in Sources */,
 				B9FB290F2A33785100A4CF1D /* BasicImageList+ViewModel.swift in Sources */,
+				7F174EF12A4B2821004E51F9 /* ArticleView.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
 				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
