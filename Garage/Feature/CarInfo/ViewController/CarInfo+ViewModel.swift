@@ -13,21 +13,17 @@ extension CarInfoViewController {
         
         private(set) var car: Car
         
-        @Published
-        var srollViewValue = true
-        var tableViewValue = false 
         let brandLabelVM = BasicLabel.ViewModel()
         let yearLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = BasicLabel.ViewModel()
         let milageLabelVM = BasicLabel.ViewModel()
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
-        
+        let topStackVM: TopView.ViewModel
         let tableVM = BasicTableView.GenericViewModel<Record>()
         let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVC: PastRecordsViewController
         var serviceVC: ServicesViewController
-        var isScrollEnabled: Bool = true
         
         @Published var logo: UIImage?
         
@@ -50,6 +46,8 @@ extension CarInfoViewController {
                     serviceVC
                     ]
             )
+            
+            topStackVM = .init(car: self.car)
             super.init()
          
             initFields()

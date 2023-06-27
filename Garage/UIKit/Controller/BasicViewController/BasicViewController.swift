@@ -16,7 +16,7 @@ class BasicViewController: UIViewController {
     private var coordinator: Coordinator!
     private(set) var viewModel = BasicControllerModel()
     private(set) var isWillAppeared: Bool = false
-    lazy var tableView = UITableView()
+    private(set) var tableView = UITableView()
 
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()

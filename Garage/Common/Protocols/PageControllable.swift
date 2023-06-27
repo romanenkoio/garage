@@ -8,5 +8,5 @@
 import UIKit
 
 protocol PageControllable: AnyObject {
-    var tableViewDelegate: UITableView? { get set }
+    var tableViewDelegate: UITableView? { get set}
 }

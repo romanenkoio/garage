@@ -27,24 +27,14 @@ final class CarInfoControllerLayoutManager {
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
-    lazy var topStack: BasicStackView = {
-        let view = BasicStackView()
-        view.axis = .vertical
-        view.alignment = .leading
-        view.cornerRadius = 12
-        view.spacing = 10
-        view.paddingInsets = .init(left: 20)
-        view.backgroundColor = .white
-        view.clipsToBounds = false
-        return view
-    }()
+    lazy var topStack = TopView()
     
-    lazy var logoImage: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.cornerRadius = 39
-        return view
-    }()
+//    lazy var logoImage: UIImageView = {
+//        let view = UIImageView()
+//        view.contentMode = .scaleAspectFit
+//        view.cornerRadius = 39
+//        return view
+//    }()
     
     lazy var recordsView: BasicView = {
        let view = BasicView()
@@ -117,13 +107,13 @@ fileprivate extension CarInfoControllerLayoutManager {
     
     private func makeLayout() {
         vc.view.addSubview(topStack)
-        topStack.addArrangedSubviews([
-            logoImage,
-            brandModelLabel,
-            mileageLabel,
-            yearLabel,
-            vinLabel
-        ])
+//        topStack.addArrangedSubviews([
+//            logoImage,
+//            brandModelLabel,
+//            mileageLabel,
+//            yearLabel,
+//            vinLabel
+//        ])
         vc.contentView.addSubview(segment)
         vc.contentView.addSubview(page.view)
         vc.addChild(page)
@@ -136,11 +126,6 @@ fileprivate extension CarInfoControllerLayoutManager {
     }
     
     private func makeConstraint() {
-        logoImage.snp.makeConstraints { make in
-            make.height.width.equalTo(78)
-        }
-        
-        
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
         }
