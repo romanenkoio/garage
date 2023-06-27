@@ -17,7 +17,7 @@ extension CreateDocumentViewController {
                 style: .primary
             ))
         
-        let imageList = BasicImageListView.ViewModel()
+        let imageListVM = BasicImageListView.ViewModel()
         let datePickerVM = RangeDatePicker.ViewModel()
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
@@ -47,8 +47,8 @@ extension CreateDocumentViewController {
                 }
                 self.saveCompletion?()
             }
-            imageList.editingEnabled = true
-            imageList.description = "Добавить фото"
+            imageListVM.editingEnabled = true
+            imageListVM.description = "Добавить фото"
             datePickerVM.desctiptionVM.text = "Дата действия"
         }
         
@@ -74,17 +74,18 @@ extension CreateDocumentViewController {
         
         func initMode() {
             initValidator()
-            imageList.editingEnabled = mode != .create
+            imageListVM.editingEnabled = mode != .create
             guard case let .edit(document) = mode else {
               return
             }
             
-            self.imageList.items = document.photos
+            self.imageListVM.set( document.photos)
             self.datePickerVM.setDates(start: document.startDate, end: document.endDate)
             typeFieldVM.text = document.type.title
             
             changeChecker.setForm([
-                typeFieldVM.inputVM
+//                typeFieldVM.inputVM,
+                imageListVM
             ])
         }
         
@@ -97,7 +98,7 @@ extension CreateDocumentViewController {
             )
             RealmManager<Document>().write(object: document)
             
-            self.imageList.items.forEach { image in
+            self.imageListVM.items.forEach { image in
                 guard let data = image.jpegData(compressionQuality: 1) else { return }
                 let photo = Photo(document, image: data)
                 RealmManager<Photo>().write(object: photo)

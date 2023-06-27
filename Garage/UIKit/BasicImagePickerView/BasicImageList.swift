@@ -104,7 +104,7 @@ class BasicImageListView: BasicView {
             descriptionLabel.setViewModel(descriptionLabelVM)
         }
     
-        vm.$items.sink {[weak self] images in
+        vm.$items.removeDuplicates().sink {[weak self] images in
             self?.imageStack.clearArrangedSubviews()
             self?.items.removeAll()
             

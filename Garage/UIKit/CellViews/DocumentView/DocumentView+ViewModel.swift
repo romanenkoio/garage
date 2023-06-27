@@ -24,7 +24,7 @@ extension DocumentView {
                 dateLabelVM.text = "С \(startString) по \(endString)"
             }
             
-            photoListVM.items = document.photos
+            photoListVM.set(document.photos)
             detailsLabelVM.text = "Смотреть детали"
         }
     }
