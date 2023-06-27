@@ -19,7 +19,7 @@ extension CreateCarViewController {
         var winFieldVM: BasicInputView.ViewModel
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
-        let imageList = BasicImageListView.ViewModel()
+        let imageListVM = BasicImageListView.ViewModel()
         
         var succesCreateCompletion: Completion?
         var suggestionCompletion: SelectArrayCompletion?
@@ -73,8 +73,8 @@ extension CreateCarViewController {
             initMode()
             initSuggestionAction()
             
-            imageList.editingEnabled = true
-            imageList.description = "Добавить фото"
+            imageListVM.editingEnabled = true
+            imageListVM.description = "Добавить фото"
 
             brandFieldVM.inputVM.$text.sink { [weak self] value in
                 self?.getLogoBy(value)
@@ -188,7 +188,8 @@ extension CreateCarViewController {
                 brandFieldVM.inputVM,
                 modelFieldVM.inputVM,
                 mileageFieldVM.inputVM,
-                yearFieldVM.inputVM
+                yearFieldVM.inputVM,
+                imageListVM
             ])
         }
         
