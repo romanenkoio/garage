@@ -29,7 +29,7 @@ class TopView: BasicStackView {
         view.axis = .horizontal
         view.alignment = .leading
         view.spacing = 10
-        view.paddingInsets = .init(top: 16, bottom: 16)
+        view.paddingInsets = .init(top: 16)
         view.backgroundColor = .white
         return view
     }()

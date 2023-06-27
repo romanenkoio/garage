@@ -48,7 +48,7 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.maxConstraintConstant = layout.topStack.frame.size.height
+        layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
     }
     
     
