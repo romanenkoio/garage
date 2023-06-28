@@ -40,7 +40,18 @@ class GarageViewController: BasicViewController {
         super.viewWillAppear(animated)
         vm.readCars()
         hideTabBar(false)
+        makeNavbar()
+    }
+    
+    private func makeNavbar() {
         makeLogoNavbar()
+        let settingButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                self?.coordinator.navigateTo(GarageNavigationRoute.settings)
+            },
+            image: UIImage(named: "settings")
+        )
+        makeRightNavBarButton(buttons: [settingButtonVM])
     }
 
     override func configure() {

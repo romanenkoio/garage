@@ -11,6 +11,7 @@ import UIKit
 enum GarageNavigationRoute: Routable {
     case createCar
     case openCar(Car)
+    case settings
 }
 
 class GarageControllerCoordinator: BasicCoordinator {
@@ -27,6 +28,9 @@ class GarageControllerCoordinator: BasicCoordinator {
                 vc.push(new)
             case .openCar(let car):
                 let new = CarInfoViewController(vm: .init(car: car))
+                vc.push(new)
+            case .settings:
+                let new = SettingsViewController(vm: .init())
                 vc.push(new)
             }
         } else {
