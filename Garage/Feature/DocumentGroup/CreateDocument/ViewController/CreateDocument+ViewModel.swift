@@ -64,7 +64,8 @@ extension CreateDocumentViewController {
             .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates().sink { [weak self] value in
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
 
@@ -84,8 +85,10 @@ extension CreateDocumentViewController {
             typeFieldVM.text = document.type.title
             
             changeChecker.setForm([
-//                typeFieldVM.inputVM,
-                imageListVM
+                typeFieldVM.inputVM,
+                imageListVM,
+                datePickerVM.startDateVM,
+                datePickerVM.finishDateVM
             ])
         }
         

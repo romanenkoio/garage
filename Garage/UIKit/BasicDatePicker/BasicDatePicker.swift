@@ -149,6 +149,6 @@ class BasicDatePicker: BasicTextField {
     }
     
     @objc private func pickerAction(sender: UIDatePicker) {
-        self.viewModel?.setDate(sender.date)
+        self.viewModel?.setNewDate(sender.date)
     }
 }

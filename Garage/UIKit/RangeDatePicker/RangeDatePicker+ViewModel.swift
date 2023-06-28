@@ -57,8 +57,8 @@ extension RangeDatePicker {
             start: Date? = nil,
             end: Date? = nil
         ) {
-            startDateVM.setDate(start)
-            finishDateVM.setDate(end)
+            startDateVM.initDate(start)
+            finishDateVM.initDate(end)
         }
         
         init(
@@ -73,7 +73,7 @@ extension RangeDatePicker {
                 guard let self, let date else { return }
                 self.startDateVM.text = "c \(date.toString(.ddMMyy))"
                 if let finishDate = self.finishDateVM.date, date >= finishDate {
-                    self.finishDateVM.setDate(nil)
+                    self.finishDateVM.setNewDate(nil)
                 }
                 self.startDate = date
                 self.validate()
