@@ -50,6 +50,9 @@ fileprivate extension CreateRecordControllerLayoutManager {
     private func configure() {
         makeLayout()
         makeConstraint()
+        mileageImput.textField.mode = .digit
+        costInput.textField.mode = .digit
+        
     }
     
     private func makeLayout() {

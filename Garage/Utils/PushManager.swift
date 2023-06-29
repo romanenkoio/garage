@@ -18,7 +18,7 @@ final class PushManager {
         }
     }
     
-    let sh = PushManager()
+    static let sh = PushManager()
     
     private init() {}
     
@@ -37,7 +37,12 @@ final class PushManager {
     }
     
     func reschedule() {
-        
+        removeAll()
+        scheduleStandart()
+    }
+    
+    func scheduleStandart() {
+        [.conditioner, .tiresFall, .tiresSpring, .windshieldWasher].forEach({ create($0) })
     }
     
     func create(_ push: LocalPush) {
@@ -47,22 +52,22 @@ final class PushManager {
             content.subtitle = subtitle
         }
         content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 61, repeats: push.repeats)
+       
+        let trigger = UNCalendarNotificationTrigger(dateMatching: push.date, repeats: push.repeats)
         let request = UNNotificationRequest(identifier: push.id, content: content, trigger: trigger)
 
         center.add(request)
     }
     
-    func requestPermission() async {
-        Task { @MainActor in
+    private func requestPermission() async {
+        Task {
             guard let granted = try? await center.requestAuthorization(options: [.sound,.alert,.badge]) else { return }
             self.isEnable = granted
         }
     }
     
-    private func checkPermission() async {
-        Task { @MainActor in
+    func checkPermission() async {
+        Task {
             let settings = await center.notificationSettings()
             switch settings.authorizationStatus {
             case .notDetermined:
@@ -76,28 +81,59 @@ final class PushManager {
     }
 }
 
-extension PushManager {
-    struct LocalPush {
-        var id: String
-        var title: String
-        var subtitle: String?
-        var date: Date
-        var repeats: Bool
-        
-        init(
-            id: String = UUID().uuidString,
-            title: String,
-            subtitle: String?,
-            date: Date,
-            repeats: Bool = false
-        ) {
-            self.id = id
-            self.title = title
-            self.subtitle = subtitle
-            self.date = date
-            self.repeats = repeats
-        }
+
+struct LocalPush {
+    var id: String
+    var title: String
+    var subtitle: String?
+    var date: DateComponents
+    var repeats: Bool
+    
+    init(
+        id: String = UUID().uuidString,
+        title: String,
+        subtitle: String?,
+        date: DateComponents,
+        repeats: Bool = false
+    ) {
+        self.id = id
+        self.title = title
+        self.subtitle = subtitle
+        self.date = date
+        self.repeats = repeats
     }
 }
 
-
+extension LocalPush {
+    static let tiresSpring = LocalPush(
+        id: "tires.spring",
+        title: "Просто хотим напомнить",
+        subtitle: "Скоро станет тепло, запланируйте смену шин!",
+        date: DateComponents(month: 4, day: 15, hour: 12, minute: 0),
+        repeats: true
+    )
+    
+    static let tiresFall = LocalPush(
+        id: "tires.fall",
+        title: "Просто хотим напомнить",
+        subtitle: "Скоро станет прохладно, запланируйте смену шин!",
+        date: DateComponents(month: 10, day: 10, hour: 12, minute: 0),
+        repeats: true
+    )
+    
+    static let windshieldWasher = LocalPush(
+        id: "windshield.washer",
+        title: "Просто хотим напомнить",
+        subtitle: "Заранее заменяйте стекломывательную жидкость",
+        date: DateComponents(month: 10, day: 5, hour: 12, minute: 0),
+        repeats: true
+    )
+    
+    static let conditioner = LocalPush(
+        id: "conditioner",
+        title: "Просто хотим напомнить",
+        subtitle: "Подготовьте кондиционер к летнему сезону",
+        date: DateComponents(month: 10, day: 5, hour: 12, minute: 0),
+        repeats: true
+    )
+}
