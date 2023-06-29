@@ -37,4 +37,8 @@ extension Date {
         }
         return date
     }
+    
+    var components: DateComponents {
+        return Calendar.current.dateComponents([.day, .month, .year], from: self)
+    }
 }

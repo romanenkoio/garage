@@ -39,10 +39,16 @@ final class PushManager {
     func reschedule() {
         removeAll()
         scheduleStandart()
+        userShedule()
     }
     
     func scheduleStandart() {
         [.conditioner, .tiresFall, .tiresSpring, .windshieldWasher].forEach({ create($0) })
+    }
+    
+    func userShedule() {
+        let reminders: [Reminder] = RealmManager().read()
+        reminders.forEach({ create(LocalPush(reminder: $0))})
     }
     
     func create(_ push: LocalPush) {
@@ -101,6 +107,14 @@ struct LocalPush {
         self.subtitle = subtitle
         self.date = date
         self.repeats = repeats
+    }
+    
+    init(reminder: Reminder) {
+        id = UUID().uuidString
+        title = "Вы просили на помнить"
+        subtitle = reminder.description
+        date = reminder.date.components
+        repeats = false
     }
 }
 

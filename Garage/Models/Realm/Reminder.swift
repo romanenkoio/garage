@@ -12,5 +12,5 @@ final class Reminder: Object {
     @Persisted var id: String
     @Persisted var comment: String?
     @Persisted var carID: String
-    @Persisted var date: String
+    @Persisted var date: Date
 }
