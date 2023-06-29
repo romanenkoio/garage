@@ -28,7 +28,8 @@ final class CreateRecordControllerLayoutManager {
     lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
     lazy var servicesList = BasicList<Service>()
-    
+    lazy var commentInput = MultiLineInput()
+
     var contentView: BasicView {
         return vc.contentView
     }
@@ -62,6 +63,7 @@ fileprivate extension CreateRecordControllerLayoutManager {
         contentView.addSubview(dateInput)
         contentView.addSubview(servicesList)
         contentView.addSubview(imageList)
+        contentView.addSubview(commentInput)
         contentView.addSubview(saveButton)
     }
     
@@ -85,9 +87,14 @@ fileprivate extension CreateRecordControllerLayoutManager {
             make.top.equalTo(servicesList.snp.bottom).offset(25)
         }
         
-        saveButton.snp.makeConstraints { make in
+        commentInput.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
             make.top.equalTo(imageList.snp.bottom).offset(25)
+        }
+        
+        saveButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
+            make.top.equalTo(commentInput.snp.bottom).offset(25)
             make.bottom.equalToSuperview()
         }
     }

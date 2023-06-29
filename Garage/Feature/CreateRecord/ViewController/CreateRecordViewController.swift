@@ -50,6 +50,7 @@ class CreateRecordViewController: BasicViewController {
         layout.saveButton.setViewModel(vm.saveButtonVM)
         layout.servicesList.setViewModel(vm.serivesListVM)
         layout.shortTypeInput.setViewModel(vm.shortTypeVM)
+        layout.commentInput.setViewModel(vm.commenntInputVM)
         
         vm.$services.sink { [weak self] items in
             self?.layout.servicesList.isHidden = items.isEmpty

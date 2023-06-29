@@ -161,7 +161,7 @@ class BasicTextField: UITextField {
 
 extension BasicTextField: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let mode else { return false }
+        guard let mode else { return true }
         
         let allowedCharacters: CharacterSet
         
@@ -176,7 +176,7 @@ extension BasicTextField: UITextFieldDelegate {
             let characterSet = CharacterSet(charactersIn: string)
             return allowedCharacters.isSuperset(of: characterSet)
         case .all:
-            return false
+            return true
         }
     }
 }

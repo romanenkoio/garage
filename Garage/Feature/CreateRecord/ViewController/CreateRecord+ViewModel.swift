@@ -31,6 +31,7 @@ extension CreateRecordViewController {
             inputVM: .init(placeholder: "Замена свечей"),
             isRequired: true
         )
+        let commenntInputVM: MultiLineInput.ViewModel
         
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
             title: "Выберите сервис",
@@ -55,6 +56,12 @@ extension CreateRecordViewController {
                 descriptionVM: .init(text: "Стоимость")
             )
             
+            commenntInputVM = .init(
+                inputVM: .init(),
+                errorVM: errorVM,
+                descriptionLabelVM: .init(text: "Комментарий")
+            )
+
             mileageInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "\(car.mileage + 1000) км"),
@@ -73,7 +80,7 @@ extension CreateRecordViewController {
                 cost: costInputVM.text.toDouble(),
                 mileage: mileageInputVM.text.toDouble(),
                 date: dateInputVM.date ?? Date(),
-                comment: nil
+                comment: commenntInputVM.inputVM.text
             )
             RealmManager<Record>().write(object: record)
             self.imagePickerVM.items.forEach { image in
