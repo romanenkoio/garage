@@ -10,6 +10,7 @@ import Foundation
 
 final class Record: Object, Codable {
     @Persisted var id: String
+    @Persisted var short: String
     @Persisted var carID: String
     @Persisted var serviceID: String?
     @Persisted var cost: Double?
@@ -18,6 +19,7 @@ final class Record: Object, Codable {
     @Persisted var comment: String?
     
     convenience init(
+        short: String,
         carID: String,
         serviceID: String? = nil,
         cost: Double? = nil,
@@ -37,5 +39,5 @@ final class Record: Object, Codable {
 }
 
 extension Record {
-    static let testRecord = Record(carID: "1", mileage: 300000, date: Date())
+    static let testRecord = Record(short: "Test", carID: "1", mileage: 300000, date: Date())
 }

@@ -75,6 +75,7 @@ extension CreateRecordViewController {
         
         func saveRecord() {
             let record = Record(
+                short: shortTypeVM.text,
                 carID: car.id,
                 serviceID: serivesListVM.selectedItem?.id,
                 cost: costInputVM.text.toDouble(),
