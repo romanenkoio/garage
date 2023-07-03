@@ -13,17 +13,18 @@ extension DocumentView {
         let dateLabelVM = BasicLabel.ViewModel()
         let detailsLabelVM = BasicLabel.ViewModel()
         let photoListVM = BasicImageListView.ViewModel()
+        let detailVM = DetailsView.ViewModel()
         
         init(document: Document) {
             typeLabelVM.text = document.rawType
             if let startDate = document.startDate,
                let endDate = document.endDate {
-                let startString = startDate.formatData(formatType: .ddMMyy)
-                let endString = endDate.formatData(formatType: .ddMMyy)
+                let startString = startDate.toString(.ddMMyy)
+                let endString = endDate.toString(.ddMMyy)
                 dateLabelVM.text = "С \(startString) по \(endString)"
             }
             
-            photoListVM.items = document.photos
+            photoListVM.set(document.photos)
             detailsLabelVM.text = "Смотреть детали"
         }
     }

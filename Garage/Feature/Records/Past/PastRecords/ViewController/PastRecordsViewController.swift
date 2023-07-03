@@ -90,6 +90,7 @@ extension PastRecordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pastRecordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
         pastRecordCell.mainView.setViewModel(.init(record: vm.tableVM.cells[indexPath.row]))
+        pastRecordCell.selectionStyle = .none
         return pastRecordCell
     }
 

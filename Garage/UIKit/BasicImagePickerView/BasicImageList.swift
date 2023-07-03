@@ -26,6 +26,7 @@ class BasicImageListView: BasicView {
         stack.axis = .horizontal
         stack.spacing = 10
         stack.distribution = .fillEqually
+        stack.paddingInsets = .init(bottom: 20)
         return stack
     }()
     
@@ -104,7 +105,7 @@ class BasicImageListView: BasicView {
             descriptionLabel.setViewModel(descriptionLabelVM)
         }
     
-        vm.$items.sink {[weak self] images in
+        vm.$items.removeDuplicates().sink {[weak self] images in
             self?.imageStack.clearArrangedSubviews()
             self?.items.removeAll()
             

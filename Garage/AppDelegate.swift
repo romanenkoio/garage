@@ -14,11 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setupNavbar()
+        initNavbar()
+        initPushed()
+        initSystem()
         return true
     }
 
-    private func setupNavbar() {
+    private func initNavbar() {
         if #available(iOS 15.0, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithDefaultBackground()
@@ -27,6 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }
+    }
+    
+    private func initPushed() {
+        Task {
+            await PushManager.sh.checkPermission()
+        }
+    }
+    
+    private func initSystem() {
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
     }
 }
 

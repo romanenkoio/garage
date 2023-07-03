@@ -31,4 +31,9 @@ extension String {
 
         return Double(mutatingString) ?? .zero
     }
+    
+    func clearDigit() -> String {
+        let result = self.trimmingCharacters(in: CharacterSet(charactersIn: "0123456789").inverted)
+        return result
+    }
 }

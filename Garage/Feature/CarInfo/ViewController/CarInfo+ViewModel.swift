@@ -22,8 +22,8 @@ extension CarInfoViewController {
         let tableVM = BasicTableView.GenericViewModel<Record>()
         let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
         var pageVM: BasicPageController.ViewModel
-        var pastRecordsVC: PastRecordsViewController
-        var serviceVC: ServicesViewController
+        var pastRecordsVM: PastRecordsViewController.ViewModel
+        var serviceVM: ServicesViewController.ViewModel
         
         @Published var logo: UIImage?
         
@@ -36,16 +36,14 @@ extension CarInfoViewController {
                 titles: { items in items.map({ $0.title}) }
             )
             
-            pastRecordsVC = .init(vm: .init(car: car))
-            serviceVC = .init(vm: .init())
+            pastRecordsVM = .init(car: car)
+            serviceVM = .init()
             
             pageVM = .init(
-                controllers:
-                    [
-                    pastRecordsVC,
-                    serviceVC
-                    ]
-            )
+                controllers: [
+                    PastRecordsViewController(vm: pastRecordsVM),
+                    ServicesViewController(vm: serviceVM)
+                ])
             
             topStackVM = .init(car: self.car)
             super.init()
@@ -68,6 +66,7 @@ extension CarInfoViewController {
             guard let car = RealmManager<Car>().read().first(where: { $0.id == car.id }) else { return }
             self.car = car
             self.initFields()
+            self.pastRecordsVM.readRecords()
         }
         
         func readRecords(for car: Car) {

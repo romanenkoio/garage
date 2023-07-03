@@ -11,12 +11,15 @@ extension ServiceView {
     final class ViewModel: BasicViewModel {
         let nameLabelVM = BasicLabel.ViewModel()
         let adressLabelVM = BasicLabel.ViewModel()
-        let detailsLabelVM = BasicLabel.ViewModel()
-        
+        let detailVM = DetailsView.ViewModel()
+        let callButtonVM: CallButton.ViewModel
+        unowned let service: Service
+
         init(service: Service) {
+            self.service = service
             nameLabelVM.text = service.name
             adressLabelVM.text = service.adress
-            detailsLabelVM.text = "Смотреть детали"
+            callButtonVM = .init(phone: service.phone)
         }
     }
 }

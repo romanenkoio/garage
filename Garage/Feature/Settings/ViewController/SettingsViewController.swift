@@ -36,6 +36,8 @@ class SettingsViewController: BasicViewController {
         hideTabBar(false)
         makeLogoNavbar()
         hideTabBar(false)
+        makeCloseButton(isLeft: true)
+        title = "Настройки"
     }
 
     override func configure() {

@@ -46,24 +46,6 @@ extension Int {
     }
 }
 
-extension Date {
-    func formatData(formatType: FormatTypes) -> String {
-        let date = self
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = formatType.rawValue
-        let dateString = dateFormatter.string(from: date)
-        
-        return dateString
-    }
-    
-    func append(_ component: Calendar.Component, value: Int = 1) -> Date {
-        guard let date = Calendar.current.date(byAdding: component, value: value, to: self) else {
-            fatalError("Failed adding `\(component)` \(value) to date \(self)")
-        }
-        return date
-    }
-}
-
 extension String {
     func formatData(formatType: FormatTypes) -> Date {
         let dateFormatterMonth = DateFormatter()

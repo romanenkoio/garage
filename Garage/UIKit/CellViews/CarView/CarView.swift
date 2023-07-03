@@ -10,61 +10,82 @@ import UIKit
 class CarView: BasicView {
     private lazy var mainStack: BasicStackView = {
         let stack = BasicStackView()
-        stack.spacing = 10
-        stack.axis = .horizontal
-        stack.edgeInsets = .init(vertical: 8, horizontal: 16)
-        stack.paddingInsets = .init(vertical: 20, horizontal: 17)
+        stack.axis = .vertical
+        stack.backgroundColor = UIColor(hexString: "#F5F5F5")
         stack.cornerRadius = 20
-        stack.backgroundColor = UIColor(hexString: "EDEDED")
-        stack.backgroundColor = .primaryGray
-        stack.alignment = .center
+        stack.edgeInsets = .init(top: 20, horizontal: 20)
         return stack
-    }()
-    
-    private lazy var imageView: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .white
-        view.cornerRadius = 10
-        view.contentMode = .scaleAspectFit
-        return view
     }()
     
     private lazy var textStack: BasicStackView = {
-        let stack = BasicStackView()
-        stack.spacing = 4
+       let stack = BasicStackView()
         stack.axis = .vertical
-        stack.paddingInsets = .init(vertical: 5)
-        stack.edgeInsets = .init(left: 13)
+        stack.distribution = .fillEqually
         return stack
     }()
-
+    
+    private lazy var attentionView: BasicView = {
+        let view = BasicView()
+        view.backgroundColor = .white
+        view.cornerRadius = 20
+        return view
+    }()
+    
+    private lazy var attentionLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.font = .custom(size: 11, weight: .bold)
+        label.textColor = UIColor(hexString: "#E84949")
+        label.textInsets = .init(left: 6, right: 5)
+        label.text = "Течдлаоы длывао ывлао "
+        label.numberOfLines = 2
+        return label
+    }()
+    
     private lazy var attentionImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "attention_ic")
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "error_ic")
+        return imageView
+    }()
+    
+    private lazy var topContainer: BasicView = {
+        let view = BasicView()
+        view.backgroundColor = .clear
         return view
     }()
     
     private lazy var brandLabel: BasicLabel = {
         let label = BasicLabel()
-        label.font = .custom(size: 18, weight: .black)
-        label.textColor = .textBlack
+        label.font = .custom(size: 16, weight: .black)
+        label.textInsets = .init(top: 24, bottom: 4, left: 16)
         return label
     }()
     
-    private lazy var modelLabel: BasicLabel = {
+    private lazy var plannedLabel: BasicLabel = {
         let label = BasicLabel()
-        label.font = .custom(size: 18, weight: .bold)
-        label.textColor = .textGray
+        label.font = .custom(size: 12, weight: .semibold)
+        label.textInsets = .init(bottom: 24, left: 16)
+        label.textColor = UIColor(hexString: "#939393")
         return label
     }()
     
-    private lazy var notificationView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "arrow_ic")
-        view.tintColor = .additionalRed
-        return view
+    private lazy var photoContainer: BasicStackView = {
+        let stack = BasicStackView()
+        stack.edgeInsets = .init(bottom: 25, horizontal: 16)
+        stack.axis = .vertical
+        stack.spacing = 12
+        return stack
     }()
     
+    private lazy var logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.cornerRadius = 16
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private lazy var detailsView = DetailsView()
+
     override func initView() {
         makeLayout()
         makeConstraints()
@@ -72,10 +93,17 @@ class CarView: BasicView {
     }
     
     private func makeLayout() {
-        self.addSubview(mainStack)
-        self.addSubview(attentionImage)
-        mainStack.addArrangedSubviews([imageView, textStack, notificationView])
-        textStack.addArrangedSubviews([brandLabel, modelLabel])
+       addSubview(mainStack)
+        attentionView.addSubview(attentionLabel)
+        attentionView.addSubview(attentionImage)
+        
+        topContainer.addSubview(textStack)
+        topContainer.addSubview(attentionView)
+        
+        mainStack.addArrangedSubviews([topContainer, photoContainer, detailsView])
+        textStack.addArrangedSubviews([brandLabel, plannedLabel])
+        
+        photoContainer.addArrangedSubviews([logoImage])
     }
     
     private func makeConstraints() {
@@ -83,26 +111,42 @@ class CarView: BasicView {
             make.edges.equalToSuperview()
         }
         
-        imageView.snp.makeConstraints { make in
-            make.height.width.equalTo(60)
-        }
-        
-        notificationView.snp.makeConstraints { make in
-            make.height.width.equalTo(25)
-        }
-        
         attentionImage.snp.makeConstraints { make in
-            make.height.width.equalTo(22)
-            make.trailing.equalTo(imageView.snp.leading).inset(12)
-            make.bottom.equalTo(imageView.snp.top).inset(12)
-
+            make.height.width.equalTo(16)
+            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(left: 12))
+        }
+        
+        attentionLabel.snp.makeConstraints { make in
+            make.leading.equalTo(attentionImage.snp.trailing)
+            make.top.bottom.trailing.equalToSuperview()
+        }
+        
+        attentionView.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.width.equalTo(116)
+            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 16))
+            make.centerY.equalTo(textStack)
+        }
+        
+        logoImage.snp.makeConstraints { make in
+            make.height.equalTo(188)
+        }
+        
+        textStack.snp.makeConstraints { make in
+            make.leading.top.bottom.equalToSuperview()
+            make.trailing.equalTo(attentionView.snp.leading)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
-        self.cancellables.removeAll()
+        detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
-        modelLabel.setViewModel(vm.modelLabelVM)
-        self.imageView.image = vm.image
+        attentionLabel.setViewModel(vm.atteentionLabelVM)
+        plannedLabel.setViewModel(vm.plannedLabelVM)
+        
+        vm.$image.sink { [weak self] image in
+            self?.logoImage.image = image
+        }
+        .store(in: &cancellables)
     }
 }

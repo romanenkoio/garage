@@ -97,7 +97,7 @@ class BasicDatePicker: BasicTextField {
         
         vm.$date.sink { [weak self] value in
                 guard let self else { return }
-                self.text = value?.formatData(formatType: .ddMMyy) ?? .empty
+                self.text = value?.toString(.ddMMyy) ?? .empty
             }
             .store(in: &cancellables)
 
@@ -149,6 +149,6 @@ class BasicDatePicker: BasicTextField {
     }
     
     @objc private func pickerAction(sender: UIDatePicker) {
-        self.viewModel?.setDate(sender.date)
+        self.viewModel?.setNewDate(sender.date)
     }
 }

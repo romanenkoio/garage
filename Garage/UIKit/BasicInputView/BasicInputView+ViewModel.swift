@@ -14,7 +14,7 @@ extension BasicInputView {
         var actionImageVM: ActionImage.ViewModel?
         let requiredLabelVM = BasicLabel.ViewModel(text: "*обязательное поле")
         let descriptionLabelVM: BasicLabel.ViewModel
-        
+    
         @Published
         var isRequired: Bool
         

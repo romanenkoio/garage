@@ -29,32 +29,28 @@ class ServiceView: BasicView {
     
     private lazy var adressLabel: BasicLabel = {
         let label = BasicLabel()
-        label.textInsets = .init(bottom: 25, horizontal: 24)
+        label.textInsets = .init(bottom: 16, horizontal: 24)
         label.font = .custom(size: 14, weight: .semibold)
         label.textColor = UIColor(hexString: "939393")
         return label
     }()
     
-    private lazy var detailsView: BasicView = {
-        let stack = BasicView()
-        stack.backgroundColor = UIColor(hexString: "0C0C0C").withAlphaComponent(0.08)
-        stack.cornerRadius = 0
+    private lazy var topStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
         return stack
     }()
     
-    private lazy var detailsLabel: BasicLabel = {
-        let label = BasicLabel()
-        label.textInsets = .init(top: 24, bottom: 24, left: 24)
-        label.font = .custom(size: 14, weight: .semibold)
-        label.textColor = ColorScheme.standartBlue.buttonColor
-        return label
+    private lazy var textStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .vertical
+        stack.spacing = 4
+        return stack
     }()
     
-    private lazy var detailsImage: UIImageView = {
-       let view = UIImageView()
-        view.image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
-        return view
-    }()
+    private lazy var detailsView = DetailsView()
+    private lazy var callButton = CallButton()
 
     override func initView() {
         makeLayout()
@@ -62,17 +58,16 @@ class ServiceView: BasicView {
     }
     
     private func makeLayout() {
-//        self.addSubview(stack)
-//        stack.addArrangedSubviews([
-//            nameLabel,
-//            adressLabel,
-//            detailsView
-//        ])
-        addSubview(nameLabel)
-        addSubview(adressLabel)
-        addSubview(detailsView)
-        detailsView.addSubview(detailsLabel)
-        detailsView.addSubview(detailsImage)
+        self.addSubview(stack)
+        stack.addArrangedSubviews([
+            topStack,
+            detailsView
+        ])
+        
+        textStack.addArrangedSubviews([nameLabel,
+                                      adressLabel])
+        
+        topStack.addArrangedSubviews([textStack, callButton])
     }
     
     private func makeConstraint() {
@@ -93,21 +88,12 @@ class ServiceView: BasicView {
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(adressLabel.snp.bottom).inset(10)
         }
-        
-        detailsImage.snp.makeConstraints { make in
-            make.height.width.equalTo(16)
-            make.centerY.trailing.equalToSuperview().inset(UIEdgeInsets(right: 24))
-            make.leading.greaterThanOrEqualTo(detailsLabel.snp.trailing)
-        }
-        
-        detailsLabel.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
-        }
     }
     
     func setViewModel(_ vm: ViewModel) {
         nameLabel.setViewModel(vm.nameLabelVM)
         adressLabel.setViewModel(vm.adressLabelVM)
-        detailsLabel.setViewModel(vm.detailsLabelVM)
+        detailsView.setViewModel(vm.detailVM)
+        callButton.setViewModel(vm.callButtonVM)
     }
 }

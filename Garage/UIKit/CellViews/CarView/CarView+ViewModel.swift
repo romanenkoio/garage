@@ -9,18 +9,20 @@ import UIKit
 
 extension CarView {
     class ViewModel: BasicViewModel {
+        let detailsVM = DetailsView.ViewModel()
         let brandLabelVM = BasicLabel.ViewModel()
-        let modelLabelVM = BasicLabel.ViewModel()
-        var image: UIImage? = UIImage(systemName: "car")
-
+        let plannedLabelVM = BasicLabel.ViewModel()
+        let atteentionLabelVM = BasicLabel.ViewModel()
+        @Published var image: UIImage?
+        
         init(
             car: Car
         ) {
-            self.brandLabelVM.text = car.brand
-            self.modelLabelVM.text = car.model
+            brandLabelVM.text = "\(car.brand) \(car.model)"
+            atteentionLabelVM.text = "Просрочена медицинская справка"
+            plannedLabelVM.text = "Нет запланированных событий"
             if let data = car.imageData,
-               let image = UIImage(data: data)
-            {
+               let image = UIImage(data: data) {
                 self.image = image
             }
         }

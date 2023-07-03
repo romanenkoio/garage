@@ -44,14 +44,26 @@ class CreateCarViewController: BasicViewController {
     }
 
     private func setupNavBar() {
+        makeCloseButton(isLeft: true)
+        
+        guard case .edit(_) = vm.mode else {
+          return
+        }
+
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                self?.vm.removeCar()
+                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить машину?"))
+                vm.confirmButton.action = .touchUpInside { [weak self] in
+                    self?.vm.removeCar() { [weak self] in
+                        self?.dismiss(animated: true)
+                        self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                    }
+                }
+                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
             },
             image: UIImage(named: "delete_ic")
         )
         makeRightNavBarButton(buttons: [deleteButton])
-        makeCloseButton(isLeft: true)
     }
     
     override func binding() {
@@ -62,6 +74,7 @@ class CreateCarViewController: BasicViewController {
         layout.yearField.setViewModel(vm.yearFieldVM)
         layout.mileageField.setViewModel(vm.mileageFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        layout.imageList.setViewModel(vm.imageListVM)
         
         vm.isLoadind.sink { [weak self] value in
             value ? self?.startLoader() : self?.stopLoader()

@@ -34,13 +34,28 @@ class GarageViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        let isFirst: Bool? = SettingsManager.sh.read(.isFirstLaunch)
+        if isFirst == true || isFirst == nil {
+            coordinator.navigateTo(GarageNavigationRoute.onboarding)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCars()
         hideTabBar(false)
+        makeNavbar()
+    }
+    
+    private func makeNavbar() {
         makeLogoNavbar()
+        let settingButtonVM = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                self?.coordinator.navigateTo(GarageNavigationRoute.settings)
+            },
+            image: UIImage(named: "settings")
+        )
+        makeRightNavBarButton(buttons: [settingButtonVM])
     }
 
     override func configure() {
@@ -51,12 +66,10 @@ class GarageViewController: BasicViewController {
     override func binding() {
         super.binding()
         layout.table.setViewModel(vm.tableVM)
-        layout.addButton.setViewModel(vm.addButtonVM)
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cells in
-                self?.layout.addButton.isHidden = cells.isEmpty
                 self?.layout.table.reload()
             }
             .store(in: &cancellables)
@@ -85,10 +98,17 @@ extension GarageViewController {
 
 extension GarageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells.count
+        return  vm.tableVM.cells.count == 0 ? 0 : vm.tableVM.cells.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == vm.tableVM.cells.count {
+            guard let addCarCell = tableView.dequeueReusableCell(AddCarCell.self) else { return .init() }
+            addCarCell.mainView.setViewModel(.init())
+            addCarCell.selectionStyle = .none
+            return addCarCell
+        }
+        
         guard let carCell = tableView.dequeueReusableCell(CarCell.self),
               let vm = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
@@ -100,6 +120,11 @@ extension GarageViewController: UITableViewDataSource {
 
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == vm.tableVM.cells.count {
+            self.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            return
+        }
+        
         guard let selectedCar = vm.tableVM.cells[safe: indexPath.row] else { return }
         coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
     }

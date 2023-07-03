@@ -72,11 +72,6 @@ class CarInfoViewController: BasicViewController {
             coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
         }
         
-//        vm.$logo.sink { [weak self] logo in
-//            self?.layout.logoImage.image = logo
-//        }
-//        .store(in: &cancellables)
-        
         vm.pageVM.$index.sink { index in
             self.vm.pageVM.controllers[index].tableView.delegate = self
             self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty

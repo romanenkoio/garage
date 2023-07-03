@@ -19,6 +19,7 @@ extension CreateCarViewController {
         var winFieldVM: BasicInputView.ViewModel
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
+        let imageListVM = BasicImageListView.ViewModel()
         
         var succesCreateCompletion: Completion?
         var suggestionCompletion: SelectArrayCompletion?
@@ -72,6 +73,9 @@ extension CreateCarViewController {
             initMode()
             initSuggestionAction()
             
+            imageListVM.editingEnabled = true
+            imageListVM.description = "Добавить фото"
+
             brandFieldVM.inputVM.$text.sink { [weak self] value in
                 self?.getLogoBy(value)
             }
@@ -120,11 +124,11 @@ extension CreateCarViewController {
             }
         }
         
-        func removeCar() {
+        func removeCar(completion: Completion?) {
             guard case let .edit(car) = mode else {
               return
             }
-            RealmManager().delete(object: car)
+            RealmManager().delete(object: car, completion: completion)
         }
         
         private func initMode() {
@@ -184,7 +188,8 @@ extension CreateCarViewController {
                 brandFieldVM.inputVM,
                 modelFieldVM.inputVM,
                 mileageFieldVM.inputVM,
-                yearFieldVM.inputVM
+                yearFieldVM.inputVM,
+                imageListVM
             ])
         }
         

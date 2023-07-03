@@ -10,4 +10,5 @@ import Foundation
 enum CommonNavigationRoute: Routable {
     case close
     case closeToRoot
+    case confirmPopup(vm: ConfirmPopupViewController.ViewModel)
 }

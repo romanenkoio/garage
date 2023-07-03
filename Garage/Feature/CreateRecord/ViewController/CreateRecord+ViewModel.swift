@@ -17,7 +17,7 @@ extension CreateRecordViewController {
         private(set) var services = [Service]()
         private var selectedService: Service?
         
-        let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().formatData(formatType: .ddMMyy))
+        let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().toString(.ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
         let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(text: "Добавить фото"))
@@ -32,6 +32,7 @@ extension CreateRecordViewController {
             inputVM: .init(placeholder: "Замена свечей"),
             isRequired: true
         )
+        let commenntInputVM: MultiLineInput.ViewModel
         
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
             title: "Выберите сервис",
@@ -58,6 +59,12 @@ extension CreateRecordViewController {
                 descriptionVM: .init(text: "Стоимость")
             )
             
+            commenntInputVM = .init(
+                inputVM: .init(),
+                errorVM: errorVM,
+                descriptionLabelVM: .init(text: "Комментарий")
+            )
+
             mileageInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "\(car.mileage + 1000) км"),
@@ -71,12 +78,13 @@ extension CreateRecordViewController {
         
         func saveRecord() {
             let record = Record(
+                short: shortTypeVM.text,
                 carID: car.id,
                 serviceID: serivesListVM.selectedItem?.id,
                 cost: costInputVM.text.toDouble(),
                 mileage: mileageInputVM.text.toDouble(),
                 date: dateInputVM.date ?? Date(),
-                comment: nil
+                comment: commenntInputVM.inputVM.text
             )
             RealmManager<Record>().write(object: record)
             self.imagePickerVM.items.forEach { image in

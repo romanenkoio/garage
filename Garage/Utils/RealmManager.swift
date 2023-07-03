@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import Foundation
 
 class RealmManager<T> where T: Object {
     private let realm = try? Realm()
@@ -22,10 +23,16 @@ class RealmManager<T> where T: Object {
         return Array(realm.objects(T.self))
     }
     
-    func delete(object: T) {
+    func delete(
+        object: T,
+        completion: Completion? = nil
+    ) {
         guard let realm else { return }
         try? realm.write {
             realm.delete(object)
+            DispatchQueue.main.async {
+                completion?()
+            }
         }
     }
     

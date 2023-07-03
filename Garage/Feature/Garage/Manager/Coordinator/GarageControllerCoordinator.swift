@@ -11,6 +11,8 @@ import UIKit
 enum GarageNavigationRoute: Routable {
     case createCar
     case openCar(Car)
+    case settings
+    case onboarding
 }
 
 class GarageControllerCoordinator: BasicCoordinator {
@@ -28,6 +30,14 @@ class GarageControllerCoordinator: BasicCoordinator {
             case .openCar(let car):
                 let new = CarInfoViewController(vm: .init(car: car))
                 vc.push(new)
+            case .settings:
+                let new = SettingsViewController(vm: .init())
+                vc.push(new)
+            case .onboarding:
+                let new = OnboardingViewController()
+                new.modalTransitionStyle = .crossDissolve
+                new.modalPresentationStyle = .fullScreen
+                vc.present(new)
             }
         } else {
             super.navigateTo(route)

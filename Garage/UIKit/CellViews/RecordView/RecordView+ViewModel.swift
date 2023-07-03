@@ -15,8 +15,8 @@ extension RecordView {
         
         init(record: Record) {
             self.record = record
-            infoLabelVM.text = record.carID
-            dateLabelVM.text = record.date.formatData(formatType: .ddMMyy)
+            infoLabelVM.text = record.short
+            dateLabelVM.text = record.date.toString(.ddMMyy)
         }
     }
 }
