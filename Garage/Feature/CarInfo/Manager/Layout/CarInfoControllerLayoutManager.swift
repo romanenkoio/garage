@@ -42,7 +42,6 @@ final class CarInfoControllerLayoutManager {
     lazy var vinLabel = BasicLabel()
     lazy var mileageLabel = BasicLabel()
     lazy var segment = BasicSegmentView<RecordType>()
-//    lazy var addRecordButton = AlignedButton()
     
     lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
@@ -80,6 +79,7 @@ final class CarInfoControllerLayoutManager {
     private func setupScrollView() {
         vc.scroll.snp.removeConstraints()
         vc.view.bringSubviewToFront(vc.scroll)
+        vc.view.bringSubviewToFront(addButton)
         
         vc.scroll.snp.makeConstraints { make in
             animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
@@ -106,18 +106,18 @@ fileprivate extension CarInfoControllerLayoutManager {
         vc.contentView.addSubview(page.view)
         vc.addChild(page)
         page.didMove(toParent: vc)
-        page.view.addSubview(addButton)
+        vc.view.addSubview(addButton)
 
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
         mileageLabel.font = .custom(size: 14, weight: .bold)
-        page.view.bringSubviewToFront(addButton)
+        vc.view.bringSubviewToFront(addButton)
     }
     
     private func makeConstraint() {
         addButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(page.view).inset(UIEdgeInsets(bottom: 24, right: 16))
+            make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
         }
         
         topStack.snp.makeConstraints { make in
