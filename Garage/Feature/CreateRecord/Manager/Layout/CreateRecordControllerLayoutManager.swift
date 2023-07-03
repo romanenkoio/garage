@@ -60,11 +60,11 @@ fileprivate extension CreateRecordControllerLayoutManager {
         stack.addArrangedSubviews([
             shortTypeInput,
             costInput,
-            mileageImput
+            mileageImput,
+            dateInput,
+            servicesList
         ])
-        
-        contentView.addSubview(dateInput)
-        contentView.addSubview(servicesList)
+
         contentView.addSubview(imageList)
         contentView.addSubview(commentInput)
         contentView.addSubview(saveButton)
@@ -75,24 +75,14 @@ fileprivate extension CreateRecordControllerLayoutManager {
             make.leading.trailing.top.equalToSuperview()
         }
         
-        dateInput.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(stack.snp.bottom).offset(10)
-        }
-        
-        servicesList.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(dateInput.snp.bottom).offset(25)
-        }
-        
         imageList.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(servicesList.snp.bottom).offset(25)
+            make.top.equalTo(stack.snp.bottom).offset(25)
         }
         
         commentInput.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(imageList.snp.bottom).offset(25)
+            make.top.equalTo(imageList.snp.bottom).offset(20)
         }
         
         saveButton.snp.makeConstraints { make in

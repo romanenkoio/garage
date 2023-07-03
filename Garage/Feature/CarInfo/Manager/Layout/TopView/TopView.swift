@@ -27,7 +27,7 @@ class TopView: BasicStackView {
     private lazy var infoStsck: BasicStackView = {
         let view = BasicStackView()
         view.axis = .horizontal
-        view.alignment = .leading
+        view.distribution = .fillEqually
         view.spacing = 10
         view.paddingInsets = .init(top: 16)
         view.backgroundColor = .white

@@ -71,10 +71,15 @@ class CarInfoViewController: BasicViewController {
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.topStack.setViewModel(vm.topStackVM)
         
-//        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
-//            guard let self else { return }
-//            coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-//        }
+        vm.addButtonVM.actions = [
+            .init(text: "Добавить запись", action: { [weak self] in
+                guard let self else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+            }),
+            .init(text: "Запланировать", action: {
+                
+            })
+        ]
         
         vm.pageVM.$index.sink { index in
             self.vm.pageVM.controllers[index].tableView.delegate = self

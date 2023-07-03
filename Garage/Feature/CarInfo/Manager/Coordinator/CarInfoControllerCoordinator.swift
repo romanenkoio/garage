@@ -10,6 +10,7 @@ import UIKit
 
 enum CarInfoNavigationRoute: Routable {
     case createRecord(Car)
+    case createReminder(Car)
     case edit(Car)
 }
 
@@ -33,6 +34,8 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 }
                 let controller = CreateCarViewController(vm: vm)
                 vc.push(controller)
+            case .createReminder(let car):
+                print("Создание ремайндера")
             }
         } else {
             super.navigateTo(route)

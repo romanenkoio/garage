@@ -50,15 +50,6 @@ extension CarInfoViewController {
          
             initFields()
             
-            addButtonVM.actions = [
-                .init(text: "Добавить запись", action: {
-                    
-                }),
-                .init(text: "Запланировать", action: {
-                    
-                })
-            ]
-            
             pageVM.$index.removeDuplicates().sink { [weak self] value in
                 guard let selected = RecordType.allCases[safe: value] else { return }
                 self?.segmentVM.setSelected(selected)

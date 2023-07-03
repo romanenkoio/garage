@@ -9,6 +9,8 @@ import UIKit
 
 extension BasicDatePicker {
     class ViewModel: BasicTextField.ViewModel {
+        let desctiptionVM = BasicLabel.ViewModel()
+        
         @Published private(set) var date: Date?
     
         @Published var minimumDate: Date?
