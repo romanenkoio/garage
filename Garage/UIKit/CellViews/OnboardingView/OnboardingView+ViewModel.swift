@@ -31,7 +31,7 @@ enum OnboardingArticle: CaseIterable {
     
     var image: UIImage? {
         switch self {
-        case .servises:     return UIImage(named: "service")
+        case .servises:     return UIImage(named: "service_onb")
         case .history:      return UIImage(named: "history")
         case .warnings:     return UIImage(named: "warning")
         }
