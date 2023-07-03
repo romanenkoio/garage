@@ -20,10 +20,10 @@ extension CarInfoViewController {
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         let topStackVM: TopView.ViewModel
         let tableVM = BasicTableView.GenericViewModel<Record>()
-        let addButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Добавить запись"))
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
         var serviceVM: ServicesViewController.ViewModel
+        let addButtonVM = FloatingButton.ViewModel()
         
         @Published var logo: UIImage?
         
@@ -49,6 +49,15 @@ extension CarInfoViewController {
             super.init()
          
             initFields()
+            
+            addButtonVM.actions = [
+                .init(text: "Добавить запись", action: {
+                    
+                }),
+                .init(text: "Запланировать", action: {
+                    
+                })
+            ]
             
             pageVM.$index.removeDuplicates().sink { [weak self] value in
                 guard let selected = RecordType.allCases[safe: value] else { return }

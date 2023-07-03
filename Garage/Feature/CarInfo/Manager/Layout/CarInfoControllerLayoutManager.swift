@@ -28,13 +28,7 @@ final class CarInfoControllerLayoutManager {
     var previousContentOffsetY: CGFloat = 0
     
     lazy var topStack = TopView()
-    
-//    lazy var logoImage: UIImageView = {
-//        let view = UIImageView()
-//        view.contentMode = .scaleAspectFit
-//        view.cornerRadius = 39
-//        return view
-//    }()
+    lazy var addButton = FloatingButton()
     
     lazy var recordsView: BasicView = {
        let view = BasicView()
@@ -48,7 +42,7 @@ final class CarInfoControllerLayoutManager {
     lazy var vinLabel = BasicLabel()
     lazy var mileageLabel = BasicLabel()
     lazy var segment = BasicSegmentView<RecordType>()
-    lazy var addRecordButton = AlignedButton()
+//    lazy var addRecordButton = AlignedButton()
     
     lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
@@ -103,29 +97,29 @@ fileprivate extension CarInfoControllerLayoutManager {
         makeLayout()
         makeConstraint()
         vc.contentView.backgroundColor = AppColors.background
+        
     }
     
     private func makeLayout() {
         vc.view.addSubview(topStack)
-//        topStack.addArrangedSubviews([
-//            logoImage,
-//            brandModelLabel,
-//            mileageLabel,
-//            yearLabel,
-//            vinLabel
-//        ])
         vc.contentView.addSubview(segment)
         vc.contentView.addSubview(page.view)
         vc.addChild(page)
         page.didMove(toParent: vc)
+        page.view.addSubview(addButton)
 
         brandModelLabel.font = .custom(size: 18, weight: .black)
         yearLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
         mileageLabel.font = .custom(size: 14, weight: .bold)
+        page.view.bringSubviewToFront(addButton)
     }
     
     private func makeConstraint() {
+        addButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalTo(page.view).inset(UIEdgeInsets(bottom: 24, right: 16))
+        }
+        
         topStack.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
         }

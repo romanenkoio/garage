@@ -51,6 +51,10 @@ class CarInfoViewController: BasicViewController {
         layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
     }
     
+    override func hideKeyboard() {
+        super.hideKeyboard()
+        self.vm.addButtonVM.isOpen = false
+    }
     
     override func configure() {
         configureCoordinator()
@@ -64,13 +68,13 @@ class CarInfoViewController: BasicViewController {
         layout.mileageLabel.setViewModel(vm.milageLabelVM)
         layout.vinLabel.setViewModel(vm.vinLabelVM)
         layout.segment.setViewModel(vm.segmentVM)
-        layout.addRecordButton.setViewModel(vm.addButtonVM)
+        layout.addButton.setViewModel(vm.addButtonVM)
         layout.topStack.setViewModel(vm.topStackVM)
         
-        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
-            guard let self else { return }
-            coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-        }
+//        vm.addButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+//            guard let self else { return }
+//            coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+//        }
         
         vm.pageVM.$index.sink { index in
             self.vm.pageVM.controllers[index].tableView.delegate = self

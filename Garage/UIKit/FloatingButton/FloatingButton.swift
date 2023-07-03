@@ -90,7 +90,6 @@ class FloatingButton: BasicView {
             self.snp.updateConstraints { make in
                 make.height.equalTo(30 * vm.actions.count)
                 make.width.equalTo(150)
-                guard let superview else { return }
             }
         } else {
             self.snp.updateConstraints { make in
