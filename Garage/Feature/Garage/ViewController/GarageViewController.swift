@@ -34,6 +34,14 @@ class GarageViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+        let isFirst: Bool? = SettingsManager.sh.read(.isFirstLaunch)
+        if isFirst == true || isFirst == nil {
+            hideTabBar(true)
+            coordinator.navigateTo(GarageNavigationRoute.onboarding)
+        }
+//        if SettingsManager.sh.read(.isFirstLaunch) == true ,{
+//            coordinator.navigateTo(GarageNavigationRoute.createCar)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

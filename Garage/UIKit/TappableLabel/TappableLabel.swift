@@ -12,7 +12,7 @@ class TappableLabel: BasicLabel {
     private(set) var vm: ViewModel?
     
     init(aligment: NSTextAlignment = .center) {
-        super.init()
+        super.init(font: .custom(size: 15, weight: .bold))
         self.isUserInteractionEnabled = true
         self.textAlignment = aligment
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))

@@ -114,6 +114,12 @@
 		7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBB2A3F87E600F1D22D /* Reminder.swift */; };
 		7F820CBF2A3FAAC000F1D22D /* BasicPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */; };
 		7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */; };
+		7F89F9602A52292F005F910E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F89F95F2A52292F005F910E /* OnboardingView.swift */; };
+		7F89F9622A52294C005F910E /* OnboardingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F89F9612A52294C005F910E /* OnboardingView+ViewModel.swift */; };
+		7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */; };
+		7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */; };
+		7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */; };
+		7F92D12C2A521F7200AD3847 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1282A521F7200AD3847 /* OnboardingViewController.swift */; };
 		7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E928E2A45D26600DDC874 /* BasicTextView.swift */; };
 		7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */; };
 		7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */; };
@@ -359,6 +365,12 @@
 		7F820CBB2A3F87E600F1D22D /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		7F820CBE2A3FAAC000F1D22D /* BasicPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPageController.swift; sourceTree = "<group>"; };
 		7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicPageController+ViewModel.swift"; sourceTree = "<group>"; };
+		7F89F95F2A52292F005F910E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7F89F9612A52294C005F910E /* OnboardingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Onboarding+ViewModel.swift"; sourceTree = "<group>"; };
+		7F92D1282A521F7200AD3847 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		7F9E928E2A45D26600DDC874 /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTextView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -543,6 +555,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F92D11D2A521F4D00AD3847 /* OnboardingGroup */,
 				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
 				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
 				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
@@ -1155,6 +1168,66 @@
 			path = BasicPageController;
 			sourceTree = "<group>";
 		};
+		7F89F95E2A522920005F910E /* OnboardingView */ = {
+			isa = PBXGroup;
+			children = (
+				7F89F95F2A52292F005F910E /* OnboardingView.swift */,
+				7F89F9612A52294C005F910E /* OnboardingView+ViewModel.swift */,
+			);
+			path = OnboardingView;
+			sourceTree = "<group>";
+		};
+		7F92D11D2A521F4D00AD3847 /* OnboardingGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1202A521F7200AD3847 /* Onboarding */,
+			);
+			path = OnboardingGroup;
+			sourceTree = "<group>";
+		};
+		7F92D1202A521F7200AD3847 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1212A521F7200AD3847 /* Manager */,
+				7F92D1262A521F7200AD3847 /* ViewController */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		7F92D1212A521F7200AD3847 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1222A521F7200AD3847 /* Coordinator */,
+				7F92D1242A521F7200AD3847 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F92D1222A521F7200AD3847 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F92D1242A521F7200AD3847 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F92D1262A521F7200AD3847 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */,
+				7F92D1282A521F7200AD3847 /* OnboardingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7F9E92982A45FB9700DDC874 /* UtilsControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1554,6 +1627,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F89F95E2A522920005F910E /* OnboardingView */,
 				7F174EEF2A4B2818004E51F9 /* ArticleView */,
 				7F0B30662A430A620094BC9C /* AddCarView */,
 				7FF503C32A3D1F77006DA7EC /* SettingView */,
@@ -2046,6 +2120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F89F9602A52292F005F910E /* OnboardingView.swift in Sources */,
 				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
 				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
@@ -2057,6 +2132,7 @@
 				B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */,
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
+				7F92D12C2A521F7200AD3847 /* OnboardingViewController.swift in Sources */,
 				B9D96E4B2A37B18000909B33 /* BasicCollectionView.swift in Sources */,
 				7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */,
 				B978F3152A2E8F4C0076D326 /* BasicButton+ViewModel.swift in Sources */,
@@ -2136,6 +2212,7 @@
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
+				7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */,
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
@@ -2150,6 +2227,7 @@
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
+				7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
@@ -2180,6 +2258,7 @@
 				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
+				7F89F9622A52294C005F910E /* OnboardingView+ViewModel.swift in Sources */,
 				7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */,
 				7F820CBC2A3F87E600F1D22D /* Reminder.swift in Sources */,
 				B978F3C32A2E9D870076D326 /* Typealiases.swift in Sources */,
@@ -2188,6 +2267,7 @@
 				7F174EF32A4B2848004E51F9 /* ArticleView+ViewModel.swift in Sources */,
 				7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */,
 				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
+				7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,

@@ -20,6 +20,7 @@ final class SettingsManager {
         case getArticles
         case region
         case mileage
+        case isFirstLaunch
     }
     
     func read(_ key: Keys) -> Bool? {
