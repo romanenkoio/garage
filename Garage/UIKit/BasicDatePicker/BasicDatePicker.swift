@@ -66,7 +66,6 @@ class BasicDatePicker: BasicTextField {
     }
     
     private func makeLayout() {
-        addSubview(descriptionLabel)
         alertController.view.addSubview(datePicker)
         addSubview(emptyView)
         rightView = UIView(
@@ -82,10 +81,6 @@ class BasicDatePicker: BasicTextField {
     }
     
     private func makeConstraints() {
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview()
-        }
-        
         emptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(all: .zero))
         }
@@ -93,7 +88,6 @@ class BasicDatePicker: BasicTextField {
         datePicker.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(8)
             make.bottom.equalToSuperview().inset(60)
-//            make.top.equalTo(descriptionLabel.snp.bottom)
             make.top.equalToSuperview()
         }
     }

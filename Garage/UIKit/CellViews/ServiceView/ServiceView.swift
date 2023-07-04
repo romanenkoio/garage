@@ -71,9 +71,9 @@ class ServiceView: BasicView {
     }
     
     private func makeConstraint() {
-//        stack.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
+        stack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         nameLabel.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, right: 10))

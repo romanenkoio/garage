@@ -10,6 +10,7 @@ import RealmSwift
 
 final class Reminder: Object {
     @Persisted var id: String
+    @Persisted var short: String
     @Persisted var comment: String?
     @Persisted var carID: String
     @Persisted var date: Date
