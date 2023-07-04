@@ -93,6 +93,7 @@ extension CreateServiseViewController {
                         service.adress = self.adressInputVM.text
                         service.name = self.nameInputVM.text
                         service.specialisation = self.specialisationInputVM.text
+                        service.comment = self.commenntInputVM.inputVM.text
                     })
                 } catch let error {
                     print(error)
@@ -136,12 +137,14 @@ extension CreateServiseViewController {
             self.adressInputVM.text = service.adress
             self.nameInputVM.text = service.name
             self.specialisationInputVM.text = service.specialisation
+            self.commenntInputVM.inputVM.text = service.comment.wrapped
             
             changeChecker.setForm([
                 phoneInputVM.inputVM,
                 adressInputVM.inputVM,
                 nameInputVM.inputVM,
-                specialisationInputVM.inputVM
+                specialisationInputVM.inputVM,
+                commenntInputVM.inputVM
             ])
         }
         
