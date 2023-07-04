@@ -42,10 +42,7 @@ class DocumentsViewController: BasicViewController {
 
         vm.tableVM.addButtonVM.action = action
         vm.addButtonVM.actions = [
-            .init(text: "Test button", action: {
-                action()
-            }),
-            .init(text: "Test button", action: {
+            .init(text: .empty, action: {
                 action()
             })
         ]

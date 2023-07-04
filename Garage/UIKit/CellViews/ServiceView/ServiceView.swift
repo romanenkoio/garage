@@ -74,20 +74,6 @@ class ServiceView: BasicView {
         stack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, right: 10))
-        }
-        
-        adressLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 10))
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-        }
-        
-        detailsView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(adressLabel.snp.bottom).inset(10)
-        }
     }
     
     func setViewModel(_ vm: ViewModel) {

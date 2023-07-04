@@ -16,7 +16,7 @@ class BasicLabel: UILabel {
         didSet { self.invalidateIntrinsicContentSize() }
     }
     
-    init(font: UIFont? = nil) {
+    init(font: UIFont? = .custom(size: 14, weight: .semibold)) {
         super.init(frame: .zero)
         self.initLabel()
         guard let font else { return }
