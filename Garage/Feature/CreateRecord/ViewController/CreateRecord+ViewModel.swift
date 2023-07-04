@@ -87,6 +87,14 @@ extension CreateRecordViewController {
                 comment: commenntInputVM.inputVM.text
             )
             RealmManager<Record>().write(object: record)
+            
+            if mileageInputVM.text.toInt() > car.mileage {
+                RealmManager().update { [weak self] realm in
+                    guard let self else { return }
+                    car.mileage = mileageInputVM.text.toInt()
+                }
+            }
+        
             self.imagePickerVM.items.forEach { image in
                 guard let data = image.jpegData(compressionQuality: 1) else { return }
                 let photo = Photo(record, image: data)

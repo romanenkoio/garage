@@ -16,8 +16,8 @@ extension Optional where Wrapped == String {
 extension String {
     static let empty = ""
     
-    func toInt() -> Int? {
-        return Int(String(self.compactMap({ $0.isWhitespace ? nil : $0 })))
+    func toInt() -> Int {
+        return Int(String(self.compactMap({ $0.isWhitespace ? nil : $0 }))) ?? .zero
     }
     
     func toDouble() -> Double {
