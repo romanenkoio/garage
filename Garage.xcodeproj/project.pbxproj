@@ -144,6 +144,7 @@
 		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
 		7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */; };
+		7FF6D7C52A542F0B00CEFC26 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */; };
 		7FFC1F552A33E417007A5C75 /* CreateRepairControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */; };
 		7FFC1F562A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */; };
 		7FFC1F572A33E417007A5C75 /* CreateRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */; };
@@ -408,6 +409,7 @@
 		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+ViewModel.swift"; sourceTree = "<group>"; };
+		7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		7FFC1F4F2A33E417007A5C75 /* CreateRepairControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FFC1F512A33E417007A5C75 /* CreateRepairControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FFC1F532A33E417007A5C75 /* CreateRepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRepairViewController.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				7F0E092A2A3255F1008C2B9A /* Action.swift */,
 				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
 				7F049E462A40FBB400C3EAD0 /* PushManager.swift */,
+				7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2393,6 +2396,7 @@
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
+				7FF6D7C52A542F0B00CEFC26 /* QRGenerator.swift in Sources */,
 				7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7FFC1F582A33E417007A5C75 /* CreateRepair+ViewModel.swift in Sources */,

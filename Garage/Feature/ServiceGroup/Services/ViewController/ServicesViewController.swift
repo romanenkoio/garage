@@ -36,6 +36,7 @@ class ServicesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeLogoNavbar()
+        setupLongTap()
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,6 +78,23 @@ class ServicesViewController: BasicViewController {
         
         vm.tableVM.addButtonVM.action = action
         vm.addButtonVM.buttonVM.action = action
+    }
+    
+    private func setupLongTap() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        layout.table.table.addGestureRecognizer(longPress)
+    }
+    
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: layout.table.table)
+            guard let indexPath = layout.table.table.indexPathForRow(at: touchPoint),
+                  let service = vm.tableVM.cells[safe: indexPath.row]
+            else { return }
+            
+            guard let qr = QRGenerator().generateQRCode(from: service) else { return }
+            coordinator.navigateTo(CommonNavigationRoute.share([qr]))
+        }
     }
 }
 

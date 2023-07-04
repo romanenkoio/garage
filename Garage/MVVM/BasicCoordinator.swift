@@ -26,6 +26,8 @@ class BasicCoordinator: Routable {
             vc.popToRoot()
         case .confirmPopup(vm: let vm):
             show(vm)
+        case .share(let content):
+            share(content)
         }
     }
     
@@ -34,6 +36,12 @@ class BasicCoordinator: Routable {
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve
         vc.present(popup)
+    }
+    
+    private func share(_ content: [Any]) {
+        let activityViewController = UIActivityViewController(activityItems: content, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.vc.view
+        vc.present(activityViewController, animated: true, completion: nil)
     }
 }
 
@@ -55,6 +63,8 @@ class BasicModalCoordinator: BasicCoordinator {
             modalVC.popToRoot()
         case .confirmPopup(vm: let vm):
            break
+        case .share:
+            break
         }
     }
 }
