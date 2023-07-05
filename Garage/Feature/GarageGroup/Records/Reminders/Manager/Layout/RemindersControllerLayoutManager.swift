@@ -1,17 +1,17 @@
 //
-//  PastRecordsControllerLayoutManager.swift
+//  RemindersControllerLayoutManager.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 19.06.23.
+//  Created by Illia Romanenko on 5.07.23.
 //  
 //
 
 import UIKit
 import SnapKit
 
-final class PastRecordsControllerLayoutManager {
+final class RemindersControllerLayoutManager {
     
-    private unowned let vc: PastRecordsViewController
+    private unowned let vc: RemindersViewController
     
     lazy var table: BasicTableView = {
         let table = BasicTableView()
@@ -27,11 +27,9 @@ final class PastRecordsControllerLayoutManager {
         table.backgroundColor = AppColors.background
         return table
     }()
-    
-    lazy var addButton = AlignedButton()
-    
+
     // - Init
-    init(vc: PastRecordsViewController) {
+    init(vc: RemindersViewController) {
         self.vc = vc
         configure()
     }
@@ -41,7 +39,7 @@ final class PastRecordsControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension PastRecordsControllerLayoutManager {
+fileprivate extension RemindersControllerLayoutManager {
     
     private func configure() {
         makeLayout()
@@ -58,4 +56,5 @@ fileprivate extension PastRecordsControllerLayoutManager {
             make.leading.trailing.top.bottom.equalToSuperview()
         }
     }
+    
 }

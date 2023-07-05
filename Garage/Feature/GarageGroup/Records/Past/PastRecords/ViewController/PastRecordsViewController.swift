@@ -9,15 +9,13 @@
 import UIKit
 
 class PastRecordsViewController: BasicViewController {
-
-    // - UI
-    typealias Coordinator = PastRecordsControllerCoordinator
-    typealias Layout = PastRecordsControllerLayoutManager
+    
     // - Property
     private(set) var vm: ViewModel
+    
     // - Manager
-    private var coordinator: Coordinator!
-    var layout: Layout!
+    private var coordinator: PastRecordsControllerCoordinator!
+    var layout: PastRecordsControllerLayoutManager!
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -47,22 +45,13 @@ class PastRecordsViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
-        layout.addButton.setViewModel(vm.addButtonVM)
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cells  in
                 self?.layout.table.reload()
-                self?.layout.addButton.isHidden = cells.isEmpty
             }
             .store(in: &cancellables)
-        
-        let action: Action = .touchUpInside {
-            self.coordinator.navigateTo(PastRecordsNavigationRoute.createPastRecord(self.vm.car))
-        }
-        
-        vm.tableVM.addButtonVM.action = action
-        vm.addButtonVM.buttonVM.action = action
     }
     
 }

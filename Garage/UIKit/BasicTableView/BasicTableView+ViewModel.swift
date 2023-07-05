@@ -18,6 +18,9 @@ extension BasicTableView {
         private(set) var subLabelVM = BasicLabel.ViewModel()
         private(set) var addButtonVM = BasicButton.ViewModel(style: .primary)
         
+        
+        @Published
+        var isHiddenButton = false
         @Published
         private(set) var image: UIImage?
         @Published

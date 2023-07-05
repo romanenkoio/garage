@@ -22,7 +22,7 @@ extension CarInfoViewController {
         let tableVM = BasicTableView.GenericViewModel<Record>()
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
-        var serviceVM: ServicesViewController.ViewModel
+        var remindersVM: RemindersViewController.ViewModel
         let addButtonVM = FloatingButton.ViewModel()
         
         @Published var logo: UIImage?
@@ -37,12 +37,12 @@ extension CarInfoViewController {
             )
             
             pastRecordsVM = .init(car: car)
-            serviceVM = .init()
+            remindersVM = .init(car: car)
             
             pageVM = .init(
                 controllers: [
                     PastRecordsViewController(vm: pastRecordsVM),
-                    ServicesViewController(vm: serviceVM)
+                    RemindersViewController(vm: remindersVM)
                 ])
             
             topStackVM = .init(car: self.car)

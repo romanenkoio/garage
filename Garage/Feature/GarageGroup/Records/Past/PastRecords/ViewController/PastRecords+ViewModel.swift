@@ -11,12 +11,9 @@ import UIKit
 extension PastRecordsViewController {
     final class ViewModel: BasicControllerModel {
         
-        private(set) var car: Car
+        private(set) unowned var car: Car
         
         let tableVM = BasicTableView.GenericViewModel<Record>()
-        let addButtonVM = AlignedButton.ViewModel(
-            buttonVM: .init(title: "Добавить запись")
-        )
         
         init(car: Car) {
             self.car = car
@@ -29,6 +26,7 @@ extension PastRecordsViewController {
                 addButtonVM: .init(title: "Добавить запись"),
                 image: UIImage(named: "service")
             )
+            tableVM.isHiddenButton = true
         }
         
         func readRecords() {

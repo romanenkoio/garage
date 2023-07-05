@@ -90,8 +90,10 @@ extension CreateRecordViewController {
             
             if mileageInputVM.text.toInt() > car.mileage {
                 RealmManager().update { [weak self] realm in
-                    guard let self else { return }
-                    car.mileage = mileageInputVM.text.toInt()
+                    try? realm.write { [weak self] in
+                        guard let self else { return }
+                        car.mileage = mileageInputVM.text.toInt()
+                    }
                 }
             }
         

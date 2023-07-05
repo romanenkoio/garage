@@ -211,7 +211,7 @@ extension BasicViewController {
 
 extension BasicViewController: PageControllable {
     var tableViewDelegate: UITableView? {
-        get {tableView}
-        set {tableView = newValue!}
+        get { tableView }
+        set { tableView = newValue! }
     }
 }

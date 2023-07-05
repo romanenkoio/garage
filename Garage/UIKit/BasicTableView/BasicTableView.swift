@@ -125,6 +125,11 @@ class BasicTableView: BasicView {
         }
         .store(in: &cancellables)
         
+        vm.$isHiddenButton.sink { [weak self] value in
+            self?.addButton.isHidden = value
+        }
+        .store(in: &cancellables)
+        
         vm.$emptyViewType.sink {[weak self] type in
             if let type {
                 switch type {

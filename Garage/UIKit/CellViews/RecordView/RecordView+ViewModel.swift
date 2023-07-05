@@ -9,14 +9,18 @@ import Foundation
 
 extension RecordView {
     final class ViewModel: BasicViewModel {
-        private(set) var record: Record
+
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         
         init(record: Record) {
-            self.record = record
             infoLabelVM.text = record.short
             dateLabelVM.text = record.date.toString(.ddMMyy)
+        }
+        
+        init(reminder: Reminder) {
+            infoLabelVM.text = reminder.short
+            dateLabelVM.text = reminder.date.toString(.ddMMyy)
         }
     }
 }

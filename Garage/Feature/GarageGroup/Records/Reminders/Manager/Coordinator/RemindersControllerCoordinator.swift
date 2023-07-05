@@ -1,20 +1,20 @@
 //
-//  FeatureRecordsControllerCoordinator.swift
+//  RemindersControllerCoordinator.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 19.06.23.
+//  Created by Illia Romanenko on 5.07.23.
 //  
 //
 
 import UIKit
 
-class FeatureRecordsControllerCoordinator {
+class RemindersControllerCoordinator {
     
     // - VC
-    private unowned let vc: FeatureRecordsViewController
+    private unowned let vc: RemindersViewController
     
     // - Init
-    init(vc: FeatureRecordsViewController) {
+    init(vc: RemindersViewController) {
         self.vc = vc
     }
     
