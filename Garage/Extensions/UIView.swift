@@ -49,4 +49,16 @@ extension UIView {
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController?.present(vc, animated: animated)
     }
+    
+    func dropShadow(
+        color: UIColor,
+        shadowOffset: CGSize = CGSize(width: 0, height: 0),
+        shadowRadius: CGFloat,
+        shadowOpacity: Float
+    ) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = shadowOffset
+        layer.shadowRadius = shadowRadius
+        layer.shadowOpacity = shadowOpacity
+    }
 }

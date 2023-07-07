@@ -2012,9 +2012,9 @@
 			isa = PBXGroup;
 			children = (
 				B9BF6FA02A5827E800B96821 /* FBView.swift */,
+				B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */,
 				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
 				B9BF6FA62A58328A00B96821 /* FBStackView.swift */,
-				B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */,
 			);
 			path = FButton;
 			sourceTree = "<group>";

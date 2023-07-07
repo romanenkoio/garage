@@ -24,15 +24,10 @@ class FloatingButtonMainButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.white
         layer.cornerRadius = 25
-        dropButtonShadow()
-    }
-
-    
-    private func dropButtonShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        layer.shadowRadius = 5.0
-        layer.shadowOpacity = 0.5
-        layer.cornerRadius = 25.0
+        dropShadow(
+            color: .black,
+            shadowRadius: 5.0,
+            shadowOpacity: 0.5
+        )
     }
 }

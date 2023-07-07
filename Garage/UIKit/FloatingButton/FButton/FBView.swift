@@ -16,6 +16,7 @@ class FloatingButtonView: BasicStackView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = ColorScheme.current.buttonColor
         button.setImage(UIImage(named: "plus_car_ic"), for: .normal)
+        button.tintColor = .white
         button.addTarget(self, action: #selector(mainButtonAction), for: .touchUpInside)
         return button
     }()
@@ -24,7 +25,6 @@ class FloatingButtonView: BasicStackView {
     
     override init() {
         super.init()
-        
         configure()
     }
     
@@ -40,11 +40,12 @@ class FloatingButtonView: BasicStackView {
     
     private func configureContainer() {
         translatesAutoresizingMaskIntoConstraints = false
-        distribution = .fill
+        distribution = .equalCentering
         axis = .vertical
         alignment = .trailing
         spacing = 16
         clipsToBounds = true
+        paddingInsets = UIEdgeInsets(all: 10)
     }
     
     private func makeLayout() {
@@ -53,16 +54,15 @@ class FloatingButtonView: BasicStackView {
     }
     
     private func makeConstraints() {
-        NSLayoutConstraint.activate([
-            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            mainButton.widthAnchor.constraint(equalToConstant: 50),
-            mainButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.widthAnchor.constraint(equalToConstant: 150)
-        ])
+        mainButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 10, right: 10))
+            make.width.height.equalTo(50)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.trailing.top.equalToSuperview()
+            make.width.equalTo(150)
+        }
     }
     
     func setViewModel(_ vm: ViewModel) {
@@ -83,6 +83,7 @@ class FloatingButtonView: BasicStackView {
                 label.textColor = .white
                 label.backgroundColor = ColorScheme.current.buttonColor
                 label.setViewModel(action)
+
                 self.stackView.addSecondaryButtonWith(component: label)
             })
             self.stackView.setFABButton()

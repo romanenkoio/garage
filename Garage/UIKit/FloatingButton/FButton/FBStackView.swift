@@ -7,14 +7,14 @@
 
 import UIKit
 
-class FloatingButtonStackView: UIStackView {
+class FloatingButtonStackView: BasicStackView {
     
     private var fabSecondaryButtons: [TappableLabel] = [TappableLabel]()
     private var secondaryButtons: [UIView] = [UIView]()
     private var secondaryViews: [UIView] = [UIView]()
     
-    init() {
-        super.init(frame: .zero)
+    override init() {
+        super.init()
         configureStackView()
     }
     
@@ -25,7 +25,6 @@ class FloatingButtonStackView: UIStackView {
     
     
     private func configureStackView() {
-        translatesAutoresizingMaskIntoConstraints = false
         distribution = .fill
         axis = .vertical
         alignment = .trailing
@@ -72,11 +71,10 @@ extension FloatingButtonStackView {
         
         addArrangedSubview(view)
         
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.heightAnchor.constraint(equalToConstant: 34)
-        ])
+        view.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(45)
+        }
         
         view.transform = CGAffineTransform.identity.scaledBy(x: 0.5, y: 0.5)
                 UIView.animate(withDuration: 0.075, animations: {
