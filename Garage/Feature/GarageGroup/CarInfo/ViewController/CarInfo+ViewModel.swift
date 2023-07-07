@@ -23,7 +23,7 @@ extension CarInfoViewController {
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
         var remindersVM: RemindersViewController.ViewModel
-        let addButtonVM = FloatingButton.ViewModel()
+        let addButtonVM = FloatingButtonView.ViewModel()
         
         @Published var logo: UIImage?
         

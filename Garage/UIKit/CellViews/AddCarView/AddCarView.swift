@@ -12,6 +12,7 @@ class AddCarView: BasicStackView {
     let imageButton: UIImageView = {
        let button = UIImageView()
         button.image = UIImage(named: "plus_car_ic")
+        button.tintColor = UIColor(hexString: "#ADADAD")
         return button
     }()
     

@@ -28,7 +28,7 @@ final class CarInfoControllerLayoutManager {
     var previousContentOffsetY: CGFloat = 0
     
     lazy var topStack = TopView()
-    lazy var addButton = FloatingButton()
+    lazy var addButton = FloatingButtonView()
     
     lazy var recordsView: BasicView = {
        let view = BasicView()
@@ -51,6 +51,7 @@ final class CarInfoControllerLayoutManager {
         configure()
         makeNavbar()
     }
+    
     
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(
@@ -117,7 +118,7 @@ fileprivate extension CarInfoControllerLayoutManager {
     
     private func makeConstraint() {
         addButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
+            make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 20, right: 20))
         }
         
         topStack.snp.makeConstraints { make in

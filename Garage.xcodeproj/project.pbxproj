@@ -246,6 +246,10 @@
 		B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */; };
 		B97FECE02A4B2D7B00E089C7 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* TopView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
+		B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA02A5827E800B96821 /* FBView.swift */; };
+		B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA22A58287C00B96821 /* FBMainButton.swift */; };
+		B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA62A58328A00B96821 /* FBStackView.swift */; };
+		B9BF6FA92A58453C00B96821 /* FBView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */; };
 		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
 		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
 		B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */; };
@@ -510,6 +514,10 @@
 		B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllable.swift; sourceTree = "<group>"; };
 		B97FECDF2A4B2D7B00E089C7 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9BF6FA02A5827E800B96821 /* FBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBView.swift; sourceTree = "<group>"; };
+		B9BF6FA22A58287C00B96821 /* FBMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMainButton.swift; sourceTree = "<group>"; };
+		B9BF6FA62A58328A00B96821 /* FBStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStackView.swift; sourceTree = "<group>"; };
+		B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FBView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
 		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -1555,6 +1563,7 @@
 		7FDCACAA2A4431F20071E1AA /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
+				B9BF6F9F2A5827D500B96821 /* FButton */,
 				7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */,
 				7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */,
 			);
@@ -2051,6 +2060,17 @@
 			path = TopView;
 			sourceTree = "<group>";
 		};
+		B9BF6F9F2A5827D500B96821 /* FButton */ = {
+			isa = PBXGroup;
+			children = (
+				B9BF6FA02A5827E800B96821 /* FBView.swift */,
+				B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */,
+				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
+				B9BF6FA62A58328A00B96821 /* FBStackView.swift */,
+			);
+			path = FButton;
+			sourceTree = "<group>";
+		};
 		B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2333,6 +2353,7 @@
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
+				B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */,
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
@@ -2376,6 +2397,7 @@
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
+				B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
 				7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */,
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
@@ -2425,6 +2447,7 @@
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
+				B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */,
 				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
@@ -2494,6 +2517,7 @@
 				7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */,
 				7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */,
 				7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */,
+				B9BF6FA92A58453C00B96821 /* FBView+ViewModel.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
