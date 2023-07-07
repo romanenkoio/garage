@@ -65,5 +65,19 @@ class RecordView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
+        
+        vm.$reminder.compactMap().sink { [weak self] reminder in
+            guard let days = reminder.days else { return }
+            
+            switch days {
+            case 0...7:
+                self?.dateLabel.textColor = UIColor(hexString: "#E84949")
+            case 7...14:
+                self?.dateLabel.textColor = UIColor(hexString: "#E6F4E9")
+            default:
+                break
+            }
+        }
+        .store(in: &cancellables)
     }
 }

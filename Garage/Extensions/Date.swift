@@ -28,6 +28,10 @@ extension Date {
         return Calendar.current.dateComponents([component], from: self).value(for: component)
     }
     
+    func daysBetween(date: Date) -> Int? {
+        return Calendar.current.dateComponents([.day], from: self, to: date).day
+    }
+
     var withoutTime: Date {
         let calender = Calendar.current
         var dateComponents = calender.dateComponents([.day, .month, .year], from: self)

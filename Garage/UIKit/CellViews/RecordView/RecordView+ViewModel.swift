@@ -13,6 +13,8 @@ extension RecordView {
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         
+        @Published var reminder: Reminder?
+        
         init(record: Record) {
             infoLabelVM.text = record.short
             dateLabelVM.text = record.date.toString(.ddMMyy)
@@ -21,6 +23,7 @@ extension RecordView {
         init(reminder: Reminder) {
             infoLabelVM.text = reminder.short
             dateLabelVM.text = reminder.date.toString(.ddMMyy)
+            self.reminder = reminder
         }
     }
 }

@@ -15,6 +15,10 @@ final class Reminder: Object {
     @Persisted var carID: String
     @Persisted var date: Date
     
+    var days: Int? {
+        Date().daysBetween(date: date)
+    }
+    
     convenience init(
         short: String,
         comment: String? = nil,
