@@ -125,7 +125,9 @@ extension CreateRecordViewController {
                 dateInputVM,
                 costInputVM.inputVM,
                 shortTypeVM.inputVM,
-                imagePickerVM
+                mileageInputVM.inputVM,
+                imagePickerVM,
+                commenntInputVM.inputVM
             ])
         }
         

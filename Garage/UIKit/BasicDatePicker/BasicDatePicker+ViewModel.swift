@@ -46,6 +46,7 @@ extension BasicDatePicker {
         
         func initDate(_ date: Date?) {
             self.date = date
+            self.isValid = true
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
         }
     }
