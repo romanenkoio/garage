@@ -78,21 +78,21 @@ extension FloatingButtonStackView {
             view.heightAnchor.constraint(equalToConstant: 34)
         ])
         
-        view.transform = CGAffineTransform.identity.scaledBy(x: 0.001, y: 0.001)
-        UIView.animate(withDuration: 0.075, animations: {
-            view.transform = CGAffineTransform.identity.scaledBy(x: 0.001, y: 0.001)
-        }) { finished in
-            UIView.animate(withDuration: 0.4, animations: {
-                view.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
-            }) { finished in
+        view.transform = CGAffineTransform.identity.scaledBy(x: 0.5, y: 0.5)
                 UIView.animate(withDuration: 0.075, animations: {
-                    view.transform = CGAffineTransform.identity
+                    view.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
                 }) { finished in
-                    self.showButtons()
+                    UIView.animate(withDuration: 0.03, animations: {
+                        view.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)
+                    }) { finished in
+                        UIView.animate(withDuration: 0.075, animations: {
+                            view.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+                        }) { finished in
+                            self.showButtons()
+                        }
+                    }
                 }
             }
-        }
-    }
     
     
     func dismissButtons() {
@@ -103,7 +103,7 @@ extension FloatingButtonStackView {
         
         secondaryButtons.removeLast()
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             view.transform = CGAffineTransform.identity.scaledBy(x: 0.001, y: 0.001)
         }) { finished in
             view.removeFromSuperview()
