@@ -28,16 +28,15 @@ class PastRecordsControllerCoordinator: BasicCoordinator {
                         vm: .init(
                             car: car,
                             mode: .create
-                        )
-                    )
+                        ))
                     vc.push(new)
                 case .editPastRecord(let car, let record):
                     let edit = CreateRecordViewController(
                         vm: .init(
                             car: car,
                             mode: .edit(object: record)
-                        )
-                    )
+                        ))
+                vc.push(edit)
             }
         } else {
             super.navigateTo(route)

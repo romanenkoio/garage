@@ -99,7 +99,7 @@ extension CreateCarViewController {
                 model: self.modelFieldVM.text,
                 year: self.yearFieldVM.text.toInt(),
                 win: self.winFieldVM.text,
-                mileage: self.mileageFieldVM.text.toInt() ?? .zero,
+                mileage: self.mileageFieldVM.text.toInt(),
                 logo: self.logoImage?.pngData()
             )
             RealmManager<Car>().write(object: car)

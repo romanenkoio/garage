@@ -15,6 +15,11 @@ final class Photo: Object, Codable {
     @Persisted var recordId: String?
     @Persisted var image: Data
     
+    
+    var converted: UIImage? {
+        return UIImage(data: image)
+    }
+    
     convenience init(
         _ document: Document,
         image: Data

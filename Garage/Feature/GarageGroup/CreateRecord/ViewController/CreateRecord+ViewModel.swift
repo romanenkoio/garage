@@ -9,7 +9,7 @@
 import UIKit
 
 extension CreateRecordViewController {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicControllerModel {
         unowned var car: Car
         
         
@@ -74,9 +74,55 @@ extension CreateRecordViewController {
             
             imagePickerVM.description = "Добавить фото"
             imagePickerVM.editingEnabled = true
+            
+            super.init()
+            initMode()
         }
         
-        func saveRecord() {
+        func initMode() {
+            initValidator()
+            
+            switch mode {
+            case .create:
+                break
+            case .edit(let object):
+                dateInputVM.initDate(object.date)
+                costInputVM.text = "\(object.cost ?? .zero)"
+                mileageInputVM.text = "\(object.mileage)"
+                shortTypeVM.text = object.short
+                imagePickerVM.items = RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted })
+                saveButtonVM.buttonVM.title = "Обновить"
+                initChangeChecker()
+            }
+        }
+        
+        private func initValidator() {
+            validator.setForm([
+                dateInputVM,
+                costInputVM.inputVM,
+                shortTypeVM.inputVM
+            ])
+        }
+        
+        private func initChangeChecker() {
+            changeChecker.setForm([
+                dateInputVM,
+                costInputVM.inputVM,
+                shortTypeVM.inputVM,
+                imagePickerVM
+            ])
+        }
+        
+        func action() {
+            switch mode {
+            case .create:
+                saveRecord()
+            case .edit(let object):
+                updateRecord(object)
+            }
+        }
+        
+        private func saveRecord() {
             let record = Record(
                 short: shortTypeVM.text,
                 carID: car.id,
@@ -88,6 +134,45 @@ extension CreateRecordViewController {
             )
             RealmManager<Record>().write(object: record)
             
+            updateMilageIfNeeded()
+            savePhoto(for: record, shouldRemove: false)
+        }
+        
+        private func updateRecord(_ record: Record) {
+            RealmManager().update { [weak self] realm in
+                guard let self else { return }
+
+                try? realm.write({ [weak self] in
+                    guard let self else { return }
+                    record.short = shortTypeVM.text
+                    record.serviceID = serivesListVM.selectedItem?.id
+                    record.cost = costInputVM.text.toDouble()
+                    record.mileage = mileageInputVM.text.toDouble()
+                    record.date = dateInputVM.date ?? Date()
+                    record.comment = commenntInputVM.inputVM.text
+                })
+                
+                savePhoto(for: record, shouldRemove: true)
+                updateMilageIfNeeded()
+            }
+        }
+        
+        private func savePhoto(for record: Record, shouldRemove: Bool) {
+            if shouldRemove {
+                RealmManager<Photo>()
+                    .read()
+                    .filter({ $0.recordId == record.id })
+                    .forEach({ RealmManager().delete(object: $0)})
+            }
+            
+            self.imagePickerVM.items.forEach { image in
+                guard let data = image.jpegData(compressionQuality: 1) else { return }
+                let photo = Photo(record, image: data)
+                RealmManager<Photo>().write(object: photo)
+            }
+        }
+        
+        private func updateMilageIfNeeded() {
             if mileageInputVM.text.toInt() > car.mileage {
                 RealmManager().update { [weak self] realm in
                     try? realm.write { [weak self] in
@@ -96,12 +181,13 @@ extension CreateRecordViewController {
                     }
                 }
             }
+        }
         
-            self.imagePickerVM.items.forEach { image in
-                guard let data = image.jpegData(compressionQuality: 1) else { return }
-                let photo = Photo(record, image: data)
-                RealmManager<Photo>().write(object: photo)
+        func removeRecord(completion: Completion?) {
+            guard case let .edit(record) = mode else {
+              return
             }
+            RealmManager().delete(object: record, completion: completion)
         }
     }
 }

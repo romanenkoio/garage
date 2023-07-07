@@ -105,6 +105,15 @@ extension CarInfoViewController {
 
 extension CarInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch vm.segmentVM.selectedItem {
+            
+        case .paste:
+            guard let record = vm.pastRecordsVM.tableVM.cells[safe: indexPath.row] else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, record))
+         
+        case .future:
+            break
+        }
     }
 }
 

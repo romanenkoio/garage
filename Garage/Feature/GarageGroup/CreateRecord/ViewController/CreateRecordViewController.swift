@@ -59,7 +59,7 @@ class CreateRecordViewController: BasicViewController {
         
         vm.saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
             guard let self else { return }
-            self.vm.saveRecord()
+            self.vm.action()
             self.coordinator.navigateTo(CommonNavigationRoute.close)
         }
     }

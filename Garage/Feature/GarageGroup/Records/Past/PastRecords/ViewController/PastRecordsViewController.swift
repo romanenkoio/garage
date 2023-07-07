@@ -82,12 +82,12 @@ extension PastRecordsViewController: UITableViewDataSource {
         pastRecordCell.selectionStyle = .none
         return pastRecordCell
     }
-
 }
 
 // MARK: - UITableViewDelegate
 
 extension PastRecordsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
