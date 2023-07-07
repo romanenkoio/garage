@@ -36,7 +36,8 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 let controller = CreateCarViewController(vm: vm)
                 vc.push(controller)
             case .createReminder(let car):
-                print("Создание ремайндера")
+                let controller = CreateReminderViewController(vm: .init(car: car, mode: .create))
+                vc.push(controller)
             case .editRecord(let car, let record):
                 let controller = CreateRecordViewController(vm: .init(car: car, mode: .edit(object: record)))
                 vc.push(controller)

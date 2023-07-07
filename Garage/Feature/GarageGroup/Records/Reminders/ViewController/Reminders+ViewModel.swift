@@ -13,16 +13,26 @@ extension RemindersViewController {
         
         private(set) unowned var car: Car
 
-        let tableVM = BasicTableView.GenericViewModel<Record>()
+        let tableVM = BasicTableView.GenericViewModel<Reminder>()
         
         init(car: Car) {
             self.car = car
             super.init()
             tableVM.isHiddenButton = true
+            
+            tableVM.setupEmptyState(
+                type: .small,
+                labelVM: .init(text: "Напоминаний нет"),
+                sublabelVM: .init(text: "Запланированных задач пока нет, но их можно добавить"),
+                addButtonVM: .init(),
+                image: nil
+            )
+            
+            readRecords()
         }
         
         func readRecords() {
-            let records = RealmManager<Record>().read()
+            let records = RealmManager<Reminder>().read()
             tableVM.setCells(records)
         }
     }

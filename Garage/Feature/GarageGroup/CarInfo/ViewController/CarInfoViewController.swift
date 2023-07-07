@@ -76,8 +76,9 @@ class CarInfoViewController: BasicViewController {
                 guard let self else { return }
                 coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
             }),
-            .init(text: "Запланировать", action: {
-                
+            .init(text: "Запланировать", action: { [weak self] in
+                guard let self else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
             })
         ]
         

@@ -110,7 +110,7 @@ struct LocalPush {
     }
     
     init(reminder: Reminder) {
-        id = UUID().uuidString
+        id = reminder.id
         title = "Вы просили на помнить"
         subtitle = reminder.description
         date = reminder.date.components

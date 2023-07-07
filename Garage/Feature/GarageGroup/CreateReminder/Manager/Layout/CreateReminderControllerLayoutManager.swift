@@ -1,18 +1,18 @@
 //
-//  CreateRecordControllerLayoutManager.swift
+//  CreateReminderControllerLayoutManager.swift
 //  Garage
 //
-//  Created by Illia Romanenko on 15.06.23.
+//  Created by Illia Romanenko on 7.07.23.
 //  
 //
 
 import UIKit
 import SnapKit
 
-final class CreateRecordControllerLayoutManager {
+final class CreateReminderControllerLayoutManager {
     
-    private unowned let vc: CreateRecordViewController
-    
+    private unowned let vc: CreateReminderViewController
+
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
@@ -22,12 +22,8 @@ final class CreateRecordControllerLayoutManager {
     }()
     
     lazy var shortTypeInput = SuggestionInput<ServiceType>()
-    lazy var costInput = BasicInputView()
-    lazy var mileageImput = BasicInputView()
     lazy var dateInput = BasicDatePicker()
-    lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
-    lazy var servicesList = BasicList<Service>()
     lazy var commentInput = MultiLineInput()
 
     var contentView: BasicView {
@@ -35,7 +31,7 @@ final class CreateRecordControllerLayoutManager {
     }
     
     // - Init
-    init(vc: CreateRecordViewController) {
+    init(vc: CreateReminderViewController) {
         self.vc = vc
         configure()
     }
@@ -45,26 +41,20 @@ final class CreateRecordControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension CreateRecordControllerLayoutManager {
+fileprivate extension CreateReminderControllerLayoutManager {
     
     private func configure() {
         makeLayout()
         makeConstraint()
-        mileageImput.textField.mode = .digit
-        costInput.textField.mode = .digit
     }
     
     private func makeLayout() {
         contentView.addSubview(stack)
         stack.addArrangedSubviews([
             shortTypeInput,
-            costInput,
-            mileageImput,
-            dateInput,
-            servicesList
+            dateInput
         ])
 
-        contentView.addSubview(imageList)
         contentView.addSubview(commentInput)
         contentView.addSubview(saveButton)
     }
@@ -74,14 +64,9 @@ fileprivate extension CreateRecordControllerLayoutManager {
             make.leading.trailing.top.equalToSuperview()
         }
         
-        imageList.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(stack.snp.bottom).offset(25)
-        }
-        
         commentInput.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(imageList.snp.bottom).offset(20)
+            make.top.equalTo(stack.snp.bottom).offset(20)
         }
         
         saveButton.snp.makeConstraints { make in
@@ -90,4 +75,5 @@ fileprivate extension CreateRecordControllerLayoutManager {
             make.bottom.equalToSuperview()
         }
     }
+    
 }
