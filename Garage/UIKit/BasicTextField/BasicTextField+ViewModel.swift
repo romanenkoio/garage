@@ -49,5 +49,10 @@ extension BasicTextField {
 
             return result
         }
+        
+        func setText(_ text: String) {
+            self.checkedValue = text
+            self.text = text
+        }
     }
 }

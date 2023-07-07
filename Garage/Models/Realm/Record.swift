@@ -13,8 +13,8 @@ final class Record: Object, Codable {
     @Persisted var short: String
     @Persisted var carID: String
     @Persisted var serviceID: String?
-    @Persisted var cost: Double?
-    @Persisted var mileage: Double
+    @Persisted var cost: Int?
+    @Persisted var mileage: Int
     @Persisted var date: Date
     @Persisted var comment: String?
     
@@ -22,8 +22,8 @@ final class Record: Object, Codable {
         short: String,
         carID: String,
         serviceID: String? = nil,
-        cost: Double? = nil,
-        mileage: Double,
+        cost: Int? = nil,
+        mileage: Int,
         date: Date,
         comment: String? = nil
     ) {

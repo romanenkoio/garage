@@ -40,6 +40,7 @@ extension BasicDatePicker {
                 return
             }
             
+            self.validate()
             self.checkChanged(stringDate)
         }
         

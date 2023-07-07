@@ -24,7 +24,7 @@ enum ValidationRule {
         case .minimumLenght(let min):       return "^.{\(min)}$"
         case .maximumLenght(let max):       return "^.{1,\(max)}$"
         case .lenght(let min, let max):     return "^.{\(min),\(max)}$"
-        case .onlyDigit:                    return "[0-9]*"
+        case .onlyDigit:                    return "[0-9.]*"
         case .onlyLetter:                   return "[a-Z]*"
         case .password:                     return "[0-9a-zA-Z.@!&*^%$#@_]{6,20}"
         case .noneEmpty:                    return "^(?!\\s*$).+"

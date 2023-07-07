@@ -84,12 +84,12 @@ extension CreateRecordViewController {
             
             switch mode {
             case .create:
-                break
+                saveButtonVM.buttonVM.isEnabled = false
             case .edit(let object):
                 dateInputVM.initDate(object.date)
                 costInputVM.text = "\(object.cost ?? .zero)"
                 mileageInputVM.text = "\(object.mileage)"
-                shortTypeVM.text = object.short
+                shortTypeVM.inputVM.setText(object.short)
                 imagePickerVM.items = RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted })
                 saveButtonVM.buttonVM.title = "Обновить"
                 initChangeChecker()
@@ -100,8 +100,24 @@ extension CreateRecordViewController {
             validator.setForm([
                 dateInputVM,
                 costInputVM.inputVM,
-                shortTypeVM.inputVM
+                shortTypeVM.inputVM,
+                mileageInputVM.inputVM
             ])
+            
+            validator.formIsValid
+                .sink { [weak self] value in
+                    guard let self else { return }
+                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
+                }
+                .store(in: &cancellables)
+            
+            changeChecker.formHasChange
+                .sink { [weak self] value in
+                    guard let self else { return }
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+                    
+                }
+                .store(in: &cancellables)
         }
         
         private func initChangeChecker() {
@@ -127,8 +143,8 @@ extension CreateRecordViewController {
                 short: shortTypeVM.text,
                 carID: car.id,
                 serviceID: serivesListVM.selectedItem?.id,
-                cost: costInputVM.text.toDouble(),
-                mileage: mileageInputVM.text.toDouble(),
+                cost: costInputVM.text.toInt(),
+                mileage: mileageInputVM.text.toInt(),
                 date: dateInputVM.date ?? Date(),
                 comment: commenntInputVM.inputVM.text
             )
@@ -146,8 +162,8 @@ extension CreateRecordViewController {
                     guard let self else { return }
                     record.short = shortTypeVM.text
                     record.serviceID = serivesListVM.selectedItem?.id
-                    record.cost = costInputVM.text.toDouble()
-                    record.mileage = mileageInputVM.text.toDouble()
+                    record.cost = costInputVM.text.toInt()
+                    record.mileage = mileageInputVM.text.toInt()
                     record.date = dateInputVM.date ?? Date()
                     record.comment = commenntInputVM.inputVM.text
                 })
