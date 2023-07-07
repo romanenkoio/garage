@@ -18,6 +18,13 @@ final class Car: Object, Codable {
     @Persisted var mileage: Int
     @Persisted var imageData: Data?
     
+    var reminders: [Reminder] {
+        RealmManager<Reminder>()
+            .read()
+            .filter({ $0.carID == self.id})
+            .sorted(by: { $0.date < $1.date })
+    }
+    
     convenience init(
         brand: String,
         model: String,

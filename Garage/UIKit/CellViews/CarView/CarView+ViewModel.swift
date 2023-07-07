@@ -14,10 +14,9 @@ extension CarView {
         let plannedLabelVM = BasicLabel.ViewModel()
         let atteentionLabelVM = BasicLabel.ViewModel()
         @Published var image: UIImage?
+        @Published var shouldShowAttention = false
         
-        init(
-            car: Car
-        ) {
+        init(car: Car) {
             brandLabelVM.text = "\(car.brand) \(car.model)"
             atteentionLabelVM.text = "Просрочена медицинская справка"
             plannedLabelVM.text = "Нет запланированных событий"
@@ -25,6 +24,18 @@ extension CarView {
                let image = UIImage(data: data) {
                 self.image = image
             }
+            
+            shouldShowAttention = car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero > 0 })
+            if car.reminders.isEmpty {
+                plannedLabelVM.text = "Нет запланированных событий"
+            } else {
+                guard let first = car.reminders.first else {
+                    plannedLabelVM.text = "Нет запланированных событий"
+                    return
+                }
+                plannedLabelVM.text = "Ближайшее: \(first.short)"
+            }
+            
         }
     }
 }

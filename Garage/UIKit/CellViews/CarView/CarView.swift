@@ -26,19 +26,9 @@ class CarView: BasicView {
     
     private lazy var attentionView: BasicView = {
         let view = BasicView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.cornerRadius = 20
         return view
-    }()
-    
-    private lazy var attentionLabel: BasicLabel = {
-        let label = BasicLabel()
-        label.font = .custom(size: 11, weight: .bold)
-        label.textColor = UIColor(hexString: "#E84949")
-        label.textInsets = .init(left: 6, right: 5)
-        label.text = "Течдлаоы длывао ывлао "
-        label.numberOfLines = 2
-        return label
     }()
     
     private lazy var attentionImage: UIImageView = {
@@ -94,7 +84,6 @@ class CarView: BasicView {
     
     private func makeLayout() {
        addSubview(mainStack)
-        attentionView.addSubview(attentionLabel)
         attentionView.addSubview(attentionImage)
         
         topContainer.addSubview(textStack)
@@ -113,17 +102,12 @@ class CarView: BasicView {
         
         attentionImage.snp.makeConstraints { make in
             make.height.width.equalTo(16)
-            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(left: 12))
+            make.centerY.leading.equalToSuperview()
         }
-        
-        attentionLabel.snp.makeConstraints { make in
-            make.leading.equalTo(attentionImage.snp.trailing)
-            make.top.bottom.trailing.equalToSuperview()
-        }
-        
+
         attentionView.snp.makeConstraints { make in
-            make.height.equalTo(40)
-            make.width.equalTo(116)
+            make.height.equalToSuperview()
+            make.width.equalTo(16)
             make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 16))
             make.centerY.equalTo(textStack)
         }
@@ -141,11 +125,15 @@ class CarView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
-        attentionLabel.setViewModel(vm.atteentionLabelVM)
         plannedLabel.setViewModel(vm.plannedLabelVM)
         
         vm.$image.sink { [weak self] image in
             self?.logoImage.image = image
+        }
+        .store(in: &cancellables)
+        
+        vm.$shouldShowAttention.sink { [weak self] value in
+            self?.attentionView.isHidden = !value
         }
         .store(in: &cancellables)
     }
