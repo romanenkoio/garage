@@ -9,8 +9,9 @@ import UIKit
 
 class RecordView: BasicView {
     
-    private lazy var containerView: BasicView = {
-        let view = BasicView()
+    private lazy var containerView: BasicStackView = {
+        let view = BasicStackView()
+        view.axis = .horizontal
         view.backgroundColor = .white
         view.cornerRadius = 16
         return view
@@ -23,6 +24,18 @@ class RecordView: BasicView {
         stack.edgeInsets = UIEdgeInsets(all: 20)
         stack.backgroundColor = .white
         return stack
+    }()
+    
+    private lazy var attentionView: BasicView = {
+        let view = BasicView()
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var attentionImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "error_ic")
+        return imageView
     }()
     
     private lazy var infoLabel: BasicLabel = {
@@ -48,10 +61,24 @@ class RecordView: BasicView {
     private func makeLayout() {
         addSubview(containerView)
         containerView.addSubview(stack)
+        containerView.addSubview(attentionView)
+        attentionView.addSubview(attentionImage)
         stack.addArrangedSubviews([infoLabel, dateLabel])
     }
     
     private func makeConstraint() {
+        attentionImage.snp.makeConstraints { make in
+            make.height.width.equalTo(16)
+            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(left: 12))
+        }
+        
+        attentionView.snp.makeConstraints { make in
+            make.height.equalTo(containerView)
+            make.width.equalTo(16)
+            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
+            make.centerY.equalTo(stack)
+        }
+    
         containerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
             make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 6))
@@ -71,9 +98,11 @@ class RecordView: BasicView {
             
             switch days {
             case 0...7:
+                self?.attentionView.isHidden = false
                 self?.dateLabel.textColor = UIColor(hexString: "#E84949")
             case 7...14:
                 self?.dateLabel.textColor = UIColor(hexString: "#E6F4E9")
+                self?.attentionView.isHidden = false
             default:
                 break
             }

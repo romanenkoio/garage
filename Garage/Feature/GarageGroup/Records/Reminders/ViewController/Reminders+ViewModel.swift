@@ -28,10 +28,10 @@ extension RemindersViewController {
                 image: nil
             )
             
-            readRecords()
+            readReminders()
         }
         
-        func readRecords() {
+        func readReminders() {
             let records = RealmManager<Reminder>().read()
             tableVM.setCells(records)
         }

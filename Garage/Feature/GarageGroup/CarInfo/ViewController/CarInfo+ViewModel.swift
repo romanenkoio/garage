@@ -67,6 +67,7 @@ extension CarInfoViewController {
             self.car = car
             self.initFields()
             self.pastRecordsVM.readRecords()
+            self.remindersVM.readReminders()
         }
         
         func readRecords(for car: Car) {
