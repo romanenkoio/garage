@@ -140,6 +140,7 @@ class BasicTableView: BasicView {
                 }
             }
         }
+        .store(in: &cancellables)
     }
     
     func setupTable(

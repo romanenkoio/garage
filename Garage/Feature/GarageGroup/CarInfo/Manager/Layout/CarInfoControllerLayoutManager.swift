@@ -28,7 +28,7 @@ final class CarInfoControllerLayoutManager {
     var previousContentOffsetY: CGFloat = 0
     
     lazy var topStack = TopView()
-    lazy var addButton = FloatingButton()
+    lazy var addButton = FloatingButtonView()
     
     lazy var recordsView: BasicView = {
        let view = BasicView()
@@ -51,6 +51,7 @@ final class CarInfoControllerLayoutManager {
         configure()
         makeNavbar()
     }
+    
     
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(

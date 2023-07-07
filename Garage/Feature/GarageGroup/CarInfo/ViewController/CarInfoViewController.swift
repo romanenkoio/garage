@@ -46,6 +46,11 @@ class CarInfoViewController: BasicViewController {
         vm.readCar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        layout.container.delegate = self
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
@@ -53,7 +58,7 @@ class CarInfoViewController: BasicViewController {
     
     override func hideKeyboard() {
         super.hideKeyboard()
-        self.vm.addButtonVM.isOpen = false
+        //self.vm.addButtonVM.isMenuOnScreen = false
     }
     
     override func configure() {
@@ -75,9 +80,11 @@ class CarInfoViewController: BasicViewController {
             .init(text: "Добавить запись", action: { [weak self] in
                 guard let self else { return }
                 coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+                self.vm.addButtonVM.dismissButtons()
             }),
-            .init(text: "Запланировать", action: {
-                
+            .init(text: "Запланировать", action: { [weak self] in
+                guard let self else { return }
+                self.vm.addButtonVM.dismissButtons()
             })
         ]
         
@@ -160,3 +167,4 @@ extension CarInfoViewController: UIScrollViewDelegate {
         }
     }
 }
+
