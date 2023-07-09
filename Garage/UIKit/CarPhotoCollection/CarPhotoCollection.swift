@@ -14,12 +14,12 @@ class CarPhotoCollection: BasicView {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0.0
         layout.itemSize = CGSize(width: 278, height: 188)
+        
         let collection = BasicCollectionView(layout: layout)
         collection.setupCollection(
             dataSource: self,
             delegate: self
         )
-//        collection.collection.bounces = true
         collection.register(CarCellPhotoCell.self)
         collection.collection.contentInset = UIEdgeInsets(horizontal: 8)
         collection.collection.decelerationRate = UIScrollView.DecelerationRate.fast
@@ -89,7 +89,10 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         return vm.collectionVM.cells.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let vm else { return .init()}
         guard let photoCell = collectionView.dequeueReusableCell(CarCellPhotoCell.self, for: indexPath),
               let item = vm.collectionVM.cells[safe: indexPath.row]
@@ -104,7 +107,10 @@ extension CarPhotoCollection: UICollectionViewDataSource {
 }
 
 extension CarPhotoCollection: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         guard let vm else { return }
         let photoVC = FullSizePhotoViewController(vm: .init(images: vm.images, selectedIndex: indexPath.row))
         presentOnRootViewController(photoVC, animated: true)
