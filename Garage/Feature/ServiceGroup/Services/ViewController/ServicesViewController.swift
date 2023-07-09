@@ -77,7 +77,9 @@ class ServicesViewController: BasicViewController {
         }
         
         vm.tableVM.addButtonVM.action = action
-        vm.addButtonVM.buttonVM.action = action
+        vm.addButtonVM.mainButtonAction = {
+            action()
+        }
     }
     
     private func setupLongTap() {

@@ -12,7 +12,7 @@ extension DocumentsViewController {
     final class ViewModel: BasicViewModel {
         
         let tableVM = BasicTableView.GenericViewModel<Document>()
-        let addButtonVM = FloatingButton.ViewModel()
+        let addButtonVM = FloatingButtonView.ViewModel()
         
         override init() {
             super.init()

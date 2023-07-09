@@ -13,9 +13,7 @@ extension ServicesViewController {
         typealias Suggestion = SuggestionView.ViewModel
         
         let tableVM = BasicTableView.GenericViewModel<Service>()
-        let addButtonVM = AlignedButton.ViewModel(
-            buttonVM: .init(title: "Добавить сервис")
-        )
+        let addButtonVM = FloatingButtonView.ViewModel()
         
         @Published
         var suggestions = [Suggestion]()

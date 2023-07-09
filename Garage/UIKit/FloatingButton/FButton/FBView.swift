@@ -40,7 +40,6 @@ class FloatingButtonView: BasicStackView {
         alignment = .trailing
         spacing = 16
         clipsToBounds = true
-        paddingInsets = UIEdgeInsets(all: 10)
     }
     
     private func makeLayout() {

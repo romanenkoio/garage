@@ -34,20 +34,6 @@ class DocumentsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
-        
-        let action: Action = .touchUpInside { [weak self] in
-            guard let self else { return }
-            coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
-        }
-
-        vm.tableVM.addButtonVM.action = action
-        vm.addButtonVM.actions = [
-            .init(text: .empty, action: {
-                action()
-            })
-        ]
-        
-      
         makeLogoNavbar()
     }
 
@@ -65,6 +51,16 @@ class DocumentsViewController: BasicViewController {
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
         layout.addButton.setViewModel(vm.addButtonVM)
+     
+        let action: Action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            coordinator.navigateTo(DocumentsNavigationRoute.createDocument)
+        }
+
+        vm.tableVM.addButtonVM.action = action
+        vm.addButtonVM.mainButtonAction = {
+            action()
+        }
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
@@ -77,9 +73,7 @@ class DocumentsViewController: BasicViewController {
     
     override func hideKeyboard() {
         super.hideKeyboard()
-        self.vm.addButtonVM.isOpen = false
     }
-    
 }
 
 // MARK: -

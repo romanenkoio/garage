@@ -36,7 +36,7 @@ final class ServicesControllerLayoutManager {
         return table
     }()
     
-    lazy var addButton = AlignedButton()
+    lazy var addButton = FloatingButtonView()
     
     // - Init
     init(vc: ServicesViewController) {
@@ -67,25 +67,25 @@ fileprivate extension ServicesControllerLayoutManager {
     }
     
     private func makeLayout() {
-//        vc.contentView.addSubview(categoriesStack)
-        vc.view.addSubview(table)
-//        vc.contentView.addSubview(addButton)
-        vc.contentView.isHidden = true
+        vc.contentView.addSubview(categoriesStack)
+        vc.contentView.addSubview(table)
+        vc.contentView.addSubview(addButton)
+        vc.contentView.bringSubviewToFront(addButton)
     }
     
     private func makeConstraint() {
-//        categoriesStack.snp.makeConstraints { make in
-//            make.leading.trailing.top.equalToSuperview()
-//        }
-        
-        table.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        categoriesStack.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
         }
         
-//        addButton.snp.makeConstraints { make in
-//            make.leading.trailing.bottom.equalToSuperview()
-//            make.top.equalTo(table.snp.bottom)
-//        }
+        table.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(categoriesStack.snp.bottom)
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 16, right: 16))
+        }
     }
     
 }
