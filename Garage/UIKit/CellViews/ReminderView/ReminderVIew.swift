@@ -8,15 +8,15 @@
 import UIKit
 
 class ReminderView: BasicView {
-    private lazy var containerView: BasicStackView = {
-        let view = BasicStackView()
-        view.axis = .horizontal
+    
+    private lazy var container: BasicView = {
+        let view = BasicView()
         view.backgroundColor = .white
         view.cornerRadius = 16
         return view
     }()
     
-    private lazy var stack: BasicStackView = {
+    private lazy var textStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.spacing = 4
@@ -50,46 +50,55 @@ class ReminderView: BasicView {
         return label
     }()
     
+    private lazy var completeStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.backgroundColor = .clear
+        return stack
+    }()
+    
+    private lazy var completeButton = BasicButton()
+    
     override func initView() {
         makeLayout()
         makeConstraint()
-        self.backgroundColor = .clear
     }
     
     private func makeLayout() {
-        addSubview(containerView)
-        containerView.addSubview(stack)
-        containerView.addSubview(moreView)
-        moreView.addSubview(moreImage)
-        stack.addArrangedSubviews([infoLabel, dateLabel])
+        addSubview(container)
+        
+        container.addSubview(textStack)
+        textStack.addArrangedSubviews([infoLabel, dateLabel])
+        container.addSubview(moreImage)
+        container.addSubview(completeButton)
     }
     
     private func makeConstraint() {
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(vertical: 6, horizontal: 20))
+        }
+        
+        textStack.snp.makeConstraints { make in
+            make.leading.bottom.top.equalToSuperview()
+            make.trailing.equalTo(completeButton.snp.leading).offset(-8)
+        }
+        
         moreImage.snp.makeConstraints { make in
-            make.height.width.equalTo(28)
-            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(right: 20))
+            make.trailing.centerY.equalToSuperview().inset(UIEdgeInsets(right: 20))
+            make.width.height.equalTo(28)
         }
         
-        moreView.snp.makeConstraints { make in
-            make.height.equalTo(containerView)
-            make.width.equalTo(28)
-            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
-            make.centerY.equalTo(stack)
-        }
-    
-        containerView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
-            make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 6))
-        }
-        
-        stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        completeButton.snp.makeConstraints { make in
+            make.trailing.equalTo(moreImage.snp.leading).offset(-8)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(81)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
+        completeButton.setViewModel(vm.completeButton)
         
         guard let days = vm.reminder.days else { return }
         

@@ -13,6 +13,7 @@ final class Photo: Object, Codable {
     @Persisted var id: String
     @Persisted var documentId: String?
     @Persisted var recordId: String?
+    @Persisted var carId: String?
     @Persisted var image: Data
     
     
@@ -37,6 +38,16 @@ final class Photo: Object, Codable {
         self.init()
         self.id = UUID().uuidString
         self.recordId = record.id
+        self.image = image
+    }
+    
+    convenience init(
+        _ car: Car,
+        image: Data
+    ) {
+        self.init()
+        self.id = UUID().uuidString
+        self.carId = car.id
         self.image = image
     }
 }
