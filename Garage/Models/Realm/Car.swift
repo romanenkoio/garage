@@ -32,6 +32,11 @@ final class Car: Object, Codable {
             .sorted(by: { $0.date < $1.date })
     }
     
+    var images: [UIImage] {
+        let datas = RealmManager<Photo>().read().filter({ $0.carId == self.id })
+        return datas.compactMap({ UIImage(data: $0.image )})
+    }
+    
     convenience init(
         brand: String,
         model: String,
