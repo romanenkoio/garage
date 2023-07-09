@@ -166,6 +166,10 @@
 		7FFC1F782A3545CB007A5C75 /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F772A3545CB007A5C75 /* Backup.swift */; };
 		B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A252A5AD0D2004698ED /* FBSecondItem.swift */; };
 		B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A292A5AD3FA004698ED /* FBSecondItem+ViewModel.swift */; };
+		B92E5A322A5B4B9A004698ED /* CarPhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A312A5B4B9A004698ED /* CarPhotoCollection.swift */; };
+		B92E5A342A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */; };
+		B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */; };
+		B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */; };
 		B93A342E2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */; };
 		B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */; };
 		B93A34302A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */; };
@@ -438,6 +442,10 @@
 		7FFC1F772A3545CB007A5C75 /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
 		B92E5A252A5AD0D2004698ED /* FBSecondItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBSecondItem.swift; sourceTree = "<group>"; };
 		B92E5A292A5AD3FA004698ED /* FBSecondItem+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FBSecondItem+ViewModel.swift"; sourceTree = "<group>"; };
+		B92E5A312A5B4B9A004698ED /* CarPhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPhotoCollection.swift; sourceTree = "<group>"; };
+		B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarCarPhotoCollection+ViewModel.swift"; sourceTree = "<group>"; };
+		B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellPhotoView.swift; sourceTree = "<group>"; };
+		B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarCellPhotoView+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-UltraLightItalic.ttf"; sourceTree = "<group>"; };
 		B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
 		B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -1698,6 +1706,24 @@
 			path = Unused;
 			sourceTree = "<group>";
 		};
+		B92E5A302A5B4B79004698ED /* CarPhotoCollection */ = {
+			isa = PBXGroup;
+			children = (
+				B92E5A312A5B4B9A004698ED /* CarPhotoCollection.swift */,
+				B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */,
+			);
+			path = CarPhotoCollection;
+			sourceTree = "<group>";
+		};
+		B92E5A352A5B51AF004698ED /* CarCellPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */,
+				B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */,
+			);
+			path = CarCellPhotoView;
+			sourceTree = "<group>";
+		};
 		B93A34182A3D10A4004BAEA6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1796,6 +1822,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B92E5A302A5B4B79004698ED /* CarPhotoCollection */,
 				B97FECD72A45800500E089C7 /* ScrollableTableView */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
 				7F07BD3D2A46EF940075EEFC /* CallButton */,
@@ -1837,6 +1864,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				B92E5A352A5B51AF004698ED /* CarCellPhotoView */,
 				7F1DE3AE2A5AB303008E7B1D /* ReminderView */,
 				7F89F95E2A522920005F910E /* OnboardingView */,
 				7F174EEF2A4B2818004E51F9 /* ArticleView */,
@@ -2462,6 +2490,7 @@
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
+				B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */,
 				B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */,
@@ -2481,6 +2510,7 @@
 				7F1DE3AD2A58AD97008E7B1D /* CreateReminder+ViewModel.swift in Sources */,
 				B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
+				B92E5A322A5B4B9A004698ED /* CarPhotoCollection.swift in Sources */,
 				7F0F92792A4257F900920CD9 /* DetailsView.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */,
@@ -2525,6 +2555,7 @@
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */,
+				B92E5A342A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
@@ -2573,6 +2604,7 @@
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
 				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
+				B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */,
 				7F0E08DA2A2FA2ED008C2B9A /* SuggestionView+ViewModel.swift in Sources */,

@@ -74,6 +74,8 @@ class CarView: BasicView {
         return imageView
     }()
     
+    private lazy var logoCollection = CarPhotoCollection()
+    
     private lazy var detailsView = DetailsView()
 
     override func initView() {
@@ -92,7 +94,7 @@ class CarView: BasicView {
         mainStack.addArrangedSubviews([topContainer, photoContainer, detailsView])
         textStack.addArrangedSubviews([brandLabel, plannedLabel])
         
-        photoContainer.addArrangedSubviews([logoImage])
+        photoContainer.addArrangedSubviews([logoCollection])
     }
     
     private func makeConstraints() {
@@ -112,10 +114,6 @@ class CarView: BasicView {
             make.centerY.equalTo(textStack)
         }
         
-        logoImage.snp.makeConstraints { make in
-            make.height.equalTo(188)
-        }
-        
         textStack.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
             make.trailing.equalTo(attentionView.snp.leading)
@@ -126,6 +124,7 @@ class CarView: BasicView {
         detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
         plannedLabel.setViewModel(vm.plannedLabelVM)
+        logoCollection.setViewModel(vm.carPhotoCollectionVM)
         
         vm.$image.sink { [weak self] image in
             self?.logoImage.image = image
