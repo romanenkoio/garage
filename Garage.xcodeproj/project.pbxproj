@@ -1711,6 +1711,7 @@
 		B92E5A302A5B4B79004698ED /* CarPhotoCollection */ = {
 			isa = PBXGroup;
 			children = (
+				B92E5A3B2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift */,
 				B92E5A312A5B4B9A004698ED /* CarPhotoCollection.swift */,
 				B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */,
 			);
@@ -1722,7 +1723,6 @@
 			children = (
 				B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */,
 				B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */,
-				B92E5A3B2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift */,
 			);
 			path = CarCellPhotoView;
 			sourceTree = "<group>";

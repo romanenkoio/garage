@@ -105,7 +105,9 @@ extension CarPhotoCollection: UICollectionViewDataSource {
 
 extension CarPhotoCollection: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let vm else { return }
+        let photoVC = FullSizePhotoViewController(vm: .init(images: vm.images, selectedIndex: indexPath.row))
+        presentOnRootViewController(photoVC, animated: true)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
