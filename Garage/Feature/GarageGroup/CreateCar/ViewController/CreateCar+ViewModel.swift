@@ -103,6 +103,9 @@ extension CreateCarViewController {
                 logo: self.logoImage?.pngData()
             )
             RealmManager<Car>().write(object: car)
+            
+           savePhoto(for: car, shouldRemove: false)
+            
             self.succesCreateCompletion?()
         }
         
@@ -117,10 +120,26 @@ extension CreateCarViewController {
                         car.win = winFieldVM.text
                         car.mileage = mileageFieldVM.text.toInt()
                     }
+                    self?.savePhoto(for: car, shouldRemove: true)
                     self?.succesCreateCompletion?()
                 } catch let error {
                     print(error)
                 }
+            }
+        }
+        
+        private func savePhoto(for record: Car, shouldRemove: Bool) {
+            if shouldRemove {
+                RealmManager<Photo>()
+                    .read()
+                    .filter({ $0.recordId == record.id })
+                    .forEach({ RealmManager().delete(object: $0)})
+            }
+            
+            self.imageListVM.items.forEach { image in
+                guard let data = image.jpegData(compressionQuality: 1) else { return }
+                let photo = Photo(record, image: data)
+                RealmManager<Photo>().write(object: photo)
             }
         }
         
