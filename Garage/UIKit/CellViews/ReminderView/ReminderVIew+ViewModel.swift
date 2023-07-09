@@ -12,6 +12,7 @@ extension ReminderView {
 
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
+        let completeButton = BasicButton.ViewModel(title: "Выполнить", style: .complete)
         
         unowned var reminder: Reminder
         

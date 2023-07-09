@@ -17,6 +17,7 @@ enum ButtonStyle {
     case basicLightTitle
     case basicDarkTitle
     case popup(color: UIColor? = nil)
+    case complete
 }
 
 class BasicButton: UIButton {
@@ -61,6 +62,10 @@ class BasicButton: UIButton {
             case .popup:
                 make.height.equalTo(48)
                 self.cornerRadius = 12
+            case .complete:
+                make.height.equalTo(28)
+                self.cornerRadius = 12
+                titleLabel?.font = .custom(size: 12, weight: .bold)
             default:
                 make.height.equalTo(64)
             }
@@ -95,6 +100,8 @@ class BasicButton: UIButton {
                 backgroundColor = color
                 setTitleColor(.white, for: .normal)
             }
+            case .complete:
+                setTitleColor(.white, for: .normal)
         }
     }
     
@@ -108,6 +115,8 @@ class BasicButton: UIButton {
                 backgroundColor = .clear
             case .popup(let color):
                 backgroundColor = color ?? (value ? .primaryGray : .secondaryGray)
+            case .complete:
+                backgroundColor = UIColor(hexString: "#1C9837")
         }
     }
     
