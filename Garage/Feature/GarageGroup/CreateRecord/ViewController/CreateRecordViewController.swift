@@ -33,8 +33,34 @@ class CreateRecordViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavBar()
+    }
+    
+    private func setupNavBar() {
         makeCloseButton(isLeft: true)
-        title = "Создание записи"
+        
+        guard case .edit(_) = vm.mode else {
+            title = "Создание записи"
+          return
+        }
+
+        title = "Изменение записи"
+        let deleteButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить запись?"))
+                vm.confirmButton.action = .touchUpInside { [weak self] in
+                    self?.vm.removeRecord() {
+                        [weak self] in
+                        self?.dismiss(animated: true)
+                        self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                    }
+                }
+                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
+            },
+            image: UIImage(named: "delete_ic")
+        )
+        makeRightNavBarButton(buttons: [deleteButton])
     }
 
     override func configure() {

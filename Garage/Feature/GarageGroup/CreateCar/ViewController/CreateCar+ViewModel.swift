@@ -115,7 +115,7 @@ extension CreateCarViewController {
                         car.model = modelFieldVM.text
                         car.year = yearFieldVM.text.toInt()
                         car.win = winFieldVM.text
-                        car.mileage = mileageFieldVM.text.toInt() ?? .zero
+                        car.mileage = mileageFieldVM.text.toInt()
                     }
                     self?.succesCreateCompletion?()
                 } catch let error {

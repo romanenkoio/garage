@@ -33,8 +33,6 @@ class CreateServiseViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Добавление сервиса"
-        makeCloseButton(isLeft: true)
         setupNavBar()
     }
     
@@ -42,7 +40,8 @@ class CreateServiseViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-          return
+            title = "Добавление сервиса"
+            return
         }
         
         let deleteButton = NavBarButton.ViewModel(
@@ -58,6 +57,7 @@ class CreateServiseViewController: BasicViewController {
             },
             image: UIImage(named: "delete_ic")
         )
+        title = "Изменение сервиса"
         makeRightNavBarButton(buttons: [deleteButton])
     }
 

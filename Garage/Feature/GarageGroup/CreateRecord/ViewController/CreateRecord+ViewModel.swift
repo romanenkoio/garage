@@ -92,6 +92,9 @@ extension CreateRecordViewController {
                 shortTypeVM.inputVM.setText(object.short)
                 imagePickerVM.items = RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted })
                 saveButtonVM.buttonVM.title = "Обновить"
+                if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
+                    serivesListVM.initSelected(service)
+                }
                 initChangeChecker()
             }
         }
@@ -101,17 +104,22 @@ extension CreateRecordViewController {
                 dateInputVM,
                 costInputVM.inputVM,
                 shortTypeVM.inputVM,
-                mileageInputVM.inputVM
+                mileageInputVM.inputVM,
+                serivesListVM
             ])
             
+            shortTypeVM.inputVM.rules = [.noneEmpty]
+            
             validator.formIsValid
+//                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
+                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : !self.changeChecker.hasChange)
                 }
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
+//                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
@@ -127,7 +135,8 @@ extension CreateRecordViewController {
                 shortTypeVM.inputVM,
                 mileageInputVM.inputVM,
                 imagePickerVM,
-                commenntInputVM.inputVM
+                commenntInputVM.inputVM,
+                serivesListVM
             ])
         }
         

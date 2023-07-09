@@ -19,6 +19,10 @@ final class Service: Object, Encodable {
     @Persisted var longitude: Double?
     @Persisted var comment: String?
     
+    override static func primaryKey() -> String? {
+        return "id"
+     }
+    
     convenience init(
         phone: String,
         adress: String,

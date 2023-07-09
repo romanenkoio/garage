@@ -24,7 +24,7 @@ extension GarageViewController {
                 labelVM: .init(text: "Ваш гараж пуст"),
                 sublabelVM: .init(text: "Добавьте машину для \nначала работы"),
                 addButtonVM: addButtonVM.buttonVM,
-                image: UIImage(named: "car")
+                image: UIImage(named: "car_placeholder")
             )
         }
         
