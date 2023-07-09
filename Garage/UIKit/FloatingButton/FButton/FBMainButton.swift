@@ -22,12 +22,14 @@ class FloatingButtonMainButton: UIButton {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.white
-        layer.cornerRadius = 25
-        dropShadow(
-            color: .black,
-            shadowRadius: 5.0,
-            shadowOpacity: 0.5
-        )
+        clipsToBounds = true
+        cornerRadius = 36
+        backgroundColor = ColorScheme.current.buttonColor
+        setImage(UIImage(named: "plus_car_ic"), for: .normal)
+        tintColor = .white
+        
+        self.snp.makeConstraints { make in
+            make.width.height.equalTo(72)
+        }
     }
 }

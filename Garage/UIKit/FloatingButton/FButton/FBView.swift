@@ -13,10 +13,6 @@ class FloatingButtonView: BasicStackView {
     
     private lazy var mainButton: FloatingButtonMainButton = {
         let button = FloatingButtonMainButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = ColorScheme.current.buttonColor
-        button.setImage(UIImage(named: "plus_car_ic"), for: .normal)
-        button.tintColor = .white
         button.addTarget(self, action: #selector(mainButtonAction), for: .touchUpInside)
         return button
     }()
@@ -39,7 +35,6 @@ class FloatingButtonView: BasicStackView {
     }
     
     private func configureContainer() {
-        translatesAutoresizingMaskIntoConstraints = false
         distribution = .equalCentering
         axis = .vertical
         alignment = .trailing
@@ -55,44 +50,54 @@ class FloatingButtonView: BasicStackView {
     
     private func makeConstraints() {
         mainButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 10, right: 10))
-            make.width.height.equalTo(50)
+            make.trailing.bottom.equalToSuperview()
         }
         
         stackView.snp.makeConstraints { make in
             make.trailing.top.equalToSuperview()
-            make.width.equalTo(150)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         self.vm = vm
         
-        vm.$isMenuOnScreen.sink { value in
-            value ? self.stackView.dismissButtons() : self.stackView.showButtons()
-            print(value)
+        vm.$isMenuOnScreen.sink {[weak self] value in
+            value ?
+            self?.stackView.dismissButtons() :
+            self?.stackView.showButtons()
+            
+            if vm.mainButtonAction == nil {
+                UIView.animate(withDuration: 0.2) {
+                    self?.mainButton.transform = value ?
+                    CGAffineTransform.identity :
+                    CGAffineTransform(rotationAngle: .pi/4)
+                }
+            }
+            
         }
         .store(in: &cancellables)
         
         vm.$actions.sink { [weak self] actions in
             guard let self else { return }
             actions.forEach({ action in
-                let label = TappableLabel(aligment: .center)
-                label.font = .custom(size: 14, weight: .semibold)
-                label.cornerRadius = 12
-                label.textColor = .white
-                label.backgroundColor = ColorScheme.current.buttonColor
-                label.setViewModel(action)
-
-                self.stackView.addSecondaryButtonWith(component: label)
+                let item = FloatingButtonSecondItem()
+                item.setViewModel(action)
+                self.stackView.addSecondaryButtonWith(component: item)
             })
             self.stackView.setFABButton()
         }
         .store(in: &cancellables)
     }
 
-    @objc private func mainButtonAction(isOpen: Bool) {
+    @objc private func mainButtonAction() {
         guard let vm else { return }
+        if let mainButtonAction = vm.mainButtonAction {
+            mainButtonAction()
+        }
+        
+        if let _ = vm.mainButtonAction, !vm.actions.isEmpty {
+            fatalError("You set action for \("MainButton") and actions for \("SecondButtons") that's illegal")
+        }
         vm.isMenuOnScreen.toggle()
     }
 }

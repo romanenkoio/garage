@@ -5,17 +5,23 @@
 //  Created by Vlad Kulakovsky  on 7.07.23.
 //
 
-import Foundation
+import UIKit
 
 extension FloatingButtonView {
     class ViewModel: BasicViewModel {
         @Published
         var isMenuOnScreen: Bool = true
         @Published
-        var actions: [TappableLabel.ViewModel] = []
+        var actions: [FloatingButtonSecondItem.ViewModel] = []
         
-        init(actions: [TappableLabel.ViewModel] = []) {
+        var mainButtonAction: Completion?
+        
+        init(
+            actions: [FloatingButtonSecondItem.ViewModel] = [],
+            mainButtonAction: Completion? = nil
+        ) {
             self.actions = actions
+            self.mainButtonAction = mainButtonAction
         }
         
         func dismissButtons() {

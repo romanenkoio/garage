@@ -164,6 +164,8 @@
 		7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F6F2A353D22007A5C75 /* RecordView+ViewModel.swift */; };
 		7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F712A353E31007A5C75 /* Photo.swift */; };
 		7FFC1F782A3545CB007A5C75 /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1F772A3545CB007A5C75 /* Backup.swift */; };
+		B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A252A5AD0D2004698ED /* FBSecondItem.swift */; };
+		B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A292A5AD3FA004698ED /* FBSecondItem+ViewModel.swift */; };
 		B93A342E2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */; };
 		B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */; };
 		B93A34302A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */; };
@@ -435,6 +437,8 @@
 		7FFC1F6F2A353D22007A5C75 /* RecordView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FFC1F712A353E31007A5C75 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7FFC1F772A3545CB007A5C75 /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
+		B92E5A252A5AD0D2004698ED /* FBSecondItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBSecondItem.swift; sourceTree = "<group>"; };
+		B92E5A292A5AD3FA004698ED /* FBSecondItem+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FBSecondItem+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-UltraLightItalic.ttf"; sourceTree = "<group>"; };
 		B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
 		B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -1653,6 +1657,32 @@
 			path = Backup;
 			sourceTree = "<group>";
 		};
+		B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */ = {
+			isa = PBXGroup;
+			children = (
+				B92E5A282A5AD3D0004698ED /* FBSecondItems */,
+				B92E5A2B2A5AD542004698ED /* FBStackView */,
+			);
+			path = FButtonDepedentElements;
+			sourceTree = "<group>";
+		};
+		B92E5A282A5AD3D0004698ED /* FBSecondItems */ = {
+			isa = PBXGroup;
+			children = (
+				B92E5A252A5AD0D2004698ED /* FBSecondItem.swift */,
+				B92E5A292A5AD3FA004698ED /* FBSecondItem+ViewModel.swift */,
+			);
+			path = FBSecondItems;
+			sourceTree = "<group>";
+		};
+		B92E5A2B2A5AD542004698ED /* FBStackView */ = {
+			isa = PBXGroup;
+			children = (
+				B9BF6FA62A58328A00B96821 /* FBStackView.swift */,
+			);
+			path = FBStackView;
+			sourceTree = "<group>";
+		};
 		B93A34182A3D10A4004BAEA6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2077,10 +2107,10 @@
 		B9BF6F9F2A5827D500B96821 /* FButton */ = {
 			isa = PBXGroup;
 			children = (
+				B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */,
+				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
 				B9BF6FA02A5827E800B96821 /* FBView.swift */,
 				B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */,
-				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
-				B9BF6FA62A58328A00B96821 /* FBStackView.swift */,
 			);
 			path = FButton;
 			sourceTree = "<group>";
@@ -2321,6 +2351,7 @@
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
 				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
 				7F049E4E2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift in Sources */,
+				B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */,
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
@@ -2351,6 +2382,7 @@
 				7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
+				B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,

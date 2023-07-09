@@ -9,7 +9,7 @@ import UIKit
 
 class FloatingButtonStackView: BasicStackView {
     
-    private var fabSecondaryButtons: [TappableLabel] = [TappableLabel]()
+    private var fabSecondaryButtons: [FloatingButtonSecondItem] = [FloatingButtonSecondItem]()
     private var secondaryButtons: [UIView] = [UIView]()
     private var secondaryViews: [UIView] = [UIView]()
     
@@ -52,7 +52,7 @@ class FloatingButtonStackView: BasicStackView {
 
 // MARK: - Public methods
 extension FloatingButtonStackView {
-    func addSecondaryButtonWith(component: TappableLabel) {
+    func addSecondaryButtonWith(component: FloatingButtonSecondItem) {
         fabSecondaryButtons.append(component)
     }
     
@@ -70,11 +70,6 @@ extension FloatingButtonStackView {
         secondaryButtons.removeLast()
         
         addArrangedSubview(view)
-        
-        view.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(45)
-        }
         
         view.transform = CGAffineTransform.identity.scaledBy(x: 0.5, y: 0.5)
                 UIView.animate(withDuration: 0.075, animations: {

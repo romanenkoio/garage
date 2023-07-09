@@ -118,7 +118,7 @@ fileprivate extension CarInfoControllerLayoutManager {
     
     private func makeConstraint() {
         addButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 20, right: 20))
+            make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
         }
         
         topStack.snp.makeConstraints { make in

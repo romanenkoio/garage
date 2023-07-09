@@ -77,16 +77,27 @@ class CarInfoViewController: BasicViewController {
         layout.topStack.setViewModel(vm.topStackVM)
         
         vm.addButtonVM.actions = [
-            .init(text: "Добавить запись", action: { [weak self] in
-                guard let self else { return }
-                coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-                self.vm.addButtonVM.dismissButtons()
-            }),
-            .init(text: "Запланировать", action: { [weak self] in
-                guard let self else { return }
-                coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                self.vm.addButtonVM.dismissButtons()
-            })
+            .init(
+                tappableLabelVM:
+                        .init(
+                            text: "Запланировать",
+                            action: { [weak self] in
+                                guard let self else { return }
+                                coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                                self.vm.addButtonVM.dismissButtons()
+                            }),
+                image: UIImage(named: "checkmark_fb_ic")
+            ),
+            .init(
+                tappableLabelVM: .init(
+                    text: "Добавить запись",
+                    action: { [weak self] in
+                        guard let self else { return }
+                        coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+                        self.vm.addButtonVM.dismissButtons()
+                    }),
+                image: UIImage(named: "pencil_fb_ic")
+            ),
         ]
         
         vm.pageVM.$index.sink { index in
