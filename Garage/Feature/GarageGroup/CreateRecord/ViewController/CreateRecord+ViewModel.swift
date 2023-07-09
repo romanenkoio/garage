@@ -111,7 +111,7 @@ extension CreateRecordViewController {
             shortTypeVM.inputVM.rules = [.noneEmpty]
             
             validator.formIsValid
-//                .removeDuplicates()
+                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : !self.changeChecker.hasChange)
@@ -119,7 +119,7 @@ extension CreateRecordViewController {
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-//                .removeDuplicates()
+                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
