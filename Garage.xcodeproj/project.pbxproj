@@ -1581,8 +1581,6 @@
 			isa = PBXGroup;
 			children = (
 				B9BF6F9F2A5827D500B96821 /* FButton */,
-				7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */,
-				7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */,
 			);
 			path = FloatingButton;
 			sourceTree = "<group>";
@@ -1660,6 +1658,8 @@
 		B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */ = {
 			isa = PBXGroup;
 			children = (
+				B92E5A2F2A5AFBBC004698ED /* Unused */,
+				B92E5A2E2A5AFBA4004698ED /* FBMainButton */,
 				B92E5A282A5AD3D0004698ED /* FBSecondItems */,
 				B92E5A2B2A5AD542004698ED /* FBStackView */,
 			);
@@ -1681,6 +1681,23 @@
 				B9BF6FA62A58328A00B96821 /* FBStackView.swift */,
 			);
 			path = FBStackView;
+			sourceTree = "<group>";
+		};
+		B92E5A2E2A5AFBA4004698ED /* FBMainButton */ = {
+			isa = PBXGroup;
+			children = (
+				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
+			);
+			path = FBMainButton;
+			sourceTree = "<group>";
+		};
+		B92E5A2F2A5AFBBC004698ED /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */,
+				7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */,
+			);
+			path = Unused;
 			sourceTree = "<group>";
 		};
 		B93A34182A3D10A4004BAEA6 /* Fonts */ = {
@@ -2108,7 +2125,6 @@
 			isa = PBXGroup;
 			children = (
 				B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */,
-				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
 				B9BF6FA02A5827E800B96821 /* FBView.swift */,
 				B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */,
 			);
@@ -2727,7 +2743,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -2765,7 +2781,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
