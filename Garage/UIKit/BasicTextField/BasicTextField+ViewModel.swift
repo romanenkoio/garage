@@ -13,7 +13,7 @@ extension BasicTextField {
         var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
         var checkedValue: String?
         
-        var isValid: Bool = false
+        var isValid: Bool = true
         var isValidSubject: PassthroughSubject<Bool, Never> = .init()
         var rules: [ValidationRule] = []
         

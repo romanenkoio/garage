@@ -45,7 +45,8 @@ class CreateDocumentViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-          return
+            title = "Добавление документа"
+            return
         }
         
         let deleteButton = NavBarButton.ViewModel(
@@ -62,6 +63,7 @@ class CreateDocumentViewController: BasicViewController {
             image: UIImage(named: "delete_ic")
         )
         makeRightNavBarButton(buttons: [deleteButton])
+        title = "Изменение документа"
     }
 
     override func binding() {

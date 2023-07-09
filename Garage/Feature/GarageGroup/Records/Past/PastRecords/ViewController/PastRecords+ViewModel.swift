@@ -30,8 +30,7 @@ extension PastRecordsViewController {
         }
         
         func readRecords() {
-            let records = RealmManager<Record>().read()
-            tableVM.setCells(records)
+            tableVM.setCells(car.records)
         }
     }
 }
