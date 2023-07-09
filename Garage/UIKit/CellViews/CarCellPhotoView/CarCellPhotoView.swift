@@ -11,6 +11,7 @@ class CarCellPhotoView: BasicView {
     let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
+        view.cornerRadius = 16
         return view
     }()
     
@@ -20,6 +21,7 @@ class CarCellPhotoView: BasicView {
         super.init()
         makeLayout()
         makeConstraints()
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +34,7 @@ class CarCellPhotoView: BasicView {
     
     private func makeConstraints() {
         imageView.snp.makeConstraints { make in
-            make.height.width.equalTo(200)
+            make.edges.equalToSuperview().inset(UIEdgeInsets(horizontal: 8))
         }
     }
     

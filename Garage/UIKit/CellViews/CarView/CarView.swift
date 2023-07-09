@@ -20,7 +20,7 @@ class CarView: BasicView {
     private lazy var textStack: BasicStackView = {
        let stack = BasicStackView()
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         return stack
     }()
     
@@ -53,14 +53,13 @@ class CarView: BasicView {
     private lazy var plannedLabel: BasicLabel = {
         let label = BasicLabel()
         label.font = .custom(size: 12, weight: .semibold)
-        label.textInsets = .init(bottom: 24, left: 16)
+        label.textInsets = .init(bottom: 17, left: 16)
         label.textColor = UIColor(hexString: "#939393")
         return label
     }()
     
     private lazy var photoContainer: BasicStackView = {
         let stack = BasicStackView()
-        stack.edgeInsets = .init(bottom: 25, horizontal: 16)
         stack.axis = .vertical
         stack.spacing = 12
         return stack

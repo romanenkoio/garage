@@ -73,4 +73,6 @@ struct AppColors {
     static let green = UIColor(hexString: "C9837")
     static let background = UIColor(hexString: "F6F6F6")
     static let error = UIColor(hexString: "E84949")
+    static let lightGray = UIColor(hexString: "#D9D9D9")
+    static let darkGray = UIColor(hexString: "#929292")
 }

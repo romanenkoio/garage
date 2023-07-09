@@ -9,21 +9,28 @@ import UIKit
 
 class CarPhotoCollection: BasicView {
     lazy var collectionView: BasicCollectionView = {
-        let layot = UICollectionViewFlowLayout()
-        layot.scrollDirection = .horizontal
-        let collection = BasicCollectionView(layout: layot)
+        let layout = CarPhotoCollectionViewLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0.0
+        layout.itemSize = CGSize(width: 278, height: 188)
+        let collection = BasicCollectionView(layout: layout)
         collection.setupCollection(
             dataSource: self,
             delegate: self
         )
-        collection.collection.isPagingEnabled = true
-        collection.collection.bounces = true
+//        collection.collection.bounces = true
         collection.register(CarCellPhotoCell.self)
+        collection.collection.contentInset = UIEdgeInsets(horizontal: 8)
+        collection.collection.decelerationRate = UIScrollView.DecelerationRate.fast
+        collection.collection.showsHorizontalScrollIndicator = false
         return collection
     }()
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = AppColors.darkGray
+        pageControl.pageIndicatorTintColor = AppColors.lightGray
         return pageControl
     }()
     
@@ -33,6 +40,7 @@ class CarPhotoCollection: BasicView {
         super.init()
         makeLayout()
         makeConstraints()
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -47,21 +55,26 @@ class CarPhotoCollection: BasicView {
     private func makeConstraints() {
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(188)
         }
         
         pageControl.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        
-        self.snp.makeConstraints { make in
-            make.height.equalTo(200)
-        }
+    
     }
     
     func setViewModel(_ vm: ViewModel) {
         self.vm = vm
         collectionView.setViewModel(vm.collectionVM)
+    }
+    
+    private func findCenterIndex() {
+        let center = self.convert(self.collectionView.collection.center, to: self.collectionView.collection)
+        guard let index = collectionView.collection.indexPathForItem(at: center) else { return }
+
+        pageControl.currentPage = index.row
     }
 }
 
@@ -71,6 +84,8 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         numberOfItemsInSection section: Int
     ) -> Int {
         guard let vm else { return 0}
+        pageControl.numberOfPages = vm.images.count
+        pageControl.isHidden = !(vm.images.count > 1)
         return vm.collectionVM.cells.count
     }
     
@@ -83,6 +98,7 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         photoCell.mainView.setViewModel(
             .init(image: item)
         )
+        
         return photoCell
     }
 }
@@ -90,5 +106,13 @@ extension CarPhotoCollection: UICollectionViewDataSource {
 extension CarPhotoCollection: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        findCenterIndex()
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        findCenterIndex()
     }
 }

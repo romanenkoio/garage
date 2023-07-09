@@ -170,6 +170,7 @@
 		B92E5A342A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */; };
 		B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */; };
 		B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */; };
+		B92E5A3C2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92E5A3B2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift */; };
 		B93A342E2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */; };
 		B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */; };
 		B93A34302A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */; };
@@ -446,6 +447,7 @@
 		B92E5A332A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarCarPhotoCollection+ViewModel.swift"; sourceTree = "<group>"; };
 		B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCellPhotoView.swift; sourceTree = "<group>"; };
 		B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarCellPhotoView+ViewModel.swift"; sourceTree = "<group>"; };
+		B92E5A3B2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPhotoCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B93A341A2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-UltraLightItalic.ttf"; sourceTree = "<group>"; };
 		B93A341B2A3D10EC004BAEA6 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
 		B93A341C2A3D10EC004BAEA6 /* Gilroy-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -1720,6 +1722,7 @@
 			children = (
 				B92E5A362A5B51C7004698ED /* CarCellPhotoView.swift */,
 				B92E5A382A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift */,
+				B92E5A3B2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift */,
 			);
 			path = CarCellPhotoView;
 			sourceTree = "<group>";
@@ -2478,6 +2481,7 @@
 				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
+				B92E5A3C2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */,
 				7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */,
