@@ -55,7 +55,7 @@ extension CreateRecordViewController {
             
             costInputVM = .init(
                 errorVM: errorVM,
-                inputVM: .init(placeholder: "120 BYN"),
+                inputVM: .init(placeholder: "120".appendCurrency()),
                 descriptionVM: .init(text: "Стоимость")
             )
             
