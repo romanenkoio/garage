@@ -75,7 +75,7 @@ extension RemindersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let pastRecordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
+        guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<ReminderView>.self, for: indexPath) else { return .init()}
         pastRecordCell.mainView.setViewModel(.init(reminder: vm.tableVM.cells[indexPath.row]))
         pastRecordCell.selectionStyle = .none
         return pastRecordCell

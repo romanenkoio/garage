@@ -100,6 +100,8 @@
 		7F1DE3AB2A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */; };
 		7F1DE3AC2A58AD97008E7B1D /* CreateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */; };
 		7F1DE3AD2A58AD97008E7B1D /* CreateReminder+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A92A58AD97008E7B1D /* CreateReminder+ViewModel.swift */; };
+		7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3AF2A5AB30E008E7B1D /* ReminderVIew.swift */; };
+		7F1DE3B22A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */; };
 		7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
@@ -369,6 +371,8 @@
 		7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderViewController.swift; sourceTree = "<group>"; };
 		7F1DE3A92A58AD97008E7B1D /* CreateReminder+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateReminder+ViewModel.swift"; sourceTree = "<group>"; };
+		7F1DE3AF2A5AB30E008E7B1D /* ReminderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderVIew.swift; sourceTree = "<group>"; };
+		7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderVIew+ViewModel.swift"; sourceTree = "<group>"; };
 		7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -1151,6 +1155,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F1DE3AE2A5AB303008E7B1D /* ReminderView */ = {
+			isa = PBXGroup;
+			children = (
+				7F1DE3AF2A5AB30E008E7B1D /* ReminderVIew.swift */,
+				7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */,
+			);
+			path = ReminderView;
+			sourceTree = "<group>";
+		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,6 +1792,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7F1DE3AE2A5AB303008E7B1D /* ReminderView */,
 				7F89F95E2A522920005F910E /* OnboardingView */,
 				7F174EEF2A4B2818004E51F9 /* ArticleView */,
 				7F0B30662A430A620094BC9C /* AddCarView */,
@@ -2333,6 +2347,7 @@
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
 				B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */,
 				7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */,
+				7F1DE3B22A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift in Sources */,
 				7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
@@ -2404,6 +2419,7 @@
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
+				7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */,
 				B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */,
 				7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */,
 				B978F3BC2A2E9D870076D326 /* BasicViewModel.swift in Sources */,

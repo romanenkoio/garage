@@ -1,14 +1,13 @@
 //
-//  RecordView.swift
+//  ReminderVIew.swift
 //  Garage
 //
-//  Created by Illia Romanenko on 11.06.23.
+//  Created by Illia Romanenko on 9.07.23.
 //
 
 import UIKit
 
-class RecordView: BasicView {
-    
+class ReminderView: BasicView {
     private lazy var containerView: BasicStackView = {
         let view = BasicStackView()
         view.axis = .horizontal
@@ -26,12 +25,12 @@ class RecordView: BasicView {
         return stack
     }()
     
-    private lazy var attentionView: BasicView = {
+    private lazy var moreView: BasicView = {
         let view = BasicView()
         return view
     }()
     
-    private lazy var attentionImage: UIImageView = {
+    private lazy var moreImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "more_ic")
         return imageView
@@ -60,18 +59,18 @@ class RecordView: BasicView {
     private func makeLayout() {
         addSubview(containerView)
         containerView.addSubview(stack)
-        containerView.addSubview(attentionView)
-        attentionView.addSubview(attentionImage)
+        containerView.addSubview(moreView)
+        moreView.addSubview(moreImage)
         stack.addArrangedSubviews([infoLabel, dateLabel])
     }
     
     private func makeConstraint() {
-        attentionImage.snp.makeConstraints { make in
+        moreImage.snp.makeConstraints { make in
             make.height.width.equalTo(28)
-            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(right: 30))
+            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(right: 20))
         }
         
-        attentionView.snp.makeConstraints { make in
+        moreView.snp.makeConstraints { make in
             make.height.equalTo(containerView)
             make.width.equalTo(28)
             make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
@@ -91,5 +90,18 @@ class RecordView: BasicView {
     func setViewModel(_ vm: ViewModel) {
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
+        
+        guard let days = vm.reminder.days else { return }
+        
+        switch days {
+        case 0...7:
+            self.dateLabel.textColor = UIColor(hexString: "#E84949")
+            dateLabel.attributedText = vm.dateLabelVM.text.insertImage(UIImage(named: "error_ic"))
+        case 7...14:
+            self.dateLabel.textColor = UIColor(hexString: "#FF7A00")
+            dateLabel.attributedText = vm.dateLabelVM.text.insertImage(UIImage(named: "warning_ic"))
+        default:
+            self.dateLabel.textColor = .lightGray
+        }
     }
 }

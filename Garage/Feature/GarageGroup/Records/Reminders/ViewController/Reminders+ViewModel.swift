@@ -32,8 +32,7 @@ extension RemindersViewController {
         }
         
         func readReminders() {
-            let records = RealmManager<Reminder>().read()
-            tableVM.setCells(records)
+            tableVM.setCells(car.reminders)
         }
     }
 }

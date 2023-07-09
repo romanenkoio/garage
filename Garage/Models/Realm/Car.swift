@@ -19,7 +19,14 @@ final class Car: Object, Codable {
     @Persisted var imageData: Data?
     
     var reminders: [Reminder] {
-        RealmManager<Reminder>()
+        RealmManager()
+            .read()
+            .filter({ $0.carID == self.id})
+            .sorted(by: { $0.date < $1.date })
+    }
+    
+    var records: [Record] {
+        RealmManager()
             .read()
             .filter({ $0.carID == self.id})
             .sorted(by: { $0.date < $1.date })
