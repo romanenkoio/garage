@@ -277,7 +277,6 @@
 		B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29082A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift */; };
 		B9FB290D2A33784300A4CF1D /* BasicImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290C2A33784300A4CF1D /* BasicImageList.swift */; };
 		B9FB290F2A33785100A4CF1D /* BasicImageList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB290E2A33785100A4CF1D /* BasicImageList+ViewModel.swift */; };
-		B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -559,7 +558,6 @@
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
-				B9FB29992A339C4D00A4CF1D /* TLPhotoPicker in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2278,7 +2276,6 @@
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
 				7F0E09152A31D773008C2B9A /* Moya */,
-				B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -2312,7 +2309,6 @@
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
-				B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -2859,14 +2855,6 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tilltue/TLPhotoPicker.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 2.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2889,11 +2877,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		B9FB29982A339C4D00A4CF1D /* TLPhotoPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B9FB29972A339C4D00A4CF1D /* XCRemoteSwiftPackageReference "TLPhotoPicker" */;
-			productName = TLPhotoPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
