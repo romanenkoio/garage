@@ -163,6 +163,8 @@ extension CreateCarViewController {
                 winFieldVM.text = object.win.wrapped
                 mileageFieldVM.text = object.mileage.toString()
                 saveButtonVM.buttonVM.title = "Обновить"
+                imageListVM.set(object.images)
+                saveButtonVM.buttonVM.isEnabled = false
                 initChangeChecker()
             }
         }
@@ -180,17 +182,20 @@ extension CreateCarViewController {
             winFieldVM.rules = [.vin]
             
             validator.formIsValid
-                .removeDuplicates().sink { [weak self] value in
+                .removeDuplicates()
+                .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
+                    let isEnable = value && (mode == .create ? true : self.changeChecker.hasChange)
+                    self.saveButtonVM.buttonVM.isEnabled = isEnable
                 }
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates().sink { [weak self] value in
+                .removeDuplicates()
+                .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
-
+                    let isEnable = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = isEnable
                 }
                 .store(in: &cancellables)
             
