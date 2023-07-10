@@ -47,7 +47,7 @@ final class PushManager {
     }
     
     func userShedule() {
-        let reminders: [Reminder] = RealmManager().read()
+        let reminders: [Reminder] = RealmManager().read().filter({ !$0.isDone })
         reminders.forEach({ create(LocalPush(reminder: $0))})
     }
     
