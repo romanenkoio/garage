@@ -65,7 +65,7 @@ class CarView: BasicView {
         return stack
     }()
     
-    private lazy var logoCollection = CarPhotoCollection()
+    private var logoCollection = CarPhotoCollection()
     
     private lazy var detailsView = DetailsView()
 

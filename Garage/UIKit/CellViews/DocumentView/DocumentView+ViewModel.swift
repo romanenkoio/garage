@@ -5,7 +5,7 @@
 //  Created by Illia Romanenko on 9.06.23.
 //
 
-import Foundation
+import UIKit
 
 extension DocumentView {
     final class ViewModel: BasicViewModel {
@@ -15,10 +15,11 @@ extension DocumentView {
         let detailVM = DetailsView.ViewModel()
         let documentPhotoCollectionVM: CarPhotoCollection.ViewModel
         @Published var shouldShowAttention = false
+        @Published var cells: [UIImage] = []
         
         init(document: Document) {
-            documentPhotoCollectionVM = .init(images: document.photos)
-            
+            documentPhotoCollectionVM = .init(images: document.photos, imagePlaceholder: UIImage(named: "car_placeholder")!)
+            super.init()
             typeLabelVM.text = document.rawType
             if let startDate = document.startDate,
                let endDate = document.endDate {
@@ -28,7 +29,6 @@ extension DocumentView {
             }
             
             detailsLabelVM.text = "Смотреть детали"
-            
         }
     }
 }

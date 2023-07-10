@@ -113,11 +113,11 @@ class DocumentView: BasicView {
         }
     }
     
-    private func setupEmptyState(_ vm: ViewModel) {
-        if vm.documentPhotoCollectionVM.collectionVM.isEmpty {
-            photoContainer.removeFromSuperview()
-        }
-    }
+//    private func setupEmptyState(_ vm: ViewModel) {
+//        if vm.documentPhotoCollectionVM.collectionVM.isEmpty {
+//            photoContainer.removeFromSuperview()
+//        }
+//    }
     
     func setViewModel(_ vm: ViewModel) {
         detailsView.setViewModel(vm.detailVM)
@@ -130,6 +130,6 @@ class DocumentView: BasicView {
         }
         .store(in: &cancellables)
         
-        setupEmptyState(vm)
+//        setupEmptyState(vm)
     }
 }

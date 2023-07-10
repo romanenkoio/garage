@@ -40,6 +40,7 @@ class DocumentsViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readDocuments()
+        layout.table.reload()
         hideTabBar(false)
     }
     

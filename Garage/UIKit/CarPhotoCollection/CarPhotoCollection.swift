@@ -75,6 +75,13 @@ class CarPhotoCollection: BasicView {
     func setViewModel(_ vm: ViewModel) {
         self.vm = vm
         collectionView.setViewModel(vm.collectionVM)
+        
+        vm.collectionVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] cells in
+                self?.collectionView.reload()
+            }
+            .store(in: &cancellables)
     }
     
     private func findCenterIndex() {
@@ -101,6 +108,10 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let vm else { return .init()}
+//        guard let photoCell = collectionView.dequeueReusableCell(CarCellPhotoCell.self, for: indexPath),
+//              let item = vm.collectionVM.cells[safe: indexPath.row]
+//        else { return .init()}
+        
         guard let photoCell = collectionView.dequeueReusableCell(CarCellPhotoCell.self, for: indexPath),
               let item = vm.collectionVM.cells[safe: indexPath.row]
         else { return .init()}

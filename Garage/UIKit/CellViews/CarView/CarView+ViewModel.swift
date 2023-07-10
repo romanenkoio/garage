@@ -22,6 +22,7 @@ extension CarView {
                 images: car.images,
                 imagePlaceholder: UIImage(named: "car_placeholder")!
             )
+            
             super.init()
             brandLabelVM.text = "\(car.brand) \(car.model)"
             atteentionLabelVM.text = "Просрочена медицинская справка"
