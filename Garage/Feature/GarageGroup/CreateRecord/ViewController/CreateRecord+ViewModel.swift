@@ -158,12 +158,7 @@ extension CreateRecordViewController {
         
         private func saveFromReminder(_ reminder: Reminder) {
             saveRecord()
-            RealmManager().update { [weak self] realm in
-                try? realm.write { [weak self] in
-                    guard let self else { return }
-                    reminder.isDone = true
-                }
-            }
+            reminder.completeReminder()
         }
         
         private func saveRecord() {
