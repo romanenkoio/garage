@@ -20,7 +20,7 @@ class CarView: BasicView {
     private lazy var textStack: BasicStackView = {
        let stack = BasicStackView()
         stack.axis = .vertical
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         return stack
     }()
     
@@ -53,14 +53,13 @@ class CarView: BasicView {
     private lazy var plannedLabel: BasicLabel = {
         let label = BasicLabel()
         label.font = .custom(size: 12, weight: .semibold)
-        label.textInsets = .init(bottom: 24, left: 16)
+        label.textInsets = .init(bottom: 17, left: 16)
         label.textColor = UIColor(hexString: "#939393")
         return label
     }()
     
     private lazy var photoContainer: BasicStackView = {
         let stack = BasicStackView()
-        stack.edgeInsets = .init(bottom: 25, horizontal: 16)
         stack.axis = .vertical
         stack.spacing = 12
         return stack
@@ -73,6 +72,8 @@ class CarView: BasicView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private lazy var logoCollection = CarPhotoCollection()
     
     private lazy var detailsView = DetailsView()
 
@@ -92,7 +93,7 @@ class CarView: BasicView {
         mainStack.addArrangedSubviews([topContainer, photoContainer, detailsView])
         textStack.addArrangedSubviews([brandLabel, plannedLabel])
         
-        photoContainer.addArrangedSubviews([logoImage])
+        photoContainer.addArrangedSubviews([logoCollection])
     }
     
     private func makeConstraints() {
@@ -112,10 +113,6 @@ class CarView: BasicView {
             make.centerY.equalTo(textStack)
         }
         
-        logoImage.snp.makeConstraints { make in
-            make.height.equalTo(188)
-        }
-        
         textStack.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
             make.trailing.equalTo(attentionView.snp.leading)
@@ -126,6 +123,7 @@ class CarView: BasicView {
         detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
         plannedLabel.setViewModel(vm.plannedLabelVM)
+        logoCollection.setViewModel(vm.carPhotoCollectionVM)
         
         vm.$image.sink { [weak self] image in
             self?.logoImage.image = image

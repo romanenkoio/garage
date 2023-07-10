@@ -13,19 +13,18 @@ extension CarView {
         let brandLabelVM = BasicLabel.ViewModel()
         let plannedLabelVM = BasicLabel.ViewModel()
         let atteentionLabelVM = BasicLabel.ViewModel()
+        let carPhotoCollectionVM: CarPhotoCollection.ViewModel
         @Published var image: UIImage?
         @Published var shouldShowAttention = false
         
         init(car: Car) {
+            carPhotoCollectionVM = .init(images: car.images)
+            super.init()
             brandLabelVM.text = "\(car.brand) \(car.model)"
             atteentionLabelVM.text = "Просрочена медицинская справка"
             plannedLabelVM.text = "Нет запланированных событий"
            
-            if car.images.isEmpty {
-                self.image = UIImage(named: "car_placeholder")
-            } else {
-                self.image = car.images.first
-            }
+
             
             shouldShowAttention = car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero > 0 })
             if car.reminders.isEmpty {
