@@ -68,10 +68,6 @@ class CarInfoViewController: BasicViewController {
 
     
     override func binding() {
-        layout.brandModelLabel.setViewModel(vm.brandLabelVM)
-        layout.yearLabel.setViewModel(vm.yearLabelVM)
-        layout.mileageLabel.setViewModel(vm.milageLabelVM)
-        layout.vinLabel.setViewModel(vm.vinLabelVM)
         layout.segment.setViewModel(vm.segmentVM)
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.topStack.setViewModel(vm.topStackVM)

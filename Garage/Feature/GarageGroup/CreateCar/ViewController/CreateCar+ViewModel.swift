@@ -128,17 +128,17 @@ extension CreateCarViewController {
             }
         }
         
-        private func savePhoto(for record: Car, shouldRemove: Bool) {
+        private func savePhoto(for car: Car, shouldRemove: Bool) {
             if shouldRemove {
                 RealmManager<Photo>()
                     .read()
-                    .filter({ $0.recordId == record.id })
+                    .filter({ $0.carId == car.id })
                     .forEach({ RealmManager().delete(object: $0)})
             }
             
             self.imageListVM.items.forEach { image in
                 guard let data = image.jpegData(compressionQuality: 1) else { return }
-                let photo = Photo(record, image: data)
+                let photo = Photo(car, image: data)
                 RealmManager<Photo>().write(object: photo)
             }
         }

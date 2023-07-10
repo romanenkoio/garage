@@ -18,7 +18,7 @@ extension CarInfoViewController {
         let vinLabelVM = BasicLabel.ViewModel()
         let milageLabelVM = BasicLabel.ViewModel()
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
-        let topStackVM: TopView.ViewModel
+        let topStackVM: CarTopInfoView.ViewModel
         let tableVM = BasicTableView.GenericViewModel<Record>()
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
@@ -82,8 +82,12 @@ extension CarInfoViewController {
             vinLabelVM.text = "VIN: \(car.win.wrapped)"
             milageLabelVM.text = "Пробег: \(car.mileage)"
             
-            if let data = car.imageData {
-                self.logo = UIImage(data: data)
+            if let photo = car.images.first {
+                topStackVM.logo = photo
+            } else if let data = car.imageData {
+                topStackVM.logo = UIImage(data: data)
+            } else {
+                topStackVM.logo = UIImage(named: "logo_placeholder")
             }
         }
     }

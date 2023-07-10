@@ -27,7 +27,7 @@ final class CarInfoControllerLayoutManager {
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
-    lazy var topStack = TopView()
+    lazy var topStack = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
     
     lazy var recordsView: BasicView = {
@@ -37,12 +37,7 @@ final class CarInfoControllerLayoutManager {
         return view
     }()
     
-    lazy var brandModelLabel = BasicLabel()
-    lazy var yearLabel = BasicLabel()
-    lazy var vinLabel = BasicLabel()
-    lazy var mileageLabel = BasicLabel()
     lazy var segment = BasicSegmentView<RecordType>()
-    
     lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
     // - Init
@@ -109,10 +104,6 @@ fileprivate extension CarInfoControllerLayoutManager {
         page.didMove(toParent: vc)
         vc.view.addSubview(addButton)
 
-        brandModelLabel.font = .custom(size: 18, weight: .black)
-        yearLabel.font = .custom(size: 14, weight: .bold)
-        vinLabel.font = .custom(size: 14, weight: .bold)
-        mileageLabel.font = .custom(size: 14, weight: .bold)
         vc.view.bringSubviewToFront(addButton)
     }
     

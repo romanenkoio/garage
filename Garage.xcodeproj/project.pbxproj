@@ -253,7 +253,7 @@
 		B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECD82A45801700E089C7 /* ScrollableTableView.swift */; };
 		B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDA2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift */; };
 		B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */; };
-		B97FECE02A4B2D7B00E089C7 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* TopView.swift */; };
+		B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
 		B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA02A5827E800B96821 /* FBView.swift */; };
 		B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA22A58287C00B96821 /* FBMainButton.swift */; };
@@ -529,7 +529,7 @@
 		B97FECD82A45801700E089C7 /* ScrollableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTableView.swift; sourceTree = "<group>"; };
 		B97FECDA2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollableTableview+ViewModel.swift"; sourceTree = "<group>"; };
 		B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllable.swift; sourceTree = "<group>"; };
-		B97FECDF2A4B2D7B00E089C7 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTopInfoView.swift; sourceTree = "<group>"; };
 		B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9BF6FA02A5827E800B96821 /* FBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBView.swift; sourceTree = "<group>"; };
 		B9BF6FA22A58287C00B96821 /* FBMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMainButton.swift; sourceTree = "<group>"; };
@@ -2144,7 +2144,7 @@
 		B97FECDE2A4B2D7000E089C7 /* TopView */ = {
 			isa = PBXGroup;
 			children = (
-				B97FECDF2A4B2D7B00E089C7 /* TopView.swift */,
+				B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */,
 				B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */,
 			);
 			path = TopView;
@@ -2475,7 +2475,7 @@
 				7F07BD3F2A46EF9E0075EEFC /* CallButton.swift in Sources */,
 				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
-				B97FECE02A4B2D7B00E089C7 /* TopView.swift in Sources */,
+				B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
 				7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */,
 				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,

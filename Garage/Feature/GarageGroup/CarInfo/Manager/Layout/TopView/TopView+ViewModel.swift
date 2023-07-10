@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension TopView {
+extension CarTopInfoView {
     class ViewModel: BasicViewModel {
         private(set) var car: Car
         
