@@ -70,6 +70,8 @@ class DocumentView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         typeLabel.setViewModel(vm.typeLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         photoList.setViewModel(vm.photoListVM)

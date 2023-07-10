@@ -34,6 +34,8 @@ final class ActionImage: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
     
         vm.$image.sink { [weak self] image in

@@ -98,6 +98,8 @@ class ReminderView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         
         infoLabel.setViewModel(vm.infoLabelVM)

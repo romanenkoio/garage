@@ -51,6 +51,8 @@ class OnboardingView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         subtitleLabel.setViewModel(vm.subtitleVM)
         titleLabel.setViewModel(vm.titleVM)
         

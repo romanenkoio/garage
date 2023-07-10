@@ -71,6 +71,8 @@ class SettingView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         settingLabel.setViewModel(vm.textLabelVM)
     }
 

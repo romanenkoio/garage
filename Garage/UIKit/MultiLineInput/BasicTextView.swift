@@ -62,6 +62,8 @@ final class BasicTextView: UITextView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         vm.$text.sink { [weak self] text in
             self?.text = text

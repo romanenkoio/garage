@@ -96,6 +96,8 @@ class MultiLineInput: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         if let errorVM = vm.errorVM {
             self.errorView.setViewModel(vm: errorVM)

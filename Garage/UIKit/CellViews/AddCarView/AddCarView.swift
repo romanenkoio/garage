@@ -45,6 +45,8 @@ class AddCarView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         textLabel.setViewModel(vm.textLabelVM)
     }
 }

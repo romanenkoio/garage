@@ -75,6 +75,7 @@ class BasicViewController: UIViewController {
     func singleWillAppear() { }
 
     func binding() {
+        cancellables.removeAll()
         viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
             value ? self.startLoader() : self.stopLoader()

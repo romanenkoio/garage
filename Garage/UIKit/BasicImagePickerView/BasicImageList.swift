@@ -99,6 +99,8 @@ class BasicImageListView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.viewModel = vm
         
         if let descriptionLabelVM = vm.descriptionLabelVM {

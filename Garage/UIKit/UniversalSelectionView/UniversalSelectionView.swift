@@ -44,6 +44,8 @@ final class UniversalSelectionView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         titleLabel.setViewModel(vm.labelVM)
     }
 }

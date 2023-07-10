@@ -68,6 +68,8 @@ class BasicCollectionView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         emptyLabel.setViewModel(vm.labelVM)
         
         vm.$isEmpty.sink { [weak self] value in

@@ -108,6 +108,8 @@ class CarTopInfoView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         brandModelYearLabel.setViewModel(vm.brandModelYearLabelVM)
         mileageLabel.setViewModel(vm.milageLabelVM)
         copyVINButton.setViewModel(vm.copyVINButtonVM)

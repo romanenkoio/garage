@@ -136,6 +136,8 @@ class SegmentButton: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         label.setViewModel(vm.labelVM)
     }
 }

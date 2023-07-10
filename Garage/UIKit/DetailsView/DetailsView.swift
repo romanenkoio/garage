@@ -50,6 +50,8 @@ class DetailsView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         detailsImage.image = vm.image
         detailsLabel.setViewModel(vm.labelVM)
     }
