@@ -34,6 +34,10 @@ final class CreateDocumentControllerLayoutManager {
         vc.makeCloseButton()
     }
     
+    deinit {
+        print("deinit CreateDocumentControllerLayoutManager")
+    }
+    
 }
 
 // MARK: -

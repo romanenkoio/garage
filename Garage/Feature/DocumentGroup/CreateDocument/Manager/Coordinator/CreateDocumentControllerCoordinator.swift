@@ -18,6 +18,10 @@ class CreateDocumentControllerCoordinator: BasicCoordinator {
         super.init(vc: vc)
     }
     
+    deinit {
+        print("deinit CreateDocumentControllerCoordinator")
+    }
+    
     override func navigateTo(_ route: Routable) {
         if let route = route as? CreateDocumentNavigationRoute {
             switch route {

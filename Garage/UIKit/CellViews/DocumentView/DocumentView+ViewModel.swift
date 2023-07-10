@@ -18,7 +18,7 @@ extension DocumentView {
         @Published var cells: [UIImage] = []
         
         init(document: Document) {
-            documentPhotoCollectionVM = .init(images: document.photos, imagePlaceholder: UIImage(named: "car_placeholder")!)
+            documentPhotoCollectionVM = .init(images: document.photos)
             super.init()
             typeLabelVM.text = document.rawType
             if let startDate = document.startDate,

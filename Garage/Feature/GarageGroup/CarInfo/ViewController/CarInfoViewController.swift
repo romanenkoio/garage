@@ -26,6 +26,10 @@ class CarInfoViewController: BasicViewController {
         self.vm = vm
         super.init()
     }
+    
+    deinit {
+        print("deinit CarInfoViewController")
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

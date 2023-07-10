@@ -30,6 +30,10 @@ class CreateDocumentViewController: BasicViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("deinit CreateDocumentViewController")
+    }
+    
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -52,7 +52,12 @@ extension CreateDocumentViewController {
             datePickerVM.desctiptionVM.text = "Дата действия"
         }
         
+        deinit {
+            print("deinit CreateDocumentViewController.ViewModel")
+        }
+        
         private func initValidator() {
+            cancellables.removeAll()
             validator.setForm([typeFieldVM.inputVM, datePickerVM])
             
             validator.formIsValid

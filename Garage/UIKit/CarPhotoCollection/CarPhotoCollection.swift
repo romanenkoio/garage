@@ -72,16 +72,25 @@ class CarPhotoCollection: BasicView {
         }
     }
     
+    func makeOneCellLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: self.collectionView.frame.width - 32, height: 188)
+        
+
+        self.collectionView.collection.collectionViewLayout = layout
+        self.collectionView.collection.contentInset = UIEdgeInsets(horizontal: 16)
+    }
+    
+    func makeEmptyViewLayout() {
+        collectionView.isHidden = true
+        pageControl.isHidden = true
+    }
+    
     func setViewModel(_ vm: ViewModel) {
         self.vm = vm
         collectionView.setViewModel(vm.collectionVM)
         
-        vm.collectionVM.$cells
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] cells in
-                self?.collectionView.reload()
-            }
-            .store(in: &cancellables)
     }
     
     private func findCenterIndex() {
@@ -100,6 +109,7 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         guard let vm else { return 0}
         pageControl.numberOfPages = vm.images.count
         pageControl.isHidden = !(vm.images.count > 1)
+        
         return vm.collectionVM.cells.count
     }
     
@@ -108,9 +118,6 @@ extension CarPhotoCollection: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard let vm else { return .init()}
-//        guard let photoCell = collectionView.dequeueReusableCell(CarCellPhotoCell.self, for: indexPath),
-//              let item = vm.collectionVM.cells[safe: indexPath.row]
-//        else { return .init()}
         
         guard let photoCell = collectionView.dequeueReusableCell(CarCellPhotoCell.self, for: indexPath),
               let item = vm.collectionVM.cells[safe: indexPath.row]

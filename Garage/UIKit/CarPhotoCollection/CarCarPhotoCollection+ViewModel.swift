@@ -14,8 +14,11 @@ extension CarPhotoCollection {
         @Published
         var images: [UIImage]
         
+        var imagePlaceholder: UIImage?
+        
         init(images: [UIImage], imagePlaceholder: UIImage? = nil) {
             self.images = images
+            self.imagePlaceholder = imagePlaceholder
             super.init()
             makeCells()
             
@@ -23,12 +26,7 @@ extension CarPhotoCollection {
         }
         
         func makeCells() {
-//            if images.isEmpty {
-//                let placeholder = [UIImage(named: "car_placeholder")!]
-//                collectionVM.setCells(placeholder)
-//            } else {
-                collectionVM.setCells(images)
-//            }
+            collectionVM.setCells(images)
         }
     }
 }
