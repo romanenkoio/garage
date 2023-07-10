@@ -18,15 +18,17 @@ extension CarPhotoCollection {
             self.images = images
             super.init()
             makeCells()
+            
+            collectionVM.setupEmptyState(labelVM: .init(), image: UIImage(named: "car_placeholder"))
         }
         
         func makeCells() {
-            if images.isEmpty {
-                let placeholder = [UIImage(named: "car_placeholder")!]
-                collectionVM.setCells(placeholder)
-            } else {
+//            if images.isEmpty {
+//                let placeholder = [UIImage(named: "car_placeholder")!]
+//                collectionVM.setCells(placeholder)
+//            } else {
                 collectionVM.setCells(images)
-            }
+//            }
         }
     }
 }

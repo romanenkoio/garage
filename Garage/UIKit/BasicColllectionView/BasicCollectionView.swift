@@ -16,15 +16,15 @@ class BasicCollectionView: BasicView {
         return collection
     }()
     
-    private lazy var emptyStack: BasicStackView = {
+    lazy var emptyStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.alignment = .center
+//        stack.alignment = .center
         stack.spacing = 30
         return stack
     }()
     
-    private lazy var emptyLabel: BasicLabel = {
+    lazy var emptyLabel: BasicLabel = {
         let label = BasicLabel()
         label.textAlignment = .center
         return label
@@ -33,6 +33,7 @@ class BasicCollectionView: BasicView {
     private lazy var emptyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.cornerRadius = 13
         return imageView
     }()
     

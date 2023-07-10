@@ -31,6 +31,7 @@ class CarPhotoCollection: BasicView {
         let pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = AppColors.darkGray
         pageControl.pageIndicatorTintColor = AppColors.lightGray
+        pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
     
@@ -50,6 +51,7 @@ class CarPhotoCollection: BasicView {
     private func makeLayout() {
         addSubview(collectionView)
         addSubview(pageControl)
+        collectionView.emptyLabel.removeFromSuperview()
     }
     
     private func makeConstraints() {
@@ -62,7 +64,12 @@ class CarPhotoCollection: BasicView {
             make.top.equalTo(collectionView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-    
+        
+        collectionView.emptyStack.snp.remakeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 25))
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+        }
     }
     
     func setViewModel(_ vm: ViewModel) {
@@ -121,6 +128,10 @@ extension CarPhotoCollection: UICollectionViewDelegateFlowLayout {
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        findCenterIndex()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         findCenterIndex()
     }
 }
