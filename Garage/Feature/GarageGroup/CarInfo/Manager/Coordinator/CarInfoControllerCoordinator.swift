@@ -11,8 +11,10 @@ import UIKit
 enum CarInfoNavigationRoute: Routable {
     case createRecord(Car)
     case editRecord(Car, Record)
+    case editReminder(Car, Reminder)
     case createReminder(Car)
     case edit(Car)
+    case createRecordFromReminder(Car, Reminder)
 }
 
 class CarInfoControllerCoordinator: BasicCoordinator {
@@ -40,6 +42,12 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 vc.push(controller)
             case .editRecord(let car, let record):
                 let controller = CreateRecordViewController(vm: .init(car: car, mode: .edit(object: record)))
+                vc.push(controller)
+            case .editReminder(let car, let reminder):
+                let controller = CreateReminderViewController(vm: .init(car: car, mode: .edit(object: reminder)))
+                vc.push(controller)
+            case .createRecordFromReminder(let car, let reminder):
+                let controller = CreateRecordViewController(vm: .init(car: car, mode: .createFrom(reminder)))
                 vc.push(controller)
             }
         } else {

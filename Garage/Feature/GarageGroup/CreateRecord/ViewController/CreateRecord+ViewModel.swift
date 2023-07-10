@@ -87,6 +87,7 @@ extension CreateRecordViewController {
                 saveButtonVM.buttonVM.isEnabled = false
                 shortTypeVM.inputVM.setText(reminder.short)
                 commenntInputVM.inputVM.text = reminder.comment.wrapped
+                dateInputVM.setNewDate(Date())
             case .create:
                 saveButtonVM.buttonVM.isEnabled = false
             case .edit(let object):

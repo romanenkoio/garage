@@ -15,9 +15,8 @@ extension ReminderView {
         let completeButton = BasicButton.ViewModel(title: "Выполнить", style: .complete)
         
         unowned var reminder: Reminder
-        var completeCallback: ((Reminder) -> Void)?
 
-        init(reminder: Reminder) {
+        init(reminder: Reminder, completeAction: ((Reminder) -> Void)?) {
             infoLabelVM.text = reminder.short
             dateLabelVM.text = reminder.date.toString(.ddMMyy)
             self.reminder = reminder
@@ -25,7 +24,7 @@ extension ReminderView {
             super.init()
             
             completeButton.action = .touchUpInside { [weak self] in
-                self?.completeCallback?(reminder)
+                completeAction?(reminder)
             }
         }
     }

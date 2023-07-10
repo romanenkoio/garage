@@ -30,6 +30,10 @@ class PastRecordsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableViewDelegate = layout.table.table
     }
     

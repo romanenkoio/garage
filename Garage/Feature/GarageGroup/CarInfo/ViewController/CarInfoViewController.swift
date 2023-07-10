@@ -46,19 +46,9 @@ class CarInfoViewController: BasicViewController {
         vm.readCar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        layout.container.delegate = self
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
-    }
-    
-    override func hideKeyboard() {
-        super.hideKeyboard()
-        //self.vm.addButtonVM.isMenuOnScreen = false
     }
     
     override func configure() {
@@ -101,6 +91,11 @@ class CarInfoViewController: BasicViewController {
             self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
         }
         .store(in: &cancellables)
+        
+        vm.remindersVM.completeReminder = { [weak self] reminder in
+            guard let self else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.createRecordFromReminder(vm.car, reminder))
+        }
     }
 }
 
@@ -127,7 +122,8 @@ extension CarInfoViewController: UITableViewDelegate {
             coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, record))
          
         case .future:
-            break
+            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
 }

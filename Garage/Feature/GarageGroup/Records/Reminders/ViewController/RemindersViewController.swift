@@ -33,6 +33,17 @@ class RemindersViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        contentView.removeFromSuperview()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewDelegate = layout.table.table
     }
 
     override func configure() {
@@ -76,11 +87,12 @@ extension RemindersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<ReminderView>.self, for: indexPath) else { return .init()}
-        let vm = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.row])
-        vm.completeCallback = { [weak self] reminder in
-            
+        
+        let reminderVM = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.row]) { [weak self] reminder in
+            self?.vm.completeReminder?(reminder)
         }
-        pastRecordCell.mainView.setViewModel(vm)
+
+        pastRecordCell.mainView.setViewModel(reminderVM)
         pastRecordCell.selectionStyle = .none
         return pastRecordCell
     }
@@ -91,5 +103,9 @@ extension RemindersViewController: UITableViewDataSource {
 
 extension RemindersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }

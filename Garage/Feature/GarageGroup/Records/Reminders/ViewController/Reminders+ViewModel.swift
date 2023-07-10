@@ -14,6 +14,7 @@ extension RemindersViewController {
         private(set) unowned var car: Car
 
         let tableVM = BasicTableView.GenericViewModel<Reminder>()
+        var completeReminder: ((Reminder) -> Void)?
         
         init(car: Car) {
             self.car = car
