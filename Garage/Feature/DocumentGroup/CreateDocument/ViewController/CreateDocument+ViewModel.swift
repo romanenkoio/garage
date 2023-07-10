@@ -40,6 +40,8 @@ extension CreateDocumentViewController {
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 switch mode {
+                case .createFrom:
+                    break
                 case .create:
                     save()
                 case .edit(let object):

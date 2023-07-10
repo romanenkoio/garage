@@ -67,7 +67,7 @@ extension CreateReminderViewController {
             saveButtonVM.buttonVM.isEnabled = false
 
             switch mode {
-            case .create:
+            case .create, .createFrom:
                 break
             case .edit(let object):
                 shortTypeVM.inputVM.setText(object.short)
@@ -97,6 +97,8 @@ extension CreateReminderViewController {
         
         func action() {
             switch mode {
+            case .createFrom:
+                break
             case .create:
                 guard let date = dateInputVM.date else { return }
                 let reminder = Reminder(

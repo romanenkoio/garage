@@ -84,6 +84,8 @@ extension CreateCarViewController {
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 switch mode {
+                case .createFrom:
+                    break
                 case .create:
                     saveCar()
                 case .edit(let object):
@@ -154,7 +156,7 @@ extension CreateCarViewController {
             initValidator()
 
             switch mode {
-            case .create:
+            case .create, .createFrom:
                 break
             case .edit(let object):
                 brandFieldVM.text = object.brand

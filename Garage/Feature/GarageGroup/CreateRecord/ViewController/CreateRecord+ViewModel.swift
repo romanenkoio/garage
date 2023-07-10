@@ -83,10 +83,15 @@ extension CreateRecordViewController {
             initValidator()
             
             switch mode {
+            case .createFrom(let reminder):
+                saveButtonVM.buttonVM.isEnabled = false
+                shortTypeVM.inputVM.setText(reminder.short)
+                commenntInputVM.inputVM.text = reminder.comment.wrapped
             case .create:
                 saveButtonVM.buttonVM.isEnabled = false
             case .edit(let object):
                 dateInputVM.initDate(object.date)
+                commenntInputVM.inputVM.text = object.comment.wrapped
                 costInputVM.text = "\(object.cost ?? .zero)"
                 mileageInputVM.text = "\(object.mileage)"
                 shortTypeVM.inputVM.setText(object.short)
@@ -119,7 +124,7 @@ extension CreateRecordViewController {
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-//                .removeDuplicates()
+                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
@@ -142,10 +147,22 @@ extension CreateRecordViewController {
         
         func action() {
             switch mode {
+            case .createFrom(let reminder):
+                saveFromReminder(reminder)
             case .create:
                 saveRecord()
             case .edit(let object):
                 updateRecord(object)
+            }
+        }
+        
+        private func saveFromReminder(_ reminder: Reminder) {
+            saveRecord()
+            RealmManager().update { [weak self] realm in
+                try? realm.write { [weak self] in
+                    guard let self else { return }
+                    reminder.isDone = true
+                }
             }
         }
         

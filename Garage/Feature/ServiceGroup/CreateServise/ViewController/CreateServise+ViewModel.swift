@@ -63,6 +63,8 @@ extension CreateServiseViewController {
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 switch mode {
+                case .createFrom:
+                    break
                 case .create:
                     saveService()
                 case .edit(let service):
