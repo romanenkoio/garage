@@ -65,14 +65,6 @@ class CarView: BasicView {
         return stack
     }()
     
-    private lazy var logoImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .white
-        imageView.cornerRadius = 16
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
     private lazy var logoCollection = CarPhotoCollection()
     
     private lazy var detailsView = DetailsView()
@@ -124,11 +116,6 @@ class CarView: BasicView {
         brandLabel.setViewModel(vm.brandLabelVM)
         plannedLabel.setViewModel(vm.plannedLabelVM)
         logoCollection.setViewModel(vm.carPhotoCollectionVM)
-        
-        vm.$image.sink { [weak self] image in
-            self?.logoImage.image = image
-        }
-        .store(in: &cancellables)
         
         vm.$shouldShowAttention.sink { [weak self] value in
             self?.attentionView.isHidden = !value

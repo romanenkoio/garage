@@ -18,7 +18,10 @@ extension CarView {
         @Published var shouldShowAttention = false
         
         init(car: Car) {
-            carPhotoCollectionVM = .init(images: car.images)
+            carPhotoCollectionVM = .init(
+                images: car.images,
+                imagePlaceholder: UIImage(named: "car_placeholder")!
+            )
             super.init()
             brandLabelVM.text = "\(car.brand) \(car.model)"
             atteentionLabelVM.text = "Просрочена медицинская справка"

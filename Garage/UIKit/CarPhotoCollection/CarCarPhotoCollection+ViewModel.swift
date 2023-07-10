@@ -14,12 +14,12 @@ extension CarPhotoCollection {
         @Published
         var images: [UIImage]
         
-        init(images: [UIImage]) {
+        init(images: [UIImage], imagePlaceholder: UIImage? = nil) {
             self.images = images
             super.init()
             makeCells()
             
-            collectionVM.setupEmptyState(labelVM: .init(), image: UIImage(named: "car_placeholder"))
+            collectionVM.setupEmptyState(labelVM: .init(), image: imagePlaceholder)
         }
         
         func makeCells() {

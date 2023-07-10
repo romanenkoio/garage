@@ -12,10 +12,13 @@ extension DocumentView {
         let typeLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         let detailsLabelVM = BasicLabel.ViewModel()
-        let photoListVM = BasicImageListView.ViewModel()
         let detailVM = DetailsView.ViewModel()
+        let documentPhotoCollectionVM: CarPhotoCollection.ViewModel
+        @Published var shouldShowAttention = false
         
         init(document: Document) {
+            documentPhotoCollectionVM = .init(images: document.photos)
+            
             typeLabelVM.text = document.rawType
             if let startDate = document.startDate,
                let endDate = document.endDate {
@@ -24,8 +27,8 @@ extension DocumentView {
                 dateLabelVM.text = "С \(startString) по \(endString)"
             }
             
-            photoListVM.set(document.photos)
             detailsLabelVM.text = "Смотреть детали"
+            
         }
     }
 }
