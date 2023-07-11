@@ -123,8 +123,10 @@ class BasicImageListView: BasicView {
         }
         .store(in: &cancellables)
         
-        vm.$editingEnabled.sink { value in
-            self.items.forEach { imageButton in
+        vm.$editingEnabled.sink { [weak self] value in
+            guard let self else { return }
+            
+            items.forEach { imageButton in
                 guard let value else { return }
                 imageButton.viewModel?.buttonVM?.isHidden = !value
             }
