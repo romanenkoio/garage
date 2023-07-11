@@ -65,6 +65,8 @@ class PhotoVcNavigationView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.viewModel = vm
         if let photoCountLabelVM = vm.photoCountLabelVM {
             photoCountLabel.setViewModel(photoCountLabelVM)

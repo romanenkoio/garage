@@ -77,6 +77,8 @@ class ServiceView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         nameLabel.setViewModel(vm.nameLabelVM)
         adressLabel.setViewModel(vm.adressLabelVM)
         detailsView.setViewModel(vm.detailVM)

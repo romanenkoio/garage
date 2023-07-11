@@ -88,6 +88,8 @@ class CarPhotoCollection: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         collectionView.setViewModel(vm.collectionVM)
         

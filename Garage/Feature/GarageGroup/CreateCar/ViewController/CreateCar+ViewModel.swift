@@ -84,6 +84,8 @@ extension CreateCarViewController {
             saveButtonVM.buttonVM.action = .touchUpInside { [weak self] in
                 guard let self else { return }
                 switch mode {
+                case .createFrom:
+                    break
                 case .create:
                     saveCar()
                 case .edit(let object):
@@ -128,17 +130,17 @@ extension CreateCarViewController {
             }
         }
         
-        private func savePhoto(for record: Car, shouldRemove: Bool) {
+        private func savePhoto(for car: Car, shouldRemove: Bool) {
             if shouldRemove {
                 RealmManager<Photo>()
                     .read()
-                    .filter({ $0.recordId == record.id })
+                    .filter({ $0.carId == car.id })
                     .forEach({ RealmManager().delete(object: $0)})
             }
             
             self.imageListVM.items.forEach { image in
                 guard let data = image.jpegData(compressionQuality: 1) else { return }
-                let photo = Photo(record, image: data)
+                let photo = Photo(car, image: data)
                 RealmManager<Photo>().write(object: photo)
             }
         }
@@ -154,7 +156,7 @@ extension CreateCarViewController {
             initValidator()
 
             switch mode {
-            case .create:
+            case .create, .createFrom:
                 break
             case .edit(let object):
                 brandFieldVM.text = object.brand
@@ -163,6 +165,8 @@ extension CreateCarViewController {
                 winFieldVM.text = object.win.wrapped
                 mileageFieldVM.text = object.mileage.toString()
                 saveButtonVM.buttonVM.title = "Обновить"
+                imageListVM.set(object.images)
+                saveButtonVM.buttonVM.isEnabled = false
                 initChangeChecker()
             }
         }
@@ -180,17 +184,20 @@ extension CreateCarViewController {
             winFieldVM.rules = [.vin]
             
             validator.formIsValid
-                .removeDuplicates().sink { [weak self] value in
+                .removeDuplicates()
+                .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
+                    let isEnable = value && (mode == .create ? true : self.changeChecker.hasChange)
+                    self.saveButtonVM.buttonVM.isEnabled = isEnable
                 }
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates().sink { [weak self] value in
+                .removeDuplicates()
+                .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
-
+                    let isEnable = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = isEnable
                 }
                 .store(in: &cancellables)
             

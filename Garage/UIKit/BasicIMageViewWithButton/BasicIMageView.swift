@@ -81,6 +81,8 @@ class BasicImageButton: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.viewModel = vm
         if let buttonVM = vm.buttonVM {
             actionButton.setViewModel(buttonVM)

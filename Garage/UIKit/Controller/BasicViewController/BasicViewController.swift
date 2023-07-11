@@ -79,6 +79,7 @@ class BasicViewController: UIViewController {
     func singleWillAppear() { }
 
     func binding() {
+        cancellables.removeAll()
         viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
             value ? self.startLoader() : self.stopLoader()
@@ -187,7 +188,7 @@ extension BasicViewController {
     func makeCloseButton(isLeft: Bool = false) {
         let closeButton = NavBarButton()
         let vm = NavBarButton.ViewModel(
-            action: .touchUpInside {[weak self] in
+            action: .touchUpInside { [weak self] in
                 self?.coordinator.navigateTo(CommonNavigationRoute.close)
             },
             image: isLeft ? UIImage(named: "back_arrow_ic") : UIImage(named: "back_ic"))

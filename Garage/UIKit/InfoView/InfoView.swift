@@ -61,6 +61,8 @@ class InfoView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         vm.$title.sink { [weak self] value in
             self?.label.text = value

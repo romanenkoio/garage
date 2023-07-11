@@ -50,19 +50,9 @@ class CarInfoViewController: BasicViewController {
         vm.readCar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        layout.container.delegate = self
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
-    }
-    
-    override func hideKeyboard() {
-        super.hideKeyboard()
-        //self.vm.addButtonVM.isMenuOnScreen = false
     }
     
     override func configure() {
@@ -72,10 +62,6 @@ class CarInfoViewController: BasicViewController {
 
     
     override func binding() {
-        layout.brandModelLabel.setViewModel(vm.brandLabelVM)
-        layout.yearLabel.setViewModel(vm.yearLabelVM)
-        layout.mileageLabel.setViewModel(vm.milageLabelVM)
-        layout.vinLabel.setViewModel(vm.vinLabelVM)
         layout.segment.setViewModel(vm.segmentVM)
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.topStack.setViewModel(vm.topStackVM)
@@ -104,11 +90,17 @@ class CarInfoViewController: BasicViewController {
             ),
         ]
         
-        vm.pageVM.$index.sink { index in
+        vm.pageVM.$index.sink { [weak self] index in
+            guard let self else { return }
             self.vm.pageVM.controllers[index].tableView.delegate = self
             self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
         }
         .store(in: &cancellables)
+        
+        vm.remindersVM.completeReminder = { [weak self] reminder in
+            guard let self else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.createRecordFromReminder(vm.car, reminder))
+        }
     }
 }
 
@@ -135,7 +127,8 @@ extension CarInfoViewController: UITableViewDelegate {
             coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, record))
          
         case .future:
-            break
+            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
 }

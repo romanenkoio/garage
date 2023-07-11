@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopView: BasicStackView {
+class CarTopInfoView: BasicStackView {
     private lazy var modelStack: BasicStackView = {
         let view = BasicStackView()
         view.axis = .horizontal
@@ -38,7 +38,8 @@ class TopView: BasicStackView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.layer.masksToBounds = true
-        view.cornerRadius = view.frame.width / 2
+        view.cornerRadius = 40
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -107,6 +108,8 @@ class TopView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         brandModelYearLabel.setViewModel(vm.brandModelYearLabelVM)
         mileageLabel.setViewModel(vm.milageLabelVM)
         copyVINButton.setViewModel(vm.copyVINButtonVM)

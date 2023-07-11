@@ -11,4 +11,5 @@ import RealmSwift
 enum EntityStatus<T: Object>: Equatable {
     case create
     case edit(object: T)
+    case createFrom(Reminder)
 }

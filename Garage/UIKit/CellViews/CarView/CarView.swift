@@ -69,6 +69,8 @@ class CarView: BasicView {
     
     private lazy var detailsView = DetailsView()
 
+    var vm: ViewModel!
+    
     override func initView() {
         makeLayout()
         makeConstraints()
@@ -112,12 +114,16 @@ class CarView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
-        detailsView.setViewModel(vm.detailsVM)
-        brandLabel.setViewModel(vm.brandLabelVM)
-        plannedLabel.setViewModel(vm.plannedLabelVM)
-        logoCollection.setViewModel(vm.carPhotoCollectionVM)
+        cancellables.removeAll()
+        self.vm = vm
+
+        detailsView.setViewModel(self.vm.detailsVM)
+        brandLabel.setViewModel(self.vm.brandLabelVM)
+        plannedLabel.setViewModel(self.vm.plannedLabelVM)
+        logoCollection.setViewModel(self.vm.carPhotoCollectionVM)
         
-        vm.$shouldShowAttention.sink { [weak self] value in
+        self.vm.$shouldShowAttention.sink { [weak self] value in
+
             self?.attentionView.isHidden = !value
         }
         .store(in: &cancellables)

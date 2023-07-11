@@ -42,6 +42,8 @@ class ArticleView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         title.setViewModel(vm.titleVM)
         
         vm.$image.compactMap().sink { [weak self] image in

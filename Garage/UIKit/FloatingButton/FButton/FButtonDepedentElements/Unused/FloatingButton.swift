@@ -76,6 +76,8 @@ class FloatingButton: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         
         vm.$isOpen.dropFirst().sink { [weak self] value in

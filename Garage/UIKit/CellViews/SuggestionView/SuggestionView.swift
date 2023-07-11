@@ -54,6 +54,8 @@ class SuggestionView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         label.setViewModel(vm.labelVM)
         
         vm.$image.sink { [weak self] image in

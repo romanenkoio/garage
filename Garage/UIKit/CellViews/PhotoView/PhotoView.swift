@@ -68,6 +68,8 @@ class PhotoView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.viewModel = vm
         vm.$image
             .sink { [weak self] in self?.imageView.image = $0 }

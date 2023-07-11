@@ -52,6 +52,8 @@ class CallButton: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
     }
     

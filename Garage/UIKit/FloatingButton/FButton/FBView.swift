@@ -58,6 +58,8 @@ class FloatingButtonView: BasicStackView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.vm = vm
         
         vm.$isMenuOnScreen.sink {[weak self] value in

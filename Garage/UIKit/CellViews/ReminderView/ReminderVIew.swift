@@ -59,6 +59,8 @@ class ReminderView: BasicView {
     
     private lazy var completeButton = BasicButton()
     
+    var vm: ViewModel!
+    
     override func initView() {
         makeLayout()
         makeConstraint()
@@ -96,6 +98,10 @@ class ReminderView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
+        self.vm = vm
+        
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         completeButton.setViewModel(vm.completeButton)

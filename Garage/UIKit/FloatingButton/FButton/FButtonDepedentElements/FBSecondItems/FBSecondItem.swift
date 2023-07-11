@@ -60,6 +60,8 @@ class FloatingButtonSecondItem: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         vm.$image.sink { [weak self]  in self?.secondItemImageView.image = $0 }
         .store(in: &cancellables)
         

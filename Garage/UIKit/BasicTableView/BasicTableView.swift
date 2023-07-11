@@ -109,6 +109,8 @@ class BasicTableView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         emptyLabel.setViewModel(vm.labelVM)
         emptySubLabel.setViewModel(vm.subLabelVM)
         addButton.setViewModel(vm.addButtonVM)

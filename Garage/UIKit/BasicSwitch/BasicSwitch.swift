@@ -78,6 +78,8 @@ class BasicSwitch: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.viewModel = vm
         self.label.setViewModel(vm.titleVM)
         

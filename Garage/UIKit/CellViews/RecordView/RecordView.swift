@@ -89,6 +89,8 @@ class RecordView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
     }

@@ -21,7 +21,7 @@ final class Car: Object, Codable {
     var reminders: [Reminder] {
         RealmManager()
             .read()
-            .filter({ $0.carID == self.id})
+            .filter({ $0.carID == self.id && !$0.isDone })
             .sorted(by: { $0.date < $1.date })
     }
     
@@ -29,7 +29,7 @@ final class Car: Object, Codable {
         RealmManager()
             .read()
             .filter({ $0.carID == self.id})
-            .sorted(by: { $0.date < $1.date })
+            .sorted(by: { $0.date > $1.date })
     }
     
     var images: [UIImage] {

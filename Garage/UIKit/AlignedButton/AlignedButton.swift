@@ -29,6 +29,8 @@ final class AlignedButton: BasicView {
     }
    
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
+
         self.basicButton.setViewModel(vm.buttonVM)
     }
 }
