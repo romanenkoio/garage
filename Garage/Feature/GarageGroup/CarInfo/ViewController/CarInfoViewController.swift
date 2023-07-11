@@ -86,7 +86,8 @@ class CarInfoViewController: BasicViewController {
             ),
         ]
         
-        vm.pageVM.$index.sink { index in
+        vm.pageVM.$index.sink { [weak self] index in
+            guard let self else { return }
             self.vm.pageVM.controllers[index].tableView.delegate = self
             self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
         }
