@@ -15,12 +15,7 @@ class PhotoVcNavigationView: BasicView {
         return label
     }()
     
-    private lazy var closeButton: BasicButton = {
-        let btn = BasicButton()
-       // btn.titleLabel?.font = .custom(size: 16, weight: .medium)
-        return btn
-    }()
-    
+    private lazy var closeButton = BasicButton()
     lazy var shareButton = BasicButton()
     
     private(set) var viewModel: ViewModel?
@@ -51,15 +46,19 @@ class PhotoVcNavigationView: BasicView {
         photoCountLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(16)
+            make.width.equalTo(60)
         }
         
         closeButton.snp.remakeConstraints { make in
             make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(photoCountLabel.snp.leading)
             make.centerY.equalTo(photoCountLabel)
         }
         
         shareButton.snp.remakeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
+            make.leading.equalTo(photoCountLabel.snp.trailing)
+
             make.centerY.equalTo(photoCountLabel)
         }
     }

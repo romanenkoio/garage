@@ -104,7 +104,10 @@ class FullSizePhotoViewController: BasicModalPresentationController {
                 shareButtonVM: .init(
                     title: "Поделиться",
                     style: .basicLightTitle,
-                    action: .touchUpInside { [self] in share(sender: navView.shareButton) }
+                    action: .touchUpInside { [weak self] in
+                        guard let self else { return }
+                        share(sender: navView.shareButton)
+                    }
                 )
             )
         )
