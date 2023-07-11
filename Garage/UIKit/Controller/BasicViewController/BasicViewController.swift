@@ -187,8 +187,8 @@ extension BasicViewController {
     func makeCloseButton(isLeft: Bool = false) {
         let closeButton = NavBarButton()
         let vm = NavBarButton.ViewModel(
-            action: .touchUpInside {
-                self.coordinator.navigateTo(CommonNavigationRoute.close)
+            action: .touchUpInside {[weak self] in
+                self?.coordinator.navigateTo(CommonNavigationRoute.close)
             },
             image: isLeft ? UIImage(named: "back_arrow_ic") : UIImage(named: "back_ic"))
         closeButton.setViewModel(vm)

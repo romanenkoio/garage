@@ -87,6 +87,10 @@ class BasicImageListView: BasicView {
         cornerRadius = 0
     }
     
+    deinit {
+        print("deinit BasicImageListView")
+    }
+    
     private func layoutElements() {
         addSubview(stack)
         stack.addArrangedSubviews([descriptionLabel,imageStack])
@@ -99,6 +103,7 @@ class BasicImageListView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        cancellables.removeAll()
         self.viewModel = vm
         
         if let descriptionLabelVM = vm.descriptionLabelVM {
@@ -121,8 +126,8 @@ class BasicImageListView: BasicView {
         }
         .store(in: &cancellables)
         
-        vm.$editingEnabled.sink { value in
-            self.items.forEach { imageButton in
+        vm.$editingEnabled.sink {[weak self]  value in
+            self?.items.forEach { imageButton in
                 guard let value else { return }
                 imageButton.viewModel?.buttonVM?.isHidden = !value
             }
@@ -149,7 +154,7 @@ class BasicImageListView: BasicView {
                 image: image,
                 buttonVM: .init(
                     style: .removeImage,
-                    action: .touchUpInside { vm.items.remove(at: index) }
+                    action: .touchUpInside {[weak self] in self?.viewModel?.items.remove(at: index) }
                 )
             )
         )
