@@ -96,7 +96,7 @@ extension CreateRecordViewController {
                 costInputVM.text = "\(object.cost ?? .zero)"
                 mileageInputVM.text = "\(object.mileage)"
                 shortTypeVM.inputVM.setText(object.short)
-                imagePickerVM.items = RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted })
+                imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
                 saveButtonVM.buttonVM.title = "Обновить"
                 if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
                     serivesListVM.initSelected(service)
