@@ -68,6 +68,7 @@ class RecordView: BasicView {
         containerView.addSubview(attentionView)
         attentionView.addSubview(attentionImage)
         stack.addArrangedSubviews([infoLabel, dateLabel, imageList])
+    
     }
     
     private func makeConstraint() {
@@ -96,16 +97,18 @@ class RecordView: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
-
+        
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         imageList.setViewModel(vm.imageListVM)
         
-        vm.imageListVM.$items.removeDuplicates().sink { [weak self] images in
-            DispatchQueue.main.async { [weak self] in
-                self?.imageList.isHidden = images.isEmpty
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {[weak self] in
+            guard let self else { return }
+            vm.imageListVM.$items.removeDuplicates().sink { images in
+                
+                self.imageList.isHidden = images.isEmpty
             }
+            .store(in: &self.cancellables)
         }
-        .store(in: &cancellables)
     }
 }

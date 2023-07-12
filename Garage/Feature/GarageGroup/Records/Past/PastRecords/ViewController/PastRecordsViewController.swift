@@ -91,6 +91,10 @@ extension PastRecordsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension PastRecordsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.noIntrinsicMetric
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
