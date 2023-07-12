@@ -109,19 +109,28 @@ class BasicImageListView: BasicView {
             descriptionLabel.setViewModel(descriptionLabelVM)
         }
     
-        vm.$items.removeDuplicates().sink {[weak self] images in
-            self?.imageStack.clearArrangedSubviews()
-            self?.items.removeAll()
-            
-            stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
-                self?.makeItems(at: cycleIndex)
+        vm.$items.removeDuplicates().sink { [weak self] images in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageStack.clearArrangedSubviews()
+                self?.items.removeAll()
+                
+                stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
+                    self?.makeItems(at: cycleIndex)
 
-                images.enumerated().forEach { imageIndex, image in
-                    if imageIndex == cycleIndex {
-                        self?.makeRemoveItems(at: imageIndex, with: image)
+                    images.enumerated().forEach { imageIndex, image in
+                        if imageIndex == cycleIndex {
+                            self?.makeRemoveItems(at: imageIndex, with: image)
+                        }
+                    }
+                }
+                
+                if self?.viewModel?.editingEnabled == false {
+                    self?.items.forEach { imageButton in
+                        imageButton.viewModel?.buttonVM?.isHidden = true
                     }
                 }
             }
+          
         }
         .store(in: &cancellables)
         

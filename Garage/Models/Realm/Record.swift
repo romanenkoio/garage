@@ -39,9 +39,10 @@ final class Record: Object, Codable {
         self.comment = comment
     }
     
-    var images: [UIImage] {
-        let datas = RealmManager<Photo>().read().filter({ $0.recordId == self.id })
-        return datas.compactMap({ UIImage(data: $0.image )})
+    @MainActor var images: [Data] {
+        return RealmManager<Photo>().read()
+            .filter({ $0.recordId == self.id })
+            .map({ $0.image })
     }
 }
 

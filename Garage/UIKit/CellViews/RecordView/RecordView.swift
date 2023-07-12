@@ -100,5 +100,12 @@ class RecordView: BasicView {
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         imageList.setViewModel(vm.imageListVM)
+        
+        vm.imageListVM.$items.removeDuplicates().sink { [weak self] images in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageList.isHidden = images.isEmpty
+            }
+        }
+        .store(in: &cancellables)
     }
 }
