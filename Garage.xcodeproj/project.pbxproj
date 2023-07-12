@@ -103,6 +103,11 @@
 		7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3AF2A5AB30E008E7B1D /* ReminderVIew.swift */; };
 		7F1DE3B22A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */; };
 		7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */; };
+		7F3C32F52A5F60D000992706 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 7F3C32F42A5F60D000992706 /* DGCharts */; };
+		7F3C33012A5F60FA00992706 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */; };
+		7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */; };
+		7F3C33032A5F60FA00992706 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */; };
+		7F3C33042A5F60FA00992706 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
 		7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F42A2E8B210062A85F /* RealmSwift */; };
@@ -380,6 +385,10 @@
 		7F1DE3AF2A5AB30E008E7B1D /* ReminderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderVIew.swift; sourceTree = "<group>"; };
 		7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderVIew+ViewModel.swift"; sourceTree = "<group>"; };
 		7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -567,6 +576,7 @@
 			files = (
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
+				7F3C32F52A5F60D000992706 /* DGCharts in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 			);
@@ -607,6 +617,7 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7F3C32F82A5F60FA00992706 /* Statistics */,
 				7F8DB0F92A5606B0007E05C3 /* GarageGroup */,
 				7F92D11D2A521F4D00AD3847 /* OnboardingGroup */,
 				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
@@ -1174,6 +1185,49 @@
 				7F1DE3B12A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift */,
 			);
 			path = ReminderView;
+			sourceTree = "<group>";
+		};
+		7F3C32F82A5F60FA00992706 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C32F92A5F60FA00992706 /* Manager */,
+				7F3C32FE2A5F60FA00992706 /* ViewController */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		7F3C32F92A5F60FA00992706 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C32FA2A5F60FA00992706 /* Coordinator */,
+				7F3C32FC2A5F60FA00992706 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F3C32FA2A5F60FA00992706 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F3C32FC2A5F60FA00992706 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F3C32FE2A5F60FA00992706 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */,
+				7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7F5955ED2A2E8ABB0062A85F /* Models */ = {
@@ -2307,6 +2361,7 @@
 				7F5955F22A2E8B210062A85F /* Realm */,
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
 				7F0E09152A31D773008C2B9A /* Moya */,
+				7F3C32F42A5F60D000992706 /* DGCharts */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -2340,6 +2395,7 @@
 				B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
+				7F3C32F32A5F60D000992706 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -2415,6 +2471,7 @@
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
+				7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */,
 				7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */,
@@ -2489,6 +2546,7 @@
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */,
+				7F3C33032A5F60FA00992706 /* StatisticsViewController.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
 				7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */,
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
@@ -2536,6 +2594,7 @@
 				7F174F002A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
+				7F3C33012A5F60FA00992706 /* StatisticsControllerCoordinator.swift in Sources */,
 				B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */,
 				B93A34502A4082D1004BAEA6 /* PastRecordsControllerCoordinator.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
@@ -2560,6 +2619,7 @@
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */,
 				B92E5A342A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift in Sources */,
+				7F3C33042A5F60FA00992706 /* Statistics+ViewModel.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
@@ -2875,6 +2935,14 @@
 				version = 15.0.0;
 			};
 		};
+		7F3C32F32A5F60D000992706 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -2898,6 +2966,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		7F3C32F42A5F60D000992706 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F3C32F32A5F60D000992706 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 		7F5955F22A2E8B210062A85F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

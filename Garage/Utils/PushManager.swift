@@ -113,7 +113,7 @@ struct LocalPush {
         id = reminder.id
         title = "Вы просили на помнить"
         subtitle = reminder.description
-        date = reminder.date.components
+        date = reminder.date.append(.day, value: -14).components
         repeats = false
     }
 }

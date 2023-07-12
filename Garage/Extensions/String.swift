@@ -16,6 +16,10 @@ extension Optional where Wrapped == String {
 extension String {
     static let empty = ""
     
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
     func toInt() -> Int {
         return Int(String(self.compactMap({ $0.isWhitespace ? nil : $0 }))) ?? .zero
     }

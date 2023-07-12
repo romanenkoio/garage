@@ -17,6 +17,7 @@ extension ServicesViewController {
         
         @Published
         var suggestions = [Suggestion]()
+        private let generator = UIImpactFeedbackGenerator(style: .medium)
         
         override init() {
             super.init()
@@ -46,6 +47,7 @@ extension ServicesViewController {
                 let services = RealmManager<Service>().read()
                 self.tableVM.setCells(services)
                 self.changeSelection(selected: all)
+                generator.impactOccurred()
             }
             all.isSelected = true
             
@@ -53,7 +55,7 @@ extension ServicesViewController {
                 let spec = $0.lowercased()
 
                 let suggestion = Suggestion(labelVM: .init(
-                    text: $0,
+                    text: $0.capitalizingFirstLetter(),
                     action: nil
                 ))
                 suggestion.labelVM.action = { [weak self] in
@@ -63,6 +65,7 @@ extension ServicesViewController {
                         .filter({ $0.specialisation.lowercased() == spec })
                     self.changeSelection(selected: suggestion)
                     self.tableVM.setCells(services)
+                    generator.impactOccurred()
                 }
                 return suggestion
             })
