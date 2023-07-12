@@ -41,11 +41,13 @@ class SuggestionView: BasicView {
         stack.addArrangedSubviews([imageView, label])
         self.backgroundColor = UIColor(hexString: "#F5F5F5")
         self.cornerRadius = 12
+        self.layer.borderWidth = 1
     }
     
     private func makeConstraints() {
         stack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.height.equalTo(38)
         }
         
         imageView.snp.makeConstraints { make in
@@ -61,6 +63,16 @@ class SuggestionView: BasicView {
         vm.$image.sink { [weak self] image in
             self?.imageView.image = image
             self?.imageView.isHidden = image == nil
+            if image != nil {
+                self?.stack.paddingInsets = UIEdgeInsets(vertical: 7, horizontal: 12)
+            } else {
+                self?.stack.paddingInsets = .zero
+            }
+        }
+        .store(in: &cancellables)
+        
+        vm.$isSelected.sink { [weak self] value in
+            self?.layer.borderColor = value ? UIColor(hexString: "#2042E9").cgColor : UIColor.clear.cgColor
         }
         .store(in: &cancellables)
     }

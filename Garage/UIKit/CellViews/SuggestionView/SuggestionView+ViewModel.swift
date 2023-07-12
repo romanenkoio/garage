@@ -11,7 +11,7 @@ extension SuggestionView {
     final class ViewModel: BasicViewModel {
         let labelVM: TappableLabel.ViewModel
         @Published var image: UIImage?
-        
+        @Published var isSelected: Bool = false
         
         init(
             labelVM: TappableLabel.ViewModel,

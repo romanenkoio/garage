@@ -40,27 +40,41 @@ extension ServicesViewController {
             let categories = items.map({ $0.specialisation.lowercased() }).unique
             
             guard categories.count > 2 else { return }
-            let all = Suggestion(labelVM: .init(text: "Все", action: { [weak self] in
+            let all = Suggestion(labelVM: .init(text: "Все", action: nil))
+            all.labelVM.action = { [weak self] in
                 guard let self else { return }
                 let services = RealmManager<Service>().read()
                 self.tableVM.setCells(services)
-            }))
+                self.changeSelection(selected: all)
+            }
+            all.isSelected = true
             
             let suggestions = categories.map({
                 let spec = $0.lowercased()
 
-                return Suggestion(labelVM: .init(
+                let suggestion = Suggestion(labelVM: .init(
                     text: $0,
-                    action: { [weak self] in
-                        guard let self else { return }
-                        let services = RealmManager<Service>()
-                            .read()
-                            .filter({ $0.specialisation.lowercased() == spec })
-                        self.tableVM.setCells(services)
-                    }))})
+                    action: nil
+                ))
+                suggestion.labelVM.action = { [weak self] in
+                    guard let self else { return }
+                    let services = RealmManager<Service>()
+                        .read()
+                        .filter({ $0.specialisation.lowercased() == spec })
+                    self.changeSelection(selected: suggestion)
+                    self.tableVM.setCells(services)
+                }
+                return suggestion
+            })
+
             self.suggestions.removeAll()
             self.suggestions.append(all)
             self.suggestions += suggestions
+        }
+        
+        private func changeSelection(selected: Suggestion) {
+            suggestions.forEach({ $0.isSelected = false })
+            selected.isSelected = true
         }
     }
 }
