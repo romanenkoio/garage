@@ -26,7 +26,6 @@ class BasicImageListView: BasicView {
         stack.axis = .horizontal
         stack.spacing = 10
         stack.distribution = .fillEqually
-        stack.paddingInsets = .init(bottom: 20)
         return stack
     }()
     

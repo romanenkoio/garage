@@ -7,6 +7,7 @@
 
 import RealmSwift
 import Foundation
+import UIKit
 
 final class Record: Object, Codable {
     @Persisted var id: String
@@ -36,6 +37,11 @@ final class Record: Object, Codable {
         self.mileage = mileage
         self.date = date
         self.comment = comment
+    }
+    
+    var images: [UIImage] {
+        let datas = RealmManager<Photo>().read().filter({ $0.recordId == self.id })
+        return datas.compactMap({ UIImage(data: $0.image )})
     }
 }
 

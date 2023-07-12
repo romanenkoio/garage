@@ -51,6 +51,11 @@ class RecordView: BasicView {
         return label
     }()
     
+    private lazy var imageList: BasicImageListView = {
+        let list = BasicImageListView()
+        return list
+    }()
+    
     override func initView() {
         makeLayout()
         makeConstraint()
@@ -62,7 +67,7 @@ class RecordView: BasicView {
         containerView.addSubview(stack)
         containerView.addSubview(attentionView)
         attentionView.addSubview(attentionImage)
-        stack.addArrangedSubviews([infoLabel, dateLabel])
+        stack.addArrangedSubviews([infoLabel, dateLabel, imageList])
     }
     
     private func makeConstraint() {
@@ -93,5 +98,6 @@ class RecordView: BasicView {
 
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
+        imageList.setViewModel(vm.imageListVM)
     }
 }

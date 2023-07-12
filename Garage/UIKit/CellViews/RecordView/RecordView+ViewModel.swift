@@ -12,10 +12,13 @@ extension RecordView {
         
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
+        let imageListVM: BasicImageListView.ViewModel
                 
         init(record: Record) {
             infoLabelVM.text = record.short
             dateLabelVM.text = record.date.toString(.ddMMyy)
+            
+            imageListVM = .init(editingEnabled: false, images: record.images)
         }
     }
 }
