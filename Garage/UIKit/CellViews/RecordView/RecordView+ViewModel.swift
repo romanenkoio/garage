@@ -15,6 +15,7 @@ extension RecordView {
         var imageListVM = BasicImageListView.ViewModel(editingEnabled: false)
         var images = [UIImage]()
         let record: Record
+        @Published var isListHidden: Bool
         
         init(record: Record) {
             self.record = record
@@ -24,6 +25,7 @@ extension RecordView {
             let data = RealmManager<Photo>().read()
                 .filter({ $0.recordId == record.id })
                 .map({ $0.image })
+            isListHidden = data.isEmpty
             
             let imgs = data.compactMap({ _ in  UIImage(named: "service")})
             imageListVM.set(imgs)
