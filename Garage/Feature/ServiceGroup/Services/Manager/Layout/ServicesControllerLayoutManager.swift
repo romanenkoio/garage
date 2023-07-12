@@ -14,6 +14,12 @@ final class ServicesControllerLayoutManager {
     
     unowned let vc: ServicesViewController
     
+    lazy var stack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        return stack
+    }()
+
     lazy var categoriesStack: ScrollableStackView = {
         let stack = ScrollableStackView()
         stack.axis = .horizontal
@@ -67,20 +73,21 @@ fileprivate extension ServicesControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(categoriesStack)
+        vc.contentView.addSubview(stack)
         vc.contentView.addSubview(table)
         vc.contentView.addSubview(addButton)
         vc.contentView.bringSubviewToFront(addButton)
+        stack.addArrangedSubviews([categoriesStack])
     }
     
     private func makeConstraint() {
-        categoriesStack.snp.makeConstraints { make in
+        stack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
         }
         
         table.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(categoriesStack.snp.bottom)
+            make.top.equalTo(stack.snp.bottom)
         }
         
         addButton.snp.makeConstraints { make in
