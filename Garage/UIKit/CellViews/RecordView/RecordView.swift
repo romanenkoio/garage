@@ -89,7 +89,8 @@ class RecordView: BasicView {
         }
         
         stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.top.bottom.equalToSuperview()
+            make.trailing.equalTo(attentionView.snp.leading).offset(10)
         }
     }
     
