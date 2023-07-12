@@ -126,7 +126,11 @@ class BasicButton: UIButton {
         layout()
         
         vm.$isHidden
-            .sink { [weak self] value in self?.isHidden = value }
+            .sink { [weak self] value in
+                DispatchQueue.main.async {
+                    self?.isHidden = value
+                }
+            }
             .store(in: &cancellables)
             
         vm.$style

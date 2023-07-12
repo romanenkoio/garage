@@ -11,6 +11,7 @@ class RecordView: BasicView {
     
     private lazy var containerView: BasicStackView = {
         let view = BasicStackView()
+        view.distribution = .fillEqually
         view.axis = .horizontal
         view.backgroundColor = .white
         view.cornerRadius = 16
@@ -20,6 +21,7 @@ class RecordView: BasicView {
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
+        stack.distribution = .fillEqually
         stack.spacing = 4
         stack.edgeInsets = UIEdgeInsets(all: 20)
         stack.backgroundColor = .white
@@ -55,6 +57,8 @@ class RecordView: BasicView {
         let list = BasicImageListView()
         return list
     }()
+    
+    private(set) var vm: ViewModel?
     
     override func initView() {
         makeLayout()
@@ -96,19 +100,17 @@ class RecordView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.vm = vm
         cancellables.removeAll()
-        
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         imageList.setViewModel(vm.imageListVM)
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {[weak self] in
-            guard let self else { return }
-            vm.imageListVM.$items.removeDuplicates().sink { images in
-                
-                self.imageList.isHidden = images.isEmpty
+        vm.imageListVM.$items.removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink {[weak self] images in
+                self?.imageList.isHidden = images.isEmpty
             }
-            .store(in: &self.cancellables)
-        }
+            .store(in: &cancellables)
     }
 }

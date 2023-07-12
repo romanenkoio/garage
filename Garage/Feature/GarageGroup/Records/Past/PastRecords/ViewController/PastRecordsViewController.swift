@@ -30,6 +30,8 @@ class PastRecordsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
+
+        layout.table.table.estimatedRowHeight = UITableView.automaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,9 +93,6 @@ extension PastRecordsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension PastRecordsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.noIntrinsicMetric
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
