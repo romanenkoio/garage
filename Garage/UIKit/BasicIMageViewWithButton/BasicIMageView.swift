@@ -28,8 +28,6 @@ class BasicImageButton: BasicView {
     
     override init() {
         super.init()
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         cornerRadius = 8
         backgroundColor = .primaryGray
         makeLayout()
@@ -75,8 +73,8 @@ class BasicImageButton: BasicView {
                 layer.borderWidth = 0
                 layer.borderColor = UIColor.clear.cgColor
             case .photo:
-                layer.borderWidth = 1
-                layer.borderColor = UIColor.primaryBlue.cgColor
+                layer.borderWidth = 0
+                layer.borderColor = UIColor.clear.cgColor
         }
     }
     
