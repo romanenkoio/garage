@@ -11,7 +11,6 @@ class RecordView: BasicView {
     
     private lazy var containerView: BasicStackView = {
         let view = BasicStackView()
-        view.distribution = .fillEqually
         view.axis = .horizontal
         view.backgroundColor = .white
         view.cornerRadius = 16
@@ -21,7 +20,6 @@ class RecordView: BasicView {
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.distribution = .fillEqually
         stack.spacing = 4
         stack.edgeInsets = UIEdgeInsets(all: 20)
         stack.backgroundColor = .white

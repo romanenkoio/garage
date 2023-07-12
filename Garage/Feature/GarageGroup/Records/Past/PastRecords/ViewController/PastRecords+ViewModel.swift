@@ -13,7 +13,7 @@ extension PastRecordsViewController {
         
         private(set) unowned var car: Car
         
-        let tableVM = BasicTableView.GenericViewModel<Record>()
+        let tableVM = BasicTableView.GenericViewModel<RecordView.ViewModel>()
         
         init(car: Car) {
             self.car = car
@@ -30,7 +30,8 @@ extension PastRecordsViewController {
         }
         
         func readRecords() {
-            tableVM.setCells(car.records)
+            let vms = car.records.map({ RecordView.ViewModel(record: $0)})
+            tableVM.setCells(vms)
         }
     }
 }
