@@ -22,7 +22,7 @@ final class ConfirmPopupControllerLayoutManager {
         stack.cornerRadius = 30
         stack.backgroundColor = .white
         stack.paddingInsets = .init(vertical: 32, horizontal: 32)
-        stack.edgeInsets = .init(horizontal: 20)
+        stack.edgeInsets = .init(top: 24, horizontal: 20)
         return stack
     }()
     
@@ -30,6 +30,7 @@ final class ConfirmPopupControllerLayoutManager {
         let label = BasicLabel()
         label.textAlignment = .center
         label.numberOfLines = 2
+        label.textInsets = .init(top: 12)
         label.font = .custom(size: 18, weight: .bold)
         return label
     }()
@@ -40,6 +41,12 @@ final class ConfirmPopupControllerLayoutManager {
         stack.distribution = .fillEqually
         stack.spacing = 8
         return stack
+    }()
+    
+    private lazy var imageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "delete_popup_ic")
+        return view
     }()
     
     private(set) lazy var confirmButton = BasicButton()
@@ -66,13 +73,20 @@ fileprivate extension ConfirmPopupControllerLayoutManager {
         vc.view.backgroundColor = .black.withAlphaComponent(0.29)
         vc.contentView.backgroundColor = .clear
         self.vc.contentView.addSubview(mainStack)
-        mainStack.addArrangedSubviews([confirmLabel, buttonStack])
+        let view = UIView()
+        view.addSubview(imageView)
+        mainStack.addArrangedSubviews([view, confirmLabel, buttonStack])
         buttonStack.addArrangedSubviews([cancelButton, confirmButton])
     }
     
     private func makeConstraint() {
         mainStack.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.height.width.equalTo(60)
             make.center.equalToSuperview()
         }
     }

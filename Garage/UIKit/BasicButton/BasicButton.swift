@@ -87,7 +87,7 @@ class BasicButton: UIButton {
             case .removeImage:
                 backgroundColor = .clear
                 tintColor = .red
-                setImage(UIImage(systemName: "xmark"), for: .normal)
+                setImage(UIImage(named: "delete_photo_ic"), for: .normal)
             case .basicLightTitle:
                 backgroundColor = .clear
                 setTitleColor(.primaryGray, for: .normal)
