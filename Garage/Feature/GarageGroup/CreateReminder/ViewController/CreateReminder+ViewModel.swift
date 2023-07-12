@@ -110,8 +110,28 @@ extension CreateReminderViewController {
                 RealmManager().write(object: reminder)
                 reminder.setPush()
             case .edit(let object):
-                break
+                updateReminder(object)
             }
+        }
+        
+        func updateReminder(_ reminder: Reminder) {
+            RealmManager().update { [weak self] realm in
+                guard let self else { return }
+
+                try? realm.write({ [weak self] in
+                    guard let self else { return }
+                    reminder.short = shortTypeVM.text
+                    reminder.date = dateInputVM.date ?? Date()
+                    reminder.comment = commenntInputVM.inputVM.text
+                })
+            }
+        }
+        
+        func removeRecord(completion: Completion?) {
+            guard case let .edit(record) = mode else {
+              return
+            }
+            RealmManager().delete(object: record, completion: completion)
         }
     }
 }
