@@ -115,6 +115,7 @@ extension CreateRecordViewController {
             ])
             
             shortTypeVM.inputVM.rules = [.noneEmpty]
+            mileageInputVM.inputVM.rules = [.noneEmpty, .onlyDigit]
             
             validator.formIsValid
                 .removeDuplicates()

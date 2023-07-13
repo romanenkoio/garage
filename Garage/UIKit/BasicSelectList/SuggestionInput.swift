@@ -27,7 +27,6 @@ class SuggestionInput<T: Equatable>: BasicInputView {
         stack.isHidden = true
         return stack
     }()
-
     
     private var itemViews: [SuggestionView] = []
     private(set) weak var viewModel: GenericViewModel<Item>?
@@ -70,10 +69,9 @@ class SuggestionInput<T: Equatable>: BasicInputView {
             make.top.trailing.leading.equalToSuperview()
         }
         
-        let errorViewInsets = UIEdgeInsets(left: 16, right: 16)
         errorView.snp.remakeConstraints { make in
             make.top.equalTo(stack.snp.bottom).offset(2)
-            make.leading.bottom.trailing.equalToSuperview().inset(errorViewInsets)
+            make.leading.bottom.trailing.equalToSuperview()
         }
     }
     

@@ -57,9 +57,9 @@ fileprivate extension CreateRecordControllerLayoutManager {
     private func makeLayout() {
         contentView.addSubview(stack)
         stack.addArrangedSubview([
-            (shortTypeInput, spacing: 0),
-            (costInput, spacing: 0),
-            (mileageImput, spacing: 0),
+            (shortTypeInput, spacing: 5),
+            (costInput, spacing: 5),
+            (mileageImput, spacing: 5),
             (dateInput, spacing: 25),
             (servicesList, spacing: 25),
             (imageList, spacing: 25),
@@ -70,7 +70,7 @@ fileprivate extension CreateRecordControllerLayoutManager {
     
     private func makeConstraint() {
         stack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }
