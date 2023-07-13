@@ -13,11 +13,11 @@ extension ArticleView {
         @Published var image: UIImage?
         
         init(
-            title: String,
+            title: TextValue,
             image: UIImage?
         ) {
             self.image = image
-            self.titleVM.text = title
+            self.titleVM.textValue = title
         }
     }
 }

@@ -23,8 +23,8 @@ extension RemindersViewController {
             
             tableVM.setupEmptyState(
                 type: .small,
-                labelVM: .init(text: "Напоминаний нет"),
-                sublabelVM: .init(text: "Запланированных задач пока нет, но их можно добавить"),
+                labelVM: .init(.text("Напоминаний нет")),
+                sublabelVM: .init(.text("Запланированных задач пока нет, но их можно добавить")),
                 addButtonVM: .init(),
                 image: nil
             )

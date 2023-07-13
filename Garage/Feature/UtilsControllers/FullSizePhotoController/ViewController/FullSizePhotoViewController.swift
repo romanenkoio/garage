@@ -124,7 +124,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
         navView.setViewModel(
             .init(
                 photoCountLabelVM: .init(
-                    text: "\(index.item+1) из \(vm.images.count)")
+                    .text("\(index.item+1) из \(vm.images.count)"))
             )
         )
     }

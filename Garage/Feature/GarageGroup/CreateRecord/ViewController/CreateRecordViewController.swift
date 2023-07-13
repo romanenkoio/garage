@@ -48,7 +48,7 @@ class CreateRecordViewController: BasicViewController {
         title = "Изменение записи"
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить запись?"))
+                let vm = Popup.ViewModel(titleVM: .init(.text("Вы уверены, что хотите удалить запись?")))
                 vm.confirmButton.action = .touchUpInside { [weak self] in
                     self?.vm.removeRecord() {
                         [weak self] in

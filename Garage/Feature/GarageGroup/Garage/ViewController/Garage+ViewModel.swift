@@ -21,8 +21,8 @@ extension GarageViewController {
             readCars()
             
             tableVM.setupEmptyState(
-                labelVM: .init(text: "Ваш гараж пуст"),
-                sublabelVM: .init(text: "Добавьте машину для \nначала работы"),
+                labelVM: .init(.text("Ваш гараж пуст")),
+                sublabelVM: .init(.text("Добавьте машину для \nначала работы")),
                 addButtonVM: addButtonVM.buttonVM,
                 image: UIImage(named: "car_placeholder")
             )

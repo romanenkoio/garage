@@ -32,7 +32,7 @@ extension BasicImageListView {
                     descriptionLabelVM?.isHidden = true
                     return
                 }
-                descriptionLabelVM?.text = description
+                descriptionLabelVM?.textValue = .text(description)
             }
         }
         

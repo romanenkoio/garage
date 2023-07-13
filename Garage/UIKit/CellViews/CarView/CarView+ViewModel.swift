@@ -24,21 +24,21 @@ extension CarView {
             )
             
             super.init()
-            brandLabelVM.text = "\(car.brand) \(car.model)"
-            atteentionLabelVM.text = "Просрочена медицинская справка"
-            plannedLabelVM.text = "Нет запланированных событий"
+            brandLabelVM.textValue = .text("\(car.brand) \(car.model)")
+            atteentionLabelVM.textValue = .text("Просрочена медицинская справка")
+            plannedLabelVM.textValue = .text("Нет запланированных событий")
            
 
             
             shouldShowAttention = car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero > 0 })
             if car.reminders.isEmpty {
-                plannedLabelVM.text = "Нет запланированных событий"
+                plannedLabelVM.textValue = .text("Нет запланированных событий")
             } else {
                 guard let first = car.reminders.first else {
-                    plannedLabelVM.text = "Нет запланированных событий"
+                    plannedLabelVM.textValue = .text("Нет запланированных событий")
                     return
                 }
-                plannedLabelVM.text = "Ближайшее: \(first.short)"
+                plannedLabelVM.textValue = .text("Ближайшее: \(first.short)")
             }
             
         }

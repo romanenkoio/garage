@@ -17,8 +17,8 @@ extension ServiceView {
 
         init(service: Service) {
             self.service = service
-            nameLabelVM.text = service.name
-            adressLabelVM.text = service.adress
+            nameLabelVM.textValue = .text(service.name)
+            adressLabelVM.textValue = .text(service.adress)
             callButtonVM = .init(phone: service.phone)
         }
     }

@@ -29,6 +29,6 @@ class TappableLabel: BasicLabel {
     
     func setViewModel(_ vm: TappableLabel.ViewModel) {
         self.vm = vm
-        setViewModel(.init(text: vm.text))
+        setViewModel(.init(vm.textValue))
     }
 }

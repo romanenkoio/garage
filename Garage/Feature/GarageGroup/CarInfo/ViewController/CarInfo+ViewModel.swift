@@ -12,11 +12,7 @@ extension CarInfoViewController {
     final class ViewModel: BasicViewModel {
         
         private(set) var car: Car
-        
-        let brandLabelVM = BasicLabel.ViewModel()
-        let yearLabelVM = BasicLabel.ViewModel()
-        let vinLabelVM = BasicLabel.ViewModel()
-        let milageLabelVM = BasicLabel.ViewModel()
+
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         let topStackVM: CarTopInfoView.ViewModel
         let tableVM = BasicTableView.GenericViewModel<Record>()
@@ -77,11 +73,6 @@ extension CarInfoViewController {
         }
         
         func initFields() {
-            brandLabelVM.text = "\(car.brand) \(car.model)"
-            yearLabelVM.text = "Год: \(car.year.wrapped)"
-            vinLabelVM.text = "VIN: \(car.win.wrapped)"
-            milageLabelVM.text = "Пробег: \(car.mileage)"
-            
             if let photo = car.images.first {
                 topStackVM.logo = photo
             } else if let data = car.imageData {

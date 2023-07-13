@@ -168,7 +168,7 @@ class BasicList<T: Equatable>: BasicView {
             label.layer.cornerRadius = 8
             label.font = .custom(size: 13, weight: .medium)
             label.textInsets = .init(vertical: 10, horizontal: 10)
-            let labelVM = TappableLabel.ViewModel(text: vm.titles[index]) { [weak self] in
+            let labelVM = TappableLabel.ViewModel(.text(vm.titles[index])) { [weak self] in
                 self?.vm?.setSelected(item)
             }
           

@@ -18,8 +18,8 @@ extension OnboardingView {
         init(type: OnboardingArticle) {
             self.image = type.image
             self.type = type
-            self.titleVM = .init(text: type.title)
-            self.subtitleVM = .init(text: type.subtitle)
+            self.titleVM = .init(.text(type.title))
+            self.subtitleVM = .init(.text(type.subtitle))
         }
     }
 }

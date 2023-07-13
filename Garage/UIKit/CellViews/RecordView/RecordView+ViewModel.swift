@@ -19,8 +19,8 @@ extension RecordView {
         
         init(record: Record) {
             self.record = record
-            infoLabelVM.text = record.short
-            dateLabelVM.text = record.date.toString(.ddMMyy)
+            infoLabelVM.textValue = .text(record.short)
+            dateLabelVM.textValue = .text(record.date.toString(.ddMMyy))
             
             let data = RealmManager<Photo>().read()
                 .filter({ $0.recordId == record.id })

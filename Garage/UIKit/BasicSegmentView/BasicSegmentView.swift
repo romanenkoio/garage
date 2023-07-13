@@ -101,7 +101,7 @@ class BasicSegmentView<T: Equatable>: BasicView {
         vm.items.enumerated().forEach { [weak self] index, item in
             let view = SegmentButton()
             self?.itemViews.append(view)
-            let labelVM = TappableLabel.ViewModel(text: vm.titles[index]) { [weak self] in
+            let labelVM = TappableLabel.ViewModel(.text(vm.titles[index])) { [weak self] in
                 self?.vm?.setSelected(item)
             }
             view.setViewModel(.init(labelVM: labelVM))

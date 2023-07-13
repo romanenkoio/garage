@@ -28,10 +28,8 @@ extension PhotoVcNavigationView {
         }
         
         var text: String {
-            get {photoCountLabelVM?.text ?? ""}
-            set {photoCountLabelVM?.text = newValue
-                print(newValue)
-            }
+            get { photoCountLabelVM?.textValue.clearText ?? .empty }
+            set { photoCountLabelVM?.textValue = .text(newValue) }
         }
     }
 }

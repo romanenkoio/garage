@@ -34,13 +34,13 @@ extension CreateReminderViewController {
             self.car = car
             self.mode = mode
             
-            shortTypeVM.descriptionLabelVM.text = "Краткое описание"
+            shortTypeVM.descriptionLabelVM.textValue = .text("Краткое описание")
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             dateInputVM.minimumDate = Date().append(.day, value: 1)
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,
-                descriptionLabelVM: .init(text: "Комментарий")
+                descriptionLabelVM: .init(.text("Комментарий"))
             )
             
             super.init()

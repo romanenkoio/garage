@@ -139,7 +139,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
             view.layer.borderWidth = 1
             view.layer.cornerRadius = 8
             view.setViewModel(.init(labelVM: .init(
-                text: viewModel.titles[index],
+                .text(viewModel.titles[index]),
                 action: {
                     print("Категория \(index)")
                     self?.viewModel?.setSelected(item)

@@ -61,8 +61,17 @@ class BasicLabel: UILabel {
     func setViewModel(_ vm: ViewModel) {
         self.cancellables.removeAll()
         
-        vm.$text
-            .sink { [weak self] in self?.text = $0 }
+        vm.$textValue
+            .sink { [weak self] textValue in
+                switch textValue {
+                case .text(let text):
+                    guard !text.isEmpty else { return }
+                    self?.text = text
+                case .attributed(let text):
+                    guard !text.string.isEmpty else { return }
+                    self?.attributedText = text
+                }
+            }
             .store(in: &cancellables)
         
         vm.$isHidden

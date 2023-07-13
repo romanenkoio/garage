@@ -21,8 +21,8 @@ extension PastRecordsViewController {
             readRecords()
             tableVM.setupEmptyState(
                 type: .small,
-                labelVM: .init(text: "Записей нет"),
-                sublabelVM: .init(text: "Истории обслуживания ещё нет, но вы можете добавить первую запись"),
+                labelVM: .init(.text("Записей нет")),
+                sublabelVM: .init(.text("Истории обслуживания ещё нет, но вы можете добавить первую запись")),
                 addButtonVM: .init(title: "Добавить запись"),
                 image: nil
             )

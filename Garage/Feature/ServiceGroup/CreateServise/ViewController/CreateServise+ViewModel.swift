@@ -28,31 +28,31 @@ extension CreateServiseViewController {
             nameInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "МегаСварщик"),
-                descriptionVM: .init(text: "Название")
+                descriptionVM: .init(.text("Название"))
             )
             
             phoneInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "+375257776655"),
-                descriptionVM: .init(text: "Номер телефона")
+                descriptionVM: .init(.text("Номер телефона"))
             )
             
             specialisationInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Сварка"),
-                descriptionVM: .init(text: "Специализация")
+                descriptionVM: .init(.text("Специализация"))
             )
             
             adressInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Макаёнка 43"),
-                descriptionVM: .init(text: "Адрес")
+                descriptionVM: .init(.text("Адрес"))
             )
             
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,
-                descriptionLabelVM: .init(text: "Комментарий")
+                descriptionLabelVM: .init(.text("Комментарий"))
             )
             
             saveButtonVM = .init(

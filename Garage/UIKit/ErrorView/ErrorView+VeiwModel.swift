@@ -15,7 +15,7 @@ extension ErrorView {
         
         init(error: String = .empty) {
             super.init()
-            errorLabelVM.text = error
+            errorLabelVM.textValue = .text(error)
         }
     }
 }

@@ -25,9 +25,9 @@ extension CarTopInfoView {
         }
         
         func initFields() {
-            brandModelYearLabelVM.text = "\(car.brand) \(car.model)\nГод: \(car.year.wrapped)"
-            vinLabelVM.text = "VIN\n\(car.win.wrapped)"
-            milageLabelVM.text = "Пробег\n\(car.mileage)"
+            brandModelYearLabelVM.textValue = .text("\(car.brand) \(car.model)\nГод: \(car.year.wrapped)")
+            vinLabelVM.textValue = .text("VIN\n\(car.win.wrapped)")
+            milageLabelVM.textValue = .text("Пробег\n\(car.mileage)")
             copyVINButtonVM.style = .basicLightTitle
             
             if let data = car.imageData {

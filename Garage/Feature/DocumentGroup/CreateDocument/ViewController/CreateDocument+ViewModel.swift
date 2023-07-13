@@ -51,7 +51,7 @@ extension CreateDocumentViewController {
             }
             imageListVM.editingEnabled = true
             imageListVM.description = "Добавить фото"
-            datePickerVM.desctiptionVM.text = "Дата действия"
+            datePickerVM.desctiptionVM.textValue = .text("Дата действия")
         }
         
         deinit {

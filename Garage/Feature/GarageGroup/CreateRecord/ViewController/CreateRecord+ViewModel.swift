@@ -20,7 +20,7 @@ extension CreateRecordViewController {
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().toString(.ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
-        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(text: "Добавить фото"))
+        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(.text("Добавить фото")))
         let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись"))
         
         let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
@@ -50,25 +50,25 @@ extension CreateRecordViewController {
             self.mode = mode
             services = RealmManager<Service>().read()
 
-            shortTypeVM.descriptionLabelVM.text = "Краткое описание"
+            shortTypeVM.descriptionLabelVM.textValue = .text("Краткое описание")
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             
             costInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "120".appendCurrency()),
-                descriptionVM: .init(text: "Стоимость")
+                descriptionVM: .init(.text("Стоимость"))
             )
             
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,
-                descriptionLabelVM: .init(text: "Комментарий")
+                descriptionLabelVM: .init(.text("Комментарий"))
             )
 
             mileageInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "\(car.mileage + 1000) км"),
-                descriptionVM: .init(text: "Текущий пробег"),
+                descriptionVM: .init(.text("Текущий пробег")),
                 isRequired: true
             )
             

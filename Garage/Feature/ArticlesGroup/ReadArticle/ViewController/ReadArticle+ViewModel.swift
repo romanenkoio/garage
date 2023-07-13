@@ -14,8 +14,8 @@ extension ReadArticleViewController {
         let textVM = BasicLabel.ViewModel()
         
         init(article: Article) {
-            titleVM.text = article.title
-            textVM.text = article.text
+            titleVM.textValue = .text(article.title)
+            textVM.textValue = .text(article.text)
         }
     }
 }

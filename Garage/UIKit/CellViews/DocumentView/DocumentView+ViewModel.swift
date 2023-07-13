@@ -20,15 +20,15 @@ extension DocumentView {
         init(document: Document) {
             documentPhotoCollectionVM = .init(images: document.photos)
             super.init()
-            typeLabelVM.text = document.rawType
+            typeLabelVM.textValue = .text(document.rawType)
             if let startDate = document.startDate,
                let endDate = document.endDate {
                 let startString = startDate.toString(.ddMMyy)
                 let endString = endDate.toString(.ddMMyy)
-                dateLabelVM.text = "С \(startString) по \(endString)"
+                dateLabelVM.textValue = .text("С \(startString) по \(endString)")
             }
             
-            detailsLabelVM.text = "Смотреть детали"
+            detailsLabelVM.textValue = .text("Смотреть детали")
         }
     }
 }

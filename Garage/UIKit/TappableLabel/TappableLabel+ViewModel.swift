@@ -12,11 +12,11 @@ extension TappableLabel {
         var action: Completion?
         
         init(
-            text: String,
+            _ textValue: TextValue,
             action: Completion? = nil
         ) {
             self.action = action
-            super.init(text: text)
+            super.init(textValue)
         }
     }
 }

@@ -52,7 +52,7 @@ class CreateCarViewController: BasicViewController {
 
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Popup.ViewModel(titleVM: .init(text: "Вы уверены, что хотите удалить машину?"))
+                let vm = Popup.ViewModel(titleVM: .init(.text("Вы уверены, что хотите удалить машину?")))
                 vm.confirmButton.action = .touchUpInside { [weak self] in
                     self?.vm.removeCar() { [weak self] in
                         self?.dismiss(animated: true)

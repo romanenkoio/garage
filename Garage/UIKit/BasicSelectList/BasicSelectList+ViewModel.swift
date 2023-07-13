@@ -29,7 +29,7 @@ extension SuggestionInput {
             super.init(
                 errorVM: errorVM,
                 inputVM: inputVM,
-                descriptionVM: .init(text: "Документ"),
+                descriptionVM: .init(.text("Документ")),
                 isRequired: isRequired
             )
 

@@ -22,7 +22,7 @@ extension UniversalSelectionView {
         }
         
         init(_ item: Selectable) {
-            self.labelVM = .init(text: item.title)
+            self.labelVM = .init(.text(item.title))
             self.item = item
         }
     }

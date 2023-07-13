@@ -9,11 +9,11 @@ import Foundation
 
 extension SettingView {
     final class ViewModel: BasicViewModel {
-        let textLabelVM = BasicLabel.ViewModel(text: "Текст настройки")
+        let textLabelVM = BasicLabel.ViewModel(.text("Текст настройки"))
         
         init(point: SettingPoint) {
             super.init()
-            textLabelVM.text = point.rawValue
+            textLabelVM.textValue = .text(point.rawValue)
         }
     }
 }

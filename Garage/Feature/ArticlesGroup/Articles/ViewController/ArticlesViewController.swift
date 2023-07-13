@@ -84,7 +84,7 @@ extension ArticlesViewController: UITableViewDataSource {
         guard let article = vm.tableVM.cells[safe: indexPath.row],
               let articleCell = tableView.dequeueReusableCell(BasicTableCell<ArticleView>.self)
         else { return .init() }
-        articleCell.mainView.setViewModel(.init(title: article.title, image: nil))
+        articleCell.mainView.setViewModel(.init(title: .text(article.title), image: nil))
         articleCell.selectionStyle = .none
         return articleCell
     }

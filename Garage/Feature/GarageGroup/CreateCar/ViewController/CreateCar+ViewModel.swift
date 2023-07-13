@@ -39,33 +39,33 @@ extension CreateCarViewController {
             brandFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Toyota"),
-                descriptionVM: .init(text: "Производитель"),
+                descriptionVM: .init(.text("Производитель")),
                 isRequired: true
             )
             
             modelFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "RAV4"),
-                descriptionVM: .init(text: "Модель"),
+                descriptionVM: .init(.text("Модель")),
                 isRequired: true
             )
             
             winFieldVM = .init(
                 errorVM: vinErrorVM,
                 inputVM: .init(placeholder: "JTEHH20V906089188"),
-                descriptionVM: .init(text: "VIN номер")
+                descriptionVM: .init(.text("VIN номер"))
             )
             
             yearFieldVM = .init(
                 errorVM: .init(),
                 inputVM: .init(placeholder: "2003"),
-                descriptionVM: .init(text: "Год выпуска")
+                descriptionVM: .init(.text("Год выпуска"))
             )
             
             mileageFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "308000"),
-                descriptionVM: .init(text: "Пробег"),
+                descriptionVM: .init(.text("Пробег")),
                 isRequired: true
             )
             

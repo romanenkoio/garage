@@ -22,8 +22,8 @@ extension ServicesViewController {
         override init() {
             super.init()
             tableVM.setupEmptyState(
-                labelVM: .init(text: "Ваш гараж пуст"),
-                sublabelVM: .init(text: "Сервисов нет"),
+                labelVM: .init(.text("Ваш гараж пуст")),
+                sublabelVM: .init(.text("Сервисов нет")),
                 addButtonVM: .init(title: "Добавить сервис"),
                 image: UIImage(named: "service")
             )
@@ -41,7 +41,7 @@ extension ServicesViewController {
             let categories = items.map({ $0.specialisation.lowercased() }).unique
             
             guard categories.count > 2 else { return }
-            let all = Suggestion(labelVM: .init(text: "Все", action: nil))
+            let all = Suggestion(labelVM: .init(.text("Все"), action: nil))
             all.labelVM.action = { [weak self] in
                 guard let self else { return }
                 let services = RealmManager<Service>().read()
@@ -55,7 +55,7 @@ extension ServicesViewController {
                 let spec = $0.lowercased()
 
                 let suggestion = Suggestion(labelVM: .init(
-                    text: $0.capitalizingFirstLetter(),
+                    .text($0.capitalizingFirstLetter()),
                     action: nil
                 ))
                 suggestion.labelVM.action = { [weak self] in

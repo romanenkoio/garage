@@ -9,6 +9,6 @@ import Foundation
 
 extension AddCarView {
     final class ViewModel: BasicViewModel {
-        let textLabelVM = BasicLabel.ViewModel(text: "Добавить новую машину")
+        let textLabelVM = BasicLabel.ViewModel(.text("Добавить новую машину"))
     }
 }

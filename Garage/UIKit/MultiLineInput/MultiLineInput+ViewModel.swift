@@ -10,7 +10,7 @@ import Foundation
 extension MultiLineInput {
     final class ViewModel: BasicViewModel {
         var errorVM: ErrorView.ViewModel?
-        let requiredLabelVM = BasicLabel.ViewModel(text: "*обязательное поле")
+        let requiredLabelVM = BasicLabel.ViewModel.required
         let descriptionLabelVM: BasicLabel.ViewModel
         let inputVM: BasicTextView.ViewModel
         

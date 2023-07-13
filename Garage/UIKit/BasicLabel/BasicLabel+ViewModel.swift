@@ -9,11 +9,15 @@ import Combine
 
 extension BasicLabel {
     class ViewModel: BasicViewModel {
-        @Published var text: String = .empty
+        @Published var textValue: TextValue = .text(.empty)
         @Published var isHidden: Bool?
         
-        init(text: String = .empty) {
-            self.text = text
+        init(_ text: TextValue = .text(.empty)) {
+            self.textValue = text
         }
     }
+}
+
+extension BasicLabel.ViewModel {
+    static let required =  BasicLabel.ViewModel(.text( "*обязательное поле"))
 }

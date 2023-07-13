@@ -9,7 +9,7 @@ import UIKit
 
 extension DetailsView {
     final class ViewModel: BasicViewModel {
-        let labelVM = BasicLabel.ViewModel(text: "Смотреть детали")
+        let labelVM = BasicLabel.ViewModel(.text("Смотреть детали"))
         let image = UIImage(named: "arrow_right_ic")?.withTintColor(ColorScheme.standartBlue.buttonColor)
         var action: Action?
         

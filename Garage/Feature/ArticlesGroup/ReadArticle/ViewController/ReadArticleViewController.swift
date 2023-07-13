@@ -45,7 +45,7 @@ class ReadArticleViewController: BasicViewController {
     override func binding() {
         layout.title.setViewModel(vm.titleVM)
         layout.textLabel.setViewModel(vm.textVM)
-        title = vm.titleVM.text
+        title = vm.titleVM.textValue.clearText
     }
     
 }

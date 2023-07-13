@@ -68,16 +68,15 @@ class CarInfoViewController: BasicViewController {
         
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
-                        .init(
-                            text: "Запланировать",
+                        .init(.text("Запланировать"),
                             action: { [weak self] in
                                 guard let self else { return }
                                 coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
                                 self.vm.addButtonVM.dismissButtons()
                             }),
                 image: UIImage(named: "checkmark_fb_ic")),
-            .init(tappableLabelVM: .init(
-                    text: "Добавить запись",
+            .init(tappableLabelVM:
+                    .init(.text("Добавить запись"),
                     action: { [weak self] in
                         guard let self else { return }
                         coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
