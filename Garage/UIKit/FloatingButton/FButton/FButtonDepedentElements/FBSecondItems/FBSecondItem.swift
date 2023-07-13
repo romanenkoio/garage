@@ -31,7 +31,7 @@ class FloatingButtonSecondItem: BasicView {
         super.init()
         makeLayout()
         makeConstraints()
-        backgroundColor = ColorScheme.current.buttonColor
+        backgroundColor = AppColors.blue
         cornerRadius = 30
     }
     

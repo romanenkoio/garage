@@ -73,8 +73,8 @@ class BasicSegmentView<T: Equatable>: BasicView {
             self.layoutIfNeeded()
         } completion: {[weak self] _ in
             self?.itemViews.enumerated().forEach { index, view in
-                view.label.textColor = index == vm.selectedIndex ? ColorScheme.current.textColor : .lightGray
-                view.lineView.backgroundColor = index == vm.selectedIndex ? ColorScheme.current.textColor : .lightGray
+                view.label.textColor = index == vm.selectedIndex ? AppColors.blue : .lightGray
+                view.lineView.backgroundColor = index == vm.selectedIndex ? AppColors.blue : .lightGray
             }
         }
     }

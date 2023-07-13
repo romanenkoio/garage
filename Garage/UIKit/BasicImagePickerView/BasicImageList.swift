@@ -31,7 +31,7 @@ class BasicImageListView: BasicView {
     
     private lazy var descriptionLabel: BasicLabel = {
         let label = BasicLabel()
-        label.textColor = ColorScheme.current.textColor
+        label.textColor = AppColors.blue
         label.font = .custom(size: 14, weight: .bold)
         return label
     }()

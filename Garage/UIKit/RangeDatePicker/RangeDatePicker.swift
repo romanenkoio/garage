@@ -20,7 +20,7 @@ class RangeDatePicker: BasicView {
     
     private lazy var descriptionLabel: BasicLabel = {
         let label = BasicLabel()
-        label.textColor = ColorScheme.current.textColor
+        label.textColor = AppColors.blue
         label.font = .custom(size: 14, weight: .bold)
         label.textInsets = .init(bottom: 16)
         return label

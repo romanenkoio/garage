@@ -24,7 +24,7 @@ class FloatingButtonMainButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
         cornerRadius = 36
-        backgroundColor = ColorScheme.current.buttonColor
+        backgroundColor = AppColors.blue
         setImage(UIImage(named: "plus_car_ic"), for: .normal)
         tintColor = .white
         

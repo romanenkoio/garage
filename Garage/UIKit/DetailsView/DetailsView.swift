@@ -14,7 +14,7 @@ class DetailsView: BasicView {
         let label = BasicLabel()
         label.textInsets = .init(top: 24, bottom: 24, left: 24)
         label.font = .custom(size: 14, weight: .semibold)
-        label.textColor = ColorScheme.standartBlue.buttonColor
+        label.textColor = AppColors.blue
         return label
     }()
     

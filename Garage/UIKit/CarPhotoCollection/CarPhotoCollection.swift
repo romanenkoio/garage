@@ -29,8 +29,8 @@ class CarPhotoCollection: BasicView {
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.currentPageIndicatorTintColor = AppColors.darkGray
-        pageControl.pageIndicatorTintColor = AppColors.lightGray
+        pageControl.currentPageIndicatorTintColor = .lightGray
+        pageControl.pageIndicatorTintColor = AppColors.background
         pageControl.isUserInteractionEnabled = false
         return pageControl
     }()

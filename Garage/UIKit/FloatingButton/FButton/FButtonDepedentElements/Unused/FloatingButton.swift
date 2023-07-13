@@ -19,7 +19,7 @@ class FloatingButton: BasicView {
     var imageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "plus_car_ic")?.withTintColor(.white)
-        view.backgroundColor = ColorScheme.current.buttonColor
+        view.backgroundColor = AppColors.blue
         return view
     }()
     
@@ -100,7 +100,7 @@ class FloatingButton: BasicView {
             let label = TappableLabel(aligment: .center)
             label.font = .custom(size: 14, weight: .semibold)
             label.textColor = .white
-            label.backgroundColor = ColorScheme.current.buttonColor
+            label.backgroundColor = AppColors.blue
             label.setViewModel(action)
             self.actionStack.addArrangedSubview(label)
         })
