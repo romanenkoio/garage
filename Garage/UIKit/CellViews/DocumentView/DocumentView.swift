@@ -55,7 +55,7 @@ class DocumentView: BasicView {
         let label = BasicLabel()
         label.font = .custom(size: 12, weight: .semibold)
         label.textInsets = .init(bottom: 17, left: 16)
-        label.textColor = UIColor(hexString: "#939393")
+        label.textColor = AppColors.subtitle
         return label
     }()
     

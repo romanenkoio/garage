@@ -97,6 +97,7 @@
 		7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174EFF2A4B2B86004E51F9 /* Articles+ViewModel.swift */; };
 		7F174F052A4B2F7C004E51F9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F174F042A4B2F7C004E51F9 /* Article.swift */; };
 		7F1B7C6E2A60989D00E84C86 /* TextValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1B7C6D2A60989D00E84C86 /* TextValue.swift */; };
+		7F1B7C702A60AAE200E84C86 /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */; };
 		7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */; };
 		7F1DE3AB2A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */; };
 		7F1DE3AC2A58AD97008E7B1D /* CreateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */; };
@@ -380,6 +381,7 @@
 		7F174EFF2A4B2B86004E51F9 /* Articles+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Articles+ViewModel.swift"; sourceTree = "<group>"; };
 		7F174F042A4B2F7C004E51F9 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		7F1B7C6D2A60989D00E84C86 /* TextValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValue.swift; sourceTree = "<group>"; };
+		7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderViewController.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 				7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */,
 				7F049E462A40FBB400C3EAD0 /* PushManager.swift */,
 				7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */,
+				7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2619,6 +2622,7 @@
 				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
 				7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */,
 				7F8DB1052A56072A007E05C3 /* RemindersControllerCoordinator.swift in Sources */,
+				7F1B7C702A60AAE200E84C86 /* TextFormatter.swift in Sources */,
 				7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */,
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */,
