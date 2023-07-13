@@ -66,7 +66,7 @@ class SuggestionView: BasicView {
             if image != nil {
                 self?.stack.paddingInsets = UIEdgeInsets(vertical: 7, horizontal: 12)
             } else {
-                self?.stack.paddingInsets = .zero
+                self?.stack.paddingInsets = UIEdgeInsets(horizontal: 12)
             }
         }
         .store(in: &cancellables)
