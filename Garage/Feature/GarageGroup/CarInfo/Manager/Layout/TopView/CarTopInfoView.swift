@@ -119,5 +119,7 @@ class CarTopInfoView: BasicStackView {
             self?.logoImage.image = logo
         }
         .store(in: &cancellables)
+        
+        self.vinLabel.isHidden = vm.car.win.wrapped.isEmpty
     }
 }

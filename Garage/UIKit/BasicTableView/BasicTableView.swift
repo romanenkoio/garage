@@ -127,7 +127,7 @@ class BasicTableView: BasicView {
         }
         .store(in: &cancellables)
         
-        vm.$isHiddenButton.sink { [weak self] value in
+        vm.$isHiddenButton.receive(on: DispatchQueue.main).sink { [weak self] value in
             self?.addButton.isHidden = value
         }
         .store(in: &cancellables)
