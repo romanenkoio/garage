@@ -11,6 +11,7 @@ import UIKit
 class BasicStackView: UIStackView {
 
     // MARK: - properties
+    
 
     var cancellables: Set<AnyCancellable> = []
 

@@ -56,38 +56,21 @@ fileprivate extension CreateRecordControllerLayoutManager {
     
     private func makeLayout() {
         contentView.addSubview(stack)
-        stack.addArrangedSubviews([
-            shortTypeInput,
-            costInput,
-            mileageImput,
-            dateInput,
-            servicesList
+        stack.addArrangedSubview([
+            (shortTypeInput, spacing: 0),
+            (costInput, spacing: 0),
+            (mileageImput, spacing: 0),
+            (dateInput, spacing: 25),
+            (servicesList, spacing: 25),
+            (imageList, spacing: 25),
+            (commentInput, spacing: 25),
+            (saveButton, spacing: 0)
         ])
-
-        contentView.addSubview(imageList)
-        contentView.addSubview(commentInput)
-        contentView.addSubview(saveButton)
     }
     
     private func makeConstraint() {
         stack.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-        }
-        
-        imageList.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(stack.snp.bottom).offset(25)
-        }
-        
-        commentInput.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(imageList.snp.bottom).offset(20)
-        }
-        
-        saveButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(commentInput.snp.bottom).offset(25)
-            make.bottom.equalToSuperview()
         }
     }
 }

@@ -8,6 +8,15 @@
 import UIKit
 
 extension UIStackView {
+    typealias ViewSpacing = (UIView, spacing: CGFloat)
+    
+    func addArrangedSubview(_ config: [ViewSpacing]) {
+        config.forEach({
+            self.addArrangedSubview($0.0)
+            self.setCustomSpacing($0.spacing, after: $0.0)
+        })
+    }
+    
     func addArrangedSubviews(_ configs: [UIView]) {
         configs.forEach({ self.addArrangedSubview($0) })
     }
