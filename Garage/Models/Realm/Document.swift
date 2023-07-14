@@ -29,6 +29,11 @@ final class Document: Object, Codable {
         self.endDate = endDate
         self.photo = photo
     }
+    
+    var days: Int? {
+        guard let endDate else { return nil }
+        return Date().daysBetween(date: endDate)
+    }
 }
 
 extension Document {

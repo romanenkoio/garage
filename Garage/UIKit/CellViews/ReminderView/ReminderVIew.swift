@@ -110,13 +110,13 @@ class ReminderView: BasicView {
         
         switch days {
         case 0...7:
-            self.dateLabel.textColor = UIColor(hexString: "#E84949")
+            self.dateLabel.textColor = AppColors.warning
             dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "error_ic"))
         case 7...14:
-            self.dateLabel.textColor = UIColor(hexString: "#FF7A00")
+            self.dateLabel.textColor = AppColors.error
             dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
         default:
-            self.dateLabel.textColor = .lightGray
+            self.dateLabel.textColor = AppColors.subtitle
         }
     }
 }

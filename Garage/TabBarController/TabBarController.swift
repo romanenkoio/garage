@@ -27,9 +27,10 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurateTabBar()
+        setBadge()
     }
     
-    func configurateTabBar() {        
+    func configurateTabBar() {
         viewControllers = dataSource.map({ $0.viewController })
         
         viewControllers?.enumerated().forEach({ index, controller in
@@ -41,5 +42,20 @@ final class TabBarController: UITabBarController {
         })
     }
     
+    func setBadge() {
+//        cars badge
+        let cars: [Car] = RealmManager().read()
+        var reminders: [Reminder] = .empty
+        cars.forEach({ reminders += $0.reminders })
+        let carBadge = reminders.filter({ $0.days ?? .zero < 7 && $0.days ?? .zero > 0 }).count
+        self.viewControllers?.first?.tabBarItem.badgeValue = carBadge == 0 ? nil : carBadge.toString()
+        
+//        document badge
+        let documents: [Document] = RealmManager().read()
+        let documentsBadge = documents.compactMap({ $0.days }).filter({ $0 < 30 && $0 > 0 }).count
+        self.viewControllers?[safe: 1]?.tabBarItem.badgeValue = carBadge == 0 ? nil : carBadge.toString()
+
+        UIApplication.shared.applicationIconBadgeNumber = carBadge + documentsBadge
+    }
 }
 

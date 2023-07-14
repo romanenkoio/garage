@@ -13,7 +13,7 @@ extension TabBarController {
             case garage = "Гараж"
             case documents = "Документы"
             case services = "Сервисы"
-            case settings = "Статьи"
+            case articles = "Статьи"
             
             var viewController: UIViewController {
                 switch self {
@@ -23,7 +23,7 @@ extension TabBarController {
                     return DocumentsViewController(vm: .init()).withNavigation()
                 case .services:
                     return ServicesViewController(vm: .init()).withNavigation()
-                case .settings:
+                case .articles:
                     return ArticlesViewController(vm: .init()).withNavigation()
                 }
             }
@@ -36,7 +36,7 @@ extension TabBarController {
                         return UIImage(named: "documents")
                     case .services:
                         return UIImage(named: "services")
-                    case .settings:
+                    case .articles:
                         return UIImage(named: "settings")
                 }
             }

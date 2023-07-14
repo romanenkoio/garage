@@ -17,8 +17,11 @@ extension DocumentView {
         @Published var shouldShowAttention = false
         @Published var cells: [UIImage] = []
         
+        unowned let document: Document
+        
         init(document: Document) {
             documentPhotoCollectionVM = .init(images: document.photos)
+            self.document = document
             super.init()
             typeLabelVM.textValue = .text(document.rawType)
             if let startDate = document.startDate,
@@ -29,6 +32,9 @@ extension DocumentView {
             }
             
             detailsLabelVM.textValue = .text("Смотреть детали")
+            
+            guard let days = document.days else { return }
+            shouldShowAttention = days < 30 && days > 0
         }
     }
 }

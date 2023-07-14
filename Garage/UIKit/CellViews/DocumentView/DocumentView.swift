@@ -121,13 +121,30 @@ class DocumentView: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
+        self.vm = vm
+        
         detailsView.setViewModel(vm.detailVM)
         typeLabel.setViewModel(vm.typeLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
         documentPhotoCollection.setViewModel(vm.documentPhotoCollectionVM)
         
         vm.$shouldShowAttention.sink { [weak self] value in
-            self?.attentionView.isHidden = !value
+            self?.attentionView.isHidden = true
+            
+            guard let self,
+                  let days = self.vm?.document.days
+            else { return }
+            
+            switch days {
+            case 0...30:
+                self.dateLabel.textColor = AppColors.warning
+                dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
+            case 30...60:
+                self.dateLabel.textColor = AppColors.error
+                dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "error_ic"))
+            default:
+                self.dateLabel.textColor = AppColors.subtitle
+            }
         }
         .store(in: &cancellables)
         
