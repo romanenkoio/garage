@@ -16,7 +16,7 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = .primaryBlue
         tabBar.unselectedItemTintColor = .lightGray
         tabBar.layer.borderWidth = 0.2
-        tabBar.backgroundColor = UIColor(hexString: "#F9F9F9").withAlphaComponent(0.94)
+        tabBar.backgroundColor = AppColors.background.withAlphaComponent(0.94)
         tabBar.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
     }
     
@@ -29,14 +29,8 @@ final class TabBarController: UITabBarController {
         configurateTabBar()
     }
     
-    func configurateTabBar() {
-        var controllers: [UIViewController] = []
-        
-        dataSource.forEach { controller in
-            controllers.append(controller.viewController)
-        }
-        
-        viewControllers = controllers
+    func configurateTabBar() {        
+        viewControllers = dataSource.map({ $0.viewController })
         
         viewControllers?.enumerated().forEach({ index, controller in
             controller.tabBarItem = UITabBarItem(
