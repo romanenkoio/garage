@@ -96,6 +96,11 @@ class CarInfoViewController: BasicViewController {
             guard let self else { return }
             coordinator.navigateTo(CarInfoNavigationRoute.createRecordFromReminder(vm.car, reminder))
         }
+        
+        vm.topStackVM.vinLabelVM.action = { [weak self] in
+            let content: [Any] = [self?.vm.car.win.wrapped]
+            self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
+        }
     }
 }
 

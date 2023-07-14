@@ -12,7 +12,7 @@ extension TappableLabel {
         var action: Completion?
         
         init(
-            _ textValue: TextValue,
+            _ textValue: TextValue = .text(.empty),
             action: Completion? = nil
         ) {
             self.action = action

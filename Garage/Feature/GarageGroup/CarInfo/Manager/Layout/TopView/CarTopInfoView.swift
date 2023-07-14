@@ -49,8 +49,8 @@ class CarTopInfoView: BasicStackView {
         return label
     }()
     
-    lazy var vinLabel: BasicLabel = {
-        let label = BasicLabel()
+    lazy var vinLabel: TappableLabel = {
+        let label = TappableLabel()
         label.textAlignment = .center
         label.backgroundColor = AppColors.background
         label.cornerRadius = 12
@@ -66,13 +66,7 @@ class CarTopInfoView: BasicStackView {
         label.textInsets = UIEdgeInsets(top: 12, bottom: 12)
         return label
     }()
-    
-    lazy var copyVINButton: BasicButton = {
-        let button = BasicButton()
-        button.backgroundColor = .clear
-        return button
-    }()
-    
+        
     override init() {
         super.init()
         edgeInsets = UIEdgeInsets(all: 20)
@@ -90,7 +84,6 @@ class CarTopInfoView: BasicStackView {
         modelStack.addArrangedSubviews([logoImage, infolabelsStack])
         infolabelsStack.addArrangedSubviews([brandModelYearLabel])
         infoStsck.addArrangedSubviews([mileageLabel, vinLabel])
-        vinLabel.addSubview(copyVINButton)
         
         brandModelYearLabel.font = .custom(size: 18, weight: .black)
         mileageLabel.font = .custom(size: 14, weight: .bold)
@@ -101,10 +94,6 @@ class CarTopInfoView: BasicStackView {
         logoImage.snp.makeConstraints { make in
             make.height.width.equalTo(80)
         }
-        
-        copyVINButton.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
     
     func setViewModel(_ vm: ViewModel) {
@@ -112,7 +101,6 @@ class CarTopInfoView: BasicStackView {
 
         brandModelYearLabel.setViewModel(vm.brandModelYearLabelVM)
         mileageLabel.setViewModel(vm.milageLabelVM)
-        copyVINButton.setViewModel(vm.copyVINButtonVM)
         vinLabel.setViewModel(vm.vinLabelVM)
         
         vm.$logo.sink { [weak self] logo in
