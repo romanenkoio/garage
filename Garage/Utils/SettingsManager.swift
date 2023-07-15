@@ -15,11 +15,8 @@ final class SettingsManager {
     private init() {}
     
     enum Keys: String, CaseIterable {
-        case colorSet
         case useReminder
-        case getArticles
-        case region
-        case mileage
+        case mileageReminder
         case isFirstLaunch
     }
     

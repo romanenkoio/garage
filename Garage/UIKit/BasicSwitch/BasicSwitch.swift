@@ -39,6 +39,11 @@ class BasicSwitch: UISwitch {
             self?.isOn = value
         }
         .store(in: &cancellables)
+        
+        vm.$isHidden.sink { [weak self] value in
+            self?.isHidden = value
+        }
+        .store(in: &cancellables)
     }
     
     @objc private func toggle(_ sender: UISwitch) {

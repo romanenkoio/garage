@@ -17,6 +17,7 @@ extension BasicSwitch {
         var checkedValue: Bool?
         
         @Published var isOn: Bool = false
+        @Published var isHidden: Bool = false
         
         init(state: Bool = false) {
             isOn = state

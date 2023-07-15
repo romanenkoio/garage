@@ -24,10 +24,19 @@ enum SettingPoint: String, CaseIterable {
     
     var state: Bool {
         switch self {
-        case .reminders:            return PushManager.sh.isEnable
-        case .mileageReminder:      return false
+        case .reminders:            return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
+        case .mileageReminder:      return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup:               return false
         case .dataTransfer:         return false
+        }
+    }
+    
+    var isSwitch: Bool {
+        switch self {
+        case .reminders, .mileageReminder:
+            return true
+        case .backup, .dataTransfer:
+            return false
         }
     }
 }

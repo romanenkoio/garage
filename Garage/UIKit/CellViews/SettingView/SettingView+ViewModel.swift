@@ -9,7 +9,7 @@ import Foundation
 
 extension SettingView {
     final class ViewModel: BasicViewModel {
-        let textLabelVM = BasicLabel.ViewModel(.text("Текст настройки"))
+        let textLabelVM = BasicLabel.ViewModel()
         let imageVM = BasicImageView.ViewModel()
         let switchVM = BasicSwitch.ViewModel()
         
@@ -18,6 +18,7 @@ extension SettingView {
             textLabelVM.textValue = .text(point.rawValue)
             imageVM.image = point.icon
             switchVM.isOn = point.state
+            switchVM.isHidden = !point.isSwitch
         }
     }
 }
