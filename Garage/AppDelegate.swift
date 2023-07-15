@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         initNavbar()
-        initPushed()
+        initPushes()
         initSystem()
         return true
     }
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func initPushed() {
+    private func initPushes() {
         Task {
             await PushManager.sh.checkPermission()
         }

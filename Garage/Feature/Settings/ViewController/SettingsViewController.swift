@@ -39,6 +39,11 @@ class SettingsViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         title = "Настройки"
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.setCells()
+    }
 
     override func configure() {
         configureCoordinator()

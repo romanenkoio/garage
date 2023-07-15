@@ -13,11 +13,16 @@ extension SettingsViewController {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
         
         let settingsPoint: [[SettingPoint]] = [
-            [.reminders, .mileageReminder]
+            [.reminders, .mileageReminder],
+            [.backup, .dataTransfer]
         ]
         
         override init() {
             super.init()
+            setCells()
+        }
+        
+        func setCells() {
             tableVM.setCells(settingsPoint)
         }
     }

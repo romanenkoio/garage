@@ -16,24 +16,22 @@ extension BasicSwitch {
         var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
         var checkedValue: Bool?
         
-        var stateSubject: PassthroughSubject<Bool, Never> = .init()
-        var isOn: Bool = false
+        @Published var isOn: Bool = false
         
         init(state: Bool = false) {
             isOn = state
-            stateSubject.send(state)
-        }
-        
-        func changeState(isOn: Bool) {
-            self.isOn = isOn
-            stateSubject.send(isOn)
         }
         
         func setState(isOn: Bool) {
             self.isOn = isOn
-            stateSubject.send(isOn)
             checkedValue = isOn
         }
+
+        func changeState(isOn: Bool) {
+            self.isOn = isOn
+            checkedValue = isOn
+        }
+        
     }
 }
 

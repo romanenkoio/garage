@@ -8,17 +8,16 @@
 import UIKit
 
 class SettingView: BasicView {
-    private lazy var settingImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+    private lazy var settingImage: BasicImageView = {
+        let imageView = BasicImageView(mode: .scaleAspectFill)
         imageView.cornerRadius = 4
-        imageView.backgroundColor = UIColor(hexString: "DEDEDE")
         return imageView
     }()
     
     private lazy var settingLabel: BasicLabel = {
        let label = BasicLabel()
         label.textInsets = .init(left: 12)
+        label.font = .custom(size: 14, weight: .semibold)
         return label
     }()
     
@@ -36,6 +35,7 @@ class SettingView: BasicView {
     private lazy var arrorwImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "arrow_right_ic")
+        view.isHidden = true
         return view
     }()
     
@@ -66,13 +66,15 @@ class SettingView: BasicView {
         buttonsStack.snp.makeConstraints { make in
             make.centerY.equalTo(settingImage)
             make.leading.greaterThanOrEqualTo(settingLabel.snp.trailing)
-            make.trailing.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
+        settingImage.setViewModel(vm.imageVM)
+        settingSwitch.setViewModel(vm.switchVM)
         settingLabel.setViewModel(vm.textLabelVM)
     }
 

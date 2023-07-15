@@ -15,24 +15,27 @@ class BasicSwitch: UISwitch {
 
     private(set) var viewModel: ViewModel?
     
-    private lazy var switcher: UISwitch = {
-        let switcher = UISwitch()
-        switcher.onTintColor = .primaryBlue
-        switcher.addTarget(
+    init() {
+        super.init(frame: .zero)
+        self.onTintColor = AppColors.blue
+        self.addTarget(
             self,
             action: #selector(toggle(_:)),
             for: .valueChanged
         )
-        switcher.isUserInteractionEnabled = true
-        return switcher
-    }()
+        self.isUserInteractionEnabled = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
         self.viewModel = vm
         
-        vm.stateSubject.sink { [weak self] value in
+        vm.$isOn.sink { [weak self] value in
             self?.isOn = value
         }
         .store(in: &cancellables)

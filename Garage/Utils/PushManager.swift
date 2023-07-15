@@ -78,8 +78,10 @@ final class PushManager {
             switch settings.authorizationStatus {
             case .notDetermined:
                 await self.requestPermission()
+                self.isEnable = false
             case .authorized, .provisional:
                 self.reschedule()
+                self.isEnable = true
             default:
                 break
             }
