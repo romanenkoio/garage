@@ -155,6 +155,10 @@
 		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
 		7FC7D15B2A628E5C00A90586 /* BasicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D15A2A628E5C00A90586 /* BasicImageView.swift */; };
 		7FC7D15D2A628E6A00A90586 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */; };
+		7FC7D16D2A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1672A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift */; };
+		7FC7D16E2A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1692A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift */; };
+		7FC7D16F2A630E5A00A90586 /* QrServiceReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */; };
+		7FC7D1702A630E5A00A90586 /* QrServiceReader+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */; };
 		7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */; };
 		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
 		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
@@ -440,6 +444,10 @@
 		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC7D15A2A628E5C00A90586 /* BasicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicImageView.swift; sourceTree = "<group>"; };
 		7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC7D1672A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FC7D1692A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderViewController.swift; sourceTree = "<group>"; };
+		7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QrServiceReader+ViewModel.swift"; sourceTree = "<group>"; };
 		7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
@@ -1504,6 +1512,7 @@
 		7F9E92A62A45FC0100DDC874 /* ServiceGroup */ = {
 			isa = PBXGroup;
 			children = (
+				7FC7D1642A630E5A00A90586 /* QrServiceReader */,
 				7F0E08C32A2FA0A1008C2B9A /* Services */,
 				7F0E08FA2A2FF2EB008C2B9A /* CreateServise */,
 			);
@@ -1612,6 +1621,49 @@
 				7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */,
 			);
 			path = BasicImageView;
+			sourceTree = "<group>";
+		};
+		7FC7D1642A630E5A00A90586 /* QrServiceReader */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D1652A630E5A00A90586 /* Manager */,
+				7FC7D16A2A630E5A00A90586 /* ViewController */,
+			);
+			path = QrServiceReader;
+			sourceTree = "<group>";
+		};
+		7FC7D1652A630E5A00A90586 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D1662A630E5A00A90586 /* Coordinator */,
+				7FC7D1682A630E5A00A90586 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FC7D1662A630E5A00A90586 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D1672A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FC7D1682A630E5A00A90586 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D1692A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FC7D16A2A630E5A00A90586 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */,
+				7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7FD2D6BC2A4B8B4600D4FCFB /* ReadArticle */ = {
@@ -2485,6 +2537,7 @@
 				B978F3B52A2E9D870076D326 /* AttributedString+Extension.swift in Sources */,
 				7F174F052A4B2F7C004E51F9 /* Article.swift in Sources */,
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
+				7FC7D16D2A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
 				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
@@ -2545,6 +2598,7 @@
 				7FC7D15D2A628E6A00A90586 /* BasicImageView+ViewModel.swift in Sources */,
 				7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */,
 				7F07BD432A46F8A70075EEFC /* CallButton+ViewModel.swift in Sources */,
+				7FC7D1702A630E5A00A90586 /* QrServiceReader+ViewModel.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
 				7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */,
 				7FC7D15B2A628E5C00A90586 /* BasicImageView.swift in Sources */,
@@ -2575,6 +2629,7 @@
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
+				7FC7D16E2A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift in Sources */,
 				B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */,
@@ -2625,6 +2680,7 @@
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
 				B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */,
 				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,
+				7FC7D16F2A630E5A00A90586 /* QrServiceReaderViewController.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				7F89F9622A52294C005F910E /* OnboardingView+ViewModel.swift in Sources */,

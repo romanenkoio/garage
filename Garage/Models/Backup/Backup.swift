@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Backup: Encodable {
+class Backup: Decodable {
     let cars: [Car]
     let documents: [Document]
     let servises: [Service]

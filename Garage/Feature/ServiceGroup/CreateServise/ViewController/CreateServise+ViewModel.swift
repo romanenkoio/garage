@@ -16,6 +16,7 @@ extension CreateServiseViewController {
         let adressInputVM: BasicInputView.ViewModel
         let saveButtonVM: AlignedButton.ViewModel
         let commenntInputVM: MultiLineInput.ViewModel
+        let qrReaderVM = QrServiceReaderViewController.ViewModel()
         
         var saveCompletion: Completion?
         var mode: EntityStatus<Service>
@@ -73,6 +74,20 @@ extension CreateServiseViewController {
                 self.saveCompletion?()
             }
             initMode()
+            
+            qrReaderVM.servise.sink { [weak self] service in
+                guard let self else { return }
+                setupFromQR(service)
+            }
+            .store(in: &cancellables)
+        }
+        
+        private func setupFromQR(_ service: Service) {
+            self.phoneInputVM.text = service.phone
+            self.adressInputVM.text = service.adress
+            self.nameInputVM.text = service.name
+            self.specialisationInputVM.text = service.specialisation
+            self.commenntInputVM.inputVM.text = service.comment.wrapped
         }
         
         private func saveService() {

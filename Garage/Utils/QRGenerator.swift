@@ -33,17 +33,10 @@ final class QRGenerator<T: Object> {
 }
 
 extension Object {
-    func toDictionary() -> NSDictionary {
+    func toDictionary() -> [String: Any] {
         let properties = self.objectSchema.properties.map { $0.name }
         let dictionary = self.dictionaryWithValues(forKeys: properties)
-        let mutabledic = NSMutableDictionary()
-        mutabledic.setValuesForKeys(dictionary)
         
-        for prop in self.objectSchema.properties {
-            if let nestedObject = self[prop.name] as? Object {
-                mutabledic.setValue(nestedObject.toDictionary(), forKey: prop.name)
-            }
-        }
-        return mutabledic
+        return dictionary
     }
 }

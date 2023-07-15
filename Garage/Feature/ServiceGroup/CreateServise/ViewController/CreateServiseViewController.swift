@@ -41,6 +41,12 @@ class CreateServiseViewController: BasicViewController {
         
         guard case .edit(_) = vm.mode else {
             title = "Добавление сервиса"
+            
+            let readQRButton = NavBarButton.ViewModel(action: .touchUpInside { [weak self] in
+                guard let self else { return }
+                self.coordinator.navigateTo(CreateServiseNavigationRoute.readServiceCamera(self.vm.qrReaderVM))
+            }, image: UIImage(systemName: "qrcode.viewfinder"))
+            makeRightNavBarButton(buttons: [readQRButton])
             return
         }
         
