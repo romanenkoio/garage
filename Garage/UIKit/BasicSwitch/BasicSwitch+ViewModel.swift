@@ -10,24 +10,30 @@ import Foundation
 import UIKit
 
 extension BasicSwitch {
-    class ViewModel {
-        var titleVM: BasicLabel.ViewModel
-    
-        @Published var state: Bool
-        @Published var image: UIImage?
+    class ViewModel: BasicViewModel, HasChangable {
+        typealias Value = Bool
+        var hasChange: Bool = false
+        var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+        var checkedValue: Bool?
         
-        init(
-            state: Bool,
-            titleVM: BasicLabel.ViewModel,
-            image: UIImage? = UIImage(systemName: "repeat")
-        ) {
-            self.state = state
-            self.titleVM = titleVM
-            self.image = image
+        var stateSubject: PassthroughSubject<Bool, Never> = .init()
+        var isOn: Bool = false
+        
+        init(state: Bool = false) {
+            isOn = state
+            stateSubject.send(state)
         }
         
         func changeState(isOn: Bool) {
-            self.state = isOn
+            self.isOn = isOn
+            stateSubject.send(isOn)
+        }
+        
+        func setState(isOn: Bool) {
+            self.isOn = isOn
+            stateSubject.send(isOn)
+            checkedValue = isOn
         }
     }
 }
+

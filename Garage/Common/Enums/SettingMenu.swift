@@ -8,6 +8,7 @@
 import Foundation
 
 enum SettingPoint: String, CaseIterable {
+    case reminders = "Получать напоминания"
     case distancePoints = "Единицы расстояния"
     case accountInfo = "Статус аккаунта"
     case contactUs = "Свяжитесь с нами"

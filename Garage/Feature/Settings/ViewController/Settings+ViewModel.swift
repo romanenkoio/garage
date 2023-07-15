@@ -13,9 +13,7 @@ extension SettingsViewController {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
         
         let settingsPoint: [[SettingPoint]] = [
-            [.accountInfo, .contactUs],
-            [.mileageReminder, .distancePoints],
-            [.dataTransfer]
+            [.reminders, .mileageReminder]
         ]
         
         override init() {
