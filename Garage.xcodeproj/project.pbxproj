@@ -153,6 +153,8 @@
 		7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */; };
 		7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */; };
 		7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */; };
+		7FC7D15B2A628E5C00A90586 /* BasicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D15A2A628E5C00A90586 /* BasicImageView.swift */; };
+		7FC7D15D2A628E6A00A90586 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */; };
 		7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */; };
 		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
 		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
@@ -266,8 +268,8 @@
 		B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA22A58287C00B96821 /* FBMainButton.swift */; };
 		B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA62A58328A00B96821 /* FBStackView.swift */; };
 		B9BF6FA92A58453C00B96821 /* FBView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */; };
-		B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */; };
-		B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */; };
+		B9D96E322A34FFBE00909B33 /* BasicImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E312A34FFBE00909B33 /* BasicImageButton.swift */; };
+		B9D96E342A34FFD300909B33 /* BasicImageButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E332A34FFD300909B33 /* BasicImageButton+ViewModel.swift */; };
 		B9D96E452A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */; };
 		B9D96E472A37B04900909B33 /* FullSizePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E432A37B04900909B33 /* FullSizePhotoViewController.swift */; };
 		B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */; };
@@ -436,6 +438,8 @@
 		7FC6DA312A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC6DA332A3B41A600AD9A3F /* CreateRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecordViewController.swift; sourceTree = "<group>"; };
 		7FC6DA342A3B41A600AD9A3F /* CreateRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateRecord+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC7D15A2A628E5C00A90586 /* BasicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicImageView.swift; sourceTree = "<group>"; };
+		7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
@@ -548,8 +552,8 @@
 		B9BF6FA22A58287C00B96821 /* FBMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMainButton.swift; sourceTree = "<group>"; };
 		B9BF6FA62A58328A00B96821 /* FBStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStackView.swift; sourceTree = "<group>"; };
 		B9BF6FA82A58453C00B96821 /* FBView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FBView+ViewModel.swift"; sourceTree = "<group>"; };
-		B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicIMageView.swift; sourceTree = "<group>"; };
-		B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9D96E312A34FFBE00909B33 /* BasicImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicImageButton.swift; sourceTree = "<group>"; };
+		B9D96E332A34FFD300909B33 /* BasicImageButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicImageButton+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E3F2A37B04900909B33 /* FullSizePhotoControllerControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoControllerControllerCoordinator.swift; sourceTree = "<group>"; };
 		B9D96E432A37B04900909B33 /* FullSizePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoViewController.swift; sourceTree = "<group>"; };
 		B9D96E442A37B04900909B33 /* FullSizePhotoController+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FullSizePhotoController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1601,6 +1605,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FC7D1592A628E4D00A90586 /* BasicImageView */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D15A2A628E5C00A90586 /* BasicImageView.swift */,
+				7FC7D15C2A628E6A00A90586 /* BasicImageView+ViewModel.swift */,
+			);
+			path = BasicImageView;
+			sourceTree = "<group>";
+		};
 		7FD2D6BC2A4B8B4600D4FCFB /* ReadArticle */ = {
 			isa = PBXGroup;
 			children = (
@@ -1884,6 +1897,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7FC7D1592A628E4D00A90586 /* BasicImageView */,
 				B92E5A302A5B4B79004698ED /* CarPhotoCollection */,
 				B97FECD72A45800500E089C7 /* ScrollableTableView */,
 				B978F2D82A2E8F4C0076D326 /* CellViews */,
@@ -2223,8 +2237,8 @@
 		B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */ = {
 			isa = PBXGroup;
 			children = (
-				B9D96E312A34FFBE00909B33 /* BasicIMageView.swift */,
-				B9D96E332A34FFD300909B33 /* BasicImageView+ViewModel.swift */,
+				B9D96E312A34FFBE00909B33 /* BasicImageButton.swift */,
+				B9D96E332A34FFD300909B33 /* BasicImageButton+ViewModel.swift */,
 			);
 			path = BasicIMageViewWithButton;
 			sourceTree = "<group>";
@@ -2513,7 +2527,7 @@
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
-				B9D96E342A34FFD300909B33 /* BasicImageView+ViewModel.swift in Sources */,
+				B9D96E342A34FFD300909B33 /* BasicImageButton+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,
 				7F0B30682A430A6D0094BC9C /* AddCarView.swift in Sources */,
@@ -2528,10 +2542,12 @@
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
 				7F0E08AA2A2F5061008C2B9A /* UIViewController.swift in Sources */,
+				7FC7D15D2A628E6A00A90586 /* BasicImageView+ViewModel.swift in Sources */,
 				7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */,
 				7F07BD432A46F8A70075EEFC /* CallButton+ViewModel.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
 				7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */,
+				7FC7D15B2A628E5C00A90586 /* BasicImageView.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
 				7F0E094F2A3346DE008C2B9A /* DocumentView+ViewModel.swift in Sources */,
 				7F0E094D2A3346D8008C2B9A /* DocumentView.swift in Sources */,
@@ -2687,7 +2703,7 @@
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F1DE3AB2A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift in Sources */,
 				7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */,
-				B9D96E322A34FFBE00909B33 /* BasicIMageView.swift in Sources */,
+				B9D96E322A34FFBE00909B33 /* BasicImageButton.swift in Sources */,
 				B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */,
 				B978F3B72A2E9D870076D326 /* UITableView.swift in Sources */,
 				7F0E09092A3096E4008C2B9A /* BasicTableView.swift in Sources */,

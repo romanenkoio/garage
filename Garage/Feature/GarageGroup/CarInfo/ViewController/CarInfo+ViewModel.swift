@@ -74,11 +74,14 @@ extension CarInfoViewController {
         
         func initFields() {
             if let photo = car.images.first {
-                topStackVM.logo = photo
+                topStackVM.logoVM.image = photo
+                topStackVM.logoVM.mode = .scaleAspectFill
             } else if let data = car.imageData {
-                topStackVM.logo = UIImage(data: data)
+                topStackVM.logoVM.image = UIImage(data: data)
+                topStackVM.logoVM.mode = .scaleAspectFit
             } else {
-                topStackVM.logo = UIImage(named: "logo_placeholder")
+                topStackVM.logoVM.image = UIImage(named: "logo_placeholder")
+                topStackVM.logoVM.mode = .scaleAspectFit
             }
         }
     }

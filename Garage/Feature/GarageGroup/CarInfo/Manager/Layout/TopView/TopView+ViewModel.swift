@@ -15,7 +15,7 @@ extension CarTopInfoView {
         let yearLabelVM = BasicLabel.ViewModel()
         let milageLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = TappableLabel.ViewModel()
-        @Published var logo: UIImage?
+        let logoVM = BasicImageView.ViewModel()
         
         init(car: Car) {
             self.car = car
@@ -60,10 +60,6 @@ extension CarTopInfoView {
            
             brandModelYearLabelVM.textValue = .attributed(carInfo)
             milageLabelVM.textValue = .attributed(mileage)
-            
-            if let data = car.imageData {
-                self.logo = UIImage(data: data)
-            }
         }
     }
 }

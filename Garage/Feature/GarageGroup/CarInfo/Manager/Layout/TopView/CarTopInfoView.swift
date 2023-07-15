@@ -34,12 +34,12 @@ class CarTopInfoView: BasicStackView {
         return view
     }()
     
-    lazy var logoImage: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.layer.masksToBounds = true
+    lazy var logoImage: BasicImageView = {
+        let view = BasicImageView(mode: .scaleAspectFill)
         view.cornerRadius = 40
         view.contentMode = .scaleAspectFill
+        view.layer.borderWidth = 1
+        view.layer.borderColor = AppColors.blue.cgColor
         return view
     }()
     
@@ -102,11 +102,7 @@ class CarTopInfoView: BasicStackView {
         brandModelYearLabel.setViewModel(vm.brandModelYearLabelVM)
         mileageLabel.setViewModel(vm.milageLabelVM)
         vinLabel.setViewModel(vm.vinLabelVM)
-        
-        vm.$logo.sink { [weak self] logo in
-            self?.logoImage.image = logo
-        }
-        .store(in: &cancellables)
+        logoImage.setViewModel(vm.logoVM)
         
         self.vinLabel.isHidden = vm.car.win.wrapped.isEmpty
     }
