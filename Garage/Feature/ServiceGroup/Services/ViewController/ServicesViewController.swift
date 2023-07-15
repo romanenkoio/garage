@@ -36,7 +36,6 @@ class ServicesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeLogoNavbar()
-        setupLongTap()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,22 +81,7 @@ class ServicesViewController: BasicViewController {
         }
     }
     
-    private func setupLongTap() {
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
-        layout.table.table.addGestureRecognizer(longPress)
-    }
-    
-    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            let touchPoint = sender.location(in: layout.table.table)
-            guard let indexPath = layout.table.table.indexPathForRow(at: touchPoint),
-                  let service = vm.tableVM.cells[safe: indexPath.row]
-            else { return }
-            
-            guard let qr = QRGenerator().generateQRCode(from: service) else { return }
-            coordinator.navigateTo(CommonNavigationRoute.share([qr]))
-        }
-    }
+
 }
 
 // MARK: -
@@ -138,4 +122,27 @@ extension ServicesViewController: UITableViewDelegate {
         guard let service = vm.tableVM.cells[safe: indexPath.row] else { return }
         coordinator.navigateTo(ServiceNavigationRoute.editService(service))
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(actionProvider: { [weak self] suggestedActions -> UIMenu? in
+            let copyAction = UIAction(
+                title: "Поделиться",
+                image: UIImage(systemName: "square.and.arrow.up")
+            ) { [weak self] action in
+                guard let self,
+                      let service = self.vm.tableVM.cells[safe: indexPath.row]
+                else { return }
+                
+                guard let qr = QRGenerator().generateQRCode(from: service) else { return }
+                coordinator.navigateTo(CommonNavigationRoute.share([qr]))
+            }
+            return UIMenu(title: .empty, children: [copyAction])
+        })
+    }
 }
+
+

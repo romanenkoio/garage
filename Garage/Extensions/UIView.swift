@@ -45,6 +45,32 @@ extension UIView {
         self.layer.add(animation, forKey: "position")
     }
     
+    func animateTap(_ completionBlock: @escaping Completion) {
+        isUserInteractionEnabled = false
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: .curveLinear,
+            animations: { [weak self] in
+                self?.transform = CGAffineTransform.init(scaleX: 1.10, y: 1.10)
+            })
+        { [weak self] done in
+            UIView.animate(
+                withDuration: 0.1,
+                delay: 0,
+                options: .curveLinear,
+                animations: { [weak self] in
+                    self?.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                }
+            ) { [weak self] _ in
+                self?.isUserInteractionEnabled = true
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+                completionBlock()
+            }
+        }
+    }
+    
     func presentOnRootViewController(_ vc: UIViewController, animated: Bool) {
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         sceneDelegate?.window?.rootViewController?.present(vc, animated: animated)

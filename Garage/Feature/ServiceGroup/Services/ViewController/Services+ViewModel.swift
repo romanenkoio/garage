@@ -18,6 +18,7 @@ extension ServicesViewController {
         @Published
         var suggestions = [Suggestion]()
         private let generator = UIImpactFeedbackGenerator(style: .medium)
+        var isAnimation = false
         
         override init() {
             super.init()
