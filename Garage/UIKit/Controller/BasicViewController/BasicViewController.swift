@@ -154,7 +154,6 @@ class BasicViewController: UIViewController {
         spinner.stopAnimating()
         loaderView.isHidden = true
     }
-    
 }
 
 extension BasicViewController: UIGestureRecognizerDelegate {

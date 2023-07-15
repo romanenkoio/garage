@@ -183,12 +183,8 @@ class BasicImageListView: BasicView {
                     action: .touchUpInside { [weak self] in
                         guard let self else { return }
                         self.presentOnRootViewController(self.alertController, animated: true)
-                        
-                    }
-                )
-            )
-        )
-        
+                    })))
+
         items.append(imageView)
         imageStack.addArrangedSubview(imageView)
     }

@@ -27,8 +27,22 @@ final class QRGenerator<T: Object> {
         } catch let error {
             print(error.localizedDescription)
         }
-       
         return nil
+    }
+    
+    func readQRImage(_ image: UIImage) -> String? {
+        guard let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh]),
+              let ciImage = CIImage(image: image),
+              let features = detector.features(in: ciImage) as? [CIQRCodeFeature]
+        else { return nil }
+        
+        var qrCodeLink = String.empty
+        
+        for feature in features {
+            qrCodeLink += feature.messageString.wrapped
+        }
+
+        return qrCodeLink.isEmpty ? nil : qrCodeLink
     }
 }
 

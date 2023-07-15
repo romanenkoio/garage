@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+import PhotosUI
 
 class CreateServiseViewController: BasicViewController {
 
@@ -21,6 +23,25 @@ class CreateServiseViewController: BasicViewController {
     private var coordinator: Coordinator!
     private var layout: Layout!
     
+    private var imagePicker: PHPickerViewController {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        configuration.preferredAssetRepresentationMode = .current
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        return picker
+    }
+
+    private var cameraPicker: UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.cameraCaptureMode = .photo
+        picker.delegate = self
+        picker.cameraDevice = .rear
+        return picker
+    }
+
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -44,7 +65,7 @@ class CreateServiseViewController: BasicViewController {
             
             let readQRButton = NavBarButton.ViewModel(action: .touchUpInside { [weak self] in
                 guard let self else { return }
-                self.coordinator.navigateTo(CreateServiseNavigationRoute.readServiceCamera(self.vm.qrReaderVM))
+                self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(alertController))
             }, image: UIImage(systemName: "qrcode.viewfinder"))
             makeRightNavBarButton(buttons: [readQRButton])
             return
@@ -85,6 +106,25 @@ class CreateServiseViewController: BasicViewController {
         }
     }
     
+    private var alertController: UIAlertController  {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let choisePhotoAction = UIAlertAction(title: "Из галереи", style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(imagePicker))
+        }
+        
+        let takePhotAction = UIAlertAction(title: "Камера", style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.coordinator.navigateTo(CreateServiseNavigationRoute.readServiceCamera(vm.qrReaderVM))
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(takePhotAction)
+        alert.addAction(choisePhotoAction)
+        alert.addAction(cancelAction)
+        return alert
+    }
 }
 
 // MARK: -
@@ -100,4 +140,44 @@ extension CreateServiseViewController {
         layout = CreateServiseControllerLayoutManager(vc: self)
     }
     
+}
+
+extension CreateServiseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[.originalImage] as? UIImage,
+              let qrData = QRGenerator().readQRImage(image)
+        else { return }
+        
+        vm.qrReaderVM.found(code: qrData)
+    }
+}
+
+extension CreateServiseViewController: PHPickerViewControllerDelegate {
+    func picker(
+        _ picker: PHPickerViewController,
+        didFinishPicking results: [PHPickerResult]
+    ) {
+        picker.dismiss(animated: true)
+        
+        guard !results.isEmpty,
+              let photo = results.first
+        else { return }
+        
+        let itemProvider = photo.itemProvider
+        if itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                guard let image = image as? UIImage,
+                      let qrData = QRGenerator().readQRImage(image)
+                else { return }
+                DispatchQueue.main.async {
+                    self?.vm.qrReaderVM.found(code: qrData)
+                }
+            }
+        }
+    }
 }

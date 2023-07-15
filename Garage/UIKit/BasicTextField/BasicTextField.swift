@@ -64,7 +64,7 @@ class BasicTextField: UITextField {
     func setViewModel(vm: BasicTextField.ViewModel) {
         self.vm = vm
         vm.$text
-            .sink { [weak self] value in self?.text = value}
+            .sink { [weak self] value in self?.text = value }
             .store(in: &cancellables)
         
         vm.$placeholder.sink { [weak self] value in

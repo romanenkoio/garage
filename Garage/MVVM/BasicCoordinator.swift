@@ -28,6 +28,8 @@ class BasicCoordinator: Routable {
             show(vm)
         case .share(let content):
             share(content)
+        case .presentOnTop(let vc):
+            self.vc.present(vc)
         }
     }
     
@@ -64,6 +66,8 @@ class BasicModalCoordinator: BasicCoordinator {
         case .confirmPopup(vm: let vm):
            break
         case .share:
+            break
+        case .presentOnTop:
             break
         }
     }
