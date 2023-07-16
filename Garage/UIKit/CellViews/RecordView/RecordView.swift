@@ -31,11 +31,8 @@ class RecordView: BasicView {
         return view
     }()
     
-    private lazy var attentionImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "more_ic")
-        return imageView
-    }()
+    private lazy var moreImage = BasicImageView()
+    private lazy var attachImage = BasicImageView()
     
     private lazy var infoLabel: BasicLabel = {
         let label = BasicLabel()
@@ -51,11 +48,6 @@ class RecordView: BasicView {
         return label
     }()
     
-    private lazy var imageList: BasicImageListView = {
-        let list = BasicImageListView()
-        return list
-    }()
-    
     private(set) var vm: ViewModel?
     
     override func initView() {
@@ -67,25 +59,13 @@ class RecordView: BasicView {
     private func makeLayout() {
         addSubview(containerView)
         containerView.addSubview(stack)
-        containerView.addSubview(attentionView)
-        attentionView.addSubview(attentionImage)
-        stack.addArrangedSubviews([infoLabel, dateLabel, imageList])
+        containerView.addSubview(attachImage)
+        containerView.addSubview(moreImage)
+        stack.addArrangedSubviews([infoLabel, dateLabel])
     
     }
     
     private func makeConstraint() {
-        attentionImage.snp.makeConstraints { make in
-            make.height.width.equalTo(28)
-            make.centerY.leading.equalToSuperview().inset(UIEdgeInsets(right: 30))
-        }
-        
-        attentionView.snp.makeConstraints { make in
-            make.height.equalTo(containerView)
-            make.width.equalTo(28)
-            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
-            make.centerY.equalTo(stack)
-        }
-    
         containerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
             make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 6))
@@ -93,8 +73,33 @@ class RecordView: BasicView {
         
         stack.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
-            make.trailing.equalTo(attentionView.snp.leading).offset(10)
         }
+        
+        attachImage.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.height.width.equalTo(28)
+            make.trailing.equalTo(moreImage.snp.leading).offset(-5)
+        }
+        
+        moreImage.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.height.width.equalTo(28)
+            make.trailing.equalToSuperview().offset(-30)
+        }
+        
+//        stack.snp.makeConstraints { make in
+//            make.leading.top.bottom.equalToSuperview()
+//            make.trailing.equalTo(attachImage.snp.leading).offset(10)
+//        }
+//        moreImage.snp.makeConstraints { make in
+//            make.width.height.equalTo(28)
+//            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
+//            make.centerY.equalTo(stack)
+//        }
+//
+    
+        
+     
     }
     
     func setViewModel(_ vm: ViewModel) {
@@ -102,11 +107,8 @@ class RecordView: BasicView {
         cancellables.removeAll()
         infoLabel.setViewModel(vm.infoLabelVM)
         dateLabel.setViewModel(vm.dateLabelVM)
-        imageList.setViewModel(vm.imageListVM)
-        
-        vm.$isListHidden.sink { [weak self] value in
-            self?.imageList.isHidden = value
-        }
-        .store(in: &cancellables)
+        moreImage.setViewModel(vm.moreImageVM)
+        attachImage.setViewModel(vm.attachImageVM)
+
     }
 }

@@ -13,41 +13,18 @@ extension RecordView {
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         var imageListVM = BasicImageListView.ViewModel(editingEnabled: false)
-        var images = [UIImage]()
         let record: Record
-        @Published var isListHidden: Bool
+        let attachImageVM = BasicImageView.ViewModel(image: UIImage(systemName: "paperclip.circle.fill"))
+        let moreImageVM = BasicImageView.ViewModel(image: UIImage(named: "more_ic"))
         
         init(record: Record) {
             self.record = record
             infoLabelVM.textValue = .text(record.short)
             dateLabelVM.textValue = .text(record.date.toString(.ddMMyy))
             
-            let data = RealmManager<Photo>().read()
+            let photoCount = RealmManager<Photo>().read()
                 .filter({ $0.recordId == record.id })
-                .map({ $0.image })
-            isListHidden = data.isEmpty
-            
-            let imgs = data.compactMap({ _ in  UIImage(named: "service")})
-            imageListVM.set(imgs)
-            
-            super.init()
-            
-            if !images.isEmpty {
-                imageListVM.set(images)
-                print("Set from cache")
-            } else {
-                Task(priority: .background, operation: { [weak self] in
-                    guard let self else { return }
-                    let images = data.compactMap({ UIImage(data: $0 )})
-                    await MainActor.run { [weak self] in
-                        guard let self else { return }
-                        imageListVM.set(images)
-                        imageListVM.editingEnabled = false
-                        self.images = images
-                    }
-                })
-                print("Set from realm")
-            }
+            attachImageVM.isHidden = photoCount.isEmpty
         }
     }
 }

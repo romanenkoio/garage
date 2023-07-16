@@ -11,6 +11,7 @@ extension BasicImageView {
     final class ViewModel: BasicViewModel {
         @Published var image: UIImage?
         @Published var mode: UIImageView.ContentMode = .scaleAspectFit
+        @Published var isHidden: Bool = false
         
         init(
             image: UIImage? = nil,

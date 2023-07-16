@@ -35,6 +35,11 @@ class BasicImageView: UIImageView {
             self?.contentMode = mode
         }
         .store(in: &cancellables)
+        
+        vm.$isHidden.sink { [weak self] value in
+            self?.isHidden = value
+        }
+        .store(in: &cancellables)
     }
 
 }
