@@ -10,7 +10,7 @@ import UIKit
 enum SettingPoint: String, CaseIterable {
     case reminders = "Получать уведомления"
     case mileageReminder = "Напоминание о пробеге"
-    case backup = "Резервная копия"
+    case backup = "Данные"
     case contactUs = "Связаться с нами"
     case version = "Версия: 1.0.0"
 
@@ -46,7 +46,7 @@ enum SettingPoint: String, CaseIterable {
         switch self {
         case .reminders:        return "Получать уведомления"
         case .mileageReminder:  return "Напоминание о пробеге"
-        case .backup:           return "Резервная копия"
+        case .backup:           return "Данные"
         case .contactUs:        return "Связаться с нами"
         case .version:          return "Версия: \(Bundle.main.version)"
         }

@@ -24,8 +24,37 @@ extension BackupViewController {
         }
         
         func removeBackup() {
-            Storage.remove(.backup, from: .documents)
-            setCells()
+            DispatchQueue.global().sync { [weak self] in
+                Storage.remove(.backup, from: .documents)
+                DispatchQueue.main.async { [weak self] in
+                    self?.setCells()
+                }
+            }
+        }
+        
+        func reload(completion: @escaping (String) -> Void) {
+            DispatchQueue.global().async { [weak self] in
+                guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else {
+                    self?.settingsPoint = [
+                        [.backup("отсутствует"), .transfer],
+                        [.save, .restore, .remove]
+                    ]
+                    self?.setCells()
+                    completion("отсутствует")
+                    return
+                }
+                
+                let date = backup.date.toString(.ddMMyy)
+                self?.settingsPoint = [
+                    [.backup(date), .transfer],
+                    [.save, .restore, .remove]
+                ]
+                self?.setCells()
+                
+                DispatchQueue.main.async {
+                    completion(date)
+                }
+            }
         }
     }
 }

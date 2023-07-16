@@ -115,7 +115,7 @@ class BasicTableView: BasicView {
         emptySubLabel.setViewModel(vm.subLabelVM)
         addButton.setViewModel(vm.addButtonVM)
         
-        vm.$isEmpty.sink { [weak self] value in
+        vm.$isEmpty.receive(on: DispatchQueue.main).sink { [weak self] value in
             guard let self else { return }
             self.emptyStack.isHidden = !value
             self.table.isHidden = value

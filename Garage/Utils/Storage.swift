@@ -127,11 +127,12 @@ public class Storage {
     }
     
     /// Remove specified file from specified directory
-    static func remove(_ fileName: FileType, from directory: Directory) {
+    static func remove(_ fileName: FileType, from directory: Directory, completion: Completion? = nil) {
         let url = getURL(for: directory).appendingPathComponent(fileName.rawValue, isDirectory: false)
         if FileManager.default.fileExists(atPath: url.path) {
             do {
                 try FileManager.default.removeItem(at: url)
+                completion?()
             } catch {
                 fatalError(error.localizedDescription)
             }

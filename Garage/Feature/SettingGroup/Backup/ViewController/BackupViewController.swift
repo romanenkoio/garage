@@ -80,7 +80,7 @@ extension BackupViewController {
         case .restore:
             restoreBackup()
         case .remove:
-            vm.removeBackup()
+            removeBackup()
         }
     }
     
@@ -91,7 +91,22 @@ extension BackupViewController {
             let content: [Any] = [url]
             DispatchQueue.main.async { [weak self] in
                 self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
-            }            
+            }
+        }
+    }
+    
+    func removeBackup() {
+        showLoader()
+        DispatchQueue.global().async { [weak self] in
+            Storage.remove(.backup, from: .documents) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.vm.reload() { [weak self] _ in
+                        DispatchQueue.main.async { [weak self] in
+                            self?.removeLoader()
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -102,9 +117,16 @@ extension BackupViewController {
             RealmManager().removeAll()
             backup.saveCurrent() { [weak self] in
                 
-                DispatchQueue.main.async { [weak self] in
-                    self?.removeLoader()
-                }
+              
+            }
+        }
+    }
+    
+    func reload() {
+        showLoader()
+        vm.reload { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.removeLoader()
             }
         }
     }
@@ -114,8 +136,9 @@ extension BackupViewController {
         DispatchQueue.global().async { [weak self] in
             Storage.store(Backup(), to: .documents, as: .backup) { [weak self] in
                 DispatchQueue.main.async { [weak self] in
-                    self?.vm.setCells()
-                    self?.removeLoader()
+                    self?.vm.reload() { [weak self] _ in
+                        self?.removeLoader()
+                    }
                 }
             }
         }
