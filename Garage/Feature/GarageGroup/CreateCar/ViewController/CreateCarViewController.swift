@@ -77,7 +77,7 @@ class CreateCarViewController: BasicViewController {
         layout.imageList.setViewModel(vm.imageListVM)
         
         vm.isLoadind.sink { [weak self] value in
-            value ? self?.startLoader() : self?.stopLoader()
+            value ? self?.showLoader() : self?.removeLoader()
         }
         .store(in: &cancellables)
         

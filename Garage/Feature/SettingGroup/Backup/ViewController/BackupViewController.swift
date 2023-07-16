@@ -78,25 +78,44 @@ extension BackupViewController {
         case .save:
             saveBackup()
         case .restore:
-            vm.restoreBackup()
+            restoreBackup()
         case .remove:
             vm.removeBackup()
         }
     }
     
     private func transferBackup() {
-        guard let url = Storage.url(for: .backup, from: .documents) else { return }
-        let content: [Any] = [url]
-        coordinator.navigateTo(CommonNavigationRoute.share(content))
+        showLoader()
+        DispatchQueue.global().async { [weak self] in
+            guard let url = Storage.url(for: .backup, from: .documents) else { return }
+            let content: [Any] = [url]
+            DispatchQueue.main.async { [weak self] in
+                self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
+            }            
+        }
+    }
+    
+    func restoreBackup() {
+        showLoader()
+        DispatchQueue.global().async { [weak self] in
+            guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return }
+            RealmManager().removeAll()
+            backup.saveCurrent() { [weak self] in
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.removeLoader()
+                }
+            }
+        }
     }
     
     private func saveBackup() {
-        startLoader()
+        showLoader()
         DispatchQueue.global().async { [weak self] in
             Storage.store(Backup(), to: .documents, as: .backup) { [weak self] in
                 DispatchQueue.main.async { [weak self] in
                     self?.vm.setCells()
-                    self?.stopLoader()
+                    self?.removeLoader()
                 }
             }
         }

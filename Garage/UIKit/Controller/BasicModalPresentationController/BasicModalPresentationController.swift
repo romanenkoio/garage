@@ -163,16 +163,6 @@ class BasicModalPresentationController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func startLoader() {
-        spinner.startAnimating()
-        loaderView.isHidden = false
-    }
-    
-    func stopLoader() {
-        spinner.stopAnimating()
-        loaderView.isHidden = true
-    }
-    
     // Listen for pan gesture
           
     func slideViewVerticallyTo(_ y: CGFloat) {

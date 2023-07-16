@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let controller = controller as? TabBarController,
               let topNC = controller.selectedViewController as? UINavigationController,
-              let topVC = topNC.topViewController as? BasicViewController
+              let topVC = topNC.topViewController
         else { return }
         
         let popupVM = Popup.ViewModel(titleVM: .init(.text("Вы действительно хотите импортировать данные? Текущие записи будут удалены")))
@@ -52,14 +52,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         popupVM.confirmButton.action = .touchUpInside {
             popup.close()
-            topVC.startLoader()
+            topVC.showLoader()
             DispatchQueue.global().async {
                 RealmManager().removeAll()
                 Storage.remove(.backup, from: .documents)
                 Storage.store(imported, to: .documents, as: .backup)
-                imported.saveCurrent()
-                DispatchQueue.main.async {
-                    topVC.stopLoader()
+                imported.saveCurrent() {
+                    DispatchQueue.main.async {
+                        topVC.removeLoader()
+                    }
                 }
             }
             

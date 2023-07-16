@@ -24,11 +24,12 @@ class Backup: Codable {
         self.photos = RealmManager().read()
     }
     
-    func saveCurrent() {
+    func saveCurrent(completion: Completion) {
         self.cars.forEach { RealmManager().write(object: $0) }
         self.documents.forEach { RealmManager().write(object: $0) }
         self.servises.forEach { RealmManager().write(object: $0) }
         self.records.forEach { RealmManager().write(object: $0) }
         self.photos.forEach { RealmManager().write(object: $0) }
+        completion()
     }
 }

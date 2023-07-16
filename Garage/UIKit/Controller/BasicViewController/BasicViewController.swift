@@ -82,7 +82,7 @@ class BasicViewController: UIViewController {
         cancellables.removeAll()
         viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
-            value ? self.startLoader() : self.stopLoader()
+            value ? self.showLoader() : self.removeLoader()
         }
         .store(in: &cancellables)
     }
@@ -143,17 +143,6 @@ class BasicViewController: UIViewController {
 
     @objc func hideKeyboard() {
         self.view.endEditing(true)
-    }
-    
-    func startLoader() {
-        view.bringSubviewToFront(loaderView)
-        spinner.startAnimating()
-        loaderView.isHidden = false
-    }
-    
-    func stopLoader() {
-        spinner.stopAnimating()
-        loaderView.isHidden = true
     }
 }
 

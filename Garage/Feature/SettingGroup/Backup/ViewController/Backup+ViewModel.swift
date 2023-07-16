@@ -23,12 +23,6 @@ extension BackupViewController {
             tableVM.setCells(settingsPoint)
         }
         
-        func restoreBackup() {
-            guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return }
-            RealmManager().removeAll()
-            backup.saveCurrent()
-        }
-        
         func removeBackup() {
             Storage.remove(.backup, from: .documents)
             setCells()
