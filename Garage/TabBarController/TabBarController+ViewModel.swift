@@ -37,7 +37,7 @@ extension TabBarController {
                     case .services:
                         return UIImage(named: "services")
                     case .articles:
-                        return UIImage(named: "settings")
+                        return UIImage(named: "articles")
                 }
             }
         }

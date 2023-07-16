@@ -66,7 +66,7 @@ class CreateServiseViewController: BasicViewController {
             let readQRButton = NavBarButton.ViewModel(action: .touchUpInside { [weak self] in
                 guard let self else { return }
                 self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(alertController))
-            }, image: UIImage(systemName: "qrcode.viewfinder"))
+            }, image: UIImage(named: "qr_ic"))
             makeRightNavBarButton(buttons: [readQRButton])
             return
         }
