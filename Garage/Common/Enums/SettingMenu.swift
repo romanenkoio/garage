@@ -8,10 +8,12 @@
 import UIKit
 
 enum SettingPoint: String, CaseIterable {
-    case reminders = "Получать напоминания"
+    case reminders = "Получать уведомления"
     case mileageReminder = "Напоминание о пробеге"
     case backup = "Резервная копия"
     case dataTransfer = "Перенос данных"
+    case contactUs = "Связаться с нами"
+    case version = "Версия: 1.0.0"
 
     var icon: UIImage? {
         switch self {
@@ -19,6 +21,8 @@ enum SettingPoint: String, CaseIterable {
         case .mileageReminder:  return UIImage(systemName: "speedometer")
         case .backup:           return UIImage(systemName: "externaldrive.fill.badge.timemachine")
         case .dataTransfer:     return UIImage(systemName: "chevron.right.square.fill")
+        case .contactUs:        return UIImage(systemName: "envelope.fill")
+        case .version:           return UIImage(systemName: "info.circle.fill")
         }
     }
     
@@ -28,6 +32,7 @@ enum SettingPoint: String, CaseIterable {
         case .mileageReminder:      return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup:               return false
         case .dataTransfer:         return false
+        case .version, .contactUs:   return false
         }
     }
     
@@ -35,8 +40,24 @@ enum SettingPoint: String, CaseIterable {
         switch self {
         case .reminders, .mileageReminder:
             return true
-        case .backup, .dataTransfer:
+        case .backup, .dataTransfer, .contactUs, .version:
             return false
         }
     }
+    
+    var title: String {
+        switch self {
+        case .reminders:        return "Получать уведомления"
+        case .mileageReminder:  return "Напоминание о пробеге"
+        case .backup:           return "Резервная копия"
+        case .dataTransfer:     return "Перенос данных"
+        case .contactUs:        return "Связаться с нами"
+        case .version:          return "Версия: \(Bundle.main.version)"
+        }
+    }
+}
+
+enum DataSubSetting {
+    case transfer
+    case backup
 }

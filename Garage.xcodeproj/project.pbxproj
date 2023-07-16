@@ -159,6 +159,7 @@
 		7FC7D16E2A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1692A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift */; };
 		7FC7D16F2A630E5A00A90586 /* QrServiceReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */; };
 		7FC7D1702A630E5A00A90586 /* QrServiceReader+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */; };
+		7FC7D1932A63F2C700A90586 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1922A63F2C700A90586 /* Bundle.swift */; };
 		7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */; };
 		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
 		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
@@ -448,6 +449,7 @@
 		7FC7D1692A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderViewController.swift; sourceTree = "<group>"; };
 		7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QrServiceReader+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC7D1922A63F2C700A90586 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
@@ -2191,6 +2193,7 @@
 				7F0E092E2A32818F008C2B9A /* Array.swift */,
 				7F0E09492A333B84008C2B9A /* UIApplication.swift */,
 				B9D96E4E2A37B47200909B33 /* UICollectionView.swift */,
+				7FC7D1922A63F2C700A90586 /* Bundle.swift */,
 				7F049E482A41029F00C3EAD0 /* Date.swift */,
 			);
 			path = Extensions;
@@ -2570,6 +2573,7 @@
 				7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */,
 				7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
+				7FC7D1932A63F2C700A90586 /* Bundle.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,

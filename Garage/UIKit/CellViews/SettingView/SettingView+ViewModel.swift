@@ -15,7 +15,7 @@ extension SettingView {
         
         init(point: SettingPoint) {
             super.init()
-            textLabelVM.textValue = .text(point.rawValue)
+            textLabelVM.textValue = .text(point.title)
             imageVM.image = point.icon
             switchVM.isOn = point.state
             switchVM.isHidden = !point.isSwitch

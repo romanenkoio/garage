@@ -61,6 +61,21 @@ class SettingsViewController: BasicViewController {
         .store(in: &cancellables)
     }
     
+    func hadleSelection(_ type: SettingPoint) {
+        switch type {
+        case .reminders, .mileageReminder:
+            break
+        case .backup:
+            break
+        case .dataTransfer:
+            break
+        case .contactUs:
+            break
+        case .version:
+            break
+        }
+    }
+    
 }
 
 // MARK: -
@@ -93,10 +108,15 @@ extension SettingsViewController: UITableViewDataSource {
         else { return .init() }
     
         settingCell.mainView.setViewModel(.init(point: point))
+        settingCell.selectionStyle = .none
         return settingCell
     }
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let type = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row] else { return }
+        self.hadleSelection(type)
+    }
 }

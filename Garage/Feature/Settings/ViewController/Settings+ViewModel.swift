@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cirrus
 
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {
@@ -14,7 +15,8 @@ extension SettingsViewController {
         
         let settingsPoint: [[SettingPoint]] = [
             [.reminders, .mileageReminder],
-            [.backup, .dataTransfer]
+            [.backup, .dataTransfer],
+            [.contactUs, .version]
         ]
         
         override init() {
@@ -24,6 +26,10 @@ extension SettingsViewController {
         
         func setCells() {
             tableVM.setCells(settingsPoint)
+        }
+        
+        func uploadModel() {
+            
         }
     }
 }
