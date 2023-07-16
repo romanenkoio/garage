@@ -9,7 +9,7 @@ import UIKit
 
 enum DataSubSetting {
     case transfer
-    case backup
+    case backup(String)
     case save
     case restore
     case remove
@@ -34,17 +34,11 @@ enum DataSubSetting {
     
     var title: String {
         switch self {
-        case .transfer:       return "Перенос данных"
-        case .backup:         return "Резервная копия: \(readBackupDate())"
-        case .save:           return "Создать копию"
-        case .restore:        return "Восстановить из копии"
-        case .remove:         return "Удалить копию"
+        case .transfer:             return "Перенос данных"
+        case .backup(let date):     return "Резервная копия: \(date)"
+        case .save:                 return "Создать копию"
+        case .restore:              return "Восстановить из копии"
+        case .remove:               return "Удалить копию"
         }
-    }
-    
-    func readBackupDate() -> String {
-        guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return "отсутствует" }
-        let date = backup.date.toString(.ddMMyy)
-        return date
     }
 }

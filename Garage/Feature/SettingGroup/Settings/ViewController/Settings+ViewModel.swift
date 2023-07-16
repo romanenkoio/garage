@@ -15,7 +15,7 @@ extension SettingsViewController {
         
         let settingsPoint: [[SettingPoint]] = [
             [.reminders, .mileageReminder],
-            [.backup, .dataTransfer],
+            [.backup],
             [.contactUs, .version]
         ]
         

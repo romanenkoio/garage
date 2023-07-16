@@ -63,7 +63,7 @@ class BasicModalCoordinator: BasicCoordinator {
             self.modalVC.pop()
         case .closeToRoot:
             modalVC.popToRoot()
-        case .confirmPopup(vm: let vm):
+        case .confirmPopup:
            break
         case .share:
             break

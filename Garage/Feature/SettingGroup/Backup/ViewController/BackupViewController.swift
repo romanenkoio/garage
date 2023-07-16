@@ -35,6 +35,7 @@ class BackupViewController: BasicViewController {
         super.viewDidLoad()
         makeCloseButton(isLeft: true)
         title = "Резервная копия"
+        vm.setCells()
     }
 
     override func configure() {
@@ -75,7 +76,7 @@ extension BackupViewController {
         case .backup:
             break
         case .save:
-            vm.saveBackup()
+            saveBackup()
         case .restore:
             vm.restoreBackup()
         case .remove:
@@ -87,6 +88,18 @@ extension BackupViewController {
         guard let url = Storage.url(for: .backup, from: .documents) else { return }
         let content: [Any] = [url]
         coordinator.navigateTo(CommonNavigationRoute.share(content))
+    }
+    
+    private func saveBackup() {
+        startLoader()
+        DispatchQueue.global().async { [weak self] in
+            Storage.store(Backup(), to: .documents, as: .backup) { [weak self] in
+                DispatchQueue.main.async { [weak self] in
+                    self?.vm.setCells()
+                    self?.stopLoader()
+                }
+            }
+        }
     }
 }
 

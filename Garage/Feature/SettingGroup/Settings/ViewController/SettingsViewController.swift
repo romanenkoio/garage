@@ -66,9 +66,17 @@ class SettingsViewController: BasicViewController {
         case .reminders, .mileageReminder:
             break
         case .backup:
-            coordinator.navigateTo(SettingsNavigationRoute.backup)
-        case .dataTransfer:
-            break
+            showLoader()
+            readBackupDate { [weak self] date in
+                let points: [[DataSubSetting]] = [
+                    [.backup(date), .transfer],
+                    [.save, .restore, .remove]
+                ]
+                DispatchQueue.main.async { [weak self] in
+                    self?.removeLoader()
+                    self?.coordinator.navigateTo(SettingsNavigationRoute.backup(points))
+                }
+            }
         case .contactUs:
             break
         case .version:
@@ -76,6 +84,17 @@ class SettingsViewController: BasicViewController {
         }
     }
     
+    func readBackupDate(completion: @escaping (String) -> Void) {
+        DispatchQueue.global().async {
+            guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else {
+                completion("отсутствует")
+                return
+            }
+            
+            let date = backup.date.toString(.ddMMyy)
+            completion(date)
+        }
+    }
 }
 
 // MARK: -

@@ -29,7 +29,7 @@ final class ConfirmPopupControllerLayoutManager {
     private(set) lazy var confirmLabel: BasicLabel = {
         let label = BasicLabel()
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textInsets = .init(top: 12)
         label.font = .custom(size: 18, weight: .bold)
         return label

@@ -12,23 +12,15 @@ extension BackupViewController {
     final class ViewModel: BasicViewModel {
         let tableVM = BasicTableView.SectionViewModel<DataSubSetting>()
         
-        let settingsPoint: [[DataSubSetting]] = [
-            [.backup, .transfer],
-            [.save, .restore, .remove]
-        ]
+        var settingsPoint: [[DataSubSetting]] = []
         
-        override init() {
+        init(points: [[DataSubSetting]]) {
             super.init()
-            setCells()
+            self.settingsPoint = points
         }
         
         func setCells() {
             tableVM.setCells(settingsPoint)
-        }
-        
-        func saveBackup() {
-            Storage.store(Backup(), to: .documents, as: .backup)
-            setCells()
         }
         
         func restoreBackup() {

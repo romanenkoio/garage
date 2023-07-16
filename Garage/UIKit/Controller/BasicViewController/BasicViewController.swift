@@ -146,6 +146,7 @@ class BasicViewController: UIViewController {
     }
     
     func startLoader() {
+        view.bringSubviewToFront(loaderView)
         spinner.startAnimating()
         loaderView.isHidden = false
     }

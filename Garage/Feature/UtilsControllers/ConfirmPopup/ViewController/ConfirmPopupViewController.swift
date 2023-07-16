@@ -57,7 +57,7 @@ class ConfirmPopupViewController: BasicViewController {
         self.contentView.addGestureRecognizer(tap)
     }
     
-    @objc private func close() {
+    @objc func close() {
         self.dismiss(animated: true)
     }
     

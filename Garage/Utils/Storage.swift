@@ -49,7 +49,7 @@ public class Storage {
     ///   - object: the encodable struct to store
     ///   - directory: where to store the struct
     ///   - fileName: what to name the file where the struct data will be stored
-    static func store<T: Encodable>(_ object: T, to directory: Directory, as fileName: FileType) {
+    static func store<T: Encodable>(_ object: T, to directory: Directory, as fileName: FileType, completion: Completion? = nil) {
         let url = getURL(for: directory).appendingPathComponent(fileName.rawValue, isDirectory: false)
         
         let encoder = JSONEncoder()
@@ -59,6 +59,7 @@ public class Storage {
                 try FileManager.default.removeItem(at: url)
             }
             FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
+            completion?()
         } catch {
             fatalError(error.localizedDescription)
         }

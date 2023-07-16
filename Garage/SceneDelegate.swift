@@ -22,13 +22,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let urlContext = URLContexts.first else {
-          return
+            return
+        }
+        handleImport(by: urlContext.url)
+       
+    }
+    
+    private func handleImport(by ulr: URL) {
+        guard let imported = Storage.retrieve(ulr, as: Backup.self) else { return }
+        var controller: UIViewController?
+        
+        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+        if var topController = keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            controller = topController
+        }
+
+        guard let controller = controller as? TabBarController,
+              let topNC = controller.selectedViewController as? UINavigationController,
+              let topVC = topNC.topViewController as? BasicViewController
+        else { return }
+        
+        let popupVM = Popup.ViewModel(titleVM: .init(.text("Вы действительно хотите импортировать данные? Текущие записи будут удалены")))
+        popupVM.confirmButton.title = "Импортировать"
+        let popup = Popup(vm: popupVM)
+
+        popupVM.confirmButton.action = .touchUpInside {
+            popup.close()
+            topVC.startLoader()
+            DispatchQueue.global().async {
+                RealmManager().removeAll()
+                Storage.remove(.backup, from: .documents)
+                Storage.store(imported, to: .documents, as: .backup)
+                imported.saveCurrent()
+                DispatchQueue.main.async {
+                    topVC.stopLoader()
+                }
+            }
+            
         }
         
-        guard let imported = Storage.retrieve(urlContext.url, as: Backup.self) else { return }
-        Storage.remove(.backup, from: .documents)
-        Storage.store(imported, to: .documents, as: .backup)
-        imported.saveCurrent()
+        popup.modalPresentationStyle = .overCurrentContext
+        popup.modalTransitionStyle = .crossDissolve
+        topVC.present(popup)
+    
     }
 }
 
