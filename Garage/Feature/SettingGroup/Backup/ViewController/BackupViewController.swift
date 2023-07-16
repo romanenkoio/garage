@@ -90,6 +90,7 @@ extension BackupViewController {
             guard let url = Storage.url(for: .backup, from: .documents) else { return }
             let content: [Any] = [url]
             DispatchQueue.main.async { [weak self] in
+                self?.removeLoader()
                 self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
             }
         }
