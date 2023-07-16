@@ -7,24 +7,28 @@
 
 import Foundation
 
-class Backup: Decodable {
+class Backup: Codable {
+    let date: Date
     let cars: [Car]
     let documents: [Document]
     let servises: [Service]
     let records: [Record]
     let photos: [Photo]
     
-    init(
-        cars: [Car],
-        documents: [Document],
-        servises: [Service],
-        records: [Record],
-        photos: [Photo]
-    ) {
-        self.cars = cars
-        self.documents = documents
-        self.servises = servises
-        self.records = records
-        self.photos = photos
+    init() {
+        self.date = Date()
+        self.cars = RealmManager().read()
+        self.documents = RealmManager().read()
+        self.servises = RealmManager().read()
+        self.records = RealmManager().read()
+        self.photos = RealmManager().read()
+    }
+    
+    func saveCurrent() {
+        self.cars.forEach { RealmManager().write(object: $0) }
+        self.documents.forEach { RealmManager().write(object: $0) }
+        self.servises.forEach { RealmManager().write(object: $0) }
+        self.records.forEach { RealmManager().write(object: $0) }
+        self.photos.forEach { RealmManager().write(object: $0) }
     }
 }

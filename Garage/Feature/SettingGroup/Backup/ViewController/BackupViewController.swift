@@ -1,18 +1,18 @@
 //
-//  SettingsViewController.swift
+//  BackupViewController.swift
 //  Garage
 //
-//  Created by Illia Romanenko on 14.06.23.
+//  Created by Illia Romanenko on 16.07.23.
 //  
 //
 
 import UIKit
 
-class SettingsViewController: BasicViewController {
+class BackupViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = SettingsControllerCoordinator
-    typealias Layout = SettingsControllerLayoutManager
+    typealias Coordinator = BackupControllerCoordinator
+    typealias Layout = BackupControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
@@ -33,16 +33,8 @@ class SettingsViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTabBar(false)
-        makeLogoNavbar()
-        hideTabBar(false)
         makeCloseButton(isLeft: true)
-        title = "Настройки"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        vm.setCells()
+        title = "Резервная копия"
     }
 
     override func configure() {
@@ -61,39 +53,44 @@ class SettingsViewController: BasicViewController {
         .store(in: &cancellables)
     }
     
-    func hadleSelection(_ type: SettingPoint) {
-        switch type {
-        case .reminders, .mileageReminder:
-            break
-        case .backup:
-            break
-        case .dataTransfer:
-            break
-        case .contactUs:
-            break
-        case .version:
-            break
-        }
-    }
-    
 }
 
 // MARK: -
 // MARK: - Configure
 
-extension SettingsViewController {
+extension BackupViewController {
 
     private func configureCoordinator() {
-        coordinator = SettingsControllerCoordinator(vc: self)
+        coordinator = BackupControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = SettingsControllerLayoutManager(vc: self)
+        layout = BackupControllerLayoutManager(vc: self)
     }
     
+    private func hadleSelection(_ type: DataSubSetting) {
+        switch type {
+        case .transfer:
+            transferBackup()
+        case .backup:
+            break
+        case .save:
+            vm.saveBackup()
+        case .restore:
+            vm.restoreBackup()
+        case .remove:
+            vm.removeBackup()
+        }
+    }
+    
+    private func transferBackup() {
+        guard let url = Storage.url(for: .backup, from: .documents) else { return }
+        let content: [Any] = [url]
+        coordinator.navigateTo(CommonNavigationRoute.share(content))
+    }
 }
 
-extension SettingsViewController: UITableViewDataSource {
+extension BackupViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return vm.tableVM.cells.count
     }
@@ -113,7 +110,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 }
 
-extension SettingsViewController: UITableViewDelegate {
+extension BackupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let type = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row] else { return }

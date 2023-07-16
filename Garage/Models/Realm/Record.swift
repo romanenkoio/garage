@@ -44,6 +44,29 @@ final class Record: Object, Codable {
             .filter({ $0.recordId == self.id })
             .map({ $0.image })
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case short
+        case carID
+        case serviceID
+        case cost
+        case mileage
+        case date
+        case comment
+    }
+    
+    func encode(to encoder: Encoder) throws {
+          var container = encoder.container(keyedBy: CodingKeys.self)
+          try container.encode(id, forKey: .id)
+          try container.encode(short, forKey: .short)
+          try container.encode(carID, forKey: .carID)
+          try container.encode(serviceID, forKey: .serviceID)
+          try container.encode(cost, forKey: .cost)
+          try container.encode(mileage, forKey: .mileage)
+          try container.encode(date, forKey: .date)
+          try container.encode(comment, forKey: .comment)
+      }
 }
 
 extension Record {

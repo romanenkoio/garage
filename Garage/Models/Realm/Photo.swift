@@ -50,4 +50,21 @@ final class Photo: Object, Codable {
         self.carId = car.id
         self.image = image
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case documentId
+        case recordId
+        case carId
+        case image
+    }
+    
+    func encode(to encoder: Encoder) throws {
+          var container = encoder.container(keyedBy: CodingKeys.self)
+          try container.encode(id, forKey: .id)
+          try container.encode(documentId, forKey: .documentId)
+          try container.encode(recordId, forKey: .recordId)
+          try container.encode(carId, forKey: .carId)
+          try container.encode(image, forKey: .image)
+      }
 }

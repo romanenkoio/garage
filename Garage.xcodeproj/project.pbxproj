@@ -160,6 +160,12 @@
 		7FC7D16F2A630E5A00A90586 /* QrServiceReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */; };
 		7FC7D1702A630E5A00A90586 /* QrServiceReader+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */; };
 		7FC7D1932A63F2C700A90586 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1922A63F2C700A90586 /* Bundle.swift */; };
+		7FC7D1952A63FF3A00A90586 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1942A63FF3A00A90586 /* Storage.swift */; };
+		7FC7D1A22A64001800A90586 /* BackupControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D19C2A64001800A90586 /* BackupControllerCoordinator.swift */; };
+		7FC7D1A32A64001800A90586 /* BackupControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D19E2A64001800A90586 /* BackupControllerLayoutManager.swift */; };
+		7FC7D1A42A64001800A90586 /* Backup+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1A02A64001800A90586 /* Backup+ViewModel.swift */; };
+		7FC7D1A52A64001800A90586 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1A12A64001800A90586 /* BackupViewController.swift */; };
+		7FC7D1A82A6402F600A90586 /* DataSubSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7D1A72A6402F600A90586 /* DataSubSetting.swift */; };
 		7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */; };
 		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
 		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
@@ -450,6 +456,12 @@
 		7FC7D16B2A630E5A00A90586 /* QrServiceReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrServiceReaderViewController.swift; sourceTree = "<group>"; };
 		7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QrServiceReader+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC7D1922A63F2C700A90586 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		7FC7D1942A63FF3A00A90586 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		7FC7D19C2A64001800A90586 /* BackupControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupControllerCoordinator.swift; sourceTree = "<group>"; };
+		7FC7D19E2A64001800A90586 /* BackupControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7FC7D1A02A64001800A90586 /* Backup+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Backup+ViewModel.swift"; sourceTree = "<group>"; };
+		7FC7D1A12A64001800A90586 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		7FC7D1A72A6402F600A90586 /* DataSubSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSubSetting.swift; sourceTree = "<group>"; };
 		7FD2D6BF2A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerCoordinator.swift; sourceTree = "<group>"; };
 		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
@@ -635,13 +647,13 @@
 		7F0E08742A2F1DCE008C2B9A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				7FC7D1962A63FFD400A90586 /* SettingGroup */,
 				7F3C32F82A5F60FA00992706 /* Statistics */,
 				7F8DB0F92A5606B0007E05C3 /* GarageGroup */,
 				7F92D11D2A521F4D00AD3847 /* OnboardingGroup */,
 				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
 				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
 				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
-				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
 				7F9E92982A45FB9700DDC874 /* UtilsControllers */,
 			);
 			path = Feature;
@@ -701,6 +713,7 @@
 				7F049E462A40FBB400C3EAD0 /* PushManager.swift */,
 				7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */,
 				7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */,
+				7FC7D1942A63FF3A00A90586 /* Storage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1275,10 +1288,10 @@
 		7F5955F92A2E8D3B0062A85F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				7FC7D1A62A6402D100A90586 /* Settings */,
 				7F5955FA2A2E8D420062A85F /* DocumentType.swift */,
 				7F5956002A2E95F10062A85F /* ServiceType.swift */,
 				7FFC1F6A2A35371A007A5C75 /* RecordType.swift */,
-				7F1465522A38A1770022E4E7 /* SettingMenu.swift */,
 				7F1465542A38B33C0022E4E7 /* FuelType.swift */,
 				7F820CB22A3F180400F1D22D /* EntityStatus.swift */,
 				7F07BD442A46FE0A0075EEFC /* ImputMode.swift */,
@@ -1666,6 +1679,67 @@
 				7FC7D16C2A630E5A00A90586 /* QrServiceReader+ViewModel.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7FC7D1962A63FFD400A90586 /* SettingGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7FC6DA1D2A39FCE900AD9A3F /* Settings */,
+				7FC7D1992A64001800A90586 /* Backup */,
+			);
+			path = SettingGroup;
+			sourceTree = "<group>";
+		};
+		7FC7D1992A64001800A90586 /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D19A2A64001800A90586 /* Manager */,
+				7FC7D19F2A64001800A90586 /* ViewController */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
+		7FC7D19A2A64001800A90586 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D19B2A64001800A90586 /* Coordinator */,
+				7FC7D19D2A64001800A90586 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7FC7D19B2A64001800A90586 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D19C2A64001800A90586 /* BackupControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7FC7D19D2A64001800A90586 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D19E2A64001800A90586 /* BackupControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7FC7D19F2A64001800A90586 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC7D1A02A64001800A90586 /* Backup+ViewModel.swift */,
+				7FC7D1A12A64001800A90586 /* BackupViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7FC7D1A62A6402D100A90586 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7F1465522A38A1770022E4E7 /* SettingMenu.swift */,
+				7FC7D1A72A6402F600A90586 /* DataSubSetting.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		7FD2D6BC2A4B8B4600D4FCFB /* ReadArticle */ = {
@@ -2527,12 +2601,14 @@
 				7F049E4E2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift in Sources */,
 				B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */,
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
+				7FC7D1A32A64001800A90586 /* BackupControllerLayoutManager.swift in Sources */,
 				B978F3B62A2E9D870076D326 /* DateFormatter+Extension.swift in Sources */,
 				B978F3BA2A2E9D870076D326 /* Optional.swift in Sources */,
 				7F820CBF2A3FAAC000F1D22D /* BasicPageController.swift in Sources */,
 				B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */,
 				7F0E08F62A2FC7DA008C2B9A /* UniversalSelectionView+ViewModel.swift in Sources */,
 				B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */,
+				7FC7D1A42A64001800A90586 /* Backup+ViewModel.swift in Sources */,
 				7F92D12C2A521F7200AD3847 /* OnboardingViewController.swift in Sources */,
 				B9D96E4B2A37B18000909B33 /* BasicCollectionView.swift in Sources */,
 				7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */,
@@ -2635,6 +2711,7 @@
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				7FC7D16E2A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift in Sources */,
 				B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */,
+				7FC7D1A82A6402F600A90586 /* DataSubSetting.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,
 				7F1DE3B02A5AB30E008E7B1D /* ReminderVIew.swift in Sources */,
 				B97FECD92A45801700E089C7 /* ScrollableTableView.swift in Sources */,
@@ -2659,6 +2736,7 @@
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,
 				7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */,
 				B9D96E522A37CF6800909B33 /* PhotoView.swift in Sources */,
+				7FC7D1A52A64001800A90586 /* BackupViewController.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */,
@@ -2750,6 +2828,7 @@
 				B9FB290F2A33785100A4CF1D /* BasicImageList+ViewModel.swift in Sources */,
 				7F174EF12A4B2821004E51F9 /* ArticleView.swift in Sources */,
 				7F0E08EE2A2FC766008C2B9A /* SelectionControllerCoordinator.swift in Sources */,
+				7FC7D1952A63FF3A00A90586 /* Storage.swift in Sources */,
 				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
 				B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */,
@@ -2759,6 +2838,7 @@
 				7FC6DA372A3B41A600AD9A3F /* CreateRecordViewController.swift in Sources */,
 				B9BF6FA92A58453C00B96821 /* FBView+ViewModel.swift in Sources */,
 				B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */,
+				7FC7D1A22A64001800A90586 /* BackupControllerCoordinator.swift in Sources */,
 				7F5955F02A2E8AD40062A85F /* Car.swift in Sources */,
 				7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */,
 				7F1DE3AB2A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift in Sources */,

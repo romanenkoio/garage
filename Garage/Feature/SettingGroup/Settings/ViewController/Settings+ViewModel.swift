@@ -27,9 +27,5 @@ extension SettingsViewController {
         func setCells() {
             tableVM.setCells(settingsPoint)
         }
-        
-        func uploadModel() {
-            
-        }
     }
 }

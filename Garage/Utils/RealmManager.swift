@@ -36,6 +36,12 @@ class RealmManager<T> where T: Object {
         }
     }
     
+    func removeAll() {
+        try? realm?.write({
+            realm?.deleteAll()
+        })
+    }
+    
     func update(realmBlock: @escaping (Realm) -> Void) {
         guard let realm else { return }
         realmBlock(realm)

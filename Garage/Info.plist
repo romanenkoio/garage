@@ -2,8 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<key>Allows Arbitrary Loads</key>
+	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>GarageGo Data</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.romanenko.garage.garageData</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gilroy-UltraLightItalic.ttf</string>
@@ -27,10 +44,6 @@
 		<string>Gilroy-Bold.ttf</string>
 		<string>Gilroy-Heavy.ttf</string>
 	</array>
-	<key>Allows Arbitrary Loads</key>
-	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -48,5 +61,32 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>GarageGo Data</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.romanenko.garage.garageData</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ggd</string>
+					<string>GGD</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict/>
+	</array>
 </dict>
 </plist>

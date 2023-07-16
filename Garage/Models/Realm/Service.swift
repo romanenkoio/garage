@@ -42,6 +42,30 @@ final class Service: Object, Codable {
         self.longitude = longitude
         self.comment = comment
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case phone
+        case adress
+        case name
+        case specialisation
+        case latitude
+        case longitude
+        case comment
+    }
+    
+    func encode(to encoder: Encoder) throws {
+          var container = encoder.container(keyedBy: CodingKeys.self)
+          try container.encode(id, forKey: .id)
+          try container.encode(phone, forKey: .phone)
+          try container.encode(adress, forKey: .adress)
+          try container.encode(name, forKey: .name)
+          try container.encode(specialisation, forKey: .specialisation)
+          try container.encode(latitude, forKey: .latitude)
+          try container.encode(longitude, forKey: .longitude)
+          try container.encode(comment, forKey: .comment)
+      }
+    
 }
 
 extension Service {

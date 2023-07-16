@@ -56,7 +56,7 @@ class CreateCarViewController: BasicViewController {
                 vm.confirmButton.action = .touchUpInside { [weak self] in
                     self?.vm.removeCar() { [weak self] in
                         self?.dismiss(animated: true)
-                        self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                        self?.coordinator.navigateTo(CommonNavigationRoute.closeToRoot)
                     }
                 }
                 self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))

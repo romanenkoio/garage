@@ -37,6 +37,29 @@ final class Car: Object, Codable {
         return datas.compactMap({ UIImage(data: $0.image )})
     }
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case brand
+        case model
+        case generation
+        case year
+        case win
+        case mileage
+        case imageData
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(brand, forKey: .brand)
+        try container.encode(model, forKey: .model)
+        try container.encode(generation, forKey: .generation)
+        try container.encode(year, forKey: .year)
+        try container.encode(win, forKey: .win)
+        try container.encode(mileage, forKey: .mileage)
+        try container.encode(imageData, forKey: .imageData)
+    }
+    
     convenience init(
         brand: String,
         model: String,

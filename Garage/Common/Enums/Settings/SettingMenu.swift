@@ -56,8 +56,3 @@ enum SettingPoint: String, CaseIterable {
         }
     }
 }
-
-enum DataSubSetting {
-    case transfer
-    case backup
-}

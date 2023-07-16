@@ -19,5 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let urlContext = URLContexts.first else {
+          return
+        }
+        
+        guard let imported = Storage.retrieve(urlContext.url, as: Backup.self) else { return }
+        Storage.remove(.backup, from: .documents)
+        Storage.store(imported, to: .documents, as: .backup)
+        imported.saveCurrent()
+    }
 }
 

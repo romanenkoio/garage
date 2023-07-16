@@ -20,5 +20,13 @@ extension SettingView {
             switchVM.isOn = point.state
             switchVM.isHidden = !point.isSwitch
         }
+        
+        init(point: DataSubSetting) {
+            super.init()
+            textLabelVM.textValue = .text(point.title)
+            imageVM.image = point.icon
+            switchVM.isOn = point.state
+            switchVM.isHidden = !point.isSwitch
+        }
     }
 }
