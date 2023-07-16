@@ -116,7 +116,11 @@ extension BackupViewController {
             guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return }
             RealmManager().removeAll()
             backup.saveCurrent() { [weak self] in
-                
+                DispatchQueue.main.async {  [weak self] in
+                    self?.vm.reload(completion: { [weak self] _ in
+                        self?.removeLoader()
+                    })
+                }
               
             }
         }
