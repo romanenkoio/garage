@@ -31,7 +31,7 @@ extension BasicImageView {
         
         func set(from url: String, placeholder: UIImage? = nil) {
             if let placeholder {
-                self.image = image
+                self.image = placeholder
             }
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
                 guard let url = URL(string: url),
