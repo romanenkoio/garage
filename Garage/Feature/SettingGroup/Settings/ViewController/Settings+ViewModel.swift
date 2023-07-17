@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Cirrus
 
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {

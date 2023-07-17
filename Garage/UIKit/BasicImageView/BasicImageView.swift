@@ -26,20 +26,19 @@ class BasicImageView: UIImageView {
     }
 
     func setViewModel(_ vm: ViewModel) {
-        vm.$image.sink { [weak self] image in
-            self?.image = image
-        }
-        .store(in: &cancellables)
+        vm.$image
+            .receive(on: DispatchQueue.main)
+            .compactMap()
+            .sink { [weak self] in self?.image = $0 }
+            .store(in: &cancellables)
         
-        vm.$mode.sink { [weak self] mode in
-            self?.contentMode = mode
-        }
-        .store(in: &cancellables)
+        vm.$mode
+            .sink { [weak self] in self?.contentMode = $0 }
+            .store(in: &cancellables)
         
-        vm.$isHidden.sink { [weak self] value in
-            self?.isHidden = value
-        }
-        .store(in: &cancellables)
+        vm.$isHidden
+            .sink { [weak self] in self?.isHidden = $0 }
+            .store(in: &cancellables)
     }
 
 }

@@ -143,6 +143,7 @@
 		7F9E92A32A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E929E2A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift */; };
 		7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */; };
 		7F9E92A52A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */; };
+		7FA7F74F2A6579E50089D922 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7FA7F74E2A6579E50089D922 /* SDWebImage */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -606,6 +607,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA7F74F2A6579E50089D922 /* SDWebImage in Frameworks */,
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F3C32F52A5F60D000992706 /* DGCharts in Frameworks */,
@@ -2514,6 +2516,7 @@
 				7F5955F42A2E8B210062A85F /* RealmSwift */,
 				7F0E09152A31D773008C2B9A /* Moya */,
 				7F3C32F42A5F60D000992706 /* DGCharts */,
+				7FA7F74E2A6579E50089D922 /* SDWebImage */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -2548,6 +2551,7 @@
 				7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7F0E09142A31D773008C2B9A /* XCRemoteSwiftPackageReference "Moya" */,
 				7F3C32F32A5F60D000992706 /* XCRemoteSwiftPackageReference "Charts" */,
+				7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -3119,6 +3123,14 @@
 				kind = branch;
 			};
 		};
+		7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.17.0;
+			};
+		};
 		B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -3149,6 +3161,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		7FA7F74E2A6579E50089D922 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		B978F3C62A2E9DE80076D326 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
