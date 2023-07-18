@@ -98,8 +98,9 @@ class CarInfoViewController: BasicViewController {
         }
         
         vm.topStackVM.vinLabelVM.action = { [weak self] in
-            let content: [Any] = [self?.vm.car.win.wrapped]
-            self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
+            guard let self else { return }
+            let content: [Any] = [vm.car.win.wrapped]
+            coordinator.navigateTo(CommonNavigationRoute.share(content))
         }
     }
 }
@@ -123,7 +124,7 @@ extension CarInfoViewController: UITableViewDelegate {
         switch vm.segmentVM.selectedItem {
             
         case .paste:
-            guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.row] else { return }
+            guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
             coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
          
         case .future:

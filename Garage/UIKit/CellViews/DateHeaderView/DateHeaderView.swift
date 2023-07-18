@@ -5,13 +5,14 @@
 //  Created by Illia Romanenko on 18.07.23.
 //
 
-import Foundation
+import UIKit
+import Combine
 
 class DateHeaderView: BasicView {
-    
+
     private lazy var dateView: BasicView = {
         let view = BasicView()
-        view.cornerRadius = 20
+        view.cornerRadius = 12
         view.backgroundColor = .white
         return view
     }()
@@ -22,7 +23,7 @@ class DateHeaderView: BasicView {
         label.textInsets = .init(vertical: 8, horizontal: 32)
         return label
     }()
-    
+
     override func initView() {
         makeLayout()
         makeConstraint()
@@ -35,7 +36,8 @@ class DateHeaderView: BasicView {
     
     private func makeConstraint() {
         dateView.snp.makeConstraints { make in
-            make.top.bottom.centerX.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 10))
+            make.center.equalToSuperview()
         }
         
         dateLabel.snp.makeConstraints { make in

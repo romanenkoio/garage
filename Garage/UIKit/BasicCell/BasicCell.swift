@@ -34,6 +34,10 @@ final class BasicTableCell<T: UIView>: UITableViewCell {
             make.edges.equalToSuperview()
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }
 
 final class BasicCollectionCell<T: UIView>: UICollectionViewCell {

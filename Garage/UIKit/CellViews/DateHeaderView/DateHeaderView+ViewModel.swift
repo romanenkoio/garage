@@ -9,12 +9,17 @@ import Foundation
 
 extension DateHeaderView {
     final class ViewModel: BasicViewModel {
-        let labelVM: BasicLabel.ViewModel
-        let date: DateComponents
+        let labelVM = BasicLabel.ViewModel()
+        var components: DateComponents
         
         init(date: DateComponents) {
-            self.date = date
-            labelVM = .init(.text("Год"))
+            self.components = date
+            
+            if self.components.year == Date().components.year {
+                labelVM.textValue = .text("В этом году")
+            } else if let year = components.year {
+                labelVM.textValue = .text(year.toString())
+            }
         }
     }
 }

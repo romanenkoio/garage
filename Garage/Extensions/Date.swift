@@ -31,6 +31,12 @@ extension Date {
     func daysBetween(date: Date) -> Int? {
         return Calendar.current.dateComponents([.day], from: self, to: date).day
     }
+    
+    func monthName() -> String {
+        let df = DateFormatter()
+        df.dateFormat = "MMMM"
+        return df.string(from: self)
+    }
 
     var withoutTime: Date {
         let calender = Calendar.current
@@ -44,5 +50,9 @@ extension Date {
     
     var components: DateComponents {
         return Calendar.current.dateComponents([.day, .month, .year], from: self)
+    }
+    
+    var recordComponents: DateComponents {
+        return Calendar.current.dateComponents([.month, .year], from: self)
     }
 }
