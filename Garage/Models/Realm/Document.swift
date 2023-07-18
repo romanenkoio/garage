@@ -35,6 +35,14 @@ final class Document: Object, Codable {
         return Date().daysBetween(date: endDate)
     }
     
+    var isOverdue: Bool {
+        guard let days else { return false }
+        if days < 30 && days > 0 {
+            return true
+        }
+        return false
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case rawType
