@@ -19,6 +19,7 @@ extension CreateCarViewController {
         var winFieldVM: BasicInputView.ViewModel
         var yearFieldVM: BasicInputView.ViewModel
         var mileageFieldVM: BasicInputView.ViewModel
+        var carImage = CarImageSelector.ViewModel()
         
         var succesCreateCompletion: Completion?
         var suggestionCompletion: SelectArrayCompletion?
@@ -100,6 +101,7 @@ extension CreateCarViewController {
                 mileage: self.mileageFieldVM.text.toInt(),
                 logo: self.logoImage?.pngData()
             )
+            updatePhoto(car: car)
             RealmManager<Car>().write(object: car)
 
             self.succesCreateCompletion?()
@@ -116,11 +118,22 @@ extension CreateCarViewController {
                         car.win = winFieldVM.text
                         car.mileage = mileageFieldVM.text.toInt()
                     }
+                    self?.updatePhoto(car: car)
                     self?.succesCreateCompletion?()
                 } catch let error {
                     print(error)
                 }
             }
+        }
+        
+        func updatePhoto(car: Car) {
+            let photos: [Photo] = RealmManager().read().filter({ $0.carId == car.id })
+            photos.forEach({ RealmManager().delete(object: $0 )})
+            guard let image = self.carImage.logoVM.image,
+                  let data = image.pngData()
+            else { return }
+            let photo = Photo(car, image: data)
+            RealmManager().write(object: photo)
         }
         
         func removeCar(completion: Completion?) {
@@ -143,8 +156,9 @@ extension CreateCarViewController {
                 winFieldVM.text = object.win.wrapped
                 mileageFieldVM.text = object.mileage.toString()
                 saveButtonVM.buttonVM.title = "Обновить"
-//                imageListVM.set(object.images)
                 saveButtonVM.buttonVM.isEnabled = false
+                
+                carImage.logoVM = .init(data: object.images.first, mode: .scaleAspectFill)
                 initChangeChecker()
             }
         }
@@ -192,7 +206,8 @@ extension CreateCarViewController {
                 brandFieldVM.inputVM,
                 modelFieldVM.inputVM,
                 mileageFieldVM.inputVM,
-                yearFieldVM.inputVM
+                yearFieldVM.inputVM,
+                carImage.logoVM
             ])
         }
         

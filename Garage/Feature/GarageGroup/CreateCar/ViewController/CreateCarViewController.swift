@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+import PhotosUI
 
 class CreateCarViewController: BasicViewController {
 
@@ -21,6 +23,25 @@ class CreateCarViewController: BasicViewController {
     private(set) var coordinator: Coordinator!
     private var layout: Layout!
     
+    private var imagePicker: PHPickerViewController {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        configuration.preferredAssetRepresentationMode = .current
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        return picker
+    }
+    
+    private var cameraPicker: UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.cameraCaptureMode = .photo
+        picker.delegate = self
+        picker.cameraDevice = .rear
+        return picker
+    }
+
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
@@ -66,6 +87,26 @@ class CreateCarViewController: BasicViewController {
         makeRightNavBarButton(buttons: [deleteButton])
     }
     
+    private var alertController: UIAlertController  {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let choisePhotoAction = UIAlertAction(title: "Из галереи", style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(imagePicker))
+        }
+        
+        let takePhotAction = UIAlertAction(title: "Камера", style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(cameraPicker))
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(takePhotAction)
+        alert.addAction(choisePhotoAction)
+        alert.addAction(cancelAction)
+        return alert
+    }
+    
     override func binding() {
         super.binding()
         layout.brandField.setViewModel(vm.brandFieldVM)
@@ -74,6 +115,12 @@ class CreateCarViewController: BasicViewController {
         layout.yearField.setViewModel(vm.yearFieldVM)
         layout.mileageField.setViewModel(vm.mileageFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
+        layout.carImage.setViewModel(vm.carImage)
+        
+        vm.carImage.action = { [weak self] in
+            guard let self else { return }
+            coordinator.navigateTo(CommonNavigationRoute.presentOnTop(alertController))
+        }
         
         vm.isLoadind.sink { [weak self] value in
             value ? self?.showLoader() : self?.removeLoader()
@@ -116,4 +163,38 @@ extension CreateCarViewController {
         layout = CreateCarControllerLayoutManager(vc: self)
     }
     
+}
+
+extension CreateCarViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        guard !results.isEmpty else {
+            // Пользователь не выбрал ни одного элемента
+            return
+        }
+        
+        guard let photo = results.first else { return }
+        
+        let itemProvider = photo.itemProvider
+        if itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self?.vm.carImage.logoVM.set(from: image)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension CreateCarViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        if let image = info[.originalImage] as? UIImage {
+            self.vm.carImage.logoVM.set(from: image)
+        }
+    }
 }

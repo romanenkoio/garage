@@ -13,10 +13,7 @@ final class CreateCarControllerLayoutManager {
     
     private unowned let vc: CreateCarViewController
     
-    lazy var logoImage: BasicImageView = {
-        let view = BasicImageView()
-        return view
-    }()
+    lazy var carImage = CarImageSelector()
     
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
@@ -76,6 +73,7 @@ fileprivate extension CreateCarControllerLayoutManager {
     private func makeLayout() {
         vc.contentView.addSubview(fieldStack)
         fieldStack.addArrangedSubviews([
+            carImage,
             winField,
             brandField,
             modelField,

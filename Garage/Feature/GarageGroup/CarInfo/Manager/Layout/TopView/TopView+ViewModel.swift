@@ -15,7 +15,7 @@ extension CarTopInfoView {
         let yearLabelVM = BasicLabel.ViewModel()
         let milageLabelVM = BasicLabel.ViewModel()
         let vinLabelVM = TappableLabel.ViewModel()
-        let logoVM = BasicImageView.ViewModel()
+        let logoVM = BasicImageView.ViewModel(image: nil, mode: .scaleAspectFill)
         
         init(car: Car) {
             self.car = car

@@ -6,18 +6,41 @@
 //
 
 import UIKit
+import Combine
 
 extension BasicImageView {
-    final class ViewModel: BasicViewModel {
+    final class ViewModel: BasicViewModel, HasChangable {
         @Published var image: UIImage?
         @Published var mode: UIImageView.ContentMode = .scaleAspectFit
         @Published var isHidden: Bool = false
         
+        var checkedValue: UIImage?
+        typealias Value = UIImage
+        
+        var hasChange: Bool = false
+        var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+
         init(
             image: UIImage? = nil,
             mode: UIImageView.ContentMode = .scaleAspectFit
         ) {
             self.image = image
+            self.mode = mode
+            self.checkedValue = image
+        }
+        
+        init(
+            data: Data? = nil,
+            mode: UIImageView.ContentMode = .scaleAspectFit
+        ) {
+            super.init()
+            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                guard let data,
+                      let image = UIImage(data: data)
+                else { return }
+                self?.checkChanged(image)
+                self?.set(from: image)
+            }
             self.mode = mode
         }
         
@@ -28,6 +51,7 @@ extension BasicImageView {
                       let image = UIImage(data: data)
                 else { return }
                 self?.image = image
+                self?.checkChanged(image)
             }
         }
         
@@ -41,7 +65,13 @@ extension BasicImageView {
                       let image = UIImage(data: data)
                 else { return }
                 self?.image = image
+                self?.checkChanged(image)
             }
+        }
+        
+        func set(from image: UIImage) {
+            self.image = image
+            self.checkChanged(image)
         }
     }
 }

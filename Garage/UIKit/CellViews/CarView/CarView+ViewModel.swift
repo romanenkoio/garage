@@ -13,7 +13,7 @@ extension CarView {
         let brandLabelVM = BasicLabel.ViewModel()
         let plannedLabelVM = BasicLabel.ViewModel()
         let atteentionLabelVM = BasicLabel.ViewModel()
-        let imageVM = BasicImageView.ViewModel(mode: .scaleAspectFill)
+        let imageVM = BasicImageView.ViewModel(image: nil, mode: .scaleAspectFill)
         @Published var shouldShowAttention = false
         let car: Car
         
