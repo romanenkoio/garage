@@ -38,7 +38,7 @@ extension BasicImageView {
                 guard let data,
                       let image = UIImage(data: data)
                 else { return }
-                self?.checkChanged(image)
+                self?.checkedValue = image
                 self?.set(from: image)
             }
             self.mode = mode
