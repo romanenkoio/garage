@@ -13,6 +13,7 @@ enum SettingPoint: String, CaseIterable {
     case backup = "Данные"
     case contactUs = "Связаться с нами"
     case version = "Версия: 1.0.0"
+    case language
 
     var icon: UIImage? {
         switch self {
@@ -21,6 +22,7 @@ enum SettingPoint: String, CaseIterable {
         case .backup:           return UIImage(systemName: "externaldrive.fill.badge.timemachine")
         case .contactUs:        return UIImage(systemName: "envelope.fill")
         case .version:           return UIImage(systemName: "info.circle.fill")
+        case .language:           return UIImage(systemName: "info.circle.fill")
         }
     }
     
@@ -28,7 +30,7 @@ enum SettingPoint: String, CaseIterable {
         switch self {
         case .reminders:            return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
         case .mileageReminder:      return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
-        case .backup:               return false
+        case .backup, .language:     return false
         case .version, .contactUs:   return false
         }
     }
@@ -37,7 +39,7 @@ enum SettingPoint: String, CaseIterable {
         switch self {
         case .reminders, .mileageReminder:
             return true
-        case .backup, .contactUs, .version:
+        case .backup, .contactUs, .version, .language:
             return false
         }
     }
@@ -49,6 +51,7 @@ enum SettingPoint: String, CaseIterable {
         case .backup:           return "Данные"
         case .contactUs:        return "Связаться с нами"
         case .version:          return "Версия: \(Bundle.main.version)"
+        case .language:          return "Язык"
         }
     }
 }

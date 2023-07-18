@@ -81,6 +81,8 @@ class SettingsViewController: BasicViewController {
             break
         case .version:
             break
+        case .language:
+            break
         }
     }
     
