@@ -32,6 +32,7 @@ class PastRecordsViewController: BasicViewController {
         disableScrollView()
 
         layout.table.table.estimatedRowHeight = UITableView.automaticDimension
+        tableViewDelegate = layout.table.table
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -14,6 +14,7 @@ class Backup: Codable {
     let servises: [Service]
     let records: [Record]
     let photos: [Photo]
+    let reminders: [Reminder]
     
     init() {
         self.date = Date()
@@ -22,6 +23,7 @@ class Backup: Codable {
         self.servises = RealmManager().read()
         self.records = RealmManager().read()
         self.photos = RealmManager().read()
+        self.reminders = RealmManager().read()
     }
     
     func saveCurrent(completion: Completion) {
@@ -30,6 +32,7 @@ class Backup: Codable {
         self.servises.forEach { RealmManager().write(object: $0) }
         self.records.forEach { RealmManager().write(object: $0) }
         self.photos.forEach { RealmManager().write(object: $0) }
+        self.reminders.forEach { RealmManager().write(object: $0) }
         completion()
     }
 }

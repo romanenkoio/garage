@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class Reminder: Object {
+final class Reminder: Object, Codable {
     @Persisted var id: String
     @Persisted var short: String
     @Persisted var comment: String?
@@ -33,6 +33,25 @@ final class Reminder: Object {
         self.carID = carID
         self.date = date
         self.isDone = false
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case short
+        case comment
+        case carID
+        case date
+        case isDone
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(short, forKey: .short)
+        try container.encode(comment, forKey: .comment)
+        try container.encode(carID, forKey: .carID)
+        try container.encode(date, forKey: .date)
+        try container.encode(isDone, forKey: .isDone)
     }
     
     func setPush() {

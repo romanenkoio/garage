@@ -144,6 +144,8 @@
 		7F9E92A42A45FBB700DDC874 /* ConfirmPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */; };
 		7F9E92A52A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */; };
 		7FA7F74F2A6579E50089D922 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7FA7F74E2A6579E50089D922 /* SDWebImage */; };
+		7FAB23022A66D8760011A682 /* CarImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAB23012A66D8760011A682 /* CarImageSelector.swift */; };
+		7FAB23042A66D87D0011A682 /* CarImageSelector+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAB23032A66D87D0011A682 /* CarImageSelector+ViewModel.swift */; };
 		7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */; };
 		7FC6DA1A2A39F59E00AD9A3F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */; };
 		7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */; };
@@ -443,6 +445,8 @@
 		7F9E929E2A45FBB700DDC874 /* ConfirmPopupControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F9E92A02A45FBB700DDC874 /* ConfirmPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupViewController.swift; sourceTree = "<group>"; };
 		7F9E92A12A45FBB700DDC874 /* ConfirmPopup+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfirmPopup+ViewModel.swift"; sourceTree = "<group>"; };
+		7FAB23012A66D8760011A682 /* CarImageSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImageSelector.swift; sourceTree = "<group>"; };
+		7FAB23032A66D87D0011A682 /* CarImageSelector+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarImageSelector+ViewModel.swift"; sourceTree = "<group>"; };
 		7FC6DA172A39F4B900AD9A3F /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		7FC6DA202A39FCE900AD9A3F /* SettingsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -1552,6 +1556,15 @@
 			path = DocumentGroup;
 			sourceTree = "<group>";
 		};
+		7FAB23002A66D85B0011A682 /* CarImageSelector */ = {
+			isa = PBXGroup;
+			children = (
+				7FAB23012A66D8760011A682 /* CarImageSelector.swift */,
+				7FAB23032A66D87D0011A682 /* CarImageSelector+ViewModel.swift */,
+			);
+			path = CarImageSelector;
+			sourceTree = "<group>";
+		};
 		7FC6DA1D2A39FCE900AD9A3F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,6 +2056,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7FAB23002A66D85B0011A682 /* CarImageSelector */,
 				7FC7D1592A628E4D00A90586 /* BasicImageView */,
 				B92E5A302A5B4B79004698ED /* CarPhotoCollection */,
 				B97FECD72A45800500E089C7 /* ScrollableTableView */,
@@ -2652,6 +2666,7 @@
 				B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */,
 				7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */,
 				7F1DE3B22A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift in Sources */,
+				7FAB23022A66D8760011A682 /* CarImageSelector.swift in Sources */,
 				7FFC1F702A353D22007A5C75 /* RecordView+ViewModel.swift in Sources */,
 				B978F3BF2A2E9D870076D326 /* Validatable.swift in Sources */,
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
@@ -2748,6 +2763,7 @@
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
+				7FAB23042A66D87D0011A682 /* CarImageSelector+ViewModel.swift in Sources */,
 				7FF6D7C52A542F0B00CEFC26 /* QRGenerator.swift in Sources */,
 				7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,

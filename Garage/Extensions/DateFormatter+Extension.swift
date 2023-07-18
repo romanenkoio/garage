@@ -49,7 +49,7 @@ extension Int {
 extension String {
     func formatData(formatType: FormatTypes) -> Date {
         let dateFormatterMonth = DateFormatter()
-        dateFormatterMonth.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatterMonth.locale = Locale.current
         dateFormatterMonth.dateFormat = formatType.rawValue
         guard let date = dateFormatterMonth.date(from: self) else { return Date()}
         

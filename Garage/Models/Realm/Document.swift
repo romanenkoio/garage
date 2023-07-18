@@ -52,13 +52,13 @@ final class Document: Object, Codable {
     }
     
     func encode(to encoder: Encoder) throws {
-          var container = encoder.container(keyedBy: CodingKeys.self)
-          try container.encode(id, forKey: .id)
-          try container.encode(rawType, forKey: .rawType)
-          try container.encode(startDate, forKey: .startDate)
-          try container.encode(endDate, forKey: .endDate)
-          try container.encode(photo, forKey: .photo)
-      }
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(rawType, forKey: .rawType)
+        try container.encode(startDate, forKey: .startDate)
+        try container.encode(endDate, forKey: .endDate)
+        try container.encode(photo, forKey: .photo)
+    }
 }
 
 extension Document {

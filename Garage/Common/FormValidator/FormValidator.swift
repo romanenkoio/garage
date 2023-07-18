@@ -37,4 +37,8 @@ class FormValidator {
         isValid = result
     }
     
+    deinit {
+        print("Deinit \(self.self)")
+    }
+    
 }
