@@ -19,7 +19,7 @@ extension BasicList {
         var rules: [ValidationRule] = .empty
         var isValid: Bool = true
         var isValidSubject: PassthroughSubject<Bool, Never> = .init()
-
+        let descriptionLabelVM = BasicLabel.ViewModel(.text("Выбор сервиса"))
         @Published var title: String
         @Published private(set) var items: [Item]
         @Published private(set) var selectedItem: Item?

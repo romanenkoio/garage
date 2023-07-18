@@ -79,3 +79,13 @@ class BasicLabel: UILabel {
             .store(in: &cancellables)
     }
 }
+
+extension BasicLabel {
+    static let fieldDescription : BasicLabel = {
+        let label = BasicLabel()
+        label.textAlignment = .left
+        label.font = .custom(size: 14, weight: .bold)
+        label.textColor = .primaryBlue
+        return label
+    }()
+}

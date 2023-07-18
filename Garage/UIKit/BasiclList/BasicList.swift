@@ -20,6 +20,8 @@ class BasicList<T: Equatable>: BasicView {
     
     private var labels: [TappableLabel] = []
     
+    let descriptionLabel = BasicLabel.fieldDescription
+    
     private lazy var headerView: BasicView = {
         let view = BasicView()
         view.cornerRadius = 8
@@ -28,6 +30,14 @@ class BasicList<T: Equatable>: BasicView {
         view.layer.borderColor = UIColor.secondaryGray.cgColor
 
         return view
+    }()
+    
+    private lazy var topStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillProportionally
+        stack.edgeInsets = .init(bottom: 8)
+        return stack
     }()
     
     private lazy var arrowButton: UIButton = {
@@ -79,17 +89,23 @@ class BasicList<T: Equatable>: BasicView {
     private func makeLayout() {
         addSubview(headerView)
         addSubview(listStack)
+        addSubview(topStack)
         
         headerView.addSubview(arrowButton)
         headerView.addSubview(label)
-        
+        topStack.addArrangedSubview(descriptionLabel)
         listStack.addArrangedSubviews([itemStack])
     }
     
     private func makeConstraints() {
+        topStack.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+        }
+        
         headerView.snp.makeConstraints { make in
             make.height.equalTo(56)
-            make.top.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(topStack.snp.bottom)
         }
         
         arrowButton.snp.makeConstraints { make in
@@ -115,6 +131,8 @@ class BasicList<T: Equatable>: BasicView {
     
     func setViewModel(_ vm: GenericViewModel<Item>) {
         self.vm = vm
+        descriptionLabel.setViewModel(vm.descriptionLabelVM)
+        
         vm.$title.sink { [weak self] value in
             self?.label.attributedText = value.attributedString(
                 font: .custom(size: 17, weight: .medium),
