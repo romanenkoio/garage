@@ -43,7 +43,6 @@ class BasicList<T: Equatable>: BasicView {
     private lazy var arrowButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .gray
-        button.addTarget(self, action: #selector(arrowButtonDidTap), for: .touchUpInside)
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         return button
     }()
@@ -80,6 +79,8 @@ class BasicList<T: Equatable>: BasicView {
         makeLayout()
         makeConstraints()
         self.itemStack.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(arrowButtonDidTap))
+        headerView.addGestureRecognizer(tap)
     }
     
     required init(coder: NSCoder) {
