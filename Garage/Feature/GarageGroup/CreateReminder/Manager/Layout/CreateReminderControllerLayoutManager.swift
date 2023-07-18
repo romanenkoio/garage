@@ -50,29 +50,20 @@ fileprivate extension CreateReminderControllerLayoutManager {
     
     private func makeLayout() {
         contentView.addSubview(stack)
-        stack.addArrangedSubviews([
-            shortTypeInput,
-            dateInput
+        stack.addArrangedSubview([
+            (shortTypeInput, spacing: 6),
+            (SeparatorView(), spacing: 24),
+            (dateInput, spacing: 24),
+            (SeparatorView(), spacing: 24),
+            (commentInput, spacing: 20),
+            (saveButton, spacing: 0)
         ])
 
-        contentView.addSubview(commentInput)
-        contentView.addSubview(saveButton)
     }
     
     private func makeConstraint() {
         stack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-        }
-        
-        commentInput.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(stack.snp.bottom).offset(20)
-        }
-        
-        saveButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
-            make.top.equalTo(commentInput.snp.bottom).offset(25)
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

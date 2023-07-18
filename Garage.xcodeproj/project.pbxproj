@@ -172,6 +172,8 @@
 		7FD2D6C62A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */; };
 		7FD2D6C72A4B8B4600D4FCFB /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */; };
 		7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */; };
+		7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC57972A66B45C00C1477C /* DateHeaderView.swift */; };
+		7FDC579B2A66B48000C1477C /* DateHeaderView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */; };
 		7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */; };
 		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
@@ -469,6 +471,8 @@
 		7FD2D6C12A4B8B4600D4FCFB /* ReadArticleControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7FD2D6C32A4B8B4600D4FCFB /* ReadArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
 		7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadArticle+ViewModel.swift"; sourceTree = "<group>"; };
+		7FDC57972A66B45C00C1477C /* DateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderView.swift; sourceTree = "<group>"; };
+		7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateHeaderView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -1790,6 +1794,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7FDC57992A66B46400C1477C /* DateHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC57972A66B45C00C1477C /* DateHeaderView.swift */,
+				7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */,
+			);
+			path = DateHeaderView;
+			sourceTree = "<group>";
+		};
 		7FDCACAA2A4431F20071E1AA /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2074,6 +2087,7 @@
 		B978F2D82A2E8F4C0076D326 /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
+				7FDC57992A66B46400C1477C /* DateHeaderView */,
 				B92E5A352A5B51AF004698ED /* CarCellPhotoView */,
 				7F1DE3AE2A5AB303008E7B1D /* ReminderView */,
 				7F89F95E2A522920005F910E /* OnboardingView */,
@@ -2678,6 +2692,7 @@
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
 				B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
+				7FDC579B2A66B48000C1477C /* DateHeaderView+ViewModel.swift in Sources */,
 				B978F3B12A2E9D870076D326 /* UIStackView.swift in Sources */,
 				B978F3BB2A2E9D870076D326 /* UIEdgeInsets.swift in Sources */,
 				B978F3212A2E8F4C0076D326 /* BasicStackView.swift in Sources */,
@@ -2818,6 +2833,7 @@
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
+				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
 				7F174F012A4B2B86004E51F9 /* ArticlesControllerLayoutManager.swift in Sources */,
