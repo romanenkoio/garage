@@ -270,6 +270,8 @@ extension CreateCarViewController {
         }
         
         func decodeVIN() {
+            guard mode == .create else { return }
+            
             Task { @MainActor in
                 do {
                     self.isLoadind.send(true)
