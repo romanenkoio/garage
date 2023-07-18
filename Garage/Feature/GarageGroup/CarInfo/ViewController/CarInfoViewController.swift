@@ -91,7 +91,7 @@ class CarInfoViewController: BasicViewController {
             .sink { [weak self] index in
                 guard let self else { return }
                 self.vm.pageVM.controllers[index].tableView.delegate = self
-                self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
+//                self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
             }
             .store(in: &cancellables)
         
@@ -127,8 +127,8 @@ extension CarInfoViewController: UITableViewDelegate {
         switch vm.segmentVM.selectedItem {
             
         case .paste:
-            guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.row] else { return }
-                coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, vm.car.records[indexPath.row]))
+                guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
          
         case .future:
             guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }

@@ -79,25 +79,25 @@ extension PastRecordsViewController {
 
 // MARK: - UITableViewDataSource
 extension PastRecordsViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return vm.tableVM.cells.count
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return vm.headers.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells.count
+        return vm.tableVM.cells[section].count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<DateHeaderView>.self, for: indexPath) else { return .init() }
-//            pastRecordCell.mainView.setViewModel(vm.headers[indexPath.section])
-//            pastRecordCell.selectionStyle = .none
-//            return pastRecordCell
-//        }
+        if indexPath.row == 0 {
+            guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<DateHeaderView>.self, for: indexPath) else { return .init() }
+            pastRecordCell.mainView.setViewModel(vm.headers[indexPath.section])
+            pastRecordCell.selectionStyle = .none
+            return pastRecordCell
+        }
         
         
         guard let pastRecordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
-        pastRecordCell.mainView.setViewModel(.init(record: vm.tableVM.cells[safe: indexPath.row]!))
+        pastRecordCell.mainView.setViewModel(vm.tableVM.cells[indexPath.section][indexPath.row - 1])
         pastRecordCell.selectionStyle = .none
         return pastRecordCell
     }
