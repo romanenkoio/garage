@@ -110,3 +110,10 @@ extension RemindersViewController: UITableViewDelegate {
         
     }
 }
+
+extension RemindersViewController: PageControllable {
+    var tableViewDelegate: UITableView? {
+        get { tableView }
+        set { tableView = newValue! }
+    }
+}

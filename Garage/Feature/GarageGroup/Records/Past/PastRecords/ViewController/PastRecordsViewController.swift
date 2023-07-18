@@ -107,3 +107,11 @@ extension PastRecordsViewController: UITableViewDataSource {
 
 extension PastRecordsViewController: UITableViewDelegate {
 }
+
+extension PastRecordsViewController: PageControllable {
+    var tableViewDelegate: UITableView? {
+        get { tableView }
+        set { tableView = newValue! }
+    }
+
+}
