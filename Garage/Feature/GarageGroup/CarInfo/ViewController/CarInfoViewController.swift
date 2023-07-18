@@ -43,6 +43,7 @@ class CarInfoViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         scroll.delegate = self
         title = "Общая информация"
+        self.vm.pageVM.controllers.first?.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,12 +86,14 @@ class CarInfoViewController: BasicViewController {
                 image: UIImage(named: "pencil_fb_ic"))
         ]
         
-        vm.pageVM.$index.sink { [weak self] index in
-            guard let self else { return }
-            self.vm.pageVM.controllers[index].tableView.delegate = self
-            self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
-        }
-        .store(in: &cancellables)
+        vm.pageVM.$index
+            .removeDuplicates()
+            .sink { [weak self] index in
+                guard let self else { return }
+                self.vm.pageVM.controllers[index].tableView.delegate = self
+                self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
+            }
+            .store(in: &cancellables)
         
         vm.remindersVM.completeReminder = { [weak self] reminder in
             guard let self else { return }

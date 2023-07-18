@@ -16,7 +16,7 @@ enum FormatTypes: String {
     /// 12 September, 2:11
     case dMMMHHmm = "d MMMM, HH:mm"
     /// September 2018
-    case MMMMyyyy = "MMMM yyyy"
+    case ddMMMMyyyy = "dd MMMM yyyy"
     /// Wed. 12 September 2018
     case EEdMMMMyyyy = "EE. d  MMMM yyyy"
     /// 12.09.18

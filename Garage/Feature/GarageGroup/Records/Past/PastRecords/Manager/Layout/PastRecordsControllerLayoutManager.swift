@@ -16,8 +16,7 @@ final class PastRecordsControllerLayoutManager {
     lazy var table: BasicTableView = {
         let table = BasicTableView()
         table.setupTable(
-            dataSource: vc,
-            delegate: vc
+            dataSource: vc
         )
         table.register(RecordCell.self)
         table.register(BasicTableCell<DateHeaderView>.self)

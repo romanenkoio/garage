@@ -150,7 +150,9 @@ class BasicTableView: BasicView {
         delegate: UITableViewDelegate? = nil
     ) {
         table.dataSource = dataSource
-        table.delegate = delegate
+        if let delegate {
+            table.delegate = delegate
+        }
     }
     
     func register<T: UITableViewCell>(_ type: T.Type) {
