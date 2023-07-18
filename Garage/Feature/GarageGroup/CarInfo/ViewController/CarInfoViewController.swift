@@ -44,6 +44,7 @@ class CarInfoViewController: BasicViewController {
         scroll.delegate = self
         title = "Общая информация"
         self.vm.pageVM.controllers.first?.tableView.delegate = self
+        vm.segmentVM.setSelected(.paste)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,14 +87,39 @@ class CarInfoViewController: BasicViewController {
                 image: UIImage(named: "pencil_fb_ic"))
         ]
         
-        vm.pageVM.$index
-            .removeDuplicates()
-            .sink { [weak self] index in
+        vm.segmentVM.$selectedIndex
+            .sink {[weak self] index in
                 guard let self else { return }
-                self.vm.pageVM.controllers[index].tableView.delegate = self
-//                self.scroll.isScrollEnabled = !self.vm.pageVM.controllers[index].tableView.visibleCells.isEmpty
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
+                    self.vm.pageVM.controllers[index].tableView.delegate = self
+                    self.vm.pageVM.setIndexCandidate()
+                    let visibleIndexPaths = self.vm.pageVM.controllers[index].tableView.indexPathsForVisibleRows
+                    let completelyVisible = visibleIndexPaths?.count != 0
+                    self.scroll.isScrollEnabled = completelyVisible
+                }
             }
             .store(in: &cancellables)
+        
+//        $tableView
+//            .sink { [weak self] tableView in
+//                let cellRect = tableView.indexPathsForVisibleRows
+//                let completelyVisible = cellRect?.count
+//            }
+//            .store(in: &cancellables)
+        
+//        vm.pageVM.$index
+//            .removeDuplicates()
+//            .sink { [weak self] index in
+//                guard let self else { return }
+//                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
+//                    self.vm.pageVM.controllers[index].tableView.delegate = self
+//                    self.vm.pageVM.setIndexCandidate()
+//                    let cellRect = self.vm.pageVM.controllers[index].tableView.indexPathsForVisibleRows
+//                    let completelyVisible = cellRect?.first
+//                }
+////                self.scroll.isScrollEnabled = completelyVisible
+//            }
+//            .store(in: &cancellables)
         
         vm.remindersVM.completeReminder = { [weak self] reminder in
             guard let self else { return }
@@ -156,7 +182,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 
-                if newConstraintConstant < maxConstraintConstant , !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
+                if newConstraintConstant < maxConstraintConstant,
+                   !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
+                    
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
                     UIView.animate(withDuration: 0.3) {

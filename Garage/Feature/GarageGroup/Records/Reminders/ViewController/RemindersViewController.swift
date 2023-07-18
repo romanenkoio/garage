@@ -44,6 +44,7 @@ class RemindersViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableViewDelegate = layout.table.table
+        
     }
 
     override func configure() {
