@@ -32,9 +32,9 @@ final class Car: Object, Codable {
             .sorted(by: { $0.date > $1.date })
     }
     
-    var images: [UIImage] {
+    var images: [Data] {
         let datas = RealmManager<Photo>().read().filter({ $0.carId == self.id })
-        return datas.compactMap({ UIImage(data: $0.image )})
+        return datas.compactMap({ $0.image })
     }
     
     enum CodingKeys: String, CodingKey {

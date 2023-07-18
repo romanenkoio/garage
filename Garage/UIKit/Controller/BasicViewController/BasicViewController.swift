@@ -47,7 +47,7 @@ class BasicViewController: UIViewController {
     }
     
     deinit {
-        print("deinit BasicController")
+//        print("deinit BasicController")
     }
     
     required init?(coder: NSCoder) {

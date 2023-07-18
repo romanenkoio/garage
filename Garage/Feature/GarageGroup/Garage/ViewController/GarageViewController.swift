@@ -112,7 +112,7 @@ extension GarageViewController: UITableViewDataSource {
         guard let carCell = tableView.dequeueReusableCell(CarCell.self),
               let vm = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
-        carCell.mainView.setViewModel(.init(car: vm))
+        carCell.mainView.setViewModel(vm)
         carCell.selectionStyle = .none
         return carCell
     }
@@ -126,6 +126,6 @@ extension GarageViewController: UITableViewDelegate {
         }
         
         guard let selectedCar = vm.tableVM.cells[safe: indexPath.row] else { return }
-        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
+        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar.car))
     }
 }

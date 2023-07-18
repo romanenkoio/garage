@@ -12,7 +12,6 @@ extension RecordView {
         
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
-        var imageListVM = BasicImageListView.ViewModel(editingEnabled: false)
         let record: Record
         let attachImageVM = BasicImageView.ViewModel(image: UIImage(systemName: "paperclip.circle.fill"))
         let moreImageVM = BasicImageView.ViewModel(image: UIImage(named: "more_ic"))
@@ -25,6 +24,10 @@ extension RecordView {
             let photoCount = RealmManager<Photo>().read()
                 .filter({ $0.recordId == record.id })
             attachImageVM.isHidden = photoCount.isEmpty
+        }
+        
+        deinit {
+//            print("Deinit \(self.self)")
         }
     }
 }

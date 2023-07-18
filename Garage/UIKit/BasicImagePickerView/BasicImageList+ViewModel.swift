@@ -55,5 +55,9 @@ extension BasicImageListView {
             self.items = images
             self.checkedValue = images
         }
+        
+        deinit {
+            print("deinit BasicImageListView.ViewModel")
+        }
     }
 }

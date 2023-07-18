@@ -74,7 +74,6 @@ class CreateCarViewController: BasicViewController {
         layout.yearField.setViewModel(vm.yearFieldVM)
         layout.mileageField.setViewModel(vm.mileageFieldVM)
         layout.saveButton.setViewModel(vm.saveButtonVM)
-        layout.imageList.setViewModel(vm.imageListVM)
         
         vm.isLoadind.sink { [weak self] value in
             value ? self?.showLoader() : self?.removeLoader()

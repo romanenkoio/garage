@@ -21,10 +21,12 @@ extension BasicImageView {
             self.mode = mode
         }
         
-        func set(from data: Data, placeholder: UIImage? = nil) {
+        func set(from data: Data?, placeholder: UIImage? = nil) {
             self.image = placeholder
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let image = UIImage(data: data) else { return }
+                guard let data,
+                      let image = UIImage(data: data)
+                else { return }
                 self?.image = image
             }
         }

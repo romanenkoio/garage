@@ -11,7 +11,7 @@ import UIKit
 extension GarageViewController {
     final class ViewModel: BasicControllerModel {
         
-        let tableVM = BasicTableView.GenericViewModel<Car>()
+        let tableVM = BasicTableView.GenericViewModel<CarView.ViewModel>()
         var addButtonVM: AlignedButton.ViewModel
 
         override init() {
@@ -29,7 +29,7 @@ extension GarageViewController {
         }
         
         func readCars() {
-            tableVM.setCells(RealmManager<Car>().read())
+            tableVM.setCells(RealmManager<Car>().read().map({ .init(car: $0) }))
         }
     }
 }

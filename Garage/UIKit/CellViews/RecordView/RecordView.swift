@@ -109,6 +109,5 @@ class RecordView: BasicView {
         dateLabel.setViewModel(vm.dateLabelVM)
         moreImage.setViewModel(vm.moreImageVM)
         attachImage.setViewModel(vm.attachImageVM)
-
     }
 }

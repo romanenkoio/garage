@@ -13,6 +13,11 @@ final class CreateCarControllerLayoutManager {
     
     private unowned let vc: CreateCarViewController
     
+    lazy var logoImage: BasicImageView = {
+        let view = BasicImageView()
+        return view
+    }()
+    
     lazy var fieldStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
@@ -48,7 +53,6 @@ final class CreateCarControllerLayoutManager {
         return field
     }()
     
-    lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
 
     // - Init
@@ -77,7 +81,6 @@ fileprivate extension CreateCarControllerLayoutManager {
             modelField,
             yearField,
             mileageField,
-            imageList,
             saveButton
         ])
     }

@@ -31,9 +31,11 @@ class CarView: BasicView {
         return view
     }()
     
-    private lazy var attentionImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "error_ic")
+    private lazy var attentionImage = BasicImageView(image: UIImage(named: "error_ic"))
+    
+    private lazy var logoImage: BasicImageView = {
+        let imageView = BasicImageView()
+        imageView.cornerRadius = 16
         return imageView
     }()
     
@@ -61,15 +63,13 @@ class CarView: BasicView {
     private lazy var photoContainer: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 12
+        stack.paddingInsets = .init(bottom: 16, horizontal: 16)
         return stack
     }()
-    
-    private var logoCollection = CarPhotoCollection()
-    
+
     private lazy var detailsView = DetailsView()
 
-    var vm: ViewModel!
+    weak var vm: ViewModel?
     
     override func initView() {
         makeLayout()
@@ -87,7 +87,7 @@ class CarView: BasicView {
         mainStack.addArrangedSubviews([topContainer, photoContainer, detailsView])
         textStack.addArrangedSubviews([brandLabel, plannedLabel])
         
-        photoContainer.addArrangedSubviews([logoCollection])
+        photoContainer.addArrangedSubviews([logoImage])
     }
     
     private func makeConstraints() {
@@ -111,19 +111,23 @@ class CarView: BasicView {
             make.leading.top.bottom.equalToSuperview()
             make.trailing.equalTo(attentionView.snp.leading)
         }
+        
+        logoImage.snp.makeConstraints { make in
+            make.width.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            make.height.equalTo(logoImage.snp.width).multipliedBy(0.62)
+        }
     }
     
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
         self.vm = vm
 
-        detailsView.setViewModel(self.vm.detailsVM)
-        brandLabel.setViewModel(self.vm.brandLabelVM)
-        plannedLabel.setViewModel(self.vm.plannedLabelVM)
-        logoCollection.setViewModel(self.vm.carPhotoCollectionVM)
+        detailsView.setViewModel(vm.detailsVM)
+        brandLabel.setViewModel(vm.brandLabelVM)
+        plannedLabel.setViewModel(vm.plannedLabelVM)
+        logoImage.setViewModel(vm.imageVM)
         
-        self.vm.$shouldShowAttention.sink { [weak self] value in
-
+        vm.$shouldShowAttention.sink { [weak self] value in
             self?.attentionView.isHidden = !value
         }
         .store(in: &cancellables)
