@@ -52,8 +52,9 @@ class BasicInputView: BasicView {
     
     private(set) weak var vm: ViewModel?
 
-    override init() {
+    init(mode: InputMode = .all) {
         super.init()
+        self.textField.setMode(mode)
     }
 
     required init?(coder: NSCoder) {

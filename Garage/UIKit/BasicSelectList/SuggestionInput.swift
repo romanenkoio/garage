@@ -36,7 +36,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
         }
     }
     
-    override init() {
+    init() {
         super.init()
     }
     

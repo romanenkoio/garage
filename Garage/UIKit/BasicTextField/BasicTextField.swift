@@ -24,7 +24,7 @@ class BasicTextField: UITextField {
         }
     }
     
-    var mode: InputMode?
+    private(set) var mode: InputMode?
     private(set) weak var vm: ViewModel?
     
     init() {
@@ -52,12 +52,21 @@ class BasicTextField: UITextField {
         self.mode = mode
         
         switch mode {
-        case .digit:
+        case .digit, .amount:
             self.keyboardType = .numberPad
         case .all:
             break
         case .phone:
             self.keyboardType = .phonePad
+        }
+        
+        if mode == .amount {
+            let label = BasicLabel()
+            label.textInsets = .init(right: 15)
+            label.text = .empty.appendCurrency()
+            label.font = .custom(size: 17, weight: .medium)
+            self.rightView = label
+            self.rightViewMode = .always
         }
     }
     
@@ -167,7 +176,7 @@ extension BasicTextField: UITextFieldDelegate {
         
         switch mode {
             
-        case .digit:
+        case .digit, .amount:
             allowedCharacters = CharacterSet.decimalDigits
             let characterSet = CharacterSet(charactersIn: string)
             return allowedCharacters.isSuperset(of: characterSet)

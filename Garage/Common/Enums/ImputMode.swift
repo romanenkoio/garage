@@ -11,4 +11,5 @@ enum InputMode {
     case digit
     case all
     case phone
+    case amount
 }

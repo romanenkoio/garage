@@ -22,8 +22,8 @@ final class CreateRecordControllerLayoutManager {
     }()
     
     lazy var shortTypeInput = SuggestionInput<ServiceType>()
-    lazy var costInput = BasicInputView()
-    lazy var mileageImput = BasicInputView()
+    lazy var costInput = BasicInputView(mode: .amount)
+    lazy var mileageImput = BasicInputView(mode: .digit)
     lazy var dateInput = BasicDatePicker()
     lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
@@ -50,8 +50,8 @@ fileprivate extension CreateRecordControllerLayoutManager {
     private func configure() {
         makeLayout()
         makeConstraint()
-        mileageImput.textField.mode = .digit
-        costInput.textField.mode = .digit
+        mileageImput.textField.setMode(.digit)
+        costInput.textField.setMode(.digit)
     }
     
     private func makeLayout() {

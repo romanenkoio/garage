@@ -23,7 +23,6 @@ extension DocumentsViewController {
                 sublabelVM: .init(.text("Добавьте документ для \nначала работы")), addButtonVM: .init(title: "Новый документ"),
                 image: UIImage(named: "document")
             )
-            
         }
         
         func readDocuments() {
