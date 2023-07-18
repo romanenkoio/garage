@@ -18,11 +18,11 @@ final class ConfirmPopupControllerLayoutManager {
     private lazy var mainStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.spacing = 32
+        stack.spacing = 10
         stack.cornerRadius = 30
         stack.backgroundColor = .white
-        stack.paddingInsets = .init(vertical: 32, horizontal: 32)
-        stack.edgeInsets = .init(top: 24, horizontal: 20)
+        stack.paddingInsets = .init(vertical: 16, horizontal: 32)
+        stack.edgeInsets = .init(horizontal: 20)
         return stack
     }()
     
@@ -30,7 +30,7 @@ final class ConfirmPopupControllerLayoutManager {
         let label = BasicLabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.textInsets = .init(top: 12)
+        label.textInsets = .init(top: 12, bottom: 12)
         label.font = .custom(size: 18, weight: .bold)
         return label
     }()
@@ -88,6 +88,7 @@ fileprivate extension ConfirmPopupControllerLayoutManager {
         imageView.snp.makeConstraints { make in
             make.height.width.equalTo(60)
             make.center.equalToSuperview()
+            make.top.equalToSuperview()
         }
     }
     
