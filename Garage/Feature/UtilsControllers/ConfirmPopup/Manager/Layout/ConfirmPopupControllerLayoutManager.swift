@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-typealias Popup = ConfirmPopupViewController
+typealias Dialog = ConfirmPopupViewController
 
 final class ConfirmPopupControllerLayoutManager {
     
@@ -32,6 +32,16 @@ final class ConfirmPopupControllerLayoutManager {
         label.numberOfLines = 0
         label.textInsets = .init(top: 12, bottom: 12)
         label.font = .custom(size: 18, weight: .bold)
+        return label
+    }()
+    
+    private(set) lazy var subtitleLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.textColor = AppColors.subtitle
+        label.textInsets = .init(top: 12, bottom: 12)
+        label.font = .custom(size: 14, weight: .bold)
         return label
     }()
     
@@ -75,7 +85,7 @@ fileprivate extension ConfirmPopupControllerLayoutManager {
         self.vc.contentView.addSubview(mainStack)
         let view = UIView()
         view.addSubview(imageView)
-        mainStack.addArrangedSubviews([view, confirmLabel, buttonStack])
+        mainStack.addArrangedSubviews([view, confirmLabel, subtitleLabel, buttonStack])
         buttonStack.addArrangedSubviews([cancelButton, confirmButton])
     }
     

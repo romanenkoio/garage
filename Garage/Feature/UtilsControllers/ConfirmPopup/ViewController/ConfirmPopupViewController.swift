@@ -44,12 +44,18 @@ class ConfirmPopupViewController: BasicViewController {
 
     override func binding() {
         layout.confirmLabel.setViewModel(vm.confirmLabelVM)
+        layout.subtitleLabel.setViewModel(vm.subtitleLabelVM)
         layout.confirmButton.setViewModel(vm.confirmButton)
         layout.cancelButton.setViewModel(vm.cancelButton)
         
         vm.cancelButton.action = .touchUpInside { [weak self] in
             self?.dismiss(animated: true)
         }
+        
+        vm.subtitleLabelVM.$textValue.sink { [weak self] value in
+            self?.layout.subtitleLabel.isHidden = value.clearText.isEmpty
+        }
+        .store(in: &cancellables)
     }
     
     private func setupGestures() {

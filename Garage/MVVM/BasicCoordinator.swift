@@ -33,7 +33,7 @@ class BasicCoordinator: Routable {
         }
     }
     
-    private func show(_ vm: Popup.ViewModel) {
+    private func show(_ vm: Dialog.ViewModel) {
         let popup = ConfirmPopupViewController(vm: vm)
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve

@@ -46,9 +46,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let topVC = topNC.topViewController
         else { return }
         
-        let popupVM = Popup.ViewModel(titleVM: .init(.text("Вы действительно хотите импортировать данные? Текущие записи будут удалены")))
+        let popupVM = Dialog.ViewModel(
+            title: .text("Вы действительно хотите импортировать данные?"),
+            subtitle: .text("Все текущие записи будут удалены")
+        )
         popupVM.confirmButton.title = "Импортировать"
-        let popup = Popup(vm: popupVM)
+        popupVM.confirmButton.style = .popup(color: AppColors.green)
+        let popup = Dialog(vm: popupVM)
 
         popupVM.confirmButton.action = .touchUpInside {
             popup.close()
