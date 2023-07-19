@@ -194,8 +194,9 @@ extension CreateCarViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
-        if let image = info[.originalImage] as? UIImage {
-            self.vm.carImage.logoVM.set(from: image)
+        if let image = info[.originalImage] as? UIImage,
+            let resized = image.resizeImage() {
+            self.vm.carImage.logoVM.set(from: resized)
         }
     }
 }

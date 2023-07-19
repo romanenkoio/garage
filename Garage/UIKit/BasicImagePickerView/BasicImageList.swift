@@ -237,10 +237,9 @@ extension BasicImageListView: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
-        if let image = info[.originalImage] as? UIImage {
-            guard let compressedImageData = image.jpegData(compressionQuality: 0.8) else { return }
-            guard let compressedImage = UIImage(data: compressedImageData) else { return }
-            displaySelectedImage(compressedImage)
+        if let image = info[.originalImage] as? UIImage,
+            let resized = image.resizeImage() {
+            displaySelectedImage(resized)
         }
     }
 }
