@@ -25,7 +25,9 @@ final class CarInfoControllerLayoutManager {
         }
     }
     var animatedScrollConstraint: Constraint?
+    var topStackTopConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
+    var newConstraintConstant: CGFloat = 0
     
     lazy var topStack = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
@@ -113,7 +115,8 @@ fileprivate extension CarInfoControllerLayoutManager {
         }
         
         topStack.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
+            topStackTopConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).constraint
+            make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
         segment.snp.makeConstraints { make in

@@ -186,10 +186,13 @@ extension CarInfoViewController: UIScrollViewDelegate {
                    !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
                     
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-                    } completion: { _ in
+                    self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant+(maxConstraintConstant/2.5))
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetYgit 
+
+                    UIView.animate(withDuration: 0.3) {[weak self] in
+                        self?.view.layoutIfNeeded()
+                    } completion: {[weak self] _ in
+                        guard let self else { return }
                         if scrollView == self.scroll {
                             self.scroll.isScrollEnabled = false
                             self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = true
@@ -202,8 +205,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 if newConstraintConstant >= maxConstraintConstant / 2 {
                     self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                    self.layout.topStackTopConstraint?.update(offset: 0)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
+                    UIView.animate(withDuration: 0.4) {
                         self.view.layoutIfNeeded()
                         self.scroll.isScrollEnabled = true
                         self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
