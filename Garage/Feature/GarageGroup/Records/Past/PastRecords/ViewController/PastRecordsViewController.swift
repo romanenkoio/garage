@@ -52,7 +52,7 @@ class PastRecordsViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
-        
+        tableViewDelegate = layout.table.table
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cells  in
@@ -106,4 +106,12 @@ extension PastRecordsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension PastRecordsViewController: UITableViewDelegate {
+}
+
+extension PastRecordsViewController: PageControllable {
+    var tableViewDelegate: UITableView? {
+        get { tableView }
+        set { tableView = newValue! }
+    }
+
 }

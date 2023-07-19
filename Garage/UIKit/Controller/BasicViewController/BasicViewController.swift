@@ -16,8 +16,9 @@ class BasicViewController: UIViewController {
     private var coordinator: Coordinator!
     private(set) var viewModel = BasicControllerModel()
     private(set) var isWillAppeared: Bool = false
-    private(set) var tableView = UITableView()
-
+    
+    lazy var tableView = UITableView()
+    
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         return scroll
@@ -203,9 +204,9 @@ extension BasicViewController {
     }
 }
 
-extension BasicViewController: PageControllable {
-    var tableViewDelegate: UITableView? {
-        get { tableView }
-        set { tableView = newValue! }
-    }
-}
+//extension BasicViewController: PageControllable {
+//    var tableViewDelegate: UITableView? {
+//        get { tableView }
+//        set { tableView = newValue! }
+//    }
+//}

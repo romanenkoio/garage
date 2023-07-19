@@ -34,7 +34,7 @@ extension PastRecordsViewController {
             let records = car.records
             let dates = Set(records.compactMap{ $0.date })
             let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
-                            
+
             var cells: [[RecordView.ViewModel]] = .empty
             years.forEach { year in
                 let setionCells = records.filter({ $0.date.recordComponents.year == year })
