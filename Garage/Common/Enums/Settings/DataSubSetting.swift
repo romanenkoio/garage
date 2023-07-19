@@ -8,11 +8,11 @@
 import UIKit
 
 enum DataSubSetting {
-    case transfer
     case backup(String)
+    case transfer(Bool)
     case save
-    case restore
-    case remove
+    case restore(Bool)
+    case remove(Bool)
     
     var icon: UIImage? {
         switch self {
@@ -39,6 +39,21 @@ enum DataSubSetting {
         case .save:                 return "Создать копию"
         case .restore:              return "Восстановить из копии"
         case .remove:               return "Удалить копию"
+        }
+    }
+    
+    var isEnabled: Bool {
+        switch self {
+        case .backup(let string):
+            return true
+        case .transfer(let value):
+            return value
+        case .save:
+            return true
+        case .restore(let value):
+            return value
+        case .remove(let value):
+            return value
         }
     }
 }

@@ -17,11 +17,11 @@ class CarImageSelector: BasicView {
         return view
     }()
     
-    private lazy var placeholderView: BasicImageView = {
-        let view = BasicImageView(image:UIImage(systemName: "gear"), mode: .scaleAspectFill)
-        view.cornerRadius = 50
-        view.layer.borderWidth = 1
-        view.layer.borderColor = AppColors.blue.cgColor
+    private lazy var plusImageView: BasicImageView = {
+        let view = BasicImageView(
+            image: UIImage(named: "photo_plus_ic"),
+            mode: .scaleAspectFill
+        )
         return view
     }()
 
@@ -34,7 +34,7 @@ class CarImageSelector: BasicView {
     
     private func makeLayout() {
         self.addSubview(imageView)
-        self.addSubview(placeholderView)
+        self.addSubview(plusImageView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTap))
         imageView.addGestureRecognizer(tap)
     }
@@ -49,8 +49,10 @@ class CarImageSelector: BasicView {
             make.height.width.equalTo(100)
         }
         
-        placeholderView.snp.makeConstraints { make in
-            make.edges.equalTo(imageView)
+        plusImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(28)
+            make.centerX.equalTo(imageView.snp.trailing).offset(-10)
+            make.centerY.equalTo(imageView.snp.bottom).offset(-10)
         }
     }
     

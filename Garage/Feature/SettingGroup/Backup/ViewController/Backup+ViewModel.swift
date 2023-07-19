@@ -36,8 +36,8 @@ extension BackupViewController {
             DispatchQueue.global().async { [weak self] in
                 guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else {
                     self?.settingsPoint = [
-                        [.backup("отсутствует"), .transfer],
-                        [.save, .restore, .remove]
+                        [.backup("отсутствует"), .transfer(false)],
+                        [.save, .restore(false), .remove(false)]
                     ]
                     self?.setCells()
                     completion("отсутствует")
@@ -46,8 +46,8 @@ extension BackupViewController {
                 
                 let date = backup.date.toString(.ddMMyy)
                 self?.settingsPoint = [
-                    [.backup(date), .transfer],
-                    [.save, .restore, .remove]
+                    [.backup(date), .transfer(true)],
+                    [.save, .restore(true), .remove(true)]
                 ]
                 self?.setCells()
                 

@@ -74,10 +74,20 @@ class SettingsViewController: BasicViewController {
         case .backup:
             showLoader()
             readBackupDate { [weak self] date in
-                let points: [[DataSubSetting]] = [
-                    [.backup(date), .transfer],
-                    [.save, .restore, .remove]
-                ]
+                let points: [[DataSubSetting]]
+                
+                if let date {
+                    points = [
+                        [.backup(date), .transfer(true)],
+                        [.save, .restore(true), .remove(true)]
+                    ]
+                } else {
+                    points = [
+                        [.backup("отсутствует"), .transfer(false)],
+                        [.save, .restore(false), .remove(false)]
+                    ]
+                }
+                
                 DispatchQueue.main.async { [weak self] in
                     self?.dismissLoader()
                     self?.coordinator.navigateTo(SettingsNavigationRoute.backup(points))
@@ -92,10 +102,10 @@ class SettingsViewController: BasicViewController {
         }
     }
     
-    func readBackupDate(completion: @escaping (String) -> Void) {
+    func readBackupDate(completion: @escaping (String?) -> Void) {
         DispatchQueue.global().async {
             guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else {
-                completion("отсутствует")
+                completion(nil)
                 return
             }
             

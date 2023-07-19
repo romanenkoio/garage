@@ -97,34 +97,50 @@ extension BackupViewController {
     }
     
     func removeBackup() {
-        showLoader()
-        DispatchQueue.global().async { [weak self] in
-            Storage.remove(.backup, from: .documents) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.vm.reload() { [weak self] _ in
-                        DispatchQueue.main.async { [weak self] in
+        let dialogVM = Dialog.ViewModel(title: .text("Удалить резервную копию?"))
+        dialogVM.confirmButton.action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            showLoader()
+            DispatchQueue.global().async { [weak self] in
+                Storage.remove(.backup, from: .documents) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.vm.reload() { [weak self] _ in
+                            DispatchQueue.main.async { [weak self] in
+                                self?.dismissLoader()
+                                self?.dismiss(animated: true)
+                            }}}}}
+        }
+        self.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: dialogVM))
+    }
+    
+    func restoreBackup() {
+       
+      
+        let action: Action = .touchUpInside { [weak self] in
+            guard let self else { return }
+            showLoader()
+            DispatchQueue.global().async { [weak self] in
+                guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return }
+                RealmManager().removeAll()
+                backup.saveCurrent() { [weak self] in
+                    DispatchQueue.main.async {  [weak self] in
+                        self?.vm.reload(completion: { [weak self] _ in
                             self?.dismissLoader()
-                        }
+                        })
                     }
                 }
             }
         }
-    }
-    
-    func restoreBackup() {
-        showLoader()
-        DispatchQueue.global().async { [weak self] in
-            guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else { return }
-            RealmManager().removeAll()
-            backup.saveCurrent() { [weak self] in
-                DispatchQueue.main.async {  [weak self] in
-                    self?.vm.reload(completion: { [weak self] _ in
-                        self?.dismissLoader()
-                    })
-                }
-              
-            }
-        }
+        
+        let dialogVM = Dialog.ViewModel(
+            title: .text("Восстановить данные из резервной копии?"),
+            subtitle: .text("Все текущие данные будут удалены"),
+            confirmTitle: "Восстановить",
+            confirmColor: AppColors.green,
+            confirmAction: action
+        )
+        
+        self.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: dialogVM))
     }
     
     func reload() {

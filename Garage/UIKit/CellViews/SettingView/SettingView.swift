@@ -77,10 +77,16 @@ class SettingView: BasicView {
         settingSwitch.setViewModel(vm.switchVM)
         settingLabel.setViewModel(vm.textLabelVM)
         
-        vm.switchVM.$isOn.dropFirst().sink { [weak self] value in
+        vm.switchVM.$isOn.dropFirst().sink { value in
             vm.switchCompletion?(value)
         }
         .store(in: &cancellables)
+        
+        vm.$isEnabled.compactMap().sink { [weak self] value in
+            self?.isUserInteractionEnabled = value
+            self?.settingImage.alpha = value ? 1 : 0.5
+            self?.settingLabel.alpha = value ? 1 : 0.5
+        }
+        .store(in: &cancellables)
     }
-
 }

@@ -30,7 +30,7 @@ final class ConfirmPopupControllerLayoutManager {
         let label = BasicLabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.textInsets = .init(top: 12, bottom: 12)
+        label.textInsets = .init(top: 8, bottom: 5)
         label.font = .custom(size: 18, weight: .bold)
         return label
     }()
@@ -40,7 +40,7 @@ final class ConfirmPopupControllerLayoutManager {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.textColor = AppColors.subtitle
-        label.textInsets = .init(top: 12, bottom: 12)
+        label.textInsets = .init(top: 5, bottom: 12)
         label.font = .custom(size: 14, weight: .bold)
         return label
     }()
@@ -49,6 +49,7 @@ final class ConfirmPopupControllerLayoutManager {
         let stack = BasicStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
+        stack.edgeInsets = .init(top: 20)
         stack.spacing = 8
         return stack
     }()

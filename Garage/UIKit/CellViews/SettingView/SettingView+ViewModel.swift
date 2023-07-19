@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 extension SettingView {
     final class ViewModel: BasicViewModel {
@@ -14,6 +15,7 @@ extension SettingView {
         let switchVM = BasicSwitch.ViewModel()
         
         var switchCompletion: ((Bool) -> Void)?
+        @Published var isEnabled: Bool?
         
         init(point: SettingPoint) {
             imageVM = .init(image: point.icon)
@@ -30,6 +32,7 @@ extension SettingView {
             textLabelVM.textValue = .text(point.title)
             switchVM.isOn = point.state
             switchVM.isHidden = !point.isSwitch
+            isEnabled = point.isEnabled
         }
     }
 }
