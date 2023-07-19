@@ -15,19 +15,18 @@ extension ConfirmPopupViewController {
         let subtitleLabelVM = BasicLabel.ViewModel()
         let confirmButton = BasicButton.ViewModel(title: "Удалить", style: .popup(color: UIColor(hexString: "#E84949")))
         let cancelButton = BasicButton.ViewModel(title: "Отмена", style: .popup())
+        var action: Completion?
         
         init(
             title: TextValue,
             subtitle: TextValue = .text(.empty),
             confirmTitle: String? = nil,
             confirmColor: UIColor? = nil,
-            confirmAction: Action? = nil
+            confirmAction: Completion? = nil
         ) {
             self.confirmLabelVM.textValue = title
             self.subtitleLabelVM.textValue = subtitle
-            if let confirmAction {
-                self.confirmButton.action = confirmAction
-            }
+            self.action = confirmAction
             
             if let confirmTitle {
                 self.confirmButton.title = confirmTitle
@@ -36,8 +35,6 @@ extension ConfirmPopupViewController {
             if let confirmColor {
                 self.confirmButton.style = .popup(color: confirmColor)
             }
-            
-            super.init()
         }
     }
 }

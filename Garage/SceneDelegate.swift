@@ -61,13 +61,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 RealmManager().removeAll()
                 Storage.remove(.backup, from: .documents)
                 Storage.store(imported, to: .documents, as: .backup)
-                imported.saveCurrent() {
-                    DispatchQueue.main.async {
-                        topVC.dismissLoader()
-                    }
-                }
+                imported.saveCurrent()
+                topVC.dismissLoader()
             }
-            
         }
         
         popup.modalPresentationStyle = .overCurrentContext

@@ -52,6 +52,11 @@ class ConfirmPopupViewController: BasicViewController {
             self?.dismiss(animated: true)
         }
         
+        vm.confirmButton.action = .touchUpInside { [weak self] in
+            self?.dismiss(animated: true)
+            self?.vm.action?()
+        }
+        
         vm.subtitleLabelVM.$textValue.sink { [weak self] value in
             self?.layout.subtitleLabel.isHidden = value.clearText.isEmpty
         }
