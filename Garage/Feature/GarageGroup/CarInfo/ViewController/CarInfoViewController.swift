@@ -192,6 +192,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
 
                     UIView.animate(withDuration: 0.3) {[weak self] in
                         self?.view.layoutIfNeeded()
+                        self?.layout.topStack.alpha = 0.2
                     } completion: {[weak self] _ in
                         guard let self else { return }
                         if scrollView == self.scroll {
@@ -208,8 +209,10 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
                     self.layout.topStackTopConstraint?.update(offset: 0)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.4) {
+                    UIView.animate(withDuration: 0.4) {[weak self] in
+                        guard let self else { return }
                         self.view.layoutIfNeeded()
+                        self.layout.topStack.alpha = 1
                         self.scroll.isScrollEnabled = true
                         self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
                     }
