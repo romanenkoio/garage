@@ -152,4 +152,12 @@ extension LocalPush {
         date: DateComponents(month: 10, day: 5, hour: 12, minute: 0),
         repeats: true
     )
+    
+    static let mileageUpdate = LocalPush(
+        id: "mileage",
+        title: "Просто хотим напомнить",
+        subtitle: "Обновите пробег автомобилей",
+        date: DateComponents(day: 15, hour: 14, minute: 0),
+        repeats: true
+    )
 }
