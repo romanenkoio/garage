@@ -22,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func initNavbar() {
         if #available(iOS 15.0, *) {
-            let attrs = [NSAttributedString.Key.font: UIFont.custom(size: 16, weight: .bold)]
+            let attrs = [
+                NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#3D3D3D"),
+                NSAttributedString.Key.font: UIFont.custom(size: 16, weight: .bold)
+            ]
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithDefaultBackground()
             navigationBarAppearance.backgroundColor = .white
