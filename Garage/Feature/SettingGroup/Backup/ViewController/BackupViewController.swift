@@ -90,7 +90,7 @@ extension BackupViewController {
             guard let url = Storage.url(for: .backup, from: .documents) else { return }
             let content: [Any] = [url]
             DispatchQueue.main.async { [weak self] in
-                self?.removeLoader()
+                self?.dismissLoader()
                 self?.coordinator.navigateTo(CommonNavigationRoute.share(content))
             }
         }
@@ -103,7 +103,7 @@ extension BackupViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.vm.reload() { [weak self] _ in
                         DispatchQueue.main.async { [weak self] in
-                            self?.removeLoader()
+                            self?.dismissLoader()
                         }
                     }
                 }
@@ -119,7 +119,7 @@ extension BackupViewController {
             backup.saveCurrent() { [weak self] in
                 DispatchQueue.main.async {  [weak self] in
                     self?.vm.reload(completion: { [weak self] _ in
-                        self?.removeLoader()
+                        self?.dismissLoader()
                     })
                 }
               
@@ -131,7 +131,7 @@ extension BackupViewController {
         showLoader()
         vm.reload { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
-                self?.removeLoader()
+                self?.dismissLoader()
             }
         }
     }
@@ -142,7 +142,7 @@ extension BackupViewController {
             Storage.store(Backup(), to: .documents, as: .backup) { [weak self] in
                 DispatchQueue.main.async { [weak self] in
                     self?.vm.reload() { [weak self] _ in
-                        self?.removeLoader()
+                        self?.dismissLoader()
                     }
                 }
             }

@@ -28,3 +28,32 @@ extension UIViewController {
         return UINavigationController(rootViewController: self)
     }
 }
+
+extension UIViewController {
+    
+    func showLoader() {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}),
+                  !window.subviews.contains(where: {$0 is LoaderView})
+            else { return }
+            
+            let loader = LoaderView()
+            loader.frame = CGRect(
+                x: window.frame.origin.x,
+                y: window.frame.origin.y,
+                width: window.frame.width,
+                height: window.frame.height
+            )
+            window.addSubview(loader)
+        }
+    }
+    
+    func dismissLoader() {
+        DispatchQueue.main.async {
+            let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+            let loaderView = window?.subviews.first(where: {$0 is LoaderView}) as? LoaderView
+            loaderView?.dismissLoader()
+        }
+    }
+    
+}

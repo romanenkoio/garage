@@ -124,7 +124,7 @@ class CreateCarViewController: BasicViewController {
         }
         
         vm.isLoadind.sink { [weak self] value in
-            value ? self?.showLoader() : self?.removeLoader()
+            value ? self?.showLoader() : self?.dismissLoader()
         }
         .store(in: &cancellables)
         

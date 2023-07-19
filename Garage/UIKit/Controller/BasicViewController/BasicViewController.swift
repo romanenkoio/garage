@@ -83,7 +83,7 @@ class BasicViewController: UIViewController {
         cancellables.removeAll()
         viewModel.isLoadind.sink { [weak self] value in
             guard let self else { return }
-            value ? self.showLoader() : self.removeLoader()
+            value ? self.showLoader() : self.dismissLoader()
         }
         .store(in: &cancellables)
     }

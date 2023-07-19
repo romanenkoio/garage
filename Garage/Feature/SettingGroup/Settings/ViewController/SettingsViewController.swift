@@ -73,7 +73,7 @@ class SettingsViewController: BasicViewController {
                     [.save, .restore, .remove]
                 ]
                 DispatchQueue.main.async { [weak self] in
-                    self?.removeLoader()
+                    self?.dismissLoader()
                     self?.coordinator.navigateTo(SettingsNavigationRoute.backup(points))
                 }
             }

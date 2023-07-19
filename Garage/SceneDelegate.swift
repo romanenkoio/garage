@@ -59,7 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 Storage.store(imported, to: .documents, as: .backup)
                 imported.saveCurrent() {
                     DispatchQueue.main.async {
-                        topVC.removeLoader()
+                        topVC.dismissLoader()
                     }
                 }
             }
