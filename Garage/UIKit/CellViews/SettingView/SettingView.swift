@@ -76,6 +76,11 @@ class SettingView: BasicView {
         settingImage.setViewModel(vm.imageVM)
         settingSwitch.setViewModel(vm.switchVM)
         settingLabel.setViewModel(vm.textLabelVM)
+        
+        vm.switchVM.$isOn.dropFirst().sink { [weak self] value in
+            vm.switchCompletion?(value)
+        }
+        .store(in: &cancellables)
     }
 
 }

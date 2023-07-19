@@ -13,6 +13,8 @@ extension SettingView {
         let imageVM: BasicImageView.ViewModel
         let switchVM = BasicSwitch.ViewModel()
         
+        var switchCompletion: ((Bool) -> Void)?
+        
         init(point: SettingPoint) {
             imageVM = .init(image: point.icon)
             super.init()

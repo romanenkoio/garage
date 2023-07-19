@@ -63,8 +63,12 @@ class SettingsViewController: BasicViewController {
     
     func hadleSelection(_ type: SettingPoint) {
         switch type {
-        case .reminders, .mileageReminder:
-            break
+        case .reminders:
+            let current: Bool = (SettingsManager.sh.read(.useReminder) ?? true)
+            SettingsManager.sh.write(value: !current, for: .useReminder)
+        case .mileageReminder:
+            let current: Bool = (SettingsManager.sh.read(.mileageReminder) ?? true)
+            SettingsManager.sh.write(value: !current, for: .mileageReminder)
         case .backup:
             showLoader()
             readBackupDate { [weak self] date in
@@ -128,7 +132,11 @@ extension SettingsViewController: UITableViewDataSource {
               let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row]
         else { return .init() }
     
-        settingCell.mainView.setViewModel(.init(point: point))
+        let vm = SettingView.ViewModel(point: point)
+        vm.switchCompletion = { [weak self] _ in
+            self?.hadleSelection(point)
+        }
+        settingCell.mainView.setViewModel(vm)
         settingCell.selectionStyle = .none
         return settingCell
     }
