@@ -218,11 +218,9 @@ extension BasicImageListView: PHPickerViewControllerDelegate {
             let itemProvider = result.itemProvider
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
-                    if let image = image as? UIImage {
-                        guard let compressedImageData = image.jpegData(compressionQuality: 0.8) else { return }
-                        guard let compressedImage = UIImage(data: compressedImageData) else { return }
+                    if let image = image as? UIImage, let resized = image.resizeImage() {
                         DispatchQueue.main.async {
-                            self?.displaySelectedImage(compressedImage)
+                            self?.displaySelectedImage(resized)
                         }
                     }
                 }

@@ -180,9 +180,9 @@ extension CreateCarViewController: PHPickerViewControllerDelegate {
         let itemProvider = photo.itemProvider
         if itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
-                if let image = image as? UIImage {
+                if let image = image as? UIImage, let resized = image.resizeImage() {
                     DispatchQueue.main.async {
-                        self?.vm.carImage.logoVM.set(from: image)
+                        self?.vm.carImage.logoVM.set(from: resized)
                     }
                 }
             }
