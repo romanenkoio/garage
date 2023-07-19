@@ -85,7 +85,7 @@ fileprivate extension LoaderView {
             self.dismissIfNeeded()
             self.animationView.animationSpeed = 1
             self.animationView.play(
-                fromProgress: 0.25,
+                fromProgress: 0,
                 toProgress: 1,
                 loopMode: .loop
             )
