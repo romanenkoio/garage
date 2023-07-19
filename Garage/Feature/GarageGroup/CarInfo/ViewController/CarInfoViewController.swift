@@ -213,7 +213,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     UIView.animate(withDuration: 0.4) {[weak self] in
                         guard let self else { return }
                         self.view.layoutIfNeeded()
-                        self.contentView.cornerRadius = 20
+                        self.contentView.cornerRadius = 24
                         self.layout.topStack.alpha = 1
                         self.scroll.isScrollEnabled = true
                         self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
