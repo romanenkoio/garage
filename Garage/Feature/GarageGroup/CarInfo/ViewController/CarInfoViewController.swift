@@ -187,7 +187,8 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
                     self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant+(maxConstraintConstant/2.5))
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetYgit 
+                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+
 
                     UIView.animate(withDuration: 0.3) {[weak self] in
                         self?.view.layoutIfNeeded()
