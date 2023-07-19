@@ -107,6 +107,7 @@ fileprivate extension CarInfoControllerLayoutManager {
         vc.view.addSubview(addButton)
 
         vc.view.bringSubviewToFront(addButton)
+        vc.contentView.cornerRadius = 0
     }
     
     private func makeConstraint() {
