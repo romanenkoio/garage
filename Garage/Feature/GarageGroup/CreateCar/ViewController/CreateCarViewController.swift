@@ -68,7 +68,8 @@ class CreateCarViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-          return
+            title = "Изменить машину"
+            return
         }
 
         let deleteButton = NavBarButton.ViewModel(
