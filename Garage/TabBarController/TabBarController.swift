@@ -48,12 +48,12 @@ final class TabBarController: UITabBarController {
         var reminders: [Reminder] = .empty
         cars.forEach({ reminders += $0.reminders })
         let carBadge = reminders.compactMap({ $0.days }).filter({ $0 < 14 && $0 > 0 })
-        self.viewControllers?.first?.tabBarItem.badgeValue = carBadge.isEmpty ? nil : "!"
+        self.viewControllers?.first?.tabBarItem.badgeValue = carBadge.isEmpty ? nil : "\(carBadge.count)"
         
 //        document badge
         let documents: [Document] = RealmManager().read()
         let documentsBadge = documents.compactMap({ $0.days }).filter({ $0 < 30 && $0 > 0 })
-        self.viewControllers?[safe: 1]?.tabBarItem.badgeValue = documentsBadge.isEmpty ? nil : "!"
+        self.viewControllers?[safe: 1]?.tabBarItem.badgeValue = documentsBadge.isEmpty ? nil : "\(documentsBadge.count)"
 
         UIApplication.shared.applicationIconBadgeNumber = carBadge.count + documentsBadge.count
     }
