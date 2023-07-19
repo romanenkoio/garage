@@ -29,33 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func handleImport(by ulr: URL) {
-        guard let imported = Storage.retrieve(ulr, as: Backup.self) else { return }
-        var controller: UIViewController?
-        
-        let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-        if var topController = keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            
-            controller = topController
-        }
-
-        guard let controller = controller as? TabBarController,
-              let topNC = controller.selectedViewController as? UINavigationController,
-              let topVC = topNC.topViewController
+        guard let imported = Storage.retrieve(ulr, as: Backup.self),
+              let topVC = UIApplication.shared.topController
         else { return }
-        
+   
         let popupVM = Dialog.ViewModel(
             title: .text("Вы действительно хотите импортировать данные?"),
-            subtitle: .text("Все текущие записи будут удалены")
-        )
-        popupVM.confirmButton.title = "Импортировать"
-        popupVM.confirmButton.style = .popup(color: AppColors.green)
-        let popup = Dialog(vm: popupVM)
-
-        popupVM.confirmButton.action = .touchUpInside {
-            popup.close()
+            subtitle: .text("Все текущие записи будут удалены"),
+            confirmTitle: "Импортировать",
+            confirmColor: AppColors.green
+        ) {
             topVC.showLoader()
             DispatchQueue.global().async {
                 RealmManager().removeAll()
@@ -65,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 topVC.dismissLoader()
             }
         }
-        
+        let popup = Dialog(vm: popupVM)
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve
         topVC.present(popup)
