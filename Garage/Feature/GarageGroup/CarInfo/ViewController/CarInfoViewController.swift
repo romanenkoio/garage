@@ -54,7 +54,7 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.maxConstraintConstant = layout.topStack.frame.size.height + 40
+        layout.maxConstraintConstant = layout.carTopInfo.frame.size.height + 40
     }
     
     override func configure() {
@@ -66,7 +66,7 @@ class CarInfoViewController: BasicViewController {
     override func binding() {
         layout.segment.setViewModel(vm.segmentVM)
         layout.addButton.setViewModel(vm.addButtonVM)
-        layout.topStack.setViewModel(vm.topStackVM)
+        layout.carTopInfo.setViewModel(vm.carTopInfoVM)
         
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
@@ -100,35 +100,16 @@ class CarInfoViewController: BasicViewController {
             }
             .store(in: &cancellables)
         
-//        $tableView
-//            .sink { [weak self] tableView in
-//                let cellRect = tableView.indexPathsForVisibleRows
-//                let completelyVisible = cellRect?.count
-//            }
-//            .store(in: &cancellables)
-        
-//        vm.pageVM.$index
-//            .removeDuplicates()
-//            .sink { [weak self] index in
-//                guard let self else { return }
-//                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
-//                    self.vm.pageVM.controllers[index].tableView.delegate = self
-//                    self.vm.pageVM.setIndexCandidate()
-//                    let cellRect = self.vm.pageVM.controllers[index].tableView.indexPathsForVisibleRows
-//                    let completelyVisible = cellRect?.first
-//                }
-////                self.scroll.isScrollEnabled = completelyVisible
-//            }
-//            .store(in: &cancellables)
-        
         vm.remindersVM.completeReminder = { [weak self] reminder in
             guard let self else { return }
             coordinator.navigateTo(CarInfoNavigationRoute.createRecordFromReminder(vm.car, reminder))
         }
         
-        vm.topStackVM.vinLabelVM.action = { [weak self] in
+        vm.carTopInfoVM.vinLabelVM.action = { [weak self] in
             guard let self else { return }
-            let content: [Any] = [vm.car.win.wrapped]
+            
+            let string = "\(vm.car.brand) \(vm.car.model) \(vm.car.year.wrappedString)\n\(vm.car.win.wrapped)"
+            let content: [Any] = [string]
             coordinator.navigateTo(CommonNavigationRoute.share(content))
         }
     }

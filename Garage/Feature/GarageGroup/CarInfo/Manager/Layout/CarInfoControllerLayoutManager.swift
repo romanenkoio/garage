@@ -27,7 +27,7 @@ final class CarInfoControllerLayoutManager {
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
-    lazy var topStack = CarTopInfoView()
+    lazy var carTopInfo = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
     
     lazy var recordsView: BasicView = {
@@ -97,7 +97,7 @@ fileprivate extension CarInfoControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.view.addSubview(topStack)
+        vc.view.addSubview(carTopInfo)
         vc.contentView.addSubview(segment)
         vc.contentView.addSubview(page.view)
         vc.addChild(page)
@@ -112,7 +112,7 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
         }
         
-        topStack.snp.makeConstraints { make in
+        carTopInfo.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
         }
         

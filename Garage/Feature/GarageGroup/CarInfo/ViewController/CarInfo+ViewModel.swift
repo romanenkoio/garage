@@ -14,7 +14,7 @@ extension CarInfoViewController {
         private(set) var car: Car
 
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
-        let topStackVM: CarTopInfoView.ViewModel
+        let carTopInfoVM: CarTopInfoView.ViewModel
         let tableVM = BasicTableView.GenericViewModel<Record>()
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
@@ -41,7 +41,7 @@ extension CarInfoViewController {
                     RemindersViewController(vm: remindersVM)
                 ])
             
-            topStackVM = .init(car: self.car)
+            carTopInfoVM = .init(car: self.car)
             super.init()
          
             initFields()
@@ -74,14 +74,14 @@ extension CarInfoViewController {
         
         func initFields() {
             if let photo = car.images.first {
-                topStackVM.logoVM.set(from: photo)
-                topStackVM.logoVM.mode = .scaleAspectFill
+                carTopInfoVM.logoVM.set(from: photo)
+                carTopInfoVM.logoVM.mode = .scaleAspectFill
             } else if let data = car.imageData {
-                topStackVM.logoVM.image = UIImage(data: data)
-                topStackVM.logoVM.mode = .scaleAspectFit
+                carTopInfoVM.logoVM.image = UIImage(data: data)
+                carTopInfoVM.logoVM.mode = .scaleAspectFit
             } else {
-                topStackVM.logoVM.image = UIImage(named: "logo_placeholder")
-                topStackVM.logoVM.mode = .scaleAspectFit
+                carTopInfoVM.logoVM.image = UIImage(named: "logo_placeholder")
+                carTopInfoVM.logoVM.mode = .scaleAspectFit
             }
         }
     }
