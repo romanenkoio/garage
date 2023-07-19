@@ -36,9 +36,4 @@ class FormValidator {
         formIsValid.send(result)
         isValid = result
     }
-    
-    deinit {
-        print("Deinit \(self.self)")
-    }
-    
 }
