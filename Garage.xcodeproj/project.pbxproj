@@ -101,7 +101,7 @@
 		7F1CC6712A67F5FF00C7F8B9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1CC6702A67F5FF00C7F8B9 /* UIImage.swift */; };
 		7F1CC6752A680BC800C7F8B9 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1CC6742A680BC800C7F8B9 /* AnimatedImageView.swift */; };
 		7F1CC67C2A680E8E00C7F8B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F1CC67B2A680E8E00C7F8B9 /* Lottie */; };
-		7F1CC67E2A680ED600C7F8B9 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F1CC67D2A680ED600C7F8B9 /* loader.json */; };
+		7F1CC6822A6827FE00C7F8B9 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F1CC6812A6827FE00C7F8B9 /* loader.json */; };
 		7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */; };
 		7F1DE3AB2A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */; };
 		7F1DE3AC2A58AD97008E7B1D /* CreateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */; };
@@ -407,7 +407,7 @@
 		7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		7F1CC6702A67F5FF00C7F8B9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		7F1CC6742A680BC800C7F8B9 /* AnimatedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
-		7F1CC67D2A680ED600C7F8B9 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		7F1CC6812A6827FE00C7F8B9 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loader.json; path = ../../Downloads/loader.json; sourceTree = "<group>"; };
 		7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F1DE3A82A58AD97008E7B1D /* CreateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderViewController.swift; sourceTree = "<group>"; };
@@ -1351,8 +1351,8 @@
 				B978F2D72A2E8F4C0076D326 /* UIKit */,
 				7F5955ED2A2E8ABB0062A85F /* Models */,
 				7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */,
-				7F1CC67D2A680ED600C7F8B9 /* loader.json */,
 				7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */,
+				7F1CC6812A6827FE00C7F8B9 /* loader.json */,
 				7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */,
 				7F6F6A322A2E8522003F7DF2 /* Info.plist */,
 			);
@@ -2612,7 +2612,6 @@
 				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				B93A343A2A3D10EC004BAEA6 /* Gilroy-Extrabold.ttf in Resources */,
 				B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */,
-				7F1CC67E2A680ED600C7F8B9 /* loader.json in Resources */,
 				B93A34352A3D10EC004BAEA6 /* Gilroy-RegularItalic.ttf in Resources */,
 				7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */,
 				B93A34382A3D10EC004BAEA6 /* Gilroy-UltraLight.ttf in Resources */,
@@ -2624,6 +2623,7 @@
 				B93A34412A3D10EC004BAEA6 /* Gilroy-Heavy.ttf in Resources */,
 				B93A343C2A3D10EC004BAEA6 /* Gilroy-Light.ttf in Resources */,
 				B93A343D2A3D10EC004BAEA6 /* Gilroy-Thin.ttf in Resources */,
+				7F1CC6822A6827FE00C7F8B9 /* loader.json in Resources */,
 				B93A343E2A3D10EC004BAEA6 /* Gilroy-ExtraboldItalic.ttf in Resources */,
 				B93A342E2A3D10EC004BAEA6 /* Gilroy-UltraLightItalic.ttf in Resources */,
 				B978F3BE2A2E9D870076D326 /* Color.xcassets in Resources */,
