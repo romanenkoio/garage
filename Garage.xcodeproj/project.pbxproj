@@ -99,7 +99,6 @@
 		7F1B7C6E2A60989D00E84C86 /* TextValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1B7C6D2A60989D00E84C86 /* TextValue.swift */; };
 		7F1B7C702A60AAE200E84C86 /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */; };
 		7F1CC6712A67F5FF00C7F8B9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1CC6702A67F5FF00C7F8B9 /* UIImage.swift */; };
-		7F1CC6752A680BC800C7F8B9 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1CC6742A680BC800C7F8B9 /* AnimatedImageView.swift */; };
 		7F1CC67C2A680E8E00C7F8B9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7F1CC67B2A680E8E00C7F8B9 /* Lottie */; };
 		7F1CC6822A6827FE00C7F8B9 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F1CC6812A6827FE00C7F8B9 /* loader.json */; };
 		7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */; };
@@ -406,7 +405,6 @@
 		7F1B7C6D2A60989D00E84C86 /* TextValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValue.swift; sourceTree = "<group>"; };
 		7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		7F1CC6702A67F5FF00C7F8B9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		7F1CC6742A680BC800C7F8B9 /* AnimatedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
 		7F1CC6812A6827FE00C7F8B9 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loader.json; path = ../../Downloads/loader.json; sourceTree = "<group>"; };
 		7F1DE3A42A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F1DE3A62A58AD97008E7B1D /* CreateReminderControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderControllerLayoutManager.swift; sourceTree = "<group>"; };
@@ -2312,7 +2310,6 @@
 				7FC7D1922A63F2C700A90586 /* Bundle.swift */,
 				7F049E482A41029F00C3EAD0 /* Date.swift */,
 				7F1CC6702A67F5FF00C7F8B9 /* UIImage.swift */,
-				7F1CC6742A680BC800C7F8B9 /* AnimatedImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2852,7 +2849,6 @@
 				B978F31F2A2E8F4C0076D326 /* BasicSearchField.swift in Sources */,
 				7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
-				7F1CC6752A680BC800C7F8B9 /* AnimatedImageView.swift in Sources */,
 				B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */,
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				7F8DB1062A56072A007E05C3 /* RemindersControllerLayoutManager.swift in Sources */,
