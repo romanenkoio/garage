@@ -37,7 +37,10 @@ extension BasicImageView {
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
                 guard let data,
                       let image = UIImage(data: data)
-                else { return }
+                else {
+                    self?.checkedValue = nil
+                    return
+                }
                 self?.checkedValue = image
                 self?.set(from: image)
             }
@@ -72,6 +75,16 @@ extension BasicImageView {
         func set(from image: UIImage) {
             self.image = image
             self.checkChanged(image)
+        }
+        
+        func checkChanged(_ value: UIImage) {
+            guard checkedValue != nil else {
+                self.hasChange = true
+                self.hasChangeSubject.send(true)
+                return
+            }
+            self.hasChange = checkedValue != value
+            self.hasChangeSubject.send(checkedValue != value)
         }
     }
 }
