@@ -106,7 +106,7 @@ fileprivate extension LoaderView {
         let widthHeight = CGFloat(300)
         backgroundRectangleView.frame = CGRect(
             x: (UIScreen.main.bounds.width / 2) - (widthHeight / 2) - 50,
-            y: (UIScreen.main.bounds.height / 2) - (widthHeight / 2),
+            y: (UIScreen.main.bounds.height / 2) - (widthHeight / 2) - 20,
             width: widthHeight,
             height: widthHeight
         )

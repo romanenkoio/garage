@@ -13,6 +13,7 @@ enum ButtonStyle {
     case primary
     case secondary
     case addImage
+    case createFromreminder
     case removeImage
     case basicLightTitle
     case basicDarkTitle
@@ -77,6 +78,9 @@ class BasicButton: UIButton {
             case .primary:
                 backgroundColor = .primaryBlue
                 setTitleColor(.white, for: .normal)
+        case .createFromreminder:
+                backgroundColor = AppColors.green
+                setTitleColor(.white, for: .normal)
             case .secondary:
                 backgroundColor = .primaryGray
                 setTitleColor(.primaryBlue, for: .normal)
@@ -109,6 +113,8 @@ class BasicButton: UIButton {
         switch style {
             case .primary:
             backgroundColor = value ? .primaryBlue : .primaryBlue.withAlphaComponent(0.5)
+            case .createFromreminder:
+            backgroundColor = value ? AppColors.green : AppColors.green.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
             case .basicDarkTitle, .basicLightTitle, .addImage, .removeImage:
