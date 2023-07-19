@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func initNavbar() {
         if #available(iOS 15.0, *) {
+            let attrs = [NSAttributedString.Key.font: UIFont.custom(size: 16, weight: .bold)]
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithDefaultBackground()
             navigationBarAppearance.backgroundColor = .white
+            navigationBarAppearance.titleTextAttributes = attrs
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
