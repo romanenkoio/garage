@@ -78,8 +78,8 @@ class RecordView: BasicView {
         
         attachImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(28)
-            make.trailing.equalTo(moreImage.snp.leading).offset(-5)
+            make.height.width.equalTo(24)
+            make.trailing.equalTo(moreImage.snp.leading).offset(-9)
         }
         
         moreImage.snp.makeConstraints { make in

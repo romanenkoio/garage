@@ -13,7 +13,7 @@ extension RecordView {
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         let record: Record
-        let attachImageVM = BasicImageView.ViewModel(image: UIImage(systemName: "paperclip.circle.fill"))
+        let attachImageVM = BasicImageView.ViewModel(image: UIImage(named: "attach_ic"))
         let moreImageVM = BasicImageView.ViewModel(image: UIImage(named: "more_ic"))
         
         init(record: Record) {

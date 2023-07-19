@@ -22,7 +22,6 @@ final class PastRecordsControllerLayoutManager {
         table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
         table.table.isScrollEnabled = false
-        table.table.contentInset = UIEdgeInsets(top: 20)
         table.table.contentInsetAdjustmentBehavior = .scrollableAxes
         table.backgroundColor = AppColors.background
         return table

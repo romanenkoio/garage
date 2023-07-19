@@ -13,7 +13,7 @@ class DateHeaderView: BasicView {
     private lazy var dateView: BasicView = {
         let view = BasicView()
         view.cornerRadius = 12
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
     
