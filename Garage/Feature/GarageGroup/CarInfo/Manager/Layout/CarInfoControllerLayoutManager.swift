@@ -28,6 +28,7 @@ final class CarInfoControllerLayoutManager {
     var topStackTopConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     var newConstraintConstant: CGFloat = 0
+    let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     lazy var topStack = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
