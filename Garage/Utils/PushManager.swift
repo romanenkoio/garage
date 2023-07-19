@@ -38,12 +38,19 @@ final class PushManager {
     
     func reschedule() {
         removeAll()
-        scheduleStandart()
-        userShedule()
+        let isPushUse = SettingsManager.sh.read(.useReminder) ?? true
+        if isPushUse {
+            scheduleStandart()
+            userShedule()
+        }
     }
     
     func scheduleStandart() {
         [.conditioner, .tiresFall, .tiresSpring, .windshieldWasher].forEach({ create($0) })
+        let isMileageReminder = SettingsManager.sh.read(.mileageReminder) ?? true
+        if isMileageReminder {
+            create(LocalPush.mileageUpdate)
+        }
     }
     
     func userShedule() {
