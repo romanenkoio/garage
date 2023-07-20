@@ -13,6 +13,7 @@ extension SettingsViewController {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
         
         let settingsPoint: [[SettingPoint]] = [
+            [.subscription],
             [.reminders, .mileageReminder],
             [.backup],
             [.contactUs, .version, .language]

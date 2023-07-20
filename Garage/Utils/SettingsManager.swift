@@ -18,6 +18,7 @@ final class SettingsManager {
         case useReminder
         case mileageReminder
         case isFirstLaunch
+        case isPremium
     }
     
     func read(_ key: Keys) -> Bool? {

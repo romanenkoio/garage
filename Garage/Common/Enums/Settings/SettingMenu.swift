@@ -8,6 +8,7 @@
 import UIKit
 
 enum SettingPoint: String, CaseIterable {
+    case subscription
     case reminders = "Получать уведомления"
     case mileageReminder = "Напоминание о пробеге"
     case backup = "Данные"
@@ -17,6 +18,7 @@ enum SettingPoint: String, CaseIterable {
 
     var icon: UIImage? {
         switch self {
+        case .subscription:     return UIImage(systemName: "bell.square.fill")
         case .reminders:        return UIImage(systemName: "bell.square.fill")
         case .mileageReminder:  return UIImage(systemName: "speedometer")
         case .backup:           return UIImage(systemName: "externaldrive.fill.badge.timemachine")
@@ -28,6 +30,7 @@ enum SettingPoint: String, CaseIterable {
     
     var state: Bool {
         switch self {
+        case .subscription:          return false
         case .reminders:            return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
         case .mileageReminder:      return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup, .language:     return false
@@ -39,19 +42,20 @@ enum SettingPoint: String, CaseIterable {
         switch self {
         case .reminders, .mileageReminder:
             return true
-        case .backup, .contactUs, .version, .language:
+        case .backup, .contactUs, .version, .language, .subscription:
             return false
         }
     }
     
     var title: String {
         switch self {
+        case .subscription:     return "Управление подпиской"
         case .reminders:        return "Получать уведомления"
         case .mileageReminder:  return "Напоминание о пробеге"
         case .backup:           return "Данные"
         case .contactUs:        return "Связаться с нами"
         case .version:          return "Версия: \(Bundle.main.version)"
-        case .language:          return "Язык"
+        case .language:         return "Язык"
         }
     }
 }

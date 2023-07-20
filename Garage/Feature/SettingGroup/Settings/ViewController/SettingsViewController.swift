@@ -99,6 +99,8 @@ class SettingsViewController: BasicViewController {
             break
         case .language:
             break
+        case .subscription:
+            break
         }
     }
     
