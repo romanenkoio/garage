@@ -75,7 +75,6 @@ class BasicTextField: UITextField {
         vm.$text
             .sink { [weak self] value in
                 self?.text = value
-                self?.vm?.validate()
             }
             .store(in: &cancellables)
         
