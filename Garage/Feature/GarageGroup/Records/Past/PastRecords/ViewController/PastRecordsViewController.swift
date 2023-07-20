@@ -38,6 +38,7 @@ class PastRecordsViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableViewDelegate = layout.table.table
+        print(tableViewDelegate)
     }
     
     override func viewDidLayoutSubviews() {

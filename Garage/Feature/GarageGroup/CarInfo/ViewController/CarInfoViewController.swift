@@ -17,6 +17,7 @@ class CarInfoViewController: BasicViewController {
     
     // - Property
     private(set) var vm: ViewModel
+    private var firstLayout = true
     
     // - Manager
     var coordinator: Coordinator!
@@ -45,7 +46,6 @@ class CarInfoViewController: BasicViewController {
         layout.titleLabelView.defaultTitle = "Общая информация"
         self.navigationItem.titleView = layout.titleLabelView
         self.vm.pageVM.controllers.first?.tableView.delegate = self
-        vm.segmentVM.setSelected(.paste)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +55,10 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.maxConstraintConstant = layout.carTopInfo.frame.size.height + 40
+        if firstLayout {
+            layout.maxConstraintConstant = layout.carTopInfo.frame.height + 40
+            firstLayout = false
+        }
     }
     
     override func configure() {
@@ -101,9 +104,8 @@ class CarInfoViewController: BasicViewController {
         vm.segmentVM.$selectedIndex
             .sink {[weak self] index in
                 guard let self else { return }
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.021) {
                     self.vm.pageVM.controllers[index].tableView.delegate = self
-                    self.vm.pageVM.setIndexCandidate()
                     let visibleIndexPaths = self.vm.pageVM.controllers[index].tableView.indexPathsForVisibleRows
                     let completelyVisible = visibleIndexPaths?.count != 0
                     self.scroll.isScrollEnabled = completelyVisible
@@ -178,16 +180,16 @@ extension CarInfoViewController: UIScrollViewDelegate {
                    !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
                     
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
-                    self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant+(maxConstraintConstant/2.5))
+                    self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant/1.1)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    
                    
                    
                     UIView.animate(withDuration: 0.3) {[weak self] in
                         self?.view.layoutIfNeeded()
                         self?.layout.carTopInfo.alpha = 0.1
                         self?.contentView.cornerRadius = 0
-                    } completion: {[weak self] _ in
+                    } completion: { [weak self] _ in
+                        
                         guard let self else { return }
                         if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
                             if newConstraintConstant == 0, !layout.titleLabelView.didChangeTitle {
@@ -210,6 +212,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
                     self.layout.topStackTopConstraint?.update(offset: 0)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                    
                     if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
                         if layout.titleLabelView.didChangeTitle {
                             label.layer.add(layout.titleLabelView.animateDown, forKey: "changeTitle")
@@ -217,6 +220,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                             layout.titleLabelView.didChangeTitle = false
                         }
                     }
+                    
                     UIView.animate(withDuration: 0.4) {[weak self] in
                         guard let self else { return }
                         self.view.layoutIfNeeded()
