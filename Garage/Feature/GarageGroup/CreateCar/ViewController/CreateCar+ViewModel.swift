@@ -187,7 +187,7 @@ extension CreateCarViewController {
                 .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    let isEnable = self.validator.isValid && !value
+                    let isEnable = self.validator.isValid && value
                     self.saveButtonVM.buttonVM.isEnabled = isEnable
                 }
                 .store(in: &cancellables)

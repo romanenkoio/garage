@@ -24,6 +24,11 @@ extension BasicTextView {
             self.text = text
         }
         
+        func setObservedText(_ text: String) {
+            self.text = text
+            self.checkedValue = text
+        }
+        
         @discardableResult
         func validate() -> Bool {
             guard !rules.isEmpty else {
@@ -37,6 +42,17 @@ extension BasicTextView {
             isValidSubject.send(result)
 
             return result
+        }
+        
+        func checkChanged(_ value: String) {
+            guard let checkedValue else {
+                self.hasChange = false
+                self.hasChangeSubject.send(false)
+                return
+            }
+            
+            self.hasChange = checkedValue != value
+            self.hasChangeSubject.send(checkedValue != value)
         }
     }
 }

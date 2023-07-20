@@ -56,7 +56,7 @@ extension CreateReminderViewController {
             changeChecker.formHasChange
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && value
                     
                 }
                 .store(in: &cancellables)
@@ -71,7 +71,7 @@ extension CreateReminderViewController {
                 break
             case .edit(let object):
                 shortTypeVM.inputVM.setText(object.short)
-                commenntInputVM.inputVM.text = object.comment.wrapped
+                commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
                 dateInputVM.initDate(object.date)
                 saveButtonVM.buttonVM.title = "Обновить"
                 initChangeChecker()
@@ -81,17 +81,20 @@ extension CreateReminderViewController {
         private func initValidator() {
             validator.setForm([
                 shortTypeVM.inputVM,
-                dateInputVM
+                dateInputVM,
+                commenntInputVM.inputVM
             ])
             
             shortTypeVM.rules = [.noneEmpty]
             dateInputVM.rules = [.noneEmpty]
+            commenntInputVM.inputVM.rules = []
         }
         
         private func initChangeChecker() {
             changeChecker.setForm([
                 shortTypeVM.inputVM,
-                dateInputVM
+                dateInputVM,
+                commenntInputVM.inputVM
             ])
         }
         

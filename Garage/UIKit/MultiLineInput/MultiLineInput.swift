@@ -52,7 +52,7 @@ class MultiLineInput: BasicView {
     
     override func resignFirstResponder() -> Bool {
         let didResignFirstResponder = super.resignFirstResponder()
-     
+        vm?.inputVM.validate()
         return didResignFirstResponder
     }
 

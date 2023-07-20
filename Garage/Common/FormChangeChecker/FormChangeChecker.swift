@@ -34,7 +34,7 @@ class FormChangeChecker {
     
     private func checkAll() {
         let result = checkedData.contains(where: { $0.hasChange })
-        formHasChange.send(!result)
-        hasChange = !result
+        formHasChange.send(result)
+        hasChange = result
     }
 }

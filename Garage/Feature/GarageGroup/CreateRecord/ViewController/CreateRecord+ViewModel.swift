@@ -94,7 +94,7 @@ extension CreateRecordViewController {
                 saveButtonVM.buttonVM.isEnabled = false
             case .edit(let object):
                 dateInputVM.initDate(object.date)
-                commenntInputVM.inputVM.text = object.comment.wrapped
+                commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
                 costInputVM.text = "\(object.cost ?? .zero)"
                 mileageInputVM.text = "\(object.mileage)"
                 shortTypeVM.inputVM.setText(object.short)
@@ -120,18 +120,21 @@ extension CreateRecordViewController {
             mileageInputVM.inputVM.rules = [.noneEmpty, .onlyDigit]
             
             validator.formIsValid
-                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : !self.changeChecker.hasChange)
+                    switch mode {
+                    case .create, .createFrom:
+                        self.saveButtonVM.buttonVM.isEnabled = value
+                    case .edit:
+                        self.saveButtonVM.buttonVM.isEnabled = value && self.changeChecker.hasChange
+                    }
                 }
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && value
                     
                 }
                 .store(in: &cancellables)
