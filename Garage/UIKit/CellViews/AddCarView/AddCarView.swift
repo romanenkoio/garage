@@ -27,7 +27,7 @@ class AddCarView: BasicStackView {
     override func initView() {
         makeLayout()
         makeConstraint()
-        self.backgroundColor = UIColor(hexString: "#F5F5F5")
+        self.backgroundColor = AppColors.background
         self.cornerRadius = 20
         self.alignment = .center
         self.axis = .vertical

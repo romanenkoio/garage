@@ -162,7 +162,12 @@ class BasicImageListView: BasicView {
                 image: image,
                 buttonVM: .init(
                     style: .removeImage,
-                    action: .touchUpInside {[weak self] in self?.viewModel?.items.remove(at: index) }
+                    action: .touchUpInside { [weak self] in
+                        let dialog = Dialog.ViewModel(title: .text("Удалить фото?")) { [weak self] in
+                            self?.viewModel?.items.remove(at: index)
+                        }
+                        self?.showDialog(Dialog(vm: dialog))
+                    }
                 )
             )
         )

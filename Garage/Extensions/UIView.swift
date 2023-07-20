@@ -76,6 +76,13 @@ extension UIView {
         sceneDelegate?.window?.rootViewController?.present(vc, animated: animated)
     }
     
+    func showDialog(_ vc: UIViewController, animated: Bool = true) {
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        sceneDelegate?.window?.rootViewController?.present(vc)
+    }
+    
     func dropShadow(
         color: UIColor,
         shadowOffset: CGSize = CGSize(width: 0, height: 0),

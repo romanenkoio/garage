@@ -30,9 +30,7 @@ extension DocumentView {
                 let endString = endDate.toString(.ddMMyy)
                 dateLabelVM.textValue = .text("С \(startString) по \(endString)")
             }
-            
-            detailsLabelVM.textValue = .text("Смотреть детали")
-            
+    
             guard let days = document.days else { return }
             shouldShowAttention = days < 30 && days > 0
         }

@@ -11,7 +11,7 @@ class CarView: BasicView {
     private lazy var mainStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .vertical
-        stack.backgroundColor = UIColor(hexString: "#F5F5F5")
+        stack.backgroundColor = AppColors.background
         stack.cornerRadius = 20
         stack.edgeInsets = .init(top: 20, horizontal: 20)
         return stack

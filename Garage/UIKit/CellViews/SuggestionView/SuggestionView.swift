@@ -39,7 +39,7 @@ class SuggestionView: BasicView {
     private func makeLayout() {
         self.addSubview(stack)
         stack.addArrangedSubviews([imageView, label])
-        self.backgroundColor = UIColor(hexString: "#F5F5F5")
+        self.backgroundColor = AppColors.background
         self.cornerRadius = 12
         self.layer.borderWidth = 1
     }

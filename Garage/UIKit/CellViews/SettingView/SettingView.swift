@@ -42,7 +42,7 @@ class SettingView: BasicView {
     override func initView() {
         makeLayout()
         makeConstraint()
-        self.backgroundColor = UIColor(hexString: "F5F5F5")
+        self.backgroundColor = AppColors.background
     }
     
     private func makeLayout() {
