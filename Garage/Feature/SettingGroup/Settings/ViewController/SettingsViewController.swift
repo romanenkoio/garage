@@ -102,7 +102,8 @@ class SettingsViewController: BasicViewController {
         case .subscription:
             break
         case .getPremium:
-            break
+            let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
+            SettingsManager.sh.write(value: !isPremium, for: .isPremium)
         }
     }
     

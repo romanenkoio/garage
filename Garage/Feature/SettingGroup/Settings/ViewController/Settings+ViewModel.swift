@@ -12,12 +12,7 @@ extension SettingsViewController {
     final class ViewModel: BasicViewModel {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
         
-        let settingsPoint: [[SettingPoint]] = [
-            [.subscription, .getPremium],
-            [.reminders, .mileageReminder],
-            [.backup],
-            [.contactUs, .version, .language]
-        ]
+        var settingsPoint: [[SettingPoint]] = []
         
         override init() {
             super.init()
@@ -25,6 +20,13 @@ extension SettingsViewController {
         }
         
         func setCells() {
+            let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
+            settingsPoint = [
+                [.subscription, .getPremium(isPremium)],
+                [.reminders, .mileageReminder],
+                [.backup],
+                [.contactUs, .version, .language]
+            ]
             tableVM.setCells(settingsPoint)
         }
     }
