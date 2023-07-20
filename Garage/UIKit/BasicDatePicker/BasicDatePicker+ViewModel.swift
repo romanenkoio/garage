@@ -15,6 +15,7 @@ extension BasicDatePicker {
     
         @Published var minimumDate: Date?
         @Published var maximumDate: Date?
+    
 
         init(
             date: Date? = nil,
@@ -24,6 +25,7 @@ extension BasicDatePicker {
                 text: date?.toString(.ddMMyy) ?? .empty,
                 placeholder: Date().append(.day).toString(.ddMMyy)
             )
+            self.isValid = date != nil
             self.date = date
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
             self.placeholder = placeholder
@@ -46,7 +48,8 @@ extension BasicDatePicker {
         
         func initDate(_ date: Date?) {
             self.date = date
-            self.isValid = true
+            self.isValid = date != nil
+            
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
         }
     }

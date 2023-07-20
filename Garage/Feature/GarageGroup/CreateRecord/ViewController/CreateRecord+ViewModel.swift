@@ -110,16 +110,16 @@ extension CreateRecordViewController {
         private func initValidator() {
             validator.setForm([
                 dateInputVM,
-                costInputVM.inputVM,
                 shortTypeVM.inputVM,
-                mileageInputVM.inputVM,
-                serivesListVM
+                mileageInputVM.inputVM
             ])
             
             shortTypeVM.inputVM.rules = [.noneEmpty]
             mileageInputVM.inputVM.rules = [.noneEmpty, .onlyDigit]
+            dateInputVM.rules = [.noneEmpty]
             
             validator.formIsValid
+                .dropFirst()
                 .sink { [weak self] value in
                     guard let self else { return }
                     switch mode {
