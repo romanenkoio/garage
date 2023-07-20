@@ -127,6 +127,7 @@
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
+		7F759CB52A6972C900A2E012 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F759CB42A6972C900A2E012 /* IQKeyboardManagerSwift */; };
 		7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB22A3F180400F1D22D /* EntityStatus.swift */; };
 		7F820CB82A3F22B500F1D22D /* CheckHasChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB72A3F22B500F1D22D /* CheckHasChangable.swift */; };
 		7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CB92A3F232100F1D22D /* FormChangeChecker.swift */; };
@@ -630,6 +631,7 @@
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F1CC6872A686D9600C7F8B9 /* SPIndicator in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
+				7F759CB52A6972C900A2E012 /* IQKeyboardManagerSwift in Frameworks */,
 				7F3C32F52A5F60D000992706 /* DGCharts in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
@@ -2571,6 +2573,7 @@
 				7FA7F74E2A6579E50089D922 /* SDWebImage */,
 				7F1CC67B2A680E8E00C7F8B9 /* Lottie */,
 				7F1CC6862A686D9600C7F8B9 /* SPIndicator */,
+				7F759CB42A6972C900A2E012 /* IQKeyboardManagerSwift */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -2608,6 +2611,7 @@
 				7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				7F1CC67A2A680E8E00C7F8B9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				7F1CC6852A686D9600C7F8B9 /* XCRemoteSwiftPackageReference "SPIndicator" */,
+				7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -3203,6 +3207,14 @@
 				kind = branch;
 			};
 		};
+		7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 		7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -3251,6 +3263,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F5955F12A2E8B210062A85F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		7F759CB42A6972C900A2E012 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		7FA7F74E2A6579E50089D922 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
