@@ -18,20 +18,20 @@ class BasicImageButton: BasicView {
     private lazy var actionButton = BasicButton()
     private lazy var actionImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleToFill
         view.isUserInteractionEnabled = true
         return view
     }()
    
     private(set) var viewModel: ViewModel?
-    private(set) var buttonStyle: ButtonStyle?
     
     override init() {
         super.init()
         cornerRadius = 8
-        backgroundColor = .primaryGray
+        actionImageView.cornerRadius = 8
         makeLayout()
         makeConstraints()
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -45,18 +45,20 @@ class BasicImageButton: BasicView {
     
     private func makeConstraints() {
         actionImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(actionImageView.snp.width).multipliedBy(1)
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 4))
+            make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 4))
+            make.height.width.equalTo(actionImageView.snp.width)
         }
     }
     
-    private func makeButtonConstraints() {
-        switch buttonStyle {
+    private func makeButtonConstraints(style: ButtonStyle) {
+        switch style {
             case .addImage:
                 actionButton.snp.remakeConstraints { make in
                     make.center.equalToSuperview()
-                    make.height.width.equalTo(35)
+                    make.height.width.equalTo(actionImageView.snp.width)
                 }
+                actionButton.cornerRadius = 8
             case .removeImage:
                 actionButton.snp.remakeConstraints { make in
                     make.trailing.top.equalToSuperview()
@@ -87,8 +89,9 @@ class BasicImageButton: BasicView {
         }
         
         vm.$buttonStyle.sink {[weak self] style in
-            self?.buttonStyle = style
-            self?.makeButtonConstraints()
+            if let style {
+                self?.makeButtonConstraints(style: style)
+            }
         }
             .store(in: &cancellables)
         
@@ -98,6 +101,7 @@ class BasicImageButton: BasicView {
                 target: self,
                 action: #selector(self.tapAction)
             )
+            tap.delegate = self
             self.actionImageView.addGestureRecognizer(tap)
         }
         .store(in: &cancellables)
@@ -117,5 +121,12 @@ class BasicImageButton: BasicView {
         if let action = viewModel?.action {
             action()
         }
+    }
+}
+
+extension BasicImageButton: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        gestureRecognizer.cancelsTouchesInView = false
+        return true
     }
 }

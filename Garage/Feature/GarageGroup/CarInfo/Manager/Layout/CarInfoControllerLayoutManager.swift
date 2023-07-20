@@ -25,7 +25,10 @@ final class CarInfoControllerLayoutManager {
         }
     }
     var animatedScrollConstraint: Constraint?
+    var topStackTopConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
+    var newConstraintConstant: CGFloat = 0
+    let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     lazy var carTopInfo = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
@@ -112,8 +115,9 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
         }
         
-        carTopInfo.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(vc.view.safeAreaLayoutGuide)
+        topStack.snp.makeConstraints { make in
+            topStackTopConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).constraint
+            make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
         segment.snp.makeConstraints { make in

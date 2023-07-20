@@ -42,7 +42,8 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
-        title = "Общая информация"
+        layout.titleLabelView.defaultTitle = "Общая информация"
+        self.navigationItem.titleView = layout.titleLabelView
         self.vm.pageVM.controllers.first?.tableView.delegate = self
         vm.segmentVM.setSelected(.paste)
     }
@@ -177,10 +178,24 @@ extension CarInfoViewController: UIScrollViewDelegate {
                    !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
                     
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
+                    self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant+(maxConstraintConstant/2.5))
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-                    } completion: { _ in
+                    
+                   
+                   
+                    UIView.animate(withDuration: 0.3) {[weak self] in
+                        self?.view.layoutIfNeeded()
+                        self?.layout.topStack.alpha = 0.1
+                        self?.contentView.cornerRadius = 0
+                    } completion: {[weak self] _ in
+                        guard let self else { return }
+                        if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
+                            if newConstraintConstant == 0, !layout.titleLabelView.didChangeTitle {
+                                label.layer.add(layout.titleLabelView.animateUp, forKey: "changeTitle")
+                                label.changedTitle = "\(vm.car.brand) \(vm.car.model)"
+                                layout.titleLabelView.didChangeTitle = true
+                            }
+                        }
                         if scrollView == self.scroll {
                             self.scroll.isScrollEnabled = false
                             self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = true
@@ -193,9 +208,20 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 if newConstraintConstant >= maxConstraintConstant / 2 {
                     self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
+                    self.layout.topStackTopConstraint?.update(offset: 0)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    UIView.animate(withDuration: 0.3) {
+                    if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
+                        if layout.titleLabelView.didChangeTitle {
+                            label.layer.add(layout.titleLabelView.animateDown, forKey: "changeTitle")
+                            label.defaultTitle = layout.titleLabelView.defaultTitle
+                            layout.titleLabelView.didChangeTitle = false
+                        }
+                    }
+                    UIView.animate(withDuration: 0.4) {[weak self] in
+                        guard let self else { return }
                         self.view.layoutIfNeeded()
+                        self.contentView.cornerRadius = 24
+                        self.layout.topStack.alpha = 1
                         self.scroll.isScrollEnabled = true
                         self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
                     }
@@ -209,3 +235,55 @@ extension CarInfoViewController: UIScrollViewDelegate {
     }
 }
 
+class NavigationBarAnimatedTitle: UIView {
+    private var label = UILabel()
+    var changedTitle: String = "" {
+        didSet {
+            label.text = changedTitle
+        }
+    }
+    
+    var defaultTitle: String = "" {
+        didSet {
+            label.text = defaultTitle
+            label.textColor = UIColor.init(hexString: "#3D3D3D")
+            label.textAlignment = .center
+            label.font = UIFont.custom(size: 16, weight: .bold)
+            setNeedsLayout()
+        }
+    }
+    
+    var didChangeTitle = false
+    let animateUp: CATransition = {
+        let animation = CATransition()
+        animation.duration = 0.3
+        animation.type = .push
+        animation.subtype = .fromTop
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        return animation
+    }()
+    
+    let animateDown: CATransition = {
+        let animation = CATransition()
+        animation.duration = 0.4
+        animation.type = .push
+        animation.subtype = .fromBottom
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        return animation
+    }()
+    
+    // MARK: Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        label.frame = self.frame
+        addSubview(label)
+        clipsToBounds = true
+        isUserInteractionEnabled = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
