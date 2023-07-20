@@ -168,7 +168,6 @@ class BasicImageListView: BasicView {
                             self?.viewModel?.items.remove(at: index)
                         }
                         self?.showDialog(Dialog(vm: dialog))
-                    action: .touchUpInside {[weak self] in self?.viewModel?.items.remove(at: index)
                     }
                 )
             )

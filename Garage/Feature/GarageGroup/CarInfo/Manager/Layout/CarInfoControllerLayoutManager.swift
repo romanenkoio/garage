@@ -115,7 +115,7 @@ fileprivate extension CarInfoControllerLayoutManager {
             make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
         }
         
-        topStack.snp.makeConstraints { make in
+        carTopInfo.snp.makeConstraints { make in
             topStackTopConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).constraint
             make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
