@@ -15,6 +15,7 @@ extension RemindersViewController {
 
         let tableVM = BasicTableView.GenericViewModel<Reminder>()
         var completeReminder: ((Reminder) -> Void)?
+        var didLayoutSubviews: ((UITableView)->())?
         
         init(car: Car) {
             self.car = car

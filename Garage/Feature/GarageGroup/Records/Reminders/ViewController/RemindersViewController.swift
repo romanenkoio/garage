@@ -43,7 +43,8 @@ class RemindersViewController: BasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableViewDelegate = layout.table.table        
+//        tableViewDelegate = layout.table.table
+        vm.didLayoutSubviews?(layout.table.table)
     }
 
     override func configure() {
@@ -110,9 +111,9 @@ extension RemindersViewController: UITableViewDelegate {
     }
 }
 
-extension RemindersViewController: PageControllable {
-    var tableViewDelegate: UITableView? {
-        get { tableView }
-        set { tableView = newValue! }
-    }
-}
+//extension RemindersViewController: PageControllable {
+//    var tableViewDelegate: UITableView? {
+//        get { tableView }
+//        set { tableView = newValue! }
+//    }
+//}

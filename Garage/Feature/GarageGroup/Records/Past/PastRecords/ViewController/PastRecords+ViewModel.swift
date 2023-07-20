@@ -15,9 +15,11 @@ extension PastRecordsViewController {
         
         let tableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
+        var didLayoutSubviews: ((UITableView)->())?
         
         init(car: Car) {
             self.car = car
+            
             super.init()
             readRecords()
             tableVM.setupEmptyState(
