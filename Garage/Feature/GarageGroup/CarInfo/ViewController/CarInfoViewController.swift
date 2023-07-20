@@ -74,11 +74,15 @@ class CarInfoViewController: BasicViewController {
                         .init(.text("Запланировать"),
                             action: { [weak self] in
                                 guard let self else { return }
+                                let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
                                 if isPrem {
                                     coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                                } else {
+                                } else if !isPrem, isReminderExist {
                                     coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
 //                                    MARK: open premium
+                                } else if !isPrem, !isReminderExist {
+                                    coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+
                                 }
                                 self.vm.addButtonVM.dismissButtons()
                             }),
