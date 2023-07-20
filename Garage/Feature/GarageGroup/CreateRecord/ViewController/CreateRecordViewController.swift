@@ -48,11 +48,9 @@ class CreateRecordViewController: BasicViewController {
         title = "Изменение записи"
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить запись?"))
-                vm.confirmButton.action = .touchUpInside { [weak self] in
+                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить запись?")) { [weak self] in
                     self?.vm.removeRecord() {
                         [weak self] in
-                        self?.dismiss(animated: true)
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)
                     }
                 }

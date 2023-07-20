@@ -74,8 +74,9 @@ class CreateCarViewController: BasicViewController {
 
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить машину?"))
-                vm.confirmButton.action = .touchUpInside { [weak self] in
+                let vm = Dialog.ViewModel(
+                    title: .text("Вы уверены, что хотите удалить машину?")
+                ) { [weak self] in
                     self?.vm.removeCar() { [weak self] in
                         self?.dismiss(animated: true)
                         self?.coordinator.navigateTo(CommonNavigationRoute.closeToRoot)

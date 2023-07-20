@@ -73,8 +73,9 @@ class CreateServiseViewController: BasicViewController {
         
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить сервис?"))
-                vm.confirmButton.action = .touchUpInside { [weak self] in
+                let vm = Dialog.ViewModel(
+                    title: .text("Вы уверены, что хотите удалить сервис?")
+                ) { [weak self] in
                     self?.vm.removeService() { [weak self] in
                         self?.dismiss(animated: true)
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)

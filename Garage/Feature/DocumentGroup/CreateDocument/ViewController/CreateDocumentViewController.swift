@@ -55,10 +55,8 @@ class CreateDocumentViewController: BasicViewController {
         
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить документ?"))
-                vm.confirmButton.action = .touchUpInside { [weak self] in
+                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить документ?"))  { [weak self] in
                     self?.vm.removeDocument() { [weak self] in
-                        self?.dismiss(animated: true)
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)
                     }
                 }

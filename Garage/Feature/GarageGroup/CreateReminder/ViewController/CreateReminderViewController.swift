@@ -47,11 +47,9 @@ class CreateReminderViewController: BasicViewController {
         title = "Изменение напоминания"
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить напоминание?"))
-                vm.confirmButton.action = .touchUpInside { [weak self] in
+                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить напоминание?")) { [weak self] in
                     self?.vm.removeRecord() {
                         [weak self] in
-                        self?.dismiss(animated: true)
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)
                     }
                 }
