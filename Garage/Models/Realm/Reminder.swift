@@ -56,6 +56,7 @@ final class Reminder: Object, Codable {
     
     func setPush() {
         PushManager.sh.create(LocalPush(reminder: self))
+        PushManager.sh.reschedule()
     }
     
     func completeReminder() {
