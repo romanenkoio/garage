@@ -32,6 +32,7 @@ class FormValidator {
     }
     
     private func validateAll() {
+        validatedData.forEach({ $0.silentVaidate() })
         let result = validatedData.allSatisfy( { $0.isValid } )
         formIsValid.send(result)
         isValid = result

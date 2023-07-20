@@ -119,7 +119,6 @@ extension CreateRecordViewController {
             dateInputVM.rules = [.noneEmpty]
             
             validator.formIsValid
-                .dropFirst()
                 .sink { [weak self] value in
                     guard let self else { return }
                     switch mode {

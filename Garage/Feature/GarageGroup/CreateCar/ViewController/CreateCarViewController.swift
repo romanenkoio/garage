@@ -124,7 +124,7 @@ class CreateCarViewController: BasicViewController {
             coordinator.navigateTo(CommonNavigationRoute.presentOnTop(alertController))
         }
         
-        vm.isLoadind.sink { [weak self] value in
+        vm.isLoadind.dropFirst().sink { [weak self] value in
             value ? self?.showLoader() : self?.dismissLoader()
         }
         .store(in: &cancellables)

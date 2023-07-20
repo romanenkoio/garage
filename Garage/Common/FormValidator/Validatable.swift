@@ -14,6 +14,7 @@ protocol Validatable {
     var isValidSubject: PassthroughSubject<Bool, Never> { get set }
 
     func validate() -> Bool
+    func silentVaidate()
 }
 
 extension Validatable {

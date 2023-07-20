@@ -87,5 +87,15 @@ extension BasicList {
 
             return result
         }
+        
+        func silentVaidate() {
+            guard !rules.isEmpty else {
+                isValid = true
+                return
+            }
+
+            let result = rules.allSatisfy({ validate(title, with: $0) })
+            isValid = result
+        }
     }
 }

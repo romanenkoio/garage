@@ -29,13 +29,15 @@ extension CreateServiseViewController {
             nameInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "МегаСварщик"),
-                descriptionVM: .init(.text("Название"))
+                descriptionVM: .init(.text("Название")),
+                isRequired: true
             )
             
             phoneInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "+375257776655"),
-                descriptionVM: .init(.text("Номер телефона"))
+                descriptionVM: .init(.text("Номер телефона")),
+                isRequired: true
             )
             
             specialisationInputVM = .init(
@@ -47,7 +49,8 @@ extension CreateServiseViewController {
             adressInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Макаёнка 43"),
-                descriptionVM: .init(.text("Адрес"))
+                descriptionVM: .init(.text("Адрес")),
+                isRequired: true
             )
             
             commenntInputVM = .init(
@@ -121,16 +124,21 @@ extension CreateServiseViewController {
         private func initValidator() {
             validator.setForm([
                 nameInputVM.inputVM,
-                adressInputVM.inputVM
+                phoneInputVM.inputVM
             ])
             
             nameInputVM.rules = [.noneEmpty]
             phoneInputVM.rules = [.noneEmpty]
             
             validator.formIsValid
-                .removeDuplicates()
                 .sink { [weak self] value in
-                    self?.saveButtonVM.buttonVM.isEnabled = value
+                    guard let self else { return }
+                    switch mode {
+                    case .create, .createFrom:
+                        self.saveButtonVM.buttonVM.isEnabled = value
+                    case .edit:
+                        self.saveButtonVM.buttonVM.isEnabled = value && self.changeChecker.hasChange
+                    }
                 }
                 .store(in: &cancellables)
             
@@ -138,7 +146,7 @@ extension CreateServiseViewController {
                 .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && value
                     
                 }
                 .store(in: &cancellables)
@@ -154,7 +162,7 @@ extension CreateServiseViewController {
             self.adressInputVM.text = service.adress
             self.nameInputVM.text = service.name
             self.specialisationInputVM.text = service.specialisation
-            self.commenntInputVM.inputVM.text = service.comment.wrapped
+            self.commenntInputVM.inputVM.setObservedText(service.comment.wrapped)
             
             changeChecker.setForm([
                 phoneInputVM.inputVM,

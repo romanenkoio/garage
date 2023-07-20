@@ -13,7 +13,7 @@ extension BasicTextField {
         var hasChangeSubject: CurrentValueSubject<Bool, Never> = .init(false)
         var checkedValue: String?
         
-        var isValid: Bool = true
+        var isValid: Bool = false
         var isValidSubject: PassthroughSubject<Bool, Never> = .init()
         var rules: [ValidationRule] = []
         
@@ -48,6 +48,16 @@ extension BasicTextField {
             isValidSubject.send(result)
 
             return result
+        }
+        
+        func silentVaidate() {
+            guard !rules.isEmpty else {
+                isValid = true
+                return
+            }
+
+            let result = rules.allSatisfy({ validate(text, with: $0) })
+            isValid = result
         }
         
         func setText(_ text: String) {
