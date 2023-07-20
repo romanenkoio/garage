@@ -101,6 +101,8 @@ class SettingsViewController: BasicViewController {
             break
         case .subscription:
             break
+        case .getPremium:
+            break
         }
     }
     
