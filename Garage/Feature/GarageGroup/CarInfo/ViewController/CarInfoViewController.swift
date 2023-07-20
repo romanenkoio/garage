@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class CarInfoViewController: BasicViewController {
-
+    
     // - UI
     typealias Coordinator = CarInfoControllerCoordinator
     typealias Layout = CarInfoControllerLayoutManager
@@ -21,6 +21,11 @@ class CarInfoViewController: BasicViewController {
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
+    private lazy var tableView = UITableView() {
+        didSet {
+            tableView.delegate = self
+        }
+    }
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -30,7 +35,7 @@ class CarInfoViewController: BasicViewController {
     deinit {
         print("deinit CarInfoViewController")
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,7 +49,6 @@ class CarInfoViewController: BasicViewController {
         scroll.delegate = self
         layout.titleLabelView.defaultTitle = "Общая информация"
         self.navigationItem.titleView = layout.titleLabelView
-        self.vm.pageVM.controllers.first?.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +67,6 @@ class CarInfoViewController: BasicViewController {
         configureCoordinator()
         configureLayoutManager()
     }
-
     
     override func binding() {
         layout.segment.setViewModel(vm.segmentVM)
@@ -73,43 +76,39 @@ class CarInfoViewController: BasicViewController {
         let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
-                        .init(.text("Запланировать"),
-                            action: { [weak self] in
-                                guard let self else { return }
-                                let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
-                                if isPrem {
-                                    coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                                } else if !isPrem, isReminderExist {
-                                    coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-//                                    MARK: open premium
-                                } else if !isPrem, !isReminderExist {
-                                    coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-
-                                }
-                                self.vm.addButtonVM.dismissButtons()
-                            }),
+                    .init(.text("Запланировать"),
+                          action: { [weak self] in
+                              guard let self else { return }
+                              let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
+                              if isPrem {
+                                  coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                              } else if !isPrem, isReminderExist {
+                                  coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                                  //                                    MARK: open premium
+                              } else if !isPrem, !isReminderExist {
+                                  coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                                  
+                              }
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
                   image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
                     .init(.text("Добавить запись"),
-                    action: { [weak self] in
-                        guard let self else { return }
-                        coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-                        self.vm.addButtonVM.dismissButtons()
-                    }),
-                image: UIImage(named: "pencil_fb_ic"))
+                          action: { [weak self] in
+                              guard let self else { return }
+                              coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(named: "pencil_fb_ic"))
         ]
         
-        vm.segmentVM.$selectedIndex
-            .sink {[weak self] index in
-                guard let self else { return }
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.021) {
-                    self.vm.pageVM.controllers[index].tableView.delegate = self
-                    let visibleIndexPaths = self.vm.pageVM.controllers[index].tableView.indexPathsForVisibleRows
-                    let completelyVisible = visibleIndexPaths?.count != 0
-                    self.scroll.isScrollEnabled = completelyVisible
-                }
-            }
-            .store(in: &cancellables)
+        vm.$pageVCTableView.sink {[weak self] tableView in
+            guard let self,
+                  let tableView else { return }
+            self.tableView = tableView
+            self.scroll.isScrollEnabled = !tableView.isHidden
+        }
+        .store(in: &cancellables)
         
         vm.remindersVM.completeReminder = { [weak self] reminder in
             guard let self else { return }
@@ -130,7 +129,7 @@ class CarInfoViewController: BasicViewController {
 // MARK: - Configure
 
 extension CarInfoViewController {
-
+    
     private func configureCoordinator() {
         coordinator = CarInfoControllerCoordinator(vc: self)
     }
@@ -143,14 +142,14 @@ extension CarInfoViewController {
 extension CarInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch vm.segmentVM.selectedItem {
-            
-        case .paste:
+                
+            case .paste:
                 guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
                 coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
-         
-        case .future:
-            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
-            coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
+                
+            case .future:
+                guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
 }
@@ -174,14 +173,13 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 
-                if newConstraintConstant < maxConstraintConstant,
-                   !self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.visibleCells.isEmpty {
+                if newConstraintConstant < maxConstraintConstant, !tableView.isHidden {
                     
                     self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
                     self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant/1.1)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                   
-                   
+                    
+                    
                     UIView.animate(withDuration: 0.3) {[weak self] in
                         self?.view.layoutIfNeeded()
                         self?.layout.carTopInfo.alpha = 0.1
@@ -198,7 +196,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                         }
                         if scrollView == self.scroll {
                             self.scroll.isScrollEnabled = false
-                            self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = true
+                            self.tableView.isScrollEnabled = true
                         }
                     }
                 }
@@ -206,7 +204,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 
-                if newConstraintConstant >= maxConstraintConstant / 2 {
+                if newConstraintConstant >= maxConstraintConstant / 2, !tableView.isHidden {
                     self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
                     self.layout.topStackTopConstraint?.update(offset: 0)
                     self.scroll.contentOffset.y = self.layout.previousContentOffsetY
@@ -225,14 +223,14 @@ extension CarInfoViewController: UIScrollViewDelegate {
                         self.contentView.cornerRadius = 24
                         self.layout.carTopInfo.alpha = 1
                         self.scroll.isScrollEnabled = true
-                        self.vm.pageVM.controllers[self.vm.pageVM.index].tableView.isScrollEnabled = false
+                        self.tableView.isScrollEnabled = false
                     }
                 }
+                
+                //Процент завершения анимации
+                //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+                //            layout.previousContentOffsetY = scrollView.contentOffset.y
             }
-            
-            //Процент завершения анимации
-            //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-            //            layout.previousContentOffsetY = scrollView.contentOffset.y
         }
     }
 }

@@ -32,13 +32,13 @@ class PastRecordsViewController: BasicViewController {
         disableScrollView()
 
         layout.table.table.estimatedRowHeight = UITableView.automaticDimension
-        tableViewDelegate = layout.table.table
+//        tableViewDelegate = layout.table.table
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableViewDelegate = layout.table.table
-        print(tableViewDelegate)
+//        tableViewDelegate = layout.table.table
+        vm.didLayoutSubviews?(layout.table.table)
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,7 +53,7 @@ class PastRecordsViewController: BasicViewController {
 
     override func binding() {
         layout.table.setViewModel(vm.tableVM)
-        tableViewDelegate = layout.table.table
+//        tableViewDelegate = layout.table.table
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cells  in
@@ -107,12 +107,4 @@ extension PastRecordsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension PastRecordsViewController: UITableViewDelegate {
-}
-
-extension PastRecordsViewController: PageControllable {
-    var tableViewDelegate: UITableView? {
-        get { tableView }
-        set { tableView = newValue! }
-    }
-
 }

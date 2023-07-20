@@ -17,8 +17,6 @@ class BasicViewController: UIViewController {
     private(set) var viewModel = BasicControllerModel()
     private(set) var isWillAppeared: Bool = false
     
-    lazy var tableView = UITableView()
-    
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
         return scroll

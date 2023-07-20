@@ -20,7 +20,7 @@ extension CarInfoViewController {
         var pastRecordsVM: PastRecordsViewController.ViewModel
         var remindersVM: RemindersViewController.ViewModel
         let addButtonVM = FloatingButtonView.ViewModel()
-        
+        @Published var pageVCTableView: UITableView?
         @Published var logo: UIImage?
         
         init(car: Car) {
@@ -43,7 +43,15 @@ extension CarInfoViewController {
             
             carTopInfoVM = .init(car: self.car)
             super.init()
-         
+            
+            pastRecordsVM.didLayoutSubviews = {[weak self] tableView in
+                self?.pageVCTableView = tableView
+            }
+            
+            remindersVM.didLayoutSubviews = {[weak self] tableView in
+                self?.pageVCTableView = tableView
+            }
+            
             initFields()
             
             pageVM.$index.removeDuplicates().sink { [weak self] value in
@@ -56,6 +64,14 @@ extension CarInfoViewController {
                 self?.pageVM.index = value
             }
             .store(in: &cancellables)
+            
+//            remindersVM.didLayoutSubviews = {[weak self] in
+//                self?.didPageVcLayoutSubviews?()
+//            }
+            
+//            pastRecordsVM.didLayoutSubviews = {[weak self] in
+//                self?.didPageVcLayoutSubviews?()
+//            }
         }
         
         func readCar() {
