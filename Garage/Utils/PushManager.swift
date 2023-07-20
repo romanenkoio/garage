@@ -132,6 +132,14 @@ struct LocalPush {
 }
 
 extension LocalPush {
+    static let test = LocalPush(
+        id: "tires.test",
+        title: "Просто хотим напомнить",
+        subtitle: "Test",
+        date: Date().append(.minute, value: 2).components,
+        repeats: true
+    )
+    
     static let tiresSpring = LocalPush(
         id: "tires.spring",
         title: "Просто хотим напомнить",
