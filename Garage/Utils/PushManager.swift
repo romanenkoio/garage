@@ -75,8 +75,8 @@ final class PushManager {
         content.sound = UNNotificationSound.default
         
         var date = push.date
-        date.hour = 14
-        date.minute = 15
+        date.hour = 9
+        date.minute = 0
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: push.repeats)
         let request = UNNotificationRequest(identifier: push.id, content: content, trigger: trigger)
