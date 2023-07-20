@@ -87,20 +87,6 @@ class RecordView: BasicView {
             make.height.width.equalTo(28)
             make.trailing.equalToSuperview().offset(-30)
         }
-        
-//        stack.snp.makeConstraints { make in
-//            make.leading.top.bottom.equalToSuperview()
-//            make.trailing.equalTo(attachImage.snp.leading).offset(10)
-//        }
-//        moreImage.snp.makeConstraints { make in
-//            make.width.height.equalTo(28)
-//            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 30))
-//            make.centerY.equalTo(stack)
-//        }
-//
-    
-        
-     
     }
     
     func setViewModel(_ vm: ViewModel) {

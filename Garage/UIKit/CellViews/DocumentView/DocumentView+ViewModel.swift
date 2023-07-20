@@ -13,14 +13,13 @@ extension DocumentView {
         let dateLabelVM = BasicLabel.ViewModel()
         let detailsLabelVM = BasicLabel.ViewModel()
         let detailVM = DetailsView.ViewModel()
-        let documentPhotoCollectionVM: CarPhotoCollection.ViewModel
+        let attachImageVM = BasicImageView.ViewModel(image: UIImage(named: "attach_ic"))
+        let moreImageVM = BasicImageView.ViewModel(image: UIImage(named: "more_ic"))
         @Published var shouldShowAttention = false
-        @Published var cells: [UIImage] = []
         
         unowned let document: Document
         
         init(document: Document) {
-            documentPhotoCollectionVM = .init(images: document.photos)
             self.document = document
             super.init()
             typeLabelVM.textValue = .text(document.rawType)
@@ -30,6 +29,9 @@ extension DocumentView {
                 let endString = endDate.toString(.ddMMyy)
                 dateLabelVM.textValue = .text("С \(startString) по \(endString)")
             }
+            let photoCount = RealmManager<Photo>().read()
+                .filter({ $0.documentId == document.id })
+            attachImageVM.isHidden = photoCount.isEmpty
     
             guard let days = document.days else { return }
             shouldShowAttention = days < 30 && days > 0
