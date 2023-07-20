@@ -12,16 +12,14 @@ import SnapKit
 final class CarInfoControllerLayoutManager {
     
     private unowned let vc: CarInfoViewController
-    private var isFirstLayoutSubviews = true
+    private(set) var isFirstLayoutSubviews = true
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
-            if isFirstLayoutSubviews {
-                setupScrollView()
-                remakeConstraintsAfterLayout()
-                vc.view.layoutIfNeeded()
-                isFirstLayoutSubviews = false
-            }
+            setupScrollView()
+            remakeConstraintsAfterLayout()
+            vc.view.layoutIfNeeded()
+            isFirstLayoutSubviews = false
         }
     }
     var animatedScrollConstraint: Constraint?

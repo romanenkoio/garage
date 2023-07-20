@@ -17,7 +17,6 @@ class CarInfoViewController: BasicViewController {
     
     // - Property
     private(set) var vm: ViewModel
-    private var firstLayout = true
     
     // - Manager
     var coordinator: Coordinator!
@@ -55,9 +54,8 @@ class CarInfoViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if firstLayout {
+        if layout.isFirstLayoutSubviews {
             layout.maxConstraintConstant = layout.carTopInfo.frame.height + 40
-            firstLayout = false
         }
     }
     
