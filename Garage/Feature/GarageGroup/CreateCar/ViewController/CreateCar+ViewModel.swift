@@ -173,7 +173,6 @@ extension CreateCarViewController {
             brandFieldVM.rules = [.noneEmpty]
             modelFieldVM.rules = [.noneEmpty]
             mileageFieldVM.rules = [.noneEmpty]
-            winFieldVM.rules = [.vin]
             
             validator.formIsValid
                 .removeDuplicates()
@@ -194,8 +193,11 @@ extension CreateCarViewController {
                 .store(in: &cancellables)
             
             winFieldVM.inputVM.isValidSubject.sink { [weak self] value in
-                self?.winFieldVM.actionImageVM?.isEnabled = value
-                self?.decodeVIN()
+                guard let self else { return }
+                self.winFieldVM.actionImageVM?.isEnabled = value
+                if !self.winFieldVM.text.isEmpty {
+                    self.decodeVIN()
+                }
             }
             .store(in: &cancellables)
         }

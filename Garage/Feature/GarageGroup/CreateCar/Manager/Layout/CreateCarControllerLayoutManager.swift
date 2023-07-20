@@ -25,28 +25,33 @@ final class CreateCarControllerLayoutManager {
     
     lazy var brandField: BasicInputView = {
         let field = BasicInputView()
+        field.tag = 1
         return field
     }()
     
     lazy var modelField: BasicInputView = {
         let field = BasicInputView()
+        field.tag = 2
         return field
     }()
     
     lazy var winField: BasicInputView = {
         let field = BasicInputView()
+        field.tag = 0
         return field
     }()
     
     lazy var yearField: BasicInputView = {
         let field = BasicInputView()
         field.textField.setMode(.digit)
+        field.tag = 3
         return field
     }()
     
     lazy var mileageField: BasicInputView = {
         let field = BasicInputView()
         field.textField.setMode(.digit)
+        field.tag = 4
         return field
     }()
     
@@ -77,8 +82,8 @@ fileprivate extension CreateCarControllerLayoutManager {
             winField,
             brandField,
             modelField,
-            yearField,
             mileageField,
+            yearField,
             saveButton
         ])
     }
