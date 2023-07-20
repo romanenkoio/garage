@@ -56,6 +56,14 @@ final class PushManager {
     func userShedule() {
         let reminders: [Reminder] = RealmManager().read().filter({ !$0.isDone })
         reminders.forEach({ create(LocalPush(reminder: $0))})
+        
+        let documents: [Document] = RealmManager().read().filter({ $0.endDate != nil })
+        documents.forEach({ create(LocalPush(document: $0))})
+        Task {
+            let all = await readAll()
+            print("Push count: \(all.count)")
+        }
+        
     }
     
     func create(_ push: LocalPush) {
@@ -124,9 +132,17 @@ struct LocalPush {
     
     init(reminder: Reminder) {
         id = reminder.id
-        title = "Вы просили на помнить"
+        title = "Вы просили напомнить"
         subtitle = reminder.description
         date = reminder.date.components
+        repeats = false
+    }
+    
+    init(document: Document) {
+        id = document.id
+        title = "Вы просили напомнить"
+        subtitle = "Истекает срок действия \(document.rawType)"
+        date = document.endDate!.append(.day, value: -15).components
         repeats = false
     }
 }
