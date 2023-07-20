@@ -121,7 +121,13 @@ extension GarageViewController: UITableViewDataSource {
 extension GarageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == vm.tableVM.cells.count {
-            self.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
+            let cars: [Car] = RealmManager().read()
+            if !isPrem, cars.count >= 1 {
+//                show premium
+            } else {
+                self.coordinator.navigateTo(GarageNavigationRoute.createCar)
+            }
             return
         }
         

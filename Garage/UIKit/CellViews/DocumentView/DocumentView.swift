@@ -139,7 +139,7 @@ class DocumentView: BasicView {
             case 0...30:
                 self.dateLabel.textColor = AppColors.warning
                 dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
-            case 30...60:
+            case _ where days <= 0:
                 self.dateLabel.textColor = AppColors.error
                 dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "error_ic"))
             default:

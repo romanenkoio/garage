@@ -9,17 +9,16 @@ import UIKit
 
 class AddCarView: BasicStackView {
     
-    let imageButton: UIImageView = {
-       let button = UIImageView()
-        button.image = UIImage(named: "plus_car_ic")
-        button.tintColor = UIColor(hexString: "#ADADAD")
+    let imageButton: BasicImageView = {
+       let button = BasicImageView()
+        button.tintColor = AppColors.tabbarIcon
         return button
     }()
     
     let textLabel: BasicLabel = {
         let label = BasicLabel()
         label.font = .custom(size: 14, weight: .semibold)
-        label.textColor = UIColor(hexString: "#ADADAD")
+        label.textColor = AppColors.tabbarIcon
         label.textAlignment = .center
         return label
     }()
@@ -47,6 +46,7 @@ class AddCarView: BasicStackView {
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
+        imageButton.setViewModel(vm.imageVM)
         textLabel.setViewModel(vm.textLabelVM)
     }
 }

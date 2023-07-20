@@ -37,7 +37,7 @@ final class Document: Object, Codable {
     
     var isOverdue: Bool {
         guard let days else { return false }
-        if days < 30 && days > 0 {
+        if days <= 0 {
             return true
         }
         return false

@@ -68,15 +68,20 @@ class CarInfoViewController: BasicViewController {
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.carTopInfo.setViewModel(vm.carTopInfoVM)
         
+        let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
                         .init(.text("Запланировать"),
                             action: { [weak self] in
                                 guard let self else { return }
-                                coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                                if isPrem {
+                                    coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
+                                } else {
+//                                    MARK: open premium
+                                }
                                 self.vm.addButtonVM.dismissButtons()
                             }),
-                image: UIImage(named: "checkmark_fb_ic")),
+                  image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
                     .init(.text("Добавить запись"),
                     action: { [weak self] in

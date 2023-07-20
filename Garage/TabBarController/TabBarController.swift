@@ -52,7 +52,7 @@ final class TabBarController: UITabBarController {
         
 //        document badge
         let documents: [Document] = RealmManager().read()
-        let documentsBadge = documents.compactMap({ $0.days }).filter({ $0 < 30 && $0 > 0 })
+        let documentsBadge = documents.compactMap({ $0.days }).filter({ $0 <= 0 })
         self.viewControllers?[safe: 1]?.tabBarItem.badgeValue = documentsBadge.isEmpty ? nil : "\(documentsBadge.count)"
 
         UIApplication.shared.applicationIconBadgeNumber = carBadge.count + documentsBadge.count
