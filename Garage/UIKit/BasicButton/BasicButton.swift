@@ -81,7 +81,7 @@ class BasicButton: UIButton {
                 backgroundColor = .primaryGray
                 setTitleColor(.primaryBlue, for: .normal)
             case .addImage:
-                backgroundColor = .clear
+                backgroundColor = .primaryGray
                 tintColor = .gray
                 setImage(UIImage(named: "plus"), for: .normal)
             case .removeImage:
@@ -111,12 +111,14 @@ class BasicButton: UIButton {
             backgroundColor = value ? .primaryBlue : .primaryBlue.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
-            case .basicDarkTitle, .basicLightTitle, .addImage, .removeImage:
+            case .basicDarkTitle, .basicLightTitle, .removeImage:
                 backgroundColor = .clear
             case .popup(let color):
                 backgroundColor = color ?? (value ? .primaryGray : .secondaryGray)
             case .complete:
                 backgroundColor = UIColor(hexString: "#1C9837")
+            case .addImage:
+                backgroundColor = value ? .primaryGray : .secondaryGray
         }
     }
     

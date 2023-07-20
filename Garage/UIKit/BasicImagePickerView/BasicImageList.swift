@@ -24,8 +24,9 @@ class BasicImageListView: BasicView {
     private lazy var imageStack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .horizontal
-        stack.spacing = 10
-        stack.distribution = .fillEqually
+        stack.spacing = 1
+        stack.distribution = .fill
+        stack.edgeInsets = UIEdgeInsets(horizontal: -4)
         return stack
     }()
     
@@ -162,7 +163,9 @@ class BasicImageListView: BasicView {
                 image: image,
                 buttonVM: .init(
                     style: .removeImage,
-                    action: .touchUpInside {[weak self] in self?.viewModel?.items.remove(at: index) }
+                    action: .touchUpInside {[weak self] in self?.viewModel?.items.remove(at: index)
+                    
+                    }
                 )
             )
         )
@@ -183,7 +186,10 @@ class BasicImageListView: BasicView {
                     action: .touchUpInside { [weak self] in
                         guard let self else { return }
                         self.presentOnRootViewController(self.alertController, animated: true)
-                    })))
+                    }
+                )
+            )
+        )
 
         items.append(imageView)
         imageStack.addArrangedSubview(imageView)
