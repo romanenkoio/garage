@@ -50,17 +50,10 @@ class ReminderView: BasicView {
         return label
     }()
     
-    private lazy var completeStack: BasicStackView = {
-        let stack = BasicStackView()
-        stack.axis = .horizontal
-        stack.backgroundColor = .clear
-        return stack
-    }()
-    
     private lazy var completeButton = BasicButton()
     
-    var vm: ViewModel!
-    
+    private(set) var vm: ViewModel?
+
     override func initView() {
         makeLayout()
         makeConstraint()

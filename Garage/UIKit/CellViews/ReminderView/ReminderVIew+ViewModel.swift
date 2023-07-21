@@ -16,7 +16,7 @@ extension ReminderView {
 
         var reminder: Reminder
 
-        init(reminder: Reminder, completeAction: ((Reminder) -> Void)?) {
+        init(reminder: Reminder) {
             infoLabelVM.textValue = .text(reminder.short)
             dateLabelVM.textValue = .text(reminder.date.toString(.ddMMyy))
             self.reminder = reminder

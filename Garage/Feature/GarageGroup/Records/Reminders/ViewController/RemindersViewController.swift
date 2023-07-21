@@ -81,25 +81,14 @@ extension RemindersViewController {
 
 // MARK: - UITableViewDataSource
 extension RemindersViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return vm.headers.count
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells[section].count + 1
+        return vm.tableVM.cells.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<DateHeaderView>.self, for: indexPath) else { return .init() }
-            pastRecordCell.mainView.setViewModel(vm.headers[indexPath.section])
-            pastRecordCell.selectionStyle = .none
-            return pastRecordCell
-        }
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<ReminderView>.self, for: indexPath) else { return .init()}
         
-        let reminderVM = vm.tableVM.cells[indexPath.section][indexPath.row - 1]
+        let reminderVM = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.row])
         reminderVM.completeButton.action = .touchUpInside { [weak self] in
             self?.vm.completeReminder?(reminderVM.reminder)
         }

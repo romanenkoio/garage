@@ -139,7 +139,6 @@ class SuggestionInput<T: Equatable>: BasicInputView {
             view.setViewModel(.init(labelVM: .init(
                 .text(viewModel.titles[index]),
                 action: {
-                    print("Категория \(index)")
                     self?.viewModel?.setSelected(item)
                 }
             ), image: viewModel.icons[safe: index]))

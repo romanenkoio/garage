@@ -13,8 +13,7 @@ extension RemindersViewController {
         
         private(set) unowned var car: Car
 
-        let tableVM = BasicTableView.SectionViewModel<ReminderView.ViewModel>()
-        private(set) var headers: [DateHeaderView.ViewModel] = .empty
+        let tableVM = BasicTableView.GenericViewModel<Reminder>()
         var completeReminder: ((Reminder) -> Void)?
         var didLayoutSubviews: ((UITableView)->())?
         
@@ -33,19 +32,8 @@ extension RemindersViewController {
         }
         
         func readReminders() {
-            let reminders = car.reminders.filter({ !$0.isDone })
-            let dates = Set(reminders.compactMap{ $0.date }).sorted(by: <)
-            let components = Set(dates.compactMap({ $0.recordComponents }))
-
-            var cells: [[ReminderView.ViewModel]] = .empty
-            components.forEach { component in
-                let setionCells = reminders.filter({ $0.date.recordComponents == component })
-                cells.append(setionCells.map({ .init(reminder: $0, completeAction: nil)}))
-            }
-           
-            headers = components.compactMap({ DateHeaderView.ViewModel(date: $0) })
-            
-            tableVM.setCells(cells)
+            let reminders = car.reminders.filter({ !$0.isDone })            
+            tableVM.setCells(reminders)
         }
     }
 }
