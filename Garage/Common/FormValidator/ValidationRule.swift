@@ -27,7 +27,7 @@ enum ValidationRule {
         case .onlyDigit:                    return "[0-9.]*"
         case .onlyLetter:                   return "[a-Z]*"
         case .password:                     return "[0-9a-zA-Z.@!&*^%$#@_]{6,20}"
-        case .noneEmpty:                    return "^(?!\\s*$).+"
+        case .noneEmpty:                    return "(.|\\s)*\\S(.|\\s)*"
         case .vin:                          return "(?=.*\\d|[A-Z])(?=.*[A-Z])[A-Z0-9]{17}"
             
         }

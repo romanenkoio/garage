@@ -175,16 +175,18 @@ extension CreateCarViewController {
             mileageFieldVM.rules = [.noneEmpty]
             
             validator.formIsValid
-                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
-                    let isEnable = value && (mode == .create ? true : self.changeChecker.hasChange)
-                    self.saveButtonVM.buttonVM.isEnabled = isEnable
+                    switch mode {
+                    case .create, .createFrom:
+                        self.saveButtonVM.buttonVM.isEnabled = value
+                    case .edit:
+                        self.saveButtonVM.buttonVM.isEnabled = value && self.changeChecker.hasChange
+                    }
                 }
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     let isEnable = self.validator.isValid && value
@@ -294,18 +296,19 @@ extension CreateCarViewController {
         }
         
         func getLogoBy(_ brand: String) {
-            Task { @MainActor in
+            Task {
                 do {
-                    self.isLoadind.send(true)
-                    guard let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else { return }
+                    guard !brand.isEmpty,
+                            let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else {
+                        return
+                    }
+                    print("Start load image")
                     let request = URLRequest(url: url)
                     let (data, _) = try await URLSession.shared.data(for: request)
                     if let image = UIImage(data: data) {
                         self.logoImage = image
                     }
-                    self.isLoadind.send(false)
                 } catch let error {
-                    self.isLoadind.send(false)
                     print(error)
                 }
             }

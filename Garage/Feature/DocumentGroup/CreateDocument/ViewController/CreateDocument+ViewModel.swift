@@ -65,16 +65,20 @@ extension CreateDocumentViewController {
             validator.formIsValid
                 .sink { [weak self] value in
                     guard let self else { return }
-
-                    self.saveButtonVM.buttonVM.isEnabled = value && (mode == .create ? true : self.changeChecker.hasChange)
-            }
-            .store(in: &cancellables)
+                    switch mode {
+                    case .create, .createFrom:
+                        self.saveButtonVM.buttonVM.isEnabled = value
+                    case .edit:
+                        self.saveButtonVM.buttonVM.isEnabled = value && self.changeChecker.hasChange
+                    }
+                }
+                .store(in: &cancellables)
             
             changeChecker.formHasChange
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] value in
                     guard let self else { return }
-                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && !value
+                    self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && value
 
                 }
                 .store(in: &cancellables)

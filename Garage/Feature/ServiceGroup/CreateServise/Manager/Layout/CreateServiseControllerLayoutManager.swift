@@ -56,8 +56,8 @@ fileprivate extension CreateServiseControllerLayoutManager {
         fieldStack.addArrangedSubviews([
             nameInput,
             phoneInput,
-            specialisationInput,
             adressInput,
+            specialisationInput,
             commentInput,
             saveButton
         ])

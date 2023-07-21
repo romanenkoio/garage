@@ -44,6 +44,16 @@ extension BasicTextView {
             return result
         }
         
+        func silentVaidate() {
+            guard !rules.isEmpty else {
+                isValid = true
+                return
+            }
+
+            let result = rules.allSatisfy({ validate(text, with: $0) })
+            isValid = result
+        }
+        
         func checkChanged(_ value: String) {
             guard let checkedValue else {
                 self.hasChange = false

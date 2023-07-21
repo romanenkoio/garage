@@ -36,7 +36,7 @@ extension BasicDatePicker {
             self.date = date
             self.text = stringDate
             
-            guard let date else {
+            guard date != nil else {
                 hasChange = checkedValue != stringDate
                 hasChangeSubject.send(checkedValue != stringDate)
                 return
@@ -48,6 +48,7 @@ extension BasicDatePicker {
         
         func initDate(_ date: Date?) {
             self.date = date
+            self.text = date?.withoutTime.toString(.ddMMyy) ?? .empty
             self.isValid = date != nil
             
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
