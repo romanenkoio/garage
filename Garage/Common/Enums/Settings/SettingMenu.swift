@@ -52,14 +52,14 @@ enum SettingPoint {
     
     var title: String {
         switch self {
-        case .subscription:     return "Аккаунт: \(((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум" : "базовый"))"
-        case .reminders:        return "Получать уведомления"
-        case .mileageReminder:  return "Напоминание о пробеге"
-        case .backup:           return "Данные"
-        case .contactUs:        return "Связаться с нами"
-        case .version:          return "Версия: \(Bundle.main.version)"
-        case .language:         return "Язык"
-        case .getPremium:       return "Получить премиум"
+        case .subscription:     return "ТипАккаунта".localized((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум".localized : "базовый".localized)
+        case .reminders:        return "Получать уведомления".localized
+        case .mileageReminder:  return "Напоминание о пробеге".localized
+        case .backup:           return "Данные".localized
+        case .contactUs:        return "Связаться с нами".localized
+        case .version:          return "Версия".localized(Bundle.main.version)
+        case .language:         return "Язык".localized
+        case .getPremium:       return "Получить премиум".localized
         }
     }
 }

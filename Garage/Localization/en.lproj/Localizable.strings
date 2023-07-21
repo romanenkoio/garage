@@ -103,3 +103,15 @@
 "Создание записи" = "Record creation";
 "Вы уверены, что хотите удалить запись?" = "Are you sure you want to delete the record?";
 "Изменение записи" = "Record modification";
+
+// MARK: SettingPoint
+"ТипАккаунта" = "Account Type: %@";
+"Получать уведомления" = "Receive Notifications";
+"Напоминание о пробеге" = "Mileage Reminder";
+"Данные" = "Data";
+"Связаться с нами" = "Contact Us";
+"Версия" = "Version: %@";
+"Язык" = "Language";
+"Получить премиум" = "Get Premium";
+"премиум" = "Premium";
+"Выберите язык" = "Select Language";
