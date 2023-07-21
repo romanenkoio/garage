@@ -17,13 +17,16 @@ class CarInfoViewController: BasicViewController {
     
     // - Property
     private(set) var vm: ViewModel
-    
+    var navigationBarOriginalOffset : CGFloat?
+    var segmentOriginalOffset: CGFloat?
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
     private lazy var tableView = UITableView() {
         didSet {
             tableView.delegate = self
+            scroll.isScrollEnabled = false
+            tableView.isScrollEnabled = true
         }
     }
     
@@ -54,12 +57,14 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
+        navigationBarOriginalOffset = navigationController?.navigationBar.frame.origin.y
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if layout.isFirstLayoutSubviews {
             layout.maxConstraintConstant = layout.carTopInfo.frame.height + 40
+            segmentOriginalOffset = layout.segment.frame.origin.y
         }
     }
     
@@ -106,7 +111,6 @@ class CarInfoViewController: BasicViewController {
             guard let self,
                   let tableView else { return }
             self.tableView = tableView
-            self.scroll.isScrollEnabled = !tableView.isHidden
         }
         .store(in: &cancellables)
         
@@ -156,6 +160,13 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentSize.height < contentView.frame.height {
+            scrollView.contentSize.height = layout.page.view.frame.height-33
+        }
+        
+        navigationBarOriginalOffset = max(0,max(navigationBarOriginalOffset!-layout.segment.frame.height, scroll.contentOffset.y))
+        layout.segment.frame.origin.y = navigationBarOriginalOffset!
+        
         let currentContentOffsetY = scrollView.contentOffset.y
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
@@ -172,66 +183,19 @@ extension CarInfoViewController: UIScrollViewDelegate {
             if contentMovesUp {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
-                
-                if newConstraintConstant < maxConstraintConstant, !tableView.isHidden {
-                    
-                    self.layout.animatedScrollConstraint?.update(offset: layout.scrollMinConstraintConstant)
-                    self.layout.topStackTopConstraint?.update(offset: -maxConstraintConstant/1.1)
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    
-                    
-                    UIView.animate(withDuration: 0.3) {[weak self] in
-                        self?.view.layoutIfNeeded()
-                        self?.layout.carTopInfo.alpha = 0.1
-                        self?.contentView.cornerRadius = 0
-                    } completion: { [weak self] _ in
-                        
-                        guard let self else { return }
-                        if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
-                            if newConstraintConstant == 0, !layout.titleLabelView.didChangeTitle {
-                                label.layer.add(layout.titleLabelView.animateUp, forKey: "changeTitle")
-                                label.changedTitle = "\(vm.car.brand) \(vm.car.model)"
-                                layout.titleLabelView.didChangeTitle = true
-                            }
-                        }
-                        if scrollView == self.scroll {
-                            self.scroll.isScrollEnabled = false
-                            self.tableView.isScrollEnabled = true
-                        }
-                    }
-                }
-                
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 
-                if newConstraintConstant >= maxConstraintConstant / 2, !tableView.isHidden {
-                    self.layout.animatedScrollConstraint?.update(offset: maxConstraintConstant)
-                    self.layout.topStackTopConstraint?.update(offset: 0)
-                    self.scroll.contentOffset.y = self.layout.previousContentOffsetY
-                    
-                    if let label = navigationItem.titleView as? NavigationBarAnimatedTitle {
-                        if layout.titleLabelView.didChangeTitle {
-                            label.layer.add(layout.titleLabelView.animateDown, forKey: "changeTitle")
-                            label.defaultTitle = layout.titleLabelView.defaultTitle
-                            layout.titleLabelView.didChangeTitle = false
-                        }
-                    }
-                    
-                    UIView.animate(withDuration: 0.4) {[weak self] in
-                        guard let self else { return }
-                        self.view.layoutIfNeeded()
-                        self.contentView.cornerRadius = 24
-                        self.layout.carTopInfo.alpha = 1
-                        self.scroll.isScrollEnabled = true
-                        self.tableView.isScrollEnabled = false
-                    }
-                }
-                
-                //Процент завершения анимации
-                //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-                //            layout.previousContentOffsetY = scrollView.contentOffset.y
+            }
+            //Процент завершения анимации
+            //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+            if newConstraintConstant != currentScrollConstraintConstant, !tableView.isHidden {
+                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+                scrollView.contentOffset.y = layout.previousContentOffsetY
             }
         }
+        
+        layout.previousContentOffsetY = scrollView.contentOffset.y
     }
 }
 
