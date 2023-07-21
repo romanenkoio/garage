@@ -75,7 +75,7 @@ final class PushManager {
         content.sound = UNNotificationSound.default
         
         var date = push.date
-        date.hour = 9
+        date.hour = 11
         date.minute = 0
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: push.repeats)
@@ -133,7 +133,7 @@ struct LocalPush {
     init(reminder: Reminder) {
         id = reminder.id
         title = "Вы просили напомнить"
-        subtitle = reminder.description
+        subtitle = reminder.short
         date = reminder.date.components
         repeats = false
     }
