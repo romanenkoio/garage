@@ -176,13 +176,13 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
-        if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
-           let maxConstraintConstant = layout.maxConstraintConstant {
+        if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant, let maxConstraintConstant = layout.maxConstraintConstant {
+            
+            var minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
             
             if contentMovesUp {
-                // Уменьшаем константу констрэйнта
-                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
+                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 
