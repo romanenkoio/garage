@@ -160,12 +160,12 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentSize.height > contentView.frame.height {
+        if scrollView.contentSize.height < contentView.frame.height {
+            scrollView.contentSize.height = layout.page.view.frame.height-33
             
         } else {
             print("DO",scrollView.contentSize.height)
             print("DO",contentView.frame.height)
-            scrollView.contentSize.height = layout.page.view.frame.height-55
             print("posle",scrollView.contentSize.height)
             print("posle",contentView.frame.height)
         }
