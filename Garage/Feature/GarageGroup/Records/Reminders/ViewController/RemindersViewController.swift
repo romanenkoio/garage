@@ -99,10 +99,11 @@ extension RemindersViewController: UITableViewDataSource {
         
         guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<ReminderView>.self, for: indexPath) else { return .init()}
         
-        let reminderVM = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.section][indexPath.row - 1]) { [weak self] reminder in
-            self?.vm.completeReminder?(reminder)
+        let reminderVM = vm.tableVM.cells[indexPath.section][indexPath.row - 1]
+        reminderVM.completeButton.action = .touchUpInside { [weak self] in
+            self?.vm.completeReminder?(reminderVM.reminder)
         }
-
+        
         pastRecordCell.mainView.setViewModel(reminderVM)
         pastRecordCell.selectionStyle = .none
         return pastRecordCell
