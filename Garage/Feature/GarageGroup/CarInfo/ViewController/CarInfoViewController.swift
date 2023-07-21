@@ -148,7 +148,7 @@ extension CarInfoViewController: UITableViewDelegate {
                 coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
                 
             case .future:
-                guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
+            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row] else { return }
                 coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
