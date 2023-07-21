@@ -162,35 +162,30 @@ extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentSize.height < contentView.frame.height {
             scrollView.contentSize.height = layout.page.view.frame.height-33
-            
-        } else {
-            print("DO",scrollView.contentSize.height)
-            print("DO",contentView.frame.height)
-            print("posle",scrollView.contentSize.height)
-            print("posle",contentView.frame.height)
         }
+        
         navigationBarOriginalOffset = max(0,max(navigationBarOriginalOffset!-layout.segment.frame.height, scroll.contentOffset.y))
         layout.segment.frame.origin.y = navigationBarOriginalOffset!
-       
+        
         let currentContentOffsetY = scrollView.contentOffset.y
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
         // Верхняя граница начала bounce эффекта
         let bounceBorderContentOffsetY = -scrollView.contentOffset.y
-
+        
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
-
+        
         if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
            let maxConstraintConstant = layout.maxConstraintConstant {
             var newConstraintConstant = currentScrollConstraintConstant
-
+            
             if contentMovesUp {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-
+                
             }
             //Процент завершения анимации
             //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
@@ -199,8 +194,6 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
         }
-        
-        print(layout.page.view.frame.height + 70)
         
         layout.previousContentOffsetY = scrollView.contentOffset.y
     }
