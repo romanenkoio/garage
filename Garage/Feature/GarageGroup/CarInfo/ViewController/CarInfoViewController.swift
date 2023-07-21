@@ -25,6 +25,8 @@ class CarInfoViewController: BasicViewController {
     private lazy var tableView = UITableView() {
         didSet {
             tableView.delegate = self
+            scroll.isScrollEnabled = false
+            tableView.isScrollEnabled = true
         }
     }
     
@@ -160,11 +162,8 @@ extension CarInfoViewController: UITableViewDelegate {
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navigationBarOriginalOffset = max(0,max(navigationBarOriginalOffset!-layout.segment.frame.height, scroll.contentOffset.y))
-        let tableViewZeroContentOffset = max(0,scrollView.contentOffset.y)
-        
         layout.segment.frame.origin.y = navigationBarOriginalOffset!
        
-        print(tableViewZeroContentOffset)
         let currentContentOffsetY = scrollView.contentOffset.y
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
@@ -182,25 +181,20 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 // Уменьшаем константу констрэйнта
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
                 
-                if newConstraintConstant == 0 {
-                    scroll.isScrollEnabled = false
-                    tableView.isScrollEnabled = true
-                }
 
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
 //                layout.segment.frame.origin.y = segmentOriginalOffset!
-                if scrollView == self.tableView, tableViewZeroContentOffset == 0 {
-                    scroll.isScrollEnabled = true
-                    tableView.isScrollEnabled = false
-                }
+
             }
             //Процент завершения анимации
             //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
             if newConstraintConstant != currentScrollConstraintConstant, !tableView.isHidden {
                 self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
-                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+//                self.scroll.contentOffset.y = self.layout.previousContentOffsetY
+                self.tableView.contentOffset.y = self.layout.previousContentOffsetY
             }
+            
         }
         layout.previousContentOffsetY = scrollView.contentOffset.y
     }
