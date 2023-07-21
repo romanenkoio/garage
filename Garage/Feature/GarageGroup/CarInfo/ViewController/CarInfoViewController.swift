@@ -50,7 +50,7 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
-        layout.titleLabelView.defaultTitle = "Общая информация"
+        layout.titleLabelView.defaultTitle = "Общая информация".localized
         self.navigationItem.titleView = layout.titleLabelView
     }
     
@@ -81,7 +81,7 @@ class CarInfoViewController: BasicViewController {
         let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
-                    .init(.text("Запланировать"),
+                    .init(.text("Запланировать".localized),
                           action: { [weak self] in
                               guard let self else { return }
                               let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
@@ -98,7 +98,7 @@ class CarInfoViewController: BasicViewController {
                           }),
                   image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
-                    .init(.text("Добавить запись"),
+                    .init(.text("Добавить запись".localized),
                           action: { [weak self] in
                               guard let self else { return }
                               coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))

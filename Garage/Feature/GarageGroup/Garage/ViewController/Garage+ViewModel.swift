@@ -15,14 +15,14 @@ extension GarageViewController {
         var addButtonVM: AlignedButton.ViewModel
 
         override init() {
-            addButtonVM = .init(buttonVM: .init(title: "Добавить машину"))
+            addButtonVM = .init(buttonVM: .init(title: "Добавить машину".localized))
             
             super.init()
             readCars()
             
             tableVM.setupEmptyState(
-                labelVM: .init(.text("Ваш гараж пуст")),
-                sublabelVM: .init(.text("Добавьте машину для \nначала работы")),
+                labelVM: .init(.text("Ваш гараж пуст".localized)),
+                sublabelVM: .init(.text("Добавьте машину для \nначала работы".localized)),
                 addButtonVM: addButtonVM.buttonVM,
                 image: UIImage(named: "car_placeholder")
             )

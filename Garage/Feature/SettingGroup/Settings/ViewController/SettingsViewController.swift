@@ -98,7 +98,7 @@ class SettingsViewController: BasicViewController {
         case .version:
             break
         case .language:
-            break
+            changeLanguage()
         case .subscription:
             break
         case .getPremium:
@@ -117,6 +117,22 @@ class SettingsViewController: BasicViewController {
             let date = backup.date.toString(.ddMMyy)
             completion(date)
         }
+    }
+    
+    private func changeLanguage() {
+        let avalibleLanguages = Language.allCases
+        let alert = UIAlertController(title: "Выберите язык", message: nil, preferredStyle: .actionSheet)
+        
+        avalibleLanguages.forEach { language in
+            let action = UIAlertAction(title: language.rawValue, style: .default) { _ in
+                SettingsManager.sh.write(value: language.rawValue, for: .selectedLanguage)
+            }
+            alert.addAction(action)
+        }
+        
+        let closeAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(closeAction)
+        self.present(alert)
     }
 }
 

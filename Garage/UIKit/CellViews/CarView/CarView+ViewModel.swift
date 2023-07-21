@@ -22,18 +22,17 @@ extension CarView {
             super.init()
             imageVM.set(from: car.images.first, placeholder: UIImage(named: "car_placeholder"))
             brandLabelVM.textValue = .text("\(car.brand) \(car.model)")
-            atteentionLabelVM.textValue = .text("Просрочена медицинская справка")
-            plannedLabelVM.textValue = .text("Нет запланированных событий")
+            plannedLabelVM.textValue = .text("Нет запланированных событий".localized)
                        
             shouldShowAttention = car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero > 0 })
             if car.reminders.isEmpty {
-                plannedLabelVM.textValue = .text("Нет запланированных событий")
+                plannedLabelVM.textValue = .text("Нет запланированных событий".localized)
             } else {
                 guard let first = car.reminders.first else {
-                    plannedLabelVM.textValue = .text("Нет запланированных событий")
+                    plannedLabelVM.textValue = .text("Нет запланированных событий".localized)
                     return
                 }
-                plannedLabelVM.textValue = .text("Ближайшее: \(first.short)")
+                plannedLabelVM.textValue = .text("Ближайшее:".localized(first.short))
             }
             
         }

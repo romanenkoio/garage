@@ -45,7 +45,7 @@ class CreateCarViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
-        title = "Добавить машину"
+        title = "Добавить машину".localized
     }
     
     required init?(coder: NSCoder) {
@@ -68,14 +68,14 @@ class CreateCarViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-            title = "Изменить машину"
+            title = "Изменить машину".localized
             return
         }
 
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 let vm = Dialog.ViewModel(
-                    title: .text("Вы уверены, что хотите удалить машину?")
+                    title: .text("Вы уверены, что хотите удалить машину?".localized)
                 ) { [weak self] in
                     self?.vm.removeCar() { [weak self] in
                         self?.dismiss(animated: true)
@@ -92,17 +92,17 @@ class CreateCarViewController: BasicViewController {
     private var alertController: UIAlertController  {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let choisePhotoAction = UIAlertAction(title: "Из галереи", style: .default) { [weak self] _ in
+        let choisePhotoAction = UIAlertAction(title: "Из галереи".localized, style: .default) { [weak self] _ in
             guard let self else { return }
             self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(imagePicker))
         }
         
-        let takePhotAction = UIAlertAction(title: "Камера", style: .default) { [weak self] _ in
+        let takePhotAction = UIAlertAction(title: "Камера".localized, style: .default) { [weak self] _ in
             guard let self else { return }
             self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(cameraPicker))
         }
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
         alert.addAction(takePhotAction)
         alert.addAction(choisePhotoAction)
         alert.addAction(cancelAction)

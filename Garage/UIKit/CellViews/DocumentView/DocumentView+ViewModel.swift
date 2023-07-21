@@ -27,7 +27,7 @@ extension DocumentView {
                let endDate = document.endDate {
                 let startString = startDate.toString(.ddMMyy)
                 let endString = endDate.toString(.ddMMyy)
-                dateLabelVM.textValue = .text("С \(startString) по \(endString)")
+                dateLabelVM.textValue = .text("С_по".localized(startString, endString))
             }
             let photoCount = RealmManager<Photo>().read()
                 .filter({ $0.documentId == document.id })

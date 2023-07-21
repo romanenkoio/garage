@@ -33,31 +33,16 @@ enum ServiceType: CaseIterable, Equatable {
     
     var title: String {
         switch self {
-        case .oil:                  return "Масло двигателя"
-        case .gearOil:              return "Масло коробки передач"
-        case .engineFilter:         return "Воздушный фильтр"
-        case .brakePads:            return "Тормозные колодки"
-        case .brakeDisk:            return "Тормозные диски"
-        case .belt:                 return "Ремень/цепь"
-        case .airFilter:            return "Салонный фильтр"
-        case .spark:                return "Свечи"
-        case .battery:              return "Аккумулятор"
+        case .oil:                  return "Масло двигателя".localized
+        case .gearOil:              return "Масло коробки передач".localized
+        case .engineFilter:         return "Воздушный фильтр".localized
+        case .brakePads:            return "Тормозные колодки".localized
+        case .brakeDisk:            return "Тормозные диски".localized
+        case .belt:                 return "Ремень/цепь".localized
+        case .airFilter:            return "Салонный фильтр".localized
+        case .spark:                return "Свечи".localized
+        case .battery:              return "Аккумулятор".localized
         case .unlisted(let name):   return name ?? ""
-        }
-    }
-    
-    init(from text: String) {
-        switch text {
-        case "Масло двигателя":         self = .oil
-        case "Масло коробки передач":   self = .gearOil
-        case "Воздушный фильтр":        self = .engineFilter
-        case "Тормозные колодки":       self = .brakePads
-        case "Тормозные диски":         self = .brakeDisk
-        case "Ремень/цепь":             self = .belt
-        case "Салонный фильтр":         self = .airFilter
-        case "Свечи":                   self = .spark
-        case "Аккумулятор":             self = .battery
-        default:                        self = .unlisted(text)
         }
     }
 }

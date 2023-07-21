@@ -69,7 +69,7 @@ class BasicImageListView: BasicView {
             presentOnRootViewController(self.cameraPicker, animated: true)
         }
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
         alert.addAction(takePhotAction)
         alert.addAction(choisePhotoAction)
         alert.addAction(cancelAction)

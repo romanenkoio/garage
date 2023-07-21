@@ -35,7 +35,7 @@ final class TabBarController: UITabBarController {
         
         viewControllers?.enumerated().forEach({ index, controller in
             controller.tabBarItem = UITabBarItem(
-                title: dataSource[index].rawValue,
+                title: dataSource[index].title,
                 image: dataSource[index].iconImage,
                 tag: dataSource[index].hashValue
             )
