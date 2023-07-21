@@ -210,7 +210,7 @@ class NavigationBarAnimatedTitle: UIView {
     var defaultTitle: String = "" {
         didSet {
             label.text = defaultTitle
-            label.textColor = UIColor.init(hexString: "#3D3D3D")
+            label.textColor = AppColors.navbarTitle
             label.textAlignment = .center
             label.font = UIFont.custom(size: 16, weight: .bold)
             setNeedsLayout()
