@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initSystem() {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        IQKeyboardManager.shared.enable = true
     }
 }
 
