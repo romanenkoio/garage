@@ -77,6 +77,7 @@ final class CarInfoControllerLayoutManager {
         vc.scroll.snp.removeConstraints()
         vc.view.bringSubviewToFront(vc.scroll)
         vc.view.bringSubviewToFront(addButton)
+        vc.contentView.bringSubviewToFront(segment)
         
         vc.scroll.snp.makeConstraints { make in
             animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
