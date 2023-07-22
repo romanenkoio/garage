@@ -31,6 +31,8 @@ final class CarInfoControllerLayoutManager {
             animate.addAnimations { [weak self] in
                 guard let self else { return }
                 self.carTopInfo.transform = CGAffineTransform(translationX: 0, y: -self.carTopInfo.bounds.height/3)
+                self.carTopInfo.alpha = animationCompletionPercentage
+                self.vc.contentView.cornerRadius = animationCompletionPercentage
             }
         }
     }
