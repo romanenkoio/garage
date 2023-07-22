@@ -19,14 +19,14 @@ enum SettingPoint {
 
     var icon: UIImage? {
         switch self {
-        case .getPremium:     return UIImage(systemName: "bell.square.fill")
-        case .subscription:     return UIImage(systemName: "bell.square.fill")
-        case .reminders:        return UIImage(systemName: "bell.square.fill")
-        case .mileageReminder:  return UIImage(systemName: "speedometer")
-        case .backup:           return UIImage(systemName: "externaldrive.fill.badge.timemachine")
-        case .contactUs:        return UIImage(systemName: "envelope.fill")
-        case .version:           return UIImage(systemName: "info.circle.fill")
-        case .language:           return UIImage(systemName: "info.circle.fill")
+        case .getPremium:     return UIImage(named: "get_prem_ic")
+        case .subscription:     return UIImage(named: "prem_ic")
+        case .reminders:        return UIImage(named: "notifications_ic")
+        case .mileageReminder:  return UIImage(named: "milage_reminder_ic")
+        case .backup:           return UIImage(named: "backup_ic")
+        case .contactUs:        return UIImage(named: "contact_us_ic")
+        case .version:           return UIImage(named: "language_ic")
+        case .language:           return UIImage(named: "language_ic")
         }
     }
     

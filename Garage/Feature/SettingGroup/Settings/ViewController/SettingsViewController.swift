@@ -33,9 +33,8 @@ class SettingsViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTabBar(false)
+        hideTabBar(true)
         makeLogoNavbar()
-        hideTabBar(false)
         makeCloseButton(isLeft: true)
         title = "Настройки"
     }
