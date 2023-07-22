@@ -11,6 +11,7 @@ import UIKit
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
+        let versionLabelVM = BasicLabel.ViewModel(.text(Bundle.main.version))
         
         var settingsPoint: [[SettingPoint]] = []
         

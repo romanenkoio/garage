@@ -51,6 +51,7 @@ class SettingsViewController: BasicViewController {
 
     override func binding() {
         self.layout.table.setViewModel(vm.tableVM)
+//        self.layout.versionLabel.setViewModel(vm.versionLabelVM)
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
