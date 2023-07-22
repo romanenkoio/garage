@@ -63,7 +63,7 @@ class CarInfoViewController: BasicViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if layout.isFirstLayoutSubviews {
-            layout.maxConstraintConstant = layout.carTopInfo.frame.height + 40
+            layout.maxConstraintConstant = layout.carTopInfo.frame.height
             segmentOriginalOffset = layout.segment.frame.origin.y
         }
     }
@@ -188,7 +188,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
             }
             //Процент завершения анимации
-            //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
+            layout.animationCompletionPercentage = animationCompletionPercent
+            print(animationCompletionPercent)
             if newConstraintConstant != currentScrollConstraintConstant, !tableView.isHidden {
                 self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
                 scrollView.contentOffset.y = layout.previousContentOffsetY

@@ -12,6 +12,7 @@ import SnapKit
 final class CarInfoControllerLayoutManager {
     
     private unowned let vc: CarInfoViewController
+    
     private(set) var isFirstLayoutSubviews = true
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
@@ -22,8 +23,19 @@ final class CarInfoControllerLayoutManager {
             isFirstLayoutSubviews = false
         }
     }
+    
+    private var animate = UIViewPropertyAnimator(duration: 0.01, curve: .linear)
+    var animationCompletionPercentage: Double = 0 {
+        didSet {
+            animate.fractionComplete = animationCompletionPercentage
+            animate.addAnimations { [weak self] in
+                guard let self else { return }
+                self.carTopInfo.transform = CGAffineTransform(translationX: 0, y: -self.carTopInfo.bounds.height/3)
+            }
+        }
+    }
+
     var animatedScrollConstraint: Constraint?
-    var topStackTopConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     var newConstraintConstant: CGFloat = 0
     let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
@@ -115,8 +127,7 @@ fileprivate extension CarInfoControllerLayoutManager {
         }
         
         carTopInfo.snp.makeConstraints { make in
-            topStackTopConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).constraint
-            make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
+            make.leading.top.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
         segment.snp.makeConstraints { make in
