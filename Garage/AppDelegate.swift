@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func initLocalization() {
-        Bundle.swizzleLocalization()
+        Bundle.setLocalization()
     }
 
     private func initNavbar() {

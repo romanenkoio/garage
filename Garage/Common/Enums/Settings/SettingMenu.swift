@@ -55,7 +55,7 @@ enum SettingPoint {
         case .subscription:     return "ТипАккаунта".localized((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум".localized : "базовый".localized)
         case .reminders:        return "Получать уведомления".localized
         case .mileageReminder:  return "Напоминание о пробеге".localized
-        case .backup:           return "Данные".localized
+        case .backup:           return "Резервная копия".localized
         case .contactUs:        return "Связаться с нами".localized
         case .version:          return "Версия".localized(Bundle.main.version)
         case .language:         return "Язык".localized

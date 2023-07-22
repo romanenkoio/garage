@@ -15,6 +15,8 @@
 "*обязательное поле" = "* required field";
 "Детали" = "Details";
 "Не может быть пустым" = "Cannot be empty";
+"Позвонить" = "Call";
+"Удалить" = "Delete";
 
 // MARK: TabBar
 "Гараж" = "Garage";
@@ -115,3 +117,31 @@
 "Получить премиум" = "Get Premium";
 "премиум" = "Premium";
 "Выберите язык" = "Select Language";
+
+// MARK: CreateServiseViewController
+"Добавление сервиса" = "Add Service";
+"Вы уверены, что хотите удалить сервис?" = "Are you sure you want to delete the service?";
+"Изменение сервиса" = "Edit Service";
+"Обязательное поле" = "Required Field";
+"Название" = "Title";
+"Номер телефона" = "Phone Number";
+"Специализация" = "Specialization";
+"Адрес" = "Address";
+
+// MARK: BackupViewController
+"Резервная копия" = "Backup";
+"Удалить резервную копию?" = "Delete backup?";
+"Копия удалена" = "Backup deleted";
+"Восстановить данные из резервной копии?" = "Restore data from backup?";
+"Все текущие данные будут удалены" = "All current data will be deleted";
+"Восстановить" = "Restore";
+"Восстановлено" = "Restored";
+"Резервная копия создана" = "Backup created";
+"отсутствует" = "missing";
+
+// MARK: DataSubSetting
+"Перенос данных" = "Data Transfer";
+"Резервная копия_" = "Backup: %@";
+"Создать копию" = "Create Backup";
+"Восстановить из копии" = "Restore from Backup";
+"Удалить копию" = "Delete Backup";
