@@ -77,7 +77,7 @@
 "по" = "to %@";
 
 // MARK: DocumentView
-"С_по" = "Ftomr %@ to %@";
+"С_по" = "From %@ to %@";
 
 // MARK: ServiceType
 "Масло двигателя" = "Engine oil";
