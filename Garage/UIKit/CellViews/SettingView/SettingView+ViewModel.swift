@@ -43,10 +43,8 @@ extension SettingView {
             case .backup:
                 textLabelVM.textColor = AppColors.tabbarIcon
                 arrovImageVM.isHidden = true
-                imageVM.isHidden = true
             default:
                 textLabelVM.textColor = AppColors.black
-                imageVM.isHidden = false
             }
         }
     }
