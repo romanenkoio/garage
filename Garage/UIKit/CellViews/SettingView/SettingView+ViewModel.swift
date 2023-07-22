@@ -29,6 +29,13 @@ extension SettingView {
         init(point: DataSubSetting) {
             imageVM = .init(image: point.icon)
             super.init()
+            switch point {
+            case .backup:
+                textLabelVM.textColor = AppColors.tabbarIcon
+            default:
+                textLabelVM.textColor = AppColors.black
+            }
+            imageVM.isHidden = point.icon == nil
             textLabelVM.textValue = .text(point.title)
             switchVM.isOn = point.state
             switchVM.isHidden = !point.isSwitch

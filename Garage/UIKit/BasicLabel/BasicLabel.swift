@@ -77,6 +77,11 @@ class BasicLabel: UILabel {
         vm.$isHidden
             .sink { [weak self] in self?.isHidden = $0 ?? false }
             .store(in: &cancellables)
+        
+        vm.$textColor.compactMap().sink { [weak self] in
+            self?.textColor = $0
+        }
+        .store(in: &cancellables)
     }
 }
 
