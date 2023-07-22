@@ -16,7 +16,6 @@ class SettingView: BasicView {
     
     private lazy var settingLabel: BasicLabel = {
        let label = BasicLabel()
-        label.textInsets = .init(left: 12)
         label.font = .custom(size: 14, weight: .semibold)
         return label
     }()
@@ -32,11 +31,16 @@ class SettingView: BasicView {
         return `switch`
     }()
     
-    private lazy var arrorwImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "arrow_right_ic")
-        view.isHidden = true
+    private lazy var arrorwImage: BasicImageView = {
+        let view = BasicImageView()
         return view
+    }()
+    
+    private lazy var imageStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.spacing = 12
+        return stack
     }()
     
     override func initView() {
@@ -46,21 +50,18 @@ class SettingView: BasicView {
     }
     
     private func makeLayout() {
-        self.addSubview(settingImage)
-        self.addSubview(settingLabel)
+        self.addSubview(imageStack)
+        imageStack.addArrangedSubviews([settingImage, settingLabel])
         self.addSubview(buttonsStack)
         buttonsStack.addArrangedSubviews([settingSwitch, arrorwImage])
     }
     
     private func makeConstraint() {
-        settingImage.snp.makeConstraints { make in
-            make.height.width.equalTo(24)
-            make.leading.top.bottom.equalToSuperview().inset(UIEdgeInsets(all: 20))
-        }
-        
-        settingLabel.snp.makeConstraints { make in
-            make.leading.equalTo(settingImage.snp.trailing)
-            make.centerY.equalTo(settingImage)
+        imageStack.snp.makeConstraints { make in
+            make.height.equalTo(24)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.top.bottom.equalToSuperview().inset(UIEdgeInsets(vertical: 20))
         }
         
         buttonsStack.snp.makeConstraints { make in
@@ -76,6 +77,7 @@ class SettingView: BasicView {
         settingImage.setViewModel(vm.imageVM)
         settingSwitch.setViewModel(vm.switchVM)
         settingLabel.setViewModel(vm.textLabelVM)
+        arrorwImage.setViewModel(vm.arrovImageVM)
         
         vm.switchVM.$isOn.dropFirst().sink { value in
             vm.switchCompletion?(value)
