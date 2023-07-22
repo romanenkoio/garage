@@ -26,7 +26,7 @@ extension SettingsViewController {
                 [.subscription, .getPremium(isPremium)],
                 [.reminders, .mileageReminder],
                 [.backup],
-                [.contactUs, .version, .language]
+                [.contactUs, .language]
             ]
             tableVM.setCells(settingsPoint)
         }

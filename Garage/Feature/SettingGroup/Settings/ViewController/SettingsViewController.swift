@@ -95,8 +95,6 @@ class SettingsViewController: BasicViewController {
             }
         case .contactUs:
             break
-        case .version:
-            break
         case .language:
             changeLanguage()
         case .subscription:

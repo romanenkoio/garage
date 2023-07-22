@@ -14,7 +14,6 @@ enum SettingPoint {
     case mileageReminder
     case backup
     case contactUs
-    case version
     case language
 
     var icon: UIImage? {
@@ -25,7 +24,6 @@ enum SettingPoint {
         case .mileageReminder:  return UIImage(named: "milage_reminder_ic")
         case .backup:           return UIImage(named: "backup_ic")
         case .contactUs:        return UIImage(named: "contact_us_ic")
-        case .version:           return UIImage(named: "language_ic")
         case .language:           return UIImage(named: "language_ic")
         }
     }
@@ -37,7 +35,7 @@ enum SettingPoint {
         case .reminders:                    return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
         case .mileageReminder:              return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup, .language:            return false
-        case .version, .contactUs:          return false
+        case .contactUs:          return false
         }
     }
     
@@ -45,7 +43,7 @@ enum SettingPoint {
         switch self {
         case .reminders, .mileageReminder, .getPremium:
             return true
-        case .backup, .contactUs, .version, .language, .subscription:
+        case .backup, .contactUs, .language, .subscription:
             return false
         }
     }
@@ -57,7 +55,6 @@ enum SettingPoint {
         case .mileageReminder:  return "Напоминание о пробеге".localized
         case .backup:           return "Резервная копия".localized
         case .contactUs:        return "Связаться с нами".localized
-        case .version:          return "Версия".localized(Bundle.main.version)
         case .language:         return "Язык".localized
         case .getPremium:       return "Получить премиум".localized
         }
