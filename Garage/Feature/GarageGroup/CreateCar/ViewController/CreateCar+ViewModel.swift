@@ -11,7 +11,7 @@ import Foundation
 
 extension CreateCarViewController {
     final class ViewModel: BasicControllerModel {
-        private let errorVM = ErrorView.ViewModel(error: "Обязательное поле")
+        private let errorVM = ErrorView.ViewModel(error: "Обязательное поле".localized)
         private let vinErrorVM = ErrorView.ViewModel(error: "Проверьте VIN")
         
         var brandFieldVM: BasicInputView.ViewModel

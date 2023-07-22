@@ -24,7 +24,7 @@ extension CreateServiseViewController {
         init(mode: EntityStatus<Service>) {
             self.mode = mode
             
-            let errorVM = ErrorView.ViewModel(error: "Обязательое поле".localized)
+            let errorVM = ErrorView.ViewModel(error: "Обязательное поле".localized)
             
             nameInputVM = .init(
                 errorVM: errorVM,
