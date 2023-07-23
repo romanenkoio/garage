@@ -15,6 +15,8 @@ final class CarInfoControllerLayoutManager {
     
     private(set) var isFirstLayoutSubviews = true
     var scrollMinConstraintConstant: CGFloat = 0
+    var contentOffset:CGFloat = 0
+    
     var maxConstraintConstant: CGFloat? {
         didSet {
             setupScrollView()
@@ -24,19 +26,20 @@ final class CarInfoControllerLayoutManager {
         }
     }
     
-    private var animate = UIViewPropertyAnimator(duration: 0.01, curve: .linear)
     var animationCompletionPercentage: Double = 0 {
         didSet {
-            animate.fractionComplete = animationCompletionPercentage
-            animate.addAnimations { [weak self] in
+            animator.fractionComplete = animationCompletionPercentage
+            print(animationCompletionPercentage)
+            animator.addAnimations { [weak self] in
                 guard let self else { return }
-                self.carTopInfo.transform = CGAffineTransform(translationX: 0, y: -self.carTopInfo.bounds.height/3)
-                self.carTopInfo.alpha = animationCompletionPercentage
-                self.vc.contentView.cornerRadius = animationCompletionPercentage
+                self.carTopInfo.transform = CGAffineTransform(translationX: -self.carTopInfo.bounds.width, y: 0)
             }
         }
     }
-
+    
+    var animator = UIViewPropertyAnimator(duration: 0.1, curve: .easeIn)
+    
+    var animatedCarTopInfoConstraint: Constraint?
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     var newConstraintConstant: CGFloat = 0
@@ -62,6 +65,10 @@ final class CarInfoControllerLayoutManager {
         makeNavbar()
     }
     
+    deinit {
+        print("deinit")
+    }
+    
     
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(
@@ -79,12 +86,20 @@ final class CarInfoControllerLayoutManager {
             make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
             make.top.equalTo(self.segment.snp.bottom)
         }
-        
-        self.vc.contentView.snp.remakeConstraints { make in
-            make.leading.trailing.equalTo(self.vc.view)
-            make.height.equalTo(self.page.view.frame.height + 70)
-            make.bottom.top.equalToSuperview()
+        if let screenHeight = vc.view.window?.screen.bounds.height {
+            self.vc.contentView.snp.remakeConstraints { make in
+                make.leading.trailing.equalTo(vc.view)
+                make.top.equalTo(vc.scroll.contentLayoutGuide.snp.top)
+                make.bottom.equalTo(vc.scroll.contentLayoutGuide.snp.bottom)
+                make.height.equalTo(screenHeight + 70)
+            }
         }
+        
+        carTopInfo.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
+            animatedCarTopInfoConstraint = make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top).offset(maxConstraintConstant!).constraint
+        }
+        
     }
     
     private func setupScrollView() {
@@ -94,7 +109,7 @@ final class CarInfoControllerLayoutManager {
         vc.contentView.bringSubviewToFront(segment)
         
         vc.scroll.snp.makeConstraints { make in
-            animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant ?? 0).constraint
+            animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant!).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -126,10 +141,6 @@ fileprivate extension CarInfoControllerLayoutManager {
     private func makeConstraint() {
         addButton.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 24, right: 16))
-        }
-        
-        carTopInfo.snp.makeConstraints { make in
-            make.leading.top.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
         
         segment.snp.makeConstraints { make in

@@ -19,6 +19,7 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
+    
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
@@ -57,14 +58,18 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
-        navigationBarOriginalOffset = navigationController?.navigationBar.frame.origin.y
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.layout.animator.stopAnimation(true)
+        self.layout.animator.finishAnimation(at: .end)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if layout.isFirstLayoutSubviews {
             layout.maxConstraintConstant = layout.carTopInfo.frame.height
-            segmentOriginalOffset = layout.segment.frame.origin.y
         }
     }
     
@@ -160,44 +165,49 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentSize.height < contentView.frame.height {
-            scrollView.contentSize.height = layout.page.view.frame.height-33
-        }
-        
-        navigationBarOriginalOffset = max(0,max(navigationBarOriginalOffset!-layout.segment.frame.height, scroll.contentOffset.y))
-        layout.segment.frame.origin.y = navigationBarOriginalOffset!
+        //        if scrollView.contentSize.height < contentView.frame.height {
+        //            scrollView.contentSize.height = view
+        //        }
         
         let currentContentOffsetY = scrollView.contentOffset.y
+        
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
         // Верхняя граница начала bounce эффекта
-        let bounceBorderContentOffsetY = -scrollView.contentOffset.y
+        let bounceBorderContentOffsetY = -scrollView.contentInset.top
         
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
-        if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant, let maxConstraintConstant = layout.maxConstraintConstant {
+        if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
+           let currentTopConstraintConstant = layout.animatedCarTopInfoConstraint?.layoutConstraints.first?.constant,
+           let maxConstraintConstant = layout.maxConstraintConstant {
             
-            var minConstraintConstant = layout.scrollMinConstraintConstant
+            let minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
+            //Процент завершения анимации
+            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-                
             }
-            //Процент завершения анимации
-            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-            layout.animationCompletionPercentage = animationCompletionPercent
-            print(animationCompletionPercent)
-            if newConstraintConstant != currentScrollConstraintConstant, !tableView.isHidden {
-                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+            
+            if newConstraintConstant != currentScrollConstraintConstant,
+               !tableView.isHidden {
+                layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+                let profileNameLabelScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
+                let profileViewsLabelScale = min(max(1.0 - newConstraintConstant / 400.0, 0.0), 1.0)
+                let profileViewsAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
+                print(min(2.0 - 0.0 - newConstraintConstant / 170, 2))
+                print(2.0 - 0.0 - newConstraintConstant / 170)
+                layout.carTopInfo.transform = CGAffineTransform(scaleX: profileNameLabelScale, y: profileNameLabelScale)
+                layout.carTopInfo.alpha = 1 - profileViewsAlphaScale
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
+            layout.previousContentOffsetY = scrollView.contentOffset.y
         }
-        
-        layout.previousContentOffsetY = scrollView.contentOffset.y
     }
 }
 
