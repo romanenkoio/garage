@@ -11,17 +11,17 @@ import SnapKit
 
 final class CarInfoControllerLayoutManager {
     
-    //MARK: Property
+    // - Property
     
     private unowned let vc: CarInfoViewController
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
-    //MARK: Flag
+    // - Flag
     
     private(set) var isFirstLayoutSubviews = true
     
-    //MARK: Animation properties
+    // - Animation properties
     
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
@@ -47,7 +47,7 @@ final class CarInfoControllerLayoutManager {
         }
     }
     
-    //MARK: UIComponents
+    // - UIComponents
     let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     lazy var carTopInfo = CarTopInfoView()
