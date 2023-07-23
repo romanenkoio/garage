@@ -147,6 +147,7 @@
 		7F9264072A6DC94200DA220A /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F9264062A6DC94200DA220A /* GoogleMapsCore */; };
 		7F9264092A6DCC2700DA220A /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9264082A6DCC2700DA220A /* Parking.swift */; };
 		7F92640B2A6DD62300DA220A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92640A2A6DD62300DA220A /* LocationManager.swift */; };
+		7F92640D2A6DDFB100DA220A /* ParkingMap in Resources */ = {isa = PBXBuildFile; fileRef = 7F92640C2A6DDFB100DA220A /* ParkingMap */; };
 		7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */; };
 		7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */; };
 		7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */; };
@@ -459,6 +460,7 @@
 		7F8DB1042A56072A007E05C3 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		7F9264082A6DCC2700DA220A /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
 		7F92640A2A6DD62300DA220A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		7F92640C2A6DDFB100DA220A /* ParkingMap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ParkingMap; sourceTree = "<group>"; };
 		7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Onboarding+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1437,6 +1439,7 @@
 				7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */,
 				7F1DE3A12A58AD97008E7B1D /* CreateReminder */,
 				B93A34422A40826F004BAEA6 /* Records */,
+				7F92640C2A6DDFB100DA220A /* ParkingMap */,
 			);
 			path = GarageGroup;
 			sourceTree = "<group>";
@@ -2662,6 +2665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93A34342A3D10EC004BAEA6 /* Gilroy-SemiboldItalic.ttf in Resources */,
+				7F92640D2A6DDFB100DA220A /* ParkingMap in Resources */,
 				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				B93A343A2A3D10EC004BAEA6 /* Gilroy-Extrabold.ttf in Resources */,
 				B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */,

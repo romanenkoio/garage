@@ -19,6 +19,7 @@ class GarageViewController: BasicViewController {
     // - Property
     private(set) var vm: ViewModel
     private lazy var locationManager = CLLocationManager()
+    private var indexPath: IndexPath?
     
     // - Manager
     var coordinator: Coordinator!
@@ -168,6 +169,7 @@ extension GarageViewController: UITableViewDelegate {
             ) { [weak self] action in
                 self?.vm.selectedCar = car
                 self?.locationManager.startUpdatingLocation()
+                self?.indexPath = indexPath
             }
             
             let showParkingLocation = UIAction(
@@ -182,9 +184,12 @@ extension GarageViewController: UITableViewDelegate {
                 title: "Удалить парковку",
                 image: UIImage(systemName: "square.and.arrow.up")
             ) { [weak self] action in
-                self?.vm.selectedCar = car
-                self?.vm.removeParkingLocation()
+                guard let self else { return }
+                self.vm.selectedCar = car
+                self.vm.removeParkingLocation()
                 SPIndicator.show(title: "Парковка удалена")
+                guard let carCell = layout.table.table.cellForRow(at: indexPath) as? CarCell else { return }
+                carCell.mainView.parkingImage.isHidden = true
             }
             
             var menu: [UIMenuElement] = .empty
@@ -204,11 +209,20 @@ extension GarageViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue = locations.last else { return }
         print(locValue.horizontalAccuracy)
-        if locValue.horizontalAccuracy < 30 {
-            vm.setParkingMode(from: locValue)
-            print("locations = \(locValue.coordinate.latitude), \(locValue.coordinate.longitude)")
-            locationManager.stopUpdatingLocation()
-            SPIndicator.show(title: "Парковка записана!")
+        Task {
+            if locValue.horizontalAccuracy < 30 {
+                vm.setParkingMode(from: locValue)
+                print("locations = \(locValue.coordinate.latitude), \(locValue.coordinate.longitude)")
+                locationManager.stopUpdatingLocation()
+                
+                await MainActor.run {
+                    guard let indexPath,
+                          let carCell = layout.table.table.cellForRow(at: indexPath) as? CarCell
+                    else { return }
+                    carCell.mainView.parkingImage.isHidden = false
+                    SPIndicator.show(title: "Парковка записана!")
+                }
+            }
         }
     }
 }

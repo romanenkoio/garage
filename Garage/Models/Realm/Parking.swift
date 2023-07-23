@@ -15,6 +15,7 @@ class Parking: Object {
     @Persisted var date: Date
     @Persisted var latitude: Double
     @Persisted var longitude: Double
+    @Persisted var accuracy: Double
     
     convenience init(
         car: Car,
@@ -24,6 +25,7 @@ class Parking: Object {
         self.id = UUID().uuidString
         self.carID = car.id
         self.date = Date()
+        self.accuracy = accuracy
         self.latitude = coordinate.coordinate.latitude
         self.longitude = coordinate.coordinate.longitude
     }

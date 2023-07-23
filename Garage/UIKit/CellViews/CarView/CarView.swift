@@ -31,7 +31,8 @@ class CarView: BasicView {
         return view
     }()
     
-    private lazy var attentionImage = BasicImageView(image: UIImage(named: "error_ic"))
+    private lazy var attentionImage = BasicImageView()
+    lazy var parkingImage = BasicImageView()
     
     private lazy var logoImage: BasicImageView = {
         let imageView = BasicImageView()
@@ -66,6 +67,13 @@ class CarView: BasicView {
         stack.paddingInsets = .init(bottom: 16, horizontal: 16)
         return stack
     }()
+    
+    private lazy var imageStack: BasicStackView = {
+        let stack = BasicStackView()
+        stack.axis = .horizontal
+        stack.spacing = 10
+        return stack
+    }()
 
     private lazy var detailsView = DetailsView()
 
@@ -78,9 +86,9 @@ class CarView: BasicView {
     }
     
     private func makeLayout() {
-       addSubview(mainStack)
-        attentionView.addSubview(attentionImage)
-        
+        addSubview(mainStack)
+        attentionView.addSubview(imageStack)
+        imageStack.addArrangedSubviews([attentionImage, parkingImage])
         topContainer.addSubview(textStack)
         topContainer.addSubview(attentionView)
         
@@ -97,12 +105,14 @@ class CarView: BasicView {
         
         attentionImage.snp.makeConstraints { make in
             make.height.width.equalTo(16)
-            make.centerY.leading.equalToSuperview()
+        }
+        
+        parkingImage.snp.makeConstraints { make in
+            make.height.width.equalTo(16)
         }
 
         attentionView.snp.makeConstraints { make in
             make.height.equalToSuperview()
-            make.width.equalTo(16)
             make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 16))
             make.centerY.equalTo(textStack)
         }
@@ -110,6 +120,12 @@ class CarView: BasicView {
         textStack.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
             make.trailing.equalTo(attentionView.snp.leading)
+        }
+        
+        imageStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.equalTo(16)
         }
         
         logoImage.snp.makeConstraints { make in
@@ -122,14 +138,11 @@ class CarView: BasicView {
         cancellables.removeAll()
         self.vm = vm
 
+        parkingImage.setViewModel(vm.parkingImageVM)
         detailsView.setViewModel(vm.detailsVM)
         brandLabel.setViewModel(vm.brandLabelVM)
         plannedLabel.setViewModel(vm.plannedLabelVM)
         logoImage.setViewModel(vm.imageVM)
-        
-        vm.$shouldShowAttention.sink { [weak self] value in
-            self?.attentionView.isHidden = !value
-        }
-        .store(in: &cancellables)
+        attentionImage.setViewModel(vm.attentionImageVM)
     }
 }
