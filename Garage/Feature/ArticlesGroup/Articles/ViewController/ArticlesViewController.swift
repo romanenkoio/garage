@@ -40,6 +40,11 @@ class ArticlesViewController: BasicViewController {
         super.viewWillAppear(animated)
         hideTabBar(false)
     }
+    
+    override func singleWillAppear() {
+        super.singleWillAppear()
+        vm.readArticles()
+    }
 
     override func configure() {
         configureCoordinator()
@@ -84,7 +89,7 @@ extension ArticlesViewController: UITableViewDataSource {
         guard let article = vm.tableVM.cells[safe: indexPath.row],
               let articleCell = tableView.dequeueReusableCell(BasicTableCell<ArticleView>.self)
         else { return .init() }
-        articleCell.mainView.setViewModel(.init(title: .text(article.title), image: nil))
+        articleCell.mainView.setViewModel(.init(article: article))
         articleCell.selectionStyle = .none
         return articleCell
     }

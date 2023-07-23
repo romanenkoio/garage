@@ -11,10 +11,26 @@ import UIKit
 extension ArticlesViewController {
     final class ViewModel: BasicViewModel {
         let tableVM = BasicTableView.GenericViewModel<Article>()
+        let articles: [News] = .empty
         
         override init() {
             super.init()
-            tableVM.setCells([.test, .test, .test])
+        }
+        
+        func readArticles() {
+            Task { @MainActor in
+                do {
+                    let result = try await NetworkManager
+                        .sh
+                        .request(
+                            GarageApi.news,
+                            model: News.self
+                        ).results
+                    tableVM.setCells(result)
+                } catch let error {
+                    print(error)
+                }
+            }
         }
     }
 }

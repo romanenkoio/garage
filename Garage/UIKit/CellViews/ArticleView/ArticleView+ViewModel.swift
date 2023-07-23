@@ -10,14 +10,13 @@ import UIKit
 extension ArticleView {
     final class ViewModel: BasicViewModel {
         let titleVM = BasicLabel.ViewModel()
-        @Published var image: UIImage?
+        let imageVM = BasicImageView.ViewModel(data: nil)
         
         init(
-            title: TextValue,
-            image: UIImage?
+            article: Article
         ) {
-            self.image = image
-            self.titleVM.textValue = title
+            self.imageVM.set(from: article.picture)
+            self.titleVM.textValue = .text(article.title)
         }
     }
 }

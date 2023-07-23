@@ -8,10 +8,9 @@
 import UIKit
 
 class ArticleView: BasicStackView {
-    private lazy var imageView: UIImageView = {
-        let view = UIImageView()
+    private lazy var imageView: BasicImageView = {
+        let view = BasicImageView()
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "test_article")
         view.cornerRadius = 20
         return view
     }()
@@ -45,10 +44,6 @@ class ArticleView: BasicStackView {
         cancellables.removeAll()
 
         title.setViewModel(vm.titleVM)
-        
-        vm.$image.compactMap().sink { [weak self] image in
-            self?.imageView.image = image
-        }
-        .store(in: &cancellables)
+        imageView.setViewModel(vm.imageVM)
     }
 }

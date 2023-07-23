@@ -299,7 +299,7 @@ extension CreateCarViewController {
             Task {
                 do {
                     guard !brand.isEmpty,
-                            let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else {
+                          let url = URL(string: "https://pictures.shoop-vooop.cloudns.nz/cars-logos/api/images/\(brand.lowercased())_resized.png") else {
                         return
                     }
                     print("Start load image")
