@@ -37,7 +37,7 @@ final class CarInfoControllerLayoutManager {
         didSet {
             animatedScrollConstraint?.update(offset: newConstraintConstant)
             let profileNameLabelScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
-            let profileViewsLabelScale = min(max(20.0 - newConstraintConstant, 0.0), 0)
+            let profileViewsLabelScale = max(newConstraintConstant / 9, 0)
             let profileViewsAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
             print(profileViewsLabelScale)
             carTopInfo.transform = CGAffineTransform(scaleX: profileNameLabelScale, y: profileNameLabelScale)
