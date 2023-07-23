@@ -36,13 +36,14 @@ final class CarInfoControllerLayoutManager {
     var newConstraintConstant: CGFloat = 0 {
         didSet {
             animatedScrollConstraint?.update(offset: newConstraintConstant)
-            let profileNameLabelScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
-            let profileViewsLabelScale = max(newConstraintConstant / 9, 0)
-            let profileViewsAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
-            print(profileViewsLabelScale)
-            carTopInfo.transform = CGAffineTransform(scaleX: profileNameLabelScale, y: profileNameLabelScale)
-            carTopInfo.alpha = 1 - profileViewsAlphaScale
-            vc.contentView.cornerRadius = profileViewsLabelScale
+            
+            let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
+            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
+            let contentViewCornerScale = max(newConstraintConstant / 9, 0)
+
+            carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
+            carTopInfo.alpha = 1 - carTopAlphaScale
+            vc.contentView.cornerRadius = contentViewCornerScale
         }
     }
     
