@@ -184,7 +184,8 @@ extension CarInfoViewController: UIScrollViewDelegate {
             let minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
             //Процент завершения анимации
-            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
+            //Оставить реализацию
+//            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
