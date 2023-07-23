@@ -11,12 +11,19 @@ import SnapKit
 
 final class CarInfoControllerLayoutManager {
     
+    //MARK: Property
+    
     private unowned let vc: CarInfoViewController
+    var animatedScrollConstraint: Constraint?
+    var previousContentOffsetY: CGFloat = 0
+    
+    //MARK: Flag
     
     private(set) var isFirstLayoutSubviews = true
-    var scrollMinConstraintConstant: CGFloat = 0
-    var contentOffset:CGFloat = 0
     
+    //MARK: Animation properties
+    
+    var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
             setupScrollView()
@@ -26,23 +33,19 @@ final class CarInfoControllerLayoutManager {
         }
     }
     
-    var animationCompletionPercentage: Double = 0 {
+    var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animator.fractionComplete = animationCompletionPercentage
-            print(animationCompletionPercentage)
-            animator.addAnimations { [weak self] in
-                guard let self else { return }
-                self.carTopInfo.transform = CGAffineTransform(translationX: -self.carTopInfo.bounds.width, y: 0)
-            }
+            animatedScrollConstraint?.update(offset: newConstraintConstant)
+            let profileNameLabelScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
+            let profileViewsLabelScale = min(max(1.0 - newConstraintConstant / 400.0, 0.0), 1.0)
+            let profileViewsAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
+            
+            carTopInfo.transform = CGAffineTransform(scaleX: profileNameLabelScale, y: profileNameLabelScale)
+            carTopInfo.alpha = 1 - profileViewsAlphaScale
         }
     }
     
-    var animator = UIViewPropertyAnimator(duration: 0.1, curve: .easeIn)
-    
-    var animatedCarTopInfoConstraint: Constraint?
-    var animatedScrollConstraint: Constraint?
-    var previousContentOffsetY: CGFloat = 0
-    var newConstraintConstant: CGFloat = 0
+    //MARK: UIComponents
     let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     lazy var carTopInfo = CarTopInfoView()
@@ -69,7 +72,6 @@ final class CarInfoControllerLayoutManager {
         print("deinit")
     }
     
-    
     private func makeNavbar() {
         let editButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
@@ -94,12 +96,6 @@ final class CarInfoControllerLayoutManager {
                 make.height.equalTo(screenHeight + 70)
             }
         }
-        
-        carTopInfo.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(vc.view.safeAreaLayoutGuide)
-            animatedCarTopInfoConstraint = make.bottom.equalTo(vc.view.safeAreaLayoutGuide.snp.top).offset(maxConstraintConstant!).constraint
-        }
-        
     }
     
     private func setupScrollView() {
@@ -146,6 +142,10 @@ fileprivate extension CarInfoControllerLayoutManager {
         segment.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets.horizintal)
+        }
+        
+        carTopInfo.snp.makeConstraints { make in
+            make.leading.top.trailing.equalTo(vc.view.safeAreaLayoutGuide)
         }
     }
 }

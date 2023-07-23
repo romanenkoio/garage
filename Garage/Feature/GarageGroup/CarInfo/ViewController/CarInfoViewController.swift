@@ -19,7 +19,7 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
-    
+    let timer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
@@ -62,8 +62,7 @@ class CarInfoViewController: BasicViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.layout.animator.stopAnimation(true)
-        self.layout.animator.finishAnimation(at: .end)
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -180,7 +179,6 @@ extension CarInfoViewController: UIScrollViewDelegate {
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
         if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
-           let currentTopConstraintConstant = layout.animatedCarTopInfoConstraint?.layoutConstraints.first?.constant,
            let maxConstraintConstant = layout.maxConstraintConstant {
             
             let minConstraintConstant = layout.scrollMinConstraintConstant
@@ -190,24 +188,40 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
+                timer.sink {[weak self] _ in
+                    guard let self else { return }
+                        if newConstraintConstant <= maxConstraintConstant / 3, newConstraintConstant > 0, contentMovesUp {
+                            self.layout.newConstraintConstant -= 1
+                        } else {
+                            self.timer.upstream.connect().cancel()
+                    }
+                }
+                .store(in: &cancellables)
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
+                
+                timer.sink {[weak self] _ in
+                    guard let self else { return }
+                    if newConstraintConstant < maxConstraintConstant, contentMovesDown {
+                            self.layout.newConstraintConstant += 1
+                            print(newConstraintConstant)
+                        } else {
+                            self.timer.upstream.connect().cancel()
+                    }
+                }
+                .store(in: &cancellables)
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,
                !tableView.isHidden {
-                layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
-                let profileNameLabelScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
-                let profileViewsLabelScale = min(max(1.0 - newConstraintConstant / 400.0, 0.0), 1.0)
-                let profileViewsAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
-                print(min(2.0 - 0.0 - newConstraintConstant / 170, 2))
-                print(2.0 - 0.0 - newConstraintConstant / 170)
-                layout.carTopInfo.transform = CGAffineTransform(scaleX: profileNameLabelScale, y: profileNameLabelScale)
-                layout.carTopInfo.alpha = 1 - profileViewsAlphaScale
+                layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
             layout.previousContentOffsetY = scrollView.contentOffset.y
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     }
 }
 
