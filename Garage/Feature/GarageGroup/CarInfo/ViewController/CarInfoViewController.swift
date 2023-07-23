@@ -19,7 +19,7 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
-    let timer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.009, on: .main, in: .common).autoconnect()
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
@@ -188,15 +188,17 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
+                
                 timer.sink {[weak self] _ in
                     guard let self else { return }
-                        if newConstraintConstant <= maxConstraintConstant / 3, newConstraintConstant > 0, contentMovesUp {
+                    if newConstraintConstant <= maxConstraintConstant / 0.5, newConstraintConstant > 0, contentMovesUp {
                             self.layout.newConstraintConstant -= 1
                         } else {
                             self.timer.upstream.connect().cancel()
                     }
                 }
                 .store(in: &cancellables)
+                
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 
