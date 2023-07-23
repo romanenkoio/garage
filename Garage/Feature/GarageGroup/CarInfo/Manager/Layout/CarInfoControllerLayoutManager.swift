@@ -12,17 +12,14 @@ import SnapKit
 final class CarInfoControllerLayoutManager {
     
     // - Property
-    
     private unowned let vc: CarInfoViewController
     var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
     // - Flag
-    
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {

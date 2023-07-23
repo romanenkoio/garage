@@ -20,6 +20,7 @@ class CarInfoViewController: BasicViewController {
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
     let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
@@ -164,9 +165,6 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //        if scrollView.contentSize.height < contentView.frame.height {
-        //            scrollView.contentSize.height = view
-        //        }
         
         let currentContentOffsetY = scrollView.contentOffset.y
         
@@ -220,11 +218,9 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
+            
             layout.previousContentOffsetY = scrollView.contentOffset.y
         }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     }
 }
 
