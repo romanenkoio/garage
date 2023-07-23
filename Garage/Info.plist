@@ -84,6 +84,10 @@
 			</dict>
 		</dict>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Мы поможем Вам найти припаркованный автомобиль</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Мы поможем Вам найти припаркованный автомобиль</string>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict/>

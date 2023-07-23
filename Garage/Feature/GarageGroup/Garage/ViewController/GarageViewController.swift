@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
+import SPIndicator
 
 class GarageViewController: BasicViewController {
-
+    
     // - UI
     typealias Coordinator = GarageControllerCoordinator
     typealias Layout = GarageControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
+    private lazy var locationManager = CLLocationManager()
     
     // - Manager
     var coordinator: Coordinator!
@@ -38,6 +41,14 @@ class GarageViewController: BasicViewController {
         if isFirst == true || isFirst == nil {
             coordinator.navigateTo(GarageNavigationRoute.onboarding)
         }
+        LocationManager.shared.checkLocationService()
+        switch LocationManager.shared.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.vm.isLocationEnabled = true
+            self.locationManager.delegate = self
+        default:
+            break
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,12 +68,12 @@ class GarageViewController: BasicViewController {
         )
         makeRightNavBarButton(buttons: [settingButtonVM])
     }
-
+    
     override func configure() {
         configureCoordinator()
         configureLayoutManager()
     }
-
+    
     override func binding() {
         super.binding()
         layout.table.setViewModel(vm.tableVM)
@@ -78,7 +89,6 @@ class GarageViewController: BasicViewController {
             self?.coordinator.navigateTo(GarageNavigationRoute.createCar)
         }
     }
-    
 }
 
 // MARK: -
@@ -112,14 +122,17 @@ extension GarageViewController: UITableViewDataSource {
         guard let carCell = tableView.dequeueReusableCell(CarCell.self),
               let vm = vm.tableVM.cells[safe: indexPath.row]
         else { return .init() }
-        carCell.mainView.setViewModel(vm)
+        carCell.mainView.setViewModel(.init(car: vm))
         carCell.selectionStyle = .none
         return carCell
     }
 }
 
 extension GarageViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         if indexPath.row == vm.tableVM.cells.count {
             let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
             let cars: [Car] = RealmManager().read()
@@ -132,6 +145,70 @@ extension GarageViewController: UITableViewDelegate {
         }
         
         guard let selectedCar = vm.tableVM.cells[safe: indexPath.row] else { return }
-        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar.car))
+        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(actionProvider: { [weak self] suggestedActions -> UIMenu? in
+            
+            guard let self,
+                  vm.isLocationEnabled == true,
+                  let car = vm.tableVM.cells[safe: indexPath.row]
+            else { return nil }
+            
+            let isHaveParking = !RealmManager<Parking>().read().filter({ $0.carID == car.id}).isEmpty
+            
+            let parkingAction = UIAction(
+                title: "Припарковаться",
+                image: UIImage(systemName: "square.and.arrow.up")
+            ) { [weak self] action in
+                self?.vm.selectedCar = car
+                self?.locationManager.startUpdatingLocation()
+            }
+            
+            let showParkingLocation = UIAction(
+                title: "Найти машину",
+                image: UIImage(systemName: "square.and.arrow.up")
+            ) { [weak self] action in
+                
+                
+            }
+            
+            let removeParkingLocation = UIAction(
+                title: "Удалить парковку",
+                image: UIImage(systemName: "square.and.arrow.up")
+            ) { [weak self] action in
+                self?.vm.selectedCar = car
+                self?.vm.removeParkingLocation()
+                SPIndicator.show(title: "Парковка удалена")
+            }
+            
+            var menu: [UIMenuElement] = .empty
+            if isHaveParking {
+                menu = [parkingAction, showParkingLocation, removeParkingLocation]
+            } else {
+                menu = [parkingAction]
+
+            }
+            return UIMenu(title: .empty, children: menu)
+            
+        })
+    }
+}
+
+extension GarageViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue = locations.last else { return }
+        print(locValue.horizontalAccuracy)
+        if locValue.horizontalAccuracy < 30 {
+            vm.setParkingMode(from: locValue)
+            print("locations = \(locValue.coordinate.latitude), \(locValue.coordinate.longitude)")
+            locationManager.stopUpdatingLocation()
+            SPIndicator.show(title: "Парковка записана!")
+        }
     }
 }

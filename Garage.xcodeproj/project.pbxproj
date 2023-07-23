@@ -142,6 +142,11 @@
 		7F8DB1062A56072A007E05C3 /* RemindersControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB1012A56072A007E05C3 /* RemindersControllerLayoutManager.swift */; };
 		7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB1032A56072A007E05C3 /* Reminders+ViewModel.swift */; };
 		7F8DB1082A56072A007E05C3 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB1042A56072A007E05C3 /* RemindersViewController.swift */; };
+		7F9264032A6DC94200DA220A /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 7F9264022A6DC94200DA220A /* GoogleMaps */; };
+		7F9264052A6DC94200DA220A /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 7F9264042A6DC94200DA220A /* GoogleMapsBase */; };
+		7F9264072A6DC94200DA220A /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F9264062A6DC94200DA220A /* GoogleMapsCore */; };
+		7F9264092A6DCC2700DA220A /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9264082A6DCC2700DA220A /* Parking.swift */; };
+		7F92640B2A6DD62300DA220A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92640A2A6DD62300DA220A /* LocationManager.swift */; };
 		7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */; };
 		7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */; };
 		7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */; };
@@ -452,6 +457,8 @@
 		7F8DB1012A56072A007E05C3 /* RemindersControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F8DB1032A56072A007E05C3 /* Reminders+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reminders+ViewModel.swift"; sourceTree = "<group>"; };
 		7F8DB1042A56072A007E05C3 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		7F9264082A6DCC2700DA220A /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
+		7F92640A2A6DD62300DA220A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Onboarding+ViewModel.swift"; sourceTree = "<group>"; };
@@ -633,13 +640,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FA7F74F2A6579E50089D922 /* SDWebImage in Frameworks */,
+				7F9264072A6DC94200DA220A /* GoogleMapsCore in Frameworks */,
 				7F1CC67C2A680E8E00C7F8B9 /* Lottie in Frameworks */,
+				7F9264032A6DC94200DA220A /* GoogleMaps in Frameworks */,
 				B978F3C72A2E9DE80076D326 /* SnapKit in Frameworks */,
 				7F1CC6872A686D9600C7F8B9 /* SPIndicator in Frameworks */,
 				7F0E09162A31D773008C2B9A /* Moya in Frameworks */,
 				7F759CB52A6972C900A2E012 /* IQKeyboardManagerSwift in Frameworks */,
 				7F3C32F52A5F60D000992706 /* DGCharts in Frameworks */,
 				7F5955F52A2E8B210062A85F /* RealmSwift in Frameworks */,
+				7F9264052A6DC94200DA220A /* GoogleMapsBase in Frameworks */,
 				7F5955F32A2E8B210062A85F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,6 +757,7 @@
 				7F1B7C6F2A60AAE200E84C86 /* TextFormatter.swift */,
 				7FC7D1942A63FF3A00A90586 /* Storage.swift */,
 				7FC7D1A92A642ACC00A90586 /* Loader.swift */,
+				7F92640A2A6DD62300DA220A /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1330,6 +1341,7 @@
 				7F5955FE2A2E93BA0062A85F /* Record.swift */,
 				7FFC1F712A353E31007A5C75 /* Photo.swift */,
 				7F820CBB2A3F87E600F1D22D /* Reminder.swift */,
+				7F9264082A6DCC2700DA220A /* Parking.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -2590,6 +2602,9 @@
 				7F1CC67B2A680E8E00C7F8B9 /* Lottie */,
 				7F1CC6862A686D9600C7F8B9 /* SPIndicator */,
 				7F759CB42A6972C900A2E012 /* IQKeyboardManagerSwift */,
+				7F9264022A6DC94200DA220A /* GoogleMaps */,
+				7F9264042A6DC94200DA220A /* GoogleMapsBase */,
+				7F9264062A6DC94200DA220A /* GoogleMapsCore */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -2630,6 +2645,7 @@
 				7F1CC67A2A680E8E00C7F8B9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				7F1CC6852A686D9600C7F8B9 /* XCRemoteSwiftPackageReference "SPIndicator" */,
 				7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -2709,6 +2725,7 @@
 				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
+				7F9264092A6DCC2700DA220A /* Parking.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
@@ -2856,6 +2873,7 @@
 				B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */,
 				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,
 				7FC7D16F2A630E5A00A90586 /* QrServiceReaderViewController.swift in Sources */,
+				7F92640B2A6DD62300DA220A /* LocationManager.swift in Sources */,
 				B978F3202A2E8F4C0076D326 /* BasicView.swift in Sources */,
 				B978F3B22A2E9D870076D326 /* UIColor.swift in Sources */,
 				7F89F9622A52294C005F910E /* OnboardingView+ViewModel.swift in Sources */,
@@ -3247,6 +3265,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 		7FA7F74D2A6579E50089D922 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -3300,6 +3326,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		7F9264022A6DC94200DA220A /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMaps;
+		};
+		7F9264042A6DC94200DA220A /* GoogleMapsBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsBase;
+		};
+		7F9264062A6DC94200DA220A /* GoogleMapsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsCore;
 		};
 		7FA7F74E2A6579E50089D922 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
