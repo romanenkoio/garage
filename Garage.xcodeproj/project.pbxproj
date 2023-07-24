@@ -151,6 +151,8 @@
 		7F9264202A6EFEF600DA220A /* ParkingMapControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92641B2A6EFEF600DA220A /* ParkingMapControllerLayoutManager.swift */; };
 		7F9264212A6EFEF600DA220A /* ParkingMap+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92641D2A6EFEF600DA220A /* ParkingMap+ViewModel.swift */; };
 		7F9264222A6EFEF600DA220A /* ParkingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92641E2A6EFEF600DA220A /* ParkingMapViewController.swift */; };
+		7F9264242A6F1E6E00DA220A /* CarPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9264232A6F1E6E00DA220A /* CarPinView.swift */; };
+		7F9264272A6F1E7F00DA220A /* CarPinView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9264262A6F1E7F00DA220A /* CarPinView+ViewModel.swift */; };
 		7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */; };
 		7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */; };
 		7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */; };
@@ -467,6 +469,8 @@
 		7F92641B2A6EFEF600DA220A /* ParkingMapControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingMapControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F92641D2A6EFEF600DA220A /* ParkingMap+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ParkingMap+ViewModel.swift"; sourceTree = "<group>"; };
 		7F92641E2A6EFEF600DA220A /* ParkingMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingMapViewController.swift; sourceTree = "<group>"; };
+		7F9264232A6F1E6E00DA220A /* CarPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPinView.swift; sourceTree = "<group>"; };
+		7F9264262A6F1E7F00DA220A /* CarPinView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarPinView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F92D1232A521F7200AD3847 /* OnboardingControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Onboarding+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1536,6 +1540,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F9264252A6F1E7800DA220A /* CarPinView */ = {
+			isa = PBXGroup;
+			children = (
+				7F9264232A6F1E6E00DA220A /* CarPinView.swift */,
+				7F9264262A6F1E7F00DA220A /* CarPinView+ViewModel.swift */,
+			);
+			path = CarPinView;
+			sourceTree = "<group>";
+		};
 		7F92D11D2A521F4D00AD3847 /* OnboardingGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -2198,6 +2211,7 @@
 				B978F30B2A2E8F4C0076D326 /* BasicTextField */,
 				7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */,
 				7F1B7C6D2A60989D00E84C86 /* TextValue.swift */,
+				7F9264252A6F1E7800DA220A /* CarPinView */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2804,6 +2818,7 @@
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */,
+				7F9264242A6F1E6E00DA220A /* CarPinView.swift in Sources */,
 				7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
 				7FC7D1932A63F2C700A90586 /* Bundle.swift in Sources */,
@@ -2892,6 +2907,7 @@
 				7F1DE3AD2A58AD97008E7B1D /* CreateReminder+ViewModel.swift in Sources */,
 				B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
+				7F9264272A6F1E7F00DA220A /* CarPinView+ViewModel.swift in Sources */,
 				B92E5A322A5B4B9A004698ED /* CarPhotoCollection.swift in Sources */,
 				7F0F92792A4257F900920CD9 /* DetailsView.swift in Sources */,
 				B978F31B2A2E8F4C0076D326 /* ErrorView+VeiwModel.swift in Sources */,

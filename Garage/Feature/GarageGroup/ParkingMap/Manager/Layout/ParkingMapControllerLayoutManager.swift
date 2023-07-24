@@ -20,6 +20,8 @@ final class ParkingMapControllerLayoutManager {
         return view
     }()
     
+    private(set) lazy var removeParkingButton = AlignedButton()
+    
     // - Init
     init(vc: ParkingMapViewController) {
         self.vc = vc
@@ -40,11 +42,17 @@ fileprivate extension ParkingMapControllerLayoutManager {
     private func makeLayout() {
         vc.disableScrollView()
         vc.contentView.addSubview(mapView)
+        vc.contentView.addSubview(removeParkingButton)
     }
     
     private func makeConstraint() {
         mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.top.equalToSuperview()
+            make.bottom.equalTo(vc.view)
+        }
+        
+        removeParkingButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 20))
         }
     }
 }

@@ -8,18 +8,13 @@
 
 import UIKit
 
-class ParkingMapControllerCoordinator {
-    
-    // - VC
-    private unowned let vc: ParkingMapViewController
-    
+class ParkingMapControllerCoordinator: BasicCoordinator {
     // - Init
-    init(vc: ParkingMapViewController) {
-        self.vc = vc
+    override init(vc: BasicViewController) {
+        super.init(vc: vc)
     }
     
-    func popViewController(animated: Bool = true) {
-        vc.navigationController?.popViewController(animated: animated)
+    override func navigateTo(_ route: Routable) {
+        super.navigateTo(route)
     }
-    
 }

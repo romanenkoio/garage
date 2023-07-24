@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SPIndicator
 
 class BasicViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = []

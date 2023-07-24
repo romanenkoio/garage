@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import SPIndicator
 
 class ParkingMapViewController: BasicViewController {
 
@@ -35,6 +36,10 @@ class ParkingMapViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCarPin()
+        makeCloseButton(isLeft: true)
+        if let dateString = vm.parking?.date.toString(.MMddyyyyHHmm) {
+            self.title = "Парковка: \(dateString)"
+        }
     }
 
     override func configure() {
@@ -43,7 +48,13 @@ class ParkingMapViewController: BasicViewController {
     }
 
     override func binding() {
+        self.layout.removeParkingButton.setViewModel(vm.removeParkingButtonVM)
         
+        vm.removeParkingButtonVM.buttonVM.action = .touchUpInside { [weak self] in
+            self?.vm.removeParking()
+            self?.coordinator.navigateTo(CommonNavigationRoute.closeToRoot)
+            SPIndicator.show(title: "Парковка удалена")
+        }
     }
     
     private func makeCarPin() {
@@ -54,6 +65,9 @@ class ParkingMapViewController: BasicViewController {
         )
         
         let pin = GMSMarker(position: location)
+        let pinView = CarPinView()
+        pinView.setViewModel(.init(car: vm.car))
+        pin.iconView = pinView
         pin.map = layout.mapView
         
         let camera = GMSCameraPosition(
