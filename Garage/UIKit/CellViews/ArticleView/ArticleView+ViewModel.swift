@@ -12,10 +12,13 @@ extension ArticleView {
         let titleVM = BasicLabel.ViewModel()
         let imageVM = BasicImageView.ViewModel(data: nil)
         
+        let article: Article!
+        
         init(
             article: Article
         ) {
-            self.imageVM.set(from: article.picture)
+            self.article = article
+            self.imageVM.set(from: "https://pictures.shoop-vooop.cloudns.nz/shopping-list/api/news/images/\(article.id)/")
             self.titleVM.textValue = .text(article.title)
         }
     }

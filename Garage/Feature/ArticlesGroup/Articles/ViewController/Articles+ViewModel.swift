@@ -10,7 +10,7 @@ import UIKit
 
 extension ArticlesViewController {
     final class ViewModel: BasicViewModel {
-        let tableVM = BasicTableView.GenericViewModel<Article>()
+        let tableVM = BasicTableView.GenericViewModel<ArticleView.ViewModel>()
         let articles: [News] = .empty
         
         override init() {
@@ -26,7 +26,7 @@ extension ArticlesViewController {
                             GarageApi.news,
                             model: News.self
                         ).results
-                    tableVM.setCells(result)
+                    tableVM.setCells(result.map({ .init(article: $0)}))
                 } catch let error {
                     print(error)
                 }

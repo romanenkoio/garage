@@ -86,10 +86,10 @@ extension ArticlesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let article = vm.tableVM.cells[safe: indexPath.row],
+        guard let articleVM = vm.tableVM.cells[safe: indexPath.row],
               let articleCell = tableView.dequeueReusableCell(BasicTableCell<ArticleView>.self)
         else { return .init() }
-        articleCell.mainView.setViewModel(.init(article: article))
+        articleCell.mainView.setViewModel(articleVM)
         articleCell.selectionStyle = .none
         return articleCell
     }
@@ -97,7 +97,7 @@ extension ArticlesViewController: UITableViewDataSource {
 
 extension ArticlesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let article = vm.tableVM.cells[safe: indexPath.row] else { return }
-        coordinator.navigateTo(ArticlesNavigationRoute.openArticle(article))
+        guard let articleVM = vm.tableVM.cells[safe: indexPath.row] else { return }
+        coordinator.navigateTo(ArticlesNavigationRoute.openArticle(articleVM.article))
     }
 }
