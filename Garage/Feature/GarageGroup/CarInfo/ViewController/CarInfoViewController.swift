@@ -165,6 +165,7 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        cancellables.removeAll()
         
         let currentContentOffsetY = scrollView.contentOffset.y
         
@@ -172,7 +173,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
         
         // Верхняя граница начала bounce эффекта
         let bounceBorderContentOffsetY = -scrollView.contentInset.top
-        let bounce = -scrollView.contentOffset.y
+        
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
@@ -194,7 +195,6 @@ extension CarInfoViewController: UIScrollViewDelegate {
                        newConstraintConstant > 0 {
                         scrollView.contentOffset.y = 0
                         layout.newConstraintConstant -= 0.1
-                        print("Up",newConstraintConstant, maxConstraintConstant)
                     }
                 }
                 .store(in: &cancellables)
@@ -211,7 +211,6 @@ extension CarInfoViewController: UIScrollViewDelegate {
                     }
                 }
                 .store(in: &cancellables)
-                
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,
