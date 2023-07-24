@@ -12,7 +12,7 @@ class CarView: BasicView {
         let stack = BasicStackView()
         stack.axis = .vertical
         stack.backgroundColor = AppColors.background
-        stack.cornerRadius = 20
+        stack.cornerRadius = 12
         return stack
     }()
     

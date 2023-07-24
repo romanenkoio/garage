@@ -164,8 +164,8 @@ extension GarageViewController: UITableViewDelegate {
             let isHaveParking = !RealmManager<Parking>().read().filter({ $0.carID == car.id}).isEmpty
             
             let parkingAction = UIAction(
-                title: "Припарковаться",
-                image: UIImage(systemName: "square.and.arrow.up")
+                title: "Запомнить парковку",
+                image: UIImage(systemName: "parkingsign.circle")
             ) { [weak self] action in
                 self?.vm.selectedCar = car
                 self?.locationManager.startUpdatingLocation()
@@ -174,7 +174,7 @@ extension GarageViewController: UITableViewDelegate {
             
             let showParkingLocation = UIAction(
                 title: "Найти машину",
-                image: UIImage(systemName: "square.and.arrow.up")
+                image: UIImage(systemName: "location.magnifyingglass")
             ) { [weak self] action in
                 
                 
@@ -182,7 +182,7 @@ extension GarageViewController: UITableViewDelegate {
             
             let removeParkingLocation = UIAction(
                 title: "Удалить парковку",
-                image: UIImage(systemName: "square.and.arrow.up")
+                image: UIImage(systemName: "trash.circle")
             ) { [weak self] action in
                 guard let self else { return }
                 self.vm.selectedCar = car
