@@ -20,7 +20,7 @@ class ServicesViewController: BasicViewController {
     
     // - Manager
     var coordinator: Coordinator!
-     var layout: Layout!
+    var layout: Layout!
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -100,14 +100,18 @@ extension ServicesViewController {
 }
 
 extension ServicesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return vm.tableVM.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let serviceCell = tableView.dequeueReusableCell(ServiceCell.self, for: indexPath) else { return .init() }
         serviceCell.mainView.setViewModel(
-            .init(service: vm.tableVM.cells[indexPath.row])
+            .init(service: vm.tableVM.cells[indexPath.section])
         )
         serviceCell.selectionStyle = .none
         
@@ -140,6 +144,14 @@ extension ServicesViewController: UITableViewDelegate {
             }
             return UIMenu(title: .empty, children: [copyAction])
         })
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
 

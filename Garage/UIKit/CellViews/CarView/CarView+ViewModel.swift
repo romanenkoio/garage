@@ -14,7 +14,7 @@ extension CarView {
         let plannedLabelVM = BasicLabel.ViewModel()
         let atteentionLabelVM = BasicLabel.ViewModel()
         let imageVM = BasicImageView.ViewModel(image: nil, mode: .scaleAspectFill)
-        let parkingImageVM = BasicImageView.ViewModel(image: UIImage(systemName: "parkingsign.circle.fill"))
+        let parkingImageVM = BasicImageView.ViewModel(image: UIImage(named: "parking_ic"))
         let attentionImageVM = BasicImageView.ViewModel(image: UIImage(named: "error_ic"))
         
         unowned let car: Car

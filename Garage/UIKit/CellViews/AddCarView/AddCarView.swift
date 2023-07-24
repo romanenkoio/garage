@@ -32,7 +32,7 @@ class AddCarView: BasicStackView {
         self.axis = .vertical
         self.spacing = 6
         self.paddingInsets = .init(top: 23, bottom: 21)
-        self.edgeInsets = .init(top: 20, horizontal: 20)
+        self.edgeInsets = .init(top: 20)
     }
     
     private func makeLayout() {

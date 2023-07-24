@@ -38,7 +38,7 @@ final class ServicesControllerLayoutManager {
         )
         table.register(ServiceCell.self)
         table.table.separatorStyle = .none
-        ////////////
+        table.table.contentInset = .init(top: 20)
         return table
     }()
     
@@ -86,7 +86,7 @@ fileprivate extension ServicesControllerLayoutManager {
         }
         
         table.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
             make.top.equalTo(stack.snp.bottom)
         }
         

@@ -13,7 +13,6 @@ class CarView: BasicView {
         stack.axis = .vertical
         stack.backgroundColor = AppColors.background
         stack.cornerRadius = 20
-        stack.edgeInsets = .init(top: 20, horizontal: 20)
         return stack
     }()
     
@@ -108,7 +107,7 @@ class CarView: BasicView {
         }
         
         parkingImage.snp.makeConstraints { make in
-            make.height.width.equalTo(16)
+            make.height.width.equalTo(30)
         }
 
         attentionView.snp.makeConstraints { make in
@@ -125,7 +124,7 @@ class CarView: BasicView {
         imageStack.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.height.equalTo(16)
+            make.height.equalTo(30)
         }
         
         logoImage.snp.makeConstraints { make in
