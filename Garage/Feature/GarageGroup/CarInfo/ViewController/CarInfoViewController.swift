@@ -190,7 +190,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 layout.upTimer.sink {[weak self] _ in
                     guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 1.1,
+                    if newConstraintConstant <= maxConstraintConstant / 1.2,
                        newConstraintConstant > 0 {
                         layout.newConstraintConstant -= 0.1
                     }
@@ -202,8 +202,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 layout.downTimer.sink {[weak self] _ in
                     guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 1.1,
-                       newConstraintConstant < maxConstraintConstant {
+                    if newConstraintConstant <= maxConstraintConstant {
                         layout.newConstraintConstant += 0.1
                     }
                 }
