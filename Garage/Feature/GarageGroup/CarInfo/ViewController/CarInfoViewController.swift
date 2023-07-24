@@ -19,7 +19,7 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
-    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
     
     // - Manager
     var coordinator: Coordinator!
@@ -172,7 +172,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
         
         // Верхняя граница начала bounce эффекта
         let bounceBorderContentOffsetY = -scrollView.contentInset.top
-        
+        let bounce = -scrollView.contentOffset.y
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
@@ -190,10 +190,11 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 timer.sink {[weak self] _ in
                     guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 0.5, newConstraintConstant > 0, contentMovesUp {
-                            self.layout.newConstraintConstant -= 1
-                        } else {
-                            self.timer.upstream.connect().cancel()
+                    if newConstraintConstant <= maxConstraintConstant / 1.1,
+                       newConstraintConstant > 0 {
+                        scrollView.contentOffset.y = 0
+                        layout.newConstraintConstant -= 0.1
+                        print("Up",newConstraintConstant, maxConstraintConstant)
                     }
                 }
                 .store(in: &cancellables)
@@ -203,14 +204,14 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
                 timer.sink {[weak self] _ in
                     guard let self else { return }
-                    if newConstraintConstant < maxConstraintConstant, contentMovesDown {
-                            self.layout.newConstraintConstant += 1
-                            print(newConstraintConstant)
-                        } else if newConstraintConstant == maxConstraintConstant {
-                            self.timer.upstream.connect().cancel()
+                    if newConstraintConstant <= maxConstraintConstant / 1.1,
+                        newConstraintConstant < maxConstraintConstant {
+                        scrollView.contentOffset.y = 0
+                        layout.newConstraintConstant += 0.1
                     }
                 }
                 .store(in: &cancellables)
+                
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,

@@ -41,6 +41,13 @@ final class CarInfoControllerLayoutManager {
             carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
             carTopInfo.alpha = 1 - carTopAlphaScale
             vc.contentView.cornerRadius = contentViewCornerScale
+            print(newConstraintConstant)
+            if newConstraintConstant < scrollMinConstraintConstant {
+                vc.timer.upstream.connect().cancel()
+            } else if
+                newConstraintConstant > maxConstraintConstant! {
+                    vc.timer.upstream.connect().cancel()
+            }
         }
     }
     
