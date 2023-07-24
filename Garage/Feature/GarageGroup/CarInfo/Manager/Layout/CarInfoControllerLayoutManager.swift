@@ -45,8 +45,23 @@ final class CarInfoControllerLayoutManager {
                 case 0...3:
                     vc.upTimer.upstream.connect().cancel()
                     print(newConstraintConstant)
+                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                        if !titleLabelView.didChangeTitle {
+                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                            label.changedTitle = "\(vc.vm.car.brand) \(vc.vm.car.model)"
+                            titleLabelView.didChangeTitle = true
+                        }
+                    }
                 case maxConstraintConstant!-3...maxConstraintConstant!+3:
                     vc.downTimer.upstream.connect().cancel()
+                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                        if  titleLabelView.didChangeTitle {
+                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                            label.defaultTitle = titleLabelView.defaultTitle
+                            titleLabelView.didChangeTitle = false
+                        }
+                    }
+                    
                 print(newConstraintConstant)
                 default:
                     break
@@ -55,7 +70,7 @@ final class CarInfoControllerLayoutManager {
     }
     
     // - UIComponents
-    let titleLabelView = NavigationBarAnimatedTitle.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+    let titleLabelView = NavigationBarTitleAnimator.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     lazy var carTopInfo = CarTopInfoView()
     lazy var addButton = FloatingButtonView()
