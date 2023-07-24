@@ -13,6 +13,7 @@ enum GarageNavigationRoute: Routable {
     case openCar(Car)
     case settings
     case onboarding
+    case findCar(Car)
 }
 
 class GarageControllerCoordinator: BasicCoordinator {
@@ -38,6 +39,9 @@ class GarageControllerCoordinator: BasicCoordinator {
                 new.modalTransitionStyle = .crossDissolve
                 new.modalPresentationStyle = .fullScreen
                 vc.present(new)
+            case .findCar(let car):
+                let new = ParkingMapViewController(vm: .init(car: car))
+                vc.push(new)
             }
         } else {
             super.navigateTo(route)

@@ -176,8 +176,7 @@ extension GarageViewController: UITableViewDelegate {
                 title: "Найти машину",
                 image: UIImage(systemName: "location.magnifyingglass")
             ) { [weak self] action in
-                
-                
+                self?.coordinator.navigateTo(GarageNavigationRoute.findCar(car))
             }
             
             let removeParkingLocation = UIAction(

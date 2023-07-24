@@ -8,17 +8,23 @@
 
 import UIKit
 import SnapKit
+import GoogleMaps
 
 final class ParkingMapControllerLayoutManager {
     
     private unowned let vc: ParkingMapViewController
+    
+    lazy var mapView: GMSMapView = {
+        let view = GMSMapView()
+        view.isMyLocationEnabled = true
+        return view
+    }()
     
     // - Init
     init(vc: ParkingMapViewController) {
         self.vc = vc
         configure()
     }
-    
 }
 
 // MARK: -
@@ -32,11 +38,13 @@ fileprivate extension ParkingMapControllerLayoutManager {
     }
     
     private func makeLayout() {
-        
+        vc.disableScrollView()
+        vc.contentView.addSubview(mapView)
     }
     
     private func makeConstraint() {
-        
+        mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
-    
 }

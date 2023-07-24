@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class ParkingMapViewController: BasicViewController {
 
@@ -33,6 +34,7 @@ class ParkingMapViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeCarPin()
     }
 
     override func configure() {
@@ -44,6 +46,27 @@ class ParkingMapViewController: BasicViewController {
         
     }
     
+    private func makeCarPin() {
+        guard let parking = vm.parking else { return }
+        let location = CLLocationCoordinate2D(
+            latitude: parking.latitude,
+            longitude: parking.longitude
+        )
+        
+        let pin = GMSMarker(position: location)
+        pin.map = layout.mapView
+        
+        let camera = GMSCameraPosition(
+            latitude: location.latitude,
+            longitude: location.longitude,
+            zoom: 15
+        )
+        layout.mapView.camera = camera
+        
+        let circ = GMSCircle(position: location, radius: parking.accuracy)
+        circ.fillColor = .black.withAlphaComponent(0.1)
+        circ.map = layout.mapView
+    }
 }
 
 // MARK: -
@@ -56,7 +79,7 @@ extension ParkingMapViewController {
     }
     
     private func configureLayoutManager() {
-        layoutManager = ParkingMapControllerLayoutManager(vc: self)
+        layout = ParkingMapControllerLayoutManager(vc: self)
     }
     
 }

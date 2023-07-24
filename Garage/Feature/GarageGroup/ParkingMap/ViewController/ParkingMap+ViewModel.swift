@@ -11,8 +11,10 @@ import UIKit
 extension ParkingMapViewController {
     final class ViewModel: BasicViewModel {
         
-        override init() {
-            super.init()
+        var parking: Parking?
+        
+        init(car: Car) {
+            parking = RealmManager<Parking>().read().first(where: { $0.carID == car.id })
         }
     }
 }

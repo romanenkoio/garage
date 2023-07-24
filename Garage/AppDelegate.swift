@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import GoogleMaps
 
 
 @main
@@ -20,11 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initPushes()
         initSystem()
         initLocalization()
+        initMap()
         return true
     }
 
     private func initLocalization() {
         Bundle.setLocalization()
+    }
+
+    private func initMap() {
+        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
     }
 
     private func initNavbar() {
