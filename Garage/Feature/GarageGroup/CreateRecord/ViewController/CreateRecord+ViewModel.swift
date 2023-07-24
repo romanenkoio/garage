@@ -83,27 +83,30 @@ extension CreateRecordViewController {
             initValidator()
             
             switch mode {
-            case .createFrom(let reminder):
-                saveButtonVM.buttonVM.isEnabled = false
-                shortTypeVM.inputVM.setText(reminder.short)
-                commenntInputVM.inputVM.text = reminder.comment.wrapped
-                dateInputVM.setNewDate(Date())
-                saveButtonVM.buttonVM.style = .createFromreminder
-                saveButtonVM.buttonVM.title = "Выполнить"
-            case .create:
-                saveButtonVM.buttonVM.isEnabled = false
-            case .edit(let object):
-                dateInputVM.initDate(object.date)
-                commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
-                costInputVM.text = "\(object.cost ?? .zero)"
-                mileageInputVM.text = "\(object.mileage)"
-                shortTypeVM.inputVM.setText(object.short)
-                imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
-                saveButtonVM.buttonVM.title = "Обновить"
-                if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
-                    serivesListVM.initSelected(service)
-                }
-                initChangeChecker()
+                case .createFrom(let reminder):
+                    saveButtonVM.buttonVM.isEnabled = false
+                    shortTypeVM.inputVM.setText(reminder.short)
+                    commenntInputVM.inputVM.text = reminder.comment.wrapped
+                    dateInputVM.setNewDate(Date())
+                    dateInputVM.descriptionLabel = "Дата выполнения"
+                    saveButtonVM.buttonVM.style = .createFromreminder
+                    saveButtonVM.buttonVM.title = "Выполнить"
+                case .create:
+                    saveButtonVM.buttonVM.isEnabled = false
+                    dateInputVM.descriptionLabel = "Дата выполнения"
+                case .edit(let object):
+                    dateInputVM.initDate(object.date)
+                    dateInputVM.descriptionLabel = "Изменить дату"
+                    commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
+                    costInputVM.text = "\(object.cost ?? .zero)"
+                    mileageInputVM.text = "\(object.mileage)"
+                    shortTypeVM.inputVM.setText(object.short)
+                    imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
+                    saveButtonVM.buttonVM.title = "Обновить"
+                    if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
+                        serivesListVM.initSelected(service)
+                    }
+                    initChangeChecker()
             }
         }
         

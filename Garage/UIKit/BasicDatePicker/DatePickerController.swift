@@ -33,12 +33,9 @@ class DatePickerController: UIViewController {
     
     lazy private var closeButton = NavBarButton()
     
-    lazy private var separateView: BasicView = {
-        let view = BasicView()
+    lazy private var separateView: SeparatorView = {
+        let view = SeparatorView()
         view.backgroundColor = .init(hexString: "#E3E3E3")
-        view.snp.makeConstraints { make in
-            make.height.equalTo(1)
-        }
         return view
     }()
     
@@ -54,6 +51,14 @@ class DatePickerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         binding()
+        sheetPresent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isBeingDismissed {
+            vm.isBeingDismissed.toggle()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +78,8 @@ class DatePickerController: UIViewController {
     
     private func makeConstraints() {
         contentView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
         }
         
         descriptionLabel.snp.makeConstraints { make in
@@ -100,12 +106,26 @@ class DatePickerController: UIViewController {
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(datePicker.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 60))
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(-55)
         }
     }
     
+    private func sheetPresent() {
+        if let presentationController = presentationController as? UISheetPresentationController {
+    
+            presentationController.selectedDetentIdentifier = .medium
+            presentationController.accessibilityElementsHidden = true
+            presentationController.prefersEdgeAttachedInCompactHeight = false
+            presentationController.prefersScrollingExpandsWhenScrolledToEdge = false
+            presentationController.detents = [
+                .medium()
+            ]}
+    }
+
     private func binding() {
         cancellables.removeAll()
+        
+        descriptionLabel.setViewModel(vm.descriptionLabelVM)
         
         saveButton.setViewModel(
             .init(
@@ -113,6 +133,7 @@ class DatePickerController: UIViewController {
                 style: .basicDarkTitle(backgroundColor: AppColors.background),
                 action: .touchUpInside {[weak self] in
                     self?.vm.date = self?.datePicker.date
+                    self?.vm.isBeingDismissed.toggle()
                 }
             )
         )
@@ -120,7 +141,7 @@ class DatePickerController: UIViewController {
         closeButton.setViewModel(
             .init(
                 action: .touchUpInside {[weak self] in
-                    self?.dismiss(animated: true)
+                    self?.vm.isBeingDismissed.toggle()
                 },
                 image: UIImage(named: "back_ic")
             )

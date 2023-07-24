@@ -11,25 +11,33 @@ extension BasicDatePicker {
     class ViewModel: BasicTextField.ViewModel {
         let desctiptionVM = BasicLabel.ViewModel()
         var datePickerController = DatePickerController.ViewModel()
-        @Published private(set) var initDate: Date?
+        @Published private(set) var date: Date?
 
         init(
-            initDate: Date? = nil,
+            date: Date? = nil,
             placeholder: String = .empty
         ) {
             super.init(
-                text: initDate?.toString(.ddMMyy) ?? .empty,
+                text: date?.toString(.ddMMyy) ?? .empty,
                 placeholder: Date().append(.day).toString(.ddMMyy)
             )
             self.isValid = date != nil
-            self.initDate = initDate
+            self.date = date
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
             self.placeholder = placeholder
+            
+            datePickerController.$date
+                .dropFirst()
+                .sink { [weak self] date in
+                    guard let self else { return}
+                    self.date = date
+                }
+                .store(in: &cancellables)
         }
         
         func setNewDate(_ date: Date?) {
             let stringDate = date?.withoutTime.toString(.ddMMyy) ?? .empty
-            self.initDate = date
+            self.date = date
             self.text = stringDate
             
             guard date != nil else {
@@ -43,16 +51,11 @@ extension BasicDatePicker {
         }
         
         func initDate(_ date: Date?) {
-            self.initDate = date
+            self.date = date
             self.text = date?.withoutTime.toString(.ddMMyy) ?? .empty
             self.isValid = date != nil
             
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
-        }
-        
-        var date: Date? {
-            get { datePickerController.date }
-            set { datePickerController.date = newValue }
         }
         
         var minimumDate: Date? {

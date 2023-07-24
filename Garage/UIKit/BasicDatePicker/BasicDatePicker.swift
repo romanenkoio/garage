@@ -67,11 +67,10 @@ class BasicDatePicker: BasicTextField {
     
     func setViewModel(_ vm: BasicDatePicker.ViewModel) {
         self.viewModel = vm
-        vm.$initDate
+        vm.$date
             .sink { [weak self] value in
                 guard let self else { return }
                 self.text = value?.toString(.ddMMyy) ?? .empty
-                print("initDate", value)
             }
             .store(in: &cancellables)
 
@@ -90,25 +89,23 @@ class BasicDatePicker: BasicTextField {
             self?.text = text
         }
         .store(in: &cancellables)
-        
-        vm.datePickerController.$date
-            .sink { [weak self] value in
+    
+        vm.datePickerController.$isBeingDismissed
+            .dropFirst()
+            .sink {[weak self] _ in
                 guard let self else { return }
-                self.text = value?.toString(.ddMMyy) ?? .empty
-                
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                 
                 sceneDelegate?.window?.rootViewController?.dismiss(
                     animated: true,
                     completion: {
-                        self.viewModel?.setNewDate(value)
                         _ = self.resignFirstResponder()
                     }
                 )
             }
             .store(in: &cancellables)
     }
-    
+
     @objc private func presentPicker() {
         _ = super.becomeFirstResponder()
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate

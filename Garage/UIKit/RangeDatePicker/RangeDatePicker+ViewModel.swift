@@ -53,6 +53,17 @@ extension RangeDatePicker {
             set { finishDateVM.maximumDate = newValue}
         }
         
+        var titleDescription: String {
+            get {
+                startDateVM.datePickerController.descriptionLabelVM.textValue.clearText
+                return finishDateVM.datePickerController.descriptionLabelVM.textValue.clearText
+            }
+            set {
+                startDateVM.datePickerController.descriptionLabelVM = .init(.text(newValue))
+                finishDateVM.datePickerController.descriptionLabelVM = .init(.text(newValue))
+            }
+        }
+        
         func setDates(
             start: Date? = nil,
             end: Date? = nil
