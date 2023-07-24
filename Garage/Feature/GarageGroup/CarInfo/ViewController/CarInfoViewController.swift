@@ -53,6 +53,7 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
+        layout.page.delegate = self
         layout.titleLabelView.defaultTitle = "Общая информация"
         self.navigationItem.titleView = layout.titleLabelView
     }
@@ -219,6 +220,30 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             layout.previousContentOffsetY = scrollView.contentOffset.y
         }
+    }
+}
+
+extension CarInfoViewController: UIPageViewControllerDelegate {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        if completed {
+            layout.page.vm.setIndexCandidate()
+        }
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        willTransitionTo pendingViewControllers: [UIViewController]
+    ) {
+        guard let controller = pendingViewControllers.first,
+              let index = layout.page.vm.controllers.firstIndex(of: controller as! BasicViewController)
+        else { return }
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        layout.page.vm.indexCandidate = index
     }
 }
 
