@@ -19,7 +19,8 @@ class CarInfoViewController: BasicViewController {
     private(set) var vm: ViewModel
     var navigationBarOriginalOffset : CGFloat?
     var segmentOriginalOffset: CGFloat?
-    let timer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
+    let upTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
+    let downTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
     
     // - Manager
     var coordinator: Coordinator!
@@ -165,12 +166,9 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        cancellables.removeAll()
-        
         let currentContentOffsetY = scrollView.contentOffset.y
         
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
-        
         // Верхняя граница начала bounce эффекта
         let bounceBorderContentOffsetY = -scrollView.contentInset.top
         
@@ -182,6 +180,8 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             let minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
+            
+            newConstraintConstant = currentScrollConstraintConstant
             //Процент завершения анимации
             //Оставить реализацию
 //            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
@@ -189,11 +189,10 @@ extension CarInfoViewController: UIScrollViewDelegate {
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
                 
-                timer.sink {[weak self] _ in
+                upTimer.sink {[weak self] _ in
                     guard let self else { return }
                     if newConstraintConstant <= maxConstraintConstant / 1.1,
                        newConstraintConstant > 0 {
-                        scrollView.contentOffset.y = 0
                         layout.newConstraintConstant -= 0.1
                     }
                 }
@@ -202,11 +201,10 @@ extension CarInfoViewController: UIScrollViewDelegate {
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 
-                timer.sink {[weak self] _ in
+                downTimer.sink {[weak self] _ in
                     guard let self else { return }
                     if newConstraintConstant <= maxConstraintConstant / 1.1,
-                        newConstraintConstant < maxConstraintConstant {
-                        scrollView.contentOffset.y = 0
+                       newConstraintConstant < maxConstraintConstant {
                         layout.newConstraintConstant += 0.1
                     }
                 }

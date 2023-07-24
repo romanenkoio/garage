@@ -33,7 +33,6 @@ final class CarInfoControllerLayoutManager {
     var newConstraintConstant: CGFloat = 0 {
         didSet {
             animatedScrollConstraint?.update(offset: newConstraintConstant)
-            
             let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
             let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
             let contentViewCornerScale = max(newConstraintConstant / 9, 0)
@@ -41,12 +40,16 @@ final class CarInfoControllerLayoutManager {
             carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
             carTopInfo.alpha = 1 - carTopAlphaScale
             vc.contentView.cornerRadius = contentViewCornerScale
-            print(newConstraintConstant)
-            if newConstraintConstant < scrollMinConstraintConstant {
-                vc.timer.upstream.connect().cancel()
-            } else if
-                newConstraintConstant > maxConstraintConstant! {
-                    vc.timer.upstream.connect().cancel()
+            
+            switch newConstraintConstant {
+                case 0...3:
+                    vc.upTimer.upstream.connect().cancel()
+                    print(newConstraintConstant)
+                case maxConstraintConstant!-3...maxConstraintConstant!+3:
+                    vc.downTimer.upstream.connect().cancel()
+                print(newConstraintConstant)
+                default:
+                    break
             }
         }
     }
