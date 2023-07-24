@@ -20,6 +20,8 @@ final class CarInfoControllerLayoutManager {
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
+    let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
+    let downTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
@@ -43,7 +45,7 @@ final class CarInfoControllerLayoutManager {
             
             switch newConstraintConstant {
                 case 0...3:
-                    vc.upTimer.upstream.connect().cancel()
+                    upTimer.upstream.connect().cancel()
                     print(newConstraintConstant)
                     if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
                         if !titleLabelView.didChangeTitle {
@@ -53,7 +55,7 @@ final class CarInfoControllerLayoutManager {
                         }
                     }
                 case maxConstraintConstant!-3...maxConstraintConstant!+3:
-                    vc.downTimer.upstream.connect().cancel()
+                    downTimer.upstream.connect().cancel()
                     if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
                         if  titleLabelView.didChangeTitle {
                             label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
