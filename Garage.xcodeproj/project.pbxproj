@@ -229,6 +229,8 @@
 		B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */; };
 		B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */; };
 		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
+		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
+		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -535,6 +537,8 @@
 		B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PastRecords+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsViewController.swift; sourceTree = "<group>"; };
 		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
+		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -2158,6 +2162,8 @@
 			children = (
 				B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */,
 				B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */,
+				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
+				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
 			);
 			path = BasicDatePicker;
 			sourceTree = "<group>";
@@ -2824,6 +2830,7 @@
 				7FC7D1A52A64001800A90586 /* BackupViewController.swift in Sources */,
 				7F1CC68B2A68877700C7F8B9 /* SPIndicator.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
+				B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
@@ -2894,6 +2901,7 @@
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
+				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,

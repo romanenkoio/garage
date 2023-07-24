@@ -10,12 +10,8 @@ import UIKit
 extension BasicDatePicker {
     class ViewModel: BasicTextField.ViewModel {
         let desctiptionVM = BasicLabel.ViewModel()
-        
+        var datePickerController = DatePickerController.ViewModel()
         @Published private(set) var date: Date?
-    
-        @Published var minimumDate: Date?
-        @Published var maximumDate: Date?
-    
 
         init(
             date: Date? = nil,
@@ -52,6 +48,21 @@ extension BasicDatePicker {
             self.isValid = date != nil
             
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
+        }
+        
+        var minimumDate: Date? {
+            get { datePickerController.minimumDate }
+            set { datePickerController.minimumDate = newValue }
+        }
+        
+        var maximumDate: Date? {
+            get { datePickerController.maximumDate }
+            set { datePickerController.maximumDate = newValue }
+        }
+        
+        var descriptionLabel: String {
+            get {datePickerController.descriptionLabelVM.textValue.clearText}
+            set {datePickerController.descriptionLabelVM = .init(.text(newValue))}
         }
     }
 }

@@ -16,7 +16,7 @@ enum ButtonStyle {
     case createFromreminder
     case removeImage
     case basicLightTitle
-    case basicDarkTitle
+    case basicDarkTitle(backgroundColor: UIColor? = nil)
     case popup(color: UIColor? = nil)
     case complete
 }
@@ -95,9 +95,11 @@ class BasicButton: UIButton {
             case .basicLightTitle:
                 backgroundColor = .clear
                 setTitleColor(.primaryGray, for: .normal)
-            case .basicDarkTitle:
-                backgroundColor = .clear
+            case .basicDarkTitle(backgroundColor: let color):
                 setTitleColor(.textGray, for: .normal)
+                if let color {
+                    backgroundColor = color
+                }
             case .popup(color: let color):
             setTitleColor(.primaryBlue, for: .normal)
             if let color {
@@ -117,7 +119,12 @@ class BasicButton: UIButton {
             backgroundColor = value ? AppColors.green : AppColors.green.withAlphaComponent(0.5)
             case .secondary:
                 backgroundColor = value ? .primaryGray : .secondaryGray
-            case .basicDarkTitle, .basicLightTitle, .removeImage:
+            case .basicDarkTitle(backgroundColor: let color):
+                guard let color else { return
+                    backgroundColor = .clear
+                }
+                backgroundColor = value ? color : color.withAlphaComponent(0.5)
+            case  .basicLightTitle, .removeImage:
                 backgroundColor = .clear
             case .popup(let color):
                 backgroundColor = color ?? (value ? .primaryGray : .secondaryGray)

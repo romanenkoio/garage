@@ -18,27 +18,6 @@ class BasicDatePicker: BasicTextField {
         view.addGestureRecognizer(tap)
         return view
     }()
-
-    lazy private var alertController: UIAlertController = {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) {[weak self] _ in
-            guard let self else { return }
-            _ = self.resignFirstResponder()
-        }
-        cancelAction.setValue(UIColor.primaryBlue, forKey: "titleTextColor")
-        alert.addAction(cancelAction)
-        return alert
-    }()
-    
-    lazy private var datePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.addTarget(self, action: #selector(pickerAction(sender:)), for: .valueChanged)
-        picker.preferredDatePickerStyle = .inline
-        picker.datePickerMode = .date
-        picker.tintColor = .primaryBlue
-        picker.locale = Locale(identifier: "ru_BY")
-        return picker
-    }()
     
     lazy private var rightImageView: UIImageView = {
         let imageView = UIImageView()
@@ -66,7 +45,6 @@ class BasicDatePicker: BasicTextField {
     }
     
     private func makeLayout() {
-        alertController.view.addSubview(datePicker)
         addSubview(emptyView)
         rightView = UIView(
             frame: CGRect(
@@ -77,6 +55,7 @@ class BasicDatePicker: BasicTextField {
             )
         )
         rightView?.addSubview(rightImageView)
+        rightView?.isUserInteractionEnabled = false
         rightViewMode = .always
     }
     
@@ -84,22 +63,10 @@ class BasicDatePicker: BasicTextField {
         emptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(all: .zero))
         }
-
-        datePicker.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(8)
-            make.bottom.equalToSuperview().inset(60)
-            make.top.equalToSuperview()
-        }
     }
     
     func setViewModel(_ vm: BasicDatePicker.ViewModel) {
         self.viewModel = vm
-        
-        vm.$date.sink { [weak self] value in
-                guard let self else { return }
-                self.text = value?.toString(.ddMMyy) ?? .empty
-            }
-            .store(in: &cancellables)
 
         vm.$placeholder
             .sink { [weak self] value in
@@ -112,43 +79,33 @@ class BasicDatePicker: BasicTextField {
             }
             .store(in: &cancellables)
         
-        vm.$minimumDate.sink { [weak self] date in
-            guard let date else { return }
-            guard date > Date() else {
-                fatalError("Min date must be larger than today")
-            }
-            self?.datePicker.minimumDate = date
-        }
-        .store(in: &cancellables)
-        
-        vm.$maximumDate.sink { [weak self] date in
-            guard let date else { return }
-            
-            guard date > Date() else {
-                fatalError("Max date must be larger than today")
-            }
-
-            if let minDate = vm.minimumDate, minDate > date {
-                fatalError("Max date must be larger than min date")
-            }
-            
-            self?.datePicker.maximumDate = date
-        }
-        .store(in: &cancellables)
-        
         vm.$text.dropFirst().sink { [weak self] text in
             self?.text = text
         }
         .store(in: &cancellables)
+        
+        vm.datePickerController.$date
+            .sink { [weak self] value in
+                guard let self else { return }
+                self.text = value?.toString(.ddMMyy) ?? .empty
+                
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                
+                sceneDelegate?.window?.rootViewController?.dismiss(
+                    animated: true,
+                    completion: {
+                        self.viewModel?.setNewDate(value)
+                        _ = self.resignFirstResponder()
+                    }
+                )
+            }
+            .store(in: &cancellables)
     }
     
     @objc private func presentPicker() {
         _ = super.becomeFirstResponder()
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController?.present(alertController, animated: true)
-    }
-    
-    @objc private func pickerAction(sender: UIDatePicker) {
-        self.viewModel?.setNewDate(sender.date)
+        let datePickerController = DatePickerController(vm: viewModel!.datePickerController)
+        sceneDelegate?.window?.rootViewController?.present(datePickerController, animated: true)
     }
 }
