@@ -11,25 +11,25 @@ extension BasicDatePicker {
     class ViewModel: BasicTextField.ViewModel {
         let desctiptionVM = BasicLabel.ViewModel()
         var datePickerController = DatePickerController.ViewModel()
-        @Published private(set) var date: Date?
+        @Published private(set) var initDate: Date?
 
         init(
-            date: Date? = nil,
+            initDate: Date? = nil,
             placeholder: String = .empty
         ) {
             super.init(
-                text: date?.toString(.ddMMyy) ?? .empty,
+                text: initDate?.toString(.ddMMyy) ?? .empty,
                 placeholder: Date().append(.day).toString(.ddMMyy)
             )
             self.isValid = date != nil
-            self.date = date
+            self.initDate = initDate
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
             self.placeholder = placeholder
         }
         
         func setNewDate(_ date: Date?) {
             let stringDate = date?.withoutTime.toString(.ddMMyy) ?? .empty
-            self.date = date
+            self.initDate = date
             self.text = stringDate
             
             guard date != nil else {
@@ -43,11 +43,16 @@ extension BasicDatePicker {
         }
         
         func initDate(_ date: Date?) {
-            self.date = date
+            self.initDate = date
             self.text = date?.withoutTime.toString(.ddMMyy) ?? .empty
             self.isValid = date != nil
             
             self.checkedValue = date?.withoutTime.toString(.ddMMyy)
+        }
+        
+        var date: Date? {
+            get { datePickerController.date }
+            set { datePickerController.date = newValue }
         }
         
         var minimumDate: Date? {

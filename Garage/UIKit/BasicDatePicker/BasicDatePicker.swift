@@ -67,6 +67,13 @@ class BasicDatePicker: BasicTextField {
     
     func setViewModel(_ vm: BasicDatePicker.ViewModel) {
         self.viewModel = vm
+        vm.$initDate
+            .sink { [weak self] value in
+                guard let self else { return }
+                self.text = value?.toString(.ddMMyy) ?? .empty
+                print("initDate", value)
+            }
+            .store(in: &cancellables)
 
         vm.$placeholder
             .sink { [weak self] value in

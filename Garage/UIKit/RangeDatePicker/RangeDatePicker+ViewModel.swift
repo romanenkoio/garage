@@ -69,10 +69,10 @@ extension RangeDatePicker {
             self.endDate = endDate
             super.init()
             
-            self.startDateVM.$date.sink { [weak self] date in
+            self.startDateVM.datePickerController.$date.sink { [weak self] date in
                 guard let self, let date else { return }
                 self.startDateVM.text = "c \(date.toString(.ddMMyy))"
-                if let finishDate = self.finishDateVM.date, date >= finishDate {
+                if let finishDate = self.finishDateVM.datePickerController.date, date >= finishDate {
                     self.finishDateVM.setNewDate(nil)
                 }
                 self.startDate = date
@@ -80,7 +80,7 @@ extension RangeDatePicker {
             }
             .store(in: &cancellables)
             
-            self.finishDateVM.$date.sink { [weak self] date in
+            self.finishDateVM.datePickerController.$date.sink { [weak self] date in
                 guard let self, let date else { return }
                 self.endDate = date
                 self.finishDateVM.text = "по \(date.toString(.ddMMyy))"

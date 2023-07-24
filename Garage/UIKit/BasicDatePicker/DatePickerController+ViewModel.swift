@@ -14,7 +14,6 @@ extension DatePickerController {
         var descriptionLabelVM: BasicLabel.ViewModel
         
         @Published var date: Date?
-        
         @Published var minimumDate: Date?
         @Published var maximumDate: Date?
         
