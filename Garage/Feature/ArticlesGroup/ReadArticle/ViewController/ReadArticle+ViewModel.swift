@@ -13,6 +13,7 @@ extension ReadArticleViewController {
         let titleVM = BasicLabel.ViewModel()
         let textVM = BasicLabel.ViewModel()
         let imageVM = BasicImageView.ViewModel(data: nil, mode: .scaleAspectFill)
+        let upButtonVM = ActionImage.ViewModel(image: UIImage(named: "up_button_ic"))
         
         init(article: Article) {
             titleVM.textValue = .text(article.title)

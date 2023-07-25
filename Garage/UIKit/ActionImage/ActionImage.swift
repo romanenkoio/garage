@@ -58,9 +58,14 @@ final class ActionImage: BasicView {
             self.imageView.addGestureRecognizer(tap)
         }
         .store(in: &cancellables)
+        
+        vm.$isHidden.sink { [weak self] value in
+            self?.isHidden = value
+        }
+        .store(in: &cancellables)
     }
     
     @objc private func tapAction() {
-        self.vm?.action()
+        self.vm?.action?()
     }
 }

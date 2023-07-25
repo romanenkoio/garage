@@ -36,6 +36,11 @@ class ReadArticleViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        layout.bringButton()
+    }
 
     override func configure() {
         configureCoordinator()
@@ -47,6 +52,11 @@ class ReadArticleViewController: BasicViewController {
         layout.textLabel.setViewModel(vm.textVM)
         layout.imageView.setViewModel(vm.imageVM)
         title = vm.titleVM.textValue.clearText
+        layout.upButton.setViewModel(vm.upButtonVM)
+        
+        vm.upButtonVM.action = { [weak self] in
+            self?.layout.scrollToTop()
+        }
     }
     
 }
@@ -64,4 +74,16 @@ extension ReadArticleViewController {
         layout = ReadArticleControllerLayoutManager(vc: self)
     }
     
+}
+
+
+extension ReadArticleViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height - scrollView.bounds.height
+        let currentPosition = scrollView.contentOffset.y
+        
+        let percent = contentHeight / 100
+        let result = currentPosition / percent
+        layout.updateUpButton(progres: result)
+    }
 }
