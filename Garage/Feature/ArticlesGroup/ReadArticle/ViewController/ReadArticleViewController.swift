@@ -37,6 +37,11 @@ class ReadArticleViewController: BasicViewController {
         makeCloseButton(isLeft: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        layout.progressView.removeFromSuperview()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.bringButton()
