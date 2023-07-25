@@ -10,8 +10,9 @@ import UIKit
 extension ArticleView {
     final class ViewModel: BasicViewModel {
         let titleVM = BasicLabel.ViewModel()
-        let imageVM = BasicImageView.ViewModel(data: nil)
-        
+        let imageVM = BasicImageView.ViewModel(data: nil, mode: .scaleAspectFill)
+        let readedLabelVM = BasicLabel.ViewModel(.text("Прочитано"))
+
         let article: Article!
         
         init(

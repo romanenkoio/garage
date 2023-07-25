@@ -20,10 +20,8 @@ final class ReadArticleControllerLayoutManager {
         return stack
     }()
     
-    private(set) lazy var imageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "test_article")
+    private(set) lazy var imageView: BasicImageView = {
+        let view = BasicImageView()
         view.cornerRadius = 20
         return view
     }()
