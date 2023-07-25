@@ -187,7 +187,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
-                
+                layout.downTimer.upstream.connect().cancel()
                 layout.upTimer.sink {[weak self] _ in
                     guard let self else { return }
                     if newConstraintConstant <= maxConstraintConstant / 1.2,
@@ -199,7 +199,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-                
+                layout.upTimer.upstream.connect().cancel()
                 layout.downTimer.sink {[weak self] _ in
                     guard let self else { return }
                     if newConstraintConstant <= maxConstraintConstant {
