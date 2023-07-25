@@ -53,7 +53,7 @@ enum SettingPoint {
     var title: String {
         switch self {
         case .banner:           return .empty
-        case .subscription:     return "ТипАккаунта".localized((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум".localized : "базовый".localized)
+        case .subscription:     return "ТипАккаунта".localized(Environment.isPrem ? "премиум".localized : "базовый".localized)
         case .reminders:        return "Получать уведомления".localized
         case .mileageReminder:  return "Напоминание о пробеге".localized
         case .backup:           return "Резервная копия".localized

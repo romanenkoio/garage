@@ -13,12 +13,10 @@ extension AddCarView {
         let imageVM = BasicImageView.ViewModel(image: UIImage(named: "plus_car_ic"))
         
         override init() {
-
-            let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
             let cars: [Car] = RealmManager().read()
-            if isPrem {
+            if Environment.isPrem {
                 textLabelVM.textValue = .text("Добавить новую машину".localized)
-            } else if !isPrem, cars.count >= 1 {
+            } else if !Environment.isPrem, cars.count >= 1 {
                 textLabelVM.textValue = .text("Достигнут лимит автомобилей".localized)
             }
         }

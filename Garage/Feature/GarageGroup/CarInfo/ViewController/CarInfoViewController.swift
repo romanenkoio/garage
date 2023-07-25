@@ -78,7 +78,7 @@ class CarInfoViewController: BasicViewController {
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.carTopInfo.setViewModel(vm.carTopInfoVM)
         
-        let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
+        let isPrem = Environment.isPrem
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
                     .init(.text("Запланировать".localized),

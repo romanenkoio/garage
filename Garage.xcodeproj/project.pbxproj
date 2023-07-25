@@ -129,6 +129,7 @@
 		7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */; };
 		7F69EA0F2A700CD000AFB37D /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0E2A700CD000AFB37D /* PremiumView.swift */; };
 		7F69EA112A700CDA00AFB37D /* PremiumView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */; };
+		7F69EA152A701A9300AFB37D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA142A701A9300AFB37D /* Environment.swift */; };
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
@@ -453,6 +454,7 @@
 		7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F69EA0E2A700CD000AFB37D /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F69EA142A701A9300AFB37D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		7F6F6A212A2E8521003F7DF2 /* Garage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -778,6 +780,7 @@
 				7FC7D1942A63FF3A00A90586 /* Storage.swift */,
 				7FC7D1A92A642ACC00A90586 /* Loader.swift */,
 				7F92640A2A6DD62300DA220A /* LocationManager.swift */,
+				7F69EA142A701A9300AFB37D /* Environment.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2984,6 +2987,7 @@
 				7FFC1F672A352B4A007A5C75 /* CarInfoControllerLayoutManager.swift in Sources */,
 				B978F3262A2E8F4C0076D326 /* InfoView.swift in Sources */,
 				7F174EF32A4B2848004E51F9 /* ArticleView+ViewModel.swift in Sources */,
+				7F69EA152A701A9300AFB37D /* Environment.swift in Sources */,
 				7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */,
 				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
 				7F3885642A6B38B900033A99 /* Language.swift in Sources */,

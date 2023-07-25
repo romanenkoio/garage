@@ -109,6 +109,7 @@ extension GarageViewController {
 
 extension GarageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return  vm.tableVM.cells.count == 0 ? 0 : vm.tableVM.cells.count + 1
     }
     
@@ -135,10 +136,9 @@ extension GarageViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         if indexPath.row == vm.tableVM.cells.count {
-            let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
             let cars: [Car] = RealmManager().read()
-            if !isPrem, cars.count >= 1 {
-//                show premium
+            if !Environment.isPrem, cars.count >= 1 {
+                //                show premium
             } else {
                 self.coordinator.navigateTo(GarageNavigationRoute.createCar)
             }
