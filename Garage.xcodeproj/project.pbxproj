@@ -125,6 +125,8 @@
 		7F5955FD2A2E92560062A85F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955FC2A2E92560062A85F /* Service.swift */; };
 		7F5955FF2A2E93BA0062A85F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955FE2A2E93BA0062A85F /* Record.swift */; };
 		7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5956002A2E95F10062A85F /* ServiceType.swift */; };
+		7F69EA0A2A6FFB0A00AFB37D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA092A6FFB0A00AFB37D /* ProgressView.swift */; };
+		7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */; };
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
@@ -445,6 +447,8 @@
 		7F5955FC2A2E92560062A85F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		7F5955FE2A2E93BA0062A85F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		7F5956002A2E95F10062A85F /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		7F69EA092A6FFB0A00AFB37D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F6F6A212A2E8521003F7DF2 /* Garage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1373,6 +1377,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		7F69EA082A6FFB0100AFB37D /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				7F69EA092A6FFB0A00AFB37D /* ProgressView.swift */,
+				7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
 		7F6F6A182A2E8521003F7DF2 = {
 			isa = PBXGroup;
 			children = (
@@ -2172,6 +2185,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F69EA082A6FFB0100AFB37D /* ProgressView */,
 				7F1CC68C2A68993900C7F8B9 /* GradienView */,
 				7FAB23002A66D85B0011A682 /* CarImageSelector */,
 				7FC7D1592A628E4D00A90586 /* BasicImageView */,
@@ -2829,6 +2843,7 @@
 				B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */,
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
+				7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
@@ -2884,6 +2899,7 @@
 				B9D96E542A37CF7100909B33 /* PhotoView+ViewModel.swift in Sources */,
 				7FC6DA352A3B41A600AD9A3F /* CreateRecordControllerCoordinator.swift in Sources */,
 				7FC7D16E2A630E5A00A90586 /* QrServiceReaderControllerLayoutManager.swift in Sources */,
+				7F69EA0A2A6FFB0A00AFB37D /* ProgressView.swift in Sources */,
 				B92E5A372A5B51C7004698ED /* CarCellPhotoView.swift in Sources */,
 				7FC7D1A82A6402F600A90586 /* DataSubSetting.swift in Sources */,
 				B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */,

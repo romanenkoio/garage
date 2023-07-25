@@ -53,6 +53,7 @@ class ReadArticleViewController: BasicViewController {
         layout.imageView.setViewModel(vm.imageVM)
         title = vm.titleVM.textValue.clearText
         layout.upButton.setViewModel(vm.upButtonVM)
+        layout.progressView.setViewModel(vm.progressView)
         
         vm.upButtonVM.action = { [weak self] in
             self?.layout.scrollToTop()
@@ -87,5 +88,6 @@ extension ReadArticleViewController: UIScrollViewDelegate {
         if result > 80 {
             vm.markAsRead()
         }
+        self.vm.progressView.progress = result / 100
     }
 }

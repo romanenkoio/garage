@@ -50,6 +50,8 @@ final class ReadArticleControllerLayoutManager {
         return button
     }()
     
+    lazy var progressView = ProgressView()
+    
     // - Init
     init(vc: ReadArticleViewController) {
         self.vc = vc
@@ -92,6 +94,10 @@ fileprivate extension ReadArticleControllerLayoutManager {
             title,
             textLabel
         ])
+        
+        if let navBar = vc.navigationController?.navigationBar as? UIView {
+            navBar.addSubview(progressView)
+        }
     }
     
     private func makeConstraint() {
@@ -106,6 +112,10 @@ fileprivate extension ReadArticleControllerLayoutManager {
         upButton.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(vc.view.safeAreaLayoutGuide).inset(UIEdgeInsets(bottom: 20, right: 20))
             make.height.width.equalTo(60)
+        }
+        
+        progressView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
         }
     }
 }

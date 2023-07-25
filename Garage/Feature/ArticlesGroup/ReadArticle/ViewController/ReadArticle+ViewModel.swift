@@ -14,6 +14,7 @@ extension ReadArticleViewController {
         let textVM = BasicLabel.ViewModel()
         let imageVM = BasicImageView.ViewModel(data: nil, mode: .scaleAspectFill)
         let upButtonVM = ActionImage.ViewModel(image: UIImage(named: "up_button_ic"))
+        let progressView = ProgressView.ViewModel()
         
         let arcticle: Article!
         
