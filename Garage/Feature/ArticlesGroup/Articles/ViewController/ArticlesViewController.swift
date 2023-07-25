@@ -62,6 +62,13 @@ class ArticlesViewController: BasicViewController {
                 self?.layout.table.reload()
             }
             .store(in: &cancellables)
+        
+        vm.$isLoadingInProgress.sink { [weak self] value in
+            guard let self else { return }
+                layout.animationView.isHidden = !value
+                value ? layout.animationView.play() : layout.animationView.pause()
+        }
+        .store(in: &cancellables)
     }
     
 }

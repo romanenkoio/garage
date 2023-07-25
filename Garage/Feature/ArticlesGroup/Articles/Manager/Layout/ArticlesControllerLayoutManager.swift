@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 final class ArticlesControllerLayoutManager {
     
@@ -20,6 +21,16 @@ final class ArticlesControllerLayoutManager {
         table.table.separatorStyle = .none
         table.table.contentInset = .init(top: 15)
         return table
+    }()
+    
+    
+    lazy var animationView: LottieAnimationView = {
+        let view = LottieAnimationView()
+        let animation = LottieAnimation.named("loader.json", animationCache: DefaultAnimationCache.sharedCache)
+        view.animation = animation
+        view.animationSpeed = 1
+        view.loopMode = .loop
+        return view
     }()
     
     // - Init
@@ -43,11 +54,18 @@ fileprivate extension ArticlesControllerLayoutManager {
     private func makeLayout() {
         vc.disableScrollView()
         vc.contentView.addSubview(table)
+        vc.contentView.addSubview(animationView)
     }
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        animationView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview().offset(-50)
+            make.height.width.equalTo(200)
         }
     }
     
