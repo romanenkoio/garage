@@ -10,8 +10,9 @@ import UIKit
 final class PremiumView: BasicView {
     
     private lazy var gradientView = GradientView(
-        startColor: UIColor(hexString: "#0094FF"),
-        endColor: UIColor(hexString: "#9E00E8")
+        startColor: UIColor(hexString: "#9E00E8"),
+        endColor: UIColor(hexString: "#0094FF"),
+        horizontalMode: true
     )
     
     private lazy var textStack: BasicStackView = {
