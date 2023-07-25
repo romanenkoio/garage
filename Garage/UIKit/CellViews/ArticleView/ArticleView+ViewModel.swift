@@ -21,6 +21,7 @@ extension ArticleView {
             self.article = article
             self.imageVM.set(from: "https://pictures.shoop-vooop.cloudns.nz/shopping-list/api/news/images/\(article.id)/")
             self.titleVM.textValue = .text(article.title)
+            readedLabelVM.isHidden = !SettingsManager.sh.read(.readedArticles).contains(where: { article.id == $0 })
         }
     }
 }

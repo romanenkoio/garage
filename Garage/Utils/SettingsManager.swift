@@ -20,6 +20,7 @@ final class SettingsManager {
         case isFirstLaunch
         case isPremium
         case selectedLanguage
+        case readedArticles
     }
     
     func read(_ key: Keys) -> Bool? {
@@ -30,6 +31,11 @@ final class SettingsManager {
     func read(_ key: Keys) -> String? {
         let value = defaults.object(forKey: key.rawValue) as? String
         return value
+    }
+    
+    func read(_ key: Keys) -> [Int] {
+        let value = defaults.object(forKey: key.rawValue) as? [Int]
+        return value ?? .empty
     }
     
     func read(_ key: Keys) -> Int? {
