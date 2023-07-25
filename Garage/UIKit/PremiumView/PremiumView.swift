@@ -9,7 +9,7 @@ import UIKit
 
 final class PremiumView: BasicView {
     
-    private lazy var gradientView = GradientView(
+    lazy var gradientView = GradientView(
         startColor: UIColor(hexString: "#9E00E8"),
         endColor: UIColor(hexString: "#0094FF"),
         horizontalMode: true

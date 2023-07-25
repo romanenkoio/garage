@@ -39,7 +39,10 @@ class GradientView: BasicView {
     override func initView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
-        self.layer.cornerRadius = 0
+        self.layer.cornerRadius = 16
+        updatePoints()
+        updateLocations()
+        updateColors()
     }
     
     required init?(coder: NSCoder) {
@@ -62,12 +65,5 @@ class GradientView: BasicView {
     
     private func updateColors() {
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
-    }
-    
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updatePoints()
-        updateLocations()
-        updateColors()
     }
 }

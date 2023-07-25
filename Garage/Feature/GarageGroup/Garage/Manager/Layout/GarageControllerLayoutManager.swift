@@ -20,10 +20,12 @@ final class GarageControllerLayoutManager {
         )
         table.register(CarCell.self)
         table.register(AddCarCell.self)
+        table.register(BannerCell.self)
         table.table.separatorColor = .clear
+
         return table
     }()
-    
+
     // - Init
     init(vc: GarageViewController) {
         self.vc = vc

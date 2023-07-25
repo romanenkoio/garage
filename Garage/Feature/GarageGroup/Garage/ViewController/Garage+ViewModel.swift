@@ -11,11 +11,17 @@ import CoreLocation
 
 extension GarageViewController {
     final class ViewModel: BasicControllerModel {
+        enum Cells {
+            case banner
+            case car
+            case addCar
+        }
         
-        let tableVM = BasicTableView.GenericViewModel<Car>()
+        let tableVM = BasicTableView.SectionViewModel<Cells>()
         var addButtonVM: AlignedButton.ViewModel
         var selectedCar: Car?
         var isLocationEnabled = false
+        var cars: [Car] = .empty
         
         override init() {
             addButtonVM = .init(buttonVM: .init(title: "Добавить машину".localized))
@@ -39,7 +45,19 @@ extension GarageViewController {
         }
         
         func readCars() {
-            tableVM.setCells(RealmManager<Car>().read())
+            var cells = [[Cells]]()
+    
+            self.cars = RealmManager<Car>().read()
+            var carCells = [Cells](repeating: .car, count: cars.count)
+                
+            cells.append(carCells)
+            cells.append([.addCar])
+            
+            if !Environment.isPrem {
+                cells.insert([.banner], at: 0)
+            }
+            
+            tableVM.setCells(cells)
         }
         
         func setParkingMode(from location: CLLocation) {

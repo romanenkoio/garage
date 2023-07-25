@@ -108,34 +108,60 @@ extension GarageViewController {
 }
 
 extension GarageViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return vm.cars.isEmpty ? 0 : vm.tableVM.cells.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return  vm.tableVM.cells.count == 0 ? 0 : vm.tableVM.cells.count + 1
+        return  vm.cars.isEmpty ? 0 : vm.tableVM.cells[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == vm.tableVM.cells.count {
+        
+        guard let cell = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row] else { return .init() }
+        
+        switch cell {
+        case .banner:
+            guard let bannerCell = tableView.dequeueReusableCell(BannerCell.self)
+            else { return .init() }
+
+            bannerCell.mainView.setViewModel(.init())
+            bannerCell.selectionStyle = .none
+            return bannerCell
+        case .car:
+            guard let carCell = tableView.dequeueReusableCell(CarCell.self),
+                  let vm = vm.cars[safe: indexPath.row]
+            else { return .init() }
+            carCell.mainView.setViewModel(.init(car: vm))
+            carCell.selectionStyle = .none
+            return carCell
+        case .addCar:
             guard let addCarCell = tableView.dequeueReusableCell(AddCarCell.self) else { return .init() }
             addCarCell.mainView.setViewModel(.init())
             addCarCell.selectionStyle = .none
             return addCarCell
         }
-        
-        guard let carCell = tableView.dequeueReusableCell(CarCell.self),
-              let vm = vm.tableVM.cells[safe: indexPath.row]
-        else { return .init() }
-        carCell.mainView.setViewModel(.init(car: vm))
-        carCell.selectionStyle = .none
-        return carCell
     }
+    
 }
 
 extension GarageViewController: UITableViewDelegate {
+    
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        if indexPath.row == vm.tableVM.cells.count {
+        guard let cell = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row] else { return }
+
+        switch cell {
+            
+        case .banner:
+            break
+        case .car:
+            guard let selectedCar = vm.cars[safe: indexPath.row] else { return }
+            coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
+        case .addCar:
             let cars: [Car] = RealmManager().read()
             if !Environment.isPrem, cars.count >= 1 {
                 //                show premium
@@ -144,9 +170,6 @@ extension GarageViewController: UITableViewDelegate {
             }
             return
         }
-        
-        guard let selectedCar = vm.tableVM.cells[safe: indexPath.row] else { return }
-        coordinator.navigateTo(GarageNavigationRoute.openCar(selectedCar))
     }
     
     func tableView(
@@ -157,8 +180,10 @@ extension GarageViewController: UITableViewDelegate {
         return UIContextMenuConfiguration(actionProvider: { [weak self] suggestedActions -> UIMenu? in
             
             guard let self,
+                  let cell = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row],
+                  cell == .car,
                   vm.isLocationEnabled == true,
-                  let car = vm.tableVM.cells[safe: indexPath.row]
+                  let car = vm.cars[safe: indexPath.row]
             else { return nil }
             
             let isHaveParking = !RealmManager<Parking>().read().filter({ $0.carID == car.id}).isEmpty
@@ -201,6 +226,14 @@ extension GarageViewController: UITableViewDelegate {
             return UIMenu(title: .empty, children: menu)
             
         })
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
 

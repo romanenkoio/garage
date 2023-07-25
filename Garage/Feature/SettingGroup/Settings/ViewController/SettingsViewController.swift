@@ -51,7 +51,6 @@ class SettingsViewController: BasicViewController {
 
     override func binding() {
         self.layout.table.setViewModel(vm.tableVM)
-//        self.layout.versionLabel.setViewModel(vm.versionLabelVM)
         
         vm.tableVM.$cells
             .receive(on: DispatchQueue.main)
@@ -169,8 +168,7 @@ extension SettingsViewController: UITableViewDataSource {
         case .banner:
             guard let bannerCell = tableView.dequeueReusableCell(BasicTableCell<PremiumView>.self)
             else { return .init() }
-        
-      
+
             bannerCell.mainView.setViewModel(.init())
             bannerCell.selectionStyle = .none
             return bannerCell

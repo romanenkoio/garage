@@ -13,4 +13,3 @@ struct Environment {
         set { SettingsManager.sh.write(value: newValue, for: .isPremium)}
     }
 }
- 
