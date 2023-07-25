@@ -127,6 +127,8 @@
 		7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5956002A2E95F10062A85F /* ServiceType.swift */; };
 		7F69EA0A2A6FFB0A00AFB37D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA092A6FFB0A00AFB37D /* ProgressView.swift */; };
 		7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */; };
+		7F69EA0F2A700CD000AFB37D /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0E2A700CD000AFB37D /* PremiumView.swift */; };
+		7F69EA112A700CDA00AFB37D /* PremiumView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */; };
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
@@ -449,6 +451,8 @@
 		7F5956002A2E95F10062A85F /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		7F69EA092A6FFB0A00AFB37D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		7F69EA0B2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F69EA0E2A700CD000AFB37D /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
+		7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F6F6A212A2E8521003F7DF2 /* Garage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1386,6 +1390,15 @@
 			path = ProgressView;
 			sourceTree = "<group>";
 		};
+		7F69EA0D2A700C2500AFB37D /* PremiumView */ = {
+			isa = PBXGroup;
+			children = (
+				7F69EA0E2A700CD000AFB37D /* PremiumView.swift */,
+				7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */,
+			);
+			path = PremiumView;
+			sourceTree = "<group>";
+		};
 		7F6F6A182A2E8521003F7DF2 = {
 			isa = PBXGroup;
 			children = (
@@ -2185,6 +2198,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F69EA0D2A700C2500AFB37D /* PremiumView */,
 				7F69EA082A6FFB0100AFB37D /* ProgressView */,
 				7F1CC68C2A68993900C7F8B9 /* GradienView */,
 				7FAB23002A66D85B0011A682 /* CarImageSelector */,
@@ -2801,6 +2815,7 @@
 				7FFC1F662A352B4A007A5C75 /* CarInfoControllerCoordinator.swift in Sources */,
 				7FC7D16D2A630E5A00A90586 /* QrServiceReaderControllerCoordinator.swift in Sources */,
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
+				7F69EA112A700CDA00AFB37D /* PremiumView+ViewModel.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
 				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
@@ -2987,6 +3002,7 @@
 				7F0E095D2A3348C8008C2B9A /* DocumentsViewController.swift in Sources */,
 				B978F3182A2E8F4C0076D326 /* BasicLabel+ViewModel.swift in Sources */,
 				B9FB29072A31F48100A4CF1D /* SuggestionInput.swift in Sources */,
+				7F69EA0F2A700CD000AFB37D /* PremiumView.swift in Sources */,
 				7F1DE3AC2A58AD97008E7B1D /* CreateReminderViewController.swift in Sources */,
 				7F0E08DD2A2FA81E008C2B9A /* ViewControllerPreview.swift in Sources */,
 				B978F3AD2A2E9D870076D326 /* TabBarController.swift in Sources */,

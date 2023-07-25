@@ -28,6 +28,11 @@ extension SettingsViewController {
                 [.backup],
                 [.contactUs, .language]
             ]
+            
+            if !isPremium {
+                settingsPoint.insert([.banner], at: 0)
+            }
+            
             tableVM.setCells(settingsPoint)
         }
     }

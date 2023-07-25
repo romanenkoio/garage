@@ -8,6 +8,7 @@
 import UIKit
 
 enum SettingPoint {
+    case banner
     case subscription
     case getPremium(Bool)
     case reminders
@@ -18,6 +19,7 @@ enum SettingPoint {
 
     var icon: UIImage? {
         switch self {
+        case .banner:           return nil
         case .getPremium:     return UIImage(named: "get_prem_ic")
         case .subscription:     return UIImage(named: "prem_ic")
         case .reminders:        return UIImage(named: "notifications_ic")
@@ -35,7 +37,7 @@ enum SettingPoint {
         case .reminders:                    return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
         case .mileageReminder:              return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup, .language:            return false
-        case .contactUs:          return false
+        case .contactUs, .banner:                    return false
         }
     }
     
@@ -43,13 +45,14 @@ enum SettingPoint {
         switch self {
         case .reminders, .mileageReminder, .getPremium:
             return true
-        case .backup, .contactUs, .language, .subscription:
+        case .backup, .contactUs, .language, .subscription, .banner:
             return false
         }
     }
     
     var title: String {
         switch self {
+        case .banner:           return .empty
         case .subscription:     return "ТипАккаунта".localized((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум".localized : "базовый".localized)
         case .reminders:        return "Получать уведомления".localized
         case .mileageReminder:  return "Напоминание о пробеге".localized

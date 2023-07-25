@@ -75,7 +75,7 @@ class SettingsViewController: BasicViewController {
             showLoader()
             readBackupDate { [weak self] date in
                 let points: [[DataSubSetting]]
-                
+
                 if let date {
                     points = [
                         [.backup(date), .transfer(true)],
@@ -102,6 +102,8 @@ class SettingsViewController: BasicViewController {
         case .getPremium:
             let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
             SettingsManager.sh.write(value: !isPremium, for: .isPremium)
+        case .banner:
+            break
         }
     }
     
@@ -161,17 +163,31 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self),
-              let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row]
-        else { return .init() }
-    
-        let vm = SettingView.ViewModel(point: point)
-        vm.switchCompletion = { [weak self] _ in
-            self?.hadleSelection(point)
+        
+        guard let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row] else { return .init() }
+        
+        switch point {
+        case .banner:
+            guard let bannerCell = tableView.dequeueReusableCell(BasicTableCell<PremiumView>.self)
+            else { return .init() }
+        
+      
+            bannerCell.mainView.setViewModel(.init())
+            bannerCell.selectionStyle = .none
+            return bannerCell
+        default:
+            guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self)
+            else { return .init() }
+        
+            let vm = SettingView.ViewModel(point: point)
+            vm.switchCompletion = { [weak self] _ in
+                self?.hadleSelection(point)
+            }
+            settingCell.mainView.setViewModel(vm)
+            settingCell.selectionStyle = .none
+            return settingCell
         }
-        settingCell.mainView.setViewModel(vm)
-        settingCell.selectionStyle = .none
-        return settingCell
+ 
     }
 }
 
