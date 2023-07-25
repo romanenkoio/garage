@@ -171,5 +171,12 @@ class DatePickerController: UIViewController {
             self?.datePicker.maximumDate = date
         }
         .store(in: &cancellables)
+        
+        vm.$date
+            .sink { [weak self] date in
+                guard let date else { return }
+                self?.datePicker.date = date
+            }
+            .store(in: &cancellables)
     }
 }

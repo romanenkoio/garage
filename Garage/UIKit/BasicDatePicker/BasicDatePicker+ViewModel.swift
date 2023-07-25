@@ -30,7 +30,7 @@ extension BasicDatePicker {
                 .dropFirst()
                 .sink { [weak self] date in
                     guard let self else { return}
-                    self.date = date
+                    setNewDate(date)
                 }
                 .store(in: &cancellables)
         }
@@ -52,6 +52,7 @@ extension BasicDatePicker {
         
         func initDate(_ date: Date?) {
             self.date = date
+            self.datePickerController.date = date
             self.text = date?.withoutTime.toString(.ddMMyy) ?? .empty
             self.isValid = date != nil
             

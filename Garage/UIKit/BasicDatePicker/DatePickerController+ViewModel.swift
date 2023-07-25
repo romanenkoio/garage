@@ -18,7 +18,11 @@ extension DatePickerController {
         @Published var maximumDate: Date?
         @Published var isBeingDismissed: Bool = false
         
-        init(descriptionLabelVM: BasicLabel.ViewModel = .init()) {
+        init(
+            date: Date = Date(),
+            descriptionLabelVM: BasicLabel.ViewModel = .init()
+        ) {
+            self.date = date
             self.descriptionLabelVM = descriptionLabelVM
             super.init()
         }
