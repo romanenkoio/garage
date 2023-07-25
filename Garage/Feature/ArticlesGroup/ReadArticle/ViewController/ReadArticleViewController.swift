@@ -76,7 +76,6 @@ extension ReadArticleViewController {
     
 }
 
-
 extension ReadArticleViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentHeight = scrollView.contentSize.height - scrollView.bounds.height
@@ -85,5 +84,8 @@ extension ReadArticleViewController: UIScrollViewDelegate {
         let percent = contentHeight / 100
         let result = currentPosition / percent
         layout.updateUpButton(progres: result)
+        if result > 80 {
+            vm.markAsRead()
+        }
     }
 }

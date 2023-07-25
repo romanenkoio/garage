@@ -18,6 +18,7 @@ extension ArticlesViewController {
         }
         
         func readArticles() {
+            tableVM.isHiddenButton = true
             Task { @MainActor in
                 do {
                     let result = try await NetworkManager

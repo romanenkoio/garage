@@ -23,5 +23,9 @@ extension ArticleView {
             self.titleVM.textValue = .text(article.title)
             readedLabelVM.isHidden = !SettingsManager.sh.read(.readedArticles).contains(where: { article.id == $0 })
         }
+        
+        func markAsReadIfNeeded() {
+            readedLabelVM.isHidden = !SettingsManager.sh.read(.readedArticles).contains(where: { article.id == $0 })
+        }
     }
 }

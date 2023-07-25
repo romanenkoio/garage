@@ -39,6 +39,7 @@ class ArticlesViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideTabBar(false)
+        layout.table.table.reloadData()
     }
     
     override func singleWillAppear() {
@@ -89,6 +90,7 @@ extension ArticlesViewController: UITableViewDataSource {
         guard let articleVM = vm.tableVM.cells[safe: indexPath.row],
               let articleCell = tableView.dequeueReusableCell(BasicTableCell<ArticleView>.self)
         else { return .init() }
+        articleVM.markAsReadIfNeeded()
         articleCell.mainView.setViewModel(articleVM)
         articleCell.selectionStyle = .none
         return articleCell

@@ -43,6 +43,10 @@ final class SettingsManager {
         return value
     }
     
+    func write(value: [Int], for key: Keys) {
+        defaults.set(value, forKey: key.rawValue)
+    }
+    
     func write(value: String, for key: Keys) {
         defaults.set(value, forKey: key.rawValue)
     }
