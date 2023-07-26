@@ -37,6 +37,13 @@ final class PremiumView: BasicView {
     }()
     
     private var arrowImage = BasicImageView(image: UIImage(named: "premium_arrow_ic"), mode: .scaleAspectFit)
+    var insets: UIEdgeInsets = .init(all: 0) {
+        didSet {
+            gradientView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview().inset(insets)
+            }
+        }
+    }
     
     override func initView() {
         makeLayout()
@@ -56,7 +63,7 @@ final class PremiumView: BasicView {
         }
         
         gradientView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(insets)
         }
         
         textStack.snp.makeConstraints { make in

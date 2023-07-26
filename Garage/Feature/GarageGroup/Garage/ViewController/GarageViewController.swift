@@ -125,7 +125,7 @@ extension GarageViewController: UITableViewDataSource {
         case .banner:
             guard let bannerCell = tableView.dequeueReusableCell(BannerCell.self)
             else { return .init() }
-
+            bannerCell.mainView.insets = .init(horizontal: 20)
             bannerCell.mainView.setViewModel(.init())
             bannerCell.selectionStyle = .none
             return bannerCell
@@ -229,7 +229,7 @@ extension GarageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return section == 1 ? 0 : 20
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

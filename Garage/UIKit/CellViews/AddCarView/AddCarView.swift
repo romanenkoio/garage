@@ -35,6 +35,7 @@ class AddCarView: BasicStackView {
     }
     
     private func makeLayout() {
+        self.edgeInsets = .init(horizontal: 20)
         self.addArrangedSubviews([imageButton, textLabel])
     }
     

@@ -50,7 +50,7 @@ fileprivate extension GarageControllerLayoutManager {
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 20, horizontal: 20))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 20))
         }
     }
 }

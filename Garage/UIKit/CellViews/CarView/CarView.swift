@@ -13,6 +13,7 @@ class CarView: BasicView {
         stack.axis = .vertical
         stack.backgroundColor = AppColors.background
         stack.cornerRadius = 12
+        stack.edgeInsets = .init(bottom: 20, horizontal: 20)
         return stack
     }()
     
