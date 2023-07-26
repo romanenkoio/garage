@@ -45,6 +45,17 @@ extension RangeDatePicker {
             set { finishDateVM.maximumDate = newValue}
         }
         
+        var titleDescription: String {
+            get {
+                startDateVM.datePickerController.descriptionLabelVM.textValue.clearText
+                return finishDateVM.datePickerController.descriptionLabelVM.textValue.clearText
+            }
+            set {
+                startDateVM.datePickerController.descriptionLabelVM = .init(.text(newValue))
+                finishDateVM.datePickerController.descriptionLabelVM = .init(.text(newValue))
+            }
+        }
+        
         func setDates(
             start: Date? = nil,
             end: Date? = nil
@@ -61,10 +72,11 @@ extension RangeDatePicker {
             self.endDate = endDate
             super.init()
             
-            self.startDateVM.$date.sink { [weak self] date in
+            self.startDateVM.datePickerController.$date.sink { [weak self] date in
                 guard let self, let date else { return }
-                self.startDateVM.text = "c".localized(date.toString(.ddMMyy))
-                if let finishDate = self.finishDateVM.date, date >= finishDate {
+                self.startDateVM.text = "с \(date.toString(.ddMMyy))"
+          
+                if let finishDate = self.finishDateVM.datePickerController.date, date >= finishDate {
                     self.finishDateVM.setNewDate(nil)
                 }
                 self.startDate = date
@@ -72,10 +84,10 @@ extension RangeDatePicker {
             }
             .store(in: &cancellables)
             
-            self.finishDateVM.$date.sink { [weak self] date in
+            self.finishDateVM.datePickerController.$date.sink { [weak self] date in
                 guard let self, let date else { return }
                 self.endDate = date
-                self.finishDateVM.text = "по".localized(date.toString(.ddMMyy))
+                self.finishDateVM.text = "по \(date.toString(.ddMMyy))"
                 self.validate()
             }
             .store(in: &cancellables)

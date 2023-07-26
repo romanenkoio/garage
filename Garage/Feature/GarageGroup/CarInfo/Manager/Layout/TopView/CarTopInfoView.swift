@@ -7,29 +7,14 @@
 
 import UIKit
 
-class CarTopInfoView: BasicStackView {
-    private lazy var modelStack: BasicStackView = {
-        let view = BasicStackView()
-        view.axis = .horizontal
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    private lazy var infolabelsStack: BasicStackView = {
-        let view = BasicStackView()
-        view.axis = .vertical
-        view.distribution = .fillEqually
-        view.paddingInsets = .init(left: 16)
-        view.backgroundColor = .white
-        return view
-    }()
+class CarTopInfoView: BasicView {
     
     private lazy var infoStsck: BasicStackView = {
         let view = BasicStackView()
         view.axis = .horizontal
         view.distribution = .fillEqually
         view.spacing = 10
-        view.paddingInsets = .init(top: 16)
+        view.edgeInsets = .init(top: 16)
         view.backgroundColor = .white
         return view
     }()
@@ -69,8 +54,6 @@ class CarTopInfoView: BasicStackView {
         
     override init() {
         super.init()
-        edgeInsets = UIEdgeInsets(all: 20)
-        axis = .vertical
         makeLayout()
         makeConstraints()
     }
@@ -80,19 +63,35 @@ class CarTopInfoView: BasicStackView {
     }
     
     private func makeLayout() {
-        addArrangedSubviews([modelStack, infoStsck])
-        modelStack.addArrangedSubviews([logoImage, infolabelsStack])
-        infolabelsStack.addArrangedSubviews([brandModelYearLabel])
+        addSubview(logoImage)
+        addSubview(brandModelYearLabel)
+        addSubview(mileageLabel)
+        addSubview(infoStsck)
         infoStsck.addArrangedSubviews([mileageLabel, vinLabel])
         
         brandModelYearLabel.font = .custom(size: 18, weight: .black)
         mileageLabel.font = .custom(size: 14, weight: .bold)
         vinLabel.font = .custom(size: 14, weight: .bold)
+        
+
     }
     
     private func makeConstraints() {
         logoImage.snp.makeConstraints { make in
             make.height.width.equalTo(80)
+            make.leading.top.equalToSuperview().offset(16)
+        }
+        
+        brandModelYearLabel.snp.makeConstraints { make in
+            make.leading.equalTo(logoImage.snp.trailing).offset(16)
+            make.trailing.equalToSuperview().inset(UIEdgeInsets(right: 16))
+            make.centerY.equalTo(logoImage.snp.centerY)
+        }
+        
+        let infoStackInsets = UIEdgeInsets(bottom: 16, horizontal: 16)
+        infoStsck.snp.makeConstraints { make in
+            make.top.equalTo(logoImage.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview().inset(infoStackInsets)
         }
     }
     

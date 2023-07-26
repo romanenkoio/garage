@@ -17,8 +17,7 @@ class CarInfoViewController: BasicViewController {
     
     // - Property
     private(set) var vm: ViewModel
-    var navigationBarOriginalOffset : CGFloat?
-    var segmentOriginalOffset: CGFloat?
+    
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
@@ -50,6 +49,7 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
+        layout.page.delegate = self
         layout.titleLabelView.defaultTitle = "Общая информация".localized
         self.navigationItem.titleView = layout.titleLabelView
     }
@@ -57,14 +57,17 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
-        navigationBarOriginalOffset = navigationController?.navigationBar.frame.origin.y
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if layout.isFirstLayoutSubviews {
-            layout.maxConstraintConstant = layout.carTopInfo.frame.height + 40
-            segmentOriginalOffset = layout.segment.frame.origin.y
+            layout.maxConstraintConstant = layout.carTopInfo.frame.height
         }
     }
     
@@ -160,94 +163,90 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentSize.height < contentView.frame.height {
-            scrollView.contentSize.height = layout.page.view.frame.height-33
-        }
-        
-        navigationBarOriginalOffset = max(0,max(navigationBarOriginalOffset!-layout.segment.frame.height, scroll.contentOffset.y))
-        layout.segment.frame.origin.y = navigationBarOriginalOffset!
-        
         let currentContentOffsetY = scrollView.contentOffset.y
-        let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         
+        let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
         // Верхняя граница начала bounce эффекта
-        let bounceBorderContentOffsetY = -scrollView.contentOffset.y
+        let bounceBorderContentOffsetY = -scrollView.contentInset.top
         
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
         if let currentScrollConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
            let maxConstraintConstant = layout.maxConstraintConstant {
+            
+            let minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
             
+            newConstraintConstant = currentScrollConstraintConstant
+            //Процент завершения анимации
+            //Оставить реализацию
+//            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
+            
             if contentMovesUp {
-                // Уменьшаем константу констрэйнта
-                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, layout.scrollMinConstraintConstant)
+                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
+                layout.downTimer.upstream.connect().cancel()
+                layout.upTimer.sink {[weak self] _ in
+                    guard let self else { return }
+                    if newConstraintConstant <= maxConstraintConstant / 1.2,
+                       newConstraintConstant > 0 {
+                        layout.newConstraintConstant -= 0.1
+                    }
+                }
+                .store(in: &cancellables)
+                
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-                
+                layout.upTimer.upstream.connect().cancel()
+                layout.downTimer.sink {[weak self] _ in
+                    guard let self else { return }
+                    if newConstraintConstant <= maxConstraintConstant {
+                        layout.newConstraintConstant += 0.1
+                    }
+                }
+                .store(in: &cancellables)
             }
-            //Процент завершения анимации
-            //            let animationCompletionPercent = ((layout.maxConstraintConstant ?? 0) - currentScrollConstraintConstant) / ((layout.maxConstraintConstant ?? 0) - layout.scrollMinConstraintConstant)
-            if newConstraintConstant != currentScrollConstraintConstant, !tableView.isHidden {
-                self.layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+            
+            if newConstraintConstant != currentScrollConstraintConstant,
+               !tableView.isHidden {
+                layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
+            
+            layout.previousContentOffsetY = scrollView.contentOffset.y
         }
-        
-        layout.previousContentOffsetY = scrollView.contentOffset.y
     }
 }
 
-class NavigationBarAnimatedTitle: UIView {
-    private var label = UILabel()
-    var changedTitle: String = "" {
-        didSet {
-            label.text = changedTitle
+extension CarInfoViewController: UIPageViewControllerDelegate {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        if completed {
+            layout.page.vm.setIndexCandidate()
         }
     }
     
-    var defaultTitle: String = "" {
-        didSet {
-            label.text = defaultTitle
-            label.textColor = AppColors.navbarTitle
-            label.textAlignment = .center
-            label.font = UIFont.custom(size: 16, weight: .bold)
-            setNeedsLayout()
-        }
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        willTransitionTo pendingViewControllers: [UIViewController]
+    ) {
+        guard let controller = pendingViewControllers.first,
+              let index = layout.page.vm.controllers.firstIndex(of: controller as! BasicViewController)
+        else { return }
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        layout.page.vm.indexCandidate = index
+
+//    var defaultTitle: String = "" {
+//        didSet {
+//            label.text = defaultTitle
+//            label.textColor = AppColors.navbarTitle
+//            label.textAlignment = .center
+//            label.font = UIFont.custom(size: 16, weight: .bold)
+//            setNeedsLayout()
+//        }
     }
-    
-    var didChangeTitle = false
-    let animateUp: CATransition = {
-        let animation = CATransition()
-        animation.duration = 0.3
-        animation.type = .push
-        animation.subtype = .fromTop
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        return animation
-    }()
-    
-    let animateDown: CATransition = {
-        let animation = CATransition()
-        animation.duration = 0.4
-        animation.type = .push
-        animation.subtype = .fromBottom
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        return animation
-    }()
-    
-    // MARK: Initializers
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        label.frame = self.frame
-        addSubview(label)
-        clipsToBounds = true
-        isUserInteractionEnabled = false
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }

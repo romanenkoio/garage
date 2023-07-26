@@ -37,6 +37,7 @@ extension CreateReminderViewController {
             shortTypeVM.descriptionLabelVM.textValue = .text("Краткое описание")
             let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
             dateInputVM.minimumDate = Date().append(.day, value: 1)
+            dateInputVM.descriptionLabel = "Напомнить"
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,

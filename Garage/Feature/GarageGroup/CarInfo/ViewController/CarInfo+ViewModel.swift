@@ -64,14 +64,6 @@ extension CarInfoViewController {
                 self?.pageVM.index = value
             }
             .store(in: &cancellables)
-            
-//            remindersVM.didLayoutSubviews = {[weak self] in
-//                self?.didPageVcLayoutSubviews?()
-//            }
-            
-//            pastRecordsVM.didLayoutSubviews = {[weak self] in
-//                self?.didPageVcLayoutSubviews?()
-//            }
         }
         
         func readCar() {

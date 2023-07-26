@@ -246,6 +246,9 @@
 		B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */; };
 		B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */; };
 		B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */; };
+		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
+		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
+		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -568,6 +571,9 @@
 		B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PastRecords+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsViewController.swift; sourceTree = "<group>"; };
+		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
+		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -2198,9 +2204,18 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */,
+			);
+			path = NavigationBarTitleAnimator;
+			sourceTree = "<group>";
+		};
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
 				7F69EA0D2A700C2500AFB37D /* PremiumView */,
 				7F69EA082A6FFB0100AFB37D /* ProgressView */,
 				7F1CC68C2A68993900C7F8B9 /* GradienView */,
@@ -2272,6 +2287,8 @@
 			children = (
 				B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */,
 				B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */,
+				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
+				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
 			);
 			path = BasicDatePicker;
 			sourceTree = "<group>";
@@ -2798,6 +2815,7 @@
 				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
 				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
+				B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */,
 				7F049E4E2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift in Sources */,
 				B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */,
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
@@ -2950,6 +2968,7 @@
 				7FC7D1A52A64001800A90586 /* BackupViewController.swift in Sources */,
 				7F1CC68B2A68877700C7F8B9 /* SPIndicator.swift in Sources */,
 				7F0E091A2A31DA0E008C2B9A /* NetworkProvider.swift in Sources */,
+				B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */,
 				7F0E08CE2A2FA0A1008C2B9A /* Services+ViewModel.swift in Sources */,
 				7FC6DA272A39FCE900AD9A3F /* SettingsControllerLayoutManager.swift in Sources */,
 				7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */,
@@ -3026,6 +3045,7 @@
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
+				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
@@ -3233,7 +3253,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = G264CBHMU9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3254,7 +3274,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rt5.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

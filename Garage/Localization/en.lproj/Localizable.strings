@@ -71,6 +71,8 @@
 "Добавление документа" = "Add Document";
 "Вы уверены, что хотите удалить документ?" = "Are you sure you want to delete this document?";
 "Изменение документа" = "Edit Document";
+"Дата начала действия" = "Document effective date";
+"Дата окончания действия" = "Document expiration date";
 
 // MARK: RangeDatePicker
 "с" = "from %@";
@@ -105,6 +107,8 @@
 "Создание записи" = "Record creation";
 "Вы уверены, что хотите удалить запись?" = "Are you sure you want to delete the record?";
 "Изменение записи" = "Record modification";
+"Дата выполнения" = "Date of completion";
+"Изменить дату" = "Change date";
 
 // MARK: SettingPoint
 "ТипАккаунта" = "Account Type: %@";
