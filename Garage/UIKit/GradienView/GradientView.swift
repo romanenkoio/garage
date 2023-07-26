@@ -8,12 +8,12 @@
 import UIKit
 
 class GradientView: BasicView {
-    var startColor:   UIColor = .black { didSet { updateColors() }}
-    var endColor:     UIColor = .white { didSet { updateColors() }}
-    var startLocation: Double =   0.05 { didSet { updateLocations() }}
-    var endLocation:   Double =   0.95 { didSet { updateLocations() }}
-    var horizontalMode:  Bool =  false { didSet { updatePoints() }}
-    var diagonalMode:    Bool =  false { didSet { updatePoints() }}
+    var startColor:   UIColor = UIColor(hexString: "#9E00E8") { didSet { updateColors() }}
+    var endColor:     UIColor = UIColor(hexString: "#0094FF") { didSet { updateColors() }}
+    var startLocation: Double =  0                            { didSet { updateLocations() }}
+    var endLocation:   Double =  1                            { didSet { updateLocations() }}
+    var horizontalMode:  Bool =  false                        { didSet { updatePoints() }}
+    var diagonalMode:    Bool =  false                        { didSet { updatePoints() }}
     
     override public class var layerClass: AnyClass { CAGradientLayer.self }
     
@@ -22,8 +22,8 @@ class GradientView: BasicView {
     init(
         startColor: UIColor = .black,
         endColor: UIColor = .white,
-        startLocation: Double = 0.05,
-        endLocation: Double = 0.95,
+        startLocation: Double = 0,
+        endLocation: Double = 1,
         horizontalMode: Bool = false,
         diagonalMode: Bool = false
     ) {
@@ -39,7 +39,10 @@ class GradientView: BasicView {
     override func initView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
-        self.layer.cornerRadius = 0
+        self.layer.cornerRadius = 16
+        updatePoints()
+        updateLocations()
+        updateColors()
     }
     
     required init?(coder: NSCoder) {
@@ -62,12 +65,5 @@ class GradientView: BasicView {
     
     private func updateColors() {
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
-    }
-    
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updatePoints()
-        updateLocations()
-        updateColors()
     }
 }

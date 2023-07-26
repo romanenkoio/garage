@@ -16,11 +16,11 @@ enum DataSubSetting {
     
     var icon: UIImage? {
         switch self {
-        case .transfer:         return UIImage(systemName: "bell.square.fill")
-        case .backup:           return UIImage(systemName: "speedometer")
-        case .save:             return UIImage(systemName: "externaldrive.fill.badge.timemachine")
-        case .restore:          return UIImage(systemName: "chevron.right.square.fill")
-        case .remove:           return UIImage(systemName: "trash")
+        case .transfer:         return UIImage(named: "data_transfer_ic")
+        case .backup:           return nil
+        case .save:             return UIImage(named: "create_backup_ic")
+        case .restore:          return UIImage(named: "restore_backup_ic")
+        case .remove:           return UIImage(named: "remove_backup_ic")
         }
     }
     
@@ -34,17 +34,17 @@ enum DataSubSetting {
     
     var title: String {
         switch self {
-        case .transfer:             return "Перенос данных"
-        case .backup(let date):     return "Резервная копия: \(date)"
-        case .save:                 return "Создать копию"
-        case .restore:              return "Восстановить из копии"
-        case .remove:               return "Удалить копию"
+        case .transfer:             return "Перенос данных".localized
+        case .backup(let date):     return "Резервная копия_".localized(date)
+        case .save:                 return "Создать копию".localized
+        case .restore:              return "Восстановить из копии".localized
+        case .remove:               return "Удалить копию".localized
         }
     }
     
     var isEnabled: Bool {
         switch self {
-        case .backup(let string):
+        case .backup:
             return true
         case .transfer(let value):
             return value

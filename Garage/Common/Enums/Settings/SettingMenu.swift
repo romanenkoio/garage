@@ -8,25 +8,25 @@
 import UIKit
 
 enum SettingPoint {
+    case banner
     case subscription
     case getPremium(Bool)
     case reminders
     case mileageReminder
     case backup
     case contactUs
-    case version
     case language
 
     var icon: UIImage? {
         switch self {
-        case .getPremium:     return UIImage(systemName: "bell.square.fill")
-        case .subscription:     return UIImage(systemName: "bell.square.fill")
-        case .reminders:        return UIImage(systemName: "bell.square.fill")
-        case .mileageReminder:  return UIImage(systemName: "speedometer")
-        case .backup:           return UIImage(systemName: "externaldrive.fill.badge.timemachine")
-        case .contactUs:        return UIImage(systemName: "envelope.fill")
-        case .version:           return UIImage(systemName: "info.circle.fill")
-        case .language:           return UIImage(systemName: "info.circle.fill")
+        case .banner:           return nil
+        case .getPremium:     return UIImage(named: "get_prem_ic")
+        case .subscription:     return UIImage(named: "prem_ic")
+        case .reminders:        return UIImage(named: "notifications_ic")
+        case .mileageReminder:  return UIImage(named: "milage_reminder_ic")
+        case .backup:           return UIImage(named: "backup_ic")
+        case .contactUs:        return UIImage(named: "contact_us_ic")
+        case .language:           return UIImage(named: "language_ic")
         }
     }
     
@@ -37,7 +37,7 @@ enum SettingPoint {
         case .reminders:                    return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
         case .mileageReminder:              return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup, .language:            return false
-        case .version, .contactUs:          return false
+        case .contactUs, .banner:                    return false
         }
     }
     
@@ -45,21 +45,21 @@ enum SettingPoint {
         switch self {
         case .reminders, .mileageReminder, .getPremium:
             return true
-        case .backup, .contactUs, .version, .language, .subscription:
+        case .backup, .contactUs, .language, .subscription, .banner:
             return false
         }
     }
     
     var title: String {
         switch self {
-        case .subscription:     return "Аккаунт: \(((SettingsManager.sh.read(.isPremium) ?? false) ? "премиум" : "базовый"))"
-        case .reminders:        return "Получать уведомления"
-        case .mileageReminder:  return "Напоминание о пробеге"
-        case .backup:           return "Данные"
-        case .contactUs:        return "Связаться с нами"
-        case .version:          return "Версия: \(Bundle.main.version)"
-        case .language:         return "Язык"
-        case .getPremium:       return "Получить премиум"
+        case .banner:           return .empty
+        case .subscription:     return "ТипАккаунта".localized(Environment.isPrem ? "премиум".localized : "базовый".localized)
+        case .reminders:        return "Получать уведомления".localized
+        case .mileageReminder:  return "Напоминание о пробеге".localized
+        case .backup:           return "Резервная копия".localized
+        case .contactUs:        return "Связаться с нами".localized
+        case .language:         return "Язык".localized
+        case .getPremium:       return "Получить премиум".localized
         }
     }
 }

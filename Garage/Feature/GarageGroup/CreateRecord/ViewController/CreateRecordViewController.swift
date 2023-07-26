@@ -41,14 +41,14 @@ class CreateRecordViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-            title = "Создание записи"
+            title = "Создание записи".localized
           return
         }
 
-        title = "Изменение записи"
+        title = "Изменение записи".localized
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить запись?")) { [weak self] in
+                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить запись?".localized)) { [weak self] in
                     self?.vm.removeRecord() {
                         [weak self] in
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)

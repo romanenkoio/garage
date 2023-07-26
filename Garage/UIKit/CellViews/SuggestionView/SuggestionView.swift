@@ -27,7 +27,7 @@ class SuggestionView: BasicView {
     lazy var label: TappableLabel = {
         let label = TappableLabel(aligment: .center)
         label.font = .custom(size: 12, weight: .bold)
-        label.textColor = UIColor(hexString: "#3D3D3D")
+        label.textColor = AppColors.navbarTitle
         return label
     }()
     

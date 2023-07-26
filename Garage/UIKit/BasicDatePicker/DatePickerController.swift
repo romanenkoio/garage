@@ -130,7 +130,7 @@ class DatePickerController: UIViewController {
         saveButton.setViewModel(
             .init(
                 title: "Сохранить",
-                style: .basicDarkTitle(backgroundColor: AppColors.background),
+                style: .primary,
                 action: .touchUpInside {[weak self] in
                     self?.vm.date = self?.datePicker.date
                     self?.vm.isBeingDismissed.toggle()

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "create_backup_ic.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

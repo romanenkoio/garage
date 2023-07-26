@@ -1,0 +1,151 @@
+/* 
+  Localizable.strings
+  Garage
+
+  Created by Illia Romanenko on 21.07.23.
+  
+*/
+
+// MARK: Common
+"Из галереи" = "From Gallery";
+"Камера" = "Camera";
+"Отмена" = "Cancel";
+"Обновить" = "Update";
+"Сохранить" = "Save";
+"*обязательное поле" = "* required field";
+"Детали" = "Details";
+"Не может быть пустым" = "Cannot be empty";
+"Позвонить" = "Call";
+"Удалить" = "Delete";
+
+// MARK: TabBar
+"Гараж" = "Garage";
+"Документы" = "Documents";
+"Сервисы" = "Services";
+"Статьи" = "Articles";
+
+// Mark: GarageViewController
+"Добавить машину" = "Add Car";
+"Ваш гараж пуст" = "Your garage is empty";
+"Добавьте машину для \nначала работы" = "Add a car to get started";
+
+// MARK: CarView
+"Нет запланированных событий" = "No scheduled events";
+"Ближайшее:" = "Upcoming: %@";
+
+// MARK: CarInfoViewController
+"Общая информация" = "General Information";
+"Запланировать" = "Schedule";
+"Добавить запись" = "Add record";
+
+// MARK: CarTopInfoView
+"год" = "year";
+"Пробег" = "Mileage";
+
+// MARK: CreateCarViewController
+"Добавить машину" = "Add Car";
+"Изменить машину" = "Edit Car";
+"Вы уверены, что хотите удалить машину?" = "Are you sure you want to delete this car?";
+"Производитель" = "Manufacturer";
+"Модель" = "Model";
+"VIN номер" = "VIN Number";
+"Год выпуска" = "Year of Manufacture";
+"Пробег" = "Mileage";
+
+// MARK: AddCarView
+"Добавить новую машину" = "Add New Car";
+"Достигнут лимит автомобилей" = "Car Limit Reached";
+
+// MARK: DocumentType
+"Водительские права" = "Driver's License";
+"Медицинская справка" = "Medical Certificate";
+"Страховка" = "Insurance";
+"Технический паспорт" = "Technical Passport";
+"Технический осмотр" = "Technical Inspection";
+
+// MARK: CreateDocumentViewController
+"Добавить фото" = "Add Photo";
+"Срок действия" = "Expiration Date";
+"Документ" = "Document";
+"Срок действия" = "Expiration Date";
+"Добавление документа" = "Add Document";
+"Вы уверены, что хотите удалить документ?" = "Are you sure you want to delete this document?";
+"Изменение документа" = "Edit Document";
+"Дата начала действия" = "Document effective date";
+"Дата окончания действия" = "Document expiration date";
+
+// MARK: RangeDatePicker
+"с" = "from %@";
+"по" = "to %@";
+
+// MARK: DocumentView
+"С_по" = "From %@ to %@";
+
+// MARK: ServiceType
+"Масло двигателя" = "Engine oil";
+"Масло коробки передач" = "Transmission oil";
+"Воздушный фильтр" = "Air filter";
+"Тормозные колодки" = "Brake pads";
+"Тормозные диски" = "Brake discs";
+"Ремень/цепь" = "Belt/chain";
+"Салонный фильтр" = "Cabin filter";
+"Свечи" = "Spark plugs";
+"Аккумулятор" = "Battery";
+
+// MARK: CreateRecordViewController
+"Сохранить запись" = "Save record";
+"Замена свечей" = "Spark plug replacement";
+"Выберите сервис" = "Choose service";
+"Название сервиса" = "Service name";
+"Краткое описание" = "Brief description";
+"Стоимость" = "Cost";
+"Комментарий" = "Comment";
+"Текущий пробег" = "Current mileage";
+"Выполнить" = "Complete";
+"_км" = "%@ km";
+"Выбор сервиса" = "Service selection";
+"Создание записи" = "Record creation";
+"Вы уверены, что хотите удалить запись?" = "Are you sure you want to delete the record?";
+"Изменение записи" = "Record modification";
+"Дата выполнения" = "Date of completion";
+"Изменить дату" = "Change date";
+
+// MARK: SettingPoint
+"ТипАккаунта" = "Account Type: %@";
+"Получать уведомления" = "Receive Notifications";
+"Напоминание о пробеге" = "Mileage Reminder";
+"Данные" = "Data";
+"Связаться с нами" = "Contact Us";
+"Версия" = "Version: %@";
+"Язык" = "Language";
+"Получить премиум" = "Get Premium";
+"премиум" = "Premium";
+"Выберите язык" = "Select Language";
+
+// MARK: CreateServiseViewController
+"Добавление сервиса" = "Add Service";
+"Вы уверены, что хотите удалить сервис?" = "Are you sure you want to delete the service?";
+"Изменение сервиса" = "Edit Service";
+"Обязательное поле" = "Required Field";
+"Название" = "Title";
+"Номер телефона" = "Phone Number";
+"Специализация" = "Specialization";
+"Адрес" = "Address";
+
+// MARK: BackupViewController
+"Резервная копия" = "Backup";
+"Удалить резервную копию?" = "Delete backup?";
+"Копия удалена" = "Backup deleted";
+"Восстановить данные из резервной копии?" = "Restore data from backup?";
+"Все текущие данные будут удалены" = "All current data will be deleted";
+"Восстановить" = "Restore";
+"Восстановлено" = "Restored";
+"Резервная копия создана" = "Backup created";
+"отсутствует" = "missing";
+
+// MARK: DataSubSetting
+"Перенос данных" = "Data Transfer";
+"Резервная копия_" = "Backup: %@";
+"Создать копию" = "Create Backup";
+"Восстановить из копии" = "Restore from Backup";
+"Удалить копию" = "Delete Backup";

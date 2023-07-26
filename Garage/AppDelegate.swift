@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import GoogleMaps
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initNavbar()
         initPushes()
         initSystem()
+        initLocalization()
+        initMap()
         return true
+    }
+
+    private func initLocalization() {
+        Bundle.setLocalization()
+    }
+
+    private func initMap() {
+        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
     }
 
     private func initNavbar() {
         if #available(iOS 15.0, *) {
             let attrs = [
-                NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#3D3D3D"),
+                NSAttributedString.Key.foregroundColor: AppColors.navbarTitle,
                 NSAttributedString.Key.font: UIFont.custom(size: 16, weight: .bold)
             ]
             let navigationBarAppearance = UINavigationBarAppearance()
@@ -44,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initSystem() {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        IQKeyboardManager.shared.enable = true
     }
 }
 

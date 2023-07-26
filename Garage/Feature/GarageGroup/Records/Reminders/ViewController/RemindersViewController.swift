@@ -43,7 +43,6 @@ class RemindersViewController: BasicViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        tableViewDelegate = layout.table.table
         vm.didLayoutSubviews?(layout.table.table)
     }
 
@@ -86,13 +85,14 @@ extension RemindersViewController: UITableViewDataSource {
         return vm.tableVM.cells.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<ReminderView>.self, for: indexPath) else { return .init()}
         
-        let reminderVM = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.row]) { [weak self] reminder in
-            self?.vm.completeReminder?(reminder)
+        let reminderVM = ReminderView.ViewModel(reminder: vm.tableVM.cells[indexPath.row])
+        reminderVM.completeButton.action = .touchUpInside { [weak self] in
+            self?.vm.completeReminder?(reminderVM.reminder)
         }
-
+        
         pastRecordCell.mainView.setViewModel(reminderVM)
         pastRecordCell.selectionStyle = .none
         return pastRecordCell

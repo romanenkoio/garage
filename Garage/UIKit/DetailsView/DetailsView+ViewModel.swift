@@ -9,7 +9,7 @@ import UIKit
 
 extension DetailsView {
     final class ViewModel: BasicViewModel {
-        let labelVM = BasicLabel.ViewModel(.text("Детали"))
+        let labelVM = BasicLabel.ViewModel(.text("Детали".localized))
         let image = UIImage(named: "arrow_right_ic")?.withTintColor(AppColors.blue)
         var action: Action?
         

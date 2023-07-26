@@ -39,7 +39,7 @@ extension PastRecordsViewController {
 
             var cells: [[RecordView.ViewModel]] = .empty
             years.forEach { year in
-                let setionCells = records.filter({ $0.date.recordComponents.year == year })
+                let setionCells = records.filter({ $0.date.getDateComponent(.year) == year })
                 cells.append(setionCells.map({ .init(record: $0 )}))
             }
             headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SPIndicator
 
 class BasicViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = []
@@ -27,19 +28,7 @@ class BasicViewController: UIViewController {
         return view
     }()
     
-    lazy var loaderView: BasicView = {
-        let view = BasicView()
-        view.backgroundColor = .clear
-        view.cornerRadius = 0
-        return view
-    }()
-    
-    lazy var spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView()
-        spinner.style = .large
-        spinner.color = .primaryBlue
-        return spinner
-    }()
+    private lazy var header = BasicStackView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -95,14 +84,6 @@ class BasicViewController: UIViewController {
         self.scroll.snp.makeConstraints { (make) in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        loaderView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        spinner.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
     }
     
     func hideNavBar(_ value: Bool) {
@@ -124,12 +105,9 @@ class BasicViewController: UIViewController {
     }
 
     func layoutElements() {
+        view.addSubview(header)
         view.addSubview(scroll)
         scroll.addSubview(contentView)
-        view.addSubview(loaderView)
-        loaderView.addSubview(spinner)
-        loaderView.isHidden = true
-        view.bringSubviewToFront(loaderView)
     }
     
     func configure() {}

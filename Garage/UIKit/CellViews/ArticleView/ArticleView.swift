@@ -8,10 +8,9 @@
 import UIKit
 
 class ArticleView: BasicStackView {
-    private lazy var imageView: UIImageView = {
-        let view = UIImageView()
+    private lazy var imageView: BasicImageView = {
+        let view = BasicImageView()
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "test_article")
         view.cornerRadius = 20
         return view
     }()
@@ -20,6 +19,17 @@ class ArticleView: BasicStackView {
         let label = BasicLabel()
         label.font = .custom(size: 16, weight: .black)
         label.textInsets = .init(top: 10, bottom: 10, horizontal: 8)
+        return label
+    }()
+    
+    private(set) lazy var readedLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.font = .custom(size: 16, weight: .medium)
+        label.textInsets = .init(top: 10, bottom: 10, horizontal: 8)
+        label.numberOfLines = 0
+        label.backgroundColor = .white
+        label.cornerRadius = 12
+        label.textColor = AppColors.green
         return label
     }()
     
@@ -33,11 +43,16 @@ class ArticleView: BasicStackView {
     
     private func makeLayout() {
         self.addArrangedSubviews([imageView, title])
+        self.addSubview(readedLabel)
     }
     
     private func makeConstraint() {
         imageView.snp.makeConstraints { make in
             make.height.equalTo(200)
+        }
+        
+        readedLabel.snp.makeConstraints { make in
+            make.top.trailing.equalTo(imageView).inset(UIEdgeInsets(top: 10, right: 10))
         }
     }
     
@@ -45,10 +60,7 @@ class ArticleView: BasicStackView {
         cancellables.removeAll()
 
         title.setViewModel(vm.titleVM)
-        
-        vm.$image.compactMap().sink { [weak self] image in
-            self?.imageView.image = image
-        }
-        .store(in: &cancellables)
+        imageView.setViewModel(vm.imageVM)
+        readedLabel.setViewModel(vm.readedLabelVM)
     }
 }

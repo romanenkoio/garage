@@ -13,19 +13,13 @@ extension ReminderView {
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
         let completeButton = BasicButton.ViewModel(title: "Выполнить", style: .complete)
-        
-        unowned var reminder: Reminder
 
-        init(reminder: Reminder, completeAction: ((Reminder) -> Void)?) {
+        var reminder: Reminder
+
+        init(reminder: Reminder) {
             infoLabelVM.textValue = .text(reminder.short)
             dateLabelVM.textValue = .text(reminder.date.toString(.ddMMyy))
             self.reminder = reminder
-            
-            super.init()
-            
-            completeButton.action = .touchUpInside { [weak self] in
-                completeAction?(reminder)
-            }
         }
     }
 }

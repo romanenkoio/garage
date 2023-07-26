@@ -9,11 +9,11 @@ import UIKit
 
 extension TabBarController {
     class ViewModel {
-        enum TabItem: String, CaseIterable {
-            case garage = "Гараж"
-            case documents = "Документы"
-            case services = "Сервисы"
-            case articles = "Статьи"
+        enum TabItem:  CaseIterable {
+            case garage
+            case documents
+            case services
+            case articles
             
             var viewController: UIViewController {
                 switch self {
@@ -38,6 +38,15 @@ extension TabBarController {
                         return UIImage(named: "services")
                     case .articles:
                         return UIImage(named: "articles")
+                }
+            }
+            
+            var title: String {
+                switch self {
+                case .garage:    return "Гараж".localized
+                case .documents: return "Документы".localized
+                case .services:  return "Сервисы".localized
+                case .articles:  return "Статьи".localized
                 }
             }
         }

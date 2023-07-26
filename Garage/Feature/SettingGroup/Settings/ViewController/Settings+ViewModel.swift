@@ -11,6 +11,7 @@ import UIKit
 extension SettingsViewController {
     final class ViewModel: BasicViewModel {
         let tableVM = BasicTableView.SectionViewModel<SettingPoint>()
+        let versionLabelVM = BasicLabel.ViewModel(.text(Bundle.main.version))
         
         var settingsPoint: [[SettingPoint]] = []
         
@@ -25,8 +26,13 @@ extension SettingsViewController {
                 [.subscription, .getPremium(isPremium)],
                 [.reminders, .mileageReminder],
                 [.backup],
-                [.contactUs, .version, .language]
+                [.contactUs, .language]
             ]
+            
+            if !isPremium {
+                settingsPoint.insert([.banner], at: 0)
+            }
+            
             tableVM.setCells(settingsPoint)
         }
     }

@@ -62,11 +62,6 @@ final class Document: Object, Codable {
 }
 
 extension Document {
-    var type: DocumentType {
-        get { return DocumentType(from: rawType) }
-        set { rawType = newValue.title }
-    }
-    
     var photos: [UIImage] {
         let photoData = RealmManager<Photo>()
             .read()

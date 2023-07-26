@@ -15,10 +15,31 @@ extension DateHeaderView {
         init(date: DateComponents) {
             self.components = date
             
-            if self.components.year == Date().components.year {
-                labelVM.textValue = .text("В этом году")
-            } else if let year = components.year {
-                labelVM.textValue = .text(year.toString())
+            if let month = self.components.month {
+                var newComponent = self.components
+                newComponent.day = 1
+                guard let date = Calendar.current.date(from: newComponent) else {
+                    if let year = newComponent.year {
+                        labelVM.textValue = .text(year.toString())
+                    } else {
+                        labelVM.textValue = .text(Date().getDateComponent(.year)!.toString())
+                    }
+                    return
+                }
+                let month = date.monthName()
+                if let year = newComponent.year {
+                    if year == Date().components.year {
+                        labelVM.textValue = .text(month)
+                    } else {
+                        labelVM.textValue = .text("\(year), \(month)")
+                    }
+                }
+            } else {
+                if self.components.year == Date().components.year {
+                    labelVM.textValue = .text("В этом году")
+                } else if let year = components.year {
+                    labelVM.textValue = .text(year.toString())
+                }
             }
         }
     }

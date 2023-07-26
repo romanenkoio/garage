@@ -20,6 +20,7 @@ final class RemindersControllerLayoutManager {
             delegate: vc
         )
         table.register(BasicTableCell<ReminderView>.self)
+        table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
         table.table.isScrollEnabled = false
         table.table.contentInset = UIEdgeInsets(top: 20)

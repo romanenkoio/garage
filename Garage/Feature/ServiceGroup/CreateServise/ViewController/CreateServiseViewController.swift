@@ -61,7 +61,7 @@ class CreateServiseViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-            title = "Добавление сервиса"
+            title = "Добавление сервиса".localized
             
             let readQRButton = NavBarButton.ViewModel(action: .touchUpInside { [weak self] in
                 guard let self else { return }
@@ -74,7 +74,7 @@ class CreateServiseViewController: BasicViewController {
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 let vm = Dialog.ViewModel(
-                    title: .text("Вы уверены, что хотите удалить сервис?")
+                    title: .text("Вы уверены, что хотите удалить сервис?".localized)
                 ) { [weak self] in
                     self?.vm.removeService() { [weak self] in
                         self?.dismiss(animated: true)
@@ -85,7 +85,7 @@ class CreateServiseViewController: BasicViewController {
             },
             image: UIImage(named: "delete_ic")
         )
-        title = "Изменение сервиса"
+        title = "Изменение сервиса".localized
         makeRightNavBarButton(buttons: [deleteButton])
     }
 
@@ -110,17 +110,17 @@ class CreateServiseViewController: BasicViewController {
     private var alertController: UIAlertController  {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let choisePhotoAction = UIAlertAction(title: "Из галереи", style: .default) { [weak self] _ in
+        let choisePhotoAction = UIAlertAction(title: "Из галереи".localized, style: .default) { [weak self] _ in
             guard let self else { return }
             self.coordinator.navigateTo(CommonNavigationRoute.presentOnTop(imagePicker))
         }
         
-        let takePhotAction = UIAlertAction(title: "Камера", style: .default) { [weak self] _ in
+        let takePhotAction = UIAlertAction(title: "Камера".localized, style: .default) { [weak self] _ in
             guard let self else { return }
             self.coordinator.navigateTo(CreateServiseNavigationRoute.readServiceCamera(vm.qrReaderVM))
         }
         
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
         alert.addAction(takePhotAction)
         alert.addAction(choisePhotoAction)
         alert.addAction(cancelAction)

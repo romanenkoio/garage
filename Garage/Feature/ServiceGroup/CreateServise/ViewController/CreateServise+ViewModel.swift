@@ -24,43 +24,43 @@ extension CreateServiseViewController {
         init(mode: EntityStatus<Service>) {
             self.mode = mode
             
-            let errorVM = ErrorView.ViewModel(error: "Обязательое поле")
+            let errorVM = ErrorView.ViewModel(error: "Обязательное поле".localized)
             
             nameInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "МегаСварщик"),
-                descriptionVM: .init(.text("Название")),
+                descriptionVM: .init(.text("Название".localized)),
                 isRequired: true
             )
             
             phoneInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "+375257776655"),
-                descriptionVM: .init(.text("Номер телефона")),
+                descriptionVM: .init(.text("Номер телефона".localized)),
                 isRequired: true
             )
             
             specialisationInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Сварка"),
-                descriptionVM: .init(.text("Специализация"))
+                descriptionVM: .init(.text("Специализация".localized))
             )
             
             adressInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Макаёнка 43"),
-                descriptionVM: .init(.text("Адрес")),
+                descriptionVM: .init(.text("Адрес".localized)),
                 isRequired: true
             )
             
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,
-                descriptionLabelVM: .init(.text("Комментарий"))
+                descriptionLabelVM: .init(.text("Комментарий".localized))
             )
             
             saveButtonVM = .init(
-                buttonVM: .init(title: "Сохранить", isEnabled: false, style: .primary)
+                buttonVM: .init(title: "Сохранить".localized, isEnabled: false, style: .primary)
             )
 
             super.init()

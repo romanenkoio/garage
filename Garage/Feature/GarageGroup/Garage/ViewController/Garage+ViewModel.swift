@@ -7,29 +7,68 @@
 //
 
 import UIKit
+import CoreLocation
 
 extension GarageViewController {
     final class ViewModel: BasicControllerModel {
+        enum Cells {
+            case banner
+            case car
+            case addCar
+        }
         
-        let tableVM = BasicTableView.GenericViewModel<CarView.ViewModel>()
+        let tableVM = BasicTableView.SectionViewModel<Cells>()
         var addButtonVM: AlignedButton.ViewModel
-
+        var selectedCar: Car?
+        var isLocationEnabled = false
+        var cars: [Car] = .empty
+        
         override init() {
-            addButtonVM = .init(buttonVM: .init(title: "Добавить машину"))
+            addButtonVM = .init(buttonVM: .init(title: "Добавить машину".localized))
+            
+            switch LocationManager.shared.authorizationStatus {
+            case .authorizedAlways, .authorizedWhenInUse:
+                isLocationEnabled = true
+            default:
+                break
+            }
             
             super.init()
             readCars()
             
             tableVM.setupEmptyState(
-                labelVM: .init(.text("Ваш гараж пуст")),
-                sublabelVM: .init(.text("Добавьте машину для \nначала работы")),
+                labelVM: .init(.text("Ваш гараж пуст".localized)),
+                sublabelVM: .init(.text("Добавьте машину для \nначала работы".localized)),
                 addButtonVM: addButtonVM.buttonVM,
                 image: UIImage(named: "car_placeholder")
             )
         }
         
         func readCars() {
-            tableVM.setCells(RealmManager<Car>().read().map({ .init(car: $0) }))
+            var cells = [[Cells]]()
+    
+            self.cars = RealmManager<Car>().read()
+            var carCells = [Cells](repeating: .car, count: cars.count)
+                
+            cells.append(carCells)
+            cells.append([.addCar])
+            
+            if !Environment.isPrem {
+                cells.insert([.banner], at: 0)
+            }
+            
+            tableVM.setCells(cells)
+        }
+        
+        func setParkingMode(from location: CLLocation) {
+            guard let selectedCar else { return }
+            RealmManager().write(object: Parking(car: selectedCar, coordinate: location))
+        }
+        
+        func removeParkingLocation() {
+            guard let selectedCar else { return }
+            let parkings = RealmManager<Parking>().read().filter({ $0.carID == selectedCar.id})
+            parkings.forEach({ RealmManager().delete(object: $0 )})
         }
     }
 }

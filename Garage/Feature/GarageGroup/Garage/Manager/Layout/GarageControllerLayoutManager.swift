@@ -20,10 +20,12 @@ final class GarageControllerLayoutManager {
         )
         table.register(CarCell.self)
         table.register(AddCarCell.self)
+        table.register(BannerCell.self)
         table.table.separatorColor = .clear
+
         return table
     }()
-    
+
     // - Init
     init(vc: GarageViewController) {
         self.vc = vc
@@ -48,7 +50,7 @@ fileprivate extension GarageControllerLayoutManager {
     
     private func makeConstraint() {
         table.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 20, horizontal: 20))
         }
     }
 }

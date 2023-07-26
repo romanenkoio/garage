@@ -29,12 +29,11 @@ extension RemindersViewController {
                 addButtonVM: .init(),
                 image: nil
             )
-            
-            readReminders()
         }
         
         func readReminders() {
-            tableVM.setCells(car.reminders)
+            let reminders = car.reminders.filter({ !$0.isDone })            
+            tableVM.setCells(reminders)
         }
     }
 }

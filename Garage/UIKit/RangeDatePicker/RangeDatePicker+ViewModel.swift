@@ -16,22 +16,14 @@ extension RangeDatePicker {
         
         let desctiptionVM = BasicLabel.ViewModel()
         let startDateVM = BasicDatePicker.ViewModel(
-            placeholder: "с \(Date().toString(.ddMMyy))"
+            placeholder: "с".localized(Date().toString(.ddMMyy))
         )
         let finishDateVM = BasicDatePicker.ViewModel(
-            placeholder: "по \(Date().append(.month).toString(.ddMMyy))"
+            placeholder: "по".localized(Date().append(.month).toString(.ddMMyy))
         )
         
-        @Published private(set) var startDate: Date? {
-            didSet {
-                print("start set")
-            }
-        }
-        @Published private(set) var endDate: Date? {
-            didSet {
-                print("end set")
-            }
-        }
+        @Published private(set) var startDate: Date?
+        @Published private(set) var endDate: Date?
         
         var minStartDate: Date? {
             get { startDateVM.minimumDate }
@@ -82,7 +74,8 @@ extension RangeDatePicker {
             
             self.startDateVM.datePickerController.$date.sink { [weak self] date in
                 guard let self, let date else { return }
-                self.startDateVM.text = "c \(date.toString(.ddMMyy))"
+                self.startDateVM.text = "с \(date.toString(.ddMMyy))"
+          
                 if let finishDate = self.finishDateVM.datePickerController.date, date >= finishDate {
                     self.finishDateVM.setNewDate(nil)
                 }

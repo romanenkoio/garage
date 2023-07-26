@@ -26,11 +26,11 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
 
     var title: String {
         switch self {
-        case .license:                  return "Водительские права"
-        case .medical:                  return "Медицинская справка"
-        case .insurance:                return "Страховка"
-        case .carPasport:               return "Технический паспорт"
-        case .techChek:                 return "Технический осмотр"
+        case .license:                  return "Водительские права".localized
+        case .medical:                  return "Медицинская справка".localized
+        case .insurance:                return "Страховка".localized
+        case .carPasport:               return "Технический паспорт".localized
+        case .techChek:                 return "Технический осмотр".localized
         case .unlisted(let string):     return string ?? ""
         }
     }
@@ -44,17 +44,6 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
         case .techChek:                 return UIImage(named: "techDoc")
         case .unlisted:                 return nil
             
-        }
-    }
-    
-    init(from text: String) {
-        switch text {
-        case "Водительские права":      self = .license
-        case "Медицинская справка":     self = .medical
-        case "Страховка":               self = .insurance
-        case "Технический паспорт":     self = .carPasport
-        case "Технический осмотр":      self = .techChek
-        default:                        self = .unlisted(text)
         }
     }
 }

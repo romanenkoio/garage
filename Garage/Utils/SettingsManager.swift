@@ -19,6 +19,8 @@ final class SettingsManager {
         case mileageReminder
         case isFirstLaunch
         case isPremium
+        case selectedLanguage
+        case readedArticles
     }
     
     func read(_ key: Keys) -> Bool? {
@@ -26,14 +28,23 @@ final class SettingsManager {
         return value
     }
     
-    func read(_ key: Keys) -> String {
-        let value = defaults.object(forKey: key.rawValue) as? String ?? .empty
+    func read(_ key: Keys) -> String? {
+        let value = defaults.object(forKey: key.rawValue) as? String
         return value
+    }
+    
+    func read(_ key: Keys) -> [Int] {
+        let value = defaults.object(forKey: key.rawValue) as? [Int]
+        return value ?? .empty
     }
     
     func read(_ key: Keys) -> Int? {
         let value = defaults.object(forKey: key.rawValue) as? Int
         return value
+    }
+    
+    func write(value: [Int], for key: Keys) {
+        defaults.set(value, forKey: key.rawValue)
     }
     
     func write(value: String, for key: Keys) {

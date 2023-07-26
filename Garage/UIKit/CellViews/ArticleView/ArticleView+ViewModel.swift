@@ -10,14 +10,24 @@ import UIKit
 extension ArticleView {
     final class ViewModel: BasicViewModel {
         let titleVM = BasicLabel.ViewModel()
-        @Published var image: UIImage?
+        let imageVM = BasicImageView.ViewModel(data: nil, mode: .scaleAspectFill)
+        let readedLabelVM = BasicLabel.ViewModel(.text("Прочитано"))
+
+        let article: Article!
         
         init(
-            title: TextValue,
-            image: UIImage?
+            article: Article
         ) {
-            self.image = image
-            self.titleVM.textValue = title
+            self.article = article
+            self.imageVM.set(
+                from: "https://pictures.shoop-vooop.cloudns.nz/shopping-list/api/news/images/\(article.id)/",
+                placeholder: UIImage(named: "article_placeholder")
+            )
+            self.titleVM.textValue = .text(article.title)
+        }
+        
+        func markAsReadIfNeeded() {
+            readedLabelVM.isHidden = !SettingsManager.sh.read(.readedArticles).contains(where: { article.id == $0 })
         }
     }
 }

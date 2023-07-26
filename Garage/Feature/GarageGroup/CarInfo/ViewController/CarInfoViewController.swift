@@ -17,8 +17,6 @@ class CarInfoViewController: BasicViewController {
     
     // - Property
     private(set) var vm: ViewModel
-    var navigationBarOriginalOffset : CGFloat?
-    var segmentOriginalOffset: CGFloat?
     
     // - Manager
     var coordinator: Coordinator!
@@ -52,7 +50,7 @@ class CarInfoViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         scroll.delegate = self
         layout.page.delegate = self
-        layout.titleLabelView.defaultTitle = "Общая информация"
+        layout.titleLabelView.defaultTitle = "Общая информация".localized
         self.navigationItem.titleView = layout.titleLabelView
     }
     
@@ -83,10 +81,10 @@ class CarInfoViewController: BasicViewController {
         layout.addButton.setViewModel(vm.addButtonVM)
         layout.carTopInfo.setViewModel(vm.carTopInfoVM)
         
-        let isPrem: Bool = SettingsManager.sh.read(.isPremium) ?? false
+        let isPrem = Environment.isPrem
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
-                    .init(.text("Запланировать"),
+                    .init(.text("Запланировать".localized),
                           action: { [weak self] in
                               guard let self else { return }
                               let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
@@ -103,7 +101,7 @@ class CarInfoViewController: BasicViewController {
                           }),
                   image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
-                    .init(.text("Добавить запись"),
+                    .init(.text("Добавить запись".localized),
                           action: { [weak self] in
                               guard let self else { return }
                               coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
@@ -157,8 +155,8 @@ extension CarInfoViewController: UITableViewDelegate {
                 coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
                 
             case .future:
-                guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.row] else { return }
-                coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
+            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.section] else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
 }
@@ -241,5 +239,14 @@ extension CarInfoViewController: UIPageViewControllerDelegate {
         else { return }
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         layout.page.vm.indexCandidate = index
+
+//    var defaultTitle: String = "" {
+//        didSet {
+//            label.text = defaultTitle
+//            label.textColor = AppColors.navbarTitle
+//            label.textAlignment = .center
+//            label.font = UIFont.custom(size: 16, weight: .bold)
+//            setNeedsLayout()
+//        }
     }
 }

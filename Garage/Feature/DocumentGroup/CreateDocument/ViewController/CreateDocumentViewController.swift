@@ -49,13 +49,13 @@ class CreateDocumentViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         
         guard case .edit(_) = vm.mode else {
-            title = "Добавление документа"
+            title = "Добавление документа".localized
             return
         }
         
         let deleteButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить документ?"))  { [weak self] in
+                let vm = Dialog.ViewModel(title: .text("Вы уверены, что хотите удалить документ?".localized))  { [weak self] in
                     self?.vm.removeDocument() { [weak self] in
                         self?.coordinator.navigateTo(CommonNavigationRoute.close)
                     }
@@ -65,7 +65,7 @@ class CreateDocumentViewController: BasicViewController {
             image: UIImage(named: "delete_ic")
         )
         makeRightNavBarButton(buttons: [deleteButton])
-        title = "Изменение документа"
+        title = "Изменение документа".localized
     }
 
     override func binding() {

@@ -15,7 +15,6 @@ class ServiceView: BasicView {
         stack.axis = .vertical
         stack.cornerRadius = 12
         stack.backgroundColor = AppColors.background
-        stack.edgeInsets = .init(vertical: 12, horizontal: 21)
         return stack
     }()
     

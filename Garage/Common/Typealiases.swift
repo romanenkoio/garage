@@ -15,6 +15,7 @@ typealias DocumentCell =  BasicTableCell<DocumentView>
 typealias RecordCell = BasicTableCell<RecordView>
 typealias PhotoCell = BasicCollectionCell<PhotoView>
 typealias CarCellPhotoCell = BasicCollectionCell<CarCellPhotoView>
+typealias BannerCell = BasicTableCell<PremiumView>
 
 typealias Completion = (() -> ())
 typealias EqutableCompletion = ((any Equatable) -> ())

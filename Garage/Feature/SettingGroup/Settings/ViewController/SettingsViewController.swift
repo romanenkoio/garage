@@ -33,9 +33,8 @@ class SettingsViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTabBar(false)
+        hideTabBar(true)
         makeLogoNavbar()
-        hideTabBar(false)
         makeCloseButton(isLeft: true)
         title = "Настройки"
     }
@@ -75,7 +74,7 @@ class SettingsViewController: BasicViewController {
             showLoader()
             readBackupDate { [weak self] date in
                 let points: [[DataSubSetting]]
-                
+
                 if let date {
                     points = [
                         [.backup(date), .transfer(true)],
@@ -95,15 +94,14 @@ class SettingsViewController: BasicViewController {
             }
         case .contactUs:
             break
-        case .version:
-            break
         case .language:
-            break
+            changeLanguage()
         case .subscription:
             break
         case .getPremium:
-            let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
-            SettingsManager.sh.write(value: !isPremium, for: .isPremium)
+            Environment.isPrem = !Environment.isPrem
+        case .banner:
+            break
         }
     }
     
@@ -117,6 +115,24 @@ class SettingsViewController: BasicViewController {
             let date = backup.date.toString(.ddMMyy)
             completion(date)
         }
+    }
+    
+    private func changeLanguage() {
+        let avalibleLanguages = Language.allCases
+        let alert = UIAlertController(title: "Выберите язык".localized, message: nil, preferredStyle: .actionSheet)
+        
+        avalibleLanguages.forEach { [weak self] language in
+            let action = UIAlertAction(title: language.rawValue.uppercased(), style: .default) { _ in
+                SettingsManager.sh.write(value: language.rawValue, for: .selectedLanguage)
+                self?.vm.setCells()
+            }
+            action.setValue(language.image, forKey: "image")
+            alert.addAction(action)
+        }
+        
+        let closeAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
+        alert.addAction(closeAction)
+        self.present(alert)
     }
 }
 
@@ -145,17 +161,30 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self),
-              let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row]
-        else { return .init() }
-    
-        let vm = SettingView.ViewModel(point: point)
-        vm.switchCompletion = { [weak self] _ in
-            self?.hadleSelection(point)
+        
+        guard let point = vm.settingsPoint[safe: indexPath.section]?[safe: indexPath.row] else { return .init() }
+        
+        switch point {
+        case .banner:
+            guard let bannerCell = tableView.dequeueReusableCell(BasicTableCell<PremiumView>.self)
+            else { return .init() }
+
+            bannerCell.mainView.setViewModel(.init())
+            bannerCell.selectionStyle = .none
+            return bannerCell
+        default:
+            guard let settingCell = tableView.dequeueReusableCell(BasicTableCell<SettingView>.self)
+            else { return .init() }
+        
+            let vm = SettingView.ViewModel(point: point)
+            vm.switchCompletion = { [weak self] _ in
+                self?.hadleSelection(point)
+            }
+            settingCell.mainView.setViewModel(vm)
+            settingCell.selectionStyle = .none
+            return settingCell
         }
-        settingCell.mainView.setViewModel(vm)
-        settingCell.selectionStyle = .none
-        return settingCell
+ 
     }
 }
 

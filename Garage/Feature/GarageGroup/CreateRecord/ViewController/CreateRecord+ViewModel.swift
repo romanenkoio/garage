@@ -20,24 +20,24 @@ extension CreateRecordViewController {
         let dateInputVM = BasicDatePicker.ViewModel(placeholder: Date().toString(.ddMMyy))
         let costInputVM: BasicInputView.ViewModel
         let mileageInputVM: BasicInputView.ViewModel
-        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(.text("Добавить фото")))
-        let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись"))
+        let imagePickerVM = BasicImageListView.ViewModel(descriptionLabelVM: .init(.text("Добавить фото".localized)))
+        let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(title: "Сохранить запись".localized))
         
         let shortTypeVM = SuggestionInput<ServiceType>.GenericViewModel(
             ServiceType.allCases,
             items: { items in
                 return items.map({ ($0.title, nil) })
             },
-            errorVM: .init(error: "Не может быть пустым"),
-            inputVM: .init(placeholder: "Замена свечей"),
+            errorVM: .init(error: "Не может быть пустым".localized),
+            inputVM: .init(placeholder: "Замена свечей".localized),
             isRequired: true
         )
         let commenntInputVM: MultiLineInput.ViewModel
         
         let serivesListVM = BasicList<Service>.GenericViewModel<Service>(
-            title: "Выберите сервис",
+            title: "Выберите сервис".localized,
             RealmManager<Service>().read(),
-            placeholder: "Название сервиса") { items in
+            placeholder: "Название сервиса".localized) { items in
                 return items.map({ $0.name })
             }
         let mode: EntityStatus<Record>
@@ -50,29 +50,28 @@ extension CreateRecordViewController {
             self.mode = mode
             services = RealmManager<Service>().read()
 
-            shortTypeVM.descriptionLabelVM.textValue = .text("Краткое описание")
-            let errorVM = ErrorView.ViewModel(error: "Проверьте данные")
+            shortTypeVM.descriptionLabelVM.textValue = .text("Краткое описание".localized)
+            let errorVM = ErrorView.ViewModel(error: "Не может быть пустым".localized)
             
             costInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "120"),
-                descriptionVM: .init(.text("Стоимость"))
+                descriptionVM: .init(.text("Стоимость".localized))
             )
             
             commenntInputVM = .init(
                 inputVM: .init(),
                 errorVM: errorVM,
-                descriptionLabelVM: .init(.text("Комментарий"))
+                descriptionLabelVM: .init(.text("Комментарий".localized))
             )
 
             mileageInputVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "\(car.mileage + 1000) км"),
-                descriptionVM: .init(.text("Текущий пробег")),
+                descriptionVM: .init(.text("Текущий пробег".localized)),
                 isRequired: true
             )
             
-            imagePickerVM.description = "Добавить фото"
             imagePickerVM.editingEnabled = true
             
             super.init()
@@ -83,30 +82,30 @@ extension CreateRecordViewController {
             initValidator()
             
             switch mode {
-                case .createFrom(let reminder):
-                    saveButtonVM.buttonVM.isEnabled = false
-                    shortTypeVM.inputVM.setText(reminder.short)
-                    commenntInputVM.inputVM.text = reminder.comment.wrapped
-                    dateInputVM.setNewDate(Date())
-                    dateInputVM.descriptionLabel = "Дата выполнения"
-                    saveButtonVM.buttonVM.style = .createFromreminder
-                    saveButtonVM.buttonVM.title = "Выполнить"
-                case .create:
-                    saveButtonVM.buttonVM.isEnabled = false
-                    dateInputVM.descriptionLabel = "Дата выполнения"
-                case .edit(let object):
-                    dateInputVM.initDate(object.date)
-                    dateInputVM.descriptionLabel = "Изменить дату"
-                    commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
-                    costInputVM.text = "\(object.cost ?? .zero)"
-                    mileageInputVM.text = "\(object.mileage)"
-                    shortTypeVM.inputVM.setText(object.short)
-                    imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
-                    saveButtonVM.buttonVM.title = "Обновить"
-                    if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
-                        serivesListVM.initSelected(service)
-                    }
-                    initChangeChecker()
+            case .createFrom(let reminder):
+                saveButtonVM.buttonVM.isEnabled = false
+                shortTypeVM.inputVM.setText(reminder.short)
+                commenntInputVM.inputVM.text = reminder.comment.wrapped
+                dateInputVM.setNewDate(Date())
+                    dateInputVM.descriptionLabel = "Дата выполнения".localized
+                saveButtonVM.buttonVM.style = .createFromreminder
+                saveButtonVM.buttonVM.title = "Выполнить".localized
+            case .create:
+                saveButtonVM.buttonVM.isEnabled = false
+                    dateInputVM.descriptionLabel = "Дата выполнения".localized
+            case .edit(let object):
+                dateInputVM.initDate(object.date)
+                    dateInputVM.descriptionLabel = "Изменить дату".localized
+                commenntInputVM.inputVM.setObservedText(object.comment.wrapped)
+                costInputVM.text = "\(object.cost ?? .zero)"
+                mileageInputVM.text = "\(object.mileage)"
+                shortTypeVM.inputVM.setText(object.short)
+                imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
+                    saveButtonVM.buttonVM.title = "Обновить".localized
+                if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
+                    serivesListVM.initSelected(service)
+                }
+                initChangeChecker()
             }
         }
         
