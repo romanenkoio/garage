@@ -21,7 +21,7 @@ final class CarInfoControllerLayoutManager {
     
     // - Animation properties
     let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
-    let downTimer = Timer.publish(every: 0.005, on: .main, in: .common).autoconnect()
+    let downTimer = Timer.publish(every: 0.003, on: .main, in: .common).autoconnect()
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
@@ -44,7 +44,7 @@ final class CarInfoControllerLayoutManager {
             vc.contentView.cornerRadius = contentViewCornerScale
             
             switch newConstraintConstant {
-                case 0...3:
+                case 0...1:
                     upTimer.upstream.connect().cancel()
                     print(newConstraintConstant)
                     if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
