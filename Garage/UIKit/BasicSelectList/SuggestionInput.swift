@@ -138,7 +138,7 @@ class SuggestionInput<T: Equatable>: BasicInputView {
             view.layer.cornerRadius = 8
             view.setViewModel(.init(labelVM: .init(
                 .text(viewModel.titles[index]),
-                action: {
+                action: { [weak self] in
                     self?.viewModel?.setSelected(item)
                 }
             ), image: viewModel.icons[safe: index]))

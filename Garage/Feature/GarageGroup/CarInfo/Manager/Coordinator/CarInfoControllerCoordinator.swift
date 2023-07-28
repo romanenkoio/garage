@@ -15,6 +15,7 @@ enum CarInfoNavigationRoute: Routable {
     case createReminder(Car)
     case edit(Car)
     case createRecordFromReminder(Car, Reminder)
+    case statistic(Car)
 }
 
 class CarInfoControllerCoordinator: BasicCoordinator {
@@ -48,6 +49,9 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 vc.push(controller)
             case .createRecordFromReminder(let car, let reminder):
                 let controller = CreateRecordViewController(vm: .init(car: car, mode: .createFrom(reminder)))
+                vc.push(controller)
+            case .statistic(let car):
+                let controller = StatisticsViewController(vm: .init(car: car))
                 vc.push(controller)
             }
         } else {

@@ -105,7 +105,15 @@ final class CarInfoControllerLayoutManager {
                 self.vc.coordinator.navigateTo(CarInfoNavigationRoute.edit(self.vc.vm.car))
             },
             image: UIImage(named: "edit_ic"))
-        vc.makeRightNavBarButton(buttons: [editButton])
+        
+        let chartButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                guard let self else { return }
+                self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
+            },
+            image: UIImage(systemName: "chart.bar.fill"))
+        
+        vc.makeRightNavBarButton(buttons: [editButton, chartButton])
     }
     
     func remakeConstraintsAfterLayout() {

@@ -40,8 +40,10 @@ class SuggestionView: BasicView {
         self.addSubview(stack)
         stack.addArrangedSubviews([imageView, label])
         self.backgroundColor = AppColors.background
-        self.cornerRadius = 12
         self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.borderWidth = 1
+        self.cornerRadius = 8
     }
     
     private func makeConstraints() {

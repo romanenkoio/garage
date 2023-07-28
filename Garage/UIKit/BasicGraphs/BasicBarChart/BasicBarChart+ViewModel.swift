@@ -10,14 +10,10 @@ import DGCharts
 
 typealias BarChartItem = [(id: String, XaxisValue: Int, YaxisValue: Int)]
 
-extension BasicBarChart {
+extension BarChart {
     
     class ViewModel: BasicViewModel {
         var descriptionLabelVM = BasicLabel.ViewModel()
-        
-        func setupLabel(descriptionLabel: BasicLabel.ViewModel) {
-            self.descriptionLabelVM = descriptionLabel
-        }
     }
     
     
@@ -30,11 +26,13 @@ extension BasicBarChart {
         private(set) var barItems: BarChartItem = []
         
         func setItems(
-            _ list: [Item],
+            list: [Item],
+            title: TextValue,
             barItems: ([Item]) -> BarChartItem
         ) {
             self.items = list
             self.barItems = barItems(list)
+            descriptionLabelVM.textValue = title
             makeItems()
         }
         
@@ -47,8 +45,9 @@ extension BasicBarChart {
             }
             
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
+            chartDataSet.highlightColor = AppColors.black
             let data = BarChartData(dataSet: chartDataSet)
-
+            chartDataSet.colors = [AppColors.green]
             self.barChartData = data
         }
     }

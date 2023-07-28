@@ -9,15 +9,32 @@ import Foundation
 import DGCharts
 import UIKit
 
-class BasicBarChart: BasicView {
+class BarChart: BasicView {
     lazy var descriptionLabel: BasicLabel = {
         let view = BasicLabel()
         view.textAlignment = .left
         view.font = .custom(size: 24, weight: .bold)
+        view.textInsets = .init(bottom: 25, left: 16)
         return view
     }()
     
-    var barChartView = BarChartView()
+    private(set) lazy var barChartView: BarChartView = {
+       let view = BarChartView()
+        view.highlightFullBarEnabled = true
+        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().shortMonthSymbols)
+        view.xAxis.drawAxisLineEnabled = false
+        view.xAxis.drawGridLinesEnabled = false
+        view.doubleTapToZoomEnabled = false
+        view.pinchZoomEnabled = false
+        view.drawBordersEnabled = false
+        view.dragEnabled = false
+        view.scaleXEnabled = false
+        view.scaleYEnabled = false
+        view.legend.enabled = false
+        view.rightAxis.drawLabelsEnabled = false
+
+        return view
+    }()
     
     override init() {
         super.init()
@@ -38,29 +55,22 @@ class BasicBarChart: BasicView {
     private func makeConstraints() {
         
         descriptionLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview()
+            make.leading.top.trailing.equalToSuperview()
         }
         
-        let screenWidth = UIScreen.main.bounds.width
         barChartView.snp.makeConstraints { make in
-            make.height.equalTo(screenWidth)
+            make.height.equalTo(300)
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
-
-        barChartView.highlightFullBarEnabled = true
-
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().shortMonthSymbols)
         descriptionLabel.setViewModel(vm.descriptionLabelVM)
-        
     }
 }
 
-extension BasicBarChart: ChartViewDelegate {
+extension BarChart: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         
     }

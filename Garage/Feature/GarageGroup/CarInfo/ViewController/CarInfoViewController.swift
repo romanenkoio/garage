@@ -150,11 +150,11 @@ extension CarInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch vm.segmentVM.selectedItem {
                 
-            case .paste:
-                guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
-                coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
-                
-            case .future:
+        case .paste:
+            guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
+            coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
+            
+        case .future:
             guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.section] else { return }
             coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }

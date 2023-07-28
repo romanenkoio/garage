@@ -9,7 +9,7 @@ import UIKit
 import DGCharts
 
 class TestController: BasicViewController {
-    lazy var barChart = BasicBarChart()
+    lazy var barChart = BarChart()
     
     let vm: ViewModel
     
@@ -36,7 +36,6 @@ class TestController: BasicViewController {
     
     override func layoutElements() {
         contentView.addSubview(barChart)
-
     }
     
     override func binding() {
