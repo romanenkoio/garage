@@ -47,10 +47,10 @@ final class PushManager {
     
     func scheduleStandart() {
         [.conditioner, .tiresFall, .tiresSpring, .windshieldWasher].forEach({ create($0) })
-        let isMileageReminder = SettingsManager.sh.read(.mileageReminder) ?? true
-        if isMileageReminder {
-            create(LocalPush.mileageUpdate)
-        }
+//        let isMileageReminder = SettingsManager.sh.read(.mileageReminder) ?? true
+//        if isMileageReminder {
+//            create(LocalPush.mileageUpdate)
+//        }
     }
     
     func userShedule() {
@@ -140,21 +140,21 @@ struct LocalPush {
     
     init(document: Document) {
         id = document.id
-        title = "Вы просили напомнить"
-        subtitle = "Истекает срок действия \(document.rawType)"
+        title = document.rawType
+        subtitle = "Истекает срок действия документа"
         date = document.endDate!.append(.day, value: -15).components
         repeats = false
     }
 }
 
 extension LocalPush {
-    static let test = LocalPush(
-        id: "tires.test",
-        title: "Просто хотим напомнить",
-        subtitle: "Test",
-        date: Date().append(.minute, value: 2).components,
-        repeats: true
-    )
+//    static let test = LocalPush(
+//        id: "tires.test",
+//        title: "Просто хотим напомнить",
+//        subtitle: "Test",
+//        date: Date().append(.minute, value: 2).components,
+//        repeats: true
+//    )
     
     static let tiresSpring = LocalPush(
         id: "tires.spring",

@@ -25,8 +25,8 @@ extension CarView {
             imageVM.set(from: car.images.first, placeholder: UIImage(named: "car_placeholder"))
             brandLabelVM.textValue = .text("\(car.brand) \(car.model)")
             plannedLabelVM.textValue = .text("Нет запланированных событий".localized)
-                       
-            attentionImageVM.isHidden = !car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero > 0 })
+                    
+            attentionImageVM.isHidden = !car.reminders.contains(where: { $0.days ?? .zero < 7 && $0.days ?? .zero >= 0 })
             parkingImageVM.isHidden = !RealmManager<Parking>().read().contains(where: { $0.carID == car.id})
             if car.reminders.isEmpty {
                 plannedLabelVM.textValue = .text("Нет запланированных событий".localized)

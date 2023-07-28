@@ -16,7 +16,7 @@ final class SettingsManager {
     
     enum Keys: String, CaseIterable {
         case useReminder
-        case mileageReminder
+//        case mileageReminder
         case isFirstLaunch
         case isPremium
         case selectedLanguage

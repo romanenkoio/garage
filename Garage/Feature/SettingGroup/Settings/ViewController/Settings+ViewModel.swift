@@ -24,7 +24,7 @@ extension SettingsViewController {
             let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
             settingsPoint = [
                 [.subscription, .getPremium(isPremium)],
-                [.reminders, .mileageReminder],
+                [.reminders],
                 [.backup],
                 [.contactUs, .language]
             ]
