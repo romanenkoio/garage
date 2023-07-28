@@ -21,8 +21,16 @@ extension TestController {
         let buttonVM = BasicButton.ViewModel()
         var pickerVM = BasicImageListView.ViewModel()
         
+        let barChart = BasicBarChart.GenericViewModel<Record>()
+
+        
         
         override init() {
+            barChart.setItems(
+                RealmManager<Record>().read()) { items in
+                    return items.map({($0.id, $0.date.components.month ?? 0, $0.cost ?? 0)})
+                }
+            
             super.init()
             inputVM.placeholder = "Test placeholder"
             inputVM.rules = [.noneEmpty]

@@ -6,11 +6,10 @@
 //
 
 import UIKit
+import DGCharts
 
 class TestController: BasicViewController {
-    lazy var basicInputView = SuggestionInput<TestModel>()
-    lazy var button = BasicButton()
-    lazy var picker = BasicImageListView()
+    lazy var barChart = BasicBarChart()
     
     let vm: ViewModel
     
@@ -29,31 +28,26 @@ class TestController: BasicViewController {
     }
     
     override func makeConstraints() {
-        basicInputView.snp.makeConstraints { make in
+        barChart.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
             make.leading.trailing.equalToSuperview()
-        }
-        
-        button.snp.makeConstraints { make in
-            make.top.equalTo(basicInputView.snp.bottom).offset(6)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        picker.snp.makeConstraints { make in
-            make.top.equalTo(button.snp.bottom).offset(6)
-            make.leading.trailing.equalToSuperview().inset(16)
         }
     }
     
     override func layoutElements() {
-        contentView.addSubview(basicInputView)
-        contentView.addSubview(button)
-        contentView.addSubview(picker)
+        contentView.addSubview(barChart)
+
     }
     
     override func binding() {
-        basicInputView.setViewModel(vm.inputVM)
-        button.setViewModel(vm.buttonVM)
-        picker.setViewModel(vm.pickerVM)
+        barChart.setViewModel(vm.barChart)
+        
+        vm.barChart.$barChartData
+            .receive(on: DispatchQueue.main)
+            .sink { data in
+                self.barChart.barChartView.data = data
+            }
+            .store(in: &cancellables)
     }
 }
+

@@ -249,6 +249,8 @@
 		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
 		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
 		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
+		B94CA32F2A7295A8002A4EDF /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CA32E2A7295A8002A4EDF /* BasicBarChart.swift */; };
+		B94CA3312A7295B1002A4EDF /* BasicBarChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -574,6 +576,8 @@
 		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
 		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
+		B94CA32E2A7295A8002A4EDF /* BasicBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBarChart.swift; sourceTree = "<group>"; };
+		B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicBarChart+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -2212,9 +2216,27 @@
 			path = NavigationBarTitleAnimator;
 			sourceTree = "<group>";
 		};
+		B94CA32D2A729594002A4EDF /* BasicGraphs */ = {
+			isa = PBXGroup;
+			children = (
+				B94CA3322A72A244002A4EDF /* BasicBarChart */,
+			);
+			path = BasicGraphs;
+			sourceTree = "<group>";
+		};
+		B94CA3322A72A244002A4EDF /* BasicBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				B94CA32E2A7295A8002A4EDF /* BasicBarChart.swift */,
+				B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */,
+			);
+			path = BasicBarChart;
+			sourceTree = "<group>";
+		};
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B94CA32D2A729594002A4EDF /* BasicGraphs */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
 				7F69EA0D2A700C2500AFB37D /* PremiumView */,
 				7F69EA082A6FFB0100AFB37D /* ProgressView */,
@@ -2860,6 +2882,7 @@
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
+				B94CA3312A7295B1002A4EDF /* BasicBarChart+ViewModel.swift in Sources */,
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
@@ -3102,6 +3125,7 @@
 				7FFC1F782A3545CB007A5C75 /* Backup.swift in Sources */,
 				7F0E09442A32892C008C2B9A /* CreateDocumentViewController.swift in Sources */,
 				7F5956012A2E95F10062A85F /* ServiceType.swift in Sources */,
+				B94CA32F2A7295A8002A4EDF /* BasicBarChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3253,7 +3277,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3274,7 +3298,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
