@@ -143,6 +143,12 @@
 		7F820CC12A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */; };
 		7F89F9602A52292F005F910E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F89F95F2A52292F005F910E /* OnboardingView.swift */; };
 		7F89F9622A52294C005F910E /* OnboardingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F89F9612A52294C005F910E /* OnboardingView+ViewModel.swift */; };
+		7F8CFA972A73AC6C007F8FDC /* PremiumControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFA912A73AC6C007F8FDC /* PremiumControllerCoordinator.swift */; };
+		7F8CFA982A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFA932A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift */; };
+		7F8CFA992A73AC6C007F8FDC /* Premium+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFA952A73AC6C007F8FDC /* Premium+ViewModel.swift */; };
+		7F8CFA9A2A73AC6C007F8FDC /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFA962A73AC6C007F8FDC /* PremiumViewController.swift */; };
+		7F8CFA9F2A73AD73007F8FDC /* SelectPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFA9E2A73AD73007F8FDC /* SelectPlanView.swift */; };
+		7F8CFAA12A73AD7A007F8FDC /* SelectPlanView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CFAA02A73AD7A007F8FDC /* SelectPlanView+ViewModel.swift */; };
 		7F8DB1052A56072A007E05C3 /* RemindersControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB0FF2A56072A007E05C3 /* RemindersControllerCoordinator.swift */; };
 		7F8DB1062A56072A007E05C3 /* RemindersControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB1012A56072A007E05C3 /* RemindersControllerLayoutManager.swift */; };
 		7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8DB1032A56072A007E05C3 /* Reminders+ViewModel.swift */; };
@@ -472,6 +478,12 @@
 		7F820CC02A3FAB5E00F1D22D /* BasicPageController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicPageController+ViewModel.swift"; sourceTree = "<group>"; };
 		7F89F95F2A52292F005F910E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7F89F9612A52294C005F910E /* OnboardingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingView+ViewModel.swift"; sourceTree = "<group>"; };
+		7F8CFA912A73AC6C007F8FDC /* PremiumControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F8CFA932A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F8CFA952A73AC6C007F8FDC /* Premium+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Premium+ViewModel.swift"; sourceTree = "<group>"; };
+		7F8CFA962A73AC6C007F8FDC /* PremiumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		7F8CFA9E2A73AD73007F8FDC /* SelectPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanView.swift; sourceTree = "<group>"; };
+		7F8CFAA02A73AD7A007F8FDC /* SelectPlanView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectPlanView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F8DB0FF2A56072A007E05C3 /* RemindersControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersControllerCoordinator.swift; sourceTree = "<group>"; };
 		7F8DB1012A56072A007E05C3 /* RemindersControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F8DB1032A56072A007E05C3 /* Reminders+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reminders+ViewModel.swift"; sourceTree = "<group>"; };
@@ -725,6 +737,7 @@
 				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
 				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
 				7F9E92982A45FB9700DDC874 /* UtilsControllers */,
+				7F8CFA8E2A73AC6C007F8FDC /* Premium */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -1475,6 +1488,58 @@
 			path = OnboardingView;
 			sourceTree = "<group>";
 		};
+		7F8CFA8E2A73AC6C007F8FDC /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA8F2A73AC6C007F8FDC /* Manager */,
+				7F8CFA942A73AC6C007F8FDC /* ViewController */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
+		7F8CFA8F2A73AC6C007F8FDC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA902A73AC6C007F8FDC /* Coordinator */,
+				7F8CFA922A73AC6C007F8FDC /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7F8CFA902A73AC6C007F8FDC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA912A73AC6C007F8FDC /* PremiumControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7F8CFA922A73AC6C007F8FDC /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA932A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		7F8CFA942A73AC6C007F8FDC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA952A73AC6C007F8FDC /* Premium+ViewModel.swift */,
+				7F8CFA962A73AC6C007F8FDC /* PremiumViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7F8CFA9D2A73AD64007F8FDC /* SelectPlanView */ = {
+			isa = PBXGroup;
+			children = (
+				7F8CFA9E2A73AD73007F8FDC /* SelectPlanView.swift */,
+				7F8CFAA02A73AD7A007F8FDC /* SelectPlanView+ViewModel.swift */,
+			);
+			path = SelectPlanView;
+			sourceTree = "<group>";
+		};
 		7F8DB0F92A5606B0007E05C3 /* GarageGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -2215,6 +2280,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F8CFA9D2A73AD64007F8FDC /* SelectPlanView */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
 				7F69EA0D2A700C2500AFB37D /* PremiumView */,
 				7F69EA082A6FFB0100AFB37D /* ProgressView */,
@@ -2255,9 +2321,9 @@
 				B978F3052A2E8F4C0076D326 /* RangeDatePicker */,
 				B978F3082A2E8F4C0076D326 /* TappableLabel */,
 				B978F30B2A2E8F4C0076D326 /* BasicTextField */,
+				7F9264252A6F1E7800DA220A /* CarPinView */,
 				7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */,
 				7F1B7C6D2A60989D00E84C86 /* TextValue.swift */,
-				7F9264252A6F1E7800DA220A /* CarPinView */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2812,6 +2878,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F89F9602A52292F005F910E /* OnboardingView.swift in Sources */,
+				7F8CFA9A2A73AC6C007F8FDC /* PremiumViewController.swift in Sources */,
 				B978F3AE2A2E9D870076D326 /* UIView.swift in Sources */,
 				B978F31A2A2E8F4C0076D326 /* BasicSwitch.swift in Sources */,
 				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
@@ -2849,6 +2916,7 @@
 				7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
 				B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */,
+				7F8CFAA12A73AD7A007F8FDC /* SelectPlanView+ViewModel.swift in Sources */,
 				7F820CB32A3F180400F1D22D /* EntityStatus.swift in Sources */,
 				7F1DE3B22A5AB31A008E7B1D /* ReminderVIew+ViewModel.swift in Sources */,
 				7FAB23022A66D8760011A682 /* CarImageSelector.swift in Sources */,
@@ -2863,6 +2931,7 @@
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
+				7F8CFA972A73AC6C007F8FDC /* PremiumControllerCoordinator.swift in Sources */,
 				7FD2D6C52A4B8B4600D4FCFB /* ReadArticleControllerCoordinator.swift in Sources */,
 				7F0E08A62A2F4556008C2B9A /* CreateCarControllerLayoutManager.swift in Sources */,
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
@@ -2880,6 +2949,7 @@
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */,
+				7F8CFA982A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
@@ -2893,6 +2963,7 @@
 				B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */,
 				B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */,
 				B978F3192A2E8F4C0076D326 /* BasicSwitch+ViewModel.swift in Sources */,
+				7F8CFA992A73AC6C007F8FDC /* Premium+ViewModel.swift in Sources */,
 				B9D96E5A2A38D8A400909B33 /* BasicModalPresentationController.swift in Sources */,
 				B978F3B32A2E9D870076D326 /* UIControl+Extension.swift in Sources */,
 				7FDC579B2A66B48000C1477C /* DateHeaderView+ViewModel.swift in Sources */,
@@ -3036,6 +3107,7 @@
 				7F1465582A38BF7E0022E4E7 /* AlignedButton.swift in Sources */,
 				B978F32A2A2E8F4C0076D326 /* RangeDatePicker+ViewModel.swift in Sources */,
 				B9D96E5E2A38D96300909B33 /* BasicModalPresentationController+ViewModel.swift in Sources */,
+				7F8CFA9F2A73AD73007F8FDC /* SelectPlanView.swift in Sources */,
 				7F0E08F02A2FC766008C2B9A /* Selection+ViewModel.swift in Sources */,
 				7F8DB1062A56072A007E05C3 /* RemindersControllerLayoutManager.swift in Sources */,
 				7F0E091D2A31EBDE008C2B9A /* ActionImage.swift in Sources */,

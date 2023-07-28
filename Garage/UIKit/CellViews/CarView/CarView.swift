@@ -104,11 +104,11 @@ class CarView: BasicView {
         }
         
         attentionImage.snp.makeConstraints { make in
-            make.height.width.equalTo(16)
+            make.height.width.equalTo(24)
         }
         
         parkingImage.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(24)
         }
 
         attentionView.snp.makeConstraints { make in
@@ -125,7 +125,7 @@ class CarView: BasicView {
         imageStack.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.height.equalTo(30)
+            make.height.equalTo(24)
         }
         
         logoImage.snp.makeConstraints { make in
