@@ -14,15 +14,6 @@ final class StatisticsControllerLayoutManager {
     private unowned let vc: StatisticsViewController
     
     private(set) lazy var barChart = BarChart()
-    
-    private(set) lazy var yearBarStack: ScrollableStackView = {
-        let stack = ScrollableStackView()
-        stack.spacing = 5
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.edgeInsets = UIEdgeInsets(horizontal: 16)
-        return stack
-    }()
 
     // - Init
     init(vc: StatisticsViewController) {
@@ -44,17 +35,11 @@ fileprivate extension StatisticsControllerLayoutManager {
     
     private func makeLayout() {
         vc.contentView.addSubview(barChart)
-        vc.contentView.addSubview(yearBarStack)
     }
     
     private func makeConstraint() {
         barChart.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
-        }
-        
-        yearBarStack.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(barChart.snp.bottom)
+            make.leading.trailing.bottom.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
         }
     }
     

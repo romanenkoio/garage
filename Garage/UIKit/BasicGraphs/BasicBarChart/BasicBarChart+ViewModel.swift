@@ -21,10 +21,11 @@ extension BarChart {
         typealias Item = T
         
         @Published var barChartData = BarChartData()
-        
         @Published private(set) var items: [Item] = []
+        @Published var suggestions: [SuggestionView.ViewModel] = []
+
         private(set) var barItems: BarChartItem = []
-        
+
         func setItems(
             list: [Item],
             title: TextValue,
@@ -44,11 +45,16 @@ extension BarChart {
                 dataEntries.append(BarChartDataEntry(x: Double(index), y: Double(sum)))
             }
             
-            let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
+            let chartDataSet = BarChartDataSet(entries: dataEntries, label: .empty.appendCurrency())
             chartDataSet.highlightColor = AppColors.black
             let data = BarChartData(dataSet: chartDataSet)
             chartDataSet.colors = [AppColors.green]
             self.barChartData = data
+        }
+        
+        func changeSelection(_ selected: SuggestionView.ViewModel) {
+            suggestions.forEach({ $0.isSelected = false })
+            selected.isSelected = true
         }
     }
 }

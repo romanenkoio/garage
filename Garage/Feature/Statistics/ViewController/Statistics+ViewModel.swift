@@ -24,6 +24,7 @@ extension StatisticsViewController {
             super.init()
             print(years)
             initBarCharts()
+            initBarSuggestions()
         }
         
         func initBarCharts(year: Int? = nil) {
@@ -39,5 +40,27 @@ extension StatisticsViewController {
                     return items.map({($0.id, $0.date.components.month ?? 0, $0.cost ?? 0)})
                 }
         }
+        
+        func initBarSuggestions() {
+            var suggestions: [SuggestionView.ViewModel] = .empty
+            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
+            vm.labelVM.action = { [weak self] in
+                self?.barChartVM.changeSelection(vm)
+                self?.initBarCharts()
+            }
+            suggestions.append(vm)
+            vm.isSelected = true
+            
+            years.forEach { [weak self] year in
+                let vm = SuggestionView.ViewModel(labelVM: .init(.text(year.toString())))
+                vm.labelVM.action = { [weak self] in
+                    self?.barChartVM.changeSelection(vm)
+                    self?.initBarCharts(year: year)
+                }
+                suggestions.append(vm)
+            }
+            barChartVM.suggestions = suggestions
+        }
+        
     }
 }

@@ -52,27 +52,17 @@ class StatisticsViewController: BasicViewController {
             }
             .store(in: &cancellables)
         
-        vm.$years.sink { [weak self] years in
-            
-            let view = SuggestionView()
-            view.setViewModel(.init(labelVM: .init(
-                .text("Весь период"),
-                action: { [weak self] in
-                    self?.vm.initBarCharts()
-                }
-            ), image: nil))
-            self?.layout.yearBarStack.addArrangedSubview(view)
-            
-            years.forEach({ [weak self] year in
+        vm.barChartVM.$suggestions.sink { [weak self] vms in
+            guard !vms.isEmpty else {
+                self?.layout.barChart.yearBarStack.isHidden = true
+                return
+            }
+            self?.layout.barChart.yearBarStack.clearArrangedSubviews()
+            vms.forEach { [weak self] vm in
                 let view = SuggestionView()
-                view.setViewModel(.init(labelVM: .init(
-                    .text(year.toString()),
-                    action: { [weak self] in
-                        self?.vm.initBarCharts(year: year)
-                    }
-                ), image: nil))
-                self?.layout.yearBarStack.addArrangedSubview(view)
-            })
+                view.setViewModel(vm)
+                self?.layout.barChart.yearBarStack.addArrangedSubview(view)
+            }
         }
         .store(in: &cancellables)
     }

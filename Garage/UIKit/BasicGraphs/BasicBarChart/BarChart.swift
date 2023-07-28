@@ -36,6 +36,15 @@ class BarChart: BasicView {
         return view
     }()
     
+    private(set) lazy var yearBarStack: ScrollableStackView = {
+        let stack = ScrollableStackView()
+        stack.spacing = 5
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.contentInset = UIEdgeInsets(horizontal: 16)
+        return stack
+    }()
+    
     override init() {
         super.init()
         barChartView.delegate = self
@@ -50,18 +59,23 @@ class BarChart: BasicView {
     private func makeLayout() {
         addSubview(barChartView)
         addSubview(descriptionLabel)
+        addSubview(yearBarStack)
     }
     
     private func makeConstraints() {
-        
         descriptionLabel.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()
         }
         
         barChartView.snp.makeConstraints { make in
             make.height.equalTo(300)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
+        }
+        
+        yearBarStack.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(barChartView.snp.bottom).inset(UIEdgeInsets(top: 10))
         }
     }
     
