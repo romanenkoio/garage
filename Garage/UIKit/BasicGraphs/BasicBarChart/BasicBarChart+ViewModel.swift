@@ -7,8 +7,8 @@
 
 import Foundation
 import DGCharts
-import RealmSwift
-typealias BarChartItem = [(id: String, month: Int, cost: Int)]
+
+typealias BarChartItem = [(id: String, XaxisValue: Int, YaxisValue: Int)]
 
 extension BasicBarChart {
     
@@ -41,12 +41,7 @@ extension BasicBarChart {
             var dataEntries: [BarChartDataEntry] = []
             
             DateFormatter().shortMonthSymbols.enumerated().forEach { index, value in
-                var sum = 0
-                self.barItems.forEach { item in
-                    if index == item.month {
-                        sum += item.cost
-                    }
-                }
+                let sum = barItems.filter({ $0.XaxisValue-1 == index }).map({ $0.YaxisValue }).reduce(0, +)
                 dataEntries.append(BarChartDataEntry(x: Double(index), y: Double(sum)))
             }
             
