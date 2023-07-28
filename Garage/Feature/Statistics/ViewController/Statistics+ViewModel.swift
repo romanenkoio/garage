@@ -22,7 +22,8 @@ extension StatisticsViewController {
          
             self.years = Array(Set(records.compactMap({ $0.date.components.year })).sorted(by: >))
             super.init()
-            print(years)
+
+            // MARK: Init BarCharts
             initBarCharts()
             initBarSuggestions()
         }
@@ -34,6 +35,7 @@ extension StatisticsViewController {
                 data = records.filter({ $0.date.components.year == year })
                 title = .text("Расходы за \(year) год")
             }
+            
             barChartVM.setItems(
                 list: data,
                 title: title) { items in
