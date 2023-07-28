@@ -30,7 +30,7 @@ class BarChart: BasicView {
         view.dragEnabled = false
         view.scaleXEnabled = false
         view.scaleYEnabled = false
-        view.legend.enabled = false
+//        view.legend.enabled = false
         view.rightAxis.drawLabelsEnabled = false
 
         return view
@@ -81,6 +81,13 @@ class BarChart: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         descriptionLabel.setViewModel(vm.descriptionLabelVM)
+        
+        vm.changePeriodSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.barChartView.highlightValue(nil)
+        }
+        .store(in: &cancellables)
     }
 }
 

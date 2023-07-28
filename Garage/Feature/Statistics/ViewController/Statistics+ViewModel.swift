@@ -41,6 +41,7 @@ extension StatisticsViewController {
                 title: title) { items in
                     return items.map({($0.id, $0.date.components.month ?? 0, $0.cost ?? 0)})
                 }
+            
         }
         
         func initBarSuggestions() {
@@ -49,6 +50,7 @@ extension StatisticsViewController {
             vm.labelVM.action = { [weak self] in
                 self?.barChartVM.changeSelection(vm)
                 self?.initBarCharts()
+                self?.barChartVM.changePeriodSubject.send()
             }
             suggestions.append(vm)
             vm.isSelected = true
@@ -58,6 +60,7 @@ extension StatisticsViewController {
                 vm.labelVM.action = { [weak self] in
                     self?.barChartVM.changeSelection(vm)
                     self?.initBarCharts(year: year)
+                    self?.barChartVM.changePeriodSubject.send()
                 }
                 suggestions.append(vm)
             }

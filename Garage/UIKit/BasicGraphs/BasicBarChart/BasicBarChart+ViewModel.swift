@@ -7,6 +7,7 @@
 
 import Foundation
 import DGCharts
+import Combine
 
 typealias BarChartItem = [(id: String, XaxisValue: Int, YaxisValue: Int)]
 
@@ -14,8 +15,8 @@ extension BarChart {
     
     class ViewModel: BasicViewModel {
         var descriptionLabelVM = BasicLabel.ViewModel()
+        var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
     }
-    
     
     class GenericViewModel<T: Equatable>: ViewModel {
         typealias Item = T
