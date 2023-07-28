@@ -29,19 +29,20 @@ extension BasicBarChart {
         @Published private(set) var items: [Item] = []
         private(set) var barItems: BarChartItem = []
         
-        func setItems(_ list: [Item],
-                      barItems: ([Item]) -> BarChartItem
-                  ) {
-                      self.items = list
-                      self.barItems = barItems(list)
-                      makeItems()
-                  }
+        func setItems(
+            _ list: [Item],
+            barItems: ([Item]) -> BarChartItem
+        ) {
+            self.items = list
+            self.barItems = barItems(list)
+            makeItems()
+        }
         
         func makeItems() {
             var dataEntries: [BarChartDataEntry] = []
             
             DateFormatter().shortMonthSymbols.enumerated().forEach { index, value in
-                let sum = barItems.filter({ $0.XaxisValue-1 == index }).map({ $0.YaxisValue }).reduce(0, +)
+                let sum = barItems.filter({ $0.XaxisValue - 1 == index }).map({ $0.YaxisValue }).reduce(0, +)
                 dataEntries.append(BarChartDataEntry(x: Double(index), y: Double(sum)))
             }
             
