@@ -16,7 +16,6 @@ extension DocumentsViewController {
         
         override init() {
             super.init()
-            readDocuments()
             
             tableVM.setupEmptyState(
                 labelVM: .init(.text("Документов нет")),
@@ -27,11 +26,9 @@ extension DocumentsViewController {
         
         func readDocuments() {
             let data = RealmManager<Document>().read()
-            var filteredData: [Document] = .empty
-            let overdue: [Document] = data.filter({ $0.isOverdue && $0.endDate != nil }).sorted(by: { $0.endDate! < $1.endDate! })
-            filteredData += overdue
-            filteredData += data.filter({ !$0.isOverdue })
-            tableVM.setCells(filteredData)
+                .filter({ $0.endDate != nil })
+                .sorted(by: { $0.endDate!  < $1.endDate! })
+            tableVM.setCells(data)
         }
     }
 }
