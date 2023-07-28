@@ -9,7 +9,7 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    let dataSource = TabBarController.ViewModel.TabItem.allCases
+    let dataSource: [TabBarController.ViewModel.TabItem] = [.garage, .documents, .services]
     
     init() {
         super.init(nibName: nil, bundle: nil)
