@@ -250,7 +250,7 @@
 		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
 		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
 		B94CA32F2A7295A8002A4EDF /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CA32E2A7295A8002A4EDF /* BarChart.swift */; };
-		B94CA3312A7295B1002A4EDF /* BasicBarChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */; };
+		B94CA3312A7295B1002A4EDF /* BarChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CA3302A7295B1002A4EDF /* BarChart+ViewModel.swift */; };
 		B978F3122A2E8F4C0076D326 /* BasicDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */; };
 		B978F3132A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */; };
 		B978F3142A2E8F4C0076D326 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978F2E32A2E8F4C0076D326 /* BasicCell.swift */; };
@@ -332,6 +332,8 @@
 		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
 		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
 		B9F79DB62A74E9FC00AE1BEE /* BarMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */; };
+		B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB82A754E8900AE1BEE /* PieChart.swift */; };
+		B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */; };
 		B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB28FF2A3145D400A4CF1D /* TestModel.swift */; };
 		B9FB29032A314C2E00A4CF1D /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29022A314C2E00A4CF1D /* TestController.swift */; };
 		B9FB29052A314C3700A4CF1D /* TestController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */; };
@@ -578,7 +580,7 @@
 		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
 		B94CA32E2A7295A8002A4EDF /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
-		B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicBarChart+ViewModel.swift"; sourceTree = "<group>"; };
+		B94CA3302A7295B1002A4EDF /* BarChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarChart+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDatePicker.swift; sourceTree = "<group>"; };
 		B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicDatePicker+ViewModel.swift"; sourceTree = "<group>"; };
 		B978F2E32A2E8F4C0076D326 /* BasicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -659,6 +661,8 @@
 		B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcBottomView.swift; sourceTree = "<group>"; };
 		B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcBottomView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarMarker.swift; sourceTree = "<group>"; };
+		B9F79DB82A754E8900AE1BEE /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PieChart+ViewModel.swift"; sourceTree = "<group>"; };
 		B9FB28FF2A3145D400A4CF1D /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B9FB29022A314C2E00A4CF1D /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		B9FB29042A314C3700A4CF1D /* TestController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -2218,28 +2222,29 @@
 			path = NavigationBarTitleAnimator;
 			sourceTree = "<group>";
 		};
-		B94CA32D2A729594002A4EDF /* BasicGraphs */ = {
+		B94CA32D2A729594002A4EDF /* StatisticsGraphs */ = {
 			isa = PBXGroup;
 			children = (
-				B94CA3322A72A244002A4EDF /* BasicBarChart */,
+				B9F79DB72A754E7F00AE1BEE /* PieChart */,
+				B94CA3322A72A244002A4EDF /* BarChart */,
 			);
-			path = BasicGraphs;
+			path = StatisticsGraphs;
 			sourceTree = "<group>";
 		};
-		B94CA3322A72A244002A4EDF /* BasicBarChart */ = {
+		B94CA3322A72A244002A4EDF /* BarChart */ = {
 			isa = PBXGroup;
 			children = (
 				B94CA32E2A7295A8002A4EDF /* BarChart.swift */,
-				B94CA3302A7295B1002A4EDF /* BasicBarChart+ViewModel.swift */,
+				B94CA3302A7295B1002A4EDF /* BarChart+ViewModel.swift */,
 				B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */,
 			);
-			path = BasicBarChart;
+			path = BarChart;
 			sourceTree = "<group>";
 		};
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				B94CA32D2A729594002A4EDF /* BasicGraphs */,
+				B94CA32D2A729594002A4EDF /* StatisticsGraphs */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
 				7F69EA0D2A700C2500AFB37D /* PremiumView */,
 				7F69EA082A6FFB0100AFB37D /* ProgressView */,
@@ -2696,6 +2701,15 @@
 			path = BottomView;
 			sourceTree = "<group>";
 		};
+		B9F79DB72A754E7F00AE1BEE /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				B9F79DB82A754E8900AE1BEE /* PieChart.swift */,
+				B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
 		B9FB29012A314C2300A4CF1D /* TestController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2870,6 +2884,7 @@
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
+				B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */,
 				7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */,
 				7FC6DA382A3B41A600AD9A3F /* CreateRecord+ViewModel.swift in Sources */,
 				B9FB29092A31F48E00A4CF1D /* BasicSelectList+ViewModel.swift in Sources */,
@@ -2885,7 +2900,7 @@
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
-				B94CA3312A7295B1002A4EDF /* BasicBarChart+ViewModel.swift in Sources */,
+				B94CA3312A7295B1002A4EDF /* BarChart+ViewModel.swift in Sources */,
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
 				7F0E092D2A327BB4008C2B9A /* Selectable.swift in Sources */,
@@ -2910,6 +2925,7 @@
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
+				B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */,
 				B9D96E342A34FFD300909B33 /* BasicImageButton+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
 				7F0E08BA2A2F90C5008C2B9A /* Brand.swift in Sources */,

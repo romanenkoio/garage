@@ -9,6 +9,8 @@ import UIKit
 import DGCharts
 
 class BarChart: BasicView {
+    lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .bar)
+    
     lazy var descriptionLabel: BasicLabel = {
         let view = BasicLabel()
         view.textAlignment = .left
@@ -31,7 +33,7 @@ class BarChart: BasicView {
         view.dragEnabled = false
         view.scaleXEnabled = false
         view.scaleYEnabled = false
-//        view.legend.enabled = false
+        view.legend.enabled = false
         view.rightAxis.drawLabelsEnabled = false
         view.xAxis.labelFont = .custom(size: 12, weight: .regular)
         view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
@@ -68,6 +70,8 @@ class BarChart: BasicView {
         addSubview(barChartView)
         addSubview(descriptionLabel)
         addSubview(yearBarStack)
+        customMarkerView.chartView = barChartView
+        barChartView.marker = customMarkerView
     }
     
     private func makeConstraints() {

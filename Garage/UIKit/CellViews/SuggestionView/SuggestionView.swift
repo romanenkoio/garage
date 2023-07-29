@@ -42,7 +42,6 @@ class SuggestionView: BasicView {
         self.backgroundColor = AppColors.background
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.clear.cgColor
-        self.layer.borderWidth = 1
         self.cornerRadius = 8
     }
     

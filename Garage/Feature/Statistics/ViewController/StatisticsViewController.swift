@@ -65,6 +65,41 @@ class StatisticsViewController: BasicViewController {
             }
         }
         .store(in: &cancellables)
+        
+        layout.pieChart.setViewModel(vm.pieChartVM)
+        
+        vm.pieChartVM.$pieChartData
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] data in
+                self?.layout.pieChart.pieChartView.data = data
+            }
+            .store(in: &cancellables)
+        
+        vm.pieChartVM.$suggestions.sink { [weak self] vms in
+            guard !vms.isEmpty else {
+                self?.layout.pieChart.yearBarStack.isHidden = true
+                return
+            }
+            self?.layout.pieChart.yearBarStack.clearArrangedSubviews()
+            vms.forEach { [weak self] vm in
+                let view = SuggestionView()
+                view.setViewModel(vm)
+                self?.layout.pieChart.yearBarStack.addArrangedSubview(view)
+            }
+        }
+        .store(in: &cancellables)
+        
+        vm.pieChartVM.$dataEntries
+            .sink {[weak self] dataEntry in
+                let textFormatter = TextFormatter()
+                self?.layout.pieChart.pieChartView.centerAttributedText = textFormatter.attrinutedLines(
+                    main: "Итого",
+                    font: .custom(size: 14, weight: .medium),
+                    secondary: "\(dataEntry.map({$0.value}).reduce(0, +))",
+                    secondaryFont: .custom(size: 16, weight: .semibold),
+                    lineSpacing: 2)
+            }
+            .store(in: &cancellables)
     }
     
 }
