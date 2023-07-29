@@ -35,12 +35,18 @@ fileprivate extension StatisticsControllerLayoutManager {
     }
     
     private func makeLayout() {
+        vc.contentView.addSubview(barChart)
         vc.contentView.addSubview(pieChart)
     }
     
     private func makeConstraint() {
+        barChart.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
+        }
+        
         pieChart.snp.makeConstraints { make in
-            make.leading.trailing.bottom.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(top: 20))
+            make.top.equalTo(barChart.snp.bottom).offset(30)
         }
     }
     

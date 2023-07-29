@@ -48,10 +48,10 @@ extension StatisticsViewController {
         
         func initPieCharts(year: Int? = nil) {
             var data = records
-            var title: TextValue = .text("Расходы за всё время")
+            var title: TextValue = .text("Категории за всё время")
             if let year {
                 data = records.filter({$0.date.components.year == year})
-                title = .text("Расходы за \(year) год")
+                title = .text("Категории за \(year) год")
             }
             
             pieChartVM.setItems(
