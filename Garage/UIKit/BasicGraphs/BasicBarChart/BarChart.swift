@@ -5,9 +5,8 @@
 //  Created by Vlad Kulakovsky  on 27.07.23.
 //
 
-import Foundation
-import DGCharts
 import UIKit
+import DGCharts
 
 class BarChart: BasicView {
     lazy var descriptionLabel: BasicLabel = {
@@ -21,9 +20,11 @@ class BarChart: BasicView {
     private(set) lazy var barChartView: BarChartView = {
        let view = BarChartView()
         view.highlightFullBarEnabled = true
-        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().shortMonthSymbols)
+        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().standaloneMonthSymbols)
         view.xAxis.drawAxisLineEnabled = false
         view.xAxis.drawGridLinesEnabled = false
+        view.leftAxis.drawAxisLineEnabled = false
+        view.rightAxis.drawAxisLineEnabled = false
         view.doubleTapToZoomEnabled = false
         view.pinchZoomEnabled = false
         view.drawBordersEnabled = false
@@ -32,7 +33,14 @@ class BarChart: BasicView {
         view.scaleYEnabled = false
 //        view.legend.enabled = false
         view.rightAxis.drawLabelsEnabled = false
-
+        view.xAxis.labelFont = .custom(size: 12, weight: .regular)
+        view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
+        view.xAxis.labelCount = 12
+        view.xAxis.labelRotationAngle = -45
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.positiveSuffix = " Br"
+        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+        view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
         return view
     }()
     
@@ -86,8 +94,10 @@ class BarChart: BasicView {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.barChartView.highlightValue(nil)
+                self?.barChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
         }
         .store(in: &cancellables)
+        
     }
 }
 

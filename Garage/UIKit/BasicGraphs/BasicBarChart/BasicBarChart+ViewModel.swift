@@ -50,6 +50,8 @@ extension BarChart {
             chartDataSet.highlightColor = AppColors.black
             let data = BarChartData(dataSet: chartDataSet)
             chartDataSet.colors = [AppColors.green]
+            chartDataSet.valueFont = .custom(size: 12, weight: .regular)
+            chartDataSet.drawValuesEnabled = false
             self.barChartData = data
         }
         
