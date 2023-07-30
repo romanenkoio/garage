@@ -55,6 +55,15 @@
       }
     },
     {
+      "identity" : "qonversion-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/qonversion/qonversion-ios-sdk",
+      "state" : {
+        "revision" : "bde84931760beaa1cb3bd9e724dae4af5542c983",
+        "version" : "4.1.0"
+      }
+    },
+    {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
