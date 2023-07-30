@@ -59,6 +59,7 @@ final class PremiumControllerLayoutManager {
     private lazy var featuresStack: BasicStackView = {
         let stack = BasicStackView()
         stack.spacing = 8
+        stack.edgeInsets = .init(top: 8)
         return stack
     }()
     
@@ -103,6 +104,7 @@ fileprivate extension PremiumControllerLayoutManager {
         PremiumFeatures.allCases.forEach { [weak self] feature in
             let label = BasicLabel(font: .custom(size: 14, weight: .semibold))
             label.text = feature.title
+            label.textInsets = .init(bottom: 8)
             label.textColor = .white
             self?.featuresStack.addArrangedSubview(label)
         }

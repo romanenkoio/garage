@@ -98,6 +98,7 @@ class SelectPlanView: BasicView {
         
         vm.$isSelected.sink { [weak self] value in
             self?.selectView.backgroundColor = value ? UIColor(hexString: "#33BC4A") : .clear
+            self?.periodLabel.textColor = value ? .white : AppColors.blue
         }
         .store(in: &cancellables)
     }
