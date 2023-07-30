@@ -209,6 +209,7 @@
 		7FDC579B2A66B48000C1477C /* DateHeaderView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */; };
 		7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */; };
 		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
+		7FE355FE2A75C06200E0E473 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
 		7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */; };
 		7FF6D7C52A542F0B00CEFC26 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */; };
@@ -540,6 +541,7 @@
 		7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateHeaderView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
+		7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+ViewModel.swift"; sourceTree = "<group>"; };
 		7FF6D7C42A542F0B00CEFC26 /* QRGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
@@ -1399,6 +1401,7 @@
 				7F820CB22A3F180400F1D22D /* EntityStatus.swift */,
 				7F07BD442A46FE0A0075EEFC /* ImputMode.swift */,
 				7F3885632A6B38B900033A99 /* Language.swift */,
+				7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2991,6 +2994,7 @@
 				7F0E08EF2A2FC766008C2B9A /* SelectionControllerLayoutManager.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
 				B92E5A3C2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift in Sources */,
+				7FE355FE2A75C06200E0E473 /* PremiumFeature.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */,
 				7F1B7C6E2A60989D00E84C86 /* TextValue.swift in Sources */,

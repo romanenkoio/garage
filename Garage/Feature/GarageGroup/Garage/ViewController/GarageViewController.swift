@@ -164,7 +164,7 @@ extension GarageViewController: UITableViewDelegate {
         case .addCar:
             let cars: [Car] = RealmManager().read()
             if !Environment.isPrem, cars.count >= 1 {
-                //                show premium
+                self.coordinator.navigateTo(CommonNavigationRoute.premium)
             } else {
                 self.coordinator.navigateTo(GarageNavigationRoute.createCar)
             }

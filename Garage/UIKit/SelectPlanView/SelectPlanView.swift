@@ -9,12 +9,13 @@ import UIKit
 
 class SelectPlanView: BasicView {
     
-    private lazy var gradientView = GradientView()
+    private lazy var selectView = BasicView()
 
     private lazy var periodLabel: BasicLabel = {
         let label = BasicLabel()
         label.textAlignment = .center
         label.textColor = AppColors.blue
+        label.font = .custom(size: 16, weight: .extrabold)
         return label
     }()
     
@@ -37,26 +38,45 @@ class SelectPlanView: BasicView {
         return label
     }()
     
+    private weak var vm: ViewModel!
+    
     override func initView() {
         makeLayout()
         makeConstraint()
+        setupGesture()
+        isUserInteractionEnabled = true
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectAction))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func selectAction() {
+        vm.isSelected = true
+        vm.selectedSubject.send(self.vm)
     }
     
     private func makeLayout() {
-        self.addSubview(gradientView)
+        self.addSubview(selectView)
         self.addSubview(periodLabel)
         self.addSubview(priceLabel)
         self.addSubview(cancelLabel)
+        self.backgroundColor = .white
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 1
+        self.cornerRadius = 12
+        selectView.cornerRadius = 0
     }
     
     private func makeConstraint() {
-        gradientView.snp.makeConstraints { make in
+        selectView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(34)
         }
         
         periodLabel.snp.makeConstraints { make in
-            make.edges.equalTo(gradientView)
+            make.edges.equalTo(selectView)
         }
         
         priceLabel.snp.makeConstraints { make in
@@ -70,6 +90,15 @@ class SelectPlanView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.vm = vm
         
+        periodLabel.setViewModel(vm.periodLabelVM)
+        priceLabel.setViewModel(vm.priceLabelVM)
+        cancelLabel.setViewModel(vm.cancelLabelVM)
+        
+        vm.$isSelected.sink { [weak self] value in
+            self?.selectView.backgroundColor = value ? UIColor(hexString: "#33BC4A") : .clear
+        }
+        .store(in: &cancellables)
     }
 }

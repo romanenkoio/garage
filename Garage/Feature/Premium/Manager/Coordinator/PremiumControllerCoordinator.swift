@@ -8,18 +8,13 @@
 
 import UIKit
 
-class PremiumControllerCoordinator {
-    
-    // - VC
-    private unowned let vc: PremiumViewController
-    
+class PremiumControllerCoordinator: BasicCoordinator {
     // - Init
-    init(vc: PremiumViewController) {
-        self.vc = vc
+    override init(vc: BasicViewController) {
+        super.init(vc: vc)
     }
     
-    func popViewController(animated: Bool = true) {
-        vc.navigationController?.popViewController(animated: animated)
+    override func navigateTo(_ route: Routable) {
+        super.navigateTo(route)
     }
-    
 }

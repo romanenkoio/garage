@@ -33,6 +33,17 @@ class PremiumViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideTabBar(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideTabBar(false)
     }
 
     override func configure() {
@@ -41,7 +52,16 @@ class PremiumViewController: BasicViewController {
     }
 
     override func binding() {
-        
+        layout.logoImage.setViewModel(vm.logoImageVM)
+        layout.closeImage.setViewModel(vm.closeImageVM)
+        layout.toplabel.setViewModel(vm.topLabelVM)
+        layout.startTrialButton.setViewModel(vm.startTrialButton)
+        layout.privacyLabel.setViewModel(vm.privacyVM)
+        layout.termsLabel.setViewModel(vm.termsVM)
+        layout.restoreLabel.setViewModel(vm.restoreVM)
+        vm.closeImageVM.action = { [weak self] in
+            self?.coordinator.navigateTo(CommonNavigationRoute.close)
+        }
     }
     
 }
