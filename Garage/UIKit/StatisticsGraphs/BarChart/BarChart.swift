@@ -15,7 +15,7 @@ class BarChart: BasicView {
         let view = BasicLabel()
         view.textAlignment = .left
         view.font = .custom(size: 24, weight: .bold)
-        view.textInsets = .init(bottom: 25, left: 16)
+        view.textInsets = .init(bottom: 10, left: 16)
         return view
     }()
     
@@ -79,8 +79,11 @@ class BarChart: BasicView {
             make.leading.top.trailing.equalToSuperview()
         }
         
+        let screenWidth = UIScreen.main.bounds.width
+        let chartHight = screenWidth - 70
         barChartView.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(chartHight)
+            make.width.equalTo(screenWidth)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
         }

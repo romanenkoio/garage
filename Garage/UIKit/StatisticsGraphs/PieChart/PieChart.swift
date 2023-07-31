@@ -15,7 +15,7 @@ class PieChart: BasicView {
         let view = BasicLabel()
         view.textAlignment = .left
         view.font = .custom(size: 24, weight: .bold)
-        view.textInsets = .init(bottom: 25, left: 16)
+        view.textInsets = .init(bottom: 10, left: 16)
         return view
     }()
     
@@ -62,6 +62,8 @@ class PieChart: BasicView {
         return view
     }()
     
+    private(set) lazy var yearBarStackContentView = UIView()
+    
     private(set) lazy var yearBarStack: ScrollableStackView = {
         let stack = ScrollableStackView()
         stack.spacing = 5
@@ -95,8 +97,11 @@ class PieChart: BasicView {
             make.leading.top.trailing.equalToSuperview()
         }
         
+        let screenWidth = UIScreen.main.bounds.width
+        let chartHight = screenWidth - 70
         pieChartView.snp.makeConstraints { make in
-            make.height.equalTo(300)
+            make.height.equalTo(chartHight)
+            make.width.equalTo(screenWidth)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
         }

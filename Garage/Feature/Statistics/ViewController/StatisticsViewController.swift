@@ -34,6 +34,7 @@ class StatisticsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCloseButton(isLeft: true)
+        disableScrollView()
         title = "Статистика"
     }
 
@@ -43,6 +44,8 @@ class StatisticsViewController: BasicViewController {
     }
 
     override func binding() {
+        layout.flipView.setViewModel(vm.flipviewVM)
+        
         layout.barChart.setViewModel(vm.barChartVM)
         
         vm.barChartVM.$barChartData

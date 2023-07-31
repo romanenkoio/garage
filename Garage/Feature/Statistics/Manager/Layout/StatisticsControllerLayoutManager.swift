@@ -15,6 +15,7 @@ final class StatisticsControllerLayoutManager {
     
     private(set) lazy var barChart = BarChart()
     private(set) lazy var pieChart = PieChart()
+    private(set) lazy var flipView = FlipView()
 
     // - Init
     init(vc: StatisticsViewController) {
@@ -35,19 +36,19 @@ fileprivate extension StatisticsControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(barChart)
-        vc.contentView.addSubview(pieChart)
+        vc.contentView.addSubview(flipView)
+        flipView.addSubviews([barChart, pieChart], viewFrame: vc.view.frame)
     }
     
     private func makeConstraint() {
-        barChart.snp.makeConstraints { make in
+        flipView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
         }
         
-        pieChart.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(top: 20))
-            make.top.equalTo(barChart.snp.bottom).offset(30)
-        }
+//        pieChart.snp.makeConstraints { make in
+//            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(top: 20))
+//            make.top.equalTo(barChart.snp.bottom).offset(30)
+//        }
     }
     
 }

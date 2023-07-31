@@ -12,6 +12,7 @@ extension StatisticsViewController {
     final class ViewModel: BasicViewModel {
         let barChartVM = BarChart.GenericViewModel<Record>()
         let pieChartVM = PieChart.GenericViewModel<Record>()
+        let flipviewVM = FlipView.ViewModel()
 
         unowned let car: Car
         var records: [Record]
