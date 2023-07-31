@@ -14,20 +14,26 @@ final class QounversionPaidSubscriptionManager: SubscriptionsHandler, Subscripti
         case noProductFoundWithGivenID
     }
     
+    enum SubscriptionType: String {
+        case month = "Month"
+        case year = "Year"
+        case lifetime = "Lifetime"
+    }
+    
     public init() {}
     
-    public func subscriptionStatus(completion: @escaping (Result<PaidSubscriptionInfo?, Swift.Error>)->Void) {
+    public func subscriptionStatus(completion: @escaping (Result<PaidSubscriptionInfo?, Swift.Error>) -> Void) {
         Qonversion.shared().checkEntitlements { (entitlements, error) in
             if let error = error {
                 completion(.failure(error))
             }
             var subscriptionInfo: PaidSubscriptionInfo?
             
-            if let month = entitlements["Month"], month.isActive {
+            if let month = entitlements[SubscriptionType.month.rawValue], month.isActive {
                 subscriptionInfo = PaidSubscriptionInfo(status: .active, expirationDate: month.expirationDate, productID: month.productID)
-            } else if let year = entitlements["Year"], year.isActive {
+            } else if let year = entitlements[SubscriptionType.year.rawValue], year.isActive {
                 subscriptionInfo = PaidSubscriptionInfo(status: .active, expirationDate: year.expirationDate, productID: year.productID)
-            } else if let lifetime = entitlements["Lifetime"], lifetime.isActive {
+            } else if let lifetime = entitlements[SubscriptionType.lifetime.rawValue], lifetime.isActive {
                 subscriptionInfo = PaidSubscriptionInfo(status: .active, expirationDate: lifetime.expirationDate, productID: lifetime.productID)
             } else {
                 subscriptionInfo = PaidSubscriptionInfo(status: .inactive, expirationDate: nil, productID: nil)
@@ -47,7 +53,10 @@ final class QounversionPaidSubscriptionManager: SubscriptionsHandler, Subscripti
         }
     }
 
-    public func purchase(subscription: PaidSubscription, completion: @escaping (Swift.Error?) -> Void) {
+    public func purchase(
+        subscription: PaidSubscription,
+        completion: @escaping (Swift.Error?) -> Void
+    ) {
         retrieveOfferings { [weak self] result in
             switch result {
             case .success(let products):
@@ -69,7 +78,10 @@ final class QounversionPaidSubscriptionManager: SubscriptionsHandler, Subscripti
         }
     }
     
-    public func currentSubscription(subscriptionID: String, completion: @escaping (Result<PaidSubscription, Swift.Error>) -> Void) {
+    public func currentSubscription(
+        subscriptionID: String,
+        completion: @escaping (Result<PaidSubscription, Swift.Error>
+        ) -> Void) {
         retrieveOfferings { result in
             switch result {
             case .success(let products):
@@ -101,7 +113,10 @@ final class QounversionPaidSubscriptionManager: SubscriptionsHandler, Subscripti
         }
     }
 
-    private func purchase(product: Qonversion.Product, completion: @escaping (Swift.Error?) -> Void) {
+    private func purchase(
+        product: Qonversion.Product,
+        completion: @escaping (Swift.Error?) -> Void
+    ) {
         Qonversion.shared().purchaseProduct(product) { (_, error, isCancelled) in
             completion(error)
         }

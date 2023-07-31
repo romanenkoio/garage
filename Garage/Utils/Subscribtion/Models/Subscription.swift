@@ -12,7 +12,11 @@ struct PaidSubscription: Equatable {
     public let currency: String
     public let price: NSDecimalNumber
     
-    public init(id: String, currency: String, price: NSDecimalNumber) {
+    public init(
+        id: String,
+        currency: String,
+        price: NSDecimalNumber
+    ) {
         self.id = id
         self.currency = currency
         self.price = price
