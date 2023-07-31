@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078B92A76D8D70066D4CE /* SubscriptionHandler.swift */; };
+		3DA078BD2A76D9580066D4CE /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078BC2A76D9580066D4CE /* Subscription.swift */; };
+		3DA078BF2A76D96F0066D4CE /* SubscriptionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078BE2A76D96F0066D4CE /* SubscriptionChecker.swift */; };
+		3DA078C12A76D99E0066D4CE /* SubscriptionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078C02A76D99E0066D4CE /* SubscriptionInfo.swift */; };
+		3DA078C42A76D9B80066D4CE /* SubscriptionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078C32A76D9B80066D4CE /* SubscriptionStatus.swift */; };
+		3DA078C72A76DAF40066D4CE /* QounversionPaidSubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078C62A76DAF40066D4CE /* QounversionPaidSubscriptionManager.swift */; };
+		3DA078C92A76E0010066D4CE /* SubscriptionStoreId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA078C82A76E0010066D4CE /* SubscriptionStoreId.swift */; };
 		7F049E472A40FBB400C3EAD0 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E462A40FBB400C3EAD0 /* PushManager.swift */; };
 		7F049E492A41029F00C3EAD0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E482A41029F00C3EAD0 /* Date.swift */; };
 		7F049E4B2A41060800C3EAD0 /* MultiLineInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F049E4A2A41060800C3EAD0 /* MultiLineInput.swift */; };
@@ -347,6 +354,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DA078B92A76D8D70066D4CE /* SubscriptionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionHandler.swift; sourceTree = "<group>"; };
+		3DA078BC2A76D9580066D4CE /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		3DA078BE2A76D96F0066D4CE /* SubscriptionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionChecker.swift; sourceTree = "<group>"; };
+		3DA078C02A76D99E0066D4CE /* SubscriptionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionInfo.swift; sourceTree = "<group>"; };
+		3DA078C32A76D9B80066D4CE /* SubscriptionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStatus.swift; sourceTree = "<group>"; };
+		3DA078C62A76DAF40066D4CE /* QounversionPaidSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QounversionPaidSubscriptionManager.swift; sourceTree = "<group>"; };
+		3DA078C82A76E0010066D4CE /* SubscriptionStoreId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStoreId.swift; sourceTree = "<group>"; };
 		7F049E462A40FBB400C3EAD0 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		7F049E482A41029F00C3EAD0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7F049E4A2A41060800C3EAD0 /* MultiLineInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineInput.swift; sourceTree = "<group>"; };
@@ -701,6 +715,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D7B35072A76D674001CF303 /* Subscribtion */ = {
+			isa = PBXGroup;
+			children = (
+				3DA078C52A76DADD0066D4CE /* Implementation */,
+				3DA078C22A76D9AE0066D4CE /* Helpers */,
+				3DA078BB2A76D9480066D4CE /* Models */,
+				3DA078B82A76D8B60066D4CE /* Protocols */,
+			);
+			path = Subscribtion;
+			sourceTree = "<group>";
+		};
+		3DA078B82A76D8B60066D4CE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3DA078B92A76D8D70066D4CE /* SubscriptionHandler.swift */,
+				3DA078BE2A76D96F0066D4CE /* SubscriptionChecker.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3DA078BB2A76D9480066D4CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3DA078BC2A76D9580066D4CE /* Subscription.swift */,
+				3DA078C02A76D99E0066D4CE /* SubscriptionInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3DA078C22A76D9AE0066D4CE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3DA078C32A76D9B80066D4CE /* SubscriptionStatus.swift */,
+				3DA078C82A76E0010066D4CE /* SubscriptionStoreId.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3DA078C52A76DADD0066D4CE /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				3DA078C62A76DAF40066D4CE /* QounversionPaidSubscriptionManager.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		7F049E4C2A41061000C3EAD0 /* MultiLineInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +852,7 @@
 		7F0E08972A2F4193008C2B9A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3D7B35072A76D674001CF303 /* Subscribtion */,
 				7F0E08DB2A2FA808008C2B9A /* Preview */,
 				7F0E08982A2F419E008C2B9A /* RealmManager.swift */,
 				7FC6DA192A39F59E00AD9A3F /* SettingsManager.swift */,
@@ -2950,6 +3011,7 @@
 				7FC7D1932A63F2C700A90586 /* Bundle.swift in Sources */,
 				7F1CC6712A67F5FF00C7F8B9 /* UIImage.swift in Sources */,
 				B978F32E2A2E8F4C0076D326 /* BasicTextField.swift in Sources */,
+				3DA078C12A76D99E0066D4CE /* SubscriptionInfo.swift in Sources */,
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */,
@@ -3028,6 +3090,7 @@
 				7F174F022A4B2B86004E51F9 /* ArticlesViewController.swift in Sources */,
 				B978F3B42A2E9D870076D326 /* NSObject.swift in Sources */,
 				7F07BD452A46FE0A0075EEFC /* ImputMode.swift in Sources */,
+				3DA078C92A76E0010066D4CE /* SubscriptionStoreId.swift in Sources */,
 				7F0E09102A30A407008C2B9A /* ServiceView+ViewModel.swift in Sources */,
 				7F0E08A82A2F4556008C2B9A /* CreateCarViewController.swift in Sources */,
 				B978F3272A2E8F4C0076D326 /* InfoView+ViewModel.swift in Sources */,
@@ -3036,6 +3099,8 @@
 				7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */,
 				B978F3AC2A2E9D870076D326 /* TabBarController+ViewModel.swift in Sources */,
 				7F1DE3AD2A58AD97008E7B1D /* CreateReminder+ViewModel.swift in Sources */,
+				3DA078C42A76D9B80066D4CE /* SubscriptionStatus.swift in Sources */,
+				3DA078C72A76DAF40066D4CE /* QounversionPaidSubscriptionManager.swift in Sources */,
 				B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */,
 				7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */,
 				7F9264272A6F1E7F00DA220A /* CarPinView+ViewModel.swift in Sources */,
@@ -3058,6 +3123,7 @@
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
 				7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
+				3DA078BD2A76D9580066D4CE /* Subscription.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
 				7FC6DA282A39FCE900AD9A3F /* Settings+ViewModel.swift in Sources */,
 				7F1465532A38A1770022E4E7 /* SettingMenu.swift in Sources */,
@@ -3126,8 +3192,10 @@
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
+				3DA078BF2A76D96F0066D4CE /* SubscriptionChecker.swift in Sources */,
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
+				3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
@@ -3333,7 +3401,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = 4HFB56CTGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3374,7 +3442,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = G264CBHMU9;
+				DEVELOPMENT_TEAM = 4HFB56CTGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
