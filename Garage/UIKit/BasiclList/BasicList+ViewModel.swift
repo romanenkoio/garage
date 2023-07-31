@@ -50,15 +50,20 @@ extension BasicList {
         }
  
 //         use only for set start value
-        func initSelected(_ item: Item) {
+        func initSelected(_ item: Item?) {
+            if item == nil {
+                self.checkedValue = .empty
+            }
             self.selectedItem = item
             self.items.enumerated().forEach { index, value in
                 let isEqual = item == value
                 if isEqual {
                     self.checkedValue = titles[index]
+                    self.validate()
                     self.title = titles[index]
                 }
             }
+            self.validate()
         }
         
         func setSelected(_ item: Item) {
@@ -71,6 +76,7 @@ extension BasicList {
                     self.validate()
                 }
             }
+            self.validate()
         }
         
         @discardableResult

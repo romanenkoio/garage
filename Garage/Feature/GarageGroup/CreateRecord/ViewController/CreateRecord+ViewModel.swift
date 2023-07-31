@@ -102,9 +102,8 @@ extension CreateRecordViewController {
                 shortTypeVM.inputVM.setText(object.short)
                 imagePickerVM.set(RealmManager<Photo>().read().filter({ $0.recordId == object.id }).compactMap({ $0.converted }))
                     saveButtonVM.buttonVM.title = "Обновить".localized
-                if let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID }) {
-                    serivesListVM.initSelected(service)
-                }
+                let service = RealmManager<Service>().read().first(where: { $0.id == object.serviceID })
+                serivesListVM.initSelected(service)
                 initChangeChecker()
             }
         }
@@ -113,7 +112,8 @@ extension CreateRecordViewController {
             validator.setForm([
                 dateInputVM,
                 shortTypeVM.inputVM,
-                mileageInputVM.inputVM
+                mileageInputVM.inputVM,
+                serivesListVM
             ])
             
             shortTypeVM.inputVM.rules = [.noneEmpty]

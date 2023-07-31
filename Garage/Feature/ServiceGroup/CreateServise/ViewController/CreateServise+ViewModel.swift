@@ -143,7 +143,6 @@ extension CreateServiseViewController {
                 .store(in: &cancellables)
             
             changeChecker.formHasChange
-                .removeDuplicates()
                 .sink { [weak self] value in
                     guard let self else { return }
                     self.saveButtonVM.buttonVM.isEnabled = self.validator.isValid && value
