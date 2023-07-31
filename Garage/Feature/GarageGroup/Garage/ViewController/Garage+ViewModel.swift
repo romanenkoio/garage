@@ -52,7 +52,7 @@ extension GarageViewController {
                 tableVM.setCells(.empty)
                 return
             }
-            var carCells = [Cells](repeating: .car, count: cars.count)
+            let carCells = [Cells](repeating: .car, count: cars.count)
                 
             cells.append(carCells)
             cells.append([.addCar])
