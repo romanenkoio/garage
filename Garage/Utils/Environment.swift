@@ -12,4 +12,6 @@ struct Environment {
         get { SettingsManager.sh.read(.isPremium) ?? false }
         set { SettingsManager.sh.write(value: newValue, for: .isPremium)}
     }
+    
+    static var avaliblePlans: [PaidSubscription] = .empty
 }

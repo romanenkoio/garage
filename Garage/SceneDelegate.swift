@@ -25,7 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         handleImport(by: urlContext.url)
-       
     }
     
     private func handleImport(by ulr: URL) {

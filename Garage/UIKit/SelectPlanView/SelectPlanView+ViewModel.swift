@@ -13,12 +13,26 @@ extension SelectPlanView {
         @Published var isSelected = false
         var selectedSubject: PassthroughSubject<SelectPlanView.ViewModel, Never> = .init()
         
-        let periodLabelVM = BasicLabel.ViewModel(.text("Месяц"))
-        let priceLabelVM = BasicLabel.ViewModel(.text("3$/месяц"))
-        let cancelLabelVM = BasicLabel.ViewModel(.text("Навсегда"))
+        let periodLabelVM = BasicLabel.ViewModel()
+        let priceLabelVM = BasicLabel.ViewModel()
+        let cancelLabelVM = BasicLabel.ViewModel()
         
-        init(isSelected: Bool = false) {
-            self.isSelected = isSelected
+        init(
+            info: PaidSubscription,
+            isSelected: Bool = false
+        ) {
+            self.isSelected = info.type == .year
+            
+            var text = "\(info.price) \(info.currency)"
+            switch info.type {
+            case .month, .year:
+                text += "/\(info.type.priceTitle)"
+            default:
+                break
+            }
+            priceLabelVM.textValue = .text(text)
+            self.periodLabelVM.textValue = .text(info.type.duration)
+            self.cancelLabelVM.textValue = .text(info.type.cancelTitle)
         }
     }
 }

@@ -35,7 +35,7 @@ extension PremiumViewController {
             
             topLabelVM.textValue = .attributed(mutableAttributedString)
             
-            plans = [.init(), .init(isSelected: true), .init()]
+            plans = Environment.avaliblePlans.map({ SelectPlanView.ViewModel(info: $0) })
         }
     }
 }
