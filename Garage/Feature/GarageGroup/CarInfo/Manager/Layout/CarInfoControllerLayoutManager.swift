@@ -111,7 +111,7 @@ final class CarInfoControllerLayoutManager {
                 guard let self else { return }
                 self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
             },
-            image: UIImage(systemName: "chart.bar.fill"))
+            image: UIImage(named: "stat_ic"))
         
         vc.makeRightNavBarButton(buttons: [editButton, chartButton])
     }
