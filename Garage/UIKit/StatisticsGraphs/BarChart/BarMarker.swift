@@ -96,7 +96,7 @@ class CustomMarkerView: MarkerView {
              case .pie:
                  return CGPoint(x: -40, y: -40)
              case .bar:
-                 return CGPoint(x: -40, y: -50)
+                 return CGPoint(x: -40, y: -55)
          }
      }
 }
