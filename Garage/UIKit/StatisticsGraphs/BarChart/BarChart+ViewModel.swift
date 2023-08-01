@@ -23,7 +23,6 @@ extension BarChart {
         
         @Published var barChartData = BarChartData()
         @Published private(set) var items: [Item] = []
-        var suggestion: SuggestionView.ViewModel?
 
         private(set) var barItems: BarChartItem = []
 

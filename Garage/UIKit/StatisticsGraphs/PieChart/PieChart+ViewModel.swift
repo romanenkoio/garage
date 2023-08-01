@@ -23,7 +23,6 @@ extension PieChart {
         
         @Published var pieChartData = PieChartData()
         @Published private(set) var items: [Item] = []
-        var suggestion: SuggestionView.ViewModel?
         @Published var dataEntries: [PieChartDataEntry] = .empty
         private(set) var pieItems: PieChartItem = []
 

@@ -12,6 +12,8 @@ extension FlipView {
     class ViewModel: BasicViewModel {
         let barChartVM = BarChart.GenericViewModel<Record>()
         let pieChartVM = PieChart.GenericViewModel<Record>()
+        var barChartSuggestion: SuggestionView.ViewModel?
+        var pieChartSuggestion: SuggestionView.ViewModel?
         
         @Published var suggestions: [SuggestionView.ViewModel] = []
         var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
@@ -19,12 +21,12 @@ extension FlipView {
             didSet {
                 switch pageIndex {
                     case 0:
-                        if let barChartSuggestionSelected = barChartVM.suggestion {
-                            changeSelection(barChartSuggestionSelected)
+                        if let barChartSuggestion {
+                            changeSelection(barChartSuggestion)
                         }
                     case 1:
-                        if let pieChartSuggestionSelected = pieChartVM.suggestion {
-                            changeSelection(pieChartSuggestionSelected)
+                        if let pieChartSuggestion {
+                            changeSelection(pieChartSuggestion)
                         }
                     default: break
                 }
@@ -83,13 +85,14 @@ extension FlipView {
             let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
             vm.labelVM.action = { [weak self] in
                 self?.changeSelection(vm)
-                self?.initBarCharts()
-                self?.initPieCharts()
+                switch self?.pageIndex {
+                    case 0: self?.initBarCharts()
+                    case 1: self?.initPieCharts()
+                    default: break
+                }
                 self?.changePeriodSubject.send()
             }
             suggestions.append(vm)
-            pieChartVM.suggestion = vm
-            barChartVM.suggestion = vm
             vm.isSelected = true
             
             years.forEach { [weak self] year in
@@ -105,6 +108,8 @@ extension FlipView {
                 }
                 suggestions.append(vm)
             }
+            barChartSuggestion = vm
+            pieChartSuggestion = vm
             self.suggestions = suggestions
         }
         
@@ -113,9 +118,9 @@ extension FlipView {
             selected.isSelected = true
             switch pageIndex {
                 case 0:
-                    barChartVM.suggestion = selected
+                    barChartSuggestion = selected
                 case 1:
-                    pieChartVM.suggestion = selected
+                    pieChartSuggestion = selected
                 default: break
             }
         }
