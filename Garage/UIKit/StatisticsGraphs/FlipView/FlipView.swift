@@ -29,8 +29,16 @@ class FlipView: BasicView {
         return stack
     }()
     
-    var isRightAfterDragging = false
-    var isRightAfterScrollingAnimation = false
+    private(set) lazy var pageControl: UIPageControl = {
+        let page = UIPageControl()
+        page.numberOfPages = 2
+        page.currentPage = 0
+        page.pageIndicatorTintColor = AppColors.background
+        page.currentPageIndicatorTintColor = .lightGray
+        return page
+    }()
+    
+    var isRight = false
     
     var scrollabelSubviews: [BasicView] = .empty
     var viewModel: ViewModel?
@@ -47,6 +55,7 @@ class FlipView: BasicView {
     
     private func makeLayout() {
         addSubview(scrollableStack)
+        addSubview(pageControl)
         scrollableStack.addArrangedSubviews([barChart, pieChart])
         addSubview(yearBarStack)
     }
@@ -56,13 +65,20 @@ class FlipView: BasicView {
             make.leading.trailing.top.equalToSuperview()
         }
         
+        pageControl.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(scrollableStack.snp.bottom)
+        }
+        
         yearBarStack.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(scrollableStack.snp.bottom).inset(UIEdgeInsets(top: 10))
+            make.top.equalTo(pageControl.snp.bottom).offset(5)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.viewModel = vm
         barChart.setViewModel(vm.barChartVM)
         pieChart.setViewModel(vm.pieChartVM)
         
@@ -99,9 +115,9 @@ class FlipView: BasicView {
                 let textFormatter = TextFormatter()
                 self?.pieChart.pieChartView.centerAttributedText = textFormatter.attrinutedLines(
                     main: "Итого",
-                    font: .custom(size: 14, weight: .medium),
+                    font: .custom(size: 16, weight: .semibold),
                     secondary: "\(dataEntry.map({$0.value}).reduce(0, +))",
-                    secondaryFont: .custom(size: 16, weight: .semibold),
+                    secondaryFont: .custom(size: 18, weight: .bold),
                     lineSpacing: 2)
             }
             .store(in: &cancellables)
@@ -109,8 +125,15 @@ class FlipView: BasicView {
         vm.changePeriodSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.pieChart.pieChartView.highlightValue(nil)
-                self?.pieChart.pieChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+                switch self?.pageControl.currentPage {
+                    case 0:
+                        self?.barChart.barChartView.highlightValue(nil)
+                        self?.barChart.barChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+                    case 1:
+                        self?.pieChart.pieChartView.highlightValue(nil)
+                        self?.pieChart.pieChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+                    default: break
+                }
             }
             .store(in: &cancellables)
     }
@@ -119,31 +142,41 @@ class FlipView: BasicView {
 extension FlipView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.x, scrollView.contentSize.height)
-    
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+        viewModel?.pageIndex = Int(pageNumber)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-
-        let contentSize = scrollView.contentSize.height
+        
+        let contentSize = scrollView.contentSize.width / 2
         if !decelerate {
-            if scrollView.contentOffset.x > 0, !isRightAfterDragging {
+            if scrollView.contentOffset.x > 0, !isRight {
                 scrollView.setContentOffset(CGPoint(x: contentSize, y: 0), animated: true)
-                isRightAfterDragging = true
-            } else if scrollView.contentOffset.x < contentSize, isRightAfterDragging {
+                isRight = true
+            } else if scrollView.contentOffset.x < contentSize, isRight {
                 scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                isRightAfterDragging = false
+                isRight = false
             }
+            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+            pageControl.currentPage = Int(pageNumber)
+            viewModel?.pageIndex = Int(pageNumber)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let contentSize = scrollView.contentSize.height
-        if scrollView.contentOffset.x > 0, !isRightAfterDragging {
+        let contentSize = scrollView.contentSize.width / 2
+        
+        if scrollView.contentOffset.x > 0, !isRight {
             scrollView.setContentOffset(CGPoint(x: contentSize, y: 0), animated: true)
-            isRightAfterDragging = true
-        } else if scrollView.contentOffset.x < contentSize, isRightAfterDragging {
+            isRight = true
+        } else if scrollView.contentOffset.x < contentSize, isRight {
             scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            isRightAfterDragging = false
+            isRight = false
         }
+        
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+        viewModel?.pageIndex = Int(pageNumber)
     }
 }

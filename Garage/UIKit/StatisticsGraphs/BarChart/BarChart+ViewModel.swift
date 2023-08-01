@@ -23,7 +23,7 @@ extension BarChart {
         
         @Published var barChartData = BarChartData()
         @Published private(set) var items: [Item] = []
-        @Published var suggestions: [SuggestionView.ViewModel] = []
+        var suggestion: SuggestionView.ViewModel?
 
         private(set) var barItems: BarChartItem = []
 
@@ -54,11 +54,6 @@ extension BarChart {
             chartDataSet.valueFont = .custom(size: 12, weight: .regular)
             chartDataSet.drawValuesEnabled = false
             self.barChartData = data
-        }
-        
-        func changeSelection(_ selected: SuggestionView.ViewModel) {
-            suggestions.forEach({ $0.isSelected = false })
-            selected.isSelected = true
         }
     }
 }

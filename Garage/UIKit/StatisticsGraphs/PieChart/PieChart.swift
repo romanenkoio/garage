@@ -7,6 +7,7 @@
 
 import UIKit
 import DGCharts
+import SnapKit
 
 class PieChart: BasicView {
     lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .pie)
@@ -98,7 +99,7 @@ class PieChart: BasicView {
         }
         
         let screenWidth = UIScreen.main.bounds.width
-        let chartHight = screenWidth - 34
+        let chartHight = screenWidth - 70
         pieChartView.snp.makeConstraints { make in
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
@@ -106,11 +107,6 @@ class PieChart: BasicView {
             make.top.equalTo(descriptionLabel.snp.bottom)
             make.bottom.equalToSuperview()
         }
-        
-//        yearBarStack.snp.makeConstraints { make in
-//            make.leading.trailing.bottom.equalToSuperview()
-//            make.top.equalTo(pieChartView.snp.bottom).inset(UIEdgeInsets(top: 10))
-//        }
     }
     
     func setViewModel(_ vm: ViewModel) {

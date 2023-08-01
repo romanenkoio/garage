@@ -23,7 +23,7 @@ extension PieChart {
         
         @Published var pieChartData = PieChartData()
         @Published private(set) var items: [Item] = []
-        @Published var suggestions: [SuggestionView.ViewModel] = []
+        var suggestion: SuggestionView.ViewModel?
         @Published var dataEntries: [PieChartDataEntry] = .empty
         private(set) var pieItems: PieChartItem = []
 
@@ -55,11 +55,6 @@ extension PieChart {
             pieChartDataSet.valueFont = .custom(size: 12, weight: .regular)
             pieChartDataSet.drawValuesEnabled = false
             self.pieChartData = data
-        }
-        
-        func changeSelection(_ selected: SuggestionView.ViewModel) {
-            suggestions.forEach({ $0.isSelected = false })
-            selected.isSelected = true
         }
     }
 }

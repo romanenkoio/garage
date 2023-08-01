@@ -7,6 +7,7 @@
 
 import UIKit
 import DGCharts
+import SnapKit
 
 class BarChart: BasicView {
     lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .bar)
@@ -82,13 +83,12 @@ class BarChart: BasicView {
         }
         
         let screenWidth = UIScreen.main.bounds.width
-        let chartHight = screenWidth - 34
+        let chartHight = screenWidth - 70
         barChartView.snp.makeConstraints { make in
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(descriptionLabel.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(25)
         }
     }
     

@@ -15,7 +15,21 @@ extension FlipView {
         
         @Published var suggestions: [SuggestionView.ViewModel] = []
         var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
-        var showingBack = true
+        var pageIndex = 0 {
+            didSet {
+                switch pageIndex {
+                    case 0:
+                        if let barChartSuggestionSelected = barChartVM.suggestion {
+                            changeSelection(barChartSuggestionSelected)
+                        }
+                    case 1:
+                        if let pieChartSuggestionSelected = pieChartVM.suggestion {
+                            changeSelection(pieChartSuggestionSelected)
+                        }
+                    default: break
+                }
+            }
+        }
         
         var records: [Record]
         @Published var years: [Int] = .empty
@@ -50,10 +64,10 @@ extension FlipView {
         
         func initPieCharts(year: Int? = nil) {
             var data = records
-            var title: TextValue = .text("Категории за всё время")
+            var title: TextValue = .text("Расходы по категориям за всё время")
             if let year {
                 data = records.filter({$0.date.components.year == year})
-                title = .text("Категории за \(year) год")
+                title = .text("Расходы по категориям за \(year) год")
             }
             
             pieChartVM.setItems(
@@ -69,35 +83,41 @@ extension FlipView {
             let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
             vm.labelVM.action = { [weak self] in
                 self?.changeSelection(vm)
-//                self?.pieChartVM.changeSelection(vm)
                 self?.initBarCharts()
                 self?.initPieCharts()
                 self?.changePeriodSubject.send()
-//                self?.pieChartVM.changePeriodSubject.send()
             }
             suggestions.append(vm)
+            pieChartVM.suggestion = vm
+            barChartVM.suggestion = vm
             vm.isSelected = true
             
             years.forEach { [weak self] year in
                 let vm = SuggestionView.ViewModel(labelVM: .init(.text(year.toString())))
                 vm.labelVM.action = { [weak self] in
                     self?.changeSelection(vm)
-//                    self?.pieChartVM.changeSelection(vm)
-                    self?.initBarCharts(year: year)
-                    self?.initPieCharts(year: year)
+                    switch self?.pageIndex {
+                        case 0: self?.initBarCharts(year: year)
+                        case 1: self?.initPieCharts(year: year)
+                        default: break
+                    }
                     self?.changePeriodSubject.send()
-//                    self?.pieChartVM.changePeriodSubject.send()
                 }
                 suggestions.append(vm)
             }
             self.suggestions = suggestions
-//            pieChartVM.suggestions = suggestions
         }
         
         func changeSelection(_ selected: SuggestionView.ViewModel) {
             suggestions.forEach({ $0.isSelected = false })
             selected.isSelected = true
+            switch pageIndex {
+                case 0:
+                    barChartVM.suggestion = selected
+                case 1:
+                    pieChartVM.suggestion = selected
+                default: break
+            }
         }
-
     }
 }
