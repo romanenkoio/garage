@@ -38,8 +38,8 @@ class GarageViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
-        let isFirst: Bool? = SettingsManager.sh.read(.isFirstLaunch)
-        if isFirst == true || isFirst == nil {
+        let isFirst: Bool = SettingsManager.sh.read(.isFirstLaunch) ?? true
+        if isFirst {
             coordinator.navigateTo(GarageNavigationRoute.onboarding)
         }
         LocationManager.shared.checkLocationService()

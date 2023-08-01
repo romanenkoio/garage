@@ -43,6 +43,7 @@ class OnboardingViewController: BasicViewController {
     override func binding() {
         layout.nextButton.setViewModel(vm.nextButton)
         layout.collectionView.setViewModel(vm.collectionVM)
+        layout.skipLabel.setViewModel(vm.skipLabelVM)
         
         vm.collectionVM.$cells.sink { [weak self] _ in
             self?.layout.collectionView.reload()
