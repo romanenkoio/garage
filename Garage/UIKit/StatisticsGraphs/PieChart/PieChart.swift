@@ -87,7 +87,7 @@ class PieChart: BasicView {
     private func makeLayout() {
         addSubview(pieChartView)
         addSubview(descriptionLabel)
-        addSubview(yearBarStack)
+//        addSubview(yearBarStack)
         customMarkerView.chartView = pieChartView
         pieChartView.marker = customMarkerView
     }
@@ -98,31 +98,23 @@ class PieChart: BasicView {
         }
         
         let screenWidth = UIScreen.main.bounds.width
-        let chartHight = screenWidth - 70
+        let chartHight = screenWidth - 34
         pieChartView.snp.makeConstraints { make in
-            make.height.equalTo(chartHight)
             make.width.equalTo(screenWidth)
+            make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
-        yearBarStack.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(pieChartView.snp.bottom).inset(UIEdgeInsets(top: 10))
-        }
+//        yearBarStack.snp.makeConstraints { make in
+//            make.leading.trailing.bottom.equalToSuperview()
+//            make.top.equalTo(pieChartView.snp.bottom).inset(UIEdgeInsets(top: 10))
+//        }
     }
     
     func setViewModel(_ vm: ViewModel) {
         descriptionLabel.setViewModel(vm.descriptionLabelVM)
-        
-        vm.changePeriodSubject
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                self?.pieChartView.highlightValue(nil)
-                self?.pieChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
-            }
-            .store(in: &cancellables)
-        
     }
 }
 

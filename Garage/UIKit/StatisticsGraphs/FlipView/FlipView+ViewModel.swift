@@ -6,16 +6,98 @@
 //
 
 import UIKit
+import Combine
 
 extension FlipView {
     class ViewModel: BasicViewModel {
-        let buttonVM: NavBarButton.ViewModel
+        let barChartVM = BarChart.GenericViewModel<Record>()
+        let pieChartVM = PieChart.GenericViewModel<Record>()
         
+        @Published var suggestions: [SuggestionView.ViewModel] = []
+        var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
         var showingBack = true
         
-        override init() {
-            self.buttonVM = .init(image: UIImage(systemName: "repeat"))
+        var records: [Record]
+        @Published var years: [Int] = .empty
+        
+        unowned let car: Car
+        
+        init(car: Car) {
+            self.car = car
+            records = RealmManager().read().filter({ $0.carID == car.id })
+         
+            self.years = Array(Set(records.compactMap({ $0.date.components.year })).sorted(by: >))
             super.init()
+            initBarCharts()
+            initPieCharts()
+            initBarSuggestions()
         }
+        
+        func initBarCharts(year: Int? = nil) {
+            var data = records
+            var title: TextValue = .text("Расходы за всё время")
+            if let year {
+                data = records.filter({ $0.date.components.year == year })
+                title = .text("Расходы за \(year) год")
+            }
+            
+            barChartVM.setItems(
+                list: data,
+                title: title) { items in
+                    return items.map({($0.id, $0.date.components.month ?? 0, $0.cost ?? 0)})
+                }
+        }
+        
+        func initPieCharts(year: Int? = nil) {
+            var data = records
+            var title: TextValue = .text("Категории за всё время")
+            if let year {
+                data = records.filter({$0.date.components.year == year})
+                title = .text("Категории за \(year) год")
+            }
+            
+            pieChartVM.setItems(
+                list: data,
+                title: title) { items in
+                    return items.map({($0.cost ?? 0, $0.short)})
+                }
+        }
+
+                
+        func initBarSuggestions() {
+            var suggestions: [SuggestionView.ViewModel] = .empty
+            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
+            vm.labelVM.action = { [weak self] in
+                self?.changeSelection(vm)
+//                self?.pieChartVM.changeSelection(vm)
+                self?.initBarCharts()
+                self?.initPieCharts()
+                self?.changePeriodSubject.send()
+//                self?.pieChartVM.changePeriodSubject.send()
+            }
+            suggestions.append(vm)
+            vm.isSelected = true
+            
+            years.forEach { [weak self] year in
+                let vm = SuggestionView.ViewModel(labelVM: .init(.text(year.toString())))
+                vm.labelVM.action = { [weak self] in
+                    self?.changeSelection(vm)
+//                    self?.pieChartVM.changeSelection(vm)
+                    self?.initBarCharts(year: year)
+                    self?.initPieCharts(year: year)
+                    self?.changePeriodSubject.send()
+//                    self?.pieChartVM.changePeriodSubject.send()
+                }
+                suggestions.append(vm)
+            }
+            self.suggestions = suggestions
+//            pieChartVM.suggestions = suggestions
+        }
+        
+        func changeSelection(_ selected: SuggestionView.ViewModel) {
+            suggestions.forEach({ $0.isSelected = false })
+            selected.isSelected = true
+        }
+
     }
 }

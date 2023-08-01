@@ -47,9 +47,10 @@ extension BarChart {
             }
             
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: .empty.appendCurrency())
-            chartDataSet.highlightColor = AppColors.black
+            chartDataSet.highlightColor = AppColors.green
+            chartDataSet.highlightAlpha = 1
             let data = BarChartData(dataSet: chartDataSet)
-            chartDataSet.colors = [AppColors.green]
+            chartDataSet.colors = [.init(hexString: "dbdadb")]
             chartDataSet.valueFont = .custom(size: 12, weight: .regular)
             chartDataSet.drawValuesEnabled = false
             self.barChartData = data

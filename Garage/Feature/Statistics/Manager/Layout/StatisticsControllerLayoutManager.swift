@@ -37,7 +37,6 @@ fileprivate extension StatisticsControllerLayoutManager {
     
     private func makeLayout() {
         vc.contentView.addSubview(flipView)
-        flipView.addSubviews([barChart, pieChart], viewFrame: vc.view.frame)
     }
     
     private func makeConstraint() {

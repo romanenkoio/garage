@@ -44,65 +44,9 @@ class StatisticsViewController: BasicViewController {
     }
 
     override func binding() {
-        layout.flipView.setViewModel(vm.flipviewVM)
+        guard let flipVM = vm.flipviewVM else { return }
+        layout.flipView.setViewModel(flipVM)
         
-        layout.barChart.setViewModel(vm.barChartVM)
-        
-        vm.barChartVM.$barChartData
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] data in
-                self?.layout.barChart.barChartView.data = data
-            }
-            .store(in: &cancellables)
-        
-        vm.barChartVM.$suggestions.sink { [weak self] vms in
-            guard !vms.isEmpty else {
-                self?.layout.barChart.yearBarStack.isHidden = true
-                return
-            }
-            self?.layout.barChart.yearBarStack.clearArrangedSubviews()
-            vms.forEach { [weak self] vm in
-                let view = SuggestionView()
-                view.setViewModel(vm)
-                self?.layout.barChart.yearBarStack.addArrangedSubview(view)
-            }
-        }
-        .store(in: &cancellables)
-        
-        layout.pieChart.setViewModel(vm.pieChartVM)
-        
-        vm.pieChartVM.$pieChartData
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] data in
-                self?.layout.pieChart.pieChartView.data = data
-            }
-            .store(in: &cancellables)
-        
-        vm.pieChartVM.$suggestions.sink { [weak self] vms in
-            guard !vms.isEmpty else {
-                self?.layout.pieChart.yearBarStack.isHidden = true
-                return
-            }
-            self?.layout.pieChart.yearBarStack.clearArrangedSubviews()
-            vms.forEach { [weak self] vm in
-                let view = SuggestionView()
-                view.setViewModel(vm)
-                self?.layout.pieChart.yearBarStack.addArrangedSubview(view)
-            }
-        }
-        .store(in: &cancellables)
-        
-        vm.pieChartVM.$dataEntries
-            .sink {[weak self] dataEntry in
-                let textFormatter = TextFormatter()
-                self?.layout.pieChart.pieChartView.centerAttributedText = textFormatter.attrinutedLines(
-                    main: "Итого",
-                    font: .custom(size: 14, weight: .medium),
-                    secondary: "\(dataEntry.map({$0.value}).reduce(0, +))",
-                    secondaryFont: .custom(size: 16, weight: .semibold),
-                    lineSpacing: 2)
-            }
-            .store(in: &cancellables)
     }
     
 }

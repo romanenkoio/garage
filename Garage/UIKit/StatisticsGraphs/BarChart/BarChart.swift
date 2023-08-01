@@ -27,6 +27,9 @@ class BarChart: BasicView {
         view.xAxis.drawGridLinesEnabled = false
         view.leftAxis.drawAxisLineEnabled = false
         view.rightAxis.drawAxisLineEnabled = false
+        view.leftAxis.drawLabelsEnabled = false
+        view.leftAxis.drawTopYLabelEntryEnabled = false
+        view.leftAxis.drawZeroLineEnabled = false
         view.doubleTapToZoomEnabled = false
         view.pinchZoomEnabled = false
         view.drawBordersEnabled = false
@@ -39,9 +42,9 @@ class BarChart: BasicView {
         view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
         view.xAxis.labelCount = 12
         view.xAxis.labelRotationAngle = -45
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.positiveSuffix = " Br"
-        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+//        let leftAxisFormatter = NumberFormatter()
+//        leftAxisFormatter.positiveSuffix = .empty.appendCurrency()
+//        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
         return view
     }()
@@ -69,7 +72,6 @@ class BarChart: BasicView {
     private func makeLayout() {
         addSubview(barChartView)
         addSubview(descriptionLabel)
-        addSubview(yearBarStack)
         customMarkerView.chartView = barChartView
         barChartView.marker = customMarkerView
     }
@@ -80,17 +82,13 @@ class BarChart: BasicView {
         }
         
         let screenWidth = UIScreen.main.bounds.width
-        let chartHight = screenWidth - 70
+        let chartHight = screenWidth - 34
         barChartView.snp.makeConstraints { make in
-            make.height.equalTo(chartHight)
             make.width.equalTo(screenWidth)
+            make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom)
-        }
-        
-        yearBarStack.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(barChartView.snp.bottom).inset(UIEdgeInsets(top: 10))
+            make.bottom.equalToSuperview()
         }
     }
     
