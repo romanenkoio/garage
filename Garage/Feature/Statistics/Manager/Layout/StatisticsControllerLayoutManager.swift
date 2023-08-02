@@ -19,7 +19,7 @@ final class StatisticsControllerLayoutManager {
         didSet {
             if isFirstLayoutSubviews {
                 tableViewMinConstraintConstant = maxConstraintConstant! / 2
-                makeConstraintsAfterLayout(with: maxConstraintConstant! + 20)
+                makeConstraintsAfterLayout(with: maxConstraintConstant!)
                 vc.view.layoutIfNeeded()
                 isFirstLayoutSubviews = false
             }

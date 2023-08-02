@@ -18,7 +18,7 @@ class StatisticsViewController: BasicViewController {
     private(set) var vm: ViewModel
     
     // - Manager
-    private var coordinator: Coordinator!
+    var coordinator: Coordinator!
     private var layout: Layout!
     
     init(vm: ViewModel) {
@@ -40,7 +40,7 @@ class StatisticsViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.maxConstraintConstant = layout.chartsView.frame.size.height
+        layout.maxConstraintConstant = layout.chartsView.frame.size.height + 20
     }
 
     override func configure() {
@@ -125,5 +125,40 @@ extension StatisticsViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 
 extension StatisticsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let recordVM = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
+        coordinator.navigateTo(StatisticsNavigationRoute.editRecord(vm.car, recordVM.record))
+    }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentContentOffsetY = scrollView.contentOffset.y
+        let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
+        let bounceBorderContentOffsetY = -scrollView.contentInset.top
+        
+        let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
+        let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
+        
+        if let currentTableConstraintConstant = layout.animatedScrollConstraint?.layoutConstraints.first?.constant,
+           let maxConstraintConstant = layout.maxConstraintConstant {
+            
+            let minConstraintConstant = layout.tableViewMinConstraintConstant
+            var newConstraintConstant = currentTableConstraintConstant
+            
+            newConstraintConstant = currentTableConstraintConstant
+            //Процент завершения анимации
+            //Оставить реализацию
+            //            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
+            
+            if contentMovesUp {
+                newConstraintConstant = max(currentTableConstraintConstant - scrollDiff, minConstraintConstant)
+            } else if contentMovesDown {
+                newConstraintConstant = min(currentTableConstraintConstant - scrollDiff, maxConstraintConstant)
+            }
+            if newConstraintConstant != currentTableConstraintConstant,
+               !layout.table.table.isHidden {
+                layout.animatedScrollConstraint?.update(offset: newConstraintConstant)
+                scrollView.contentOffset.y = layout.previousContentOffsetY
+            }
+        }
+    }
 }

@@ -21,6 +21,7 @@ class CarInfoViewController: BasicViewController {
     // - Manager
     var coordinator: Coordinator!
     private var layout: Layout!
+    
     private lazy var tableView = UITableView() {
         didSet {
             tableView.delegate = self
