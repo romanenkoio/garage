@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-extension FlipView {
+extension ChartsView {
     class ViewModel: BasicViewModel {
         let barChartVM = BarChart.GenericViewModel<Record>()
         let pieChartVM = PieChart.GenericViewModel<Record>()
@@ -17,6 +17,7 @@ extension FlipView {
         
         @Published var suggestions: [SuggestionView.ViewModel] = []
         var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
+        
         var pageIndex = 0 {
             didSet {
                 switch pageIndex {
@@ -53,8 +54,11 @@ extension FlipView {
             var data = records
             var title: TextValue = .text("Расходы за всё время")
             if let year {
+                barChartVM.year = year
                 data = records.filter({ $0.date.components.year == year })
                 title = .text("Расходы за \(year) год")
+            } else {
+                barChartVM.year = nil
             }
             
             barChartVM.setItems(
@@ -68,8 +72,11 @@ extension FlipView {
             var data = records
             var title: TextValue = .text("Расходы по категориям за всё время")
             if let year {
+                pieChartVM.year = year
                 data = records.filter({$0.date.components.year == year})
                 title = .text("Расходы по категориям за \(year) год")
+            } else {
+                pieChartVM.year = nil
             }
             
             pieChartVM.setItems(

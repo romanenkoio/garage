@@ -10,6 +10,8 @@ import DGCharts
 import SnapKit
 
 class PieChart: BasicView {
+    var viewModel: ViewModel?
+    
     lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .pie)
     
     lazy var descriptionLabel: BasicLabel = {
@@ -47,31 +49,11 @@ class PieChart: BasicView {
 //        return view
 //    }()
     
-    private(set) lazy var centerLabel: BasicLabel = {
-        let label = BasicLabel(frame: CGRect(x: 0, y: 0, width: pieChartView.frame.width, height: 40))
-        label.backgroundColor = UIColor(white: 0.9, alpha: 0.9)
-        label.layer.cornerRadius = 5
-        label.layer.masksToBounds = true
-        label.textAlignment = .center
-        return label
-    }()
-    
     private(set) lazy var pieChartView: PieChartView = {
         let view = PieChartView()
         view.drawEntryLabelsEnabled = false
         view.legend.enabled = false
         return view
-    }()
-    
-    private(set) lazy var yearBarStackContentView = UIView()
-    
-    private(set) lazy var yearBarStack: ScrollableStackView = {
-        let stack = ScrollableStackView()
-        stack.spacing = 5
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.contentInset = UIEdgeInsets(horizontal: 16)
-        return stack
     }()
     
     override init() {
@@ -88,7 +70,6 @@ class PieChart: BasicView {
     private func makeLayout() {
         addSubview(pieChartView)
         addSubview(descriptionLabel)
-//        addSubview(yearBarStack)
         customMarkerView.chartView = pieChartView
         pieChartView.marker = customMarkerView
     }
@@ -110,31 +91,42 @@ class PieChart: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.viewModel = vm
         descriptionLabel.setViewModel(vm.descriptionLabelVM)
     }
 }
 
 extension PieChart: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
-        
+    
         let animator = Animator()
         
         animator.updateBlock = {
-            // Usually the phase is a value between 0.0 and 1.0
-            // Multiply it so you get the final phaseShift you want
             let phaseShift = 15 * animator.phaseX
             
             let dataSet = chartView.data?.dataSets.first as? PieChartDataSet
-            // Set the selectionShift property to actually change the selection over time
             dataSet?.selectionShift = CGFloat(phaseShift)
             
-            // In order to see the animation, trigger a redraw every time the selectionShift property was changed
             chartView.setNeedsDisplay()
         }
-        
-        // Start the animation by triggering the animate function with any timing function you like
+
         animator.animate(xAxisDuration: 0.3, easingOption: ChartEasingOption.easeInQuart)
         
+        viewModel?.records = RealmManager<Record>().read().filter({[weak self] record in
+            guard let self,
+                  let year = self.viewModel?.year else {
+                if record.short == entry.data as? String {
+                    return true
+                }
+                return false
+            }
+            
+            if record.short == entry.data as! String,
+               record.date.components.year == year {
+                return true
+            } else {
+                return false
+            }
+        })
     }
 }

@@ -15,7 +15,8 @@ extension PieChart {
     
     class ViewModel: BasicViewModel {
         var descriptionLabelVM = BasicLabel.ViewModel()
-        var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
+        @Published var records: [Record] = .empty
+        var year: Int?
     }
     
     class GenericViewModel<T: Equatable>: ViewModel {
@@ -49,10 +50,11 @@ extension PieChart {
             
             let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: .empty)
             pieChartDataSet.highlightColor = .lightGray.withAlphaComponent(0.6)
-            let data = PieChartData(dataSet: pieChartDataSet)
             pieChartDataSet.colors = [.blue, .red, .gray,.green,.yellow,.systemPink]
             pieChartDataSet.valueFont = .custom(size: 12, weight: .regular)
             pieChartDataSet.drawValuesEnabled = false
+            
+            let data = PieChartData(dataSet: pieChartDataSet)
             self.pieChartData = data
         }
     }

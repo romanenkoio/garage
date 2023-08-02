@@ -15,7 +15,8 @@ extension BarChart {
     
     class ViewModel: BasicViewModel {
         var descriptionLabelVM = BasicLabel.ViewModel()
-        var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
+        @Published var records: [Record] = .empty
+        var year: Int?
     }
     
     class GenericViewModel<T: Equatable>: ViewModel {
@@ -48,10 +49,11 @@ extension BarChart {
             let chartDataSet = BarChartDataSet(entries: dataEntries, label: .empty.appendCurrency())
             chartDataSet.highlightColor = AppColors.green
             chartDataSet.highlightAlpha = 1
-            let data = BarChartData(dataSet: chartDataSet)
             chartDataSet.colors = [.init(hexString: "dbdadb")]
             chartDataSet.valueFont = .custom(size: 12, weight: .regular)
             chartDataSet.drawValuesEnabled = false
+            
+            let data = BarChartData(dataSet: chartDataSet)
             self.barChartData = data
         }
     }

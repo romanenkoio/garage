@@ -23,7 +23,7 @@ class CustomMarkerView: MarkerView {
                 label.frame = CGRect(x: 0, y: 0, width: 80, height: 50)
         }
         label.backgroundColor = AppColors.background.withAlphaComponent(0.6)
-        label.layer.cornerRadius = 8
+        label.layer.cornerRadius = 12
         label.layer.borderColor = UIColor(hexString: "#2042E9").cgColor
         label.layer.borderWidth = 1
         label.layer.masksToBounds = true

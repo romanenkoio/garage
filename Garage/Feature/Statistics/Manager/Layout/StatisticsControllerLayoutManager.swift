@@ -13,10 +13,39 @@ final class StatisticsControllerLayoutManager {
     
     private unowned let vc: StatisticsViewController
     
-    private(set) lazy var barChart = BarChart()
-    private(set) lazy var pieChart = PieChart()
-    private(set) lazy var flipView = FlipView()
-
+    private(set) var isFirstLayoutSubviews = true
+    
+    var maxConstraintConstant: CGFloat? {
+        didSet {
+            if isFirstLayoutSubviews {
+                tableViewMinConstraintConstant = maxConstraintConstant! / 2
+                makeConstraintsAfterLayout(with: maxConstraintConstant! + 20)
+                vc.view.layoutIfNeeded()
+                isFirstLayoutSubviews = false
+            }
+        }
+    }
+    
+    var tableViewMinConstraintConstant: CGFloat = 0
+    var animatedScrollConstraint: Constraint?
+    var previousContentOffsetY: CGFloat = 0
+    
+    private(set) lazy var chartsView = ChartsView()
+    
+    lazy var table: BasicTableView = {
+        let table = BasicTableView()
+        table.setupTable(
+            dataSource: vc,
+            delegate: vc
+        )
+        table.register(RecordCell.self)
+        table.register(BasicTableCell<DateHeaderView>.self)
+        table.table.separatorStyle = .none
+        table.table.contentInsetAdjustmentBehavior = .scrollableAxes
+        table.backgroundColor = AppColors.background
+        return table
+    }()
+    
     // - Init
     init(vc: StatisticsViewController) {
         self.vc = vc
@@ -36,18 +65,26 @@ fileprivate extension StatisticsControllerLayoutManager {
     }
     
     private func makeLayout() {
-        vc.contentView.addSubview(flipView)
+        vc.view.addSubview(chartsView)
     }
     
     private func makeConstraint() {
-        flipView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(UIEdgeInsets(top: 20))
+        chartsView.snp.makeConstraints { make in
+            make.top.equalTo(vc.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
         }
-        
-//        pieChart.snp.makeConstraints { make in
-//            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(top: 20))
-//            make.top.equalTo(barChart.snp.bottom).offset(30)
-//        }
     }
     
+    func makeConstraintsAfterLayout(with constant: CGFloat) {
+        vc.contentView.addSubview(table)
+        
+        vc.contentView.snp.remakeConstraints { make in
+            animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        table.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }

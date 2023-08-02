@@ -10,6 +10,8 @@ import DGCharts
 import SnapKit
 
 class BarChart: BasicView {
+    var viewModel: ViewModel?
+    
     lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .bar)
     
     lazy var descriptionLabel: BasicLabel = {
@@ -39,7 +41,7 @@ class BarChart: BasicView {
         view.scaleYEnabled = false
         view.legend.enabled = false
         view.rightAxis.drawLabelsEnabled = false
-        view.xAxis.labelFont = .custom(size: 12, weight: .regular)
+        view.xAxis.labelFont = .custom(size: 14, weight: .bold)
         view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
         view.xAxis.labelCount = 12
         view.xAxis.labelRotationAngle = -45
@@ -48,15 +50,6 @@ class BarChart: BasicView {
 //        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
         return view
-    }()
-    
-    private(set) lazy var yearBarStack: ScrollableStackView = {
-        let stack = ScrollableStackView()
-        stack.spacing = 5
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.contentInset = UIEdgeInsets(horizontal: 16)
-        return stack
     }()
     
     override init() {
@@ -88,26 +81,36 @@ class BarChart: BasicView {
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(25)
+            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.bottom.equalToSuperview()
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
+        self.viewModel = vm
         descriptionLabel.setViewModel(vm.descriptionLabelVM)
-        
-        vm.changePeriodSubject
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                self?.barChartView.highlightValue(nil)
-                self?.barChartView.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
-        }
-        .store(in: &cancellables)
-        
     }
+
 }
 
 extension BarChart: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         
+        viewModel?.records = RealmManager<Record>().read().filter({[weak self] record in
+            guard let self,
+                  let year = self.viewModel?.year else {
+                if record.date.components.month == Int(entry.x + 1) {
+                    return true
+                }
+                return false
+            }
+            
+            if record.date.components.month == Int(entry.x + 1),
+               record.date.components.year == year {
+                return true
+            } else {
+                return false
+            }
+        })
     }
 }

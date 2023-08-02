@@ -1,5 +1,5 @@
 //
-//  FlipView.swift
+//  ChartsView.swift
 //  Garage
 //
 //  Created by Vlad Kulakovsky  on 30.07.23.
@@ -8,16 +8,23 @@
 import Foundation
 import UIKit
 
-class FlipView: BasicView {
+class ChartsView: BasicView {
     private(set) lazy var barChart = BarChart()
     private(set) lazy var pieChart = PieChart()
     
-    private(set) lazy var scrollableStack = {
-        let stack = ScrollableStackView()
+    private(set) lazy var chartsStack = {
+        let stack = BasicStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.scrollView.delegate = self
         return stack
+    }()
+    
+    private(set) lazy var scrollView = {
+        let scroll = UIScrollView()
+        scroll.contentSize = CGSize(width: chartsStack.frame.width, height: chartsStack.frame.height)
+        scroll.showsHorizontalScrollIndicator = false
+        scroll.delegate = self
+        return scroll
     }()
     
     private(set) lazy var yearBarStack: ScrollableStackView = {
@@ -39,7 +46,6 @@ class FlipView: BasicView {
     }()
     
     var isRight = false
-    
     var scrollabelSubviews: [BasicView] = .empty
     var viewModel: ViewModel?
     
@@ -54,20 +60,26 @@ class FlipView: BasicView {
     }
     
     private func makeLayout() {
-        addSubview(scrollableStack)
+        addSubview(scrollView)
+        scrollView.addSubview(chartsStack)
+        chartsStack.addArrangedSubviews([barChart, pieChart])
         addSubview(pageControl)
-        scrollableStack.addArrangedSubviews([barChart, pieChart])
         addSubview(yearBarStack)
     }
     
     private func makeConstraints() {
-        scrollableStack.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
+        }
+        
+        chartsStack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(scrollView.snp.height)
         }
         
         pageControl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(scrollableStack.snp.bottom)
+            make.top.equalTo(scrollView.snp.bottom)
         }
         
         yearBarStack.snp.makeConstraints { make in
@@ -139,12 +151,15 @@ class FlipView: BasicView {
     }
 }
 
-extension FlipView: UIScrollViewDelegate {
+extension ChartsView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.x, scrollView.contentSize.height)
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        pageControl.currentPage = Int(pageNumber)
-        viewModel?.pageIndex = Int(pageNumber)
+        guard pageNumber.isNaN else {
+            pageControl.currentPage = Int(pageNumber)
+            viewModel?.pageIndex = Int(pageNumber)
+            return
+        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -159,8 +174,11 @@ extension FlipView: UIScrollViewDelegate {
                 isRight = false
             }
             let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-            pageControl.currentPage = Int(pageNumber)
-            viewModel?.pageIndex = Int(pageNumber)
+            guard pageNumber.isNaN else {
+                pageControl.currentPage = Int(pageNumber)
+                viewModel?.pageIndex = Int(pageNumber)
+                return
+            }
         }
     }
     
@@ -176,7 +194,10 @@ extension FlipView: UIScrollViewDelegate {
         }
         
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        pageControl.currentPage = Int(pageNumber)
-        viewModel?.pageIndex = Int(pageNumber)
+        guard pageNumber.isNaN else {
+            pageControl.currentPage = Int(pageNumber)
+            viewModel?.pageIndex = Int(pageNumber)
+            return
+        }
     }
 }
