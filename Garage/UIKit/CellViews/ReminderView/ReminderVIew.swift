@@ -102,12 +102,14 @@ class ReminderView: BasicView {
         guard let days = vm.reminder.days else { return }
         
         switch days {
-        case 0...7:
-            self.dateLabel.textColor = AppColors.warning
-            dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
-        case 7...14:
+        case _ where days <= 7:
             self.dateLabel.textColor = AppColors.error
             dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "error_ic"))
+
+        case 7...14:
+            self.dateLabel.textColor = AppColors.warning
+            dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
+            
         default:
             self.dateLabel.textColor = AppColors.subtitle
         }
