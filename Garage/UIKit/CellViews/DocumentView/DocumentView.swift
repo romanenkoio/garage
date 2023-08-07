@@ -96,7 +96,7 @@ class DocumentView: BasicView {
             else { return }
             
             switch days {
-            case 0...15:
+            case 0...20:
                 self.dateLabel.textColor = AppColors.warning
                 dateLabel.attributedText = vm.dateLabelVM.textValue.clearText.insertImage(UIImage(named: "warning_ic"))
             case _ where days <= 0:
