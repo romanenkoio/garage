@@ -41,15 +41,17 @@ extension String {
         return result
     }
     
-    func insertImage(_ image: UIImage?, offset: CGPoint = CGPoint(x: -5, y: -3)) -> NSAttributedString {
+    func insertImage(
+        _ image: UIImage?,
+        offset: CGPoint = CGPoint(x: -5, y: -3),
+        size: CGSize = CGSize(width: 15, height: 15)
+    ) -> NSAttributedString {
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = image
         imageAttachment.bounds = CGRect(
             origin: offset,
-            size: CGSize(
-                width: imageAttachment.image?.size.width ?? .zero,
-                height: imageAttachment.image?.size.height ?? .zero
-            ))
+            size: size
+        )
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
