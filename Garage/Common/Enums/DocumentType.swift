@@ -41,7 +41,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
     var image: UIImage? {
         switch self {
         case .license:                  return UIImage(named: "license")
-        case .pass:                  return UIImage(named: "license")
+        case .pass:                     return UIImage(named: "license")
         case .medical:                  return UIImage(named: "medLicense")
         case .insurance:                return UIImage(named: "insuranse")
         case .carPasport:               return UIImage(named: "insuranse")
