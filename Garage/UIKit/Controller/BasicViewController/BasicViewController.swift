@@ -173,10 +173,10 @@ extension BasicViewController {
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
         
-        let proImageView = UIImageView(frame: .init(x: 0, y: 0, width: 61, height: 30))
-        proImageView.image = UIImage(named: "sub")
-        proImageView.contentMode = .scaleAspectFit
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
+//        let proImageView = UIImageView(frame: .init(x: 0, y: 0, width: 61, height: 30))
+//        proImageView.image = UIImage(named: "sub")
+//        proImageView.contentMode = .scaleAspectFit
+//        navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
     }
 }
 

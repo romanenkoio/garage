@@ -30,6 +30,11 @@ class BasicCoordinator: Routable {
             share(content)
         case .presentOnTop(let vc):
             self.vc.present(vc)
+        case .premium:
+            guard let tabbar = self.vc.tabBarController else { return }
+            let vc = PremiumViewController(vm: .init())
+            vc.modalPresentationStyle = .overCurrentContext
+            tabbar.present(vc)
         }
     }
     
@@ -68,6 +73,8 @@ class BasicModalCoordinator: BasicCoordinator {
         case .share:
             break
         case .presentOnTop:
+            break
+        case .premium:
             break
         }
     }

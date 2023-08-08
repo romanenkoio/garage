@@ -48,7 +48,11 @@ extension GarageViewController {
             var cells = [[Cells]]()
     
             self.cars = RealmManager<Car>().read()
-            var carCells = [Cells](repeating: .car, count: cars.count)
+            if cars.isEmpty {
+                tableVM.setCells(.empty)
+                return
+            }
+            let carCells = [Cells](repeating: .car, count: cars.count)
                 
             cells.append(carCells)
             cells.append([.addCar])

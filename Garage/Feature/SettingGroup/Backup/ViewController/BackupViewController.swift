@@ -71,6 +71,8 @@ extension BackupViewController {
     }
     
     private func hadleSelection(_ type: DataSubSetting) {
+        guard type.isEnabled else { return }
+        
         switch type {
         case .transfer:
             transferBackup()

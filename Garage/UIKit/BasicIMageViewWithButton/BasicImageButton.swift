@@ -18,7 +18,7 @@ class BasicImageButton: BasicView {
     private lazy var actionButton = BasicButton()
     private lazy var actionImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFill
         view.isUserInteractionEnabled = true
         return view
     }()

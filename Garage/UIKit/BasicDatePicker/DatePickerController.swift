@@ -22,7 +22,7 @@ class DatePickerController: UIViewController {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .wheels
         picker.datePickerMode = .date
-        picker.locale = Locale(identifier: "ru_BY")
+        picker.locale = Locale.current
         return picker
     }()
     
@@ -78,8 +78,8 @@ class DatePickerController: UIViewController {
     
     private func makeConstraints() {
         contentView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(40)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.top.bottom.equalToSuperview()
         }
         
         descriptionLabel.snp.makeConstraints { make in
@@ -106,7 +106,7 @@ class DatePickerController: UIViewController {
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(datePicker.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 60))
-            make.bottom.equalToSuperview().offset(-55)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     

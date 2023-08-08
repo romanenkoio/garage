@@ -26,8 +26,8 @@ class OnboardingView: BasicView {
         self.addSubview(onboardingImage)
         self.addSubview(titleLabel)
         self.addSubview(subtitleLabel)
-        titleLabel.textInsets = .init(top: 12, bottom: 16, horizontal: 20)
-        subtitleLabel.textInsets = .init(bottom: 28, horizontal: 20)
+        titleLabel.textInsets = .init(top: 5, bottom: 16, horizontal: 20)
+        subtitleLabel.textInsets = .init(bottom: 15, horizontal: 20)
         subtitleLabel.textColor = UIColor(hexString: "#ADADAD")
         titleLabel.textAlignment = .center
         subtitleLabel.textAlignment = .center

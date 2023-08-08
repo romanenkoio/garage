@@ -169,11 +169,15 @@ class BasicList<T: Equatable>: BasicView {
                     font: .custom(size: 17, weight: .medium),
                     textColor: .textBlack
                 )
+                if let text = vm?.titles[index] {
+                    self.vm?.checkChanged(text)
+                }
             } else {
                 label.layer.borderColor = UIColor.clear.cgColor
             }
         }
         self.isOpen = false
+        
     }
 
     private func makeItems() {

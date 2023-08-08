@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
-
+import Qonversion
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initSystem()
         initLocalization()
         initMap()
+        initQonversion()
         return true
     }
 
@@ -58,6 +59,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSystem() {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         IQKeyboardManager.shared.enable = true
+    }
+    
+    private func initQonversion() {
+        let config = Qonversion.Configuration(projectKey: "0YQ7SevbfZU8mpYc3OFQOwL_UAcXpw1H", launchMode: .subscriptionManagement)
+        Qonversion.initWithConfig(config)
+        QounversionPaidSubscriptionManager().getOfferings { result in
+            switch result {
+            case .success(let success):
+                Environment.avaliblePlans = success
+            case .failure:
+                print("[SUBSCRIPTIONS]: Subs not avalible")
+            }
+        }
     }
 }
 
