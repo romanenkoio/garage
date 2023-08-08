@@ -21,14 +21,13 @@ extension SettingsViewController {
         }
         
         func setCells() {
-            let isPremium: Bool = (SettingsManager.sh.read(.isPremium) ?? false)
             settingsPoint = [
                 [.reminders],
                 [.backup],
                 [.contactUs, .language]
             ]
             
-            if !isPremium {
+            if !Environment.isPrem {
                 settingsPoint.insert([.banner], at: 0)
                 settingsPoint.insert([.subscription, .getPremium(false)], at: 1)
             } else {
@@ -36,9 +35,9 @@ extension SettingsViewController {
             }
             
 #if DEBUG
-            if isPremium {
+            if Environment.isPrem {
                 settingsPoint.remove(at: 0)
-                settingsPoint.insert([.subscription, .getPremium(isPremium)], at: 1)
+                settingsPoint.insert([.subscription, .getPremium(Environment.isPrem)], at: 1)
             }
 #endif
             
