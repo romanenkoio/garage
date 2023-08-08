@@ -39,9 +39,9 @@ class GarageViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         let isFirst: Bool = SettingsManager.sh.read(.isFirstLaunch) ?? true
-//        if isFirst {
+        if isFirst {
             coordinator.navigateTo(GarageNavigationRoute.onboarding)
-//        }
+        }
         LocationManager.shared.checkLocationService()
         switch LocationManager.shared.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
