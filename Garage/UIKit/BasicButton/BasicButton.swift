@@ -17,7 +17,7 @@ enum ButtonStyle {
     case removeImage
     case basicLightTitle
     case basicDarkTitle(backgroundColor: UIColor? = nil)
-    case popup(color: UIColor? = nil)
+    case popup(color: UIColor? = nil, corner: CGFloat = 12)
     case complete
 }
 
@@ -60,9 +60,9 @@ class BasicButton: UIButton {
             
             guard let vm else { return }
             switch vm.style {
-            case .popup:
+            case .popup(_, let corner):
                 make.height.equalTo(48)
-                self.cornerRadius = 12
+                self.cornerRadius = corner
             case .complete:
                 make.height.equalTo(28)
                 self.cornerRadius = 12
@@ -100,7 +100,7 @@ class BasicButton: UIButton {
                 if let color {
                     backgroundColor = color
                 }
-            case .popup(color: let color):
+            case .popup(color: let color, _):
             setTitleColor(.primaryBlue, for: .normal)
             if let color {
                 backgroundColor = color
@@ -126,7 +126,7 @@ class BasicButton: UIButton {
                 backgroundColor = value ? color : color.withAlphaComponent(0.5)
             case  .basicLightTitle, .removeImage:
                 backgroundColor = .clear
-            case .popup(let color):
+            case .popup(let color, _):
                 backgroundColor = color ?? (value ? .primaryGray : .secondaryGray)
             case .complete:
                 backgroundColor = UIColor(hexString: "#1C9837")
