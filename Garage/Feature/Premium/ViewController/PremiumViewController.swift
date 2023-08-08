@@ -59,11 +59,18 @@ class PremiumViewController: BasicViewController {
         layout.privacyLabel.setViewModel(vm.privacyVM)
         layout.termsLabel.setViewModel(vm.termsVM)
         layout.restoreLabel.setViewModel(vm.restoreVM)
+
         vm.closeImageVM.action = { [weak self] in
             self?.coordinator.navigateTo(CommonNavigationRoute.close)
         }
+        
+        vm.restoreVM.action = { [weak self] in
+            QounversionPaidSubscriptionManager().restore { error in
+                guard error == nil else { return }
+                self?.coordinator.navigateTo(CommonNavigationRoute.close)
+            }
+        }
     }
-    
 }
 
 // MARK: -

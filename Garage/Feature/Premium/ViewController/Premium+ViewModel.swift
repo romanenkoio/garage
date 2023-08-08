@@ -14,9 +14,9 @@ extension PremiumViewController {
         let logoImageVM = BasicImageView.ViewModel(image: UIImage(named: "prem_logo"), mode: .scaleAspectFit)
         let closeImageVM: ActionImage.ViewModel
         let startTrialButton = BasicButton.ViewModel(title: "Начать бесплатно 3 дня", style: .popup(color: AppColors.green))
-        let restoreVM = BasicLabel.ViewModel(.text("Восстановить"))
-        let termsVM = BasicLabel.ViewModel(.text("Условия"))
-        let privacyVM = BasicLabel.ViewModel(.text("Приватность"))
+        let restoreVM = TappableLabel.ViewModel(.text("Восстановить"))
+        let termsVM = TappableLabel.ViewModel(.text("Условия"))
+        let privacyVM = TappableLabel.ViewModel(.text("Приватность"))
         @Published var plans: [SelectPlanView.ViewModel] = .empty
         
         
