@@ -28,20 +28,23 @@ enum OnboardingArticle: CaseIterable {
     case servises
     case history
     case warnings
+    case documents
     
     var image: UIImage? {
         switch self {
         case .servises:     return UIImage(named: "service_onb")
         case .history:      return UIImage(named: "history")
         case .warnings:     return UIImage(named: "warning")
+        case .documents:    return UIImage(named: "documents")
         }
     }
     
     var title: String {
         switch self {
         case .servises:     return "Добавляйте свои сервисы"
-        case .history:      return "Добавляйте свои сервисы"
+        case .history:      return "Веди историю обслуживания авто"
         case .warnings:     return "Получай важные напоминания"
+        case .documents:    return "Держи все документы в одном месте"
         }
     }
     
@@ -50,6 +53,7 @@ enum OnboardingArticle: CaseIterable {
         case .servises:     return "Теперь под рукой контакты всех автосервисов"
         case .history:      return "История обслуживания авто всегда доступна"
         case .warnings:     return "Вы не упустите ничего важного"
+        case .documents:    return "Мы напомним о сроке действия документа"
         }
     }
 }
