@@ -87,7 +87,7 @@ extension CreateRecordViewController {
                 shortTypeVM.inputVM.setText(reminder.short)
                 commenntInputVM.inputVM.text = reminder.comment.wrapped
                 dateInputVM.setNewDate(Date())
-                    dateInputVM.descriptionLabel = "Дата выполнения".localized
+                dateInputVM.descriptionLabel = "Дата выполнения".localized
                 saveButtonVM.buttonVM.style = .createFromreminder
                 saveButtonVM.buttonVM.title = "Выполнить".localized
             case .create:

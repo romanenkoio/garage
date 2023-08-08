@@ -97,18 +97,18 @@ fileprivate extension OnboardingControllerLayoutManager {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(skipLabel.snp.bottom).offset(-3)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(collectionView.snp.width).multipliedBy(1.575)
+            make.height.equalTo(collectionView.snp.width).multipliedBy(1.375)
         }
         
         page.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.greaterThanOrEqualTo(collectionView.snp.bottom)
-            make.bottom.equalTo(nextButton.snp.top).offset(-28)
+            make.bottom.equalTo(nextButton.snp.top).offset(-15)
         }
         
         nextButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-15)
         }
     }
 }

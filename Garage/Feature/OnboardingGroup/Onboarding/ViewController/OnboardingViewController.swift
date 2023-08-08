@@ -73,13 +73,20 @@ extension OnboardingViewController {
 }
 
 extension OnboardingViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return vm.collectionVM.cells.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let point = vm.collectionVM.cells[safe: indexPath.row],
-              let onboardingCell = collectionView.dequeueReusableCell(BasicCollectionCell<OnboardingView>.self, for: indexPath) else { return UICollectionViewCell() }
+              let onboardingCell = collectionView.dequeueReusableCell(BasicCollectionCell<OnboardingView>.self, for: indexPath)
+        else { return UICollectionViewCell() }
         
         onboardingCell.mainView.setViewModel(.init(type: point))
         return onboardingCell
@@ -91,7 +98,11 @@ extension OnboardingViewController: UICollectionViewDelegate {
 }
 
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return collectionView.bounds.size
     }
 }
