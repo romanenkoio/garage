@@ -42,7 +42,7 @@ final class CarInfoControllerLayoutManager {
             carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
             carTopInfo.alpha = 1 - carTopAlphaScale
             vc.contentView.cornerRadius = contentViewCornerScale
-            
+            print(contentViewCornerScale)
             switch newConstraintConstant {
                 case 0...1:
                     upTimer.upstream.connect().cancel()

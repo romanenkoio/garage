@@ -40,7 +40,14 @@ class StatisticsViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.maxConstraintConstant = layout.chartsView.frame.size.height + 20
+        if layout.isFirstLayoutSubviews {
+            
+            layout.maxConstraintConstant = layout.chartsView.frame.size.height + 20
+            
+            layout.tableViewMinConstraintConstant = layout.chartsView.descriptionLabel.frame.height
+            
+            layout.startChartsOrigin = layout.chartsView.containerView.frame.origin
+        }
     }
 
     override func configure() {
@@ -49,8 +56,8 @@ class StatisticsViewController: BasicViewController {
     }
 
     override func binding() {
-        if let chartsViewVM = vm.chartsViewVM {
-            layout.chartsView.setViewModel(chartsViewVM)
+        if let chartsVM = vm.chartsViewVM {
+            layout.chartsView.setViewModel(chartsVM)
         }
         
         layout.table.setViewModel(vm.tableVM)
@@ -74,6 +81,7 @@ class StatisticsViewController: BasicViewController {
             .sink {[weak self] cells in
                 guard let self else { return }
                 self.layout.table.reload()
+                self.layout.table.table.contentSize.height = self.view.frame.height
             }
             .store(in: &cancellables)
     }
@@ -140,7 +148,7 @@ extension StatisticsViewController: UITableViewDelegate {
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
-        let currentConstraintConstant = layout.animatedScrollConstraint!.layoutConstraints.first!.constant
+        let currentConstraintConstant = layout.animatedTableViewConstraint!.layoutConstraints.first!.constant
            let maxConstraintConstant = layout.maxConstraintConstant!
             
             let minConstraintConstant = layout.tableViewMinConstraintConstant
@@ -153,7 +161,7 @@ extension StatisticsViewController: UITableViewDelegate {
                 layout.downTimer.upstream.connect().cancel()
                 layout.upTimer.sink {[weak self] _ in
                     guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 1.2,
+                    if newConstraintConstant <= maxConstraintConstant ,
                        newConstraintConstant > layout.tableViewMinConstraintConstant {
                         layout.newConstraintConstant -= 0.1
                     }

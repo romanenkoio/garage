@@ -108,6 +108,13 @@ class BasicTableView: BasicView {
         }
     }
     
+    private func removeEmptyView() {
+        emptyStack.removeFromSuperview()
+        table.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     func setViewModel(_ vm: ViewModel) {
         cancellables.removeAll()
 
@@ -139,6 +146,8 @@ class BasicTableView: BasicView {
                         self?.largeMakeConstraint()
                     case .small:
                         self?.smallMakeConstraints()
+                    case .null:
+                        self?.removeEmptyView()
                 }
             }
         }

@@ -29,12 +29,10 @@ extension PieChart {
 
         func setItems(
             list: [Item],
-            title: TextValue,
             pieItems: ([Item]) -> PieChartItem
         ) {
             self.items = list
             self.pieItems = pieItems(list)
-            descriptionLabelVM.textValue = title
             makeItems()
         }
         

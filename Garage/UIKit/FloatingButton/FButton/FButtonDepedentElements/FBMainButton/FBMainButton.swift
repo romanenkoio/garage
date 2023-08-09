@@ -21,7 +21,7 @@ class FloatingButtonMainButton: UIButton {
     
     
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
+
         clipsToBounds = true
         cornerRadius = 36
         backgroundColor = AppColors.blue

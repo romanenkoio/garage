@@ -11,30 +11,35 @@ import SnapKit
 
 final class StatisticsControllerLayoutManager {
     
+    // - Property
     private unowned let vc: StatisticsViewController
+    var previousContentOffsetY: CGFloat = 0
+    var tableViewMinConstraintConstant: CGFloat = 0
+    var animatedTableViewConstraint: Constraint?
     
+    // - Flag
     private(set) var isFirstLayoutSubviews = true
     
-    let upTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
-    let downTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
+    // - Animation properties
+    let upTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
+    let downTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
     
-    var tableViewMinConstraintConstant: CGFloat = 0
-    var animatedScrollConstraint: Constraint?
-    var previousContentOffsetY: CGFloat = 0
+    var startChartsOrigin = CGPoint()
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animatedScrollConstraint?.update(offset: newConstraintConstant)
-            let carTopAnimationScale = max(1.0,min(-1.0 - newConstraintConstant / 200, 1))
-            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
-            let contentViewCornerScale = max(newConstraintConstant / 9, 0)
+            animatedTableViewConstraint?.update(offset: newConstraintConstant)
             
-            chartsView.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
-            print(carTopAnimationScale)
+            let tableViewCornerScale = max(newConstraintConstant / 22.5, 0)
+            let chartAnimationScale = min(-startChartsOrigin.y + newConstraintConstant / 3.7, startChartsOrigin.y)
+            
+            chartsView.containerView.frame.origin.y = chartAnimationScale
+            table.cornerRadius = tableViewCornerScale
+            
             switch newConstraintConstant {
-                case tableViewMinConstraintConstant-3...tableViewMinConstraintConstant+3:
+                case tableViewMinConstraintConstant-0.1...tableViewMinConstraintConstant+0.1:
                     upTimer.upstream.connect().cancel()
-                case maxConstraintConstant!-3...maxConstraintConstant!+3:
+                case maxConstraintConstant!-1...maxConstraintConstant!+1:
                     downTimer.upstream.connect().cancel()
                 default: break
             }
@@ -43,15 +48,14 @@ final class StatisticsControllerLayoutManager {
     
     var maxConstraintConstant: CGFloat? {
         didSet {
-            if isFirstLayoutSubviews {
-                tableViewMinConstraintConstant = maxConstraintConstant! / 2
-                makeConstraintsAfterLayout(with: maxConstraintConstant!)
-                vc.view.layoutIfNeeded()
-                isFirstLayoutSubviews = false
-            }
+            tableViewMinConstraintConstant = maxConstraintConstant! / 2
+            makeConstraintsAfterLayout(with: maxConstraintConstant!)
+            vc.view.layoutIfNeeded()
+            isFirstLayoutSubviews = false
         }
     }
     
+    // - UIComponents
     private(set) lazy var chartsView = ChartsView()
     
     lazy var table: BasicTableView = {
@@ -65,6 +69,7 @@ final class StatisticsControllerLayoutManager {
         table.table.separatorStyle = .none
         table.table.contentInsetAdjustmentBehavior = .scrollableAxes
         table.backgroundColor = AppColors.background
+        table.cornerRadius = 20
         return table
     }()
     
@@ -101,7 +106,7 @@ fileprivate extension StatisticsControllerLayoutManager {
     func makeConstraintsAfterLayout(with constant: CGFloat) {
         vc.contentView.removeFromSuperview()
         table.snp.makeConstraints { make in
-            animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
+            animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

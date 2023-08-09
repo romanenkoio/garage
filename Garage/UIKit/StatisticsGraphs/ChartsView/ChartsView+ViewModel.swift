@@ -14,11 +14,13 @@ extension ChartsView {
         let pieChartVM = PieChart.GenericViewModel<Record>()
         var barChartSuggestion: SuggestionView.ViewModel?
         var pieChartSuggestion: SuggestionView.ViewModel?
+        var barDescriptionLabelVM = BasicLabel.ViewModel()
+        var pieDescriptionLabelVM = BasicLabel.ViewModel()
         
         @Published var suggestions: [SuggestionView.ViewModel] = []
         var changePeriodSubject: PassthroughSubject<Void, Never> = .init()
         
-        var pageIndex = 0 {
+        @Published var pageIndex = 0 {
             didSet {
                 switch pageIndex {
                     case 0:
@@ -61,9 +63,9 @@ extension ChartsView {
                 barChartVM.year = nil
             }
             
+            barDescriptionLabelVM.textValue = title
             barChartVM.setItems(
-                list: data,
-                title: title) { items in
+                list: data) { items in
                     return items.map({($0.id, $0.date.components.month ?? 0, $0.cost ?? 0)})
                 }
         }
@@ -79,9 +81,9 @@ extension ChartsView {
                 pieChartVM.year = nil
             }
             
+            pieDescriptionLabelVM.textValue = title
             pieChartVM.setItems(
-                list: data,
-                title: title) { items in
+                list: data) { items in
                     return items.map({($0.cost ?? 0, $0.short)})
                 }
         }

@@ -12,7 +12,6 @@ extension StatisticsViewController {
     final class ViewModel: BasicViewModel {
         
         let chartsViewVM: ChartsView.ViewModel?
-        
         let tableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
 
@@ -26,7 +25,7 @@ extension StatisticsViewController {
             tableVM.isHiddenButton = true
             
             tableVM.setupEmptyState(
-                type: .small,
+                type: .null,
                 labelVM: .init(.text("Выберите что-то..")),
                 sublabelVM: .init(.text("Придумать текст")),
                 addButtonVM: .init(),
