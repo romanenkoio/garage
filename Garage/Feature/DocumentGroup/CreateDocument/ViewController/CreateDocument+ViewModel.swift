@@ -44,8 +44,8 @@ extension CreateDocumentViewController {
                     break
                 case .create:
                     save()
-                case .edit(let object):
-                    edit(object)
+                case .edit:
+                    edit()
                 }
                 self.saveCompletion?()
             }
@@ -114,6 +114,10 @@ extension CreateDocumentViewController {
             )
             RealmManager<Document>().write(object: document)
             
+            addPhoto(document: document)
+        }
+        
+        private func addPhoto(document: Document) {
             self.imageListVM.items.forEach { image in
                 guard let data = image.jpegData(compressionQuality: 1) else { return }
                 let photo = Photo(document, image: data)
@@ -121,7 +125,7 @@ extension CreateDocumentViewController {
             }
         }
         
-        private func edit(_ doc: Document) {
+        private func edit() {
             guard case let .edit(document) = mode else {
               return
             }
@@ -134,6 +138,12 @@ extension CreateDocumentViewController {
                         document.startDate = datePickerVM.startDate
                         document.endDate = datePickerVM.endDate
                     }
+                    
+                    RealmManager<Photo>().read().filter({ $0.documentId == document.id}).forEach { photo in
+                        RealmManager().delete(object: photo)
+                    }
+                    
+                    self?.addPhoto(document: document)
                 } catch let error {
                     print(error)
                 }

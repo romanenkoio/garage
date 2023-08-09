@@ -14,6 +14,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
     case insurance
     case carPasport
     case techChek
+    case pass
     case unlisted(String?)
 
     static var allCases: [DocumentType] = [
@@ -21,7 +22,8 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
         .medical,
         .insurance,
         .carPasport,
-        .techChek
+        .techChek,
+        .pass
     ]
 
     var title: String {
@@ -31,6 +33,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
         case .insurance:                return "Страховка".localized
         case .carPasport:               return "Технический паспорт".localized
         case .techChek:                 return "Технический осмотр".localized
+        case .pass:                     return "Пропуск"
         case .unlisted(let string):     return string ?? ""
         }
     }
@@ -38,12 +41,12 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
     var image: UIImage? {
         switch self {
         case .license:                  return UIImage(named: "license")
+        case .pass:                     return UIImage(named: "license")
         case .medical:                  return UIImage(named: "medLicense")
         case .insurance:                return UIImage(named: "insuranse")
         case .carPasport:               return UIImage(named: "insuranse")
         case .techChek:                 return UIImage(named: "techDoc")
         case .unlisted:                 return nil
-            
         }
     }
 }

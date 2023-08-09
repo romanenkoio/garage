@@ -38,8 +38,8 @@ class GarageViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
-        let isFirst: Bool? = SettingsManager.sh.read(.isFirstLaunch)
-        if isFirst == true || isFirst == nil {
+        let isFirst: Bool = SettingsManager.sh.read(.isFirstLaunch) ?? true
+        if isFirst {
             coordinator.navigateTo(GarageNavigationRoute.onboarding)
         }
         LocationManager.shared.checkLocationService()
@@ -164,7 +164,7 @@ extension GarageViewController: UITableViewDelegate {
         case .addCar:
             let cars: [Car] = RealmManager().read()
             if !Environment.isPrem, cars.count >= 1 {
-                //                show premium
+                self.coordinator.navigateTo(CommonNavigationRoute.premium)
             } else {
                 self.coordinator.navigateTo(GarageNavigationRoute.createCar)
             }

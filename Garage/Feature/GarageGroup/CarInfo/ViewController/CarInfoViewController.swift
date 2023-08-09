@@ -92,8 +92,7 @@ class CarInfoViewController: BasicViewController {
                               if isPrem {
                                   coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
                               } else if !isPrem, isReminderExist {
-                                  coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                                  //                                    MARK: open premium
+                                  coordinator.navigateTo(CommonNavigationRoute.premium)
                               } else if !isPrem, !isReminderExist {
                                   coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
                                   

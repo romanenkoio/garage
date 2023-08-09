@@ -68,7 +68,7 @@ class FullSizePhotoViewController: BasicModalPresentationController {
         contentView.isHidden = true
         view.addSubview(collectionView)
         view.addSubview(navView)
-        view.cornerRadius = 12
+        view.cornerRadius = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {

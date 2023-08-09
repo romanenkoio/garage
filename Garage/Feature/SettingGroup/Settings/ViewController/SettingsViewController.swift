@@ -66,10 +66,6 @@ class SettingsViewController: BasicViewController {
             let current: Bool = (SettingsManager.sh.read(.useReminder) ?? true)
             SettingsManager.sh.write(value: !current, for: .useReminder)
             PushManager.sh.reschedule()
-        case .mileageReminder:
-            let current: Bool = (SettingsManager.sh.read(.mileageReminder) ?? true)
-            PushManager.sh.reschedule()
-            SettingsManager.sh.write(value: !current, for: .mileageReminder)
         case .backup:
             showLoader()
             readBackupDate { [weak self] date in

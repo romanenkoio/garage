@@ -25,7 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         handleImport(by: urlContext.url)
-       
     }
     
     private func handleImport(by ulr: URL) {
@@ -51,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let popup = Dialog(vm: popupVM)
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve
-        topVC.present(popup)
+        topVC.tabBarController?.present(popup)
     
     }
 }

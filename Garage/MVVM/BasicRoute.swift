@@ -13,4 +13,5 @@ enum CommonNavigationRoute: Routable {
     case confirmPopup(vm: ConfirmPopupViewController.ViewModel)
     case share([Any])
     case presentOnTop(UIViewController)
+    case premium
 }

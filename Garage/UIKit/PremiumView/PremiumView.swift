@@ -48,6 +48,21 @@ final class PremiumView: BasicView {
     override func initView() {
         makeLayout()
         makeConstraint()
+        setupGestures()
+    }
+    
+    private func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openPrem))
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc private func openPrem() {
+        guard let controller = UIApplication.shared.topController,
+        let tabbar = controller.tabBarController
+        else { return }
+        let vc = PremiumViewController(vm: .init())
+        vc.modalPresentationStyle = .overCurrentContext
+        tabbar.present(vc, animated: true)
     }
     
     private func makeLayout() {
