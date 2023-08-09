@@ -72,6 +72,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("[SUBSCRIPTIONS]: Subs not avalible")
             }
         }
+        
+        QounversionPaidSubscriptionManager().subscriptionStatus { result in
+            switch result {
+            case .success(let subscription):
+                switch subscription?.status {
+                case .active:
+                    Environment.isPrem = true
+                case .inactive, .none:
+                    Environment.isPrem = false
+                }
+                
+            case .failure(_):
+                Environment.isPrem = false
+            }
+        }
     }
 }
 

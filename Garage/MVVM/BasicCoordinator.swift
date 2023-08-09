@@ -31,10 +31,7 @@ class BasicCoordinator: Routable {
         case .presentOnTop(let vc):
             self.vc.present(vc)
         case .premium:
-            guard let tabbar = self.vc.tabBarController else { return }
-            let vc = PremiumViewController(vm: .init())
-            vc.modalPresentationStyle = .overCurrentContext
-            tabbar.present(vc)
+            TabBarController.sh.showPremium()
         }
     }
     

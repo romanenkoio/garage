@@ -9,9 +9,11 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    let dataSource: [TabBarController.ViewModel.TabItem] = [.garage, .documents, .services]
+    private let dataSource: [TabBarController.ViewModel.TabItem] = [.garage, .documents, .services]
     
-    init() {
+    static let sh = TabBarController()
+    
+    private init() {
         super.init(nibName: nil, bundle: nil)
         tabBar.tintColor = .primaryBlue
         tabBar.unselectedItemTintColor = .lightGray
@@ -56,6 +58,12 @@ final class TabBarController: UITabBarController {
         self.viewControllers?[safe: 1]?.tabBarItem.badgeValue = documentsBadge.isEmpty ? nil : "\(documentsBadge.count)"
 
         UIApplication.shared.applicationIconBadgeNumber = carBadge.count + documentsBadge.count
+    }
+    
+    func showPremium() {
+        let vc = PremiumViewController(vm: .init())
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc)
     }
 }
 

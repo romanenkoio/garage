@@ -57,12 +57,7 @@ final class PremiumView: BasicView {
     }
     
     @objc private func openPrem() {
-        guard let controller = UIApplication.shared.topController,
-        let tabbar = controller.tabBarController
-        else { return }
-        let vc = PremiumViewController(vm: .init())
-        vc.modalPresentationStyle = .overCurrentContext
-        tabbar.present(vc, animated: true)
+        TabBarController.sh.showPremium()
     }
     
     private func makeLayout() {
