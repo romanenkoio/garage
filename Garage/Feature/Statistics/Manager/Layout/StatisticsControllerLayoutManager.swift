@@ -20,7 +20,7 @@ final class StatisticsControllerLayoutManager {
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
+    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
 //    let upTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
 //    let downTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
     
@@ -43,8 +43,6 @@ final class StatisticsControllerLayoutManager {
                 self.chartsView.containerView.frame.origin.y = chartAnimationScale
                 self.table.cornerRadius = tableViewCornerScale
             }
-
-            print(newConstraintConstant)
            
 //            switch newConstraintConstant {
 //                case tableViewMinConstraintConstant-0.1...tableViewMinConstraintConstant+0.1:
@@ -120,13 +118,5 @@ fileprivate extension StatisticsControllerLayoutManager {
             animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
-//                animatedConstraint = table.topAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.topAnchor, constant: maxConstraintConstant!)
-//
-//        NSLayoutConstraint.activate([
-//            animatedConstraint!,
-//            table.leadingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leadingAnchor),
-//            table.trailingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.trailingAnchor),
-//            table.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor),
-//        ])
     }
 }

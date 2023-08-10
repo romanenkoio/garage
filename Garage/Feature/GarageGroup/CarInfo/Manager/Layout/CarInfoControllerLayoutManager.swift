@@ -20,8 +20,7 @@ final class CarInfoControllerLayoutManager {
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let animator = UIViewPropertyAnimator(duration: 0.4, curve: .easeInOut)
-    
+    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
 //    let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
 //    let downTimer = Timer.publish(every: 0.003, on: .main, in: .common).autoconnect()
     var scrollMinConstraintConstant: CGFloat = 0
@@ -36,12 +35,12 @@ final class CarInfoControllerLayoutManager {
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animator.startAnimation(afterDelay: 0.3)
+            animator.startAnimation()
         
             animatedScrollConstraint?.update(offset: newConstraintConstant)
             
-            let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
-            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
+            let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / maxConstraintConstant!, 2))
+            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
             let contentViewCornerScale = max(newConstraintConstant / 9, 0)
            
             animator.addAnimations {[weak self] in
@@ -52,7 +51,9 @@ final class CarInfoControllerLayoutManager {
                 self.vc.contentView.cornerRadius = contentViewCornerScale
             }
             
-            print(contentViewCornerScale)
+
+            print(newConstraintConstant, scrollMinConstraintConstant)
+            
             switch newConstraintConstant {
                 case 0...1:
 //                    upTimer.upstream.connect().cancel()
@@ -73,8 +74,6 @@ final class CarInfoControllerLayoutManager {
                             titleLabelView.didChangeTitle = false
                         }
                     }
-                    
-//                print(newConstraintConstant)
                 default:
                     break
             }

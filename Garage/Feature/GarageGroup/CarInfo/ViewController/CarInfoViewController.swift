@@ -189,6 +189,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
 //                    }
 //                }
 //                .store(in: &cancellables)
+                
                 layout.newConstraintConstant = minConstraintConstant
                 
                 if newConstraintConstant == minConstraintConstant {
@@ -219,7 +220,7 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             if newConstraintConstant != currentScrollConstraintConstant,
                !tableView.isHidden, !layout.animator.isRunning {
-                scrollView.contentOffset.y = layout.previousContentOffsetY
+//                scrollView.contentOffset.y = layout.previousContentOffsetY
             }
             
             layout.previousContentOffsetY = scrollView.contentOffset.y
