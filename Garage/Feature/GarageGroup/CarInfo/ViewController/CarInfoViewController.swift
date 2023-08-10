@@ -22,7 +22,7 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     
-    private lazy var tableView = UITableView() {
+    lazy var tableView = UITableView() {
         didSet {
             tableView.delegate = self
             scroll.isScrollEnabled = false
@@ -50,6 +50,7 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
+        scroll.showsVerticalScrollIndicator = false
         layout.page.delegate = self
         layout.titleLabelView.defaultTitle = "Общая информация".localized
         self.navigationItem.titleView = layout.titleLabelView
@@ -58,11 +59,6 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -184,31 +180,45 @@ extension CarInfoViewController: UIScrollViewDelegate {
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
-                layout.downTimer.upstream.connect().cancel()
-                layout.upTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 1.2,
-                       newConstraintConstant > 0 {
-                        layout.newConstraintConstant -= 0.1
-                    }
+//                layout.downTimer.upstream.connect().cancel()
+//                layout.upTimer.sink {[weak self] _ in
+//                    guard let self else { return }
+//                    if newConstraintConstant <= maxConstraintConstant / 1.2,
+//                       newConstraintConstant > 0 {
+//                        layout.newConstraintConstant -= 0.1
+//                    }
+//                }
+//                .store(in: &cancellables)
+                layout.newConstraintConstant = minConstraintConstant
+                
+                if newConstraintConstant == minConstraintConstant {
+                    layout.animator.stopAnimation(true)
+                    
                 }
-                .store(in: &cancellables)
+
                 
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-                layout.upTimer.upstream.connect().cancel()
-                layout.downTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant {
-                        layout.newConstraintConstant += 0.1
-                    }
+//                layout.upTimer.upstream.connect().cancel()
+//                layout.downTimer.sink {[weak self] _ in
+//                    guard let self else { return }
+//                    if newConstraintConstant <= maxConstraintConstant {
+//                        layout.newConstraintConstant += 0.1
+//                    }
+//                }
+//                .store(in: &cancellables)
+//                layout.newConstraintConstant = maxConstraintConstant
+   
+                layout.newConstraintConstant = maxConstraintConstant
+                
+                if newConstraintConstant == maxConstraintConstant {
+                    layout.animator.stopAnimation(true)
+
                 }
-                .store(in: &cancellables)
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,
-               !tableView.isHidden {
-                layout.newConstraintConstant = newConstraintConstant
+               !tableView.isHidden, !layout.animator.isRunning {
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
             

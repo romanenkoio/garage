@@ -36,6 +36,7 @@ class StatisticsViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         disableScrollView()
         title = "Статистика"
+        layout.table.table.isPagingEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,7 +82,6 @@ class StatisticsViewController: BasicViewController {
             .sink {[weak self] cells in
                 guard let self else { return }
                 self.layout.table.reload()
-                self.layout.table.table.contentSize.height = self.view.frame.height
             }
             .store(in: &cancellables)
     }
@@ -158,32 +158,44 @@ extension StatisticsViewController: UITableViewDelegate {
             if contentMovesUp {
                 // Reducing the constraint's constant
                 newConstraintConstant = max(currentConstraintConstant - scrollDiff, minConstraintConstant)
-                layout.downTimer.upstream.connect().cancel()
-                layout.upTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant ,
-                       newConstraintConstant > layout.tableViewMinConstraintConstant {
-                        layout.newConstraintConstant -= 0.1
-                    }
+//                layout.downTimer.upstream.connect().cancel()
+//                layout.upTimer.sink {[weak self] _ in
+//                    guard let self else { return }
+//                    if newConstraintConstant <= maxConstraintConstant ,
+//                       newConstraintConstant > layout.tableViewMinConstraintConstant {
+//                        self.layout.newConstraintConstant -= 0.1
+//                    }
+//                }
+//                .store(in: &cancellables)
+              
+                layout.newConstraintConstant = minConstraintConstant
+                
+                if newConstraintConstant == minConstraintConstant {
+                    layout.animator.stopAnimation(true)
                 }
-                .store(in: &cancellables)
+                
             } else if contentMovesDown {
                 // Increasing the constraint's constant
                 newConstraintConstant = min(currentConstraintConstant - scrollDiff, maxConstraintConstant)
-                layout.upTimer.upstream.connect().cancel()
-                layout.downTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant {
-                        layout.newConstraintConstant += 0.1
-                    }
+//                layout.upTimer.upstream.connect().cancel()
+//                layout.downTimer.sink {[weak self] _ in
+//                    guard let self else { return }
+//                    if newConstraintConstant <= maxConstraintConstant {
+//                        self.layout.newConstraintConstant += 0.1
+//                    }
+//                }
+//                .store(in: &cancellables)
+                layout.newConstraintConstant = maxConstraintConstant
+                
+                if newConstraintConstant == maxConstraintConstant {
+                    layout.animator.stopAnimation(true)
                 }
-                .store(in: &cancellables)
             }
             
             // If the constant is modified, changing the height and disable scrolling
             if newConstraintConstant != currentConstraintConstant,
                !layout.table.table.isHidden {
-                layout.newConstraintConstant = newConstraintConstant
+//                layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
 

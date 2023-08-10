@@ -20,8 +20,10 @@ final class CarInfoControllerLayoutManager {
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
-    let downTimer = Timer.publish(every: 0.003, on: .main, in: .common).autoconnect()
+    let animator = UIViewPropertyAnimator(duration: 0.4, curve: .easeInOut)
+    
+//    let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
+//    let downTimer = Timer.publish(every: 0.003, on: .main, in: .common).autoconnect()
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
@@ -34,19 +36,27 @@ final class CarInfoControllerLayoutManager {
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
+            animator.startAnimation(afterDelay: 0.3)
+        
             animatedScrollConstraint?.update(offset: newConstraintConstant)
+            
             let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / 170, 2))
             let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
             let contentViewCornerScale = max(newConstraintConstant / 9, 0)
-
-            carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
-            carTopInfo.alpha = 1 - carTopAlphaScale
-            vc.contentView.cornerRadius = contentViewCornerScale
+           
+            animator.addAnimations {[weak self] in
+                guard let self else { return }
+                self.vc.view.layoutIfNeeded()
+                self.carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
+                self.carTopInfo.alpha = 1 - carTopAlphaScale
+                self.vc.contentView.cornerRadius = contentViewCornerScale
+            }
+            
             print(contentViewCornerScale)
             switch newConstraintConstant {
                 case 0...1:
-                    upTimer.upstream.connect().cancel()
-                    print(newConstraintConstant)
+//                    upTimer.upstream.connect().cancel()
+//                    print(newConstraintConstant)
                     if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
                         if !titleLabelView.didChangeTitle {
                             label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
@@ -55,7 +65,7 @@ final class CarInfoControllerLayoutManager {
                         }
                     }
                 case maxConstraintConstant!-3...maxConstraintConstant!+3:
-                    downTimer.upstream.connect().cancel()
+//                    downTimer.upstream.connect().cancel()
                     if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
                         if  titleLabelView.didChangeTitle {
                             label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
@@ -64,7 +74,7 @@ final class CarInfoControllerLayoutManager {
                         }
                     }
                     
-                print(newConstraintConstant)
+//                print(newConstraintConstant)
                 default:
                     break
             }

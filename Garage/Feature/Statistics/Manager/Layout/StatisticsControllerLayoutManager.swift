@@ -16,39 +16,48 @@ final class StatisticsControllerLayoutManager {
     var previousContentOffsetY: CGFloat = 0
     var tableViewMinConstraintConstant: CGFloat = 0
     var animatedTableViewConstraint: Constraint?
-    
     // - Flag
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let upTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
-    let downTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
+    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
+//    let upTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
+//    let downTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
     
     var startChartsOrigin = CGPoint()
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
+            animator.startAnimation()
+            
             animatedTableViewConstraint?.update(offset: newConstraintConstant)
             
-            let tableViewCornerScale = max(newConstraintConstant / 22.5, 0)
-            let chartAnimationScale = min(-startChartsOrigin.y + newConstraintConstant / 3.7, startChartsOrigin.y)
+            let offsetFromTableToCharts = 20.0
+            let tableViewCornerScale = min(20,max(newConstraintConstant / 20, 0))
+            let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
+            let chartAnimationScale = min(-startChartsOrigin.y + newConstraintConstant / chartSizeConstant, startChartsOrigin.y)
             
-            chartsView.containerView.frame.origin.y = chartAnimationScale
-            table.cornerRadius = tableViewCornerScale
-            
-            switch newConstraintConstant {
-                case tableViewMinConstraintConstant-0.1...tableViewMinConstraintConstant+0.1:
-                    upTimer.upstream.connect().cancel()
-                case maxConstraintConstant!-1...maxConstraintConstant!+1:
-                    downTimer.upstream.connect().cancel()
-                default: break
+            animator.addAnimations {[weak self] in
+                guard let self else { return }
+                self.vc.view.layoutIfNeeded()
+                self.chartsView.containerView.frame.origin.y = chartAnimationScale
+                self.table.cornerRadius = tableViewCornerScale
             }
+
+            print(newConstraintConstant)
+           
+//            switch newConstraintConstant {
+//                case tableViewMinConstraintConstant-0.1...tableViewMinConstraintConstant+0.1:
+//                    upTimer.upstream.connect().cancel()
+//                case maxConstraintConstant!-1...maxConstraintConstant!+1:
+//                    downTimer.upstream.connect().cancel()
+//                default: break
+//            }
         }
     }
     
     var maxConstraintConstant: CGFloat? {
         didSet {
-            tableViewMinConstraintConstant = maxConstraintConstant! / 2
             makeConstraintsAfterLayout(with: maxConstraintConstant!)
             vc.view.layoutIfNeeded()
             isFirstLayoutSubviews = false
@@ -67,6 +76,7 @@ final class StatisticsControllerLayoutManager {
         table.register(RecordCell.self)
         table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.table.contentInsetAdjustmentBehavior = .scrollableAxes
         table.backgroundColor = AppColors.background
         table.cornerRadius = 20
@@ -94,6 +104,7 @@ fileprivate extension StatisticsControllerLayoutManager {
     private func makeLayout() {
         vc.view.addSubview(chartsView)
         vc.view.addSubview(table)
+
     }
     
     private func makeConstraint() {
@@ -109,5 +120,13 @@ fileprivate extension StatisticsControllerLayoutManager {
             animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
+//                animatedConstraint = table.topAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.topAnchor, constant: maxConstraintConstant!)
+//
+//        NSLayoutConstraint.activate([
+//            animatedConstraint!,
+//            table.leadingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leadingAnchor),
+//            table.trailingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.trailingAnchor),
+//            table.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor),
+//        ])
     }
 }
