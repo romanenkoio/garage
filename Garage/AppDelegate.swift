@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initSystem()
         initLocalization()
         initMap()
-        initQonversion()
+        initQonversion()        
         return true
     }
 

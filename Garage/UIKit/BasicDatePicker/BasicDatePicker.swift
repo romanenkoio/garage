@@ -108,8 +108,10 @@ class BasicDatePicker: BasicTextField {
 
     @objc private func presentPicker() {
         _ = super.becomeFirstResponder()
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         let datePickerController = DatePickerController(vm: viewModel!.datePickerController)
-        sceneDelegate?.window?.rootViewController?.present(datePickerController, animated: true)
+        presentOnRootViewController(datePickerController, animated: true)
+//        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+//       
+//        sceneDelegate?.window?.rootViewController?.present(datePickerController, animated: true)
     }
 }

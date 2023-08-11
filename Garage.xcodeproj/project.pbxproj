@@ -1779,6 +1779,7 @@
 		7F9E92982A45FB9700DDC874 /* UtilsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9261AFA2A8653B6002E5021 /* DatePickerController */,
 				7F0E08E52A2FC766008C2B9A /* Selection */,
 				7F9E92992A45FBB700DDC874 /* ConfirmPopup */,
 				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
@@ -2186,6 +2187,15 @@
 			path = Backup;
 			sourceTree = "<group>";
 		};
+		B9261AFA2A8653B6002E5021 /* DatePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
+				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
+			);
+			path = DatePickerController;
+			sourceTree = "<group>";
+		};
 		B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -2440,8 +2450,6 @@
 			children = (
 				B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */,
 				B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */,
-				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
-				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
 			);
 			path = BasicDatePicker;
 			sourceTree = "<group>";
