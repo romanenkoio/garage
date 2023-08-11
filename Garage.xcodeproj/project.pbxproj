@@ -2384,7 +2384,7 @@
 				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
 				B9D96E492A37B17200909B33 /* BasicColllectionView */,
 				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
-				B9FB290B2A33782900A4CF1D /* BasicImagePickerView */,
+				B9FB290B2A33782900A4CF1D /* BasicImagList */,
 				7F1465562A38BF700022E4E7 /* AlignedButton */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
@@ -2852,13 +2852,13 @@
 			path = TestController;
 			sourceTree = "<group>";
 		};
-		B9FB290B2A33782900A4CF1D /* BasicImagePickerView */ = {
+		B9FB290B2A33782900A4CF1D /* BasicImagList */ = {
 			isa = PBXGroup;
 			children = (
 				B9FB290C2A33784300A4CF1D /* BasicImageList.swift */,
 				B9FB290E2A33785100A4CF1D /* BasicImageList+ViewModel.swift */,
 			);
-			path = BasicImagePickerView;
+			path = BasicImagList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

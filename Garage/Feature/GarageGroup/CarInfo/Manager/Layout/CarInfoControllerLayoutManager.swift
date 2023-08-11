@@ -39,7 +39,7 @@ final class CarInfoControllerLayoutManager {
         
             animatedScrollConstraint?.update(offset: newConstraintConstant)
             
-            let carTopAnimationScale = max(1.0,min(2.0 - 0.0 - newConstraintConstant / maxConstraintConstant!, 2))
+            let carTopAnimationScale = max(1.0,min(2.0 - newConstraintConstant / maxConstraintConstant!, 2))
             let carTopAlphaScale = min(max(1.0 - newConstraintConstant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
             let contentViewCornerScale = max(newConstraintConstant / 9, 0)
            

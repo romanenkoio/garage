@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Photos
 import PhotosUI
 import Combine
 import SnapKit
@@ -110,29 +109,29 @@ class BasicImageListView: BasicView {
             descriptionLabel.setViewModel(descriptionLabelVM)
         }
     
-        vm.$items.removeDuplicates().sink { [weak self] images in
-            DispatchQueue.main.async { [weak self] in
-                self?.imageStack.clearArrangedSubviews()
-                self?.items.removeAll()
-                
-                stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
-                    self?.makeItems(at: cycleIndex)
-
-                    images.enumerated().forEach { imageIndex, image in
-                        if imageIndex == cycleIndex {
-                            self?.makeRemoveItems(at: imageIndex, with: image)
+        vm.$items.removeDuplicates()
+            .sink { [weak self] images in
+                DispatchQueue.main.async { [weak self] in
+                    self?.imageStack.clearArrangedSubviews()
+                    self?.items.removeAll()
+                    
+                    stride(from: 0, to: 5, by: 1).forEach { cycleIndex in
+                        self?.makeItems(at: cycleIndex)
+                        
+                        if let image = images.enumerated().first(where: {$0.offset == cycleIndex}).map({$1}) {
+                            self?.makeRemoveItems(at: cycleIndex, with: image)
+                        }
+                        
+                    }
+                    
+                    if self?.viewModel?.editingEnabled == false {
+                        self?.items.forEach { imageButton in
+                            imageButton.viewModel?.buttonVM?.isHidden = true
                         }
                     }
                 }
                 
-                if self?.viewModel?.editingEnabled == false {
-                    self?.items.forEach { imageButton in
-                        imageButton.viewModel?.buttonVM?.isHidden = true
-                    }
-                }
             }
-          
-        }
         .store(in: &cancellables)
         
         vm.$editingEnabled.sink {[weak self]  value in
