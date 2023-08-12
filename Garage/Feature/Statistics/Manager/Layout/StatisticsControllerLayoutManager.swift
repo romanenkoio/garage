@@ -74,8 +74,6 @@ final class StatisticsControllerLayoutManager {
         table.register(RecordCell.self)
         table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.table.contentInsetAdjustmentBehavior = .scrollableAxes
         table.backgroundColor = AppColors.background
         table.cornerRadius = 20
         return table

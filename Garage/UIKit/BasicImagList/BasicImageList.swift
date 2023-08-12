@@ -209,8 +209,6 @@ class BasicImageListView: BasicView {
             )
         )
         
-        fullSizePhotoViewVC.modalPresentationStyle = .overFullScreen
-        
         presentOnRootViewController(fullSizePhotoViewVC, animated: true)
     }
 }

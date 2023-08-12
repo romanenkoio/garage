@@ -20,9 +20,11 @@ final class CarInfoControllerLayoutManager {
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
-//    let upTimer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
-//    let downTimer = Timer.publish(every: 0.003, on: .main, in: .common).autoconnect()
+    let upAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
+    let downAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
+    var initialContentSizeHeight: CGFloat = 0
+    var contentMovesUp: Bool = false
+    var contentMovesDown: Bool = false
     var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
@@ -35,47 +37,72 @@ final class CarInfoControllerLayoutManager {
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animator.startAnimation()
-        
             animatedScrollConstraint?.update(offset: newConstraintConstant)
             
             let carTopAnimationScale = max(1.0,min(2.0 - newConstraintConstant / maxConstraintConstant!, 2))
             let carTopAlphaScale = min(max(1.0 - newConstraintConstant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
             let contentViewCornerScale = max(newConstraintConstant / 9, 0)
-           
-            animator.addAnimations {[weak self] in
-                guard let self else { return }
-                self.vc.view.layoutIfNeeded()
-                self.carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
-                self.carTopInfo.alpha = 1 - carTopAlphaScale
-                self.vc.contentView.cornerRadius = contentViewCornerScale
-            }
             
 
-            print(newConstraintConstant, scrollMinConstraintConstant)
             
-            switch newConstraintConstant {
-                case 0...1:
-//                    upTimer.upstream.connect().cancel()
-//                    print(newConstraintConstant)
-                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
-                        if !titleLabelView.didChangeTitle {
-                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
-                            label.changedTitle = "\(vc.vm.car.brand) \(vc.vm.car.model)"
-                            titleLabelView.didChangeTitle = true
+      
+            
+            if contentMovesUp {
+                switch newConstraintConstant {
+                    case 0:
+                        if vc.tableView.contentSize.height == vc.view.frame.height + 100 {
+                            vc.tableView.contentSize.height = initialContentSizeHeight
                         }
-                    }
-                case maxConstraintConstant!-3...maxConstraintConstant!+3:
-//                    downTimer.upstream.connect().cancel()
-                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
-                        if  titleLabelView.didChangeTitle {
-                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
-                            label.defaultTitle = titleLabelView.defaultTitle
-                            titleLabelView.didChangeTitle = false
+                        
+                        if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                            if !titleLabelView.didChangeTitle {
+                                label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                                label.changedTitle = "\(vc.vm.car.brand) \(vc.vm.car.model)"
+                                titleLabelView.didChangeTitle = true
+                                print(initialContentSizeHeight)
+                            }
                         }
-                    }
-                default:
-                    break
+                        
+                        upAnimator.stopAnimation(true)
+               
+                    default:
+                        if vc.tableView.contentSize.height < vc.view.frame.height {
+                            vc.tableView.contentSize.height = vc.view.frame.height + 100
+                        }
+                        
+                        makeAnimations(with: newConstraintConstant)
+                        
+                        upAnimator.addAnimations {[weak self] in
+                            guard let self else { return }
+                            self.makeAnimations(with: newConstraintConstant)
+                        }
+
+                }
+                
+            } else if contentMovesDown {
+                switch newConstraintConstant {
+                    case maxConstraintConstant!:
+                        downAnimator.stopAnimation(true)
+                    default:
+                        if vc.tableView.contentSize.height < vc.view.frame.height {
+                            vc.tableView.contentSize.height = vc.view.frame.height + 100
+                        }
+                        
+                        if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                            if  titleLabelView.didChangeTitle {
+                                label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                                label.defaultTitle = titleLabelView.defaultTitle
+                                titleLabelView.didChangeTitle = false
+                            }
+                        }
+                        
+                        downAnimator.addAnimations {[weak self] in
+                            guard let self else { return }
+                            self.makeAnimations(with: newConstraintConstant)
+                        }
+                        
+                        makeAnimations(with: newConstraintConstant)
+                }
             }
         }
     }
@@ -151,6 +178,17 @@ final class CarInfoControllerLayoutManager {
             animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(maxConstraintConstant!).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func makeAnimations(with constant: CGFloat) {
+        let carTopAnimationScale = max(1.0,min(2.0 - constant / maxConstraintConstant!, 2))
+        let carTopAlphaScale = min(max(1.0 - constant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
+        let contentViewCornerScale = max(constant / 9, 0)
+        
+        self.vc.view.layoutIfNeeded()
+        self.carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
+        self.carTopInfo.alpha = 1 - carTopAlphaScale
+        self.vc.contentView.cornerRadius = contentViewCornerScale
     }
 }
 

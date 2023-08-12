@@ -99,7 +99,7 @@ class BasicTableView: BasicView {
         
         emptyStack.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 40))
-            make.top.equalToSuperview().offset(70)
+            make.top.equalToSuperview().offset(60)
         }
         
         emptyImageView.snp.makeConstraints { make in

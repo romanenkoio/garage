@@ -36,7 +36,6 @@ class StatisticsViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         disableScrollView()
         title = "Статистика"
-        layout.table.table.isPagingEnabled = true
     }
     
     override func viewDidLayoutSubviews() {

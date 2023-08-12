@@ -15,7 +15,6 @@ extension StatisticsViewController {
         let tableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
 
-        
         unowned let car: Car
         
         init(car: Car) {
@@ -25,7 +24,7 @@ extension StatisticsViewController {
             tableVM.isHiddenButton = true
             
             tableVM.setupEmptyState(
-                type: .null,
+                type: .small,
                 labelVM: .init(.text("Выберите что-то..")),
                 sublabelVM: .init(.text("Придумать текст")),
                 addButtonVM: .init(),
