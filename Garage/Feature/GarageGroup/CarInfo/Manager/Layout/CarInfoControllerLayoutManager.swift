@@ -13,19 +13,20 @@ final class CarInfoControllerLayoutManager {
     
     // - Property
     private unowned let vc: CarInfoViewController
-    var animatedScrollConstraint: Constraint?
+    private(set) var animatedScrollConstraint: Constraint?
     var previousContentOffsetY: CGFloat = 0
     
     // - Flag
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let upAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
-    let downAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
+    private(set) var upAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
+    private(set) var downAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
     var initialContentSizeHeight: CGFloat = 0
-    var contentMovesUp: Bool = false
-    var contentMovesDown: Bool = false
-    var scrollMinConstraintConstant: CGFloat = 0
+    var isAutoDragging: Bool = false
+    var contentMovesUp = false
+    var contentMovesDown = false
+    private(set) var scrollMinConstraintConstant: CGFloat = 0
     var maxConstraintConstant: CGFloat? {
         didSet {
             setupScrollView()
@@ -39,84 +40,72 @@ final class CarInfoControllerLayoutManager {
         didSet {
             animatedScrollConstraint?.update(offset: newConstraintConstant)
             
-            let carTopAnimationScale = max(1.0,min(2.0 - newConstraintConstant / maxConstraintConstant!, 2))
-            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
-            let contentViewCornerScale = max(newConstraintConstant / 9, 0)
-            
-
-            upAnimator.addAnimations {[weak self] in
-                guard let self else { return }
-                self.makeAnimations(with: newConstraintConstant)
-            }
-      
-            downAnimator.addAnimations {[weak self] in
-                guard let self else { return }
-                self.makeAnimations(with: newConstraintConstant)
-            }
-            
-          
-                switch newConstraintConstant {
-                    case 0:
-                        if vc.tableView.contentSize.height == vc.view.frame.height + 100 {
-                            vc.tableView.contentSize.height = initialContentSizeHeight
-                        }
-                        
-                        if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
-                            if !titleLabelView.didChangeTitle {
-                                label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
-                                label.changedTitle = "\(vc.vm.car.brand) \(vc.vm.car.model)"
-                                titleLabelView.didChangeTitle = true
-                                print(initialContentSizeHeight)
-                            }
-                        }
-                        
-                        upAnimator.stopAnimation(true)
-                    case maxConstraintConstant!:
-                        downAnimator.stopAnimation(true)
-                    default:
-                        if vc.tableView.contentSize.height < vc.view.frame.height {
-                            vc.tableView.contentSize.height = vc.view.frame.height + 100
-                        }
-                        makeAnimations(with: newConstraintConstant)
-                        
+            if isAutoDragging {
+                upAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
                 }
                 
-//            } else if contentMovesDown {
-//                switch newConstraintConstant {
-//                  
-//                    default:
-//                        if vc.tableView.contentSize.height < vc.view.frame.height {
-//                            vc.tableView.contentSize.height = vc.view.frame.height + 100
-//                        }
-//                        
-//                        if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
-//                            if  titleLabelView.didChangeTitle {
-//                                label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
-//                                label.defaultTitle = titleLabelView.defaultTitle
-//                                titleLabelView.didChangeTitle = false
-//                            }
-//                        }
-//                        makeAnimations(with: newConstraintConstant)
-//                }
-//            }
+                downAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
+                    
+                    isAutoDragging = true
+                }
+            } else {
+                makeManualAnimations(with: newConstraintConstant)
+            }
+            
+            switch newConstraintConstant {
+                case 0:
+                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                        if !titleLabelView.didChangeTitle {
+                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                            label.changedTitle = "\(vc.vm.car.brand) \(vc.vm.car.model)"
+                            titleLabelView.didChangeTitle = true
+                            print(initialContentSizeHeight)
+                        }
+                    }
+                    
+                    if vc.tableView.contentSize.height == vc.view.frame.height + 150 {
+                        vc.tableView.contentSize.height = initialContentSizeHeight
+                    }
+                    
+                    upAnimator.stopAnimation(true)
+                    
+                case maxConstraintConstant!:
+                    downAnimator.stopAnimation(true)
+                    
+                default:
+                    if vc.tableView.contentSize.height < vc.view.frame.height + 150 {
+                        vc.tableView.contentSize.height = vc.view.frame.height + 150
+                    }
+                    if let label = vc.navigationItem.titleView as? NavigationBarTitleAnimator {
+                        if  titleLabelView.didChangeTitle {
+                            label.layer.add(titleLabelView.animateUp, forKey: "changeTitle")
+                            label.defaultTitle = titleLabelView.defaultTitle
+                            titleLabelView.didChangeTitle = false
+                        }
+                    }
+            }
         }
     }
     
     // - UIComponents
     let titleLabelView = NavigationBarTitleAnimator.init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
-    lazy var carTopInfo = CarTopInfoView()
-    lazy var addButton = FloatingButtonView()
+    private(set) lazy var carTopInfo = CarTopInfoView()
+    private(set) lazy var addButton = FloatingButtonView()
     
-    lazy var recordsView: BasicView = {
+    private(set) lazy var recordsView: BasicView = {
        let view = BasicView()
         view.cornerRadius = 20
         view.backgroundColor = AppColors.background
         return view
     }()
     
-    lazy var segment = BasicSegmentView<RecordType>()
-    lazy var page = BasicPageController(vm: vc.vm.pageVM)
+    private(set) lazy var segment = BasicSegmentView<RecordType>()
+    private(set) lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
     // - Init
     init(vc: CarInfoViewController) {
@@ -147,7 +136,7 @@ final class CarInfoControllerLayoutManager {
         vc.makeRightNavBarButton(buttons: [editButton, chartButton])
     }
     
-    func remakeConstraintsAfterLayout() {
+    private func remakeConstraintsAfterLayout() {
         self.page.view.snp.remakeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.greaterThanOrEqualTo(self.vc.view.safeAreaLayoutGuide.layoutFrame.height - 20)
@@ -175,12 +164,22 @@ final class CarInfoControllerLayoutManager {
         }
     }
     
-    private func makeAnimations(with constant: CGFloat) {
+    private func makeAutoAnimations(with constant: CGFloat) {
         let carTopAnimationScale = max(1.0,min(2.0 - constant / maxConstraintConstant!, 2))
         let carTopAlphaScale = min(max(1.0 - constant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
         let contentViewCornerScale = max(constant / 9, 0)
         
         self.vc.view.layoutIfNeeded()
+        self.carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
+        self.carTopInfo.alpha = 1 - carTopAlphaScale
+        self.vc.contentView.cornerRadius = contentViewCornerScale
+    }
+    
+    private func makeManualAnimations(with constant: CGFloat) {
+        let carTopAnimationScale = max(1.0,min(2.0 - constant / maxConstraintConstant!, 2))
+        let carTopAlphaScale = min(max(1.0 - constant / (maxConstraintConstant! - 20.0), 0.0), 1.0)
+        let contentViewCornerScale = max(constant / 9, 0)
+        
         self.carTopInfo.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
         self.carTopInfo.alpha = 1 - carTopAlphaScale
         self.vc.contentView.cornerRadius = contentViewCornerScale

@@ -160,7 +160,8 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
+        layout.isAutoDragging = false
+        
         let currentContentOffsetY = scrollView.contentOffset.y
         
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
@@ -202,6 +203,8 @@ extension CarInfoViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        layout.isAutoDragging = true
+        
         if !decelerate {
             switch layout.newConstraintConstant {
                 case 0...layout.maxConstraintConstant! / 2:
@@ -215,18 +218,17 @@ extension CarInfoViewController: UIScrollViewDelegate {
         }
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let maxConstraintConstant = layout.maxConstraintConstant!
-//        let minConstraintConstant = layout.scrollMinConstraintConstant
-//
-//        if layout.contentMovesUp {
-//            layout.newConstraintConstant = minConstraintConstant
-//            layout.upAnimator.startAnimation()
-//        } else if layout.contentMovesDown {
-//            layout.newConstraintConstant = maxConstraintConstant
-//            layout.downAnimator.startAnimation()
-//        }
-//    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        layout.isAutoDragging = true
+        
+        if layout.contentMovesUp {
+            layout.newConstraintConstant = layout.scrollMinConstraintConstant
+            layout.upAnimator.startAnimation()
+        } else if layout.contentMovesDown {
+            layout.newConstraintConstant = layout.maxConstraintConstant!
+            layout.downAnimator.startAnimation()
+        }
+    }
 }
 
 extension CarInfoViewController: UIPageViewControllerDelegate {
