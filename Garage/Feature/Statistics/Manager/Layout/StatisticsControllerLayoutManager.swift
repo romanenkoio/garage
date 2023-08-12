@@ -14,43 +14,56 @@ final class StatisticsControllerLayoutManager {
     // - Property
     private unowned let vc: StatisticsViewController
     var previousContentOffsetY: CGFloat = 0
-    var tableViewMinConstraintConstant: CGFloat = 0
-    var animatedTableViewConstraint: Constraint?
+    private(set) var animatedTableViewConstraint: Constraint?
+    
     // - Flag
     private(set) var isFirstLayoutSubviews = true
     
     // - Animation properties
-    let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeOut)
-//    let upTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
-//    let downTimer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
-    
+    private(set) var upAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
+    private(set) var downAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
+    var initialContentSizeHeight: CGFloat = 0
+    var isAutoDragging: Bool = false
+    var contentMovesUp = false
+    var contentMovesDown = false
     var startChartsOrigin = CGPoint()
+    var tableViewMinConstraintConstant: CGFloat = 0
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animator.startAnimation()
-            
             animatedTableViewConstraint?.update(offset: newConstraintConstant)
             
-            let offsetFromTableToCharts = 20.0
-            let tableViewCornerScale = min(20,max(newConstraintConstant / 20, 0))
-            let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
-            let chartAnimationScale = min(-startChartsOrigin.y + newConstraintConstant / chartSizeConstant, startChartsOrigin.y)
-            
-            animator.addAnimations {[weak self] in
-                guard let self else { return }
-                self.vc.view.layoutIfNeeded()
-                self.chartsView.containerView.frame.origin.y = chartAnimationScale
-                self.table.cornerRadius = tableViewCornerScale
+            if isAutoDragging {
+                upAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
+                }
+                
+                downAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
+                    
+                }
+            } else {
+                makeManualAnimations(with: newConstraintConstant)
             }
-           
-//            switch newConstraintConstant {
-//                case tableViewMinConstraintConstant-0.1...tableViewMinConstraintConstant+0.1:
-//                    upTimer.upstream.connect().cancel()
-//                case maxConstraintConstant!-1...maxConstraintConstant!+1:
-//                    downTimer.upstream.connect().cancel()
-//                default: break
-//            }
+            
+            switch newConstraintConstant {
+                case 0:
+                    if table.table.contentSize.height == vc.view.frame.height + 150 {
+                        table.table.contentSize.height = initialContentSizeHeight
+                    }
+                    
+                    upAnimator.stopAnimation(true)
+                    
+                case maxConstraintConstant!:
+                    downAnimator.stopAnimation(true)
+                    
+                default:
+                    if table.table.contentSize.height < vc.view.frame.height + 150 {
+                        table.table.contentSize.height = vc.view.frame.height + 150
+                    }
+            }
         }
     }
     
@@ -85,6 +98,27 @@ final class StatisticsControllerLayoutManager {
         configure()
     }
     
+    private func makeAutoAnimations(with constant: CGFloat) {
+        let offsetFromTableToCharts = 20.0
+        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
+        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        
+        self.vc.view.layoutIfNeeded()
+        self.chartsView.containerView.frame.origin.y = chartAnimationScale
+        self.table.cornerRadius = tableViewCornerScale
+    }
+    
+    private func makeManualAnimations(with constant: CGFloat) {
+        let offsetFromTableToCharts = 20.0
+        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
+        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        
+        self.chartsView.containerView.frame.origin.y = chartAnimationScale
+        self.table.cornerRadius = tableViewCornerScale
+    }
+    
 }
 
 // MARK: -
@@ -110,7 +144,7 @@ fileprivate extension StatisticsControllerLayoutManager {
         }
     }
     
-    func makeConstraintsAfterLayout(with constant: CGFloat) {
+    private func makeConstraintsAfterLayout(with constant: CGFloat) {
         vc.contentView.removeFromSuperview()
         table.snp.makeConstraints { make in
             animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint

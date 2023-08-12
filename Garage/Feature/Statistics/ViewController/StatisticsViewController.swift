@@ -81,6 +81,7 @@ class StatisticsViewController: BasicViewController {
             .sink {[weak self] cells in
                 guard let self else { return }
                 self.layout.table.reload()
+                self.layout.initialContentSizeHeight = layout.table.table.contentSize.height
             }
             .store(in: &cancellables)
     }
@@ -136,68 +137,74 @@ extension StatisticsViewController: UITableViewDelegate {
         guard let recordVM = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
         coordinator.navigateTo(StatisticsNavigationRoute.editRecord(vm.car, recordVM.record))
     }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        layout.isAutoDragging = false
+        
         let currentContentOffsetY = scrollView.contentOffset.y
+        
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
-
-        // Upper border of the bounce effect
+        // Верхняя граница начала bounce эффекта
         let bounceBorderContentOffsetY = -scrollView.contentInset.top
-
+        
         let contentMovesUp = scrollDiff > 0 && currentContentOffsetY > bounceBorderContentOffsetY
         let contentMovesDown = scrollDiff < 0 && currentContentOffsetY < bounceBorderContentOffsetY
         
-        let currentConstraintConstant = layout.animatedTableViewConstraint!.layoutConstraints.first!.constant
-           let maxConstraintConstant = layout.maxConstraintConstant!
+        if let currentScrollConstraintConstant = layout.animatedTableViewConstraint?.layoutConstraints.first?.constant,
+           let maxConstraintConstant = layout.maxConstraintConstant {
             
             let minConstraintConstant = layout.tableViewMinConstraintConstant
+            var newConstraintConstant = currentScrollConstraintConstant
             
-            var newConstraintConstant = currentConstraintConstant
+            //Процент завершения анимации
+            //Оставить реализацию
+            //            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
             
             if contentMovesUp {
-                // Reducing the constraint's constant
-                newConstraintConstant = max(currentConstraintConstant - scrollDiff, minConstraintConstant)
-//                layout.downTimer.upstream.connect().cancel()
-//                layout.upTimer.sink {[weak self] _ in
-//                    guard let self else { return }
-//                    if newConstraintConstant <= maxConstraintConstant ,
-//                       newConstraintConstant > layout.tableViewMinConstraintConstant {
-//                        self.layout.newConstraintConstant -= 0.1
-//                    }
-//                }
-//                .store(in: &cancellables)
-              
-                layout.newConstraintConstant = minConstraintConstant
-                
-                if newConstraintConstant == minConstraintConstant {
-                    layout.animator.stopAnimation(true)
-                }
+                newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
+                layout.contentMovesUp = true
+                layout.contentMovesDown = false
                 
             } else if contentMovesDown {
-                // Increasing the constraint's constant
-                newConstraintConstant = min(currentConstraintConstant - scrollDiff, maxConstraintConstant)
-//                layout.upTimer.upstream.connect().cancel()
-//                layout.downTimer.sink {[weak self] _ in
-//                    guard let self else { return }
-//                    if newConstraintConstant <= maxConstraintConstant {
-//                        self.layout.newConstraintConstant += 0.1
-//                    }
-//                }
-//                .store(in: &cancellables)
-                layout.newConstraintConstant = maxConstraintConstant
-                
-                if newConstraintConstant == maxConstraintConstant {
-                    layout.animator.stopAnimation(true)
-                }
+                newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
+                layout.contentMovesUp = false
+                layout.contentMovesDown = true
             }
             
-            // If the constant is modified, changing the height and disable scrolling
-            if newConstraintConstant != currentConstraintConstant,
-               !layout.table.table.isHidden {
-//                layout.newConstraintConstant = newConstraintConstant
+            if newConstraintConstant != currentScrollConstraintConstant,
+               !layout.table.table.isHidden, !layout.upAnimator.isRunning, !layout.downAnimator.isRunning {
+                layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
-
-        layout.previousContentOffsetY = scrollView.contentOffset.y
+            
+            layout.previousContentOffsetY = scrollView.contentOffset.y
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        layout.isAutoDragging = true
+        
+        if !decelerate {
+            switch layout.newConstraintConstant {
+                case 0...layout.maxConstraintConstant! / 2:
+                    layout.newConstraintConstant = layout.tableViewMinConstraintConstant
+                    layout.upAnimator.startAnimation()
+                case layout.maxConstraintConstant! / 2...layout.maxConstraintConstant!:
+                    layout.newConstraintConstant = layout.maxConstraintConstant!
+                    layout.downAnimator.startAnimation()
+                default: break
+            }
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        layout.isAutoDragging = true
+        
+        if layout.contentMovesUp {
+            layout.newConstraintConstant = layout.tableViewMinConstraintConstant
+            layout.upAnimator.startAnimation()
+        } else if layout.contentMovesDown {
+            layout.newConstraintConstant = layout.maxConstraintConstant!
+            layout.downAnimator.startAnimation()
+        }
     }
 }

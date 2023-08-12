@@ -50,7 +50,6 @@ final class CarInfoControllerLayoutManager {
                     guard let self else { return }
                     self.makeAutoAnimations(with: newConstraintConstant)
                     
-                    isAutoDragging = true
                 }
             } else {
                 makeManualAnimations(with: newConstraintConstant)
