@@ -189,7 +189,6 @@ extension CarInfoViewController: UIScrollViewDelegate {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
                 layout.contentMovesUp = false
                 layout.contentMovesDown = true
-
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,
@@ -203,30 +202,31 @@ extension CarInfoViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let maxConstraintConstant = layout.maxConstraintConstant!
-        let minConstraintConstant = layout.scrollMinConstraintConstant
-
-        if layout.contentMovesUp {
-            layout.newConstraintConstant = minConstraintConstant
-            layout.upAnimator.startAnimation()
-        } else if layout.contentMovesDown {
-            layout.newConstraintConstant = maxConstraintConstant
-            layout.downAnimator.startAnimation()
+        if !decelerate {
+            switch layout.newConstraintConstant {
+                case 0...layout.maxConstraintConstant! / 2:
+                    layout.newConstraintConstant = layout.scrollMinConstraintConstant
+                    layout.upAnimator.startAnimation()
+                case layout.maxConstraintConstant! / 2...layout.maxConstraintConstant!:
+                    layout.newConstraintConstant = layout.maxConstraintConstant!
+                    layout.downAnimator.startAnimation()
+                default: break
+            }
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let maxConstraintConstant = layout.maxConstraintConstant!
-        let minConstraintConstant = layout.scrollMinConstraintConstant
-
-        if layout.contentMovesUp {
-            layout.newConstraintConstant = minConstraintConstant
-            layout.upAnimator.startAnimation()
-        } else if layout.contentMovesDown {
-            layout.newConstraintConstant = maxConstraintConstant
-            layout.downAnimator.startAnimation()
-        }
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let maxConstraintConstant = layout.maxConstraintConstant!
+//        let minConstraintConstant = layout.scrollMinConstraintConstant
+//
+//        if layout.contentMovesUp {
+//            layout.newConstraintConstant = minConstraintConstant
+//            layout.upAnimator.startAnimation()
+//        } else if layout.contentMovesDown {
+//            layout.newConstraintConstant = maxConstraintConstant
+//            layout.downAnimator.startAnimation()
+//        }
+//    }
 }
 
 extension CarInfoViewController: UIPageViewControllerDelegate {
