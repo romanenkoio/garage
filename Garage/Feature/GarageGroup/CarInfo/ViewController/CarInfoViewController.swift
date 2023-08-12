@@ -22,7 +22,7 @@ class CarInfoViewController: BasicViewController {
     var coordinator: Coordinator!
     private var layout: Layout!
     
-    private lazy var tableView = UITableView() {
+    lazy var tableView = UITableView() {
         didSet {
             tableView.delegate = self
             scroll.isScrollEnabled = false
@@ -50,6 +50,7 @@ class CarInfoViewController: BasicViewController {
         hideTabBar(true)
         makeCloseButton(isLeft: true)
         scroll.delegate = self
+        scroll.showsVerticalScrollIndicator = false
         layout.page.delegate = self
         layout.titleLabelView.defaultTitle = "Общая информация".localized
         self.navigationItem.titleView = layout.titleLabelView
@@ -58,11 +59,6 @@ class CarInfoViewController: BasicViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.readCar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -114,6 +110,7 @@ class CarInfoViewController: BasicViewController {
             guard let self,
                   let tableView else { return }
             self.tableView = tableView
+            self.layout.initialContentSizeHeight = tableView.contentSize.height
         }
         .store(in: &cancellables)
         
@@ -163,6 +160,8 @@ extension CarInfoViewController: UITableViewDelegate {
 
 extension CarInfoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        layout.isAutoDragging = false
+        
         let currentContentOffsetY = scrollView.contentOffset.y
         
         let scrollDiff = currentContentOffsetY - layout.previousContentOffsetY
@@ -178,42 +177,56 @@ extension CarInfoViewController: UIScrollViewDelegate {
             let minConstraintConstant = layout.scrollMinConstraintConstant
             var newConstraintConstant = currentScrollConstraintConstant
             
-            newConstraintConstant = currentScrollConstraintConstant
             //Процент завершения анимации
             //Оставить реализацию
 //            let animationCompletionPercent = (maxConstraintConstant - currentScrollConstraintConstant) / (maxConstraintConstant - minConstraintConstant)
             
             if contentMovesUp {
                 newConstraintConstant = max(currentScrollConstraintConstant - scrollDiff, minConstraintConstant)
-                layout.downTimer.upstream.connect().cancel()
-                layout.upTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant / 1.2,
-                       newConstraintConstant > 0 {
-                        layout.newConstraintConstant -= 0.1
-                    }
-                }
-                .store(in: &cancellables)
+                layout.contentMovesUp = true
+                layout.contentMovesDown = false
                 
             } else if contentMovesDown {
                 newConstraintConstant = min(currentScrollConstraintConstant - scrollDiff, maxConstraintConstant)
-                layout.upTimer.upstream.connect().cancel()
-                layout.downTimer.sink {[weak self] _ in
-                    guard let self else { return }
-                    if newConstraintConstant <= maxConstraintConstant {
-                        layout.newConstraintConstant += 0.1
-                    }
-                }
-                .store(in: &cancellables)
+                layout.contentMovesUp = false
+                layout.contentMovesDown = true
             }
             
             if newConstraintConstant != currentScrollConstraintConstant,
-               !tableView.isHidden {
+               !tableView.isHidden, !layout.upAnimator.isRunning, !layout.downAnimator.isRunning {
                 layout.newConstraintConstant = newConstraintConstant
                 scrollView.contentOffset.y = layout.previousContentOffsetY
             }
             
             layout.previousContentOffsetY = scrollView.contentOffset.y
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        layout.isAutoDragging = true
+        
+        if !decelerate {
+            switch layout.newConstraintConstant {
+                case 0...layout.maxConstraintConstant! / 2:
+                    layout.newConstraintConstant = layout.scrollMinConstraintConstant
+                    layout.upAnimator.startAnimation()
+                case layout.maxConstraintConstant! / 2...layout.maxConstraintConstant!:
+                    layout.newConstraintConstant = layout.maxConstraintConstant!
+                    layout.downAnimator.startAnimation()
+                default: break
+            }
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        layout.isAutoDragging = true
+        
+        if layout.contentMovesUp {
+            layout.newConstraintConstant = layout.scrollMinConstraintConstant
+            layout.upAnimator.startAnimation()
+        } else if layout.contentMovesDown {
+            layout.newConstraintConstant = layout.maxConstraintConstant!
+            layout.downAnimator.startAnimation()
         }
     }
 }
@@ -239,14 +252,5 @@ extension CarInfoViewController: UIPageViewControllerDelegate {
         else { return }
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         layout.page.vm.indexCandidate = index
-
-//    var defaultTitle: String = "" {
-//        didSet {
-//            label.text = defaultTitle
-//            label.textColor = AppColors.navbarTitle
-//            label.textAlignment = .center
-//            label.font = UIFont.custom(size: 16, weight: .bold)
-//            setNeedsLayout()
-//        }
     }
 }

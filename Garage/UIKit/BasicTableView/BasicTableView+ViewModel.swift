@@ -11,6 +11,7 @@ extension BasicTableView {
     enum TableViewEmptyViewType {
         case large
         case small
+        case null
     }
     
     class ViewModel: BasicViewModel {

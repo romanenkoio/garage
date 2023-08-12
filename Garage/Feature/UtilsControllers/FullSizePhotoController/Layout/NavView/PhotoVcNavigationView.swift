@@ -50,15 +50,16 @@ class PhotoVcNavigationView: BasicView {
         }
         
         closeButton.snp.remakeConstraints { make in
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(photoCountLabel.snp.leading)
+            make.leading.equalToSuperview()
+            make.width.equalTo(100)
+            make.height.equalTo(35)
             make.centerY.equalTo(photoCountLabel)
         }
         
         shareButton.snp.remakeConstraints { make in
-            make.trailing.equalToSuperview().inset(20)
-            make.leading.equalTo(photoCountLabel.snp.trailing)
-
+            make.trailing.equalToSuperview()
+            make.width.equalTo(100)
+            make.height.equalTo(35)
             make.centerY.equalTo(photoCountLabel)
         }
     }

@@ -29,12 +29,10 @@ extension BarChart {
 
         func setItems(
             list: [Item],
-            title: TextValue,
             barItems: ([Item]) -> BarChartItem
         ) {
             self.items = list
             self.barItems = barItems(list)
-            descriptionLabelVM.textValue = title
             makeItems()
         }
         

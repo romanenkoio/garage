@@ -39,7 +39,11 @@ class DatePickerController: UIViewController {
         return view
     }()
     
-    lazy private var descriptionLabel = BasicLabel()
+    lazy private var descriptionLabel: BasicLabel = {
+        let label = BasicLabel()
+        label.textInsets = UIEdgeInsets(vertical: 16)
+        return label
+    }()
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -83,7 +87,7 @@ class DatePickerController: UIViewController {
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
         }
         
@@ -95,12 +99,13 @@ class DatePickerController: UIViewController {
         
         separateView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(16)
+            make.top.equalTo(descriptionLabel.snp.bottom)
         }
         
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(separateView.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            make.height.equalTo(260)
         }
         
         saveButton.snp.makeConstraints { make in
@@ -115,8 +120,8 @@ class DatePickerController: UIViewController {
     
             presentationController.selectedDetentIdentifier = .medium
             presentationController.accessibilityElementsHidden = true
-            presentationController.prefersEdgeAttachedInCompactHeight = false
-            presentationController.prefersScrollingExpandsWhenScrolledToEdge = false
+            presentationController.prefersEdgeAttachedInCompactHeight = true
+            presentationController.prefersScrollingExpandsWhenScrolledToEdge = true
             presentationController.detents = [
                 .medium()
             ]}

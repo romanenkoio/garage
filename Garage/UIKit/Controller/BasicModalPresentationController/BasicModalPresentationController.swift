@@ -15,7 +15,7 @@ class BasicModalPresentationController: UIViewController {
 
     private var coordinator: Coordinator!
     private(set) var viewModel = BasicControllerModel()
-
+    
     private(set) var isWillAppeared: Bool = false
 
     private lazy var scroll: UIScrollView = {
@@ -60,6 +60,7 @@ class BasicModalPresentationController: UIViewController {
         view.backgroundColor = .white
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
+        modalPresentationCapturesStatusBarAppearance = true
         configure()
         binding()
         setupGestures()

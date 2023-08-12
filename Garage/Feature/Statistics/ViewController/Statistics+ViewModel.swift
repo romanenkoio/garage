@@ -12,11 +12,9 @@ extension StatisticsViewController {
     final class ViewModel: BasicViewModel {
         
         let chartsViewVM: ChartsView.ViewModel?
-        
         let tableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
 
-        
         unowned let car: Car
         
         init(car: Car) {

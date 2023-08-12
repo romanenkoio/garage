@@ -215,8 +215,6 @@
 		7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */; };
 		7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC57972A66B45C00C1477C /* DateHeaderView.swift */; };
 		7FDC579B2A66B48000C1477C /* DateHeaderView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */; };
-		7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */; };
-		7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */; };
 		7FE355FE2A75C06200E0E473 /* PremiumFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */; };
 		7FF503C52A3D1FED006DA7EC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C42A3D1FED006DA7EC /* SettingView.swift */; };
 		7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */; };
@@ -561,8 +559,6 @@
 		7FD2D6C42A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadArticle+ViewModel.swift"; sourceTree = "<group>"; };
 		7FDC57972A66B45C00C1477C /* DateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderView.swift; sourceTree = "<group>"; };
 		7FDC579A2A66B48000C1477C /* DateHeaderView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateHeaderView+ViewModel.swift"; sourceTree = "<group>"; };
-		7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
-		7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+ViewModel.swift"; sourceTree = "<group>"; };
 		7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeature.swift; sourceTree = "<group>"; };
 		7FF503C42A3D1FED006DA7EC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7FF503C62A3D1FF6006DA7EC /* SettingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1783,6 +1779,7 @@
 		7F9E92982A45FB9700DDC874 /* UtilsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9261AFA2A8653B6002E5021 /* DatePickerController */,
 				7F0E08E52A2FC766008C2B9A /* Selection */,
 				7F9E92992A45FBB700DDC874 /* ConfirmPopup */,
 				B9D96E3C2A37B04900909B33 /* FullSizePhotoController */,
@@ -2190,10 +2187,18 @@
 			path = Backup;
 			sourceTree = "<group>";
 		};
+		B9261AFA2A8653B6002E5021 /* DatePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
+				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
+			);
+			path = DatePickerController;
+			sourceTree = "<group>";
+		};
 		B92E5A272A5AD0D9004698ED /* FButtonDepedentElements */ = {
 			isa = PBXGroup;
 			children = (
-				B92E5A2F2A5AFBBC004698ED /* Unused */,
 				B92E5A2E2A5AFBA4004698ED /* FBMainButton */,
 				B92E5A282A5AD3D0004698ED /* FBSecondItems */,
 				B92E5A2B2A5AD542004698ED /* FBStackView */,
@@ -2224,15 +2229,6 @@
 				B9BF6FA22A58287C00B96821 /* FBMainButton.swift */,
 			);
 			path = FBMainButton;
-			sourceTree = "<group>";
-		};
-		B92E5A2F2A5AFBBC004698ED /* Unused */ = {
-			isa = PBXGroup;
-			children = (
-				7FDCACAB2A4431FF0071E1AA /* FloatingButton.swift */,
-				7FDCACAD2A4432090071E1AA /* FloatingButton+ViewModel.swift */,
-			);
-			path = Unused;
 			sourceTree = "<group>";
 		};
 		B92E5A302A5B4B79004698ED /* CarPhotoCollection */ = {
@@ -2398,7 +2394,7 @@
 				7F820CBD2A3FAAAD00F1D22D /* BasicPageController */,
 				B9D96E492A37B17200909B33 /* BasicColllectionView */,
 				B9D96E302A34FFA500909B33 /* BasicIMageViewWithButton */,
-				B9FB290B2A33782900A4CF1D /* BasicImagePickerView */,
+				B9FB290B2A33782900A4CF1D /* BasicImagList */,
 				7F1465562A38BF700022E4E7 /* AlignedButton */,
 				7F0E09232A325498008C2B9A /* NavBarButton */,
 				7F0E091B2A31EBD4008C2B9A /* ActionImage */,
@@ -2454,8 +2450,6 @@
 			children = (
 				B978F2E02A2E8F4C0076D326 /* BasicDatePicker.swift */,
 				B978F2E12A2E8F4C0076D326 /* BasicDatePicker+ViewModel.swift */,
-				B9467A422A6ED93D004629B2 /* DatePickerController.swift */,
-				B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */,
 			);
 			path = BasicDatePicker;
 			sourceTree = "<group>";
@@ -2866,13 +2860,13 @@
 			path = TestController;
 			sourceTree = "<group>";
 		};
-		B9FB290B2A33782900A4CF1D /* BasicImagePickerView */ = {
+		B9FB290B2A33782900A4CF1D /* BasicImagList */ = {
 			isa = PBXGroup;
 			children = (
 				B9FB290C2A33784300A4CF1D /* BasicImageList.swift */,
 				B9FB290E2A33785100A4CF1D /* BasicImageList+ViewModel.swift */,
 			);
-			path = BasicImagePickerView;
+			path = BasicImagList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3102,7 +3096,6 @@
 				7F07BD432A46F8A70075EEFC /* CallButton+ViewModel.swift in Sources */,
 				7FC7D1702A630E5A00A90586 /* QrServiceReader+ViewModel.swift in Sources */,
 				7F0E092F2A32818F008C2B9A /* Array.swift in Sources */,
-				7FDCACAC2A4431FF0071E1AA /* FloatingButton.swift in Sources */,
 				7FC7D15B2A628E5C00A90586 /* BasicImageView.swift in Sources */,
 				7F0E08802A2F1DEE008C2B9A /* GarageControllerCoordinator.swift in Sources */,
 				7F0E094F2A3346DE008C2B9A /* DocumentView+ViewModel.swift in Sources */,
@@ -3178,7 +3171,6 @@
 				7F92641F2A6EFEF600DA220A /* ParkingMapControllerCoordinator.swift in Sources */,
 				B978F3B02A2E9D870076D326 /* Compine+Published.swift in Sources */,
 				7F0E08CD2A2FA0A1008C2B9A /* ServicesControllerLayoutManager.swift in Sources */,
-				7FDCACAE2A4432090071E1AA /* FloatingButton+ViewModel.swift in Sources */,
 				7F0E09032A2FF2EB008C2B9A /* CreateServiseControllerCoordinator.swift in Sources */,
 				3DA078BD2A76D9580066D4CE /* Subscription.swift in Sources */,
 				7F0E08F12A2FC766008C2B9A /* SelectionViewController.swift in Sources */,
@@ -3461,7 +3453,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3482,7 +3474,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -3502,7 +3494,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3523,7 +3515,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

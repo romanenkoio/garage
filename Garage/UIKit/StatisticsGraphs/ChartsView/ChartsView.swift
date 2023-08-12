@@ -11,6 +11,16 @@ import UIKit
 class ChartsView: BasicView {
     private(set) lazy var barChart = BarChart()
     private(set) lazy var pieChart = PieChart()
+    lazy var descriptionLabel: BasicLabel = {
+        let view = BasicLabel()
+        view.textAlignment = .left
+        view.font = .custom(size: 24, weight: .bold)
+        view.textInsets = .init(top: 10, left: 16)
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private(set) lazy var containerView = BasicView()
     
     private(set) lazy var chartsStack = {
         let stack = BasicStackView()
@@ -24,6 +34,7 @@ class ChartsView: BasicView {
         scroll.contentSize = CGSize(width: chartsStack.frame.width, height: chartsStack.frame.height)
         scroll.showsHorizontalScrollIndicator = false
         scroll.delegate = self
+        scroll.isPagingEnabled = true
         return scroll
     }()
     
@@ -45,8 +56,6 @@ class ChartsView: BasicView {
         return page
     }()
     
-    var isRight = false
-    var scrollabelSubviews: [BasicView] = .empty
     var viewModel: ViewModel?
     
     override init() {
@@ -60,16 +69,35 @@ class ChartsView: BasicView {
     }
     
     private func makeLayout() {
-        addSubview(scrollView)
+        addSubview(containerView)
+        containerView.addSubview(scrollView)
         scrollView.addSubview(chartsStack)
         chartsStack.addArrangedSubviews([barChart, pieChart])
-        addSubview(pageControl)
-        addSubview(yearBarStack)
+        containerView.addSubview(pageControl)
+        containerView.addSubview(yearBarStack)
+        addSubview(descriptionLabel)
+        
+//        addSubview(scrollView)
+
+
+//        addSubview(pageControl)
+//        addSubview(yearBarStack)
     }
     
     private func makeConstraints() {
-        scrollView.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        containerView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(descriptionLabel.snp.bottom)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
         
         chartsStack.snp.makeConstraints { make in
@@ -148,51 +176,24 @@ class ChartsView: BasicView {
                 }
             }
             .store(in: &cancellables)
+        
+        vm.$pageIndex
+            .sink {[weak self] index in
+                switch index {
+                    case 0:
+                        self?.descriptionLabel.setViewModel(vm.barDescriptionLabelVM)
+                    case 1:
+                        self?.descriptionLabel.setViewModel(vm.pieDescriptionLabelVM)
+                    default: break
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension ChartsView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.x, scrollView.contentSize.height)
-        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        guard pageNumber.isNaN else {
-            pageControl.currentPage = Int(pageNumber)
-            viewModel?.pageIndex = Int(pageNumber)
-            return
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        let contentSize = scrollView.contentSize.width / 2
-        if !decelerate {
-            if scrollView.contentOffset.x > 0, !isRight {
-                scrollView.setContentOffset(CGPoint(x: contentSize, y: 0), animated: true)
-                isRight = true
-            } else if scrollView.contentOffset.x < contentSize, isRight {
-                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                isRight = false
-            }
-            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-            guard pageNumber.isNaN else {
-                pageControl.currentPage = Int(pageNumber)
-                viewModel?.pageIndex = Int(pageNumber)
-                return
-            }
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let contentSize = scrollView.contentSize.width / 2
-        
-        if scrollView.contentOffset.x > 0, !isRight {
-            scrollView.setContentOffset(CGPoint(x: contentSize, y: 0), animated: true)
-            isRight = true
-        } else if scrollView.contentOffset.x < contentSize, isRight {
-            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            isRight = false
-        }
-        
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         guard pageNumber.isNaN else {
             pageControl.currentPage = Int(pageNumber)

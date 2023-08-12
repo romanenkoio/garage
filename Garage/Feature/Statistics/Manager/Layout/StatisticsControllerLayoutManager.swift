@@ -11,47 +11,71 @@ import SnapKit
 
 final class StatisticsControllerLayoutManager {
     
+    // - Property
     private unowned let vc: StatisticsViewController
+    var previousContentOffsetY: CGFloat = 0
+    private(set) var animatedTableViewConstraint: Constraint?
     
+    // - Flag
     private(set) var isFirstLayoutSubviews = true
     
-    let upTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
-    let downTimer = Timer.publish(every: 0.0005, on: .main, in: .common).autoconnect()
-    
+    // - Animation properties
+    private(set) var upAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
+    private(set) var downAnimator = UIViewPropertyAnimator(duration: 0.2, curve: .linear)
+    var initialContentSizeHeight: CGFloat = 0
+    var isAutoDragging: Bool = false
+    var contentMovesUp = false
+    var contentMovesDown = false
+    var startChartsOrigin = CGPoint()
     var tableViewMinConstraintConstant: CGFloat = 0
-    var animatedScrollConstraint: Constraint?
-    var previousContentOffsetY: CGFloat = 0
     
     var newConstraintConstant: CGFloat = 0 {
         didSet {
-            animatedScrollConstraint?.update(offset: newConstraintConstant)
-            let carTopAnimationScale = max(1.0,min(-1.0 - newConstraintConstant / 200, 1))
-            let carTopAlphaScale = min(max(1.0 - newConstraintConstant / 150, 0.0), 1.0)
-            let contentViewCornerScale = max(newConstraintConstant / 9, 0)
+            animatedTableViewConstraint?.update(offset: newConstraintConstant)
             
-            chartsView.transform = CGAffineTransform(scaleX: carTopAnimationScale, y: carTopAnimationScale)
-            print(carTopAnimationScale)
+            if isAutoDragging {
+                upAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
+                }
+                
+                downAnimator.addAnimations {[weak self] in
+                    guard let self else { return }
+                    self.makeAutoAnimations(with: newConstraintConstant)
+                    
+                }
+            } else {
+                makeManualAnimations(with: newConstraintConstant)
+            }
+            
             switch newConstraintConstant {
-                case tableViewMinConstraintConstant-3...tableViewMinConstraintConstant+3:
-                    upTimer.upstream.connect().cancel()
-                case maxConstraintConstant!-3...maxConstraintConstant!+3:
-                    downTimer.upstream.connect().cancel()
-                default: break
+                case 0:
+                    if table.table.contentSize.height == vc.view.frame.height + 150 {
+                        table.table.contentSize.height = initialContentSizeHeight
+                    }
+                    
+                    upAnimator.stopAnimation(true)
+                    
+                case maxConstraintConstant!:
+                    downAnimator.stopAnimation(true)
+                    
+                default:
+                    if table.table.contentSize.height < vc.view.frame.height + 150 {
+                        table.table.contentSize.height = vc.view.frame.height + 150
+                    }
             }
         }
     }
     
     var maxConstraintConstant: CGFloat? {
         didSet {
-            if isFirstLayoutSubviews {
-                tableViewMinConstraintConstant = maxConstraintConstant! / 2
-                makeConstraintsAfterLayout(with: maxConstraintConstant!)
-                vc.view.layoutIfNeeded()
-                isFirstLayoutSubviews = false
-            }
+            makeConstraintsAfterLayout(with: maxConstraintConstant!)
+            vc.view.layoutIfNeeded()
+            isFirstLayoutSubviews = false
         }
     }
     
+    // - UIComponents
     private(set) lazy var chartsView = ChartsView()
     
     lazy var table: BasicTableView = {
@@ -63,8 +87,8 @@ final class StatisticsControllerLayoutManager {
         table.register(RecordCell.self)
         table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
-        table.table.contentInsetAdjustmentBehavior = .scrollableAxes
         table.backgroundColor = AppColors.background
+        table.cornerRadius = 20
         return table
     }()
     
@@ -72,6 +96,27 @@ final class StatisticsControllerLayoutManager {
     init(vc: StatisticsViewController) {
         self.vc = vc
         configure()
+    }
+    
+    private func makeAutoAnimations(with constant: CGFloat) {
+        let offsetFromTableToCharts = 20.0
+        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
+        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        
+        self.vc.view.layoutIfNeeded()
+        self.chartsView.containerView.frame.origin.y = chartAnimationScale
+        self.table.cornerRadius = tableViewCornerScale
+    }
+    
+    private func makeManualAnimations(with constant: CGFloat) {
+        let offsetFromTableToCharts = 20.0
+        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
+        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        
+        self.chartsView.containerView.frame.origin.y = chartAnimationScale
+        self.table.cornerRadius = tableViewCornerScale
     }
     
 }
@@ -89,6 +134,7 @@ fileprivate extension StatisticsControllerLayoutManager {
     private func makeLayout() {
         vc.view.addSubview(chartsView)
         vc.view.addSubview(table)
+
     }
     
     private func makeConstraint() {
@@ -98,10 +144,10 @@ fileprivate extension StatisticsControllerLayoutManager {
         }
     }
     
-    func makeConstraintsAfterLayout(with constant: CGFloat) {
+    private func makeConstraintsAfterLayout(with constant: CGFloat) {
         vc.contentView.removeFromSuperview()
         table.snp.makeConstraints { make in
-            animatedScrollConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
+            animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

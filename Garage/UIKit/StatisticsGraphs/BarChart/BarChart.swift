@@ -65,15 +65,15 @@ class BarChart: BasicView {
     
     private func makeLayout() {
         addSubview(barChartView)
-        addSubview(descriptionLabel)
+//        addSubview(descriptionLabel)
         customMarkerView.chartView = barChartView
         barChartView.marker = customMarkerView
     }
     
     private func makeConstraints() {
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.top.trailing.equalToSuperview()
-        }
+//        descriptionLabel.snp.makeConstraints { make in
+//            make.leading.top.trailing.equalToSuperview()
+//        }
         
         let screenWidth = UIScreen.main.bounds.width
         let chartHight = screenWidth - 70
@@ -81,14 +81,14 @@ class BarChart: BasicView {
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.top.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
-        descriptionLabel.setViewModel(vm.descriptionLabelVM)
+//        descriptionLabel.setViewModel(vm.descriptionLabelVM)
     }
 
 }

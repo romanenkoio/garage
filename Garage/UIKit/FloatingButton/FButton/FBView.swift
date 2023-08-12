@@ -39,7 +39,10 @@ class FloatingButtonView: BasicStackView {
         axis = .vertical
         alignment = .trailing
         spacing = 16
+        layer.masksToBounds = false
         clipsToBounds = true
+        dropShadow(color: .gray, shadowOpacity: 1)
+        paddingInsets = UIEdgeInsets(all: 5)
     }
     
     private func makeLayout() {
@@ -49,11 +52,13 @@ class FloatingButtonView: BasicStackView {
     
     private func makeConstraints() {
         mainButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-5)
+            make.bottom.equalToSuperview()
         }
         
         stackView.snp.makeConstraints { make in
-            make.trailing.top.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-5)
+            make.top.equalToSuperview().offset(5)
         }
     }
     

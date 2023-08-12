@@ -13,6 +13,10 @@ class FullSizePhotoViewController: BasicModalPresentationController {
     // - UI
     typealias Coordinator = FullSizePhotoControllerCoordinator
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     lazy var collectionView: BasicCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -73,7 +77,6 @@ class FullSizePhotoViewController: BasicModalPresentationController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
 
     override func makeConstraints() {
