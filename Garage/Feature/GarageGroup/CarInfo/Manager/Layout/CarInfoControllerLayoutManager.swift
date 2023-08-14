@@ -118,21 +118,27 @@ final class CarInfoControllerLayoutManager {
     }
     
     private func makeNavbar() {
+        var buttons: [NavBarButton.ViewModel] = .empty
+
         let editButton = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 guard let self else { return }
                 self.vc.coordinator.navigateTo(CarInfoNavigationRoute.edit(self.vc.vm.car))
             },
             image: UIImage(named: "edit_ic"))
+        buttons.append(editButton)
         
-        let chartButton = NavBarButton.ViewModel(
-            action: .touchUpInside { [weak self] in
-                guard let self else { return }
-                self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
-            },
-            image: UIImage(named: "stat_ic"))
-        
-        vc.makeRightNavBarButton(buttons: [editButton, chartButton])
+        if !RealmManager<Record>().read().filter({ $0.carID == vc.vm.car.id }).isEmpty {
+            let chartButton = NavBarButton.ViewModel(
+                action: .touchUpInside { [weak self] in
+                    guard let self else { return }
+                    self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
+                },
+                image: UIImage(named: "stat_ic"))
+            buttons.append(chartButton)
+        }
+       
+        vc.makeRightNavBarButton(buttons: buttons)
     }
     
     private func remakeConstraintsAfterLayout() {
