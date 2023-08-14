@@ -71,22 +71,18 @@ extension UIView {
         }
     }
     
-    func presentOnRootViewController(_ vc: UIViewController, animated: Bool) {
-        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController?.present(vc, animated: animated)
-    }
-    
     func showDialog(_ vc: UIViewController, animated: Bool = true) {
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        sceneDelegate?.window?.rootViewController?.present(vc)
+        TabBarController.sh.present(vc)
     }
     
     func showDialog(_ vm: Dialog.ViewModel) {
         let dialog = Dialog(vm: vm)
         dialog.modalPresentationStyle = .overCurrentContext
         dialog.modalTransitionStyle = .crossDissolve
+        TabBarController.sh.present(dialog)
     }
     
     func dropShadow(

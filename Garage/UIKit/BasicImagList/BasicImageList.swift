@@ -60,12 +60,12 @@ class BasicImageListView: BasicView {
         
         let choisePhotoAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] _ in
             guard let self else { return }
-            presentOnRootViewController(self.imagePicker, animated: true)
+            TabBarController.sh.present(self.imagePicker, animated: true)
         }
         
         let takePhotAction = UIAlertAction(title: "Сделать фото", style: .default) { [weak self] _ in
             guard let self else { return }
-            presentOnRootViewController(self.cameraPicker, animated: true)
+            TabBarController.sh.present(self.cameraPicker, animated: true)
         }
         
         let cancelAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
@@ -187,7 +187,7 @@ class BasicImageListView: BasicView {
                     style: .addImage,
                     action: .touchUpInside { [weak self] in
                         guard let self else { return }
-                        self.presentOnRootViewController(self.alertController, animated: true)
+                        TabBarController.sh.present(self.alertController, animated: true)
                     }
                 )
             )
@@ -209,7 +209,7 @@ class BasicImageListView: BasicView {
             )
         )
         
-        presentOnRootViewController(fullSizePhotoViewVC, animated: true)
+        TabBarController.sh.present(fullSizePhotoViewVC, animated: true)
     }
 }
 

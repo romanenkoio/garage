@@ -140,7 +140,7 @@ extension CarPhotoCollection: UICollectionViewDelegateFlowLayout {
     ) {
         guard let vm else { return }
         let photoVC = FullSizePhotoViewController(vm: .init(images: vm.images, selectedIndex: indexPath.row))
-        presentOnRootViewController(photoVC, animated: true)
+        TabBarController.sh.present(photoVC, animated: true)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
