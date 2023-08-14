@@ -16,13 +16,15 @@ extension SelectPlanView {
         let periodLabelVM = BasicLabel.ViewModel()
         let priceLabelVM = BasicLabel.ViewModel()
         let cancelLabelVM = BasicLabel.ViewModel()
-        
+        var action: Completion?
+        let subscription: PaidSubscription
+
         init(
             info: PaidSubscription,
             isSelected: Bool = false
         ) {
             self.isSelected = info.type == .year
-            
+            self.subscription = info
             var text = "\(info.price) \(info.currency)"
             switch info.type {
             case .month, .year:

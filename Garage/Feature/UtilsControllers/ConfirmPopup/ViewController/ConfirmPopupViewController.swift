@@ -47,6 +47,7 @@ class ConfirmPopupViewController: BasicViewController {
         layout.subtitleLabel.setViewModel(vm.subtitleLabelVM)
         layout.confirmButton.setViewModel(vm.confirmButton)
         layout.cancelButton.setViewModel(vm.cancelButton)
+        layout.imageView.setViewModel(vm.imageViewVM)
         
         vm.cancelButton.action = .touchUpInside { [weak self] in
             self?.dismiss(animated: true)

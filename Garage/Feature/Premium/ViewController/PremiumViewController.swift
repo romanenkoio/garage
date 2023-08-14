@@ -70,6 +70,30 @@ class PremiumViewController: BasicViewController {
                 self?.coordinator.navigateTo(CommonNavigationRoute.close)
             }
         }
+        
+        vm.startTrialButton.action = .touchUpInside { [weak self] in
+            guard let selectedPlan = self?.vm.plans.first(where: { $0.isSelected })?.subscription else { return }
+            QounversionPaidSubscriptionManager().purchase(subscription: selectedPlan) { [weak self] error in
+                guard error == nil else {
+                    let dialogVM: Dialog.ViewModel = .init(
+                        title: .text("Что-то пошло не так"),
+                        subtitle: .text("Пожалуйста, попробуйте позже"),
+                        style: .error
+                    )
+                    self?.view.showDialog(Dialog(vm: dialogVM))
+                    self?.coordinator.navigateTo(CommonNavigationRoute.close)
+                    return
+                }
+                
+                let dialogVM: Dialog.ViewModel = .init(
+                    title: .text("Спасибо за покупку!"),
+                    subtitle: .text("Пожалуйста, перезупустите приложение"),
+                    style: .success
+                )
+                self?.view.showDialog(Dialog(vm: dialogVM))
+                self?.coordinator.navigateTo(CommonNavigationRoute.close)
+            }
+        }
     }
 }
 
