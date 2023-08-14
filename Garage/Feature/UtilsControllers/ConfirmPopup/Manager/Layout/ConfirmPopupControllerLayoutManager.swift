@@ -54,11 +54,7 @@ final class ConfirmPopupControllerLayoutManager {
         return stack
     }()
     
-    private lazy var imageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "delete_popup_ic")
-        return view
-    }()
+    private(set) lazy var imageView = BasicImageView()
     
     private(set) lazy var confirmButton = BasicButton()
     private(set) lazy var cancelButton = BasicButton()
