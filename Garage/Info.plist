@@ -88,6 +88,8 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict/>
