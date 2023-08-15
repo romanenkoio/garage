@@ -29,6 +29,7 @@ final class CreateRecordControllerLayoutManager {
     lazy var saveButton = AlignedButton()
     lazy var servicesList = BasicList<Service>()
     lazy var commentInput = MultiLineInput()
+    lazy var repeatView = RecordRepeaterView()
 
     var contentView: BasicView {
         return vc.contentView
@@ -63,7 +64,8 @@ fileprivate extension CreateRecordControllerLayoutManager {
             (dateInput, spacing: 25),
             (servicesList, spacing: 25),
             (imageList, spacing: 25),
-            (commentInput, spacing: 25),
+            (commentInput, spacing: 0),
+            (repeatView, spacing: 25),
             (saveButton, spacing: 0)
         ])
     }

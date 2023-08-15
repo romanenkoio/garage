@@ -138,6 +138,8 @@
 		7F69EA0F2A700CD000AFB37D /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA0E2A700CD000AFB37D /* PremiumView.swift */; };
 		7F69EA112A700CDA00AFB37D /* PremiumView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */; };
 		7F69EA152A701A9300AFB37D /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F69EA142A701A9300AFB37D /* Environment.swift */; };
+		7F6F3B762A8BBEE90051C832 /* RecordRepeaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F3B752A8BBEE90051C832 /* RecordRepeaterView.swift */; };
+		7F6F3B782A8BBEF00051C832 /* RecordRepeaterView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F3B772A8BBEF00051C832 /* RecordRepeaterView+ViewModel.swift */; };
 		7F6F6A252A2E8521003F7DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */; };
 		7F6F6A272A2E8521003F7DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */; };
 		7F6F6A312A2E8522003F7DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6F6A2F2A2E8522003F7DF2 /* LaunchScreen.storyboard */; };
@@ -485,6 +487,8 @@
 		7F69EA0E2A700CD000AFB37D /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		7F69EA102A700CDA00AFB37D /* PremiumView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PremiumView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F69EA142A701A9300AFB37D /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		7F6F3B752A8BBEE90051C832 /* RecordRepeaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepeaterView.swift; sourceTree = "<group>"; };
+		7F6F3B772A8BBEF00051C832 /* RecordRepeaterView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordRepeaterView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F6F6A212A2E8521003F7DF2 /* Garage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6F6A242A2E8521003F7DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6F6A262A2E8521003F7DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1497,6 +1501,15 @@
 			path = PremiumView;
 			sourceTree = "<group>";
 		};
+		7F6F3B742A8BBE7D0051C832 /* RecordRepeaterView */ = {
+			isa = PBXGroup;
+			children = (
+				7F6F3B752A8BBEE90051C832 /* RecordRepeaterView.swift */,
+				7F6F3B772A8BBEF00051C832 /* RecordRepeaterView+ViewModel.swift */,
+			);
+			path = RecordRepeaterView;
+			sourceTree = "<group>";
+		};
 		7F6F6A182A2E8521003F7DF2 = {
 			isa = PBXGroup;
 			children = (
@@ -2376,6 +2389,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F6F3B742A8BBE7D0051C832 /* RecordRepeaterView */,
 				B94CA32D2A729594002A4EDF /* StatisticsGraphs */,
 				7F8CFA9D2A73AD64007F8FDC /* SelectPlanView */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
@@ -3073,6 +3087,7 @@
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
 				7F0E08D82A2FA2E5008C2B9A /* SuggestionView.swift in Sources */,
 				7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */,
+				7F6F3B762A8BBEE90051C832 /* RecordRepeaterView.swift in Sources */,
 				B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */,
 				B9D96E342A34FFD300909B33 /* BasicImageButton+ViewModel.swift in Sources */,
 				B9FB29002A3145D400A4CF1D /* TestModel.swift in Sources */,
@@ -3245,6 +3260,7 @@
 				7FC6DA362A3B41A600AD9A3F /* CreateRecordControllerLayoutManager.swift in Sources */,
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */,
+				7F6F3B782A8BBEF00051C832 /* RecordRepeaterView+ViewModel.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
 				B9F79DC02A768BDC00AE1BEE /* ChartsView+ViewModel.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
@@ -3452,7 +3468,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T8V9JXV542;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
@@ -3493,7 +3509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;

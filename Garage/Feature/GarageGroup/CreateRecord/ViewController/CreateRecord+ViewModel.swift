@@ -40,6 +40,7 @@ extension CreateRecordViewController {
             placeholder: "Название сервиса".localized) { items in
                 return items.map({ $0.name })
             }
+        let repeatViewVM = RecordRepeaterView.ViewModel()
         let mode: EntityStatus<Record>
         
         init(
