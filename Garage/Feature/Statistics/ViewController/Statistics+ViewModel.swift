@@ -25,8 +25,8 @@ extension StatisticsViewController {
             
             tableVM.setupEmptyState(
                 type: .small,
-                labelVM: .init(.text("Выберите что-то..")),
-                sublabelVM: .init(.text("Придумать текст")),
+                labelVM: .init(),
+                sublabelVM: .init(.text("Выберите период".localized)),
                 addButtonVM: .init(),
                 image: nil
             )

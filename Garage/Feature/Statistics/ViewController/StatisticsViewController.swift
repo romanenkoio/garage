@@ -35,7 +35,7 @@ class StatisticsViewController: BasicViewController {
         super.viewDidLoad()
         makeCloseButton(isLeft: true)
         disableScrollView()
-        title = "Статистика"
+        title = "Статистика".localized
     }
     
     override func viewDidLayoutSubviews() {

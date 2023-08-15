@@ -17,6 +17,7 @@
 "Не может быть пустым" = "Cannot be empty";
 "Позвонить" = "Call";
 "Удалить" = "Delete";
+"В этом году" = "This year";
 
 // MARK: TabBar
 "Гараж" = "Garage";
@@ -149,3 +150,18 @@
 "Создать копию" = "Create Backup";
 "Восстановить из копии" = "Restore from Backup";
 "Удалить копию" = "Delete Backup";
+
+// MARK: RecordType
+"История" = "History";
+"Планы" = "Planned";
+
+// MARK: StatisticsViewController
+"Статистика" = "Statistics";
+"Выберите период" = "Choose period";
+
+// MARK: ChartsView
+"Расходы_всё_время" = "All-time spending by category";
+"Расходы_категории_год" = "Spending by category per %@ year";
+"Весь период" = "All period";
+"Расходы за всё время" = "All time spending";
+"Расходы_год" = "Costs per %@ year";

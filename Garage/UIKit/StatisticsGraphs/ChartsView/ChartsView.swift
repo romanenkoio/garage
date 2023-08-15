@@ -13,8 +13,9 @@ class ChartsView: BasicView {
     private(set) lazy var pieChart = PieChart()
     lazy var descriptionLabel: BasicLabel = {
         let view = BasicLabel()
-        view.textAlignment = .left
-        view.font = .custom(size: 24, weight: .bold)
+        view.textAlignment = .center
+        view.textColor = AppColors.blue
+        view.font = .custom(size: 20, weight: .extrabold)
         view.textInsets = .init(top: 10, left: 16)
         view.backgroundColor = .white
         return view

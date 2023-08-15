@@ -54,11 +54,11 @@ extension ChartsView {
         
         func initBarCharts(year: Int? = nil) {
             var data = records
-            var title: TextValue = .text("Расходы за всё время")
+            var title: TextValue = .text("Расходы за всё время".localized)
             if let year {
                 barChartVM.year = year
                 data = records.filter({ $0.date.components.year == year })
-                title = .text("Расходы за \(year) год")
+                title = .text("Расходы_год".localized(year))
             } else {
                 barChartVM.year = nil
             }
@@ -72,11 +72,11 @@ extension ChartsView {
         
         func initPieCharts(year: Int? = nil) {
             var data = records
-            var title: TextValue = .text("Расходы по категориям за всё время")
+            var title: TextValue = .text("Расходы_всё_время".localized)
             if let year {
                 pieChartVM.year = year
                 data = records.filter({$0.date.components.year == year})
-                title = .text("Расходы по категориям за \(year) год")
+                title = .text("Расходы_категории_год".localized(year))
             } else {
                 pieChartVM.year = nil
             }
@@ -91,7 +91,7 @@ extension ChartsView {
                 
         func initBarSuggestions() {
             var suggestions: [SuggestionView.ViewModel] = .empty
-            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
+            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период".localized)))
             vm.labelVM.action = { [weak self] in
                 self?.changeSelection(vm)
                 switch self?.pageIndex {
