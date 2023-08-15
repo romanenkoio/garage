@@ -33,7 +33,7 @@ extension DocumentView {
                 .filter({ $0.documentId == document.id })
             attachImageVM.isHidden = photoCount.isEmpty
     
-            guard let days = document.days else { return }
+            guard let days = document.isOverdue.days else { return }
             shouldShowAttention = days < 30 && days > 0
         }
     }

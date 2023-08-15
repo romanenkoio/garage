@@ -92,7 +92,7 @@ class DocumentView: BasicView {
         
         vm.$shouldShowAttention.sink { [weak self] value in
             guard let self,
-                  let days = self.vm?.document.days
+                  let days = self.vm?.document.isOverdue.days
             else { return }
             
             switch days {

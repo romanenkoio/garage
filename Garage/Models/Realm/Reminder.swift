@@ -16,8 +16,13 @@ final class Reminder: Object, Codable {
     @Persisted var date: Date
     @Persisted var isDone: Bool
     
-    var days: Int? {
+    private var days: Int? {
         Date().daysBetween(date: date)
+    }
+    
+    var isOverdue: (status: Bool?, days: Int?) {
+        guard let days else { return (nil, nil) }
+        return (days < 14, days)
     }
     
     convenience init(

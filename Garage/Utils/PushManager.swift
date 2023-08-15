@@ -142,7 +142,7 @@ struct LocalPush {
         id = document.id
         title = document.rawType
         subtitle = "Истекает срок действия документа"
-        date = document.endDate!.append(.day, value: -15).components
+        date = document.endDate!.append(.day, value: -20).components
         repeats = false
     }
 }

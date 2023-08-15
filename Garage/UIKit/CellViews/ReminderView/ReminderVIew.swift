@@ -99,7 +99,7 @@ class ReminderView: BasicView {
         dateLabel.setViewModel(vm.dateLabelVM)
         completeButton.setViewModel(vm.completeButton)
         
-        guard let days = vm.reminder.days else { return }
+        guard let days = vm.reminder.isOverdue.days else { return }
         
         switch days {
         case _ where days <= 7:

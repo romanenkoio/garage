@@ -30,17 +30,14 @@ final class Document: Object, Codable {
         self.photo = photo
     }
     
-    var days: Int? {
+    private var days: Int? {
         guard let endDate else { return nil }
         return Date().daysBetween(date: endDate)
     }
     
-    var isOverdue: Bool {
-        guard let days else { return false }
-        if days <= 0 {
-            return true
-        }
-        return false
+    var isOverdue: (status: Bool?, days: Int?) {
+        guard let days else { return (nil, nil) }
+        return (days < 20, days)
     }
     
     enum CodingKeys: String, CodingKey {
