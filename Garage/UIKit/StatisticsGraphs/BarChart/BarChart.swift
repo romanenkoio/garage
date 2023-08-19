@@ -41,14 +41,13 @@ class BarChart: BasicView {
         view.scaleYEnabled = false
         view.legend.enabled = false
         view.rightAxis.drawLabelsEnabled = false
-        view.xAxis.labelFont = .custom(size: 14, weight: .bold)
+        view.xAxis.labelFont = .custom(size: 12, weight: .medium)
+        view.xAxis.labelTextColor = .lightGray
         view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
         view.xAxis.labelCount = 12
         view.xAxis.labelRotationAngle = -45
-//        let leftAxisFormatter = NumberFormatter()
-//        leftAxisFormatter.positiveSuffix = .empty.appendCurrency()
-//        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+        
         return view
     }()
     
@@ -65,16 +64,11 @@ class BarChart: BasicView {
     
     private func makeLayout() {
         addSubview(barChartView)
-//        addSubview(descriptionLabel)
         customMarkerView.chartView = barChartView
         barChartView.marker = customMarkerView
     }
     
     private func makeConstraints() {
-//        descriptionLabel.snp.makeConstraints { make in
-//            make.leading.top.trailing.equalToSuperview()
-//        }
-        
         let screenWidth = UIScreen.main.bounds.width
         let chartHight = screenWidth - 70
         barChartView.snp.makeConstraints { make in
@@ -82,13 +76,12 @@ class BarChart: BasicView {
             make.height.equalTo(chartHight)
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(20)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
-//        descriptionLabel.setViewModel(vm.descriptionLabelVM)
     }
 
 }

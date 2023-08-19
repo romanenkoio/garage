@@ -44,7 +44,7 @@ class ChartsView: BasicView {
         stack.spacing = 5
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.contentInset = UIEdgeInsets(horizontal: 16)
+        stack.contentInset = UIEdgeInsets(top: 10, bottom: 20, horizontal: 16)
         return stack
     }()
     
@@ -52,8 +52,8 @@ class ChartsView: BasicView {
         let page = UIPageControl()
         page.numberOfPages = 2
         page.currentPage = 0
-        page.pageIndicatorTintColor = AppColors.background
-        page.currentPageIndicatorTintColor = .lightGray
+        page.pageIndicatorTintColor = AppColors.fieldBg
+        page.currentPageIndicatorTintColor = AppColors.blue
         return page
     }()
     
@@ -77,12 +77,6 @@ class ChartsView: BasicView {
         containerView.addSubview(pageControl)
         containerView.addSubview(yearBarStack)
         addSubview(descriptionLabel)
-        
-//        addSubview(scrollView)
-
-
-//        addSubview(pageControl)
-//        addSubview(yearBarStack)
     }
     
     private func makeConstraints() {
@@ -97,7 +91,6 @@ class ChartsView: BasicView {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
         
@@ -109,12 +102,13 @@ class ChartsView: BasicView {
         pageControl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(scrollView.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         
         yearBarStack.snp.makeConstraints { make in
-            make.top.equalTo(pageControl.snp.bottom).offset(5)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(scrollView.snp.top)
         }
     }
     

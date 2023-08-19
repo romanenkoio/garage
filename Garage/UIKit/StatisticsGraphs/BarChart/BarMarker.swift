@@ -7,10 +7,12 @@
 
 import DGCharts
 import UIKit
+
 enum ChartType {
     case pie
     case bar
 }
+
 class CustomMarkerView: MarkerView {
     private var chartType = ChartType.bar
     
@@ -91,12 +93,7 @@ class CustomMarkerView: MarkerView {
          addSubview(label)
      }
 
-     override func offsetForDrawing(atPoint point: CGPoint) -> CGPoint {
-         switch chartType {
-             case .pie:
-                 return CGPoint(x: -40, y: -40)
-             case .bar:
-                 return CGPoint(x: -40, y: -55)
-         }
-     }
+    override func offsetForDrawing(atPoint point: CGPoint) -> CGPoint {
+        return CGPoint(x: -40, y: -40)
+    }
 }
