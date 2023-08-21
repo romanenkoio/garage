@@ -119,10 +119,10 @@
 		7F38855E2A6B1FF100033A99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F3885602A6B1FF100033A99 /* Localizable.strings */; };
 		7F3885642A6B38B900033A99 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3885632A6B38B900033A99 /* Language.swift */; };
 		7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */; };
-		7F3C33012A5F60FA00992706 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */; };
-		7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */; };
-		7F3C33032A5F60FA00992706 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */; };
-		7F3C33042A5F60FA00992706 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */; };
+		7F3C33012A5F60FA00992706 /* ChartsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FB2A5F60FA00992706 /* ChartsControllerCoordinator.swift */; };
+		7F3C33022A5F60FA00992706 /* ChartsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FD2A5F60FA00992706 /* ChartsControllerLayoutManager.swift */; };
+		7F3C33032A5F60FA00992706 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C32FF2A5F60FA00992706 /* ChartsViewController.swift */; };
+		7F3C33042A5F60FA00992706 /* Charts+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C33002A5F60FA00992706 /* Charts+ViewModel.swift */; };
 		7F43363A2A76D1B7007631DD /* Qonversion in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4336392A76D1B7007631DD /* Qonversion */; };
 		7F5955F02A2E8AD40062A85F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5955EF2A2E8AD40062A85F /* Car.swift */; };
 		7F5955F32A2E8B210062A85F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7F5955F22A2E8B210062A85F /* Realm */; };
@@ -324,6 +324,10 @@
 		B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
 		B98CFC8A2A91409B00C45580 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = B98CFC892A91409B00C45580 /* DGCharts */; };
+		B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */; };
+		B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */; };
+		B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticsViewController.swift */; };
+		B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */; };
 		B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA02A5827E800B96821 /* FBView.swift */; };
 		B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA22A58287C00B96821 /* FBMainButton.swift */; };
 		B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF6FA62A58328A00B96821 /* FBStackView.swift */; };
@@ -470,10 +474,10 @@
 		7F3885622A6B200700033A99 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F3885632A6B38B900033A99 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		7F3AAD832A3C8164007DD6FF /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
-		7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerCoordinator.swift; sourceTree = "<group>"; };
-		7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerLayoutManager.swift; sourceTree = "<group>"; };
-		7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
+		7F3C32FB2A5F60FA00992706 /* ChartsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsControllerCoordinator.swift; sourceTree = "<group>"; };
+		7F3C32FD2A5F60FA00992706 /* ChartsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		7F3C32FF2A5F60FA00992706 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		7F3C33002A5F60FA00992706 /* Charts+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts+ViewModel.swift"; sourceTree = "<group>"; };
 		7F5955EF2A2E8AD40062A85F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		7F5955F62A2E8C200062A85F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		7F5955FA2A2E8D420062A85F /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -667,6 +671,10 @@
 		B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllable.swift; sourceTree = "<group>"; };
 		B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTopInfoView.swift; sourceTree = "<group>"; };
 		B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopView+ViewModel.swift"; sourceTree = "<group>"; };
+		B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerCoordinator.swift; sourceTree = "<group>"; };
+		B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerLayoutManager.swift; sourceTree = "<group>"; };
+		B98CFCB32A91463800C45580 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
 		B9BF6FA02A5827E800B96821 /* FBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBView.swift; sourceTree = "<group>"; };
 		B9BF6FA22A58287C00B96821 /* FBMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMainButton.swift; sourceTree = "<group>"; };
 		B9BF6FA62A58328A00B96821 /* FBStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStackView.swift; sourceTree = "<group>"; };
@@ -1399,7 +1407,7 @@
 		7F3C32F82A5F60FA00992706 /* StatisticsGroup */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFC7B2A91357300C45580 /* StatistciController */,
+				B98CFCAC2A91463800C45580 /* Statistics */,
 				B98CFC7A2A91356100C45580 /* ChartsController */,
 			);
 			path = StatisticsGroup;
@@ -1417,7 +1425,7 @@
 		7F3C32FA2A5F60FA00992706 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				7F3C32FB2A5F60FA00992706 /* StatisticsControllerCoordinator.swift */,
+				7F3C32FB2A5F60FA00992706 /* ChartsControllerCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1425,7 +1433,7 @@
 		7F3C32FC2A5F60FA00992706 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				7F3C32FD2A5F60FA00992706 /* StatisticsControllerLayoutManager.swift */,
+				7F3C32FD2A5F60FA00992706 /* ChartsControllerLayoutManager.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -1433,8 +1441,8 @@
 		7F3C32FE2A5F60FA00992706 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7F3C32FF2A5F60FA00992706 /* StatisticsViewController.swift */,
-				7F3C33002A5F60FA00992706 /* Statistics+ViewModel.swift */,
+				7F3C32FF2A5F60FA00992706 /* ChartsViewController.swift */,
+				7F3C33002A5F60FA00992706 /* Charts+ViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2724,11 +2732,47 @@
 			path = ChartsController;
 			sourceTree = "<group>";
 		};
-		B98CFC7B2A91357300C45580 /* StatistciController */ = {
+		B98CFCAC2A91463800C45580 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				B98CFCAD2A91463800C45580 /* Manager */,
+				B98CFCB22A91463800C45580 /* ViewController */,
 			);
-			path = StatistciController;
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		B98CFCAD2A91463800C45580 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B98CFCAE2A91463800C45580 /* Coordinator */,
+				B98CFCB02A91463800C45580 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B98CFCAE2A91463800C45580 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B98CFCB02A91463800C45580 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		B98CFCB22A91463800C45580 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B98CFCB32A91463800C45580 /* StatisticsViewController.swift */,
+				B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		B9BF6F9F2A5827D500B96821 /* FButton */ = {
@@ -3042,7 +3086,7 @@
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F9264092A6DCC2700DA220A /* Parking.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
-				7F3C33022A5F60FA00992706 /* StatisticsControllerLayoutManager.swift in Sources */,
+				7F3C33022A5F60FA00992706 /* ChartsControllerLayoutManager.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */,
 				7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */,
@@ -3058,6 +3102,7 @@
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
+				B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
@@ -3084,6 +3129,7 @@
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */,
+				B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */,
 				7F8CFA982A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
@@ -3135,7 +3181,7 @@
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
 				B9BF6FA32A58287C00B96821 /* FBMainButton.swift in Sources */,
-				7F3C33032A5F60FA00992706 /* StatisticsViewController.swift in Sources */,
+				7F3C33032A5F60FA00992706 /* ChartsViewController.swift in Sources */,
 				7F0E094A2A333B84008C2B9A /* UIApplication.swift in Sources */,
 				7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */,
 				B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */,
@@ -3196,7 +3242,7 @@
 				7F174F002A4B2B86004E51F9 /* ArticlesControllerCoordinator.swift in Sources */,
 				7F0E09432A32892C008C2B9A /* CreateDocument+ViewModel.swift in Sources */,
 				7FFC1F722A353E31007A5C75 /* Photo.swift in Sources */,
-				7F3C33012A5F60FA00992706 /* StatisticsControllerCoordinator.swift in Sources */,
+				7F3C33012A5F60FA00992706 /* ChartsControllerCoordinator.swift in Sources */,
 				B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */,
 				B93A34502A4082D1004BAEA6 /* PastRecordsControllerCoordinator.swift in Sources */,
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
@@ -3227,7 +3273,7 @@
 				7F0E09042A2FF2EB008C2B9A /* CreateServiseControllerLayoutManager.swift in Sources */,
 				B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */,
 				B92E5A342A5B4BA5004698ED /* CarCarPhotoCollection+ViewModel.swift in Sources */,
-				7F3C33042A5F60FA00992706 /* Statistics+ViewModel.swift in Sources */,
+				7F3C33042A5F60FA00992706 /* Charts+ViewModel.swift in Sources */,
 				7F0E08CC2A2FA0A1008C2B9A /* ServicesControllerCoordinator.swift in Sources */,
 				7F0E09482A3331E8008C2B9A /* VINDeocdedValue.swift in Sources */,
 				B978F3B92A2E9D870076D326 /* UIFont.swift in Sources */,
@@ -3255,6 +3301,7 @@
 				7F0E090B2A3096F0008C2B9A /* BasicTableView+ViewModel.swift in Sources */,
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
+				B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
 				3DA078BF2A76D96F0066D4CE /* SubscriptionChecker.swift in Sources */,
@@ -3262,6 +3309,7 @@
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
+				B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */,
 				B9F79DC02A768BDC00AE1BEE /* ChartsView+ViewModel.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,

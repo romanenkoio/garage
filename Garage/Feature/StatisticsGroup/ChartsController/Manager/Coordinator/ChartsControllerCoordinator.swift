@@ -8,18 +8,18 @@
 
 import UIKit
 
-enum StatisticsNavigationRoute: Routable {
+enum ChartsNavigationRoute: Routable {
     case editRecord(Car, Record)
 }
 
-class StatisticsControllerCoordinator: BasicCoordinator {
+class ChartsControllerCoordinator: BasicCoordinator {
     // - Init
     override init(vc: BasicViewController) {
         super.init(vc: vc)
     }
     
     override func navigateTo(_ route: Routable) {
-        if let route = route as? StatisticsNavigationRoute {
+        if let route = route as? ChartsNavigationRoute {
             switch route {
                 case .editRecord(let car, let record):
                     let controller = CreateRecordViewController(vm: .init(car: car, mode: .edit(object: record)))

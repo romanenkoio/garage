@@ -8,11 +8,11 @@
 
 import UIKit
 
-class StatisticsViewController: BasicViewController {
+class ChartsViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = StatisticsControllerCoordinator
-    typealias Layout = StatisticsControllerLayoutManager
+    typealias Coordinator = ChartsControllerCoordinator
+    typealias Layout = ChartsControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
@@ -91,20 +91,20 @@ class StatisticsViewController: BasicViewController {
 // MARK: -
 // MARK: - Configure
 
-extension StatisticsViewController {
+extension ChartsViewController {
 
     private func configureCoordinator() {
-        coordinator = StatisticsControllerCoordinator(vc: self)
+        coordinator = ChartsControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = StatisticsControllerLayoutManager(vc: self)
+        layout = ChartsControllerLayoutManager(vc: self)
     }
 }
 
 //MARK: - UITableViewDataSource
 
-extension StatisticsViewController: UITableViewDataSource {
+extension ChartsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return vm.headers.count
     }
@@ -132,10 +132,10 @@ extension StatisticsViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 
-extension StatisticsViewController: UITableViewDelegate {
+extension ChartsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let recordVM = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
-        coordinator.navigateTo(StatisticsNavigationRoute.editRecord(vm.car, recordVM.record))
+        coordinator.navigateTo(ChartsNavigationRoute.editRecord(vm.car, recordVM.record))
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         layout.isAutoDragging = false

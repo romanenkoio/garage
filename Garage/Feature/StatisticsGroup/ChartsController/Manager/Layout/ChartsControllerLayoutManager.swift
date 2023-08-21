@@ -9,10 +9,10 @@
 import UIKit
 import SnapKit
 
-final class StatisticsControllerLayoutManager {
+final class ChartsControllerLayoutManager {
     
     // - Property
-    private unowned let vc: StatisticsViewController
+    private unowned let vc: ChartsViewController
     var previousContentOffsetY: CGFloat = 0
     private(set) var animatedTableViewConstraint: Constraint?
     
@@ -93,7 +93,7 @@ final class StatisticsControllerLayoutManager {
     }()
     
     // - Init
-    init(vc: StatisticsViewController) {
+    init(vc: ChartsViewController) {
         self.vc = vc
         configure()
     }
@@ -124,7 +124,7 @@ final class StatisticsControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension StatisticsControllerLayoutManager {
+fileprivate extension ChartsControllerLayoutManager {
     
     private func configure() {
         makeLayout()

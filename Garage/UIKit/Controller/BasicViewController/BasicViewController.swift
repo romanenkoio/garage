@@ -82,7 +82,8 @@ class BasicViewController: UIViewController {
         }
         
         self.scroll.snp.makeConstraints { (make) in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalTo(view)
         }
     }
     
@@ -100,7 +101,7 @@ class BasicViewController: UIViewController {
         
         contentView.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 

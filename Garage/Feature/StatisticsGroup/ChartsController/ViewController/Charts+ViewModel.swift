@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension StatisticsViewController {
+extension ChartsViewController {
     final class ViewModel: BasicViewModel {
         
         let chartsViewVM: ChartsView.ViewModel?
