@@ -10,6 +10,7 @@ import UIKit
 
 enum ChartsNavigationRoute: Routable {
     case editRecord(Car, Record)
+    case stat(Car)
 }
 
 class ChartsControllerCoordinator: BasicCoordinator {
@@ -23,6 +24,10 @@ class ChartsControllerCoordinator: BasicCoordinator {
             switch route {
                 case .editRecord(let car, let record):
                     let controller = CreateRecordViewController(vm: .init(car: car, mode: .edit(object: record)))
+                    vc.push(controller)
+                    
+                case .stat(let car):
+                    let controller = StatisticsViewController(vm: .init(car: car))
                     vc.push(controller)
             }
         } else {

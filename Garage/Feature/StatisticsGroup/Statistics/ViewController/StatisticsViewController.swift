@@ -24,7 +24,7 @@ class StatisticsViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
-        disableScrollView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +34,8 @@ class StatisticsViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
+        makeCloseButton(isLeft: true)
     }
 
     override func configure() {
@@ -42,7 +44,13 @@ class StatisticsViewController: BasicViewController {
     }
 
     override func binding() {
+        layout.tableView.setViewModel(vm.tableVM)
         
+        vm.tableVM.$cells
+            .sink {[weak self] _ in
+                self?.layout.tableView.reload()
+            }
+            .store(in: &cancellables)
     }
     
 }
@@ -64,4 +72,22 @@ extension StatisticsViewController {
 
 // MARK: - DataSource
 
+extension StatisticsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        vm.tableVM.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let statCell = tableView.dequeueReusableCell(StatisticCell.self, for: indexPath) else { return .init() }
+        
+        statCell.mainView.setViewModel(.init(cellValue: vm.tableVM.cells[indexPath.row]))
+        statCell.selectionStyle = .none
+        return statCell
+    }
+}
+
 // MARK: - Delegate
+
+extension StatisticsViewController: UITableViewDelegate {
+    
+}

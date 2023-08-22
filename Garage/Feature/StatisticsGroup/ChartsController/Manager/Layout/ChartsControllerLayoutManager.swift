@@ -96,7 +96,23 @@ final class ChartsControllerLayoutManager {
     init(vc: ChartsViewController) {
         self.vc = vc
         configure()
+        makeNavbar()
     }
+    
+    private func makeNavbar() {
+        var buttons: [NavBarButton.ViewModel] = .empty
+
+        let editButton = NavBarButton.ViewModel(
+            action: .touchUpInside { [weak self] in
+                guard let self else { return }
+                self.vc.coordinator.navigateTo(ChartsNavigationRoute.stat(vc.vm.car))
+            },
+            image: UIImage(named: "edit_ic"))
+        buttons.append(editButton)
+       
+        vc.makeRightNavBarButton(buttons: buttons)
+    }
+
     
     private func makeAutoAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0

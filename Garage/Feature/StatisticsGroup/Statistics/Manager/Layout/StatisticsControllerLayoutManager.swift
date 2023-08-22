@@ -15,13 +15,13 @@ final class StatisticsControllerLayoutManager {
     
     private(set) lazy var tableView: BasicTableView = {
         let table = BasicTableView()
-        table.register(RecordCell.self)
-        table.register(BasicTableCell<DateHeaderView>.self)
-//        table.setupTable(
-//            dataSource: vc,
-//            delegate: vc
-//        )
+        table.register(StatisticCell.self)
+        table.setupTable(
+            dataSource: vc,
+            delegate: vc
+        )
         table.backgroundColor = AppColors.background
+        table.table.separatorStyle = .none
         return table
     }()
     
