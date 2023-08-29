@@ -51,7 +51,7 @@ class CarInfoControllerCoordinator: BasicCoordinator {
                 let controller = CreateRecordViewController(vm: .init(car: car, mode: .createFrom(reminder)))
                 vc.push(controller)
             case .statistic(let car):
-                let controller = ChartsViewController(vm: .init(car: car))
+                let controller = StatisticPagesViewController(vm: .init(car: car))
                 vc.push(controller)
             }
         } else {

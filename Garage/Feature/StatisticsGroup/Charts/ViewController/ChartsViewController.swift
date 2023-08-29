@@ -36,19 +36,15 @@ class ChartsViewController: BasicViewController {
         makeCloseButton(isLeft: true)
         disableScrollView()
         title = "Статистика".localized
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if layout.isFirstLayoutSubviews {
             
-            layout.maxConstraintConstant = layout.chartsView.frame.size.height + 20
+            layout.maxConstraintConstant = layout.chartsView.frame.size.height
             
-            layout.tableViewMinConstraintConstant = layout.chartsView.descriptionLabel.frame.height
-            
-            layout.startChartsOrigin = layout.chartsView.containerView.frame.origin
+            layout.startChartsOrigin = layout.chartsView.frame.origin
         }
     }
 

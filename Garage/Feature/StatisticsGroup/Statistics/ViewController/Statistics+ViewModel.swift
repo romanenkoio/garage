@@ -12,9 +12,9 @@ extension StatisticsViewController {
     final class ViewModel: BasicViewModel {
         unowned let car: Car
         
-        let tableVM = BasicTableView.GenericViewModel<StatisticsType>()
+        let tableVM = BasicTableView.GenericViewModel<StatisticCellType>()
         
-        var cells: [StatisticsType] = .empty
+        var cells: [StatisticCellType] = .empty
         
         init(car: Car) {
             self.car = car

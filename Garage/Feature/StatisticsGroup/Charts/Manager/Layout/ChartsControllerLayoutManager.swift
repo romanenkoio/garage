@@ -96,29 +96,15 @@ final class ChartsControllerLayoutManager {
     init(vc: ChartsViewController) {
         self.vc = vc
         configure()
-        makeNavbar()
     }
-    
-    private func makeNavbar() {
-        var buttons: [NavBarButton.ViewModel] = .empty
 
-        let editButton = NavBarButton.ViewModel(
-            action: .touchUpInside { [weak self] in
-                guard let self else { return }
-                self.vc.coordinator.navigateTo(ChartsNavigationRoute.stat(vc.vm.car))
-            },
-            image: UIImage(named: "edit_ic"))
-        buttons.append(editButton)
-       
-        vc.makeRightNavBarButton(buttons: buttons)
-    }
 
     
     private func makeAutoAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
         let tableViewCornerScale = min(20,max(constant / 20, 0))
-        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
-        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 150
+        let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.vc.view.layoutIfNeeded()
         self.chartsView.containerView.frame.origin.y = chartAnimationScale
@@ -128,11 +114,12 @@ final class ChartsControllerLayoutManager {
     private func makeManualAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
         let tableViewCornerScale = min(20,max(constant / 20, 0))
-        let chartSizeConstant = (maxConstraintConstant! - tableViewMinConstraintConstant - offsetFromTableToCharts) / 100
-        let chartAnimationScale = min(-startChartsOrigin.y + constant / chartSizeConstant, startChartsOrigin.y)
+        let chartSizeConstant = maxConstraintConstant! / 150
+        let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.chartsView.containerView.frame.origin.y = chartAnimationScale
         self.table.cornerRadius = tableViewCornerScale
+        print(-70 + constant / chartSizeConstant)
     }
     
 }

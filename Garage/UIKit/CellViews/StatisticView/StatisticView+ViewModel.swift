@@ -10,9 +10,9 @@ import Foundation
 extension StatisticView {
     class ViewModel: BasicViewModel {
         
-        @Published var cellValue: StatisticsType
+        @Published var cellValue: StatisticCellType
         
-        init(cellValue: StatisticsType) {
+        init(cellValue: StatisticCellType) {
             self.cellValue = cellValue
         }
     }
