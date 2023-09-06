@@ -184,6 +184,7 @@ fileprivate extension PremiumControllerLayoutManager {
         bottomStack.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
             make.top.equalTo(startTrialButton.snp.bottom).offset(24)
+            make.bottom.equalToSuperview().offset(-25)
         }
     }
     
