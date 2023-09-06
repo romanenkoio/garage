@@ -108,7 +108,7 @@ fileprivate extension OnboardingControllerLayoutManager {
         
         nextButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview().offset(-50)
         }
     }
 }
