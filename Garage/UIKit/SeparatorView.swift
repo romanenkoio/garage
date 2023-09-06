@@ -15,7 +15,7 @@ class SeparatorView: BasicView {
     
     private func makeLayout() {
         self.cornerRadius = 0
-        self.backgroundColor = .lightGray
+        self.backgroundColor = AppColors.fieldBg
     }
     
     private func makeConstraint() {
