@@ -1,29 +1,28 @@
 //
-//  MainViewController.swift
+//  FAQViewController.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 28.08.23.
+//  Created by Illia Romanenko on 11.09.23.
 //  
 //
 
 import UIKit
 
-class StatisticPagesViewController: BasicViewController {
+class FAQViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = StatisticPagesControllerCoordinator
-    typealias Layout = StatisticPagesControllerLayoutManager
+    
     
     // - Property
-    private(set) var vm: ViewModel
+    private(set) var vm: ViewModel?
     
     // - Manager
-    private var coordinator: Coordinator!
-    private var layout: Layout!
+    private var coordinator: FAQControllerCoordinator!
+    private var layoutManager: FAQControllerLayoutManager!
     
     init(vm: ViewModel) {
-        self.vm = vm
         super.init()
+        self.vm = vm
     }
     
     required init?(coder: NSCoder) {
@@ -33,8 +32,9 @@ class StatisticPagesViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        disableScrollView()
+        configure()
         makeCloseButton(side: .left)
+        title = "Периоды ТО"
     }
 
     override func configure() {
@@ -43,7 +43,7 @@ class StatisticPagesViewController: BasicViewController {
     }
 
     override func binding() {
-        layout.segment.setViewModel(vm.segmentVM)
+        
     }
     
 }
@@ -51,14 +51,14 @@ class StatisticPagesViewController: BasicViewController {
 // MARK: -
 // MARK: - Configure
 
-extension StatisticPagesViewController {
-
+fileprivate extension FAQViewController {
+    
     private func configureCoordinator() {
-        coordinator = StatisticPagesControllerCoordinator(vc: self)
+        coordinator = FAQControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = StatisticPagesControllerLayoutManager(vc: self)
+        layoutManager = FAQControllerLayoutManager(vc: self)
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 
 enum SettingsNavigationRoute: Routable {
     case backup([[DataSubSetting]])
+    case faq
 }
 
 class SettingsControllerCoordinator: BasicCoordinator {
@@ -24,6 +25,9 @@ class SettingsControllerCoordinator: BasicCoordinator {
             case .backup(let points):
                 let new = BackupViewController(vm: .init(points: points))
                 vc.push(new)
+                
+            case .faq:
+                vc.push(FAQViewController(vm: .init()))
             }
         } else {
             super.navigateTo(route)

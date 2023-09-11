@@ -35,7 +35,7 @@ class SettingsViewController: BasicViewController {
         super.viewDidLoad()
         hideTabBar(true)
         makeLogoNavbar()
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
         title = "Настройки"
     }
     
@@ -98,7 +98,8 @@ class SettingsViewController: BasicViewController {
             Environment.isPrem = !Environment.isPrem
         case .banner:
             break
-        }
+        case .faq:
+            self.coordinator.navigateTo(SettingsNavigationRoute.faq)        }
     }
     
     func readBackupDate(completion: @escaping (String?) -> Void) {

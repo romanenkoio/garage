@@ -36,7 +36,7 @@ class ParkingMapViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCarPin()
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
         if let dateString = vm.parking?.date.toString(.MMddyyyyHHmm) {
             self.title = "Парковка: \(dateString)"
         }

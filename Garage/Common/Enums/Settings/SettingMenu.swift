@@ -16,17 +16,19 @@ enum SettingPoint {
     case backup
     case contactUs
     case language
-
+    case faq
+    
     var icon: UIImage? {
         switch self {
         case .banner:           return nil
-        case .getPremium:     return UIImage(named: "get_prem_ic")
+        case .getPremium:       return UIImage(named: "get_prem_ic")
         case .subscription:     return UIImage(named: "prem_ic")
         case .reminders:        return UIImage(named: "notifications_ic")
 //        case .mileageReminder:  return UIImage(named: "milage_reminder_ic")
         case .backup:           return UIImage(named: "backup_ic")
         case .contactUs:        return UIImage(named: "contact_us_ic")
-        case .language:           return UIImage(named: "language_ic")
+        case .language:         return UIImage(named: "language_ic")
+        case .faq:              return UIImage(named: "faq_ic")
         }
     }
     
@@ -37,7 +39,7 @@ enum SettingPoint {
         case .reminders:                    return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
 //        case .mileageReminder:              return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
         case .backup, .language:            return false
-        case .contactUs, .banner:                    return false
+        case .contactUs, .banner, .faq:     return false
         }
     }
     
@@ -45,7 +47,7 @@ enum SettingPoint {
         switch self {
         case .reminders, .getPremium:
             return true
-        case .backup, .contactUs, .language, .subscription, .banner:
+        case .backup, .contactUs, .language, .subscription, .banner, .faq:
             return false
         }
     }
@@ -60,6 +62,7 @@ enum SettingPoint {
         case .contactUs:        return "Связаться с нами".localized
         case .language:         return "Язык".localized
         case .getPremium:       return "Получить премиум".localized
+        case .faq:              return "FAQ"
         }
     }
 }

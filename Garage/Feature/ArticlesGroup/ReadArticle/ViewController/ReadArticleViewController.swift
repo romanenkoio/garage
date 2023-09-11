@@ -34,7 +34,7 @@ class ReadArticleViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideTabBar(true)
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

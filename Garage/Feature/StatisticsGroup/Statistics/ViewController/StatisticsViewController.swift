@@ -35,7 +35,7 @@ class StatisticsViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableScrollView()
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
     }
 
     override func configure() {

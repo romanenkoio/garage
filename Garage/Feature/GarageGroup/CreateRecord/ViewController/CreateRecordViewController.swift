@@ -38,8 +38,8 @@ class CreateRecordViewController: BasicViewController {
     }
     
     private func setupNavBar() {
-        makeCloseButton(isLeft: true)
-        
+        makeCloseButton(side: .left)
+
         guard case .edit(_) = vm.mode else {
             title = "Создание записи".localized
           return

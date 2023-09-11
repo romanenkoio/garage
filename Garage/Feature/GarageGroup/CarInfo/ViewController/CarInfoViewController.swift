@@ -48,7 +48,7 @@ class CarInfoViewController: BasicViewController {
         super.viewDidLoad()
         hideNavBar(false)
         hideTabBar(true)
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
         scroll.delegate = self
         scroll.showsVerticalScrollIndicator = false
         layout.page.delegate = self

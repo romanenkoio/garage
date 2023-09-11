@@ -31,7 +31,7 @@ final class CreateDocumentControllerLayoutManager {
     init(vc: CreateDocumentViewController) {
         self.vc = vc
         configure()
-        vc.makeCloseButton()
+        vc.makeCloseButton(side: .right)
     }
     
     deinit {

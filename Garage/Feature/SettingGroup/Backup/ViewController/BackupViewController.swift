@@ -34,7 +34,7 @@ class BackupViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
         title = "Резервная копия".localized
         vm.setCells()
     }

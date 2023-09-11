@@ -33,7 +33,7 @@ class ChartsViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeCloseButton(isLeft: true)
+        makeCloseButton(side: .left)
         disableScrollView()
         title = "Статистика".localized
     }

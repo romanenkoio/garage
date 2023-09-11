@@ -65,8 +65,8 @@ class CreateCarViewController: BasicViewController {
     }
 
     private func setupNavBar() {
-        makeCloseButton(isLeft: true)
-        
+        makeCloseButton(side: .left)
+
         guard case .edit(_) = vm.mode else {
             title = "Изменить машину".localized
             return

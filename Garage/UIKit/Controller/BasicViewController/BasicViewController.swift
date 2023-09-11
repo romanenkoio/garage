@@ -152,17 +152,28 @@ extension BasicViewController {
         self.navigationItem.rightBarButtonItems = views
     }
     
-    func makeCloseButton(isLeft: Bool = false) {
+    func makeCloseButton(side: ButtonSide) {
+        let image: UIImage?
+        switch side {
+        case .left:
+            image = UIImage(named: "back_arrow_ic")
+        case .right:
+            image = UIImage(named: "back_ic")
+        }
+        
         let closeButton = NavBarButton()
         let vm = NavBarButton.ViewModel(
             action: .touchUpInside { [weak self] in
                 self?.coordinator.navigateTo(CommonNavigationRoute.close)
             },
-            image: isLeft ? UIImage(named: "back_arrow_ic") : UIImage(named: "back_ic"))
+            image: image)
+        
         closeButton.setViewModel(vm)
-        if isLeft {
+        
+        switch side {
+        case .left:
             self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: closeButton)]
-        } else {
+        case .right:
             self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: closeButton)]
         }
         self.hideNavBar(false)
@@ -173,17 +184,14 @@ extension BasicViewController {
         logoImageView.image = UIImage(named: "logo")
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
-        
-//        let proImageView = UIImageView(frame: .init(x: 0, y: 0, width: 61, height: 30))
-//        proImageView.image = UIImage(named: "sub")
-//        proImageView.contentMode = .scaleAspectFit
-//        navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: proImageView)
     }
 }
 
-//extension BasicViewController: PageControllable {
-//    var tableViewDelegate: UITableView? {
-//        get { tableView }
-//        set { tableView = newValue! }
-//    }
-//}
+extension BasicViewController {
+    enum ButtonSide {
+        case left
+        case right
+    }
+}
+
+
