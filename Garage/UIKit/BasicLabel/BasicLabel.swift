@@ -16,6 +16,25 @@ class BasicLabel: UILabel {
         didSet { self.invalidateIntrinsicContentSize() }
     }
     
+    var lineSpacing: CGFloat? {
+        didSet {
+            if let attributedText, let lineSpacing {
+                let aligment = self.textAlignment
+                let text = NSMutableAttributedString(attributedString: attributedText)
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = lineSpacing
+                
+                text.addAttribute(
+                    NSAttributedString.Key.paragraphStyle,
+                    value:paragraphStyle,
+                    range: NSMakeRange(0, text.length)
+                )
+                self.attributedText = text
+                self.textAlignment = aligment
+            }
+        }
+    }
+
     init(font: UIFont? = .custom(size: 14, weight: .semibold)) {
         super.init(frame: .zero)
         self.initLabel()
@@ -69,6 +88,16 @@ class BasicLabel: UILabel {
                     self?.text = text
                 case .attributed(let text):
                     guard !text.string.isEmpty else { return }
+                    if let spacing = self?.lineSpacing {
+                        let paragraphStyle = NSMutableParagraphStyle()
+                        paragraphStyle.lineSpacing = spacing
+                        
+                        text.addAttribute(
+                            NSAttributedString.Key.paragraphStyle,
+                            value:paragraphStyle,
+                            range: NSMakeRange(0, text.length)
+                        )
+                    }
                     self?.attributedText = text
                 }
             }

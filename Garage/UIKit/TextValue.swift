@@ -9,7 +9,7 @@ import Foundation
 
 enum TextValue {
     case text(String)
-    case attributed(NSAttributedString)
+    case attributed(NSMutableAttributedString)
     
     var clearText: String {
         switch self {

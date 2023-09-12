@@ -18,7 +18,7 @@ final class TextFormatter {
         secondaryColor: UIColor = AppColors.subtitle,
         lineSpacing: Int,
         aligment: NSTextAlignment = .left
-    ) -> NSAttributedString {
+    ) -> NSMutableAttributedString {
         let first: NSMutableAttributedString = .init(
             string: main,
             attributes: [.font: font, .foregroundColor: color]

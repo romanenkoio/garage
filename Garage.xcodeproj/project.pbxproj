@@ -175,6 +175,8 @@
 		7F92D12A2A521F7200AD3847 /* OnboardingControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */; };
 		7F92D12B2A521F7200AD3847 /* Onboarding+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */; };
 		7F92D12C2A521F7200AD3847 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F92D1282A521F7200AD3847 /* OnboardingViewController.swift */; };
+		7F9610B62AB063DF00C337BD /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9610B52AB063DF00C337BD /* FAQView.swift */; };
+		7F9610B82AB063E600C337BD /* FAQView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9610B72AB063E600C337BD /* FAQView+ViewModel.swift */; };
 		7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E928E2A45D26600DDC874 /* BasicTextView.swift */; };
 		7F9E92912A45D37A00DDC874 /* BasicTextView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */; };
 		7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */; };
@@ -538,6 +540,8 @@
 		7F92D1252A521F7200AD3847 /* OnboardingControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingControllerLayoutManager.swift; sourceTree = "<group>"; };
 		7F92D1272A521F7200AD3847 /* Onboarding+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Onboarding+ViewModel.swift"; sourceTree = "<group>"; };
 		7F92D1282A521F7200AD3847 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		7F9610B52AB063DF00C337BD /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
+		7F9610B72AB063E600C337BD /* FAQView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FAQView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F9E928E2A45D26600DDC874 /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		7F9E92902A45D37A00DDC874 /* BasicTextView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicTextView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F9E929C2A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPopupControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -1813,6 +1817,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		7F9610B42AB063D300C337BD /* FAQView */ = {
+			isa = PBXGroup;
+			children = (
+				7F9610B52AB063DF00C337BD /* FAQView.swift */,
+				7F9610B72AB063E600C337BD /* FAQView+ViewModel.swift */,
+			);
+			path = FAQView;
+			sourceTree = "<group>";
+		};
 		7F9E92982A45FB9700DDC874 /* UtilsControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2458,6 +2471,7 @@
 		B978F2D72A2E8F4C0076D326 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7F9610B42AB063D300C337BD /* FAQView */,
 				B94CA32D2A729594002A4EDF /* StatisticsGraphs */,
 				7F8CFA9D2A73AD64007F8FDC /* SelectPlanView */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
@@ -3318,6 +3332,7 @@
 				7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */,
 				7F1B7C6E2A60989D00E84C86 /* TextValue.swift in Sources */,
 				7FF503C72A3D1FF6006DA7EC /* SettingView+ViewModel.swift in Sources */,
+				7F9610B82AB063E600C337BD /* FAQView+ViewModel.swift in Sources */,
 				B978F3242A2E8F4C0076D326 /* BasicList+ViewModel.swift in Sources */,
 				7F0E08BC2A2F9276008C2B9A /* Model.swift in Sources */,
 				7F0E08A72A2F4556008C2B9A /* CreateCar+ViewModel.swift in Sources */,
@@ -3390,6 +3405,7 @@
 				7F0E090E2A30A3FF008C2B9A /* ServiceView.swift in Sources */,
 				B9D96E582A38D5FD00909B33 /* PhotoVcNavigationView.swift in Sources */,
 				7F0E08D32A2FA20C008C2B9A /* AlignedStackView.swift in Sources */,
+				7F9610B62AB063DF00C337BD /* FAQView.swift in Sources */,
 				B9B1D1EB2A952A3D00EE78E9 /* StatisticView.swift in Sources */,
 				B9BF6FA72A58328A00B96821 /* FBStackView.swift in Sources */,
 				7F9E928F2A45D26600DDC874 /* BasicTextView.swift in Sources */,

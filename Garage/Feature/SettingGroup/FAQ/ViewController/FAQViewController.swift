@@ -10,19 +10,16 @@ import UIKit
 
 class FAQViewController: BasicViewController {
 
-    // - UI
-    
-    
     // - Property
-    private(set) var vm: ViewModel?
+    private(set) var vm: ViewModel
     
     // - Manager
     private var coordinator: FAQControllerCoordinator!
-    private var layoutManager: FAQControllerLayoutManager!
+    private var layout: FAQControllerLayoutManager!
     
     init(vm: ViewModel) {
-        super.init()
         self.vm = vm
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -32,8 +29,8 @@ class FAQViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
         makeCloseButton(side: .left)
+        disableScrollView()
         title = "Периоды ТО"
     }
 
@@ -43,7 +40,14 @@ class FAQViewController: BasicViewController {
     }
 
     override func binding() {
+        self.layout.table.setViewModel(vm.tableVM)
         
+        vm.tableVM.$cells
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+            self?.layout.table.reload()
+        }
+        .store(in: &cancellables)
     }
     
 }
@@ -58,7 +62,36 @@ fileprivate extension FAQViewController {
     }
     
     private func configureLayoutManager() {
-        layoutManager = FAQControllerLayoutManager(vc: self)
+        layout = FAQControllerLayoutManager(vc: self)
     }
     
+}
+
+extension FAQViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return vm.tableVM.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tableVM.cells[safe: section]?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let faqCell = tableView.dequeueReusableCell(BasicTableCell<FAQView>.self),
+              let point = vm.cells[safe: indexPath.section]?[safe: indexPath.row]
+        else { return .init()}
+        faqCell.mainView.setViewModel(.init(point))
+        return faqCell
+    }
+}
+
+extension FAQViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = vm.cells[safe: section]?.first?.header else { return nil }
+        let label = BasicLabel(font: .custom(size: 16, weight: .semibold))
+        label.textColor = AppColors.blue
+        label.textInsets = .init(top: 10, bottom: 15)
+        label.setViewModel(.init(.text(header)))
+        return label
+    }
 }
