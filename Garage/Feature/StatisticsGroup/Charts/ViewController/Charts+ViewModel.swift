@@ -48,13 +48,24 @@ extension ChartsViewController {
                                 self.changeSelection(barChartSuggestion)
                             }
                             
-       
-                        case 1:
-                            if let pieChartSuggestion = self.chartsViewVM?.pieChartSuggestion {
-                                self.changeSelection(pieChartSuggestion)
+                            if let records = self.chartsViewVM?.barChartVM.records,
+                                !records.isEmpty {
+                                self.createRecords(from: records)
+                            } else {
+                                self.createRecords(from: car.records)
                             }
-                          
-              
+                            
+                        case 1:
+                            guard let pieChartSuggestion = chartsViewVM?.pieChartSuggestion else { return }
+                                self.changeSelection(pieChartSuggestion)
+                            
+                            if let records = self.chartsViewVM?.pieChartVM.records,
+                                !records.isEmpty {
+                                self.createRecords(from: records)
+                            } else {
+                                self.createRecords(from: car.records)
+                            }
+                                
                         default: break
                     }
                 })

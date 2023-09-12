@@ -86,6 +86,7 @@ class BarChart: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
+        
     }
 
 }
