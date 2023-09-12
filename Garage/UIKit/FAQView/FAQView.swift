@@ -9,20 +9,20 @@ import Foundation
 
 class FAQView: BasicView {
     
-    private lazy var periodLabel: BasicLabel = {
-        let label = BasicLabel(font: .custom(size: 16, weight: .regular))
-        label.textAlignment = .center
-        label.textColor = AppColors.black
-        label.textInsets = .init(top: 15, bottom: 15, right: 16)
-        return label
-    }()
-    
     private lazy var titleLabel: BasicLabel = {
         let label = BasicLabel(font: .custom(size: 16, weight: .regular))
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = AppColors.black
         label.textInsets = .init(top: 15, bottom: 15, left: 16)
+        return label
+    }()
+
+    private lazy var periodLabel: BasicLabel = {
+        let label = BasicLabel(font: .custom(size: 16, weight: .regular))
+        label.textAlignment = .right
+        label.textColor = AppColors.black
+        label.textInsets = .init(top: 15, bottom: 15, right: 16)
         return label
     }()
 
