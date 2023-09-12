@@ -20,15 +20,16 @@ class CustomMarkerView: MarkerView {
         let label = BasicLabel()
         switch chartType {
             case .pie:
-                label.frame = CGRect(x: 0, y: 0, width: 100, height: 80)
+                label.frame = CGRect(x: 0, y: 0, width: 100, height: 70)
             case .bar:
                 label.frame = CGRect(x: 0, y: 0, width: 80, height: 50)
         }
-        label.backgroundColor = AppColors.background.withAlphaComponent(0.6)
+        label.backgroundColor = .white.withAlphaComponent(0.8)
         label.layer.cornerRadius = 12
         label.layer.borderColor = UIColor(hexString: "#2042E9").cgColor
         label.layer.borderWidth = 1
         label.layer.masksToBounds = true
+        label.adjustsFontSizeToFitWidth = true
         label.adjustsFontForContentSizeCategory = true
         return label
     }()
@@ -94,6 +95,11 @@ class CustomMarkerView: MarkerView {
      }
 
     override func offsetForDrawing(atPoint point: CGPoint) -> CGPoint {
-        return CGPoint(x: -40, y: -40)
+        switch chartType {
+            case .pie:
+                return CGPoint(x: -40, y: -40)
+            case .bar:
+                return CGPoint(x: -40, y: -60)
+        }
     }
 }

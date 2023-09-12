@@ -14,7 +14,6 @@ typealias BarChartItem = [(id: String, XaxisValue: Int, YaxisValue: Int)]
 extension BarChart {
     
     class ViewModel: BasicViewModel {
-        var descriptionLabelVM = BasicLabel.ViewModel()
         @Published var records: [Record] = .empty
         var year: Int?
     }
@@ -48,10 +47,10 @@ extension BarChart {
             chartDataSet.highlightColor = AppColors.green
             chartDataSet.highlightAlpha = 1
             chartDataSet.colors = [AppColors.fieldBg]
-            chartDataSet.valueFont = .custom(size: 12, weight: .regular)
             chartDataSet.drawValuesEnabled = false
-            
+            chartDataSet.barCornerRadiusFactor = 0.15
             let data = BarChartData(dataSet: chartDataSet)
+            
             self.barChartData = data
         }
     }

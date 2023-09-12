@@ -69,16 +69,11 @@ class PieChart: BasicView {
     
     private func makeLayout() {
         addSubview(pieChartView)
-//        addSubview(descriptionLabel)
         customMarkerView.chartView = pieChartView
         pieChartView.marker = customMarkerView
     }
     
     private func makeConstraints() {
-//        descriptionLabel.snp.makeConstraints { make in
-//            make.leading.top.trailing.equalToSuperview()
-//        }
-        
         let screenWidth = UIScreen.main.bounds.width
         let chartHight = screenWidth - 70
         pieChartView.snp.makeConstraints { make in
@@ -92,7 +87,6 @@ class PieChart: BasicView {
     
     func setViewModel(_ vm: ViewModel) {
         self.viewModel = vm
-//        descriptionLabel.setViewModel(vm.descriptionLabelVM)
     }
 }
 

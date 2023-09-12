@@ -14,7 +14,12 @@ final class StatisticPagesControllerLayoutManager {
     private unowned let vc: StatisticPagesViewController
     
     // - UI
-    private(set) lazy var segment = BasicSegmentView<StatisticType>()
+    private(set) lazy var segment: BasicSegmentView<StatisticType> = {
+        let view = BasicSegmentView<StatisticType>()
+        view.backgroundColor = AppColors.background
+        return view
+    }()
+    
     private(set) lazy var page = BasicPageController(vm: vc.vm.pageVM)
     
     // - Init
@@ -22,7 +27,6 @@ final class StatisticPagesControllerLayoutManager {
         self.vc = vc
         configure()
     }
-    
 }
 
 // MARK: -

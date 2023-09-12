@@ -11,15 +11,6 @@ import UIKit
 class ChartsView: BasicView {
     private(set) lazy var barChart = BarChart()
     private(set) lazy var pieChart = PieChart()
-//    lazy var descriptionLabel: BasicLabel = {
-//        let view = BasicLabel()
-//        view.textAlignment = .center
-//        view.textColor = AppColors.blue
-//        view.font = .custom(size: 20, weight: .extrabold)
-//        view.textInsets = .init(top: 10, left: 16)
-//        view.backgroundColor = .white
-//        return view
-//    }()
     
     private(set) lazy var containerView = BasicView()
     
@@ -37,15 +28,6 @@ class ChartsView: BasicView {
         scroll.delegate = self
         scroll.isPagingEnabled = true
         return scroll
-    }()
-    
-    private(set) lazy var yearBarStack: ScrollableStackView = {
-        let stack = ScrollableStackView()
-        stack.spacing = 5
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.contentInset = UIEdgeInsets(top: 10, bottom: 20, horizontal: 16)
-        return stack
     }()
     
     private(set) lazy var pageControl: UIPageControl = {
@@ -75,21 +57,15 @@ class ChartsView: BasicView {
         scrollView.addSubview(chartsStack)
         chartsStack.addArrangedSubviews([barChart, pieChart])
         containerView.addSubview(pageControl)
-        containerView.addSubview(yearBarStack)
-//        addSubview(descriptionLabel)
     }
     
     private func makeConstraints() {
-//        descriptionLabel.snp.makeConstraints { make in
-//            make.leading.trailing.top.equalToSuperview()
-//            make.height.equalTo(60)
-//        }
-        
         containerView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
         scrollView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
             make.leading.trailing.equalToSuperview()
         }
         
@@ -101,13 +77,7 @@ class ChartsView: BasicView {
         pageControl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(scrollView.snp.bottom)
-            make.bottom.equalToSuperview()
-        }
-        
-        yearBarStack.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(scrollView.snp.top)
+            make.bottom.equalTo(self.snp.bottom).inset(12)
         }
     }
     
@@ -122,20 +92,6 @@ class ChartsView: BasicView {
                 self?.barChart.barChartView.data = data
             }
             .store(in: &cancellables)
-        
-        vm.$suggestions.sink { [weak self] vms in
-            guard !vms.isEmpty else {
-                self?.yearBarStack.isHidden = true
-                return
-            }
-            self?.yearBarStack.clearArrangedSubviews()
-            vms.forEach { [weak self] vm in
-                let view = SuggestionView()
-                view.setViewModel(vm)
-                self?.yearBarStack.addArrangedSubview(view)
-            }
-        }
-        .store(in: &cancellables)
         
         vm.pieChartVM.$pieChartData
             .receive(on: DispatchQueue.main)
@@ -171,17 +127,6 @@ class ChartsView: BasicView {
             }
             .store(in: &cancellables)
         
-//        vm.$pageIndex
-//            .sink {[weak self] index in
-//                switch index {
-//                    case 0:
-//                        self?.descriptionLabel.setViewModel(vm.barDescriptionLabelVM)
-//                    case 1:
-//                        self?.descriptionLabel.setViewModel(vm.pieDescriptionLabelVM)
-//                    default: break
-//                }
-//            }
-//            .store(in: &cancellables)
     }
 }
 

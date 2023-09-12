@@ -12,6 +12,7 @@ extension SuggestionView {
         let labelVM: TappableLabel.ViewModel
         @Published var image: UIImage?
         @Published var isSelected: Bool = false
+        @Published var backgroundColor: UIColor?
         
         init(
             labelVM: TappableLabel.ViewModel,

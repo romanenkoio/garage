@@ -48,6 +48,11 @@ class DocumentsViewController: BasicViewController {
         hideTabBar(false)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.bringSubviewToFront(layout.addButton)
+    }
+    
     override func configure() {
         configureCoordinator()
         configureLayoutManager()

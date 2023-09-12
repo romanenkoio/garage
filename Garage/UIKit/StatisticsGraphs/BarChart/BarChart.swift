@@ -23,32 +23,36 @@ class BarChart: BasicView {
     }()
     
     private(set) lazy var barChartView: BarChartView = {
-       let view = BarChartView()
-        view.highlightFullBarEnabled = true
-        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().standaloneMonthSymbols)
-        view.xAxis.drawAxisLineEnabled = false
-        view.xAxis.drawGridLinesEnabled = false
-        view.leftAxis.drawAxisLineEnabled = false
-        view.rightAxis.drawAxisLineEnabled = false
-        view.leftAxis.drawLabelsEnabled = false
-        view.leftAxis.drawTopYLabelEntryEnabled = false
-        view.leftAxis.drawZeroLineEnabled = false
-        view.doubleTapToZoomEnabled = false
-        view.pinchZoomEnabled = false
-        view.drawBordersEnabled = false
-        view.dragEnabled = false
-        view.scaleXEnabled = false
-        view.scaleYEnabled = false
-        view.legend.enabled = false
-        view.rightAxis.drawLabelsEnabled = false
-        view.xAxis.labelFont = .custom(size: 12, weight: .medium)
-        view.xAxis.labelTextColor = .lightGray
-        view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
-        view.xAxis.labelCount = 12
-        view.xAxis.labelRotationAngle = -45
-        view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+        let barChart = BarChartView()
+        barChart.highlightFullBarEnabled = true
+        barChart.doubleTapToZoomEnabled = false
+        barChart.pinchZoomEnabled = false
+        barChart.drawBordersEnabled = false
+        barChart.dragEnabled = false
+        barChart.scaleXEnabled = false
+        barChart.scaleYEnabled = false
+        barChart.legend.enabled = false
+        barChart.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
+        barChart.setViewPortOffsets(left: 0, top: 40, right: 0, bottom: 16)
         
-        return view
+        let leftAxis = barChart.leftAxis
+        leftAxis.drawLabelsEnabled = false
+        leftAxis.drawZeroLineEnabled = false
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.gridLineWidth = 1
+        
+        let rightAxis = barChart.rightAxis
+        rightAxis.gridColor = AppColors.background
+        rightAxis.drawLabelsEnabled = false
+        rightAxis.drawAxisLineEnabled = false
+        
+        let xAxis = barChart.xAxis
+        xAxis.drawAxisLineEnabled = false
+        xAxis.drawGridLinesEnabled = false
+        xAxis.drawLabelsEnabled = false
+        
+        return barChart
     }()
     
     override init() {
