@@ -5,7 +5,7 @@
 //  Created by Vlad Kulakovsky  on 29.07.23.
 //
 
-import Foundation
+import UIKit
 import DGCharts
 import Combine
 
@@ -47,8 +47,7 @@ extension PieChart {
             }
             
             let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: .empty)
-            pieChartDataSet.highlightColor = .lightGray.withAlphaComponent(0.6)
-            pieChartDataSet.colors = [.blue, .red, .gray,.green,.yellow,.systemPink]
+            pieChartDataSet.colors = PieChartColors.elementColors
             pieChartDataSet.valueFont = .custom(size: 12, weight: .regular)
             pieChartDataSet.drawValuesEnabled = false
             
@@ -56,5 +55,22 @@ extension PieChart {
             self.pieChartData = data
         }
     }
+    
+   fileprivate struct PieChartColors {
+        static var elementColors: [UIColor] = [
+            UIColor.init(hexString: "#636872"),
+            UIColor.init(hexString: "#DCA2F6"),
+            UIColor.init(hexString: "#EEC865"),
+            UIColor.init(hexString: "#E17256"),
+            UIColor.init(hexString: "#8BE5C9"),
+            UIColor.init(hexString: "#6795DC"),
+            UIColor.init(hexString: "#EE87C6"),
+            UIColor.init(hexString: "#A4CA6F"),
+            UIColor.init(hexString: "#78D6FF"),
+            UIColor.init(hexString: "#A08FDE"),
+            UIColor.init(hexString: "#D3DCFF"),
+        ]
+    }
 }
+
 

@@ -28,7 +28,7 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
 
     var title: String {
         switch self {
-        case .license:                  return "Водительские права".localized
+        case .license:                  return "Водительское удостоверение".localized
         case .medical:                  return "Медицинская справка".localized
         case .insurance:                return "Страховка".localized
         case .carPasport:               return "Технический паспорт".localized

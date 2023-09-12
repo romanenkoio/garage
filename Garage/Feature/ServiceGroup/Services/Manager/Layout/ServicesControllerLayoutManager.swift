@@ -75,8 +75,7 @@ fileprivate extension ServicesControllerLayoutManager {
     private func makeLayout() {
         vc.contentView.addSubview(stack)
         vc.contentView.addSubview(table)
-        vc.contentView.addSubview(addButton)
-        vc.contentView.bringSubviewToFront(addButton)
+        vc.view.addSubview(addButton)
         stack.addArrangedSubviews([categoriesStack])
     }
     
@@ -91,7 +90,8 @@ fileprivate extension ServicesControllerLayoutManager {
         }
         
         addButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 16, right: 16))
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-105)
         }
     }
     

@@ -13,8 +13,8 @@ enum StatisticType: Equatable, CaseIterable {
     
     var title: String {
         switch self {
-        case .charts:    return "Грфики"
-        case .statistic:   return "Статистика"
+            case .charts:    return "Грaфики".localized
+            case .statistic:   return "Статистика".localized
         }
     }
 }

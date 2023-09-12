@@ -103,7 +103,7 @@ final class ChartsControllerLayoutManager {
     private func makeAutoAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
         let tableViewCornerScale = min(20,max(constant / 20, 0))
-        let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 150
+        let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 70
         let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.vc.view.layoutIfNeeded()
@@ -114,12 +114,12 @@ final class ChartsControllerLayoutManager {
     private func makeManualAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
         let tableViewCornerScale = min(20,max(constant / 20, 0))
-        let chartSizeConstant = maxConstraintConstant! / 150
+        let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 70
         let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.chartsView.containerView.frame.origin.y = chartAnimationScale
         self.table.cornerRadius = tableViewCornerScale
-        print(-70 + constant / chartSizeConstant)
+        print(chartAnimationScale)
     }
     
 }

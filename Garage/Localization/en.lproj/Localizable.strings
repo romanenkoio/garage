@@ -43,6 +43,9 @@
 "год" = "year";
 "Пробег" = "Mileage";
 
+// MARK: DateHeaderView
+"В этом году" = "This Year";
+
 // MARK: CreateCarViewController
 "Добавить машину" = "Add Car";
 "Изменить машину" = "Edit Car";
@@ -58,7 +61,7 @@
 "Достигнут лимит автомобилей" = "Car Limit Reached";
 
 // MARK: DocumentType
-"Водительские права" = "Driver's License";
+"Водительское удостоверение" = "Driver's License";
 "Медицинская справка" = "Medical Certificate";
 "Страховка" = "Insurance";
 "Технический паспорт" = "Technical Passport";
@@ -158,6 +161,8 @@
 // MARK: StatisticsViewController
 "Статистика" = "Statistics";
 "Выберите период" = "Choose period";
+"Грaфики" = "Charts";
+"Недостаточно данных" = "Not enough data";
 
 // MARK: ChartsView
 "Расходы_всё_время" = "All-time spending by category";

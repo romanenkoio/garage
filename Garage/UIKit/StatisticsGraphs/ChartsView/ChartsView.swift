@@ -11,15 +11,6 @@ import UIKit
 class ChartsView: BasicView {
     private(set) lazy var barChart = BarChart()
     private(set) lazy var pieChart = PieChart()
-//    lazy var descriptionLabel: BasicLabel = {
-//        let view = BasicLabel()
-//        view.textAlignment = .center
-//        view.textColor = AppColors.blue
-//        view.font = .custom(size: 20, weight: .extrabold)
-//        view.textInsets = .init(top: 10, left: 16)
-//        view.backgroundColor = .white
-//        return view
-//    }()
     
     private(set) lazy var containerView = BasicView()
     
@@ -80,10 +71,6 @@ class ChartsView: BasicView {
     }
     
     private func makeConstraints() {
-//        descriptionLabel.snp.makeConstraints { make in
-//            make.leading.trailing.top.equalToSuperview()
-//            make.height.equalTo(60)
-//        }
         
         containerView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
@@ -101,7 +88,7 @@ class ChartsView: BasicView {
         pageControl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(scrollView.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(self.snp.bottom).inset(12)
         }
         
         yearBarStack.snp.makeConstraints { make in
@@ -171,17 +158,6 @@ class ChartsView: BasicView {
             }
             .store(in: &cancellables)
         
-//        vm.$pageIndex
-//            .sink {[weak self] index in
-//                switch index {
-//                    case 0:
-//                        self?.descriptionLabel.setViewModel(vm.barDescriptionLabelVM)
-//                    case 1:
-//                        self?.descriptionLabel.setViewModel(vm.pieDescriptionLabelVM)
-//                    default: break
-//                }
-//            }
-//            .store(in: &cancellables)
     }
 }
 

@@ -40,7 +40,7 @@ class ServicesViewController: BasicViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        view.bringSubviewToFront(layout.addButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {

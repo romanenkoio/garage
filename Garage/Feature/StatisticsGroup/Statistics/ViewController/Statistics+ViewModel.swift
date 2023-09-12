@@ -23,7 +23,7 @@ extension StatisticsViewController {
             
             tableVM.setupEmptyState(
                 type: .large,
-                labelVM: .init(.text("Недостаточно данных")),
+                labelVM: .init(.text("Недостаточно данных".localized)),
                 sublabelVM: .init(.text("Для отображения статистики необходимо добавить хотя бы 2 записи")),
                 addButtonVM: .init(),
                 image: nil
@@ -32,13 +32,16 @@ extension StatisticsViewController {
         }
         
         func createCells(car: Car) {
-            guard car.records.count >= 2 else { return }
+            guard car.records.count >= 2 else {
+                tableVM.setCells([])
+                return
+            }
 
             cells = [
-                .averageSumPerYear(car: car),
                 .mostFrequentOperation(car: car),
                 .mostExpensiveOperation(car: car),
                 .mostCheapetsOperation(car: car),
+                .averageSumPerYear(car: car),
                 .mostCheapestOperationPerYear(car: car),
                 .mostExpensioveOperationPerYear(car: car)
             ]

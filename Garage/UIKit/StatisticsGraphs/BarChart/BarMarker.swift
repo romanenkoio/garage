@@ -94,6 +94,6 @@ class CustomMarkerView: MarkerView {
      }
 
     override func offsetForDrawing(atPoint point: CGPoint) -> CGPoint {
-        return CGPoint(x: -40, y: -40)
+        return CGPoint(x: -40, y: -60)
     }
 }

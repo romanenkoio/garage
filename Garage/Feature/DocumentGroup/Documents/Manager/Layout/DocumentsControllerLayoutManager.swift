@@ -46,8 +46,7 @@ fileprivate extension DocumentsControllerLayoutManager {
     
     private func makeLayout() {
         vc.contentView.addSubview(table)
-        vc.contentView.addSubview(addButton)
-        vc.contentView.bringSubviewToFront(addButton)
+        vc.view.addSubview(addButton)
     }
     
     private func makeConstraint() {
@@ -56,7 +55,8 @@ fileprivate extension DocumentsControllerLayoutManager {
         }
         
         addButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 16, right: 16))
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-105)
         }
     }
 }
