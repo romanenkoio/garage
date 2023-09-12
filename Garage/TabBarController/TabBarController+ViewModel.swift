@@ -43,10 +43,10 @@ extension TabBarController {
             
             var title: String {
                 switch self {
-                case .garage:    return "Гараж".localized
-                case .documents: return "Документы".localized
-                case .services:  return "Сервисы".localized
-                case .articles:  return "Статьи".localized
+                case .garage:    return "Гараж"
+                case .documents: return "Документы"
+                case .services:  return "Сервисы"
+                case .articles:  return "Статьи"
                 }
             }
         }

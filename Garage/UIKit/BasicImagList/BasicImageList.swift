@@ -68,7 +68,7 @@ class BasicImageListView: BasicView {
             TabBarController.sh.present(self.cameraPicker, animated: true)
         }
         
-        let cancelAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(takePhotAction)
         alert.addAction(choisePhotoAction)
         alert.addAction(cancelAction)

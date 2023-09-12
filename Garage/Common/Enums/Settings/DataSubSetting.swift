@@ -34,11 +34,11 @@ enum DataSubSetting {
     
     var title: String {
         switch self {
-        case .transfer:             return "Перенос данных".localized
-        case .backup(let date):     return "Резервная копия_".localized(date)
-        case .save:                 return "Создать копию".localized
-        case .restore:              return "Восстановить из копии".localized
-        case .remove:               return "Удалить копию".localized
+        case .transfer:             return "Перенос данных"
+        case .backup(let date):     return "Резервная копия: \(date)"
+        case .save:                 return "Создать копию"
+        case .restore:              return "Восстановить из копии"
+        case .remove:               return "Удалить копию"
         }
     }
     

@@ -23,7 +23,7 @@ final class SettingsControllerLayoutManager {
         table.register(BannerCell.self)
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-        label.text = "Версия".localized(Bundle.main.version)
+        label.text = "Версия \(Bundle.main.version)"
         label.textAlignment = .center
         label.font = .custom(size: 14, weight: .semibold)
         label.textColor = AppColors.tabbarIcon

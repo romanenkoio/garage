@@ -28,11 +28,11 @@ enum DocumentType: CaseIterable, Selectable, Equatable {
 
     var title: String {
         switch self {
-        case .license:                  return "Водительское удостоверение".localized
-        case .medical:                  return "Медицинская справка".localized
-        case .insurance:                return "Страховка".localized
-        case .carPasport:               return "Технический паспорт".localized
-        case .techChek:                 return "Технический осмотр".localized
+        case .license:                  return "Водительское удостоверение"
+        case .medical:                  return "Медицинская справка"
+        case .insurance:                return "Страховка"
+        case .carPasport:               return "Технический паспорт"
+        case .techChek:                 return "Технический осмотр"
         case .pass:                     return "Пропуск"
         case .unlisted(let string):     return string ?? ""
         }

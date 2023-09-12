@@ -52,7 +52,7 @@ class CarInfoViewController: BasicViewController {
         scroll.delegate = self
         scroll.showsVerticalScrollIndicator = false
         layout.page.delegate = self
-        layout.titleLabelView.defaultTitle = "Общая информация".localized
+        layout.titleLabelView.defaultTitle = "Общая информация"
         self.navigationItem.titleView = layout.titleLabelView
     }
     
@@ -81,7 +81,7 @@ class CarInfoViewController: BasicViewController {
         let isPrem = Environment.isPrem
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
-                    .init(.text("Запланировать".localized),
+                    .init(.text("Запланировать"),
                           action: { [weak self] in
                               guard let self else { return }
                               let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
@@ -97,7 +97,7 @@ class CarInfoViewController: BasicViewController {
                           }),
                   image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
-                    .init(.text("Добавить запись".localized),
+                    .init(.text("Добавить запись"),
                           action: { [weak self] in
                               guard let self else { return }
                               coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))

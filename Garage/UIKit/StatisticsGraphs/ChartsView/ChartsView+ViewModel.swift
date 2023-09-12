@@ -60,7 +60,7 @@ extension ChartsView {
 //
 //        func initBarSuggestions() {
 //            var suggestions: [SuggestionView.ViewModel] = .empty
-//            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период".localized)))
+//            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
 //            vm.labelVM.action = { [weak self] in
 //                self?.changeSelection(vm)
 //                switch self?.pageIndex {

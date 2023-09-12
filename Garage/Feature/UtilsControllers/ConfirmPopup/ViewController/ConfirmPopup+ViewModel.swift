@@ -13,8 +13,8 @@ extension ConfirmPopupViewController {
         
         let confirmLabelVM = BasicLabel.ViewModel()
         let subtitleLabelVM = BasicLabel.ViewModel()
-        let confirmButton = BasicButton.ViewModel(title: "Удалить".localized, style: .popup(color: UIColor(hexString: "#E84949")))
-        let cancelButton = BasicButton.ViewModel(title: "Отмена".localized, style: .popup())
+        let confirmButton = BasicButton.ViewModel(title: "Удалить", style: .popup(color: UIColor(hexString: "#E84949")))
+        let cancelButton = BasicButton.ViewModel(title: "Отмена", style: .popup())
         let imageViewVM = BasicImageView.ViewModel(
             image: UIImage(named: "delete_popup_ic"),
             mode: .scaleAspectFit

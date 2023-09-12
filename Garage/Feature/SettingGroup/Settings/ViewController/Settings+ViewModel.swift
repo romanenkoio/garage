@@ -24,8 +24,7 @@ extension SettingsViewController {
             settingsPoint = [
                 [.reminders],
                 [.backup],
-                [.contactUs, .language],
-                [.faq]
+                [.contactUs, .faq]
             ]
             
             if !Environment.isPrem {

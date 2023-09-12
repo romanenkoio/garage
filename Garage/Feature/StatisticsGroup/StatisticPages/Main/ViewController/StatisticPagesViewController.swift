@@ -35,7 +35,7 @@ class StatisticPagesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeCloseButton(side: .left)
-        title = "Статистика".localized
+        title = "Статистика"
     }
 
     override func configure() {

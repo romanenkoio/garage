@@ -116,7 +116,7 @@ class SettingsViewController: BasicViewController {
     
     private func changeLanguage() {
         let avalibleLanguages = Language.allCases
-        let alert = UIAlertController(title: "Выберите язык".localized, message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Выберите язык", message: nil, preferredStyle: .actionSheet)
         
         avalibleLanguages.forEach { [weak self] language in
             let action = UIAlertAction(title: language.rawValue.uppercased(), style: .default) { _ in
@@ -127,7 +127,7 @@ class SettingsViewController: BasicViewController {
             alert.addAction(action)
         }
         
-        let closeAction = UIAlertAction(title: "Отмена".localized, style: .cancel)
+        let closeAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(closeAction)
         self.present(alert)
     }

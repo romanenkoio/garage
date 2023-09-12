@@ -12,7 +12,7 @@ extension CreateDocumentViewController {
     final class ViewModel: BasicControllerModel {
         let saveButtonVM = AlignedButton.ViewModel(
             buttonVM: .init(
-                title: "Сохранить".localized,
+                title: "Сохранить",
                 isEnabled: false,
                 style: .primary
             ))
@@ -22,8 +22,8 @@ extension CreateDocumentViewController {
         let typeFieldVM = SuggestionInput<DocumentType>.GenericViewModel<DocumentType>(
             DocumentType.allCases,
             items: { items in items.map({ ($0.title, $0.image) })},
-            errorVM: .init(error: "Не может быть пустым".localized),
-            inputVM: .init(placeholder: "Водительское удостоверение".localized),
+            errorVM: .init(error: "Не может быть пустым"),
+            inputVM: .init(placeholder: "Водительское удостоверение"),
             isRequired: true
         )
         
@@ -50,10 +50,10 @@ extension CreateDocumentViewController {
                 self.saveCompletion?()
             }
             imageListVM.editingEnabled = true
-            imageListVM.description = "Добавить фото".localized
-            datePickerVM.desctiptionVM.textValue = .text("Срок действия".localized)
-            datePickerVM.startDateVM.descriptionLabel = "Дата начала действия".localized
-            datePickerVM.finishDateVM.descriptionLabel = "Дата окончания действия".localized
+            imageListVM.description = "Добавить фото"
+            datePickerVM.desctiptionVM.textValue = .text("Срок действия")
+            datePickerVM.startDateVM.descriptionLabel = "Дата начала действия"
+            datePickerVM.finishDateVM.descriptionLabel = "Дата окончания действия"
         }
         
         deinit {

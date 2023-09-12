@@ -36,11 +36,11 @@ extension BackupViewController {
             DispatchQueue.global().async { [weak self] in
                 guard let backup = Storage.retrieve(.backup, from: .documents, as: Backup.self) else {
                     self?.settingsPoint = [
-                        [.backup("отсутствует".localized), .transfer(false)],
+                        [.backup("отсутствует"), .transfer(false)],
                         [.save, .restore(false), .remove(false)]
                     ]
                     self?.setCells()
-                    completion("отсутствует".localized)
+                    completion("отсутствует")
                     return
                 }
                 

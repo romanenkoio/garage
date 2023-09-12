@@ -35,7 +35,7 @@ class BackupViewController: BasicViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCloseButton(side: .left)
-        title = "Резервная копия".localized
+        title = "Резервная копия"
         vm.setCells()
     }
 
@@ -101,7 +101,7 @@ extension BackupViewController {
     
     func removeBackup() {
         let dialogVM = Dialog.ViewModel(
-            title: .text("Удалить резервную копию?".localized)
+            title: .text("Удалить резервную копию?")
         ) { [weak self] in
             guard let self else { return }
             showLoader()
@@ -110,7 +110,7 @@ extension BackupViewController {
                     DispatchQueue.main.async { [weak self] in
                         self?.vm.reload() { [weak self] _ in
                             self?.dismissLoader()
-                            SPIndicator.show(title: "Копия удалена".localized)
+                            SPIndicator.show(title: "Копия удалена")
                         }}}}
         }
         self.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: dialogVM))
@@ -118,9 +118,9 @@ extension BackupViewController {
     
     func restoreBackup() {
         let dialogVM = Dialog.ViewModel(
-            title: .text("Восстановить данные из резервной копии?".localized),
-            subtitle: .text("Все текущие данные будут удалены".localized),
-            confirmTitle: "Восстановить".localized,
+            title: .text("Восстановить данные из резервной копии?"),
+            subtitle: .text("Все текущие данные будут удалены"),
+            confirmTitle: "Восстановить",
             confirmColor: AppColors.green
         ) { [weak self] in
             guard let self else { return }
@@ -131,7 +131,7 @@ extension BackupViewController {
                 backup.saveCurrent()
                 self?.vm.reload(completion: { [weak self] _ in
                     self?.dismissLoader()
-                    SPIndicator.show(title: "Восстановлено".localized)
+                    SPIndicator.show(title: "Восстановлено")
                 })
             }
         }
@@ -155,7 +155,7 @@ extension BackupViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.vm.reload() { [weak self] _ in
                         self?.dismissLoader()
-                        SPIndicator.show(title: "Резервная копия создана".localized)
+                        SPIndicator.show(title: "Резервная копия создана")
                     }
                 }
             }

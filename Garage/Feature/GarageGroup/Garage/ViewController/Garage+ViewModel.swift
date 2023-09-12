@@ -24,7 +24,7 @@ extension GarageViewController {
         var cars: [Car] = .empty
         
         override init() {
-            addButtonVM = .init(buttonVM: .init(title: "Добавить машину".localized))
+            addButtonVM = .init(buttonVM: .init(title: "Добавить машину"))
             
             switch LocationManager.shared.authorizationStatus {
             case .authorizedAlways, .authorizedWhenInUse:
@@ -37,8 +37,8 @@ extension GarageViewController {
             readCars()
             
             tableVM.setupEmptyState(
-                labelVM: .init(.text("Ваш гараж пуст".localized)),
-                sublabelVM: .init(.text("Добавьте машину для \nначала работы".localized)),
+                labelVM: .init(.text("Ваш гараж пуст")),
+                sublabelVM: .init(.text("Добавьте машину для \nначала работы")),
                 addButtonVM: addButtonVM.buttonVM,
                 image: UIImage(named: "car_placeholder")
             )

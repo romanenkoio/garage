@@ -13,8 +13,8 @@ enum RecordType: Equatable, CaseIterable {
     
     var title: String {
         switch self {
-        case .paste:    return "История".localized
-        case .future:   return "Планы".localized
+        case .paste:    return "История"
+        case .future:   return "Планы"
         }
     }
 }

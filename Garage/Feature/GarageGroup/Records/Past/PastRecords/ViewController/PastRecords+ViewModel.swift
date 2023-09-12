@@ -26,7 +26,7 @@ extension PastRecordsViewController {
                 type: .small,
                 labelVM: .init(.text("Записей нет")),
                 sublabelVM: .init(.text("Истории обслуживания ещё нет, но вы можете добавить первую запись")),
-                addButtonVM: .init(title: "Добавить запись".localized),
+                addButtonVM: .init(title: "Добавить запись"),
                 image: nil
             )
             tableVM.isHiddenButton = true

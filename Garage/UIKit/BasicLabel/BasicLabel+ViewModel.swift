@@ -21,5 +21,5 @@ extension BasicLabel {
 }
 
 extension BasicLabel.ViewModel {
-    static let required =  BasicLabel.ViewModel(.text( "*обязательное поле".localized))
+    static let required =  BasicLabel.ViewModel(.text( "*обязательное поле"))
 }

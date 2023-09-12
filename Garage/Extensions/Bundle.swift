@@ -22,27 +22,27 @@ extension Bundle {
     }
     
     static func setLocalization() {
-        object_setClass(Bundle.main, AnyLanguageBundle.self)
+//        object_setClass(Bundle.main, AnyLanguageBundle.self)
     }
 
-    private final class AnyLanguageBundle: Bundle {
-        override func localizedString(
-            forKey key: String,
-            value: String?,
-            table tableName: String?
-        ) -> String {
-            let selectedLanguage: String
-            if let language: String = SettingsManager.sh.read(.selectedLanguage) {
-                selectedLanguage = language
-            } else {
-                selectedLanguage = "be"
-            }
-            guard let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj"),
-                  let bundle = Bundle(path: path)
-            else {
-                return super.localizedString(forKey: key, value: value, table: tableName)
-            }
-            return bundle.localizedString(forKey: key, value: value, table: tableName)
-        }
-    }
+//    private final class AnyLanguageBundle: Bundle {
+//        override func localizedString(
+//            forKey key: String,
+//            value: String?,
+//            table tableName: String?
+//        ) -> String {
+//            let selectedLanguage: String
+//            if let language: String = SettingsManager.sh.read(.selectedLanguage) {
+//                selectedLanguage = language
+//            } else {
+//                selectedLanguage = "be"
+//            }
+//            guard let path = Bundle.main.path(forResource: selectedLanguage, ofType: "lproj"),
+//                  let bundle = Bundle(path: path)
+//            else {
+//                return superString(forKey: key, value: value, table: tableName)
+//            }
+//            return bundleString(forKey: key, value: value, table: tableName)
+//        }
+//    }
 }

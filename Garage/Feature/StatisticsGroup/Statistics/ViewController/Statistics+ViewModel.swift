@@ -23,7 +23,7 @@ extension StatisticsViewController {
             
             tableVM.setupEmptyState(
                 type: .large,
-                labelVM: .init(.text("Недостаточно данных".localized)),
+                labelVM: .init(.text("Недостаточно данных")),
                 sublabelVM: .init(.text("Для отображения статистики необходимо добавить хотя бы 2 записи")),
                 addButtonVM: .init(),
                 image: nil

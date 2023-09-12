@@ -16,10 +16,10 @@ extension RangeDatePicker {
         
         let desctiptionVM = BasicLabel.ViewModel()
         let startDateVM = BasicDatePicker.ViewModel(
-            placeholder: "с".localized(Date().toString(.ddMMyy))
+            placeholder: "с \(Date().toString(.ddMMyy))"
         )
         let finishDateVM = BasicDatePicker.ViewModel(
-            placeholder: "по".localized(Date().append(.month).toString(.ddMMyy))
+            placeholder: "по \(Date().append(.month).toString(.ddMMyy))"
         )
         
         @Published private(set) var startDate: Date?

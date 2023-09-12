@@ -30,12 +30,12 @@ extension CarTopInfoView {
                 main: "\(car.brand) \(car.model)",
                 font: .custom(size: 18, weight: .black),
                 secondary: car.year.wrappedString,
-                postfix: "год".localized,
+                postfix: "год",
                 lineSpacing: 5
             )
             
             let mileage = formatter.attrinutedLines(
-                main: "Пробег".localized,
+                main: "Пробег",
                 font: .custom(size: 12, weight: .bold),
                 color: AppColors.subtitle,
                 secondary: car.mileage.toString(),

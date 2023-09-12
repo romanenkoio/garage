@@ -11,7 +11,7 @@ import Foundation
 
 extension CreateCarViewController {
     final class ViewModel: BasicControllerModel {
-        private let errorVM = ErrorView.ViewModel(error: "Обязательное поле".localized)
+        private let errorVM = ErrorView.ViewModel(error: "Обязательное поле")
         private let vinErrorVM = ErrorView.ViewModel(error: "Проверьте VIN")
         
         var brandFieldVM: BasicInputView.ViewModel
@@ -25,7 +25,7 @@ extension CreateCarViewController {
         var suggestionCompletion: SelectArrayCompletion?
         
         let saveButtonVM = AlignedButton.ViewModel(buttonVM: .init(
-            title: "Сохранить".localized,
+            title: "Сохранить",
             isEnabled: false,
             style: .primary
         ))
@@ -39,33 +39,33 @@ extension CreateCarViewController {
             brandFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "Toyota"),
-                descriptionVM: .init(.text("Производитель".localized)),
+                descriptionVM: .init(.text("Производитель")),
                 isRequired: true
             )
             
             modelFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "RAV4"),
-                descriptionVM: .init(.text("Модель".localized)),
+                descriptionVM: .init(.text("Модель")),
                 isRequired: true
             )
             
             winFieldVM = .init(
                 errorVM: vinErrorVM,
                 inputVM: .init(placeholder: "JAFTH20V916049188"),
-                descriptionVM: .init(.text("VIN номер".localized))
+                descriptionVM: .init(.text("VIN номер"))
             )
             
             yearFieldVM = .init(
                 errorVM: .init(),
                 inputVM: .init(placeholder: "2003"),
-                descriptionVM: .init(.text("Год выпуска".localized))
+                descriptionVM: .init(.text("Год выпуска"))
             )
             
             mileageFieldVM = .init(
                 errorVM: errorVM,
                 inputVM: .init(placeholder: "308000"),
-                descriptionVM: .init(.text("Пробег".localized)),
+                descriptionVM: .init(.text("Пробег")),
                 isRequired: true
             )
             
@@ -155,7 +155,7 @@ extension CreateCarViewController {
                 yearFieldVM.text = object.year.wrappedString
                 winFieldVM.text = object.win.wrapped
                 mileageFieldVM.text = object.mileage.toString()
-                saveButtonVM.buttonVM.title = "Обновить".localized
+                saveButtonVM.buttonVM.title = "Обновить"
                 saveButtonVM.buttonVM.isEnabled = false
                 
                 carImage.logoVM = .init(data: object.images.first, mode: .scaleAspectFill)

@@ -36,7 +36,7 @@ extension DateHeaderView {
                 }
             } else {
                 if self.components.year == Date().components.year {
-                    labelVM.textValue = .text("В этом году".localized)
+                    labelVM.textValue = .text("В этом году")
                 } else if let year = components.year {
                     labelVM.textValue = .text(year.toString())
                 }

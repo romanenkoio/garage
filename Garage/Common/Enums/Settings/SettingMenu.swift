@@ -55,13 +55,12 @@ enum SettingPoint {
     var title: String {
         switch self {
         case .banner:           return .empty
-        case .subscription:     return "ТипАккаунта".localized(Environment.isPrem ? "премиум".localized : "базовый".localized)
-        case .reminders:        return "Получать уведомления".localized
-//        case .mileageReminder:  return "Напоминание о пробеге".localized
-        case .backup:           return "Резервная копия".localized
-        case .contactUs:        return "Связаться с нами".localized
-        case .language:         return "Язык".localized
-        case .getPremium:       return "Получить премиум".localized
+        case .subscription:     return "Тип аккаунта: \(Environment.isPrem ? "премиум" : "базовый")"
+        case .reminders:        return "Получать уведомления"
+        case .backup:           return "Резервная копия"
+        case .contactUs:        return "Связаться с нами"
+        case .language:         return "Язык"
+        case .getPremium:       return "Получить премиум"
         case .faq:              return "FAQ"
         }
     }

@@ -32,7 +32,7 @@ extension ChartsViewController {
             tableVM.setupEmptyState(
                 type: .small,
                 labelVM: .init(),
-                sublabelVM: .init(.text("Выберите период".localized)),
+                sublabelVM: .init(.text("Выберите период")),
                 addButtonVM: .init(),
                 image: nil
             )
@@ -74,7 +74,7 @@ extension ChartsViewController {
         
         func initBarSuggestions() {
             var suggestions: [SuggestionView.ViewModel] = .empty
-            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период".localized)))
+            let vm = SuggestionView.ViewModel(labelVM: .init(.text("Весь период")))
             vm.backgroundColor = .white
             vm.labelVM.action = { [weak self] in
                 guard let self else { return }

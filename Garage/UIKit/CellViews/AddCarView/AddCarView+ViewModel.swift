@@ -15,9 +15,9 @@ extension AddCarView {
         override init() {
             let cars: [Car] = RealmManager().read()
             if Environment.isPrem {
-                textLabelVM.textValue = .text("Добавить новую машину".localized)
+                textLabelVM.textValue = .text("Добавить новую машину")
             } else if !Environment.isPrem, cars.count >= 1 {
-                textLabelVM.textValue = .text("Достигнут лимит автомобилей".localized)
+                textLabelVM.textValue = .text("Достигнут лимит автомобилей")
             }
         }
     }

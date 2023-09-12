@@ -12,7 +12,7 @@ class CallButton: BasicStackView {
     
     private lazy var callLabel: BasicLabel = {
         let label = BasicLabel()
-        label.text = "Позвонить".localized
+        label.text = "Позвонить"
         label.font = .custom(size: 12, weight: .semibold)
         return label
     }()
