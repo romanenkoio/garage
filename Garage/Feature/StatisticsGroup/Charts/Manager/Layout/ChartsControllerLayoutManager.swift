@@ -88,8 +88,23 @@ final class ChartsControllerLayoutManager {
         table.register(BasicTableCell<DateHeaderView>.self)
         table.table.separatorStyle = .none
         table.backgroundColor = AppColors.background
-        table.cornerRadius = 20
         return table
+    }()
+    
+    private(set) lazy var yearBarStack: ScrollableStackView = {
+        let stack = ScrollableStackView()
+        stack.spacing = 5
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.contentInset = UIEdgeInsets(top: 10, bottom: 20, horizontal: 16)
+        return stack
+    }()
+    
+    private lazy var containerView: BasicView = {
+        let view = BasicView()
+        view.backgroundColor = AppColors.background
+        table.cornerRadius = 20
+        return view
     }()
     
     // - Init
@@ -102,23 +117,23 @@ final class ChartsControllerLayoutManager {
     
     private func makeAutoAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
-        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let containerViewCornerScale = min(20,max(constant / 20, 0))
         let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 70
         let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.vc.view.layoutIfNeeded()
         self.chartsView.containerView.frame.origin.y = chartAnimationScale
-        self.table.cornerRadius = tableViewCornerScale
+        self.containerView.cornerRadius = containerViewCornerScale
     }
     
     private func makeManualAnimations(with constant: CGFloat) {
         let offsetFromTableToCharts = 20.0
-        let tableViewCornerScale = min(20,max(constant / 20, 0))
+        let containerViewCornerScale = min(20,max(constant / 20, 0))
         let chartSizeConstant = (maxConstraintConstant! - offsetFromTableToCharts) / 70
         let chartAnimationScale = min(-70 + constant / chartSizeConstant, 0)
         
         self.chartsView.containerView.frame.origin.y = chartAnimationScale
-        self.table.cornerRadius = tableViewCornerScale
+        self.containerView.cornerRadius = containerViewCornerScale
         print(chartAnimationScale)
     }
     
@@ -136,8 +151,9 @@ fileprivate extension ChartsControllerLayoutManager {
     
     private func makeLayout() {
         vc.view.addSubview(chartsView)
-        vc.view.addSubview(table)
-
+        vc.view.addSubview(containerView)
+        containerView.addSubview(yearBarStack)
+        containerView.addSubview(table)
     }
     
     private func makeConstraint() {
@@ -149,7 +165,18 @@ fileprivate extension ChartsControllerLayoutManager {
     
     private func makeConstraintsAfterLayout(with constant: CGFloat) {
         vc.contentView.removeFromSuperview()
+        
+        yearBarStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(9)
+        }
+        
         table.snp.makeConstraints { make in
+            make.top.equalTo(yearBarStack.snp.bottom).offset(-15)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        containerView.snp.makeConstraints { make in
             animatedTableViewConstraint = make.top.equalTo(vc.view.safeAreaLayoutGuide).offset(constant).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }

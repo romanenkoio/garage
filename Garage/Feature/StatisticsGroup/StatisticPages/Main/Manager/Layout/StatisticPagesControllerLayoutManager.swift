@@ -16,7 +16,7 @@ final class StatisticPagesControllerLayoutManager {
     // - UI
     private(set) lazy var segment: BasicSegmentView<StatisticType> = {
         let view = BasicSegmentView<StatisticType>()
-        view.backgroundColor = .white
+        view.backgroundColor = AppColors.background
         return view
     }()
     

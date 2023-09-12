@@ -30,15 +30,6 @@ class ChartsView: BasicView {
         return scroll
     }()
     
-    private(set) lazy var yearBarStack: ScrollableStackView = {
-        let stack = ScrollableStackView()
-        stack.spacing = 5
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.contentInset = UIEdgeInsets(top: 10, bottom: 20, horizontal: 16)
-        return stack
-    }()
-    
     private(set) lazy var pageControl: UIPageControl = {
         let page = UIPageControl()
         page.numberOfPages = 2
@@ -66,17 +57,15 @@ class ChartsView: BasicView {
         scrollView.addSubview(chartsStack)
         chartsStack.addArrangedSubviews([barChart, pieChart])
         containerView.addSubview(pageControl)
-        containerView.addSubview(yearBarStack)
-//        addSubview(descriptionLabel)
     }
     
     private func makeConstraints() {
-        
         containerView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
         scrollView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
             make.leading.trailing.equalToSuperview()
         }
         
@@ -89,12 +78,6 @@ class ChartsView: BasicView {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(scrollView.snp.bottom)
             make.bottom.equalTo(self.snp.bottom).inset(12)
-        }
-        
-        yearBarStack.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(scrollView.snp.top)
         }
     }
     
@@ -109,20 +92,6 @@ class ChartsView: BasicView {
                 self?.barChart.barChartView.data = data
             }
             .store(in: &cancellables)
-        
-        vm.$suggestions.sink { [weak self] vms in
-            guard !vms.isEmpty else {
-                self?.yearBarStack.isHidden = true
-                return
-            }
-            self?.yearBarStack.clearArrangedSubviews()
-            vms.forEach { [weak self] vm in
-                let view = SuggestionView()
-                view.setViewModel(vm)
-                self?.yearBarStack.addArrangedSubview(view)
-            }
-        }
-        .store(in: &cancellables)
         
         vm.pieChartVM.$pieChartData
             .receive(on: DispatchQueue.main)

@@ -13,7 +13,7 @@ class SuggestionView: BasicView {
     lazy var stack: BasicStackView = {
         let stack = BasicStackView()
         stack.axis = .horizontal
-        stack.spacing = 8
+        stack.spacing = 10
         stack.paddingInsets = UIEdgeInsets(vertical: 7, horizontal: 12)
         return stack
     }()
@@ -42,7 +42,7 @@ class SuggestionView: BasicView {
         self.backgroundColor = AppColors.background
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.clear.cgColor
-        self.cornerRadius = 8
+        self.cornerRadius = 12
     }
     
     private func makeConstraints() {
@@ -60,6 +60,14 @@ class SuggestionView: BasicView {
         cancellables.removeAll()
 
         label.setViewModel(vm.labelVM)
+        
+        vm.$backgroundColor
+            .sink { [weak self] color in
+                if let color {
+                    self?.backgroundColor = color
+                }
+            }
+            .store(in: &cancellables)
         
         vm.$image.sink { [weak self] image in
             self?.imageView.image = image

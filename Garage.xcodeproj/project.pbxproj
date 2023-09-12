@@ -323,7 +323,6 @@
 		B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */; };
 		B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
-		B98CFC8A2A91409B00C45580 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = B98CFC892A91409B00C45580 /* DGCharts */; };
 		B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */; };
 		B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */; };
 		B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticsViewController.swift */; };
@@ -356,6 +355,7 @@
 		B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */; };
 		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
 		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
+		B9EADF6C2AB06FD100C3EFAB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = B9EADF6B2AB06FD100C3EFAB /* DGCharts */; };
 		B9F79DB62A74E9FC00AE1BEE /* BarMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */; };
 		B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB82A754E8900AE1BEE /* PieChart.swift */; };
 		B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */; };
@@ -730,7 +730,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98CFC8A2A91409B00C45580 /* DGCharts in Frameworks */,
+				B9EADF6C2AB06FD100C3EFAB /* DGCharts in Frameworks */,
 				7FA7F74F2A6579E50089D922 /* SDWebImage in Frameworks */,
 				7F9264072A6DC94200DA220A /* GoogleMapsCore in Frameworks */,
 				7F1CC67C2A680E8E00C7F8B9 /* Lottie in Frameworks */,
@@ -829,9 +829,9 @@
 			children = (
 				7FC7D1962A63FFD400A90586 /* SettingGroup */,
 				7F3C32F82A5F60FA00992706 /* StatisticsGroup */,
+				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
 				7F8DB0F92A5606B0007E05C3 /* GarageGroup */,
 				7F92D11D2A521F4D00AD3847 /* OnboardingGroup */,
-				7F174EF42A4B2B60004E51F9 /* ArticlesGroup */,
 				7F9E92A72A45FC2700DDC874 /* DocumentGroup */,
 				7F9E92A62A45FC0100DDC874 /* ServiceGroup */,
 				7F9E92982A45FB9700DDC874 /* UtilsControllers */,
@@ -3038,7 +3038,7 @@
 				7F9264042A6DC94200DA220A /* GoogleMapsBase */,
 				7F9264062A6DC94200DA220A /* GoogleMapsCore */,
 				7F4336392A76D1B7007631DD /* Qonversion */,
-				B98CFC892A91409B00C45580 /* DGCharts */,
+				B9EADF6B2AB06FD100C3EFAB /* DGCharts */,
 			);
 			productName = Garage;
 			productReference = 7F6F6A212A2E8521003F7DF2 /* Garage.app */;
@@ -3080,7 +3080,7 @@
 				7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				7F9264012A6DC94200DA220A /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				7F4336382A76D1B7007631DD /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */,
-				B98CFC882A91409B00C45580 /* XCRemoteSwiftPackageReference "Charts" */,
+				B9EADF6A2AB06FD100C3EFAB /* XCRemoteSwiftPackageReference "DGCharts" */,
 			);
 			productRefGroup = 7F6F6A222A2E8521003F7DF2 /* Products */;
 			projectDirPath = "";
@@ -3777,12 +3777,12 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		B98CFC882A91409B00C45580 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		B9EADF6A2AB06FD100C3EFAB /* XCRemoteSwiftPackageReference "DGCharts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			repositoryURL = "https://github.com/valdperformance/DGCharts";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3848,9 +3848,9 @@
 			package = B978F3C52A2E9DE80076D326 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		B98CFC892A91409B00C45580 /* DGCharts */ = {
+		B9EADF6B2AB06FD100C3EFAB /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B98CFC882A91409B00C45580 /* XCRemoteSwiftPackageReference "Charts" */;
+			package = B9EADF6A2AB06FD100C3EFAB /* XCRemoteSwiftPackageReference "DGCharts" */;
 			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -60,6 +60,22 @@ class ChartsViewController: BasicViewController {
         
         layout.table.setViewModel(vm.tableVM)
         
+        vm.$suggestions
+            .sink { [weak self] vms in
+                guard !vms.isEmpty else {
+                    self?.layout.yearBarStack.isHidden = true
+                    return
+                }
+                self?.layout.yearBarStack.clearArrangedSubviews()
+                vms.forEach { [weak self] vm in
+                    let view = SuggestionView()
+                    view.setViewModel(vm)
+                    self?.layout.yearBarStack.addArrangedSubview(view)
+                }
+
+            }
+            .store(in: &cancellables)
+        
         layout.chartsView.barChart.viewModel?.$records
             .sink(receiveValue: {[weak self] barChartRecords in
                 guard let self else { return }
