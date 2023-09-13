@@ -14,7 +14,6 @@ extension StatisticsViewController {
         
         let tableVM = BasicTableView.SectionViewModel<StatisticView.ViewModel>()
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
-        var cells: [StatisticCellType] = .empty
         
         init(car: Car) {
             self.car = car

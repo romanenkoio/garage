@@ -329,7 +329,6 @@
 		B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */; };
 		B9B1D1EB2A952A3D00EE78E9 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */; };
 		B9B1D1ED2A952A4600EE78E9 /* StatisticView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */; };
-		B9B1D1EF2A95472A00EE78E9 /* StatisticCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EE2A95472A00EE78E9 /* StatisticCellType.swift */; };
 		B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */; };
 		B9B1D1FD2A9CF2B000EE78E9 /* StatisticPagesControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1F82A9CF2B000EE78E9 /* StatisticPagesControllerLayoutManager.swift */; };
 		B9B1D1FE2A9CF2B000EE78E9 /* StatisticPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1FA2A9CF2B000EE78E9 /* StatisticPagesViewController.swift */; };
@@ -685,7 +684,6 @@
 		B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
 		B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticView+ViewModel.swift"; sourceTree = "<group>"; };
-		B9B1D1EE2A95472A00EE78E9 /* StatisticCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellType.swift; sourceTree = "<group>"; };
 		B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticPagesCoordinator.swift; sourceTree = "<group>"; };
 		B9B1D1F82A9CF2B000EE78E9 /* StatisticPagesControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticPagesControllerLayoutManager.swift; sourceTree = "<group>"; };
 		B9B1D1FA2A9CF2B000EE78E9 /* StatisticPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticPagesViewController.swift; sourceTree = "<group>"; };
@@ -1500,7 +1498,6 @@
 				7F07BD442A46FE0A0075EEFC /* ImputMode.swift */,
 				7F3885632A6B38B900033A99 /* Language.swift */,
 				7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */,
-				B9B1D1EE2A95472A00EE78E9 /* StatisticCellType.swift */,
 				B9B1D2002A9CF34400EE78E9 /* StatisticType.swift */,
 			);
 			path = Enums;
@@ -3255,7 +3252,6 @@
 				B9B1D1FE2A9CF2B000EE78E9 /* StatisticPagesViewController.swift in Sources */,
 				7FFC1F692A352B4A007A5C75 /* CarInfoViewController.swift in Sources */,
 				B92E5A3C2A5B720E004698ED /* CarPhotoCollectionViewLayout.swift in Sources */,
-				B9B1D1EF2A95472A00EE78E9 /* StatisticCellType.swift in Sources */,
 				7FE355FE2A75C06200E0E473 /* PremiumFeature.swift in Sources */,
 				B978F3222A2E8F4C0076D326 /* BasicInputView.swift in Sources */,
 				7F9E92A22A45FBB700DDC874 /* ConfirmPopupControllerCoordinator.swift in Sources */,
