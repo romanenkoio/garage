@@ -13,8 +13,8 @@ extension ChartsViewController {
         
         let chartsViewVM: ChartsView.ViewModel?
         var tableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
-        var barChartTableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
-        var pieChartTableVM = BasicTableView.SectionViewModel<RecordView.ViewModel>()
+        var barChartRecords: [Record] = .empty
+        var pieChartRecords: [Record] = .empty
         
         private(set) var headers: [DateHeaderView.ViewModel] = .empty
         
@@ -44,28 +44,15 @@ extension ChartsViewController {
                     guard let self else { return }
                     switch index {
                         case 0:
-                            if let barChartSuggestion = self.chartsViewVM?.barChartSuggestion {
-                                self.changeSelection(barChartSuggestion)
-                            }
-                            
-                            if let records = self.chartsViewVM?.barChartVM.records,
-                                !records.isEmpty {
-                                self.createRecords(from: records)
-                            } else {
-                                self.createRecords(from: car.records)
-                            }
+                            guard let barChartSuggestion = self.chartsViewVM?.barChartSuggestion else { return }
+                            self.changeSelection(barChartSuggestion)
+                            self.createRecords(from: barChartRecords)
                             
                         case 1:
                             guard let pieChartSuggestion = chartsViewVM?.pieChartSuggestion else { return }
-                                self.changeSelection(pieChartSuggestion)
+                            self.changeSelection(pieChartSuggestion)
+                            self.createRecords(from: pieChartRecords)
                             
-                            if let records = self.chartsViewVM?.pieChartVM.records,
-                                !records.isEmpty {
-                                self.createRecords(from: records)
-                            } else {
-                                self.createRecords(from: car.records)
-                            }
-                                
                         default: break
                     }
                 })
@@ -83,14 +70,14 @@ extension ChartsViewController {
                     case 0:
                         self.chartsViewVM?.initBarCharts()
                         self.chartsViewVM?.barChartSuggestion = vm
-                    
+                        self.initTableView()
                     case 1:
                         self.chartsViewVM?.initPieCharts()
                         self.chartsViewVM?.pieChartSuggestion = vm
-                      
+                        self.initTableView()
                     default: break
                 }
-                self.initTableView()
+                
                 self.chartsViewVM?.changePeriodSubject.send()
             }
             suggestions.append(vm)
@@ -102,18 +89,20 @@ extension ChartsViewController {
                 vm.labelVM.action = { [weak self] in
                     guard let self else { return }
                     self.changeSelection(vm)
+                    
                     switch self.chartsViewVM?.pageIndex {
                         case 0:
                             self.chartsViewVM?.initBarCharts(with: year)
                             self.chartsViewVM?.barChartSuggestion = vm
-            
+                            self.initTableView(with: year)
                         case 1:
                             self.chartsViewVM?.initPieCharts(with: year)
                             self.chartsViewVM?.pieChartSuggestion = vm
-    
+                            self.initTableView(with: year)
                         default: break
                     }
-                    self.initTableView(with: year)
+                    
+                    
                     self.chartsViewVM?.changePeriodSubject.send()
                 }
                 suggestions.append(vm)
@@ -143,8 +132,16 @@ extension ChartsViewController {
             } else {
                 data = car.records
             }
-        
-            createRecords(from: data)
+            
+            switch chartsViewVM?.pageIndex {
+                case 0:
+                    createRecords(from: data)
+                    barChartRecords = data
+                case 1:
+                    createRecords(from: data)
+                    pieChartRecords = data
+                default: break
+            }
         }
         
         func createRecords(from records: [Record]) {

@@ -77,7 +77,7 @@ class BasicViewController: UIViewController {
     
     func makeConstraints() {
         contentView.snp.makeConstraints { (make) in
-            make.width.height.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
             make.leading.trailing.equalTo(view)
         }
         
