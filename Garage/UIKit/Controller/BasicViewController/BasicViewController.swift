@@ -77,13 +77,12 @@ class BasicViewController: UIViewController {
     
     func makeConstraints() {
         contentView.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview()
+            make.width.height.top.bottom.equalToSuperview()
             make.leading.trailing.equalTo(view)
         }
         
         self.scroll.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
     }
     
@@ -100,8 +99,8 @@ class BasicViewController: UIViewController {
         view.addSubview(contentView)
         
         contentView.snp.remakeConstraints { (make) in
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.leading.trailing.equalToSuperview()
         }
     }
 

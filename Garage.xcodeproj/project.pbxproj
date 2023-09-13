@@ -1652,7 +1652,6 @@
 				7F0E089C2A2F4556008C2B9A /* CreateCar */,
 				7FC6DA2C2A3B41A600AD9A3F /* CreateRecord */,
 				7F1DE3A12A58AD97008E7B1D /* CreateReminder */,
-				B93A34422A40826F004BAEA6 /* Records */,
 			);
 			path = GarageGroup;
 			sourceTree = "<group>";
@@ -1870,6 +1869,7 @@
 		7F9E92A72A45FC2700DDC874 /* DocumentGroup */ = {
 			isa = PBXGroup;
 			children = (
+				B93A34422A40826F004BAEA6 /* Records */,
 				7F0E09522A3348C8008C2B9A /* Documents */,
 				7F0E09382A32892C008C2B9A /* CreateDocument */,
 			);
@@ -3627,7 +3627,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
