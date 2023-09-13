@@ -6,13 +6,13 @@
 //
 
 import Foundation
-typealias StatModel = (Int,String?,Record?,Record?)
+
 extension StatisticView {
     class ViewModel: BasicViewModel {
         
-        @Published var cellValue: StatModel
+        @Published var cellValue: StatisticCellType
         
-        init(cellValue: StatModel) {
+        init(cellValue: StatisticCellType) {
             self.cellValue = cellValue
         }
     }

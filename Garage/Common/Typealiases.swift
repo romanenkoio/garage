@@ -21,3 +21,4 @@ typealias StatisticCell = BasicTableCell<StatisticView>
 typealias Completion = (() -> ())
 typealias EqutableCompletion = ((any Equatable) -> ())
 typealias SelectArrayCompletion = (_ items: [Selectable]) -> ()
+typealias StatisticModel = (record: Record?, stringValue: String?, description: String)
