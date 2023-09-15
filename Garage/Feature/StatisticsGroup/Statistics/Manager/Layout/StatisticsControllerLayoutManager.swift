@@ -16,6 +16,7 @@ final class StatisticsControllerLayoutManager {
     private(set) lazy var tableView: BasicTableView = {
         let table = BasicTableView()
         table.register(StatisticCell.self)
+        table.register(BasicTableCell<DateHeaderView>.self)
         table.setupTable(
             dataSource: vc,
             delegate: vc

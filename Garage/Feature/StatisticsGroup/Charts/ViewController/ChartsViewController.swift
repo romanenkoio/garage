@@ -77,16 +77,18 @@ class ChartsViewController: BasicViewController {
             .store(in: &cancellables)
         
         layout.chartsView.barChart.viewModel?.$records
-            .sink(receiveValue: {[weak self] barChartRecords in
+            .sink {[weak self] barChartRecords in
                 guard let self else { return }
                 vm.createRecords(from: barChartRecords)
-            })
+                vm.barChartRecords = barChartRecords
+            }
             .store(in: &cancellables)
         
         layout.chartsView.pieChart.viewModel?.$records
             .sink(receiveValue: {[weak self] pieChartRecords in
                 guard let self else { return }
                 vm.createRecords(from: pieChartRecords)
+                vm.pieChartRecords = pieChartRecords
             })
             .store(in: &cancellables)
         
@@ -98,6 +100,7 @@ class ChartsViewController: BasicViewController {
                 self.layout.initialContentSizeHeight = layout.table.table.contentSize.height
             }
             .store(in: &cancellables)
+
     }
     
 }

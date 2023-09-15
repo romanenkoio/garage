@@ -12,14 +12,12 @@ extension StatisticsViewController {
     final class ViewModel: BasicViewModel {
         unowned let car: Car
         
-        let tableVM = BasicTableView.GenericViewModel<StatisticCellType>()
-        
-        var cells: [StatisticCellType] = .empty
+        let tableVM = BasicTableView.SectionViewModel<StatisticView.ViewModel>()
+        private(set) var headers: [DateHeaderView.ViewModel] = .empty
         
         init(car: Car) {
             self.car = car
             super.init()
-            createCells(car: car)
             
             tableVM.setupEmptyState(
                 type: .large,
@@ -28,26 +26,36 @@ extension StatisticsViewController {
                 addButtonVM: .init(),
                 image: nil
             )
-            
+            createTableCells()
         }
         
-        func createCells(car: Car) {
-            guard car.records.count >= 2 else {
-                tableVM.setCells([])
-                return
-            }
-
-            cells = [
-                .mostFrequentOperation(car: car),
-                .mostExpensiveOperation(car: car),
-                .mostCheapetsOperation(car: car),
-                .averageSumPerYear(car: car),
-                .mostCheapestOperationPerYear(car: car),
-                .mostExpensioveOperationPerYear(car: car)
-            ]
+        private func createTableCells() {
+            let records = car.records
+            let dates = Set(records.compactMap{ $0.date })
+            let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
+            
+            var cells: [[StatisticView.ViewModel]] = .empty
+            
+            cells.insert([
+                .init(cellValue: .averageSum(records: records)),
+                .init(cellValue: .mostFreqOperation(records: records)),
+                .init(cellValue: .mostExpensioveOperation(records: records)),
+                .init(cellValue: .mostCheapestOpearation(records: records))
+            ], at: 0)
+            
+            years.forEach { year in
+                let sectionCells = records.filter({ $0.date.getDateComponent(.year) == year })
                 
+                cells.append([
+                    .init(cellValue: .averageSum(records: sectionCells)),
+                    .init(cellValue: .mostExpensioveOperation(records: sectionCells)),
+                    .init(cellValue: .mostCheapestOpearation(records: sectionCells))
+                ])
+            }
+            
+            headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})
+            headers.insert(.init(textValue: .text("За все время")), at: 0)
             tableVM.setCells(cells)
-
         }
     }
 }

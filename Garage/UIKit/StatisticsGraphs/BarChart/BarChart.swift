@@ -12,15 +12,9 @@ import SnapKit
 class BarChart: BasicView {
     var viewModel: ViewModel?
     
-    lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .bar)
+    private lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .bar)
     
-    lazy var descriptionLabel: BasicLabel = {
-        let view = BasicLabel()
-        view.textAlignment = .left
-        view.font = .custom(size: 24, weight: .bold)
-        view.textInsets = .init(bottom: 10, left: 16)
-        return view
-    }()
+    private lazy var containerView = BasicView()
     
     private(set) lazy var barChartView: BarChartView = {
         let barChart = BarChartView()
@@ -67,7 +61,8 @@ class BarChart: BasicView {
     }
     
     private func makeLayout() {
-        addSubview(barChartView)
+        addSubview(containerView)
+        containerView.addSubview(barChartView)
         customMarkerView.chartView = barChartView
         barChartView.marker = customMarkerView
     }
@@ -75,11 +70,16 @@ class BarChart: BasicView {
     private func makeConstraints() {
         let screenWidth = UIScreen.main.bounds.width
         let chartHight = screenWidth - 70
-        barChartView.snp.makeConstraints { make in
+        
+        containerView.snp.makeConstraints { make in
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview()
+            make.edges.equalToSuperview()
+        }
+        
+        barChartView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            make.top.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(20)
         }
     }

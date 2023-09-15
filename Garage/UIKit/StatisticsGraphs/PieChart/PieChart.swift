@@ -14,40 +14,7 @@ class PieChart: BasicView {
     
     lazy var customMarkerView = CustomMarkerView(frame: .zero, for: .pie)
     
-    lazy var descriptionLabel: BasicLabel = {
-        let view = BasicLabel()
-        view.textAlignment = .left
-        view.font = .custom(size: 24, weight: .bold)
-        view.textInsets = .init(bottom: 10, left: 16)
-        return view
-    }()
-    
-//    private(set) lazy var barChartView: BarChartView = {
-//       let view = BarChartView()
-//        view.highlightFullBarEnabled = true
-//        view.xAxis.valueFormatter = IndexAxisValueFormatter(values: DateFormatter().standaloneMonthSymbols)
-//        view.xAxis.drawAxisLineEnabled = false
-//        view.xAxis.drawGridLinesEnabled = false
-//        view.leftAxis.drawAxisLineEnabled = false
-//        view.rightAxis.drawAxisLineEnabled = false
-//        view.doubleTapToZoomEnabled = false
-//        view.pinchZoomEnabled = false
-//        view.drawBordersEnabled = false
-//        view.dragEnabled = false
-//        view.scaleXEnabled = false
-//        view.scaleYEnabled = false
-//        view.legend.enabled = false
-//        view.rightAxis.drawLabelsEnabled = false
-//        view.xAxis.labelFont = .custom(size: 12, weight: .regular)
-//        view.leftAxis.labelFont = .custom(size: 10, weight: .regular)
-//        view.xAxis.labelCount = 12
-//        view.xAxis.labelRotationAngle = -45
-//        let leftAxisFormatter = NumberFormatter()
-//        leftAxisFormatter.positiveSuffix = " Br"
-//        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-//        view.animate(xAxisDuration: 0.3, yAxisDuration: 0.4)
-//        return view
-//    }()
+    private lazy var containerView = BasicView()
     
     private(set) lazy var pieChartView: PieChartView = {
         let view = PieChartView()
@@ -68,7 +35,8 @@ class PieChart: BasicView {
     }
     
     private func makeLayout() {
-        addSubview(pieChartView)
+        addSubview(containerView)
+        containerView.addSubview(pieChartView)
         customMarkerView.chartView = pieChartView
         pieChartView.marker = customMarkerView
     }
@@ -76,12 +44,16 @@ class PieChart: BasicView {
     private func makeConstraints() {
         let screenWidth = UIScreen.main.bounds.width
         let chartHight = screenWidth - 70
-        pieChartView.snp.makeConstraints { make in
+        
+        containerView.snp.makeConstraints { make in
             make.width.equalTo(screenWidth)
             make.height.equalTo(chartHight)
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
+        }
+        
+        pieChartView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 16))
+            make.top.bottom.equalToSuperview()
         }
     }
     
