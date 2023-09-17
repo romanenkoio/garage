@@ -91,7 +91,6 @@ extension StatisticsViewController: UITableViewDataSource {
         
         guard let statCell = tableView.dequeueReusableCell(StatisticCell.self, for: indexPath) else { return .init() }
         
-//        statCell.mainView.setViewModel(.init(cellValue: vm.tableVM.cells[indexPath.row]))
         statCell.mainView.setViewModel(vm.tableVM.cells[indexPath.section][indexPath.row - 1])
         statCell.selectionStyle = .none
         return statCell
@@ -101,5 +100,7 @@ extension StatisticsViewController: UITableViewDataSource {
 // MARK: - Delegate
 
 extension StatisticsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

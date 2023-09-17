@@ -67,9 +67,8 @@ class CreateCarViewController: BasicViewController {
     private func setupNavBar() {
         makeCloseButton(isLeft: true)
         
-        guard case .edit(_) = vm.mode else {
-            title = "Изменить машину".localized
-            return
+        if case .edit(_) = vm.mode {
+            title = "Изменить машину"
         }
 
         let deleteButton = NavBarButton.ViewModel(
