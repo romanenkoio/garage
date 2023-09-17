@@ -24,7 +24,6 @@ class StatisticsViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -101,6 +100,8 @@ extension StatisticsViewController: UITableViewDataSource {
 
 extension StatisticsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.record {
+            coordinator.navigateTo(StatisticNavigationRoute.editRecord(vm.car, record))
+        }
     }
 }

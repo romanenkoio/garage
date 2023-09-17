@@ -7,19 +7,29 @@
 //
 
 import UIKit
+enum StatisticNavigationRoute: Routable {
+    case allRecords(Car)
+    case editRecord(Car, Record)
+}
 
-class StatisticsControllerCoordinator {
-    
-    // - VC
-    private unowned let vc: StatisticsViewController
-    
+class StatisticsControllerCoordinator: BasicCoordinator {
+
     // - Init
-    init(vc: StatisticsViewController) {
-        self.vc = vc
+    override init(vc: BasicViewController) {
+        super.init(vc: vc)
     }
     
-    func popViewController(animated: Bool = true) {
-        vc.navigationController?.popViewController(animated: animated)
+    override func navigateTo(_ route: Routable) {
+        if let route = route as? StatisticNavigationRoute {
+            switch route {
+                case .allRecords(let car):
+//                    let controller =
+                    break
+                case .editRecord(let car, let record):
+                    let controller = CreateRecordViewController(vm: .init(car: car, mode: .edit(object: record)))
+                    vc.push(controller)
+            }
+        }
     }
     
 }

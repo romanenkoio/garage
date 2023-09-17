@@ -31,6 +31,12 @@ class StatisticView: BasicView {
         return stack
     }()
     
+    private lazy var chevronImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "arrow_right_ic")?.withTintColor(AppColors.blue)
+        return imageView
+    }()
+    
     private lazy var containerView: BasicView = {
         let view = BasicView()
         view.cornerRadius = 16
@@ -47,7 +53,11 @@ class StatisticView: BasicView {
     private func makeLayout() {
         addSubview(containerView)
         containerView.addSubview(stack)
+        containerView.addSubview(chevronImage)
+        
         stack.addArrangedSubviews([valueLabel, descriptionLabel])
+        
+        
     }
     
     private func makeConstraint() {
@@ -57,11 +67,20 @@ class StatisticView: BasicView {
         }
         
         stack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.leading.equalToSuperview()
+        }
+        
+        chevronImage.snp.makeConstraints { make in
+            make.height.width.equalTo(16)
+            make.centerY.trailing.equalToSuperview().inset(UIEdgeInsets(right: 24))
+            make.leading.greaterThanOrEqualTo(stack.snp.trailing)
         }
     }
     
     func setViewModel(_ vm: ViewModel) {
+        if case .averageSum(_) = vm.cellValue {
+            chevronImage.isHidden = true
+        }
         
         vm.$cellValue
             .sink {[weak self] value in

@@ -35,7 +35,7 @@ class StatisticPagesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeCloseButton(isLeft: true)
-        title = "Статистика".localized
+        title = "\(vm.car.brand) \(vm.car.model)"
     }
 
     override func configure() {
