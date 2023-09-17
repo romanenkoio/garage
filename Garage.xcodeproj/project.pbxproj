@@ -265,6 +265,11 @@
 		B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */; };
 		B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */; };
 		B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */; };
+		B94076752AB6FC9E00B1132D /* StatisticCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076742AB6FC9E00B1132D /* StatisticCellType.swift */; };
+		B94076822AB70C5800B1132D /* MostFrequentOpeartionControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940767C2AB70C5800B1132D /* MostFrequentOpeartionControllerCoordinator.swift */; };
+		B94076832AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940767E2AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift */; };
+		B94076842AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076802AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift */; };
+		B94076852AB70C5800B1132D /* MostFrequentOpeartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076812AB70C5800B1132D /* MostFrequentOpeartionViewController.swift */; };
 		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
 		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
 		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
@@ -330,10 +335,10 @@
 		B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */; };
 		B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
-		B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */; };
-		B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */; };
-		B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticsViewController.swift */; };
-		B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */; };
+		B98CFCB52A91463800C45580 /* StatisticControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */; };
+		B98CFCB62A91463800C45580 /* StatisticControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */; };
+		B98CFCB72A91463800C45580 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticViewController.swift */; };
+		B98CFCB82A91463800C45580 /* Statistic+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */; };
 		B9B1D1EB2A952A3D00EE78E9 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */; };
 		B9B1D1ED2A952A4600EE78E9 /* StatisticView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */; };
 		B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */; };
@@ -628,6 +633,11 @@
 		B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PastRecords+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsViewController.swift; sourceTree = "<group>"; };
+		B94076742AB6FC9E00B1132D /* StatisticCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellType.swift; sourceTree = "<group>"; };
+		B940767C2AB70C5800B1132D /* MostFrequentOpeartionControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostFrequentOpeartionControllerCoordinator.swift; sourceTree = "<group>"; };
+		B940767E2AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostFrequentOpeartionControllerLayoutManager.swift; sourceTree = "<group>"; };
+		B94076802AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MostFrequentOpeartion+ViewModel.swift"; sourceTree = "<group>"; };
+		B94076812AB70C5800B1132D /* MostFrequentOpeartionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostFrequentOpeartionViewController.swift; sourceTree = "<group>"; };
 		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
 		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -692,10 +702,10 @@
 		B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllable.swift; sourceTree = "<group>"; };
 		B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTopInfoView.swift; sourceTree = "<group>"; };
 		B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopView+ViewModel.swift"; sourceTree = "<group>"; };
-		B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerCoordinator.swift; sourceTree = "<group>"; };
-		B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerLayoutManager.swift; sourceTree = "<group>"; };
-		B98CFCB32A91463800C45580 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
+		B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticControllerCoordinator.swift; sourceTree = "<group>"; };
+		B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticControllerLayoutManager.swift; sourceTree = "<group>"; };
+		B98CFCB32A91463800C45580 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistic+ViewModel.swift"; sourceTree = "<group>"; };
 		B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticPagesCoordinator.swift; sourceTree = "<group>"; };
@@ -1435,6 +1445,7 @@
 		7F3C32F82A5F60FA00992706 /* StatisticsGroup */ = {
 			isa = PBXGroup;
 			children = (
+				B94076792AB70C5800B1132D /* StatisticRecords */,
 				B9B1D1F02A9CF28D00EE78E9 /* StatisticPages */,
 				B98CFCAC2A91463800C45580 /* Statistics */,
 				B98CFC7A2A91356100C45580 /* Charts */,
@@ -1503,6 +1514,7 @@
 		7F5955F92A2E8D3B0062A85F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				B9EADF702AB30B4000C3EFAB /* Statistic */,
 				7FC7D1A62A6402D100A90586 /* Settings */,
 				7F5955FA2A2E8D420062A85F /* DocumentType.swift */,
 				7F5956002A2E95F10062A85F /* ServiceType.swift */,
@@ -1512,7 +1524,6 @@
 				7F07BD442A46FE0A0075EEFC /* ImputMode.swift */,
 				7F3885632A6B38B900033A99 /* Language.swift */,
 				7FE355FD2A75C06200E0E473 /* PremiumFeature.swift */,
-				B9B1D2002A9CF34400EE78E9 /* StatisticType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2437,6 +2448,49 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		B94076792AB70C5800B1132D /* StatisticRecords */ = {
+			isa = PBXGroup;
+			children = (
+				B940767A2AB70C5800B1132D /* Manager */,
+				B940767F2AB70C5800B1132D /* ViewController */,
+			);
+			path = StatisticRecords;
+			sourceTree = "<group>";
+		};
+		B940767A2AB70C5800B1132D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B940767B2AB70C5800B1132D /* Coordinator */,
+				B940767D2AB70C5800B1132D /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B940767B2AB70C5800B1132D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B940767C2AB70C5800B1132D /* MostFrequentOpeartionControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B940767D2AB70C5800B1132D /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B940767E2AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		B940767F2AB70C5800B1132D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B94076802AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift */,
+				B94076812AB70C5800B1132D /* MostFrequentOpeartionViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */ = {
 			isa = PBXGroup;
 			children = (
@@ -2839,7 +2893,7 @@
 		B98CFCAE2A91463800C45580 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */,
+				B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -2847,7 +2901,7 @@
 		B98CFCB02A91463800C45580 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */,
+				B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -2855,8 +2909,8 @@
 		B98CFCB22A91463800C45580 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCB32A91463800C45580 /* StatisticsViewController.swift */,
-				B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */,
+				B98CFCB32A91463800C45580 /* StatisticViewController.swift */,
+				B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3036,6 +3090,15 @@
 				B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */,
 			);
 			path = BottomView;
+			sourceTree = "<group>";
+		};
+		B9EADF702AB30B4000C3EFAB /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				B9B1D2002A9CF34400EE78E9 /* StatisticType.swift */,
+				B94076742AB6FC9E00B1132D /* StatisticCellType.swift */,
+			);
+			path = Statistic;
 			sourceTree = "<group>";
 		};
 		B9F79DB72A754E7F00AE1BEE /* PieChart */ = {
@@ -3250,7 +3313,7 @@
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
-				B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */,
+				B98CFCB62A91463800C45580 /* StatisticControllerLayoutManager.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
@@ -3264,6 +3327,7 @@
 				B978F3252A2E8F4C0076D326 /* BasicList.swift in Sources */,
 				7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */,
 				7F174F032A4B2B86004E51F9 /* Articles+ViewModel.swift in Sources */,
+				B94076842AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift in Sources */,
 				7F9264242A6F1E6E00DA220A /* CarPinView.swift in Sources */,
 				7F0B306A2A430A730094BC9C /* AddCarView+ViewModel.swift in Sources */,
 				7F0E08D42A2FA20C008C2B9A /* ScrollableStackView.swift in Sources */,
@@ -3274,10 +3338,11 @@
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */,
+				B94076832AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift in Sources */,
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */,
-				B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */,
+				B98CFCB52A91463800C45580 /* StatisticControllerCoordinator.swift in Sources */,
 				7F8CFA982A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
@@ -3316,6 +3381,7 @@
 				7F0E09422A32892C008C2B9A /* CreateDocumentControllerLayoutManager.swift in Sources */,
 				B978F3282A2E8F4C0076D326 /* BasicSegmentView.swift in Sources */,
 				B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */,
+				B94076822AB70C5800B1132D /* MostFrequentOpeartionControllerCoordinator.swift in Sources */,
 				7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */,
 				7FC6DA292A39FCE900AD9A3F /* SettingsViewController.swift in Sources */,
 				7F0E095B2A3348C8008C2B9A /* DocumentsControllerCoordinator.swift in Sources */,
@@ -3420,6 +3486,7 @@
 				7F69EA152A701A9300AFB37D /* Environment.swift in Sources */,
 				7F0E09122A31BFD2008C2B9A /* BrandImage.swift in Sources */,
 				7F0E09272A3254B8008C2B9A /* NavBarButton+ViewModel.swift in Sources */,
+				B94076852AB70C5800B1132D /* MostFrequentOpeartionViewController.swift in Sources */,
 				7F3885642A6B38B900033A99 /* Language.swift in Sources */,
 				7F92D1292A521F7200AD3847 /* OnboardingControllerCoordinator.swift in Sources */,
 				7F8DB1052A56072A007E05C3 /* RemindersControllerCoordinator.swift in Sources */,
@@ -3460,7 +3527,7 @@
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
-				B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */,
+				B98CFCB82A91463800C45580 /* Statistic+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				7FB5ED832AAFA43C003C243A /* FAQType.swift in Sources */,
 				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
@@ -3469,7 +3536,7 @@
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
-				B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */,
+				B98CFCB72A91463800C45580 /* StatisticViewController.swift in Sources */,
 				B9F79DC02A768BDC00AE1BEE /* ChartsView+ViewModel.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,
@@ -3494,6 +3561,7 @@
 				7FC7D1952A63FF3A00A90586 /* Storage.swift in Sources */,
 				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
+				B94076752AB6FC9E00B1132D /* StatisticCellType.swift in Sources */,
 				B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension StatisticsViewController {
+extension StatisticViewController {
     final class ViewModel: BasicViewModel {
         unowned let car: Car
         
@@ -34,6 +34,10 @@ extension StatisticsViewController {
             let dates = Set(records.compactMap{ $0.date })
             let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
             
+            headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})
+            headers.insert(.init(textValue: .text("За все время")), at: 0)
+            
+            
             var cells: [[StatisticView.ViewModel]] = .empty
             
             cells.insert([
@@ -53,8 +57,6 @@ extension StatisticsViewController {
                 ])
             }
             
-            headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})
-            headers.insert(.init(textValue: .text("За все время")), at: 0)
             tableVM.setCells(cells)
         }
     }

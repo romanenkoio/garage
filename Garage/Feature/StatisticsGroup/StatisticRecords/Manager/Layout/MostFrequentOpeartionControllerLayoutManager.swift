@@ -1,21 +1,22 @@
 //
-//  StatisticsControllerLayoutManager.swift
+//  StatisticRecordsControllerLayoutManager.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 19.08.23.
+//  Created by Vlad Kulakovsky  on 17.09.23.
 //  
 //
 
 import UIKit
 import SnapKit
 
-final class StatisticsControllerLayoutManager {
+final class MostFrequentOpeartionControllerLayoutManager {
     
-    private unowned let vc: StatisticsViewController
+    private unowned let vc: MostFrequentOpeartionViewController
     
+    // - UI
     private(set) lazy var tableView: BasicTableView = {
         let table = BasicTableView()
-        table.register(StatisticCell.self)
+        table.register(RecordCell.self)
         table.register(BasicTableCell<DateHeaderView>.self)
         table.setupTable(
             dataSource: vc,
@@ -27,7 +28,7 @@ final class StatisticsControllerLayoutManager {
     }()
     
     // - Init
-    init(vc: StatisticsViewController) {
+    init(vc: MostFrequentOpeartionViewController) {
         self.vc = vc
         configure()
     }
@@ -37,7 +38,7 @@ final class StatisticsControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension StatisticsControllerLayoutManager {
+fileprivate extension MostFrequentOpeartionControllerLayoutManager {
     
     private func configure() {
         makeLayout()

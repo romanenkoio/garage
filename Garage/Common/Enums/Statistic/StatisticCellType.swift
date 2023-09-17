@@ -1,23 +1,11 @@
 //
-//  StatisticType.swift
+//  StatisticCellType.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 28.08.23.
+//  Created by Vlad Kulakovsky  on 17.09.23.
 //
 
 import Foundation
-
-enum StatisticType: Equatable, CaseIterable {
-    case charts
-    case statistic
-    
-    var title: String {
-        switch self {
-            case .charts:    return "Грaфики"
-            case .statistic:   return "Статистика"
-        }
-    }
-}
 
 enum StatisticCellType {
     case averageSum(records: [Record])
@@ -33,20 +21,26 @@ enum StatisticCellType {
                 return (nil, "\(sum)".appendCurrency(), description)
                 
             case .mostFreqOperation(let records):
-                let mostFrequentRecord = Dictionary(
+                let mostFrequentRecord =
+                Dictionary(
                     grouping: records.map({$0.short}),
-                    by: {$0})
-                    .max {$0.1.count < $1.1.count}?.key
+                    by: {$0}
+                )
+                .max {$0.1.count < $1.1.count}?
+                .key
+                
                 let description = "Самая популярная операция"
                 return (nil, mostFrequentRecord, description)
                 
             case .mostExpensioveOperation(let records):
                 guard let mostExpensiveRecord = records.max(by: {$0.cost ?? 0 < $1.cost ?? 0}) else { return (Record(),"", "")}
+                
                 let description = "Самая дорогая операция"
                 return (mostExpensiveRecord, nil, description)
                 
             case .mostCheapestOpearation(let records):
                 guard let mostCheapestRecord = records.max(by: {$0.cost ?? 0 > $1.cost ?? 0}) else { return (Record(),"", "")}
+                
                 let description = "Самая дешевая операция"
                 return (mostCheapestRecord, nil, description)
         }

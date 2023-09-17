@@ -1,5 +1,5 @@
 //
-//  StatisticsViewController.swift
+//  StatisticViewController.swift
 //  Garage
 //
 //  Created by Vlad Kulakovsky  on 19.08.23.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class StatisticsViewController: BasicViewController {
+class StatisticViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = StatisticsControllerCoordinator
-    typealias Layout = StatisticsControllerLayoutManager
+    typealias Coordinator = StatisticControllerCoordinator
+    typealias Layout = StatisticControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
@@ -24,7 +24,6 @@ class StatisticsViewController: BasicViewController {
     init(vm: ViewModel) {
         self.vm = vm
         super.init()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -58,21 +57,21 @@ class StatisticsViewController: BasicViewController {
 // MARK: -
 // MARK: - Configure
 
-extension StatisticsViewController {
+extension StatisticViewController {
 
     private func configureCoordinator() {
-        coordinator = StatisticsControllerCoordinator(vc: self)
+        coordinator = StatisticControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = StatisticsControllerLayoutManager(vc: self)
+        layout = StatisticControllerLayoutManager(vc: self)
     }
     
 }
 
 // MARK: - DataSource
 
-extension StatisticsViewController: UITableViewDataSource {
+extension StatisticViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return vm.headers.count
     }
@@ -83,15 +82,14 @@ extension StatisticsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let pastRecordCell = tableView.dequeueReusableCell(BasicTableCell<DateHeaderView>.self, for: indexPath) else { return .init() }
-            pastRecordCell.mainView.setViewModel(vm.headers[indexPath.section])
-            pastRecordCell.selectionStyle = .none
-            return pastRecordCell
+            guard let yearHeaderCell = tableView.dequeueReusableCell(BasicTableCell<DateHeaderView>.self, for: indexPath) else { return .init() }
+            yearHeaderCell.mainView.setViewModel(vm.headers[indexPath.section])
+            yearHeaderCell.selectionStyle = .none
+            return yearHeaderCell
         }
         
         guard let statCell = tableView.dequeueReusableCell(StatisticCell.self, for: indexPath) else { return .init() }
         
-//        statCell.mainView.setViewModel(.init(cellValue: vm.tableVM.cells[indexPath.row]))
         statCell.mainView.setViewModel(vm.tableVM.cells[indexPath.section][indexPath.row - 1])
         statCell.selectionStyle = .none
         return statCell
@@ -100,6 +98,16 @@ extension StatisticsViewController: UITableViewDataSource {
 
 // MARK: - Delegate
 
-extension StatisticsViewController: UITableViewDelegate {
-    
+extension StatisticViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.record {
+            coordinator.navigateTo(StatisticNavigationRoute.editRecord(vm.car, record))
+        }
+        
+        if case .mostFreqOperation(_) = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue {
+            
+            guard let operationType = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.stringValue else { return }
+            coordinator.navigateTo(StatisticNavigationRoute.allRecords(vm.car, operationType))
+        }
+    }
 }

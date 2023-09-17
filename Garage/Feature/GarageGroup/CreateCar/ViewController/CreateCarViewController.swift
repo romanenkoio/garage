@@ -66,27 +66,26 @@ class CreateCarViewController: BasicViewController {
 
     private func setupNavBar() {
         makeCloseButton(side: .left)
-
-        guard case .edit(_) = vm.mode else {
+        
+        if case .edit(_) = vm.mode {
             title = "Изменить машину"
-            return
-        }
-
-        let deleteButton = NavBarButton.ViewModel(
-            action: .touchUpInside { [weak self] in
-                let vm = Dialog.ViewModel(
-                    title: .text("Вы уверены, что хотите удалить машину?")
-                ) { [weak self] in
-                    self?.vm.removeCar() { [weak self] in
-                        self?.dismiss(animated: true)
-                        self?.coordinator.navigateTo(CommonNavigationRoute.closeToRoot)
+            
+            let deleteButton = NavBarButton.ViewModel(
+                action: .touchUpInside { [weak self] in
+                    let vm = Dialog.ViewModel(
+                        title: .text("Вы уверены, что хотите удалить машину?")
+                    ) { [weak self] in
+                        self?.vm.removeCar() { [weak self] in
+                            self?.dismiss(animated: true)
+                            self?.coordinator.navigateTo(CommonNavigationRoute.closeToRoot)
+                        }
                     }
-                }
-                self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
-            },
-            image: UIImage(named: "delete_ic")
-        )
-        makeRightNavBarButton(buttons: [deleteButton])
+                    self?.coordinator.navigateTo(CommonNavigationRoute.confirmPopup(vm: vm))
+                },
+                image: UIImage(named: "delete_ic")
+            )
+            makeRightNavBarButton(buttons: [deleteButton])
+        }
     }
     
     private var alertController: UIAlertController  {

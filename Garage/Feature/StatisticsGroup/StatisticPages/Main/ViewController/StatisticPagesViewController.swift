@@ -35,7 +35,7 @@ class StatisticPagesViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeCloseButton(side: .left)
-        title = "Статистика"
+        title = "\(vm.car.brand) \(vm.car.model)"
     }
 
     override func configure() {
