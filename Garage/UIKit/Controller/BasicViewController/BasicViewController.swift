@@ -20,6 +20,7 @@ class BasicViewController: UIViewController {
     
     lazy var scroll: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
     
@@ -82,6 +83,11 @@ class BasicViewController: UIViewController {
         }
         
         self.scroll.snp.makeConstraints { (make) in
+            // Uncomment after fix controllers with AutoLayout bug
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            make.leading.trailing.bottom.equalToSuperview()
+            
+            // Remove this constraint after fix bug
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
