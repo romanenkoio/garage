@@ -43,11 +43,14 @@ class StatisticView: BasicView {
         return view
     }()
     
-    
     override func initView() {
         makeLayout()
         makeConstraint()
         backgroundColor = .clear
+    }
+    
+    override func prepareForViewReuse() {
+        chevronImage.isHidden = false
     }
     
     private func makeLayout() {
@@ -56,8 +59,6 @@ class StatisticView: BasicView {
         containerView.addSubview(chevronImage)
         
         stack.addArrangedSubviews([valueLabel, descriptionLabel])
-        
-        
     }
     
     private func makeConstraint() {
@@ -78,20 +79,22 @@ class StatisticView: BasicView {
     }
     
     func setViewModel(_ vm: ViewModel) {
-        if case .averageSum(_) = vm.cellValue {
-            chevronImage.isHidden = true
-        }
-        
         vm.$cellValue
             .sink {[weak self] value in
                 guard let self else { return }
-                print(value.statValue)
+
                 if let record = value.statValue.record {
                     valueLabel.setViewModel(.init(.text(record.short)))
                     descriptionLabel.setViewModel(.init(.text(value.statValue.description)))
                 } else if let stringValue = value.statValue.stringValue {
                     valueLabel.setViewModel(.init(.text(stringValue)))
                     descriptionLabel.setViewModel(.init(.text(value.statValue.description)))
+                }
+
+                switch value {
+                    case .averageSum, .averageSumPerYear:
+                        chevronImage.isHidden = true
+                    default: break
                 }
             }
             .store(in: &cancellables)

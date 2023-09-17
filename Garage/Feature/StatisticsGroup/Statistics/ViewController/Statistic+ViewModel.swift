@@ -51,7 +51,7 @@ extension StatisticViewController {
                 let sectionCells = records.filter({ $0.date.getDateComponent(.year) == year })
                 
                 cells.append([
-                    .init(cellValue: .averageSum(records: sectionCells)),
+                    .init(cellValue: .averageSumPerYear(records: sectionCells)),
                     .init(cellValue: .mostExpensioveOperation(records: sectionCells)),
                     .init(cellValue: .mostCheapestOpearation(records: sectionCells))
                 ])

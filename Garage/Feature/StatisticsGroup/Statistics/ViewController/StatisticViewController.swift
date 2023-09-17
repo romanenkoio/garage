@@ -51,7 +51,6 @@ class StatisticViewController: BasicViewController {
             }
             .store(in: &cancellables)
     }
-    
 }
 
 // MARK: -

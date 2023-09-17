@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class UniversalSelectionView: BasicView {
+final class UniversalSelectionView: BasicCellView {
     
     private lazy var titleLabel: BasicLabel = {
         let label = BasicLabel()
