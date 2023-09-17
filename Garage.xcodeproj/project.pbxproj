@@ -258,7 +258,7 @@
 		B93A34512A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */; };
 		B93A34522A4082D1004BAEA6 /* PastRecords+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */; };
 		B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */; };
-		B94076752AB6FC9E00B1132D /* StatCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076742AB6FC9E00B1132D /* StatCellType.swift */; };
+		B94076752AB6FC9E00B1132D /* StatisticCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076742AB6FC9E00B1132D /* StatisticCellType.swift */; };
 		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
 		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
 		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
@@ -356,7 +356,6 @@
 		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
 		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
 		B9EADF6C2AB06FD100C3EFAB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = B9EADF6B2AB06FD100C3EFAB /* DGCharts */; };
-		B9EADF6F2AB30B3400C3EFAB /* StasticCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EADF6E2AB30B3400C3EFAB /* StasticCellType.swift */; };
 		B9F79DB62A74E9FC00AE1BEE /* BarMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */; };
 		B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB82A754E8900AE1BEE /* PieChart.swift */; };
 		B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */; };
@@ -616,7 +615,7 @@
 		B93A344C2A4082D1004BAEA6 /* PastRecordsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsControllerLayoutManager.swift; sourceTree = "<group>"; };
 		B93A344E2A4082D1004BAEA6 /* PastRecords+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PastRecords+ViewModel.swift"; sourceTree = "<group>"; };
 		B93A344F2A4082D1004BAEA6 /* PastRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastRecordsViewController.swift; sourceTree = "<group>"; };
-		B94076742AB6FC9E00B1132D /* StatCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellType.swift; sourceTree = "<group>"; };
+		B94076742AB6FC9E00B1132D /* StatisticCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellType.swift; sourceTree = "<group>"; };
 		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
 		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -712,7 +711,6 @@
 		B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcNavigationView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcBottomView.swift; sourceTree = "<group>"; };
 		B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcBottomView+ViewModel.swift"; sourceTree = "<group>"; };
-		B9EADF6E2AB30B3400C3EFAB /* StasticCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StasticCellType.swift; sourceTree = "<group>"; };
 		B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarMarker.swift; sourceTree = "<group>"; };
 		B9F79DB82A754E8900AE1BEE /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PieChart+ViewModel.swift"; sourceTree = "<group>"; };
@@ -2977,8 +2975,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B1D2002A9CF34400EE78E9 /* StatisticType.swift */,
-				B9EADF6E2AB30B3400C3EFAB /* StasticCellType.swift */,
-				B94076742AB6FC9E00B1132D /* StatCellType.swift */,
+				B94076742AB6FC9E00B1132D /* StatisticCellType.swift */,
 			);
 			path = Statistic;
 			sourceTree = "<group>";
@@ -3152,7 +3149,6 @@
 				7F0E08DF2A2FA9FC008C2B9A /* ViewPreview.swift in Sources */,
 				B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */,
 				7F049E4E2A41061B00C3EAD0 /* MultiLineInput+ViewModel.swift in Sources */,
-				B9EADF6F2AB30B3400C3EFAB /* StasticCellType.swift in Sources */,
 				B92E5A2A2A5AD3FA004698ED /* FBSecondItem+ViewModel.swift in Sources */,
 				7F0E08812A2F1DEE008C2B9A /* GarageControllerLayoutManager.swift in Sources */,
 				7FC7D1A32A64001800A90586 /* BackupControllerLayoutManager.swift in Sources */,
@@ -3433,7 +3429,7 @@
 				7FC7D1952A63FF3A00A90586 /* Storage.swift in Sources */,
 				7FC6DA182A39F4B900AD9A3F /* AppStyle.swift in Sources */,
 				7F0E095C2A3348C8008C2B9A /* DocumentsControllerLayoutManager.swift in Sources */,
-				B94076752AB6FC9E00B1132D /* StatCellType.swift in Sources */,
+				B94076752AB6FC9E00B1132D /* StatisticCellType.swift in Sources */,
 				B92E5A392A5B51F9004698ED /* CarCellPhotoView+ViewModel.swift in Sources */,
 				7F0E091F2A31EBE8008C2B9A /* ActionImage+ViewModel.swift in Sources */,
 				7F3AAD842A3C8164007DD6FF /* SeparatorView.swift in Sources */,
