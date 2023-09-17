@@ -82,7 +82,7 @@ class BasicViewController: UIViewController {
         }
         
         self.scroll.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     

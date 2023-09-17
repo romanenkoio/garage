@@ -34,6 +34,9 @@ extension StatisticsViewController {
             let dates = Set(records.compactMap{ $0.date })
             let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
             
+            headers.insert(.init(textValue: .text("За все время")), at: 0)
+            headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})
+            
             var cells: [[StatisticView.ViewModel]] = .empty
             
             cells.insert([
@@ -53,8 +56,6 @@ extension StatisticsViewController {
                 ])
             }
             
-            headers = years.map({ DateHeaderView.ViewModel(date: DateComponents(year: $0))})
-            headers.insert(.init(textValue: .text("За все время")), at: 0)
             tableVM.setCells(cells)
         }
     }
