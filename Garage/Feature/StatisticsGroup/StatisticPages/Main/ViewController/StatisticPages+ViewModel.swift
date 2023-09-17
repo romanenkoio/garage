@@ -14,7 +14,7 @@ extension StatisticPagesViewController {
         
         let pageVM: BasicPageController.ViewModel
         let chartsVM: ChartsViewController.ViewModel
-        let statisticVm: StatisticsViewController.ViewModel
+        let statisticVm: StatisticViewController.ViewModel
         let segmentVM: BasicSegmentView<StatisticType>.GenericViewModel<StatisticType>
         
         
@@ -34,7 +34,7 @@ extension StatisticPagesViewController {
                 controllers:
                     [
                         ChartsViewController(vm: chartsVM),
-                        StatisticsViewController(vm: statisticVm)
+                        StatisticViewController(vm: statisticVm)
                     ])
             
             super.init()

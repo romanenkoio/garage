@@ -27,7 +27,7 @@ class ChartsControllerCoordinator: BasicCoordinator {
                     vc.push(controller)
                     
                 case .stat(let car):
-                    let controller = StatisticsViewController(vm: .init(car: car))
+                    let controller = StatisticViewController(vm: .init(car: car))
                     vc.push(controller)
             }
         } else {

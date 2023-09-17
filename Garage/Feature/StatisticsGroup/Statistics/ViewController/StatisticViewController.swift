@@ -1,5 +1,5 @@
 //
-//  StatisticsViewController.swift
+//  StatisticViewController.swift
 //  Garage
 //
 //  Created by Vlad Kulakovsky  on 19.08.23.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class StatisticsViewController: BasicViewController {
+class StatisticViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = StatisticsControllerCoordinator
-    typealias Layout = StatisticsControllerLayoutManager
+    typealias Coordinator = StatisticControllerCoordinator
+    typealias Layout = StatisticControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
@@ -57,21 +57,21 @@ class StatisticsViewController: BasicViewController {
 // MARK: -
 // MARK: - Configure
 
-extension StatisticsViewController {
+extension StatisticViewController {
 
     private func configureCoordinator() {
-        coordinator = StatisticsControllerCoordinator(vc: self)
+        coordinator = StatisticControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = StatisticsControllerLayoutManager(vc: self)
+        layout = StatisticControllerLayoutManager(vc: self)
     }
     
 }
 
 // MARK: - DataSource
 
-extension StatisticsViewController: UITableViewDataSource {
+extension StatisticViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return vm.headers.count
     }
@@ -98,7 +98,7 @@ extension StatisticsViewController: UITableViewDataSource {
 
 // MARK: - Delegate
 
-extension StatisticsViewController: UITableViewDelegate {
+extension StatisticViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.record {
             coordinator.navigateTo(StatisticNavigationRoute.editRecord(vm.car, record))

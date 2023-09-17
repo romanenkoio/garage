@@ -12,7 +12,7 @@ enum StatisticNavigationRoute: Routable {
     case editRecord(Car, Record)
 }
 
-class StatisticsControllerCoordinator: BasicCoordinator {
+class StatisticControllerCoordinator: BasicCoordinator {
 
     // - Init
     override init(vc: BasicViewController) {

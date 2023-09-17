@@ -9,9 +9,9 @@
 import UIKit
 import SnapKit
 
-final class StatisticsControllerLayoutManager {
+final class StatisticControllerLayoutManager {
     
-    private unowned let vc: StatisticsViewController
+    private unowned let vc: StatisticViewController
     
     private(set) lazy var tableView: BasicTableView = {
         let table = BasicTableView()
@@ -27,7 +27,7 @@ final class StatisticsControllerLayoutManager {
     }()
     
     // - Init
-    init(vc: StatisticsViewController) {
+    init(vc: StatisticViewController) {
         self.vc = vc
         configure()
     }
@@ -37,7 +37,7 @@ final class StatisticsControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension StatisticsControllerLayoutManager {
+fileprivate extension StatisticControllerLayoutManager {
     
     private func configure() {
         makeLayout()

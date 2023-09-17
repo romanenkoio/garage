@@ -328,10 +328,10 @@
 		B97FECDD2A4A2CEF00E089C7 /* PageControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */; };
 		B97FECE02A4B2D7B00E089C7 /* CarTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */; };
 		B97FECE22A4B2D8200E089C7 /* TopView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */; };
-		B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */; };
-		B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */; };
-		B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticsViewController.swift */; };
-		B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */; };
+		B98CFCB52A91463800C45580 /* StatisticControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */; };
+		B98CFCB62A91463800C45580 /* StatisticControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */; };
+		B98CFCB72A91463800C45580 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB32A91463800C45580 /* StatisticViewController.swift */; };
+		B98CFCB82A91463800C45580 /* Statistic+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */; };
 		B9B1D1EB2A952A3D00EE78E9 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */; };
 		B9B1D1ED2A952A4600EE78E9 /* StatisticView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */; };
 		B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */; };
@@ -688,10 +688,10 @@
 		B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllable.swift; sourceTree = "<group>"; };
 		B97FECDF2A4B2D7B00E089C7 /* CarTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTopInfoView.swift; sourceTree = "<group>"; };
 		B97FECE12A4B2D8200E089C7 /* TopView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopView+ViewModel.swift"; sourceTree = "<group>"; };
-		B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerCoordinator.swift; sourceTree = "<group>"; };
-		B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsControllerLayoutManager.swift; sourceTree = "<group>"; };
-		B98CFCB32A91463800C45580 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistics+ViewModel.swift"; sourceTree = "<group>"; };
+		B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticControllerCoordinator.swift; sourceTree = "<group>"; };
+		B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticControllerLayoutManager.swift; sourceTree = "<group>"; };
+		B98CFCB32A91463800C45580 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Statistic+ViewModel.swift"; sourceTree = "<group>"; };
 		B9B1D1EA2A952A3D00EE78E9 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		B9B1D1EC2A952A4600EE78E9 /* StatisticView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9B1D1F62A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticPagesCoordinator.swift; sourceTree = "<group>"; };
@@ -2824,7 +2824,7 @@
 		B98CFCAE2A91463800C45580 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCAF2A91463800C45580 /* StatisticsControllerCoordinator.swift */,
+				B98CFCAF2A91463800C45580 /* StatisticControllerCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -2832,7 +2832,7 @@
 		B98CFCB02A91463800C45580 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCB12A91463800C45580 /* StatisticsControllerLayoutManager.swift */,
+				B98CFCB12A91463800C45580 /* StatisticControllerLayoutManager.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -2840,8 +2840,8 @@
 		B98CFCB22A91463800C45580 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B98CFCB32A91463800C45580 /* StatisticsViewController.swift */,
-				B98CFCB42A91463800C45580 /* Statistics+ViewModel.swift */,
+				B98CFCB32A91463800C45580 /* StatisticViewController.swift */,
+				B98CFCB42A91463800C45580 /* Statistic+ViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3243,7 +3243,7 @@
 				7FFC1F682A352B4A007A5C75 /* CarInfo+ViewModel.swift in Sources */,
 				B92E5A262A5AD0D2004698ED /* FBSecondItem.swift in Sources */,
 				B978F3292A2E8F4C0076D326 /* BasicSegment+ViewModel.swift in Sources */,
-				B98CFCB62A91463800C45580 /* StatisticsControllerLayoutManager.swift in Sources */,
+				B98CFCB62A91463800C45580 /* StatisticControllerLayoutManager.swift in Sources */,
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
@@ -3272,7 +3272,7 @@
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
 				7F69EA0C2A6FFB0F00AFB37D /* ProgressView+ViewModel.swift in Sources */,
-				B98CFCB52A91463800C45580 /* StatisticsControllerCoordinator.swift in Sources */,
+				B98CFCB52A91463800C45580 /* StatisticControllerCoordinator.swift in Sources */,
 				7F8CFA982A73AC6C007F8FDC /* PremiumControllerLayoutManager.swift in Sources */,
 				B978F3C42A2E9D870076D326 /* Routable.swift in Sources */,
 				7F0F927B2A4257FF00920CD9 /* DetailsView+ViewModel.swift in Sources */,
@@ -3452,7 +3452,7 @@
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
-				B98CFCB82A91463800C45580 /* Statistics+ViewModel.swift in Sources */,
+				B98CFCB82A91463800C45580 /* Statistic+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */,
 				3DA078BF2A76D96F0066D4CE /* SubscriptionChecker.swift in Sources */,
@@ -3460,7 +3460,7 @@
 				B93A34532A4082D1004BAEA6 /* PastRecordsViewController.swift in Sources */,
 				3DA078BA2A76D8D70066D4CE /* SubscriptionHandler.swift in Sources */,
 				7FDC57982A66B45C00C1477C /* DateHeaderView.swift in Sources */,
-				B98CFCB72A91463800C45580 /* StatisticsViewController.swift in Sources */,
+				B98CFCB72A91463800C45580 /* StatisticViewController.swift in Sources */,
 				B9F79DC02A768BDC00AE1BEE /* ChartsView+ViewModel.swift in Sources */,
 				7F8DB1072A56072A007E05C3 /* Reminders+ViewModel.swift in Sources */,
 				B978F3B82A2E9D870076D326 /* String.swift in Sources */,

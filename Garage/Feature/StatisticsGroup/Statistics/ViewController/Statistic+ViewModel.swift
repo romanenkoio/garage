@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension StatisticsViewController {
+extension StatisticViewController {
     final class ViewModel: BasicViewModel {
         unowned let car: Car
         
