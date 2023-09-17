@@ -250,7 +250,10 @@ extension CarInfoViewController: UIPageViewControllerDelegate {
         guard let controller = pendingViewControllers.first,
               let index = layout.page.vm.controllers.firstIndex(of: controller as! BasicViewController)
         else { return }
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         layout.page.vm.indexCandidate = index
+        
+        if !vm.car.records.isEmpty, !vm.car.reminders.isEmpty {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
     }
 }
