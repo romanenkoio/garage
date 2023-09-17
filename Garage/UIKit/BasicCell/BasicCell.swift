@@ -9,7 +9,7 @@ import UIKit
 
 final class BasicTableCell<T: UIView>: UITableViewCell {
     var mainView = T()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutMainView()
@@ -37,6 +37,7 @@ final class BasicTableCell<T: UIView>: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        mainView.prepareForViewReuse()
     }
 }
 

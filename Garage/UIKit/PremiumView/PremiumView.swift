@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PremiumView: BasicView {
+final class PremiumView: BasicCellView {
     
     lazy var gradientView = GradientView(
         startColor: UIColor(hexString: "#9E00E8"),

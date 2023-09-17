@@ -29,7 +29,6 @@
 		7F0E08822A2F1DEE008C2B9A /* GarageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087E2A2F1DEE008C2B9A /* GarageViewController.swift */; };
 		7F0E08832A2F1DEE008C2B9A /* Garage+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */; };
 		7F0E08852A2F1E4D008C2B9A /* BasicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */; };
-		7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F0E08892A2F300C008C2B9A /* Animations.xcassets */; };
 		7F0E08942A2F3731008C2B9A /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08932A2F3731008C2B9A /* CarView.swift */; };
 		7F0E08962A2F373B008C2B9A /* CarView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */; };
 		7F0E08992A2F419E008C2B9A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E08982A2F419E008C2B9A /* RealmManager.swift */; };
@@ -270,6 +269,8 @@
 		B94076832AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940767E2AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift */; };
 		B94076842AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076802AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift */; };
 		B94076852AB70C5800B1132D /* MostFrequentOpeartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076812AB70C5800B1132D /* MostFrequentOpeartionViewController.swift */; };
+		B94076882AB774FD00B1132D /* BasicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94076872AB774FD00B1132D /* BasicCellView.swift */; };
+		B940768C2AB785EC00B1132D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940768B2AB785EC00B1132D /* Reusable.swift */; };
 		B9467A412A6EC324004629B2 /* NavigationBarTitleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */; };
 		B9467A432A6ED93D004629B2 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A422A6ED93D004629B2 /* DatePickerController.swift */; };
 		B9467A452A6EE0D8004629B2 /* DatePickerController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */; };
@@ -404,7 +405,6 @@
 		7F0E087E2A2F1DEE008C2B9A /* GarageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageViewController.swift; sourceTree = "<group>"; };
 		7F0E087F2A2F1DEE008C2B9A /* Garage+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Garage+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08842A2F1E4D008C2B9A /* BasicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCoordinator.swift; sourceTree = "<group>"; };
-		7F0E08892A2F300C008C2B9A /* Animations.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Animations.xcassets; sourceTree = "<group>"; };
 		7F0E08932A2F3731008C2B9A /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
 		7F0E08952A2F373B008C2B9A /* CarView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarView+ViewModel.swift"; sourceTree = "<group>"; };
 		7F0E08982A2F419E008C2B9A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -638,6 +638,8 @@
 		B940767E2AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostFrequentOpeartionControllerLayoutManager.swift; sourceTree = "<group>"; };
 		B94076802AB70C5800B1132D /* MostFrequentOpeartion+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MostFrequentOpeartion+ViewModel.swift"; sourceTree = "<group>"; };
 		B94076812AB70C5800B1132D /* MostFrequentOpeartionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostFrequentOpeartionViewController.swift; sourceTree = "<group>"; };
+		B94076872AB774FD00B1132D /* BasicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellView.swift; sourceTree = "<group>"; };
+		B940768B2AB785EC00B1132D /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B9467A402A6EC324004629B2 /* NavigationBarTitleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleAnimator.swift; sourceTree = "<group>"; };
 		B9467A422A6ED93D004629B2 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		B9467A442A6EE0D8004629B2 /* DatePickerController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePickerController+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1445,7 +1447,7 @@
 		7F3C32F82A5F60FA00992706 /* StatisticsGroup */ = {
 			isa = PBXGroup;
 			children = (
-				B94076792AB70C5800B1132D /* StatisticRecords */,
+				B94076792AB70C5800B1132D /* MostFrequentOperation */,
 				B9B1D1F02A9CF28D00EE78E9 /* StatisticPages */,
 				B98CFCAC2A91463800C45580 /* Statistics */,
 				B98CFC7A2A91356100C45580 /* Charts */,
@@ -2448,13 +2450,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		B94076792AB70C5800B1132D /* StatisticRecords */ = {
+		B94076792AB70C5800B1132D /* MostFrequentOperation */ = {
 			isa = PBXGroup;
 			children = (
 				B940767A2AB70C5800B1132D /* Manager */,
 				B940767F2AB70C5800B1132D /* ViewController */,
 			);
-			path = StatisticRecords;
+			path = MostFrequentOperation;
 			sourceTree = "<group>";
 		};
 		B940767A2AB70C5800B1132D /* Manager */ = {
@@ -2491,6 +2493,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		B94076862AB774E100B1132D /* BasicCellView */ = {
+			isa = PBXGroup;
+			children = (
+				B94076872AB774FD00B1132D /* BasicCellView.swift */,
+			);
+			path = BasicCellView;
+			sourceTree = "<group>";
+		};
 		B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */ = {
 			isa = PBXGroup;
 			children = (
@@ -2523,6 +2533,7 @@
 			isa = PBXGroup;
 			children = (
 				7F9610B42AB063D300C337BD /* FAQView */,
+				B94076862AB774E100B1132D /* BasicCellView */,
 				B94CA32D2A729594002A4EDF /* StatisticsGraphs */,
 				7F8CFA9D2A73AD64007F8FDC /* SelectPlanView */,
 				B9467A3F2A6EC301004629B2 /* NavigationBarTitleAnimator */,
@@ -2806,7 +2817,6 @@
 			isa = PBXGroup;
 			children = (
 				B93A34182A3D10A4004BAEA6 /* Fonts */,
-				7F0E08892A2F300C008C2B9A /* Animations.xcassets */,
 				B978F3A02A2E9D870076D326 /* Assets.xcassets */,
 				B978F3A12A2E9D870076D326 /* Color.xcassets */,
 			);
@@ -2841,6 +2851,7 @@
 				B978F3AB2A2E9D870076D326 /* Routable.swift */,
 				7F0E092C2A327BB4008C2B9A /* Selectable.swift */,
 				B97FECDC2A4A2CEF00E089C7 /* PageControllable.swift */,
+				B940768B2AB785EC00B1132D /* Reusable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -3226,7 +3237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93A34342A3D10EC004BAEA6 /* Gilroy-SemiboldItalic.ttf in Resources */,
-				7F0E088A2A2F300C008C2B9A /* Animations.xcassets in Resources */,
 				B93A343A2A3D10EC004BAEA6 /* Gilroy-Extrabold.ttf in Resources */,
 				B93A342F2A3D10EC004BAEA6 /* Gilroy-Medium.ttf in Resources */,
 				7F759CB72A6979A300A2E012 /* loader.json in Resources */,
@@ -3338,6 +3348,7 @@
 				7F820CBA2A3F232100F1D22D /* FormChangeChecker.swift in Sources */,
 				7F0E092B2A3255F1008C2B9A /* Action.swift in Sources */,
 				B9BF6FA12A5827E800B96821 /* FBView.swift in Sources */,
+				B940768C2AB785EC00B1132D /* Reusable.swift in Sources */,
 				B94076832AB70C5800B1132D /* MostFrequentOpeartionControllerLayoutManager.swift in Sources */,
 				B97FECDB2A45802D00E089C7 /* ScrollableTableview+ViewModel.swift in Sources */,
 				B978F31C2A2E8F4C0076D326 /* ErrorView.swift in Sources */,
@@ -3587,6 +3598,7 @@
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				B9FB290D2A33784300A4CF1D /* BasicImageList.swift in Sources */,
+				B94076882AB774FD00B1132D /* BasicCellView.swift in Sources */,
 				7F8DB1082A56072A007E05C3 /* RemindersViewController.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
 				7F049E472A40FBB400C3EAD0 /* PushManager.swift in Sources */,
@@ -3767,7 +3779,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
- 				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
