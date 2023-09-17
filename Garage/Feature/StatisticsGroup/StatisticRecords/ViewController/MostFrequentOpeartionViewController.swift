@@ -1,18 +1,18 @@
 //
-//  StatisticsViewController.swift
+//  MostFrequentOpeartionController.swift
 //  Garage
 //
-//  Created by Vlad Kulakovsky  on 19.08.23.
+//  Created by Vlad Kulakovsky  on 17.09.23.
 //  
 //
 
 import UIKit
 
-class StatisticsViewController: BasicViewController {
+class MostFrequentOpeartionViewController: BasicViewController {
 
     // - UI
-    typealias Coordinator = StatisticsControllerCoordinator
-    typealias Layout = StatisticsControllerLayoutManager
+    typealias Coordinator = MostFrequentOpeartionControllerCoordinator
+    typealias Layout = MostFrequentOpeartionControllerLayoutManager
     
     // - Property
     private(set) var vm: ViewModel
@@ -35,6 +35,7 @@ class StatisticsViewController: BasicViewController {
         super.viewDidLoad()
         disableScrollView()
         makeCloseButton(isLeft: true)
+        title = "Самая популярная операция"
     }
 
     override func configure() {
@@ -46,38 +47,36 @@ class StatisticsViewController: BasicViewController {
         layout.tableView.setViewModel(vm.tableVM)
         
         vm.tableVM.$cells
-            .sink {[weak self] _ in
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
                 self?.layout.tableView.reload()
-            }
+            })
             .store(in: &cancellables)
     }
-    
 }
 
 // MARK: -
 // MARK: - Configure
 
-extension StatisticsViewController {
+extension MostFrequentOpeartionViewController {
 
     private func configureCoordinator() {
-        coordinator = StatisticsControllerCoordinator(vc: self)
+        coordinator = MostFrequentOpeartionControllerCoordinator(vc: self)
     }
     
     private func configureLayoutManager() {
-        layout = StatisticsControllerLayoutManager(vc: self)
+        layout = MostFrequentOpeartionControllerLayoutManager(vc: self)
     }
     
 }
 
-// MARK: - DataSource
-
-extension StatisticsViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource
+extension MostFrequentOpeartionViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return vm.headers.count
+        vm.headers.count
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.tableVM.cells[section].count + 1
+        vm.tableVM.cells[section].count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,26 +87,17 @@ extension StatisticsViewController: UITableViewDataSource {
             return yearHeaderCell
         }
         
-        guard let statCell = tableView.dequeueReusableCell(StatisticCell.self, for: indexPath) else { return .init() }
-        
-        statCell.mainView.setViewModel(vm.tableVM.cells[indexPath.section][indexPath.row - 1])
-        statCell.selectionStyle = .none
-        return statCell
+        guard let recordCell = tableView.dequeueReusableCell(RecordCell.self, for: indexPath) else { return .init()}
+        recordCell.mainView.setViewModel(vm.tableVM.cells[indexPath.section][indexPath.row - 1])
+        recordCell.selectionStyle = .none
+        return recordCell
     }
 }
 
-// MARK: - Delegate
-
-extension StatisticsViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate
+extension MostFrequentOpeartionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.record {
-            coordinator.navigateTo(StatisticNavigationRoute.editRecord(vm.car, record))
-        }
-        
-        if case .mostFreqOperation(_) = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue {
-            
-            guard let operationType = vm.tableVM.cells[indexPath.section][indexPath.row - 1].cellValue.statValue.stringValue else { return }
-            coordinator.navigateTo(StatisticNavigationRoute.allRecords(vm.car, operationType))
-        }
+        let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].record
+        coordinator.navigateTo(MostFrequentOpeartionNavigationRoute.record(vm.car, record))
     }
 }
