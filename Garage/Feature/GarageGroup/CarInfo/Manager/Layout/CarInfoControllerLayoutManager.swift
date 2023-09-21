@@ -132,7 +132,11 @@ final class CarInfoControllerLayoutManager {
             let chartButton = NavBarButton.ViewModel(
                 action: .touchUpInside { [weak self] in
                     guard let self else { return }
-                    self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
+                    if Environment.isPrem {
+                        self.vc.coordinator.navigateTo(CarInfoNavigationRoute.statistic(self.vc.vm.car))
+                    } else {
+                        self.vc.coordinator.navigateTo(CommonNavigationRoute.premium)
+                    }
                 },
                 image: UIImage(named: "stat_ic"))
             buttons.append(chartButton)

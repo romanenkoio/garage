@@ -79,23 +79,24 @@ class CarInfoViewController: BasicViewController {
         layout.carTopInfo.setViewModel(vm.carTopInfoVM)
         
         let isPrem = Environment.isPrem
+        
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
                     .init(.text("Запланировать"),
                           action: { [weak self] in
                               guard let self else { return }
-                              let isReminderExist = vm.remindersVM.tableVM.cells.count > 1
+                              let isReminderExist = !RealmManager<Reminder>().read().filter({ $0.carID == self.vm.car.id && !$0.isDone }).isEmpty
+
                               if isPrem {
                                   coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                              } else if !isPrem, isReminderExist {
+                              } else if isReminderExist {
                                   coordinator.navigateTo(CommonNavigationRoute.premium)
-                              } else if !isPrem, !isReminderExist {
+                              } else if !isReminderExist {
                                   coordinator.navigateTo(CarInfoNavigationRoute.createReminder(vm.car))
-                                  
                               }
                               self.vm.addButtonVM.dismissButtons()
                           }),
-                  image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
+                  image: UIImage(named: "checkmark_fb_ic")),
             .init(tappableLabelVM:
                     .init(.text("Добавить запись"),
                           action: { [weak self] in
@@ -105,7 +106,7 @@ class CarInfoViewController: BasicViewController {
                           }),
                   image: UIImage(named: "pencil_fb_ic"))
         ]
-        
+
         vm.$pageVCTableView.sink {[weak self] tableView in
             guard let self,
                   let tableView else { return }

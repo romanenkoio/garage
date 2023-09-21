@@ -17,7 +17,7 @@ enum PremiumFeatures: CaseIterable {
     var title: String {
         switch self {
         case .unlimitedCar:         return "•  Неограниченое количество машин"
-        case .unlimitedReminder:    return "•  Безлимитные напоминания"
+        case .unlimitedReminder:    return "•  Безлимитное планирование"
         case .unlimitedDocuments:   return "•  Безлимитное создание документов"
         case .statistic:            return "•  Статистика расходов по автомобилю"
         case .ads:                  return "•  Отстутствие рекламы"
