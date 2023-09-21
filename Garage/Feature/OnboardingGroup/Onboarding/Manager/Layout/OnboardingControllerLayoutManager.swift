@@ -90,6 +90,7 @@ fileprivate extension OnboardingControllerLayoutManager {
     
     private func makeConstraint() {
         skipLabel.snp.makeConstraints { make in
+            make.height.equalTo(24)
             make.top.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
@@ -97,7 +98,7 @@ fileprivate extension OnboardingControllerLayoutManager {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(skipLabel.snp.bottom).offset(-3)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(collectionView.snp.width).multipliedBy(1.275)
+            make.bottom.equalTo(page.snp.top)
         }
         
         page.snp.makeConstraints { make in

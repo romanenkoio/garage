@@ -31,22 +31,23 @@ class OnboardingView: BasicView {
         subtitleLabel.textColor = UIColor(hexString: "#ADADAD")
         titleLabel.textAlignment = .center
         subtitleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 0
-        subtitleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
+        subtitleLabel.numberOfLines = 2
     }
     
     private func makeConstraint() {
         onboardingImage.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * 0.5)
         }
         
         titleLabel.snp.makeConstraints { make in
+            make.height.equalTo(56)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(onboardingImage.snp.bottom)
         }
         
         subtitleLabel.snp.makeConstraints { make in
+            make.height.equalTo(56)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom)
             make.bottom.equalToSuperview()
