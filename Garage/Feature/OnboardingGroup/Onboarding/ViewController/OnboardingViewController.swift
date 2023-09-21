@@ -33,6 +33,7 @@ class OnboardingViewController: BasicViewController {
     // - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableScrollView()
     }
 
     override func configure() {

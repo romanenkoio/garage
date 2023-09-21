@@ -26,16 +26,19 @@ class OnboardingView: BasicView {
         self.addSubview(onboardingImage)
         self.addSubview(titleLabel)
         self.addSubview(subtitleLabel)
-        titleLabel.textInsets = .init(top: 5, bottom: 16, horizontal: 20)
+        titleLabel.textInsets = .init(top: 5, bottom: 5, horizontal: 20)
         subtitleLabel.textInsets = .init(bottom: 15, horizontal: 20)
         subtitleLabel.textColor = UIColor(hexString: "#ADADAD")
         titleLabel.textAlignment = .center
         subtitleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
+        subtitleLabel.numberOfLines = 0
     }
     
     private func makeConstraint() {
         onboardingImage.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(UIScreen.main.bounds.height * 0.5)
         }
         
         titleLabel.snp.makeConstraints { make in

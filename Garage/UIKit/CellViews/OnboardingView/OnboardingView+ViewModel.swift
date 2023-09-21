@@ -24,19 +24,14 @@ extension OnboardingView {
     }
 }
 
-enum OnboardingArticle: CaseIterable {
+enum OnboardingArticle: String, CaseIterable {
     case servises
     case history
     case warnings
     case documents
     
     var image: UIImage? {
-        switch self {
-        case .servises:     return UIImage(named: "service_onb")
-        case .history:      return UIImage(named: "history")
-        case .warnings:     return UIImage(named: "warning")
-        case .documents:    return UIImage(named: "documents")
-        }
+        return UIImage(named: "\(self.rawValue)_onb")
     }
     
     var title: String {
