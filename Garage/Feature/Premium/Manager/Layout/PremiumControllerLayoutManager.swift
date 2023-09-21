@@ -143,10 +143,12 @@ fileprivate extension PremiumControllerLayoutManager {
     private func makeConstraint() {
         logoImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
+            make.height.equalTo(20)
             make.top.equalToSuperview().inset(UIEdgeInsets(top: 9))
         }
     
         closeImage.snp.makeConstraints { make in
+            make.height.width.equalTo(20)
             make.leading.equalToSuperview().inset(UIEdgeInsets(left: 20))
             make.centerY.equalTo(logoImage)
         }
@@ -184,7 +186,7 @@ fileprivate extension PremiumControllerLayoutManager {
         bottomStack.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
             make.top.equalTo(startTrialButton.snp.bottom).offset(24)
-            make.bottom.equalToSuperview().offset(-25)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     
