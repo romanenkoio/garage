@@ -40,7 +40,8 @@ final class Car: Object, Codable {
     }
     
     var allRecords: [Recordable] {
-        return records + fuelRecords
+        let allRecords = records + fuelRecords as! [Recordable]
+        return allRecords.sorted(by: {$0.date > $1.date})
     }
     
     var images: [Data] {

@@ -12,11 +12,11 @@ extension RecordView {
         
         var infoLabelVM = BasicLabel.ViewModel()
         let dateLabelVM = BasicLabel.ViewModel()
-        let record: Record
+        let record: Recordable
         let attachImageVM = BasicImageView.ViewModel(image: UIImage(named: "attach_ic"))
         let moreImageVM = BasicImageView.ViewModel(image: UIImage(named: "more_ic"))
         
-        init(record: Record) {
+        init(record: Recordable) {
             self.record = record
             infoLabelVM.textValue = .text(record.short)
             dateLabelVM.textValue = .text(record.date.toString(.ddMMMMyyyy))

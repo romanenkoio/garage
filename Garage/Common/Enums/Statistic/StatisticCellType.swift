@@ -19,7 +19,8 @@ enum StatisticCellType {
             case .averageSum(let records):
                 if let firstRecordDate = records.min(by: {$0.date < $1.date})?.date,
                    let monthsFromFirstRecord = Calendar.current.dateComponents([.month], from: firstRecordDate, to: Date()).month {
-                    let sum = records.map({$0.cost ?? 0}).reduce(0, +) / monthsFromFirstRecord
+                    let monthCountIsZero = monthsFromFirstRecord == 0
+                    let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
                     let description = "Средний расход за месяц"
                     
                     return (nil, "\(sum)".appendCurrency(), description)
