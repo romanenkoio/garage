@@ -81,6 +81,22 @@ class CarInfoViewController: BasicViewController {
         let isPrem = Environment.isPrem
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
+                    .init(.text("Заправка"),
+                          action: {[weak self] in
+                              guard let self else { return }
+                              self.coordinator.navigateTo(CarInfoNavigationRoute.createFuelRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(systemName: "fuelpump")),
+            .init(tappableLabelVM:
+                    .init(.text("Добавить запись"),
+                          action: { [weak self] in
+                              guard let self else { return }
+                              coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(named: "pencil_fb_ic")),
+            .init(tappableLabelVM:
                     .init(.text("Запланировать"),
                           action: { [weak self] in
                               guard let self else { return }
@@ -96,22 +112,6 @@ class CarInfoViewController: BasicViewController {
                               self.vm.addButtonVM.dismissButtons()
                           }),
                   image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
-            .init(tappableLabelVM:
-                    .init(.text("Добавить запись"),
-                          action: { [weak self] in
-                              guard let self else { return }
-                              coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-                              self.vm.addButtonVM.dismissButtons()
-                          }),
-                  image: UIImage(named: "pencil_fb_ic")),
-            .init(tappableLabelVM:
-                    .init(.text("Заправка"),
-                          action: {[weak self] in
-                              guard let self else { return }
-                              self.coordinator.navigateTo(CarInfoNavigationRoute.createFuelRecord(vm.car))
-                              self.vm.addButtonVM.dismissButtons()
-                          }),
-                  image: UIImage(systemName: "fuelpump"))
         ]
         
         vm.$pageVCTableView.sink {[weak self] tableView in
