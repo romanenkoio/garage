@@ -1,42 +1,44 @@
 //
-//  Record.swift
+//  FuelModel.swift
 //  Garage
 //
-//  Created by Illia Romanenko on 6.06.23.
+//  Created by Vlad Kulakovsky  on 26.09.23.
 //
 
-import RealmSwift
 import Foundation
+import RealmSwift
 import UIKit
 
-final class Record: Object, Recordable {
+protocol Recordable: Object, Codable {
+    var id: String { get set }
+    var short: String { get set }
+    var carID: String { get set }
+    var cost: Int? { get set }
+    var date: Date { get set }
+}
+
+final class FuelRecord: Object, Recordable {
     @Persisted var id: String
     @Persisted var short: String
     @Persisted var carID: String
-    @Persisted var serviceID: String?
     @Persisted var cost: Int?
-    @Persisted var mileage: Int
     @Persisted var date: Date
-    @Persisted var comment: String?
+    @Persisted var quantity: Int?
     
     convenience init(
         short: String,
         carID: String,
-        serviceID: String? = nil,
         cost: Int? = nil,
-        mileage: Int,
         date: Date,
-        comment: String? = nil
+        quantity: Int? = nil
     ) {
         self.init()
         self.id = UUID().uuidString
         self.short = short
         self.carID = carID
-        self.serviceID = serviceID
         self.cost = cost
-        self.mileage = mileage
         self.date = date
-        self.comment = comment
+        self.quantity = quantity
     }
     
     @MainActor var images: [Data] {
@@ -49,11 +51,8 @@ final class Record: Object, Recordable {
         case id
         case short
         case carID
-        case serviceID
         case cost
-        case mileage
         case date
-        case comment
     }
     
     func encode(to encoder: Encoder) throws {
@@ -61,10 +60,7 @@ final class Record: Object, Recordable {
           try container.encode(id, forKey: .id)
           try container.encode(short, forKey: .short)
           try container.encode(carID, forKey: .carID)
-          try container.encode(serviceID, forKey: .serviceID)
           try container.encode(cost, forKey: .cost)
-          try container.encode(mileage, forKey: .mileage)
           try container.encode(date, forKey: .date)
-          try container.encode(comment, forKey: .comment)
       }
 }

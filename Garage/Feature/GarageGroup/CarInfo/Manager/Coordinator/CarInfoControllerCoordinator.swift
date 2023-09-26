@@ -11,6 +11,8 @@ import UIKit
 enum CarInfoNavigationRoute: Routable {
     case createRecord(Car)
     case editRecord(Car, Record)
+    case createFuelRecord(Car)
+    case editFuelRecord(Car, FuelRecord)
     case editReminder(Car, Reminder)
     case createReminder(Car)
     case edit(Car)
@@ -53,6 +55,12 @@ class CarInfoControllerCoordinator: BasicCoordinator {
             case .statistic(let car):
                 let controller = StatisticPagesViewController(vm: .init(car: car))
                 vc.push(controller)
+                case .createFuelRecord(let car):
+                    let controller = CreateFuelRecordViewController(vm: .init(car: car, mode: .create))
+                    vc.push(controller)
+                case .editFuelRecord(let car, let fuelRecord):
+                    let controller = CreateFuelRecordViewController(vm: .init(car: car, mode: .edit(object: fuelRecord)))
+                    vc.push(controller)
             }
         } else {
             super.navigateTo(route)

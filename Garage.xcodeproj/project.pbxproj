@@ -367,6 +367,11 @@
 		B9D96E602A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */; };
 		B9D96E632A38EC4300909B33 /* PhotoVcBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */; };
 		B9D96E652A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */; };
+		B9EA64442AC35A3A005292E2 /* FuelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA64432AC35A3A005292E2 /* FuelModel.swift */; };
+		B9EA64512AC360CD005292E2 /* CreateFuelRecordControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA644B2AC360CD005292E2 /* CreateFuelRecordControllerCoordinator.swift */; };
+		B9EA64522AC360CD005292E2 /* CreateFuelRecordControllerLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA644D2AC360CD005292E2 /* CreateFuelRecordControllerLayoutManager.swift */; };
+		B9EA64532AC360CD005292E2 /* CreateFuelRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA644F2AC360CD005292E2 /* CreateFuelRecordViewController.swift */; };
+		B9EA64542AC360CD005292E2 /* CreateFuelRecord+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA64502AC360CD005292E2 /* CreateFuelRecord+ViewModel.swift */; };
 		B9EADF6C2AB06FD100C3EFAB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = B9EADF6B2AB06FD100C3EFAB /* DGCharts */; };
 		B9F79DB62A74E9FC00AE1BEE /* BarMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */; };
 		B9F79DB92A754E8900AE1BEE /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F79DB82A754E8900AE1BEE /* PieChart.swift */; };
@@ -735,6 +740,11 @@
 		B9D96E5F2A38E37E00909B33 /* PhotoVcNavigationView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcNavigationView+ViewModel.swift"; sourceTree = "<group>"; };
 		B9D96E622A38EC4300909B33 /* PhotoVcBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVcBottomView.swift; sourceTree = "<group>"; };
 		B9D96E642A38EC5900909B33 /* PhotoVcBottomView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoVcBottomView+ViewModel.swift"; sourceTree = "<group>"; };
+		B9EA64432AC35A3A005292E2 /* FuelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelModel.swift; sourceTree = "<group>"; };
+		B9EA644B2AC360CD005292E2 /* CreateFuelRecordControllerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFuelRecordControllerCoordinator.swift; sourceTree = "<group>"; };
+		B9EA644D2AC360CD005292E2 /* CreateFuelRecordControllerLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFuelRecordControllerLayoutManager.swift; sourceTree = "<group>"; };
+		B9EA644F2AC360CD005292E2 /* CreateFuelRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFuelRecordViewController.swift; sourceTree = "<group>"; };
+		B9EA64502AC360CD005292E2 /* CreateFuelRecord+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateFuelRecord+ViewModel.swift"; sourceTree = "<group>"; };
 		B9F79DB52A74E9FC00AE1BEE /* BarMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarMarker.swift; sourceTree = "<group>"; };
 		B9F79DB82A754E8900AE1BEE /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		B9F79DBA2A754E9100AE1BEE /* PieChart+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PieChart+ViewModel.swift"; sourceTree = "<group>"; };
@@ -1509,6 +1519,7 @@
 				7FFC1F712A353E31007A5C75 /* Photo.swift */,
 				7F820CBB2A3F87E600F1D22D /* Reminder.swift */,
 				7F9264082A6DCC2700DA220A /* Parking.swift */,
+				B9EA64432AC35A3A005292E2 /* FuelModel.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -1670,6 +1681,7 @@
 		7F8DB0F92A5606B0007E05C3 /* GarageGroup */ = {
 			isa = PBXGroup;
 			children = (
+				B9EA64482AC360CD005292E2 /* CreateFuelRecord */,
 				7F9264162A6EFEF600DA220A /* ParkingMap */,
 				7F0E08772A2F1DEE008C2B9A /* Garage */,
 				7FFC1F5D2A352B4A007A5C75 /* CarInfo */,
@@ -3103,6 +3115,49 @@
 			path = BottomView;
 			sourceTree = "<group>";
 		};
+		B9EA64482AC360CD005292E2 /* CreateFuelRecord */ = {
+			isa = PBXGroup;
+			children = (
+				B9EA64492AC360CD005292E2 /* Manager */,
+				B9EA644E2AC360CD005292E2 /* ViewController */,
+			);
+			path = CreateFuelRecord;
+			sourceTree = "<group>";
+		};
+		B9EA64492AC360CD005292E2 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B9EA644A2AC360CD005292E2 /* Coordinator */,
+				B9EA644C2AC360CD005292E2 /* Layout */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B9EA644A2AC360CD005292E2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B9EA644B2AC360CD005292E2 /* CreateFuelRecordControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9EA644C2AC360CD005292E2 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				B9EA644D2AC360CD005292E2 /* CreateFuelRecordControllerLayoutManager.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		B9EA644E2AC360CD005292E2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B9EA644F2AC360CD005292E2 /* CreateFuelRecordViewController.swift */,
+				B9EA64502AC360CD005292E2 /* CreateFuelRecord+ViewModel.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B9EADF702AB30B4000C3EFAB /* Statistic */ = {
 			isa = PBXGroup;
 			children = (
@@ -3301,12 +3356,14 @@
 				B978F31D2A2E8F4C0076D326 /* BasicViewController.swift in Sources */,
 				7F69EA112A700CDA00AFB37D /* PremiumView+ViewModel.swift in Sources */,
 				7F0E09412A32892C008C2B9A /* CreateDocumentControllerCoordinator.swift in Sources */,
+				B9EA64542AC360CD005292E2 /* CreateFuelRecord+ViewModel.swift in Sources */,
 				7FC6DA262A39FCE900AD9A3F /* SettingsControllerCoordinator.swift in Sources */,
 				7F5955FB2A2E8D420062A85F /* DocumentType.swift in Sources */,
 				B9D96E482A37B04900909B33 /* FullSizePhotoController+ViewModel.swift in Sources */,
 				7F9264092A6DCC2700DA220A /* Parking.swift in Sources */,
 				7F5955FD2A2E92560062A85F /* Service.swift in Sources */,
 				7F3C33022A5F60FA00992706 /* ChartsControllerLayoutManager.swift in Sources */,
+				B9EA64532AC360CD005292E2 /* CreateFuelRecordViewController.swift in Sources */,
 				B978F3C02A2E9D870076D326 /* ValidationRule.swift in Sources */,
 				B9F79DBB2A754E9100AE1BEE /* PieChart+ViewModel.swift in Sources */,
 				7F1DE3AA2A58AD97008E7B1D /* CreateReminderControllerCoordinator.swift in Sources */,
@@ -3327,6 +3384,7 @@
 				7F0E09052A2FF2EB008C2B9A /* CreateServiseViewController.swift in Sources */,
 				B9D96E4D2A37B18B00909B33 /* BasicCollectionView+ViewModel.swift in Sources */,
 				7FD2D6C82A4B8B4600D4FCFB /* ReadArticle+ViewModel.swift in Sources */,
+				B9EA64522AC360CD005292E2 /* CreateFuelRecordControllerLayoutManager.swift in Sources */,
 				B94CA3312A7295B1002A4EDF /* BarChart+ViewModel.swift in Sources */,
 				7F14655A2A38BF830022E4E7 /* AlignedButton+ViewModel.swift in Sources */,
 				B978F3AF2A2E9D870076D326 /* Publisher.swift in Sources */,
@@ -3538,6 +3596,7 @@
 				7F0E09062A2FF2EB008C2B9A /* CreateServise+ViewModel.swift in Sources */,
 				B9B1D1FC2A9CF2B000EE78E9 /* StatisticPagesCoordinator.swift in Sources */,
 				7F0E09462A32A1C0008C2B9A /* BasicViewController+ViewModel.swift in Sources */,
+				B9EA64512AC360CD005292E2 /* CreateFuelRecordControllerCoordinator.swift in Sources */,
 				B98CFCB82A91463800C45580 /* Statistic+ViewModel.swift in Sources */,
 				B978F32B2A2E8F4C0076D326 /* RangeDatePicker.swift in Sources */,
 				7FB5ED832AAFA43C003C243A /* FAQType.swift in Sources */,
@@ -3598,6 +3657,7 @@
 				7F0E08F42A2FC7D4008C2B9A /* UniversalSelectionView.swift in Sources */,
 				7F0E09182A31D7A0008C2B9A /* GarageAPI .swift in Sources */,
 				B9FB290D2A33784300A4CF1D /* BasicImageList.swift in Sources */,
+				B9EA64442AC35A3A005292E2 /* FuelModel.swift in Sources */,
 				B94076882AB774FD00B1132D /* BasicCellView.swift in Sources */,
 				7F8DB1082A56072A007E05C3 /* RemindersViewController.swift in Sources */,
 				7F5955F72A2E8C200062A85F /* Document.swift in Sources */,
@@ -3757,7 +3817,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = T8V9JXV542;
+				DEVELOPMENT_TEAM = G264CBHMU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Garage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GarageGo;
@@ -3779,7 +3839,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romanenko.garage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.r1.garage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

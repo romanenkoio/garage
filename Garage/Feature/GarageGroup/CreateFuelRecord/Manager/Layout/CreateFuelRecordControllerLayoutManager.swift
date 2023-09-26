@@ -1,17 +1,17 @@
 //
-//  CreateRecordControllerLayoutManager.swift
+//  CreateFuelRecordControllerLayoutManager.swift
 //  Garage
 //
-//  Created by Illia Romanenko on 15.06.23.
+//  Created by Vlad Kulakovsky  on 26.09.23.
 //  
 //
 
 import UIKit
 import SnapKit
 
-final class CreateRecordControllerLayoutManager {
+final class CreateFuelRecordControllerLayoutManager {
     
-    private unowned let vc: CreateRecordViewController
+    private unowned let vc: CreateFuelRecordViewController
     
     private lazy var stack: BasicStackView = {
         let stack = BasicStackView()
@@ -21,21 +21,18 @@ final class CreateRecordControllerLayoutManager {
         return stack
     }()
     
-    lazy var shortTypeInput = SuggestionInput<ServiceType>()
+    // - UI
+    lazy var qauntityInput = BasicInputView(mode: .amount(rightLabel: "л"))
     lazy var costInput = BasicInputView(mode: .amount(rightLabel: .empty.appendCurrency()))
-    lazy var mileageImput = BasicInputView(mode: .digit)
     lazy var dateInput = BasicDatePicker()
-    lazy var imageList = BasicImageListView()
     lazy var saveButton = AlignedButton()
-    lazy var servicesList = BasicList<Service>()
-    lazy var commentInput = MultiLineInput()
-
+    
     var contentView: BasicView {
         return vc.contentView
     }
     
     // - Init
-    init(vc: CreateRecordViewController) {
+    init(vc: CreateFuelRecordViewController) {
         self.vc = vc
         configure()
     }
@@ -45,25 +42,19 @@ final class CreateRecordControllerLayoutManager {
 // MARK: -
 // MARK: - Configure
 
-fileprivate extension CreateRecordControllerLayoutManager {
+fileprivate extension CreateFuelRecordControllerLayoutManager {
     
     private func configure() {
         makeLayout()
         makeConstraint()
-        mileageImput.textField.setMode(.digit)
-        costInput.textField.setMode(.digit)
     }
     
     private func makeLayout() {
         contentView.addSubview(stack)
         stack.addArrangedSubview([
-            (shortTypeInput, spacing: 5),
+            (qauntityInput, spacing: 5),
             (costInput, spacing: 5),
-            (mileageImput, spacing: 5),
             (dateInput, spacing: 25),
-            (servicesList, spacing: 25),
-            (imageList, spacing: 25),
-            (commentInput, spacing: 25),
             (saveButton, spacing: 0)
         ])
     }
@@ -73,4 +64,5 @@ fileprivate extension CreateRecordControllerLayoutManager {
             make.edges.equalToSuperview()
         }
     }
+    
 }

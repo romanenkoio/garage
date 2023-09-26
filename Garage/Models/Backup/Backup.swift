@@ -13,6 +13,7 @@ class Backup: Codable {
     let documents: [Document]
     let servises: [Service]
     let records: [Record]
+    let fuelRecords: [FuelRecord]
     let photos: [Photo]
     let reminders: [Reminder]
     
@@ -22,6 +23,7 @@ class Backup: Codable {
         self.documents = RealmManager().read()
         self.servises = RealmManager().read()
         self.records = RealmManager().read()
+        self.fuelRecords = RealmManager().read()
         self.photos = RealmManager().read()
         self.reminders = RealmManager().read()
     }
@@ -31,6 +33,7 @@ class Backup: Codable {
         self.documents.forEach { RealmManager().write(object: $0) }
         self.servises.forEach { RealmManager().write(object: $0) }
         self.records.forEach { RealmManager().write(object: $0) }
+        self.fuelRecords.forEach { RealmManager().write(object: $0) }
         self.photos.forEach { RealmManager().write(object: $0) }
         self.reminders.forEach { RealmManager().write(object: $0) }
     }

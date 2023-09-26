@@ -103,7 +103,15 @@ class CarInfoViewController: BasicViewController {
                               coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
                               self.vm.addButtonVM.dismissButtons()
                           }),
-                  image: UIImage(named: "pencil_fb_ic"))
+                  image: UIImage(named: "pencil_fb_ic")),
+            .init(tappableLabelVM:
+                    .init(.text("Заправка"),
+                          action: {[weak self] in
+                              guard let self else { return }
+                              self.coordinator.navigateTo(CarInfoNavigationRoute.createFuelRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(systemName: "fuelpump"))
         ]
         
         vm.$pageVCTableView.sink {[weak self] tableView in
