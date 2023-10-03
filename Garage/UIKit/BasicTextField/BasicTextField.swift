@@ -60,10 +60,19 @@ class BasicTextField: UITextField {
             self.keyboardType = .phonePad
         }
         
-        if mode == .amount {
+//        if mode == .amount {
+//            let label = BasicLabel()
+//            label.textInsets = .init(right: 15)
+//            label.text = .empty.appendCurrency()
+//            label.font = .custom(size: 17, weight: .medium)
+//            self.rightView = label
+//            self.rightViewMode = .always
+//        }
+        
+        if case .amount(let rightLabel) = mode {
             let label = BasicLabel()
             label.textInsets = .init(right: 15)
-            label.text = .empty.appendCurrency()
+            label.text = rightLabel
             label.font = .custom(size: 17, weight: .medium)
             self.rightView = label
             self.rightViewMode = .always

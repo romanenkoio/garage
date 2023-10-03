@@ -33,7 +33,7 @@ extension PastRecordsViewController {
         }
         
         func readRecords() {
-            let records = car.records
+            let records = car.allRecords
             let dates = Set(records.compactMap{ $0.date })
             let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
 

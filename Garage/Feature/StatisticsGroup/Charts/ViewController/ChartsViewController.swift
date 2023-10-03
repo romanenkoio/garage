@@ -151,8 +151,8 @@ extension ChartsViewController: UITableViewDataSource {
 
 extension ChartsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let recordVM = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
-        coordinator.navigateTo(ChartsNavigationRoute.editRecord(vm.car, recordVM.record))
+        guard let recordVM = vm.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1]?.record as? Record else { return }
+        coordinator.navigateTo(ChartsNavigationRoute.editRecord(vm.car, recordVM))
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         layout.isAutoDragging = false

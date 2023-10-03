@@ -15,7 +15,6 @@ extension CarInfoViewController {
 
         let segmentVM: BasicSegmentView<RecordType>.GenericViewModel<RecordType>
         let carTopInfoVM: CarTopInfoView.ViewModel
-        let tableVM = BasicTableView.GenericViewModel<Record>()
         var pageVM: BasicPageController.ViewModel
         var pastRecordsVM: PastRecordsViewController.ViewModel
         var remindersVM: RemindersViewController.ViewModel
@@ -72,12 +71,6 @@ extension CarInfoViewController {
             self.initFields()
             self.pastRecordsVM.readRecords()
             self.remindersVM.readReminders()
-        }
-        
-        func readRecords(for car: Car) {
-            let records = RealmManager<Record>().read().filter({$0.carID == car.id})
-            
-            tableVM.setCells(records)
         }
         
         func initFields() {

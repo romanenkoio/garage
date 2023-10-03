@@ -82,6 +82,22 @@ class CarInfoViewController: BasicViewController {
         
         vm.addButtonVM.actions = [
             .init(tappableLabelVM:
+                    .init(.text("Заправка"),
+                          action: {[weak self] in
+                              guard let self else { return }
+                              self.coordinator.navigateTo(CarInfoNavigationRoute.createFuelRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(systemName: "fuelpump")),
+            .init(tappableLabelVM:
+                    .init(.text("Добавить запись"),
+                          action: { [weak self] in
+                              guard let self else { return }
+                              coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
+                              self.vm.addButtonVM.dismissButtons()
+                          }),
+                  image: UIImage(named: "pencil_fb_ic")),
+            .init(tappableLabelVM:
                     .init(.text("Запланировать"),
                           action: { [weak self] in
                               guard let self else { return }
@@ -96,7 +112,7 @@ class CarInfoViewController: BasicViewController {
                               }
                               self.vm.addButtonVM.dismissButtons()
                           }),
-                  image: UIImage(named: "checkmark_fb_ic")),
+                  image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
             .init(tappableLabelVM:
                     .init(.text("Добавить запись"),
                           action: { [weak self] in
@@ -147,14 +163,13 @@ extension CarInfoViewController {
 extension CarInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch vm.segmentVM.selectedItem {
+            case .paste:
+                guard let record = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1]?.record else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, record))
                 
-        case .paste:
-            guard let recordVM = vm.pastRecordsVM.tableVM.cells[safe: indexPath.section]?[safe: indexPath.row - 1] else { return }
-            coordinator.navigateTo(CarInfoNavigationRoute.editRecord(vm.car, recordVM.record))
-            
-        case .future:
-            guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.section] else { return }
-            coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
+            case .future:
+                guard let reminder = vm.remindersVM.tableVM.cells[safe: indexPath.section] else { return }
+                coordinator.navigateTo(CarInfoNavigationRoute.editReminder(vm.car, reminder))
         }
     }
 }

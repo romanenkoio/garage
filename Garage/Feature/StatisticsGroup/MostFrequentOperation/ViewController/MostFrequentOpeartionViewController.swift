@@ -98,6 +98,6 @@ extension MostFrequentOpeartionViewController: UITableViewDataSource {
 extension MostFrequentOpeartionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let record = vm.tableVM.cells[indexPath.section][indexPath.row - 1].record
-        coordinator.navigateTo(MostFrequentOpeartionNavigationRoute.record(vm.car, record))
+        coordinator.navigateTo(MostFrequentOpeartionNavigationRoute.record(vm.car, record as! Record))
     }
 }

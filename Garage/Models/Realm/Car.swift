@@ -32,6 +32,18 @@ final class Car: Object, Codable {
             .sorted(by: { $0.date > $1.date })
     }
     
+    var fuelRecords: [FuelRecord] {
+        RealmManager()
+            .read()
+            .filter({ $0.carID == self.id})
+            .sorted(by: { $0.date > $1.date })
+    }
+    
+    var allRecords: [Recordable] {
+        let allRecords = records + fuelRecords as! [Recordable]
+        return allRecords.sorted(by: {$0.date > $1.date})
+    }
+    
     var images: [Data] {
         let datas = RealmManager<Photo>().read().filter({ $0.carId == self.id })
         return datas.compactMap({ $0.image })
