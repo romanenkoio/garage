@@ -122,6 +122,9 @@ class BasicViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
+
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self as UIGestureRecognizerDelegate
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     @objc func hideKeyboard() {
@@ -131,7 +134,8 @@ class BasicViewController: UIViewController {
 
 extension BasicViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        gestureRecognizer.cancelsTouchesInView = false
+        gestureRecognizer.cancelsTouchesInView = gestureRecognizer is UIScreenEdgePanGestureRecognizer
+     
         return true
     }
 }

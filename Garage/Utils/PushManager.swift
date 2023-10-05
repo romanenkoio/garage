@@ -184,7 +184,7 @@ extension LocalPush {
         id: "conditioner",
         title: "Просто хотим напомнить",
         subtitle: "Подготовьте кондиционер к летнему сезону",
-        date: DateComponents(month: 10, day: 5, hour: 12, minute: 0),
+        date: DateComponents(month: 4, day: 5, hour: 12, minute: 0),
         repeats: true
     )
     

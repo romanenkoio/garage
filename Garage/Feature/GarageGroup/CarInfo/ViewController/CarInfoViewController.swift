@@ -112,15 +112,7 @@ class CarInfoViewController: BasicViewController {
                               }
                               self.vm.addButtonVM.dismissButtons()
                           }),
-                  image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill")),
-            .init(tappableLabelVM:
-                    .init(.text("Добавить запись"),
-                          action: { [weak self] in
-                              guard let self else { return }
-                              coordinator.navigateTo(CarInfoNavigationRoute.createRecord(vm.car))
-                              self.vm.addButtonVM.dismissButtons()
-                          }),
-                  image: UIImage(named: "pencil_fb_ic"))
+                  image: isPrem ? UIImage(named: "checkmark_fb_ic") : UIImage(systemName: "lock.fill"))
         ]
 
         vm.$pageVCTableView.sink {[weak self] tableView in
