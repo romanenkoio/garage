@@ -52,7 +52,7 @@ fileprivate extension ParkingMapControllerLayoutManager {
         }
         
         removeParkingButton.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 20))
+            make.leading.trailing.bottom.equalToSuperview().inset(UIEdgeInsets(bottom: 40))
         }
     }
 }
