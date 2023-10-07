@@ -10,6 +10,8 @@ import Foundation
 enum StatisticCellType {
     case averageSum(records: [Record])
     case averageSumPerYear(records: [Record])
+    case averageFuelConsump(record: [FuelRecord])
+    case averageFuelConsumpPerYear(record: [FuelRecord])
     case mostFreqOperation(records: [Record])
     case mostExpensioveOperation(records: [Record])
     case mostCheapestOpearation(records: [Record])
@@ -17,16 +19,15 @@ enum StatisticCellType {
     var statValue: StatisticModel {
         switch self {
             case .averageSum(let records):
-                if let firstRecordDate = records.min(by: {$0.date < $1.date})?.date,
-                   let monthsFromFirstRecord = Calendar.current.dateComponents([.month], from: firstRecordDate, to: Date()).month {
-                    let monthCountIsZero = monthsFromFirstRecord == 0
-                    let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
-                    let description = "Средний расход за месяц"
-                    
-                    return (nil, "\(sum)".appendCurrency(), description)
-                } else {
-                    return (nil, nil, "")
-                }
+                guard let firstRecordDate = records.min(by: {$0.date < $1.date})?.date,
+                      let monthsFromFirstRecord = Calendar.current.dateComponents([.month], from: firstRecordDate, to: Date()).month
+                else { return (nil, nil, "") }
+                
+                let monthCountIsZero = monthsFromFirstRecord == 0
+                let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
+                let description = "Средний расход за месяц"
+                
+                return (nil, "\(sum)".appendCurrency(), description)
             case .averageSumPerYear(records: let records):
                 let isCurrentYearRecords = Calendar.current.component(.year, from: Date()) == records.first?.date.getDateComponent(.year)
                 let currentMonth = Calendar.current.component(.month, from: Date())
@@ -35,6 +36,27 @@ enum StatisticCellType {
                 
                 let averageSum = isCurrentYearRecords ? sum / currentMonth : sum / 12
                 let description = "Средний расход за месяц"
+        
+                return (nil, "\(averageSum)".appendCurrency(), description)
+                
+            case .averageFuelConsump(record: let records):
+                guard let firstRecordDate = records.min(by: {$0.date < $1.date})?.date,
+                      let monthsFromFirstRecord = Calendar.current.dateComponents([.month], from: firstRecordDate, to: Date()).month
+                else { return (nil, nil, "") }
+                let monthCountIsZero = monthsFromFirstRecord == 0
+                let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
+                let description = "Средний расход на топлвио за месяц"
+                
+                return (nil, "\(sum)".appendCurrency(), description)
+                
+            case .averageFuelConsumpPerYear(record: let records):
+                let isCurrentYearRecords = Calendar.current.component(.year, from: Date()) == records.first?.date.getDateComponent(.year)
+                let currentMonth = Calendar.current.component(.month, from: Date())
+                
+                let sum = records.map({$0.cost ?? 0}).reduce(0, +)
+                
+                let averageSum = isCurrentYearRecords ? sum / currentMonth : sum / 12
+                let description = "Средний расход на топлвио за месяц"
         
                 return (nil, "\(averageSum)".appendCurrency(), description)
                 

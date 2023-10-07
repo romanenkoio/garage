@@ -92,7 +92,7 @@ class StatisticView: BasicView {
                 }
 
                 switch value {
-                    case .averageSum, .averageSumPerYear:
+                    case .averageSum, .averageSumPerYear, .averageFuelConsump, .averageFuelConsumpPerYear:
                         chevronImage.isHidden = true
                     default: break
                 }

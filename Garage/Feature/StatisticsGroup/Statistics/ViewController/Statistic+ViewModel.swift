@@ -31,6 +31,7 @@ extension StatisticViewController {
         
         private func createTableCells() {
             let records = car.records
+            let fuelRecords = car.fuelRecords
             let dates = Set(records.compactMap{ $0.date })
             let years = Set(dates.compactMap({ $0.recordComponents.year })).sorted(by: >)
             
@@ -42,6 +43,7 @@ extension StatisticViewController {
             
             cells.insert([
                 .init(cellValue: .averageSum(records: records)),
+                .init(cellValue: .averageFuelConsump(record: fuelRecords)),
                 .init(cellValue: .mostFreqOperation(records: records)),
                 .init(cellValue: .mostExpensioveOperation(records: records)),
                 .init(cellValue: .mostCheapestOpearation(records: records))
@@ -49,9 +51,10 @@ extension StatisticViewController {
             
             years.forEach { year in
                 let sectionCells = records.filter({ $0.date.getDateComponent(.year) == year })
-                
+                let fuelSectionCells = fuelRecords.filter({ $0.date.getDateComponent(.year) == year })
                 cells.append([
                     .init(cellValue: .averageSumPerYear(records: sectionCells)),
+                    .init(cellValue: .averageFuelConsumpPerYear(record: fuelSectionCells)),
                     .init(cellValue: .mostExpensioveOperation(records: sectionCells)),
                     .init(cellValue: .mostCheapestOpearation(records: sectionCells))
                 ])
