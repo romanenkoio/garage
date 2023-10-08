@@ -42,7 +42,7 @@ enum StatisticCellType {
             case .averageFuelConsump(record: let records):
                 guard let firstRecordDate = records.min(by: {$0.date < $1.date})?.date,
                       let monthsFromFirstRecord = Calendar.current.dateComponents([.month], from: firstRecordDate, to: Date()).month
-                else { return (nil, nil, "") }
+                else { return (nil, "Нет данных за период", "Внесите данные о заправках") }
                 let monthCountIsZero = monthsFromFirstRecord == 0
                 let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
                 let description = "Средний расход на топлвио за месяц"
@@ -57,6 +57,10 @@ enum StatisticCellType {
                 
                 let averageSum = isCurrentYearRecords ? sum / currentMonth : sum / 12
                 let description = "Средний расход на топлвио за месяц"
+                
+                guard averageSum != 0 else {
+                    return (nil, "Нет данных за период", "Внесите данные о заправках")
+                }
         
                 return (nil, "\(averageSum)".appendCurrency(), description)
                 
