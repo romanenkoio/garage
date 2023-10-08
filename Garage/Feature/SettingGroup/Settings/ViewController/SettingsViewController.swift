@@ -99,7 +99,10 @@ class SettingsViewController: BasicViewController {
         case .banner:
             break
         case .faq:
-            self.coordinator.navigateTo(SettingsNavigationRoute.faq)        }
+            self.coordinator.navigateTo(SettingsNavigationRoute.faq)
+        case .promo:
+            promoAlert()
+        }
     }
     
     func readBackupDate(completion: @escaping (String?) -> Void) {
@@ -130,6 +133,23 @@ class SettingsViewController: BasicViewController {
         let closeAction = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addAction(closeAction)
         self.present(alert)
+    }
+    
+    private func promoAlert() {
+        let alert = UIAlertController(title: "", message: "Введите промокод и получите уникальное предложение", preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.placeholder = "Промокод"
+        }
+
+        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: { [weak self] (_) in
+            guard let textField = alert.textFields?.first,
+                  let code = textField.text
+            else { return }
+            self?.vm.checkPromo(code: code)
+        }))
+
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

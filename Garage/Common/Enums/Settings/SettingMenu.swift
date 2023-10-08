@@ -17,6 +17,7 @@ enum SettingPoint {
     case contactUs
     case language
     case faq
+    case promo
     
     var icon: UIImage? {
         switch self {
@@ -29,6 +30,7 @@ enum SettingPoint {
         case .contactUs:        return UIImage(named: "contact_us_ic")
         case .language:         return UIImage(named: "language_ic")
         case .faq:              return UIImage(named: "faq_ic")
+        case .promo:            return UIImage(named: "faq_ic")
         }
     }
     
@@ -38,7 +40,7 @@ enum SettingPoint {
         case .getPremium(let value):        return value
         case .reminders:                    return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? true)
 //        case .mileageReminder:              return PushManager.sh.isEnable && (SettingsManager.sh.read(.useReminder) ?? false) && (SettingsManager.sh.read(.mileageReminder) ?? false)
-        case .backup, .language:            return false
+        case .backup, .language, .promo:            return false
         case .contactUs, .banner, .faq:     return false
         }
     }
@@ -47,7 +49,7 @@ enum SettingPoint {
         switch self {
         case .reminders, .getPremium:
             return true
-        case .backup, .contactUs, .language, .subscription, .banner, .faq:
+        case .backup, .contactUs, .language, .subscription, .banner, .faq, .promo:
             return false
         }
     }
@@ -62,6 +64,7 @@ enum SettingPoint {
         case .language:         return "Язык"
         case .getPremium:       return "Получить премиум"
         case .faq:              return "FAQ"
+        case .promo:              return "Промокод"
         }
     }
 }

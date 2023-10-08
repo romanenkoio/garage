@@ -9,8 +9,17 @@ import Foundation
 
 struct Environment {
     static var isPrem: Bool {
-        get { SettingsManager.sh.read(.isPremium) ?? false }
-        set { SettingsManager.sh.write(value: newValue, for: .isPremium)}
+        get {
+            if SettingsManager.sh.read(.isPromoPrem) ?? false {
+                return true
+            } else {
+                return SettingsManager.sh.read(.isPremium) ?? false
+            }
+        }
+           
+        set {
+            SettingsManager.sh.write(value: newValue, for: .isPremium)
+        }
     }
     
     static var avaliblePlans: [PaidSubscription] = .empty

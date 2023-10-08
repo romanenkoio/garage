@@ -21,6 +21,7 @@ final class SettingsManager {
         case isPremium
         case selectedLanguage
         case readedArticles
+        case isPromoPrem
     }
     
     func read(_ key: Keys) -> Bool? {
