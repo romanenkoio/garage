@@ -34,13 +34,6 @@ extension SettingsViewController {
                 settingsPoint.insert([.subscription], at: 0)
             }
             
-//#if DEBUG
-//            if Environment.isPrem {
-//                settingsPoint.remove(at: 0)
-//                settingsPoint.insert([.subscription, .getPremium(Environment.isPrem)], at: 1)
-//            }
-//#endif
-            
             tableVM.setCells(settingsPoint)
         }
         
@@ -54,6 +47,7 @@ extension SettingsViewController {
                 switch type {
                 case .sale:
                     break
+                    // TODO: Handle sale purchase
                 case .life:
                     SettingsManager.sh.write(value: true, for: .isPromoPrem)
                 }

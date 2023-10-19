@@ -55,7 +55,7 @@ class ChartsView: BasicView {
         addSubview(containerView)
         containerView.addSubview(scrollView)
         scrollView.addSubview(chartsStack)
-        chartsStack.addArrangedSubviews([barChart, pieChart])
+        chartsStack.addArrangedSubviews([pieChart, barChart])
         containerView.addSubview(pageControl)
     }
     

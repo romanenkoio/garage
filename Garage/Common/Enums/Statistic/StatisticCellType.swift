@@ -25,7 +25,7 @@ enum StatisticCellType {
                 
                 let monthCountIsZero = monthsFromFirstRecord == 0
                 let sum = records.map({$0.cost ?? 0}).reduce(0, +) / (monthCountIsZero ? 1 : monthsFromFirstRecord)
-                let description = "Средний расход за месяц"
+                let description = "Средние траты за месяц"
                 
                 return (nil, "\(sum)".appendCurrency(), description)
             case .averageSumPerYear(records: let records):
@@ -35,7 +35,7 @@ enum StatisticCellType {
                 let sum = records.map({$0.cost ?? 0}).reduce(0, +)
                 
                 let averageSum = isCurrentYearRecords ? sum / currentMonth : sum / 12
-                let description = "Средний расход за месяц"
+                let description = "Средние траты за месяц"
         
                 return (nil, "\(averageSum)".appendCurrency(), description)
                 

@@ -3925,8 +3925,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
-				kind = exactVersion;
-				version = 15.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
 			};
 		};
 		7F1CC67A2A680E8E00C7F8B9 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
@@ -3957,8 +3957,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.40.1;
 			};
 		};
 		7F759CB32A6972C900A2E012 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {

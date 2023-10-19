@@ -8,8 +8,8 @@
 import Foundation
 
 enum StatisticType: Equatable, CaseIterable {
-    case charts
     case statistic
+    case charts
     
     var title: String {
         switch self {

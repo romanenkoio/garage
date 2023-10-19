@@ -152,8 +152,8 @@ fileprivate extension ChartsControllerLayoutManager {
     private func makeLayout() {
         vc.view.addSubview(chartsView)
         vc.view.addSubview(containerView)
-        containerView.addSubview(yearBarStack)
         containerView.addSubview(table)
+        containerView.addSubview(yearBarStack)
     }
     
     private func makeConstraint() {

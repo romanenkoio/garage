@@ -23,7 +23,7 @@ extension StatisticPagesViewController {
             
             segmentVM = .init(
                 StatisticType.allCases,
-                selected: .charts,
+                selected: .statistic,
                 titles: { items in items.map({$0.title}) }
             )
             
@@ -33,8 +33,8 @@ extension StatisticPagesViewController {
             pageVM = .init(
                 controllers:
                     [
-                        ChartsViewController(vm: chartsVM),
-                        StatisticViewController(vm: statisticVm)
+                        StatisticViewController(vm: statisticVm),
+                        ChartsViewController(vm: chartsVM)
                     ])
             
             super.init()
